@@ -1,0 +1,9 @@
+.base {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  max-height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  width: 100%;
+}

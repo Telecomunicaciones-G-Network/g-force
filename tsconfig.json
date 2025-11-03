@@ -14,8 +14,11 @@
     "paths": {
       "@/*": ["./*"],
       "@app/*": ["./src/app/*"],
+      "@packages/*": ["./src/packages/*"],
+      "@gnetwork-ui/*": ["./src/packages/gnetwork-ui/*"],
       "@ui/*": ["./src/ui/*"],
-      "@ui-core/*": ["./src/ui/core/*"]
+      "@ui-core/*": ["./src/ui/core/*"],
+      "@ui-chat/*": ["./src/ui/chat/*"]
     },
     "plugins": [
       {
