@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 
 import { ReactScanScript } from "@ui-core/components/server/scripts/react-scan-script";
 
-import { geistMono } from "@ui-core/fonts/geist-mono.font";
-import { geistSans } from "@ui-core/fonts/geist.font";
+import { inter } from "@ui-core/fonts/inter.font";
 
 import { Providers } from "@ui-core/providers/providers/providers.provider";
 
@@ -22,7 +21,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
         <ReactScanScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} antialiased bg-background text-foreground`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -9,13 +9,17 @@
   "editor.formatOnType": true,
   // Material Icon theme
   "material-icon-theme.folders.associations": {
+    "(private)": "secure",
+    "chat-list": "react-components",
     "react-scan-script": "react-components"
   },
   "material-icon-theme.files.associations": {
     "*.constant.ts": "command",
     "*.font.ts": "font",
     "*.mdc": "snowpack",
+    "*.props.ts": "svgr",
     "*.tsx": "react",
+    "*.util.ts": "credits",
     "css-data.json": "vscode",
     "globals.css": "css-map",
     "post-install": "console",
@@ -30,10 +34,22 @@
       "folderNames": ["app"]
     },
     {
+      "name": "GNetwork UI",
+      "base": "ui",
+      "color": "red-400",
+      "folderNames": ["gnetwork-ui"]
+    },
+    {
       "name": "React Providers",
       "base": "react-components",
       "color": "orange-400",
       "folderNames": ["providers", "theme-provider"]
+    },
+    {
+      "name": "React Variants",
+      "base": "react-components",
+      "color": "light-green-500",
+      "folderNames": ["variants"]
     }
   ],
   "material-icon-theme.files.customClones": [
@@ -90,6 +106,24 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React Styles",
+      "base": "react",
+      "color": "pink-400",
+      "fileExtensions": ["style.ts"]
+    },
+    {
+      "name": "React Variants",
+      "base": "react",
+      "color": "light-green-500",
+      "fileExtensions": ["variant.ts"]
+    },
+    {
+      "name": "Types",
+      "base": "typst",
+      "color": "blue-500",
+      "fileExtensions": ["type.ts"]
     }
   ],
   // Peacok Configuration
