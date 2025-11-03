@@ -1,0 +1,4 @@
+bun typecheck
+bun check
+bun security:scan || true
+bun run build

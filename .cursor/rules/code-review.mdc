@@ -1,0 +1,43 @@
+# Automatic Code Review - Cursor Rule
+
+This rule performs automatic code review for project.
+
+## Instructions
+
+1. Read the **package.json** file to know the dependencies of the project.
+
+2. Generate a markdown report the taking as example [Output Example](#output-example) in this rule.
+   The report must be in **Spanish**. Any production or development dependency found in package.json
+   that is not exact, please mark as follows:
+
+- **Dependency**: [Status: ✅ Exact good / ⚠️ Set as exact dependency]
+
+## Output Example
+
+```markdown
+# 📋 Reporte de Code Review
+
+## 🏗️ Dependencias
+
+### 📊 Dependencias **package.json**
+
+Todas las dependencias de desarrollo están fijadas a una versión exacta:
+
+- **@changesets/cli**: ✅ Exact good
+- **@commitlint/cli**: ✅ Exact good
+- **@commitlint/config-conventional**: ✅ Exact good
+- **@commitlint/types**: ✅ Exact good
+- **husky**: ✅ Exact good
+- **lint-staged**: ✅ Exact good
+- **npm-run-all2**: ✅ Exact good
+- **prettier**: ✅ Exact good
+- **rimraf**: ✅ Exact good
+
+No se encontraron dependencias de producción.
+
+## 📊 Resumen
+
+- **Dependencies**: ✅ Complete
+
+Si requiere algun ajuste adicional estoy para ayudarte con gusto 😃
+```

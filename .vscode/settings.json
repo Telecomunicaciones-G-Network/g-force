@@ -1,0 +1,145 @@
+{
+  // Autoimports
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  // Formatting
+  "editor.formatter": "biomejs.biome",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  // Material Icon theme
+  "material-icon-theme.folders.associations": {
+    "react-scan-script": "react-components"
+  },
+  "material-icon-theme.files.associations": {
+    "*.constant.ts": "command",
+    "*.font.ts": "font",
+    "*.mdc": "snowpack",
+    "*.tsx": "react",
+    "css-data.json": "vscode",
+    "globals.css": "css-map",
+    "post-install": "console",
+    "settings.json": "vscode",
+    "variables.css": "vala"
+  },
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "App",
+      "base": "app",
+      "color": "blue-500",
+      "folderNames": ["app"]
+    },
+    {
+      "name": "React Providers",
+      "base": "react-components",
+      "color": "orange-400",
+      "folderNames": ["providers", "theme-provider"]
+    }
+  ],
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "Dark Theme",
+      "base": "renovate",
+      "color": "gray-700",
+      "fileNames": ["dark.theme.css"]
+    },
+    {
+      "name": "Global DTS",
+      "base": "typescript-def",
+      "color": "green-500",
+      "fileNames": ["globals.d.ts"]
+    },
+    {
+      "name": "Light Theme",
+      "base": "renovate",
+      "color": "white",
+      "fileNames": ["light.theme.css"]
+    },
+    {
+      "name": "Makefile",
+      "base": "makefile",
+      "color": "orange-800",
+      "fileNames": ["makefile"]
+    },
+    {
+      "name": "Main CSS",
+      "base": "gemini",
+      "color": "purple-300",
+      "fileNames": ["main.css"]
+    },
+    {
+      "name": "Next Env DTS",
+      "base": "typescript-def",
+      "color": "gray-500",
+      "fileNames": ["next-env.d.ts"]
+    },
+    {
+      "name": "React Layouts",
+      "base": "react",
+      "color": "cyan-200",
+      "fileNames": ["layout.tsx"]
+    },
+    {
+      "name": "React Pages",
+      "base": "react",
+      "color": "orange-500",
+      "fileNames": ["page.tsx"]
+    },
+    {
+      "name": "React Providers",
+      "base": "react",
+      "color": "deep-orange-400",
+      "fileExtensions": ["provider.tsx"]
+    }
+  ],
+  // Peacok Configuration
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#1a1a1a",
+    "activityBar.background": "#1a1a1a",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#606020",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#1a1a1a",
+    "statusBar.background": "#000000",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#1a1a1a",
+    "statusBarItem.remoteBackground": "#000000",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#000000",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#00000099",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "000000",
+  // TailwindCSS
+  "css.customData": [".vscode/css-data.json"],
+  // Terminal integrated
+  "terminal.integrated.fontFamily": "'Monaspace Radon', 'Victor Mono', Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": "600",
+  // TypeScript
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  // Vscode Editor
+  "workbench.activityBar.location": "hidden",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.fontFamily": "'Monaspace Radon', 'Victor Mono', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "600",
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  // Vscode Features
+  "editor.stickyTabStops": true,
+  "editor.stickyScroll.enabled": true,
+  "workbench.statusBar.visible": true,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.sideBar.location": "right",
+  "workbench.tree.indent": 8,
+  "workbench.tree.renderIndentGuides": "always"
+}

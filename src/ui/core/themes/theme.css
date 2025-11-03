@@ -1,0 +1,8 @@
+@import "../styles/variables.css";
+@import "../styles/light.theme.css";
+@import "../styles/dark.theme.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}

@@ -1,0 +1,97 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Automatic Merge Request generator - Cursor Rule
+
+You will receive a branch that you want to merge with (by default take develop). After this, you
+must perform a git diff from the git bash console between the branch you are on and the branch you
+want to merge with.
+
+**PREVIOUS INSTRUCTION (DO NOT INCLUDE IN PR)**: If user story text is provided, use it to:
+
+- Better understand the scope and purpose of the changes
+- Identify the real impact on the end user
+- Understand the needs being addressed This information will serve to improve the quality of PR
+  sections.
+
+Once you get that diff, you must create a MR description in **Spanish** as follows:
+
+1. **Título**:
+
+   - Si la rama tiene un número de tarea, comenzar con #NUMERO
+   - Ser conciso y descriptivo
+   - Máximo 10 palabras
+
+2. **Motivo de cambio**:
+
+   - Explicar brevemente qué se está haciendo y por qué
+   - Enfocarse en el problema o necesidad que se resuelve
+   - Máximo 3 líneas
+   - Usar el contexto de la US para enriquecer esta explicación
+
+3. **Cambios realizados**:
+
+   - Listar los cambios principales de forma concisa
+   - Enfocarse en el "qué" y no en el "cómo"
+   - Máximo 5 puntos
+   - Evitar detalles técnicos innecesarios
+   - Usar el contexto de la US para priorizar los cambios más relevantes
+
+4. **Impacto**:
+
+   - Describir el impacto en el usuario final
+   - Máximo 2 puntos
+   - Basarse en el contexto de la US para identificar el impacto real
+
+5. **Archivos clave**:
+
+   - Listar solo los archivos más relevantes
+   - Máximo 5 archivos
+   - Incluir una breve descripción del cambio en cada uno
+
+6. **Tareas relacionadas**:
+   - Si los commits comienzan con #NRO, listarlos aquí
+   - Formato: #123, #456
+
+**IMPORTANT**:
+
+- Use command without paginator: `git --no-pager diff development`
+- Keep description concise and focused
+- Avoid redundancies
+- Prioritize clarity over detail
+- Output must be in markdown format for Azure DevOps
+
+## Output Example
+
+```mardown
+# #123 Optimización de rendimiento en generación de PDFs
+
+## Motivo de cambio
+
+Se identificó la necesidad de optimizar el consumo de recursos durante la generación de PDFs para usuarios concurrentes, ya que el sistema actual no puede manejar eficientemente múltiples solicitudes simultáneas.
+
+## Cambios realizados
+
+- Migración a imágenes Docker más livianas
+- Implementación de sistema de archivos temporales
+- Optimización de parámetros de Puppeteer
+- Actualización de configuración de Swagger
+
+## Impacto
+
+- Reducción del tiempo de generación de PDFs
+- Mayor estabilidad en entornos de producción
+
+## Archivos clave
+
+- `src/pdf-generator/pdf.service.ts`: Optimización de generación
+- `docker/Dockerfile.prod`: Configuración de contenedores
+- `src/config/puppeteer.config.ts`: Parámetros optimizados
+
+## Tareas relacionadas
+
+# `Task code extracted from current branch`
+```
