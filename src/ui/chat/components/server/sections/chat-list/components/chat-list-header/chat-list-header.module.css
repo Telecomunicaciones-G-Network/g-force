@@ -1,0 +1,7 @@
+.base {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 0 32px 8px 32px;
+}

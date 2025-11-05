@@ -17,8 +17,12 @@
     "button-icon": "react-components",
     "button": "react-components",
     "buttons": "include",
+    "chat-card": "react-components",
+    "chat-list-body": "react-components",
     "chat-list-empty": "react-components",
+    "chat-list-header": "react-components",
     "chat-list": "react-components",
+    "components": "react-components",
     "dictionaries": "resource",
     "icons": "jupyter",
     "input": "react-components",
@@ -53,6 +57,12 @@
       "folderNames": ["app"]
     },
     {
+      "name": "Cards",
+      "base": "element",
+      "color": "blue-400",
+      "folderNames": ["cards"]
+    },
+    {
       "name": "Factory",
       "base": "home",
       "color": "green-500",
@@ -65,10 +75,22 @@
       "folderNames": ["gnetwork-ui"]
     },
     {
+      "name": "React Iterators",
+      "base": "react-components",
+      "color": "indigo-500",
+      "folderNames": ["iterators"]
+    },
+    {
       "name": "React Providers",
       "base": "react-components",
       "color": "orange-400",
       "folderNames": ["providers", "theme-provider"]
+    },
+    {
+      "name": "React Stores",
+      "base": "react-components",
+      "color": "lime-700",
+      "folderNames": ["stores"]
     },
     {
       "name": "React Variants",
@@ -127,6 +149,12 @@
       "fileExtensions": ["hook.tsx"]
     },
     {
+      "name": "React Iterators",
+      "base": "react",
+      "color": "indigo-300",
+      "fileExtensions": ["iterator.tsx"]
+    },
+    {
       "name": "React Layouts",
       "base": "react",
       "color": "cyan-200",
@@ -143,6 +171,12 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React Stores",
+      "base": "react",
+      "color": "lime-500",
+      "fileExtensions": ["store.tsx"]
     },
     {
       "name": "React Styles",

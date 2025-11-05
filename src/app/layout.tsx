@@ -23,6 +23,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html suppressHydrationWarning lang="en">
       <head>
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
         <ReactScanScript />
       </head>
       <body

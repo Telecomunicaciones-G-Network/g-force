@@ -5,6 +5,7 @@ export const ReactScanScript = () => {
   if (process.env.NODE_ENV === "development") {
     console.log("ReactScanScript");
   }
+
   return (
     <>
       {process.env.MODE === "development" &&

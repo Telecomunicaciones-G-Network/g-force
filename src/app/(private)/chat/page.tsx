@@ -1,4 +1,4 @@
-import { ChatList } from "@ui/chat/components/server/sections/chat-list";
+import { ChatList } from "@ui-chat/components/server/sections/chat-list";
 
 import styles from "./page.module.css";
 

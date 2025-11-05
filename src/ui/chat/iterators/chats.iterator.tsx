@@ -1,0 +1,87 @@
+import type { Chat } from "@ui-chat/interfaces";
+
+/**
+ * Example chat list.
+ *
+ * Each object represents a chat conversation with the following fields:
+ * - id: Unique numeric identifier for the chat.
+ * - avatarAlt: Alternative text for the user's avatar.
+ * - avatarSrc: URL of the avatar image.
+ * - lastMessage: Last message received or sent in the conversation.
+ * - lastMessageTime: Time of the last message.
+ * - username: Name of the user associated with the chat.
+ */
+export const chats: Chat[] = [
+  {
+    id: 0,
+    avatarAlt: "User 1",
+    avatarSrc: "/images/chat_user_avatar_1.png",
+    lastMessage: "Buenos días, es un gusto saludarle...",
+    lastMessageTime: "09:35 AM",
+    username: "Angela Goncalves",
+  },
+  {
+    id: 1,
+    avatarAlt: "User 2",
+    avatarSrc: "/images/chat_user_avatar_2.png",
+    lastMessage: "Buenas, olvidé mi usuario para el portal...",
+    lastMessageTime: "09:30 AM",
+    username: "Valentina Rivas",
+  },
+  {
+    id: 2,
+    avatarAlt: "User 3",
+    avatarSrc: "/images/chat_user_avatar_3.png",
+    lastMessage: "Buenas, olvidé mi usuario para el portal...",
+    lastMessageTime: "09:35 AM",
+    username: "Ricardo López",
+  },
+  {
+    id: 3,
+    avatarAlt: "User 4",
+    avatarSrc: "/images/chat_user_avatar_4.png",
+    lastMessage: "Por favor, envíenme copia de mis último...",
+    lastMessageTime: "09:25 AM",
+    username: "Paola Hernández",
+  },
+  {
+    id: 4,
+    avatarAlt: "User 5",
+    avatarSrc: "/images/chat_user_avatar_5.png",
+    lastMessage: "El servicio está muy lento en mi zona...",
+    lastMessageTime: "09:10 AM",
+    username: "Jorge Fernández",
+  },
+  {
+    id: 5,
+    avatarAlt: "User 6",
+    avatarSrc: "/images/chat_user_avatar_6.png",
+    lastMessage: "Buenas, olvidé mi usuario para el portal...",
+    lastMessageTime: "09:05 AM",
+    username: "Andrea Silva",
+  },
+  {
+    id: 6,
+    avatarAlt: "User 7",
+    avatarSrc: "/images/chat_user_avatar_7.png",
+    lastMessage: "Quisiera información sobre el plan de...",
+    lastMessageTime: "09:35 AM",
+    username: "Luis Ramírez",
+  },
+  {
+    id: 7,
+    avatarAlt: "User 8",
+    avatarSrc: "/images/chat_user_avatar_8.png",
+    lastMessage: "Ayer tuve un problema con la conexión...",
+    lastMessageTime: "08:50 AM",
+    username: "Mariana Torres",
+  },
+  {
+    id: 8,
+    avatarAlt: "User 9",
+    avatarSrc: "/images/chat_user_avatar_9.png",
+    lastMessage: "Buenos días, necesito confirmar mi fact...",
+    lastMessageTime: "08:45 AM",
+    username: "Carlos Mendoza",
+  },
+] as const;
