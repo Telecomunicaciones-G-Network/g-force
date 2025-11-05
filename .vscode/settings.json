@@ -16,6 +16,7 @@
     "chat-list": "react-components",
     "input": "react-components",
     "react-scan-script": "react-components",
+    "responsive-image": "react-components",
     "search-input": "react-components"
   },
   "material-icon-theme.files.associations": {
