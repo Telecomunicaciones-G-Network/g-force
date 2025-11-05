@@ -23,7 +23,7 @@ export const ChatList = () => (
         <MdFilterList />
       </Button>
     </div>
-    <div className="base__content">
+    <div className={styles.base__content}>
       <ChatListEmpty />
     </div>
   </section>

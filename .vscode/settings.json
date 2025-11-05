@@ -20,10 +20,13 @@
     "chat-list-empty": "react-components",
     "chat-list": "react-components",
     "dictionaries": "resource",
+    "icons": "jupyter",
     "input": "react-components",
     "react-scan-script": "react-components",
     "responsive-image": "react-components",
     "search-input": "react-components",
+    "text": "react-components",
+    "texts": "font",
     "unknown-icon": "react-components"
   },
   "material-icon-theme.files.associations": {
