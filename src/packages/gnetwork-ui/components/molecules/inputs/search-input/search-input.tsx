@@ -1,5 +1,3 @@
-"use client";
-
 import type { InputProps } from "../input";
 
 import { MdOutlineSearch } from "react-icons/md";

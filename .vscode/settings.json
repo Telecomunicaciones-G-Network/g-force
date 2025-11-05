@@ -11,6 +11,8 @@
   "material-icon-theme.folders.associations": {
     "(private)": "secure",
     "(public)": "public",
+    "button": "react-components",
+    "buttons": "include",
     "chat-list": "react-components",
     "input": "react-components",
     "react-scan-script": "react-components",
@@ -23,6 +25,7 @@
     "*.props.ts": "svgr",
     "*.tsx": "react",
     "*.util.ts": "credits",
+    "components.json": "regedit",
     "css-data.json": "vscode",
     "globals.css": "css-map",
     "post-install": "console",
@@ -133,6 +136,12 @@
       "base": "react",
       "color": "light-green-500",
       "fileExtensions": ["variant.ts"]
+    },
+    {
+      "name": "Theme CSS",
+      "base": "renovate",
+      "color": "purple-300",
+      "fileNames": ["theme.css"]
     },
     {
       "name": "Types",

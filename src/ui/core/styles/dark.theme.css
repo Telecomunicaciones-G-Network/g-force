@@ -1,9 +1,16 @@
 [data-theme="dark"] {
   --background: #0a0a0a;
   --black: #000000;
+  --button-background: #474747;
+  --button-background-disabled: #171717;
+  --button-background-hover: #525252;
+  --button-border: transparent;
+  --button-text: #ffffff;
+  --button-text-disabled: #525252;
   --chromatic-inverted: #ffffff;
   --chromatic: #000000;
   --foreground: #ffffff;
+  --gray: #737373;
   --input-background: #171717;
   --input-border: #262626;
   --input-icon: #525252;

@@ -1,3 +1,4 @@
 @import "tailwindcss";
 @import "../themes/theme.css";
 @import "./globals.css";
+@import "tw-animate-css";

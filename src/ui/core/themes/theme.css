@@ -5,8 +5,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-black: var(--black);
+  --color-button-background: var(--button-background);
+  --color-button-background-disabled: var(--button-background-disabled);
+  --color-button-background-hover: var(--button-background-hover);
+  --color-button-border: var(--button-border);
+  --color-button-text: var(--button-text);
+  --color-button-text-disabled: var(--button-text-disabled);
   --color-chromatic: var(--chromatic);
   --color-foreground: var(--foreground);
+  --color-gray: var(--gray);
   --color-input-background: var(--input-background);
   --color-input-border: var(--input-border);
   --color-input-icon: var(--input-icon);
