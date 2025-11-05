@@ -9,6 +9,8 @@
   --color-foreground: var(--foreground);
   --color-input-background: var(--input-background);
   --color-input-border: var(--input-border);
+  --color-input-icon: var(--input-icon);
+  --color-input-placeholder: var(--input-placeholder);
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);

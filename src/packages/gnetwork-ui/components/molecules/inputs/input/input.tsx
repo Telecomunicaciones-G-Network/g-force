@@ -61,7 +61,7 @@ export const Input = ({
         <input
           className={cn(
             styles.base__input,
-            "font-medium text-base text-chromatic-inverted text-left placeholder:text-neutral-600",
+            "font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder",
           )}
           ref={ref}
           type={type}

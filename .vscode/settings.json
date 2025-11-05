@@ -99,6 +99,12 @@
       "fileNames": ["next-env.d.ts"]
     },
     {
+      "name": "React Hooks",
+      "base": "react",
+      "color": "amber-300",
+      "fileExtensions": ["hook.tsx"]
+    },
+    {
       "name": "React Layouts",
       "base": "react",
       "color": "cyan-200",
