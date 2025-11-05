@@ -1,0 +1,8 @@
+.base {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+}
