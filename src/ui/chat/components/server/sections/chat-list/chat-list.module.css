@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+.base__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  overflow: auto;
+}
+
 .base__header {
   align-items: center;
   display: flex;

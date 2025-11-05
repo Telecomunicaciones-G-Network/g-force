@@ -40,14 +40,14 @@ export const Input = ({
 }: Readonly<InputProps>) => {
   const classes = getInputClassNames({ className, error, fullWidth });
 
-  if (!id || name) {
+  if (!id || !name) {
     console.warn(
       "Prop id or name is missing on Input component. This component can not be render appropiately.",
     );
   }
 
   return (
-    <div className={cn(styles.base, containerClassName)}>
+    <div className={cn(styles.base, fullWidth && "w-full", containerClassName)}>
       {label && (
         <label
           className={cn(styles.base__label, "text-chromatic-inverted")}

@@ -1,4 +1,7 @@
-import { Button } from "@/src/packages/gnetwork-ui/components/molecules/buttons/button";
+import Image from "next/image";
+
+import { Avatar } from "@gnetwork-ui/components/molecules/avatars/avatar";
+
 import styles from "./page.module.css";
 
 /**
@@ -7,9 +10,20 @@ import styles from "./page.module.css";
 export default function FactoryPage() {
   return (
     <div className={styles.base}>
-      <Button color="gray" scheme="outline">
-        click me
-      </Button>
+      <Avatar
+        image={{
+          customImageComponent: (
+            <Image
+              alt="Avatar"
+              className="responsive-image-cover"
+              fill
+              priority
+              sizes="100%"
+              src="/images/chat_user_avatar_1.png"
+            />
+          ),
+        }}
+      />
     </div>
   );
 }

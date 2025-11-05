@@ -11,8 +11,12 @@
   "material-icon-theme.folders.associations": {
     "(private)": "secure",
     "(public)": "public",
+    "avatar": "react-components",
+    "avatars": "linux",
+    "blocks": "mjml",
     "button": "react-components",
     "buttons": "include",
+    "chat-list-empty": "react-components",
     "chat-list": "react-components",
     "input": "react-components",
     "react-scan-script": "react-components",
@@ -63,6 +67,12 @@
       "base": "react-components",
       "color": "light-green-500",
       "folderNames": ["variants"]
+    },
+    {
+      "name": "Sections",
+      "base": "mjml",
+      "color": "green-500",
+      "folderNames": ["sections"]
     }
   ],
   "material-icon-theme.files.customClones": [

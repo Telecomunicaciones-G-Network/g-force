@@ -1,0 +1,15 @@
+.base {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  font-family: inherit;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 100%;
+  outline: none;
+  position: relative;
+  & > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
