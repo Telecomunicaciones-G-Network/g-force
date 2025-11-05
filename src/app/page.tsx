@@ -1,3 +1,6 @@
+/**
+ * Root page component.
+ */
 export default function RootPage() {
   return (
     <div className="bg-background flex h-dvh w-full flex-col items-center justify-center">

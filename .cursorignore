@@ -1,0 +1,21 @@
+# Cursor ignore
+
+# Build outputs
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Database
+data/
+**/data/
+
+# Logs
+*.log
+logs/
+
+# Coverage
+coverage/
+.nyc_output/
+

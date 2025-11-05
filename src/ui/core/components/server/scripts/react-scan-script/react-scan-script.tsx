@@ -1,3 +1,6 @@
+/**
+ * React scan script component.
+ */
 export const ReactScanScript = () => {
   if (process.env.NODE_ENV === "development") {
     console.log("ReactScanScript");

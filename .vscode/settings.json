@@ -10,8 +10,11 @@
   // Material Icon theme
   "material-icon-theme.folders.associations": {
     "(private)": "secure",
+    "(public)": "public",
     "chat-list": "react-components",
-    "react-scan-script": "react-components"
+    "input": "react-components",
+    "react-scan-script": "react-components",
+    "search-input": "react-components"
   },
   "material-icon-theme.files.associations": {
     "*.constant.ts": "command",
@@ -32,6 +35,12 @@
       "base": "app",
       "color": "blue-500",
       "folderNames": ["app"]
+    },
+    {
+      "name": "Factory",
+      "base": "home",
+      "color": "green-500",
+      "folderNames": ["factory"]
     },
     {
       "name": "GNetwork UI",

@@ -6,6 +6,23 @@ import { getInputClassNames } from "./input.style";
 
 import styles from "./input.module.css";
 
+/**
+ * Input component.
+ *
+ * @param className - The class name.
+ * @param containerClassName - The container class name.
+ * @param error - The error.
+ * @param fullWidth - The full width.
+ * @param id - The id.
+ * @param label - The label.
+ * @param leftIcon - The left icon.
+ * @param message - The message.
+ * @param name - The name.
+ * @param ref - The ref.
+ * @param rightIcon - The right icon.
+ * @param type - The type.
+ * @param rest - The rest.
+ */
 export const Input = ({
   className = "",
   containerClassName = "",

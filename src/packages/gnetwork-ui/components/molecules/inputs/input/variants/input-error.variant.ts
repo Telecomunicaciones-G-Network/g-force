@@ -1,3 +1,9 @@
+/**
+ * Input error variant.
+ *
+ * @param true - The true variant.
+ * @param false - The false variant.
+ */
 export const inputError = {
   true: "border border-solid border-warning-200 focus-within:shadow-[0_0_0_2.5px_rgba(224,159,50,0.6)]",
   false:

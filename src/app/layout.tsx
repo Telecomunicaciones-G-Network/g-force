@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   description: "Gnetwork Communication Chat",
 };
 
+/**
+ * Root layout component.
+ *
+ * @param children - The children.
+ */
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html suppressHydrationWarning lang="en">
