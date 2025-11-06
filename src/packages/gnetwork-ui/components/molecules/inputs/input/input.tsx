@@ -14,11 +14,14 @@ import styles from "./input.module.css";
  * @param error - The error.
  * @param fullWidth - The full width.
  * @param id - The id.
+ * @param isStatic - Whether the input is static.
  * @param label - The label.
  * @param leftIcon - The left icon.
  * @param message - The message.
  * @param name - The name.
+ * @param readOnly - Whether the input is read-only.
  * @param ref - The ref.
+ * @param required - Whether the input is required.
  * @param rightIcon - The right icon.
  * @param type - The type.
  * @param rest - The rest.
@@ -31,14 +34,22 @@ export const Input = ({
   id,
   label = "",
   leftIcon,
+  isStatic = false,
   message = "",
   name,
+  readOnly = false,
+  required = false,
   ref,
   rightIcon,
   type = "text",
   ...rest
 }: Readonly<InputProps>) => {
-  const classes = getInputClassNames({ className, error, fullWidth });
+  const classes = getInputClassNames({
+    className,
+    error,
+    fullWidth,
+    isStatic: !!(isStatic || readOnly),
+  });
 
   if (!id || !name) {
     console.warn(
@@ -53,7 +64,7 @@ export const Input = ({
           className={cn(styles.base__label, "text-chromatic-inverted")}
           htmlFor={id || name}
         >
-          {label}
+          {label} {required ? " *" : ""}
         </label>
       )}
       <div className={cn(classes)}>
@@ -63,6 +74,7 @@ export const Input = ({
             styles.base__input,
             "font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder",
           )}
+          readOnly={readOnly}
           ref={ref}
           type={type}
           {...rest}

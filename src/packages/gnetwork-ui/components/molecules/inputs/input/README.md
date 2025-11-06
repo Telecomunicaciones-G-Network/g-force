@@ -4,10 +4,11 @@ A flexible and customizable input component built with React and styled using cl
 
 ## Features
 
-- ✨ Built-in label support
+- ✨ Built-in label support with required field indicator
 - 🎨 Error state with custom styling and messages
 - 🔍 Support for left and right icons
 - 📏 Full-width and fit-width variants
+- 🔒 Static and read-only modes
 - ♿ Accessible with proper label-input association
 - 🎯 TypeScript support with full type safety
 - 🎨 Customizable with className overrides
@@ -25,20 +26,23 @@ import type { InputProps } from "@/packages/gnetwork-ui/components/molecules/inp
 
 The component extends all native HTML input attributes (`ReactInput`) plus the following custom props:
 
-| Prop                 | Type         | Default  | Description                                              |
-| -------------------- | ------------ | -------- | -------------------------------------------------------- |
-| `className`          | `string`     | `""`     | Custom class name for the input container                |
-| `containerClassName` | `string`     | `""`     | Custom class name for the outer wrapper div              |
-| `error`              | `boolean`    | `false`  | Enables error state styling                              |
-| `fullWidth`          | `boolean`    | `false`  | Makes the input take full width of its container         |
-| `id`                 | `string`     | -        | **Required** - HTML id attribute for the input           |
-| `label`              | `string`     | `""`     | Label text displayed above the input                     |
-| `leftIcon`           | `ReactChild` | -        | Icon or element displayed on the left side of the input  |
-| `message`            | `string`     | `""`     | Helper or error message displayed below the input        |
-| `name`               | `string`     | -        | **Required** - HTML name attribute for the input         |
-| `rightIcon`          | `ReactChild` | -        | Icon or element displayed on the right side of the input |
-| `type`               | `string`     | `"text"` | HTML input type (text, email, password, etc.)            |
-| `ref`                | `React.Ref`  | -        | React ref for the input element                          |
+| Prop                 | Type         | Default  | Description                                                 |
+| -------------------- | ------------ | -------- | ----------------------------------------------------------- |
+| `className`          | `string`     | `""`     | Custom class name for the input container                   |
+| `containerClassName` | `string`     | `""`     | Custom class name for the outer wrapper div                 |
+| `error`              | `boolean`    | `false`  | Enables error state styling                                 |
+| `fullWidth`          | `boolean`    | `false`  | Makes the input take full width of its container            |
+| `id`                 | `string`     | -        | **Required** - HTML id attribute for the input              |
+| `isStatic`           | `boolean`    | `false`  | Disables focus states and interactions (used with readOnly) |
+| `label`              | `string`     | `""`     | Label text displayed above the input                        |
+| `leftIcon`           | `ReactChild` | -        | Icon or element displayed on the left side of the input     |
+| `message`            | `string`     | `""`     | Helper or error message displayed below the input           |
+| `name`               | `string`     | -        | **Required** - HTML name attribute for the input            |
+| `readOnly`           | `boolean`    | `false`  | Makes the input read-only (prevents editing)                |
+| `required`           | `boolean`    | `false`  | Marks the field as required (adds asterisk to label)        |
+| `rightIcon`          | `ReactChild` | -        | Icon or element displayed on the right side of the input    |
+| `type`               | `string`     | `"text"` | HTML input type (text, email, password, etc.)               |
+| `ref`                | `React.Ref`  | -        | React ref for the input element                             |
 
 > **Note:** Either `id` or `name` prop is required. The component will log a warning if both are missing.
 
@@ -101,6 +105,44 @@ import { SearchIcon, ClearIcon } from "@/icons";
 />
 ```
 
+### Required Field
+
+```tsx
+<Input
+  id="email"
+  name="email"
+  label="Email"
+  type="email"
+  required={true}
+  placeholder="you@example.com"
+/>
+```
+
+### Read-Only Input
+
+```tsx
+<Input
+  id="username"
+  name="username"
+  label="Username"
+  value="john.doe"
+  readOnly={true}
+/>
+```
+
+### Static Input (No Focus States)
+
+```tsx
+<Input
+  id="display-only"
+  name="display-only"
+  label="Account ID"
+  value="ACC-12345"
+  isStatic={true}
+  readOnly={true}
+/>
+```
+
 ### Complete Example
 
 ```tsx
@@ -137,13 +179,26 @@ The component uses CVA (class-variance-authority) for variant management:
 
 ### Error Variant
 
-- **`error: false`** (default): Standard border with neutral colors and focus states
-- **`error: true`**: Warning-colored border with error-specific focus shadow
+- **`error: false`** (default): Standard border (`border-input-border`) with neutral colors and focus states
+- **`error: true`**: Warning-colored border (`border-warning-200`) with error-specific focus shadow
 
 ### Full Width Variant
 
 - **`fullWidth: false`** (default): Input takes only the space it needs (`w-fit`)
 - **`fullWidth: true`**: Input expands to fill container width (`w-full`)
+
+### Static Variant
+
+- **`isStatic: false`** (default): Normal interactive input with focus states
+- **`isStatic: true`**: Disables focus states and interactions (typically used with `readOnly`)
+
+### Compound Variants
+
+The component intelligently combines variants for optimal UX:
+
+- **Non-error + Interactive**: Shows white border and white glow on focus (`shadow-[0_0_0_2.5px_rgba(255,255,255,0.6)]`)
+- **Error + Interactive**: Shows warning border and orange glow on focus (`shadow-[0_0_0_2.5px_rgba(224,159,50,0.6)]`)
+- **Static (error or non-error)**: No focus states applied, regardless of error state
 
 ## Styling
 
@@ -165,18 +220,22 @@ The input container receives the following base classes:
 The input element receives:
 
 - `font-medium text-base text-chromatic-inverted text-left`
-- `placeholder:text-neutral-600` - placeholder styling
+- `placeholder:text-input-placeholder` - placeholder styling
 
 ## Accessibility
 
 - Properly associates labels with inputs using `htmlFor` and `id`
+- Required fields are indicated with an asterisk (\*) in the label
 - Supports all native input attributes for screen readers
 - Error messages are displayed visibly below the input
-- Focus states are clearly indicated with shadows
+- Focus states are clearly indicated with shadows (when not static)
+- Read-only and static states prevent accidental input modifications
 
 ## Development Notes
 
 - The component logs a console warning if neither `id` nor `name` is provided
+- When `readOnly` is true, the component automatically applies static styling
+- The `isStatic` prop can be combined with `readOnly` for display-only fields
 - Uses the `cn` utility for merging class names
 - Built with TypeScript for type safety
 - Follows atomic design principles (molecule level)
@@ -185,15 +244,16 @@ The input element receives:
 
 ```
 input/
-├── index.ts                      # Public exports
-├── input.tsx                     # Main component
-├── input.props.ts                # TypeScript interfaces
-├── input.style.ts                # CVA variants and styling
-├── input.module.css              # CSS modules
-├── README.md                     # This file
+├── index.ts                       # Public exports
+├── input.tsx                      # Main component
+├── input.props.ts                 # TypeScript interfaces
+├── input.style.ts                 # CVA variants and styling
+├── input.module.css               # CSS modules
+├── README.md                      # This file
 └── variants/
-    ├── input-error.variant.ts    # Error state styles
-    └── input-fullwidth.variant.ts # Width variant styles
+    ├── input-error.variant.ts     # Error state styles
+    ├── input-fullwidth.variant.ts # Width variant styles
+    └── input-static.variant.ts    # Static/read-only state styles
 ```
 
 ## Related Components

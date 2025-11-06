@@ -6,6 +6,7 @@ import { cn } from "../../../../utils/cn.util";
 
 import { inputError } from "./variants/input-error.variant";
 import { inputFullWidth } from "./variants/input-fullwidth.variant";
+import { inputIsStatic } from "./variants/input-static.variant";
 
 import styles from "./input.module.css";
 
@@ -14,6 +15,7 @@ import styles from "./input.module.css";
  *
  * @param error - The error.
  * @param fullWidth - The full width.
+ * @param isStatic - The is static.
  */
 export const inputVariants = cva(
   [
@@ -24,10 +26,35 @@ export const inputVariants = cva(
     variants: {
       error: inputError,
       fullWidth: inputFullWidth,
+      isStatic: inputIsStatic,
     },
-    compoundVariants: [],
+    compoundVariants: [
+      {
+        error: false,
+        isStatic: false,
+        class:
+          "focus-within:border focus-within:border-solid focus-within:border-neutral-50 focus-within:shadow-[0_0_0_2.5px_rgba(255,255,255,0.6)]",
+      },
+      {
+        error: false,
+        isStatic: true,
+        class: "",
+      },
+      {
+        error: true,
+        isStatic: false,
+        class: "focus-within:shadow-[0_0_0_2.5px_rgba(224,159,50,0.6)]",
+      },
+      {
+        error: true,
+        isStatic: true,
+        class: "",
+      },
+    ],
     defaultVariants: {
+      error: false,
       fullWidth: false,
+      isStatic: false,
     },
   },
 );

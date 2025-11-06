@@ -1,4 +1,5 @@
 import { Alert } from "@gnetwork-ui/components/molecules/alerts/alert";
+import { EmailInput } from "@gnetwork-ui/components/molecules/inputs/email-input";
 import { LoginBrand } from "./components/login-brand/login-brand";
 
 import { cn } from "@gnetwork-ui/utils/cn.util";
@@ -21,5 +22,17 @@ export const LoginForm = () => (
       </div>
     )}
     <LoginBrand />
+    <div className={styles.base__form}>
+      <div className={styles.base__input}>
+        <EmailInput
+          fullWidth
+          id="login_email"
+          label="Email"
+          name="email"
+          placeholder="Introduce tu email"
+          required
+        />
+      </div>
+    </div>
   </form>
 );

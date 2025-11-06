@@ -8,3 +8,16 @@
 .base__alert {
   width: 100%;
 }
+
+.base__button,
+.base__input {
+  width: 100%;
+}
+
+.base__form {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
