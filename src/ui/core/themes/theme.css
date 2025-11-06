@@ -3,6 +3,14 @@
 @import "../styles/dark.theme.css";
 
 @theme inline {
+  --breakpoint-mobile: 24.375rem;
+  --breakpoint-tablet: 46.5rem;
+  --breakpoint-desktop: 90rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
   --color-background: var(--background);
   --color-black: var(--black);
   --color-button-background: var(--button-background);
@@ -12,6 +20,8 @@
   --color-button-text: var(--button-text);
   --color-button-text-disabled: var(--button-text-disabled);
   --color-chromatic: var(--chromatic);
+  --color-dark-blue-background: var(--dark-blue-background);
+  --color-dark-blue-foreground: var(--dark-blue-foreground);
   --color-foreground: var(--foreground);
   --color-gray: var(--gray);
   --color-input-background: var(--input-background);
@@ -29,6 +39,9 @@
   --color-neutral-800: var(--neutral-800);
   --color-neutral-900: var(--neutral-900);
   --color-neutral-950: var(--neutral-950);
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
   --color-warning-100: var(--warning-100);
   --color-warning-200: var(--warning-200);
   --color-warning-300: var(--warning-300);

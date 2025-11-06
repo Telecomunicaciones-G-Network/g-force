@@ -1,0 +1,23 @@
+.base {
+  align-self: stretch;
+  display: flex;
+  flex: 1 0 0;
+  height: 100dvh;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.base__body {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1 0 0;
+  gap: 8px;
+  justify-content: center;
+}
+
+.base__carousel {
+  align-self: stretch;
+  border-radius: 16px;
+  display: flex;
+}

@@ -1,0 +1,10 @@
+.base {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.base__alert {
+  width: 100%;
+}

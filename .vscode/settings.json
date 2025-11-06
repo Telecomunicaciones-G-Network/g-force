@@ -9,8 +9,10 @@
   "editor.formatOnType": true,
   // Material Icon theme
   "material-icon-theme.folders.associations": {
+    "(auth)": "public",
     "(private)": "secure",
     "(public)": "public",
+    "alert": "react-components",
     "avatar": "react-components",
     "avatars": "linux",
     "blocks": "mjml",
@@ -51,6 +53,12 @@
   },
   "material-icon-theme.folders.customClones": [
     {
+      "name": "Alerts",
+      "base": "job",
+      "color": "red-500",
+      "folderNames": ["alerts"]
+    },
+    {
       "name": "App",
       "base": "app",
       "color": "blue-500",
@@ -63,12 +71,6 @@
       "folderNames": ["cards"]
     },
     {
-      "name": "Factory",
-      "base": "home",
-      "color": "green-500",
-      "folderNames": ["factory"]
-    },
-    {
       "name": "GNetwork UI",
       "base": "ui",
       "color": "red-400",
@@ -79,6 +81,12 @@
       "base": "react-components",
       "color": "indigo-500",
       "folderNames": ["iterators"]
+    },
+    {
+      "name": "React Pages",
+      "base": "react-components",
+      "color": "orange-500",
+      "folderNames": ["factory", "login"]
     },
     {
       "name": "React Providers",
@@ -111,6 +119,12 @@
       "base": "renovate",
       "color": "gray-700",
       "fileNames": ["dark.theme.css"]
+    },
+    {
+      "name": "Enums",
+      "base": "ember",
+      "color": "teal-400",
+      "fileExtensions": ["enum.ts"]
     },
     {
       "name": "Global DTS",
