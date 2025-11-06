@@ -16,8 +16,10 @@
       "@app/*": ["./src/app/*"],
       "@packages/*": ["./src/packages/*"],
       "@gnetwork-ui/*": ["./src/packages/gnetwork-ui/*"],
+      "@hookers/*": ["./src/packages/hookers/*"],
       "@ui/*": ["./src/ui/*"],
       "@ui-core/*": ["./src/ui/core/*"],
+      "@ui-auth/*": ["./src/ui/auth/*"],
       "@ui-chat/*": ["./src/ui/chat/*"]
     },
     "plugins": [
