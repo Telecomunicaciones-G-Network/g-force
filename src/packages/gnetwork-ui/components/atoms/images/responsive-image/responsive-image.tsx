@@ -6,18 +6,6 @@ import { cn } from "../../../../utils/cn.util";
 
 import styles from "./responsive-image.module.css";
 
-/**
- * Responsive image.
- *
- * @param alt - The alt text.
- * @param cache - The cache.
- * @param className - The class name.
- * @param customImageComponent - The custom image component.
- * @param lazy - The lazy.
- * @param objectFit - The object fit.
- * @param ref - The ref.
- * @param src - The source.
- */
 export const ResponsiveImage = ({
   alt = "Image",
   cache = false,

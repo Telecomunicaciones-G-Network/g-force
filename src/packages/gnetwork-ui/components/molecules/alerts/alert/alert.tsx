@@ -6,15 +6,6 @@ import { AlertSchemes } from "./enums/alert-scheme.enum";
 
 import { getAlertClassNames } from "./alert.style";
 
-/**
- * Alert component.
- *
- * @param className - The class name.
- * @param children - The children.
- * @param ref - The ref.
- * @param scheme - The scheme.
- * @param rest - The rest props.
- */
 export const Alert = ({
   className,
   children,

@@ -1,3 +1,5 @@
+// TODO: Debo fragmentar este componente en varias partes
+
 "use client";
 
 import type { ChatCardProps } from "./chat-card.props";
@@ -11,16 +13,6 @@ import { cn } from "@gnetwork-ui/utils/cn.util";
 
 import styles from "./chat-card.module.css";
 
-/**
- * ChatCard component.
- *
- * @param avatarAlt - Alternative text for the user's avatar image.
- * @param avatarSrc - Source URL for the user's avatar image.
- * @param isActive - Optional flag; if true, the ChatCard is active/selected.
- * @param lastMessage - The content of the last message in the chat.
- * @param lastMessageTime - Timestamp or string for when the last message was sent.
- * @param username - The display name of the user.
- */
 export const ChatCard = ({
   avatarAlt = "",
   avatarSrc = "",

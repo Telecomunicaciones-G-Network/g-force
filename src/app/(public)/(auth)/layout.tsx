@@ -4,11 +4,6 @@ import { cn } from "@gnetwork-ui/utils/cn.util";
 
 import styles from "./layout.module.css";
 
-/**
- * Auth layout component.
- *
- * @param children - The children.
- */
 export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <div

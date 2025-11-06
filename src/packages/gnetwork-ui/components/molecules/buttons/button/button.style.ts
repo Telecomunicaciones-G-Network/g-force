@@ -12,12 +12,6 @@ import { buttonStatic } from "./variants/button-static.variant";
 
 import styles from "./button.module.css";
 
-/**
- * Button variant styles configuration using class-variance-authority.
- *
- * Defines the base styles and variant combinations for button components,
- * including color, size, scheme, and fullWidth variants.
- */
 export const buttonVariants = cva(
   [
     styles.base,
@@ -81,18 +75,6 @@ export const buttonVariants = cva(
   },
 );
 
-/**
- * Retorna los classNames completos del botón combinando variantes y clases.
- *
- * @param props - Props de configuración de variantes para el botón.
- * @param props.className - (Opcional) Clases CSS adicionales.
- * @param props.color - (Opcional) Variante de color del botón.
- * @param props.fullWidth - (Opcional) Si el botón debe ocupar el ancho completo.
- * @param props.scheme - (Opcional) Variante de esquema visual del botón.
- * @param props.size - (Opcional) Variante de tamaño del botón.
- * @param props.isStatic - (Opcional) Si el botón es estático o no.
- * @returns {string} String de classNames combinados para el botón.
- */
 export const getButtonClassNames = ({
   className = "",
   ...configVariants

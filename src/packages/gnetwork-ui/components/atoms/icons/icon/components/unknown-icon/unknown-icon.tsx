@@ -1,6 +1,3 @@
-/**
- * UnknownIcon component.
- */
 export const UnknownIcon = () => (
   <svg
     fill="none"

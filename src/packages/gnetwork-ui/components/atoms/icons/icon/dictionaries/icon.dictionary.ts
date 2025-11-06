@@ -1,8 +1,3 @@
-/**
- * Icon dictionary.
- *
- * @returns The icon dictionary.
- */
 export const iconDictionary = {
   message_empty: `
     <svg

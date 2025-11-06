@@ -18,6 +18,7 @@
     "blocks": "mjml",
     "brand": "react-components",
     "button-icon": "react-components",
+    "brand-skeleton": "react-components",
     "button": "react-components",
     "buttons": "include",
     "chat-card": "react-components",
@@ -27,14 +28,20 @@
     "chat-list": "react-components",
     "components": "react-components",
     "dictionaries": "resource",
+    "email-input-controller": "react-components",
     "email-input": "react-components",
+    "fetchers": "salesforce",
     "forms": "custom",
     "hookers": "hook",
+    "http-client": "gemini",
     "icon": "react-components",
     "icons": "jupyter",
     "input": "react-components",
     "login-brand": "react-components",
     "login-form": "react-components",
+    "mappers": "mappings",
+    "password-input-controller": "react-components",
+    "password-input": "react-components",
     "react-scan-script": "react-components",
     "responsive-image": "react-components",
     "search-input": "react-components",
@@ -43,22 +50,33 @@
     "unknown-icon": "react-components"
   },
   "material-icon-theme.files.associations": {
+    "*.class.ts": "capnp",
     "*.constant.ts": "command",
     "*.dictionary.ts": "denizenscript",
+    "*.fetcher.ts": "salesforce",
     "*.font.ts": "font",
     "*.interface.ts": "less",
+    "*.mapper.ts": "xml",
     "*.mdc": "snowpack",
     "*.props.ts": "svgr",
+    "*.repository.ts": "trigger",
     "*.tsx": "react",
     "*.util.ts": "credits",
     "components.json": "regedit",
     "css-data.json": "vscode",
+    "envs.ts": "ejs",
     "globals.css": "css-map",
     "post-install": "console",
     "settings.json": "vscode",
     "variables.css": "vala"
   },
   "material-icon-theme.folders.customClones": [
+    {
+      "name": "Adapters",
+      "base": "src",
+      "color": "red-400",
+      "folderNames": ["adapters"]
+    },
     {
       "name": "Alerts",
       "base": "job",
@@ -72,16 +90,64 @@
       "folderNames": ["app"]
     },
     {
+      "name": "Application",
+      "base": "src",
+      "color": "blue-500",
+      "folderNames": ["application"]
+    },
+    {
       "name": "Cards",
       "base": "element",
       "color": "blue-400",
       "folderNames": ["cards"]
     },
     {
+      "name": "Crypto",
+      "base": "keys",
+      "color": "yellow-700",
+      "folderNames": ["crypto"]
+    },
+    {
+      "name": "Domain",
+      "base": "src",
+      "color": "yellow-800",
+      "folderNames": ["domain", "props"]
+    },
+    {
+      "name": "Fetchers",
+      "base": "aws",
+      "color": "light-blue-500",
+      "folderNames": ["fetchers"]
+    },
+    {
       "name": "GNetwork UI",
       "base": "ui",
       "color": "red-400",
       "folderNames": ["gnetwork-ui"]
+    },
+    {
+      "name": "Http Clients",
+      "base": "public",
+      "color": "green-600",
+      "folderNames": ["http-client"]
+    },
+    {
+      "name": "Infrastructure",
+      "base": "src",
+      "color": "green-400",
+      "folderNames": ["infrastructure"]
+    },
+    {
+      "name": "Modules",
+      "base": "animation",
+      "color": "red-500",
+      "folderNames": ["modules"]
+    },
+    {
+      "name": "Packages",
+      "base": "packages",
+      "color": "green-600",
+      "folderNames": ["packages"]
     },
     {
       "name": "React Iterators",
@@ -118,6 +184,24 @@
       "base": "mjml",
       "color": "green-500",
       "folderNames": ["sections"]
+    },
+    {
+      "name": "Services",
+      "base": "shader",
+      "color": "yellow-800",
+      "folderNames": ["services"]
+    },
+    {
+      "name": "Skeletons",
+      "base": "components",
+      "color": "gray-700",
+      "folderNames": ["skeletons"]
+    },
+    {
+      "name": "Usecase Post",
+      "base": "powershell",
+      "color": "yellow-700",
+      "fileNames": ["login.usecase.ts"]
     }
   ],
   "material-icon-theme.files.customClones": [
@@ -210,6 +294,12 @@
       "base": "react",
       "color": "light-green-500",
       "fileExtensions": ["variant.ts"]
+    },
+    {
+      "name": "Services",
+      "base": "replit",
+      "color": "yellow-700",
+      "fileExtensions": ["service.ts"]
     },
     {
       "name": "Theme CSS",

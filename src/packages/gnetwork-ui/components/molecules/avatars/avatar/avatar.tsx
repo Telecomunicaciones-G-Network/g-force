@@ -6,14 +6,6 @@ import { cn } from "../../../../utils/cn.util";
 
 import styles from "./avatar.module.css";
 
-/**
- * Avatar component.
- *
- * @param className - The optional class name.
- * @param image - The optional image props for the avatar, defined in ResponsiveImageProps.
- * @param ref - The ref.
- * @param ...rest - The rest props.
- */
 export const Avatar = ({
   className = "",
   image,

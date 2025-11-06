@@ -12,12 +12,6 @@ import { textWeights } from "./variants/text-weight.variant";
 
 import styles from "./text.module.css";
 
-/**
- * Text variant styles configuration using class-variance-authority.
- *
- * Defines the base styles and variant combinations for text components,
- * including alignment, emphasis, italic, scheme, size, underline, and weight variants.
- */
 export const textVariants = cva(
   [styles.base, "leading-[120%] text-foreground tracking-0"],
   {
@@ -125,20 +119,6 @@ export const textVariants = cva(
   },
 );
 
-/**
- * Generates text class names based on variant props.
- *
- * @param props - The text variant configuration props.
- * @param props.className - Optional additional CSS class names.
- * @param props.align - Optional text alignment variant.
- * @param props.emphasis - Optional flag to apply emphasis style.
- * @param props.italic - Optional flag to render italic text.
- * @param props.scheme - Optional text scheme (e.g., paragraph, heading, label).
- * @param props.size - Optional text size variant.
- * @param props.underline - Optional flag to underline text.
- * @param props.weight - Optional font weight variant.
- * @returns Combined class names string for the text element.
- */
 export const getTextClassName = ({
   className = "",
   ...configVariants

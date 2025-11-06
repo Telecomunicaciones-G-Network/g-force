@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
+
 import { LoginForm } from "@ui-auth/components/forms/login-form";
 
-/**
- * Login page component.
- */
+export const metadata: Metadata = {
+  title: "G-Force Login",
+  description: "G-Force Login",
+};
+
 export default function LoginPage() {
   return <LoginForm />;
 }

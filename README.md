@@ -129,3 +129,65 @@ next/
 - **Custom Theming**: Built-in theme support with light/dark modes using CSS variables
 
 **Built with ❤️ by the GNetwork Team**
+
+```typescript
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { loginAction } from "../../../actions/login.action";
+
+const loginSchema = z.object({
+  email: z.string().email("Email inválido"),
+  password: z.string().min(6, "Mínimo 6 caracteres"),
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
+
+export const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    const result = await loginAction({}, formData);
+
+    if (result.errors) {
+      // Mapear errores del servidor a React Hook Form
+      if (result.errors.email) {
+        setError("email", { message: result.errors.email[0] });
+      }
+      if (result.errors.password) {
+        setError("password", { message: result.errors.password[0] });
+      }
+      if (result.errors._form) {
+        setError("root", { message: result.errors._form[0] });
+      }
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <EmailInput {...register("email")} error={errors.email?.message} />
+      <PasswordInput
+        {...register("password")}
+        error={errors.password?.message}
+      />
+      {errors.root && <Alert>{errors.root.message}</Alert>}
+      <Button type="submit" disabled={isSubmitting}>
+        Iniciar sesión
+      </Button>
+    </form>
+  );
+};
+```

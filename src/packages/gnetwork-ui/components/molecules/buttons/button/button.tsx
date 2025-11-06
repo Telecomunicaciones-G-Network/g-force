@@ -10,25 +10,6 @@ import { getButtonClassNames } from "./button.style";
 
 import styles from "./button.module.css";
 
-/**
- * Button component.
- *
- * @param asChild - The optional flag; if true, the button will be rendered as a child element.
- * @param children - The children.
- * @param className - The optional extra CSS class names to apply to the button.
- * @param color - The optional button color variant, defined in ButtonColorType.
- * @param fullWidth - The optional flag; if true, button stretches to full width.
- * @param isStatic - The optional flag; if true, the button is rendered with static appearance and does not respond to interaction.
- * @param leftIcon - The optional icon to display on the left side of the button.
- * @param loading - The optional flag; if true, the button shows a loading state.
- * @param onClick - The onClick.
- * @param ref - The ref.
- * @param rightIcon - The optional icon to display on the right side of the button.
- * @param scheme - The optional button scheme (e.g., default, outline, link), defined in ButtonSchemeType.
- * @param size - The optional button size, defined in ButtonSizeType.
- * @param type - The HTML button type.
- * @param ...rest - The rest props.
- */
 export const Button = ({
   asChild = false,
   children,

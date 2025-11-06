@@ -1,8 +1,3 @@
-/**
- * Text size variants.
- *
- * @returns The text size variants.
- */
 export const textSizes = {
   xs: "text-xs",
   sm: "text-sm",

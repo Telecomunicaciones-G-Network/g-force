@@ -6,26 +6,6 @@ import { getInputClassNames } from "./input.style";
 
 import styles from "./input.module.css";
 
-/**
- * Input component.
- *
- * @param className - The class name.
- * @param containerClassName - The container class name.
- * @param error - The error.
- * @param fullWidth - The full width.
- * @param id - The id.
- * @param isStatic - Whether the input is static.
- * @param label - The label.
- * @param leftIcon - The left icon.
- * @param message - The message.
- * @param name - The name.
- * @param readOnly - Whether the input is read-only.
- * @param ref - The ref.
- * @param required - Whether the input is required.
- * @param rightIcon - The right icon.
- * @param type - The type.
- * @param rest - The rest.
- */
 export const Input = ({
   className = "",
   containerClassName = "",
@@ -74,6 +54,8 @@ export const Input = ({
             styles.base__input,
             "font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder",
           )}
+          id={id}
+          name={name}
           readOnly={readOnly}
           ref={ref}
           type={type}

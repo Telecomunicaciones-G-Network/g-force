@@ -1,8 +1,3 @@
-/**
- * Text alignment variants.
- *
- * @returns The text alignments variant.
- */
 export const textAligns = {
   center: "text-center",
   end: "text-end",

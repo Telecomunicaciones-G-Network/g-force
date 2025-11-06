@@ -2,13 +2,6 @@ import { cn } from "../../../../../utils/cn.util";
 
 import styles from "../icon.module.css";
 
-/**
- * Processes icon class names.
- *
- * @param className - The class name to process.
- * @param iconName - The name of the icon.
- * @returns The processed class name.
- */
 export const processIconClassNames = (
   className: string = "",
   iconName: string = "",

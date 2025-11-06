@@ -6,16 +6,6 @@ import { cn } from "../../../../utils/cn.util";
 
 import styles from "./brand.module.css";
 
-/**
- * Brand component.
- *
- * @param ariaLabel - The aria label.
- * @param className - The class name.
- * @param height - The height.
- * @param mode - Light or dark mode.
- * @param rotate - The rotate.
- * @param width - The width.
- */
 export const Brand = ({
   ariaLabel = "GNetwork",
   className = "",

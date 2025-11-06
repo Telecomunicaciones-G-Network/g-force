@@ -5,9 +5,6 @@ import { Button } from "@gnetwork-ui/components/molecules/buttons/button";
 
 import styles from "./chat-list-header.module.css";
 
-/**
- * ChatListHeader Component.
- */
 export const ChatListHeader = () => (
   <div className={styles.base}>
     <SearchInput

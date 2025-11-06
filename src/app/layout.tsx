@@ -10,15 +10,10 @@ import { Providers } from "@ui-core/providers/providers/providers.provider";
 import "@ui-core/styles/main.css";
 
 export const metadata: Metadata = {
-  title: "GNetwork",
-  description: "Gnetwork Communication Chat",
+  title: "GNetwork - G-Force",
+  description: "Telecomunicaciones GNetwork G-Force",
 };
 
-/**
- * Root layout component.
- *
- * @param children - The children.
- */
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html suppressHydrationWarning lang="en">

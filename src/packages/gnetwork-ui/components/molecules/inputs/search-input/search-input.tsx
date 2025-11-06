@@ -8,14 +8,6 @@ import { cn } from "../../../../utils/cn.util";
 
 import styles from "./search-input.module.css";
 
-/**
- * Search input component.
- *
- * @param className - The class name.
- * @param onFocus - The focus event handler.
- * @param onBlur - The blur event handler.
- * @param rest - The rest.
- */
 export const SearchInput = ({
   className = "",
   error = false,

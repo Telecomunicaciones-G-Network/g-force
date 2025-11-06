@@ -10,13 +10,6 @@ import { inputIsStatic } from "./variants/input-static.variant";
 
 import styles from "./input.module.css";
 
-/**
- * Input variants.
- *
- * @param error - The error.
- * @param fullWidth - The full width.
- * @param isStatic - The is static.
- */
 export const inputVariants = cva(
   [
     styles.base__container,
@@ -59,13 +52,6 @@ export const inputVariants = cva(
   },
 );
 
-/**
- * Get input class names.
- *
- * @param className - The class name.
- * @param configVariants - The config variants.
- * @returns The input class names.
- */
 export const getInputClassNames = ({
   className = "",
   ...configVariants

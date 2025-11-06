@@ -3,9 +3,6 @@ import { Text } from "@gnetwork-ui/components/atoms/texts/text";
 
 import styles from "./chat-list-empty.module.css";
 
-/**
- * ChatListEmpty componente.
- */
 export const ChatListEmpty = () => (
   <div className={styles.base}>
     <div className={styles.base__container}>

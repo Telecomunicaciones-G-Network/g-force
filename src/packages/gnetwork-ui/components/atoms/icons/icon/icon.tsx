@@ -8,15 +8,6 @@ import { iconDictionary } from "./dictionaries/icon.dictionary";
 import { parseSVGServer } from "./utils/parse-svg-server.util";
 import { processIconClassNames } from "./utils/process-icon-classnames.util";
 
-/**
- * Icon component.
- *
- * @param className - The class name.
- * @param color - The color.
- * @param name - The name.
- * @param onClick - The onClick.
- * @param size - The size.
- */
 export const Icon = ({
   className = "",
   color = "currentColor",

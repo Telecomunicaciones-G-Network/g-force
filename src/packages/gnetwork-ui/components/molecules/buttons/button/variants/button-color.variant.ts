@@ -1,8 +1,3 @@
-/**
- * Button colors variant.
- *
- * @returns The button colors variant.
- */
 export const buttonColors = {
   default:
     "bg-button-background text-button-text border border-solid border-button-border",

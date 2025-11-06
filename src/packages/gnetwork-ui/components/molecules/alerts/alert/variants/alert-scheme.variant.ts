@@ -1,8 +1,3 @@
-/**
- * Alert scheme variant.
- *
- * @returns The alert scheme variant.
- */
 export const alertSchemeVariant = {
   error: "bg-warning-100 border-warning-200 text-black",
   neutral: "bg-gray-200 border-gray-300 text-black",

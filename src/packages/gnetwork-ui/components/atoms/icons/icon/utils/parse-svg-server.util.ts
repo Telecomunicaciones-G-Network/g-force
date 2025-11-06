@@ -1,11 +1,5 @@
 import type { ParseSVGAttributesInterface } from "../interface";
 
-/**
- * Parses SVG server from a string.
- *
- * @param svgString - The SVG string to parse.
- * @returns The parsed SVG server.
- */
 export const parseSVGServer = (
   svgString: string,
 ): ParseSVGAttributesInterface => {

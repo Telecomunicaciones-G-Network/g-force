@@ -1,16 +1,5 @@
 import type { Chat } from "@ui-chat/interfaces";
 
-/**
- * Example chat list.
- *
- * Each object represents a chat conversation with the following fields:
- * - id: Unique numeric identifier for the chat.
- * - avatarAlt: Alternative text for the user's avatar.
- * - avatarSrc: URL of the avatar image.
- * - lastMessage: Last message received or sent in the conversation.
- * - lastMessageTime: Time of the last message.
- * - username: Name of the user associated with the chat.
- */
 export const chats: Chat[] = [
   {
     id: 0,
