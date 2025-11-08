@@ -2,7 +2,9 @@
 
 "use server";
 
-import axios from "axios";
+// import axios from "axios";
+
+import { Axios } from "@http-client/classes/axios.class";
 
 import { ServerCrypto } from "@crypto/classes/server-crypto.class";
 
@@ -17,6 +19,14 @@ export type LoginState = {
   success?: boolean;
   message?: string;
 };
+
+const apiClient = new Axios({
+  baseURL: ENVS.GNETWORK_API_BASE_URL,
+  headers: {
+    Accept: "application/json; version=1.0.0",
+    "Content-Type": "application/json",
+  },
+});
 
 export async function loginAction(
   _prevState: LoginState,
@@ -57,7 +67,9 @@ export async function loginAction(
       };
     }
 
-    const response = await axios.post(
+    const response = await apiClient.post("/user/auth/login/", data);
+
+    /*const response = await axios.post(
       `${process.env.NEXT_PUBLIC_GNETWORK_API_BASE_URL}/user/auth/login/`,
       data,
       {
@@ -65,10 +77,10 @@ export async function loginAction(
           Accept: "application/json; version=1.0.0",
           "Content-Type": "application/json",
         },
-      },
-    );
+      }
+    ); */
 
-    console.log("response", { response: response?.data });
+    console.log("response", { response: response });
 
     return {
       success: true,
