@@ -1,0 +1,48 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.base__chat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+  overflow: auto;
+}
+
+.base__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  overflow: auto;
+  padding: 24px;
+}
+
+.base__footer {
+  align-items: flex-end;
+  display: flex;
+  min-height: 86px;
+}
+
+.base__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 24px 24px 24px;
+}
+
+.base__header_buttons {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.base__sender {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}

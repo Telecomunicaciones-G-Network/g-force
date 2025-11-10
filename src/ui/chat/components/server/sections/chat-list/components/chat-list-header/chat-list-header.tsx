@@ -10,7 +10,7 @@ export const ChatListHeader = () => (
     <SearchInput
       className="bg-chromatic gap-2"
       fullWidth
-      id="chat-search"
+      id="chat_search"
       name="chat-search"
       placeholder="Buscar chat..."
     />
