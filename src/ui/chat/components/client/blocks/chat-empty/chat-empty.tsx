@@ -1,7 +1,6 @@
 'use client';
 
-import { MdAnnouncement } from 'react-icons/md';
-
+import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
 import { useChatEmpty } from './chat-empty.hook';
@@ -19,10 +18,10 @@ export const ChatEmpty = () => {
       {(activeChat === null || activeChat === undefined) && (
         <section className={cn(styles.base, 'hidden lg:flex')}>
           <div className={styles.base__container}>
-            <MdAnnouncement className="min-h-10 min-w-10 size-10" />
+            <Icon name="message_info" size={40} />
             <Text
               as="h5"
-              className="text-neutral-100"
+              className="text-center text-neutral-900"
               level="xsmall"
               scheme="heading"
             >
@@ -30,7 +29,7 @@ export const ChatEmpty = () => {
             </Text>
             <Text
               as="p"
-              className="text-neutral-400"
+              className="text-center text-neutral-600"
               level="small"
               scheme="paragraph"
             >
