@@ -1,4 +1,4 @@
-import type { HttpClientConfig } from "./http-client-config.interface";
+import type { HttpClientConfig } from './http-client-config.interface';
 
 export interface HttpAdapter {
   get<T = Response>(

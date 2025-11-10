@@ -1,22 +1,24 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import { ChatConversation } from "@ui-chat/components/server/sections/chat-conversation";
-import { ChatList } from "@ui-chat/components/server/sections/chat-list";
+import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
+import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
+import { ChatList } from '@ui-chat/components/client/sections/chat-list';
 
-import { cn } from "@gnetwork-ui/utils/cn.util";
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: "G-Force - Chat",
-  description: "G-Force Chat",
+  title: 'G-Force - Chat',
+  description: 'G-Force Chat',
 };
 
 export default function ChatPage() {
   return (
-    <div className={cn(styles.base, "divide-x divide-neutral-200")}>
+    <div className={cn(styles.base, 'divide-x divide-neutral-200')}>
       <ChatList />
       <ChatConversation />
+      <ChatEmpty />
     </div>
   );
 }

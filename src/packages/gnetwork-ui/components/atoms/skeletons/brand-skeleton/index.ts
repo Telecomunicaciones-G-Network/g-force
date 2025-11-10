@@ -1,1 +1,1 @@
-export { BrandSkeleton } from "./brand-skeleton";
+export { BrandSkeleton } from './brand-skeleton';

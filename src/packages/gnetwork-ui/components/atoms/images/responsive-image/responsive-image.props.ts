@@ -2,7 +2,7 @@ import type {
   CSSObjectFitValue,
   ReactChild,
   ReactDiv,
-} from "../../../../types";
+} from '../../../../types';
 
 export interface ResponsiveImageProps extends ReactDiv {
   alt?: string;

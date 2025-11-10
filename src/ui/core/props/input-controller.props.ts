@@ -4,7 +4,7 @@ import type {
   FieldValues,
   PathValue,
   RegisterOptions,
-} from "react-hook-form";
+} from 'react-hook-form';
 
 export interface InputControllerProps<T extends FieldValues = FieldValues> {
   control: Control<T>;

@@ -1,12 +1,12 @@
-import type { BubbleVariants } from "./bubble.props";
+import type { BubbleVariants } from './bubble.props';
 
-import { cva } from "class-variance-authority";
+import { cva } from 'class-variance-authority';
 
-import { cn } from "@gnetwork-ui/utils/cn.util";
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { bubbleModes } from "./variants/bubble-mode.variant";
+import { bubbleModes } from './variants/bubble-mode.variant';
 
-import styles from "./bubble.module.css";
+import styles from './bubble.module.css';
 
 export const bubbleVariants = cva([styles.base], {
   variants: {
@@ -14,12 +14,12 @@ export const bubbleVariants = cva([styles.base], {
   },
   compoundVariants: [],
   defaultVariants: {
-    mode: "unknown",
+    mode: 'unknown',
   },
 });
 
 export const getBubbleClassNames = ({
-  className = "",
+  className = '',
   ...configVariants
 }: BubbleVariants): string => {
   return cn(bubbleVariants({ className, ...configVariants }));

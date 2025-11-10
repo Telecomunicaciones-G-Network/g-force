@@ -1,4 +1,4 @@
-import type { ApiResponse } from "@module-core/interfaces";
+import type { ApiResponse } from '@module-core/interfaces';
 
 export interface LoginResultUser {
   created_at: Date;

@@ -1,1 +1,1 @@
-export type { BubbleMode } from "./bubble-mode.type";
+export type { BubbleMode } from './bubble-mode.type';

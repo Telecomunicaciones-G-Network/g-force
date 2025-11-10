@@ -1,17 +1,17 @@
-import type { PropsWithChildren } from "react";
-import type { Metadata } from "next";
+import type { PropsWithChildren } from 'react';
+import type { Metadata } from 'next';
 
-import { ReactScanScript } from "@ui-core/components/server/scripts/react-scan-script";
+import { ReactScanScript } from '@ui-core/components/server/scripts/react-scan-script';
 
-import { inter } from "@ui-core/fonts/inter.font";
+import { inter } from '@ui-core/fonts/inter.font';
 
-import { Providers } from "@ui-core/providers/providers/providers.provider";
+import { Providers } from '@ui-core/providers/providers/providers.provider';
 
-import "@ui-core/styles/main.css";
+import '@ui-core/styles/main.css';
 
 export const metadata: Metadata = {
-  title: "GNetwork - G-Force",
-  description: "Telecomunicaciones GNetwork G-Force",
+  title: 'GNetwork - G-Force',
+  description: 'Telecomunicaciones GNetwork G-Force',
 };
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {

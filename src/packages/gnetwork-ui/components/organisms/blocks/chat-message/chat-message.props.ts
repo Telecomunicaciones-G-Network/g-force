@@ -1,9 +1,9 @@
-import type { ReactDiv } from "../../../../types";
-import type { BubbleVariants } from "../../../molecules/blocks/bubble";
+import type { ReactDiv } from '../../../../types';
+import type { BubbleVariants } from '../../../molecules/blocks/bubble';
 
 export interface ChatMessageProps extends ReactDiv {
   className?: string;
-  direction: BubbleVariants["mode"];
+  direction: BubbleVariants['mode'];
   time: string;
   username: string;
 }

@@ -1,15 +1,15 @@
-import type { ElementType, ReactElement } from "react";
-import type { VariantProps } from "class-variance-authority";
-import type { PolymorphicComponentPropsWithRef } from "../../../../types";
+import type { ElementType, ReactElement } from 'react';
+import type { VariantProps } from 'class-variance-authority';
+import type { PolymorphicComponentPropsWithRef } from '../../../../types';
 import type {
   TextAlign,
   TextLevel,
   TextScheme,
   TextSize,
   TextWeight,
-} from "./types";
+} from './types';
 
-import { textVariants } from "./text.style";
+import { textVariants } from './text.style';
 
 export interface TextVariants extends VariantProps<typeof textVariants> {
   align?: TextAlign;
@@ -23,9 +23,9 @@ export interface TextVariants extends VariantProps<typeof textVariants> {
   weight?: TextWeight;
 }
 
-export type TextProps<C extends ElementType = "p"> =
+export type TextProps<C extends ElementType = 'p'> =
   PolymorphicComponentPropsWithRef<C, TextVariants & { customColor?: string }>;
 
-export type TextComponent = <C extends ElementType = "p">(
+export type TextComponent = <C extends ElementType = 'p'>(
   props: TextProps<C>,
 ) => ReactElement | null;

@@ -1,4 +1,4 @@
-import { iconDictionary } from "./dictionaries/icon.dictionary";
+import { iconDictionary } from './dictionaries/icon.dictionary';
 
 export interface IconProps {
   className?: string;

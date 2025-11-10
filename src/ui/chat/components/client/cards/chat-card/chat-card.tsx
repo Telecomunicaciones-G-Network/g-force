@@ -1,36 +1,36 @@
 // TODO: Debo fragmentar este componente en varias partes
 
-"use client";
+'use client';
 
-import type { ChatCardProps } from "./chat-card.props";
+import type { ChatCardProps } from './chat-card.props';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Text } from "@gnetwork-ui/components/atoms/texts/text";
-import { Avatar } from "@gnetwork-ui/components/molecules/avatars/avatar";
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 
-import { cn } from "@gnetwork-ui/utils/cn.util";
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import styles from "./chat-card.module.css";
+import styles from './chat-card.module.css';
 
 export const ChatCard = ({
-  avatarAlt = "",
-  avatarSrc = "",
+  avatarAlt = '',
+  avatarSrc = '',
   isActive = false,
-  lastMessage = "",
-  lastMessageTime = "",
+  lastMessage = '',
+  lastMessageTime = '',
   onClick,
-  username = "",
+  username = '',
 }: Readonly<ChatCardProps>) => {
   if (!avatarSrc) {
     console.warn(
-      "Prop avatarSrc is missing on ChatCard component. This component can not be render appropiately.",
+      'Prop avatarSrc is missing on ChatCard component. This component can not be render appropiately.',
     );
   }
 
   if (!username) {
     console.warn(
-      "Prop username is missing on ChatCard component. This component can not be render appropiately.",
+      'Prop username is missing on ChatCard component. This component can not be render appropiately.',
     );
   }
 
@@ -38,10 +38,10 @@ export const ChatCard = ({
     <button
       className={cn(
         styles.base,
-        "border-y border-solid border-neutral-200",
+        'border-y border-solid border-neutral-200',
         isActive
-          ? "bg-chromatic border-l-4 border-l-neutral-900"
-          : "bg-background",
+          ? 'bg-chromatic border-l-4 border-l-neutral-900'
+          : 'bg-background',
       )}
       onClick={onClick}
       type="button"
@@ -51,7 +51,7 @@ export const ChatCard = ({
           image={{
             customImageComponent: (
               <Image
-                alt={avatarAlt ?? "Avatar"}
+                alt={avatarAlt ?? 'Avatar'}
                 className="responsive-image-cover"
                 fill
                 priority

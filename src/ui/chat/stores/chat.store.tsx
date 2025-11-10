@@ -1,9 +1,14 @@
-import type { ChatStoreState } from "./chat-store.props";
+import type { ChatMode } from '@ui-chat/types';
+import type { ChatStoreState } from './chat-store.props';
 
-import { create } from "zustand";
+import { create } from 'zustand';
+
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 export const useChatStore = create<ChatStoreState>((set) => ({
-  activeChat: 0,
+  activeChat: null,
+  chatMode: ChatModes.LIST,
 
-  setActiveChat: (chatId: number) => set({ activeChat: chatId }),
+  setActiveChat: (chatId: number | null) => set({ activeChat: chatId }),
+  setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
 }));

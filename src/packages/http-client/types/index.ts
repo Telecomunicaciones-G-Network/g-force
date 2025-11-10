@@ -1,1 +1,1 @@
-export type { HttpErrorResponse } from "./http-error-response.type";
+export type { HttpErrorResponse } from './http-error-response.type';

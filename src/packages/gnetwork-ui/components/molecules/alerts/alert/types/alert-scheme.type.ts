@@ -1,3 +1,3 @@
-import { alertSchemeVariant } from "../variants/alert-scheme.variant";
+import { alertSchemeVariant } from '../variants/alert-scheme.variant';
 
 export type AlertSchemeType = keyof typeof alertSchemeVariant;

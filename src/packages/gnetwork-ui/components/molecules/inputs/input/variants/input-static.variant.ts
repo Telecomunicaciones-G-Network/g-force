@@ -1,4 +1,4 @@
 export const inputIsStatic = {
-  true: "",
-  false: "",
+  true: '',
+  false: '',
 } as const;

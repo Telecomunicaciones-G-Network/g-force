@@ -1,6 +1,6 @@
 export function daysToSeconds(days: unknown): number {
   if (
-    typeof days !== "number" ||
+    typeof days !== 'number' ||
     !Number.isFinite(days) ||
     isNaN(days) ||
     days <= 0

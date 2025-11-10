@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import type { Chat } from "@ui-chat/interfaces";
+import type { Chat } from '@ui-chat/interfaces';
 
-import { ChatCard } from "@ui-chat/components/client/cards/chat-card";
-import { ChatListEmpty } from "../chat-list-empty";
+import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
+import { ChatListEmpty } from '../chat-list-empty';
 
-import { chats } from "@ui-chat/iterators/chats.iterator";
+import { chats } from '@ui-chat/iterators/chats.iterator';
 
-import { useChatListBody } from "./chat-list-body.hook";
+import { useChatListBody } from './chat-list-body.hook';
 
-import styles from "./chat-list-body.module.css";
+import styles from './chat-list-body.module.css';
 
 export const ChatListBody = () => {
   const { activeChat, changeActiveChat } = useChatListBody();

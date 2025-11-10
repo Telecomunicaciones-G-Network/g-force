@@ -1,24 +1,24 @@
-import { cn } from "../../../../../utils/cn.util";
+import { cn } from '../../../../../utils/cn.util';
 
-import styles from "../icon.module.css";
+import styles from '../icon.module.css';
 
 export const processIconClassNames = (
-  className: string = "",
-  iconName: string = "",
+  className: string = '',
+  iconName: string = '',
 ): string => {
-  if (!iconName || typeof iconName !== "string") {
-    return cn(styles.base, "items-center justify-center", className);
+  if (!iconName || typeof iconName !== 'string') {
+    return cn(styles.base, 'items-center justify-center', className);
   }
 
-  const iconNameFragments = iconName.split("_");
+  const iconNameFragments = iconName.split('_');
   const isOutlined = iconNameFragments?.some(
-    (iconNameFragment) => iconNameFragment.toLowerCase().trim() === "outlined",
+    (iconNameFragment) => iconNameFragment.toLowerCase().trim() === 'outlined',
   );
 
   return cn(
     styles.base,
-    "items-center justify-center",
-    isOutlined ? "*:stroke-foreground" : "*:fill-foreground",
+    'items-center justify-center',
+    isOutlined ? '*:stroke-foreground' : '*:fill-foreground',
     className,
   );
 };

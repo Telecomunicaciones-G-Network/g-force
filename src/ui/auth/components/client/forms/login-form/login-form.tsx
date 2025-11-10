@@ -1,18 +1,18 @@
 // TODO: Debo terminar de acomodar todo esto
 
-"use client";
+'use client';
 
-import { Alert } from "@gnetwork-ui/components/molecules/alerts/alert";
-import { Button } from "@gnetwork-ui/components/molecules/buttons/button";
-import { EmailInputController } from "@ui-core/components/server/inputs/email-input-controller";
-import { PasswordInputController } from "@ui-core/components/server/inputs/password-input-controller";
-import { LoginBrand } from "./components/login-brand/login-brand";
+import { Alert } from '@gnetwork-ui/components/molecules/alerts/alert';
+import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
+import { EmailInputController } from '@ui-core/components/server/inputs/email-input-controller';
+import { PasswordInputController } from '@ui-core/components/server/inputs/password-input-controller';
+import { LoginBrand } from './components/login-brand/login-brand';
 
-import { cn } from "@gnetwork-ui/utils/cn.util";
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { useLoginForm } from "./login-form.hook";
+import { useLoginForm } from './login-form.hook';
 
-import styles from "./login-form.module.css";
+import styles from './login-form.module.css';
 
 export const LoginForm = () => {
   const {
@@ -29,7 +29,7 @@ export const LoginForm = () => {
     <form
       className={cn(
         styles.base,
-        "gap-6 items-center justify-start pb-4 pt-0 px-4 tablet:gap-8 tablet:items-start tablet:justify-center tablet:pb-8 tablet:px-[204px]",
+        'gap-6 items-center justify-start pb-4 pt-0 px-4 tablet:gap-8 tablet:items-start tablet:justify-center tablet:pb-8 tablet:px-[204px]',
       )}
       onSubmit={handleSubmit(onSubmit)}
     >

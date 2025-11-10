@@ -1,3 +1,3 @@
-export type { BubbleVariants } from "./bubble.props";
+export type { BubbleVariants } from './bubble.props';
 
-export { Bubble } from "./bubble";
+export { Bubble } from './bubble';

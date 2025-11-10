@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import type { InputProps } from "../input";
+import type { InputProps } from '../input';
 
-import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md";
+import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
 
-import { Input } from "../input";
+import { Input } from '../input';
 
-import { usePasswordInput } from "./password-input.hook";
+import { usePasswordInput } from './password-input.hook';
 
-export const PasswordInput = (props: Readonly<Omit<InputProps, "type">>) => {
+export const PasswordInput = (props: Readonly<Omit<InputProps, 'type'>>) => {
   const { showPassword, togglePassword } = usePasswordInput();
 
   return (
     <Input
-      type={showPassword ? "text" : "password"}
+      type={showPassword ? 'text' : 'password'}
       rightIcon={
         <button onClick={togglePassword} type="button">
           {showPassword ? (

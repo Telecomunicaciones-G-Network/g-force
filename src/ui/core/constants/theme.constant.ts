@@ -1,3 +1,3 @@
-import type { ThemeProviderProps } from "next-themes";
+import type { ThemeProviderProps } from 'next-themes';
 
-export const THEMES: ThemeProviderProps["themes"] = ["dark", "light"] as const;
+export const THEMES: ThemeProviderProps['themes'] = ['dark', 'light'] as const;

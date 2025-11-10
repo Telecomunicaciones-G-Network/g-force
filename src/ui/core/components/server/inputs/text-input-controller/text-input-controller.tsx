@@ -1,9 +1,9 @@
-import type { FieldValues } from "react-hook-form";
-import type { TextInputControllerProps } from "./text-input-controller.props";
+import type { FieldValues } from 'react-hook-form';
+import type { TextInputControllerProps } from './text-input-controller.props';
 
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 
-import { TextInput } from "@gnetwork-ui/components/molecules/inputs/text-input";
+import { TextInput } from '@gnetwork-ui/components/molecules/inputs/text-input';
 
 export const TextInputController = <T extends FieldValues = FieldValues>({
   control,

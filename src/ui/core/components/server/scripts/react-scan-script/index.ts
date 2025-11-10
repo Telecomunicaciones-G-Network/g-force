@@ -1,1 +1,1 @@
-export { ReactScanScript } from "./react-scan-script";
+export { ReactScanScript } from './react-scan-script';

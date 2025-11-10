@@ -1,24 +1,24 @@
-import type { BrandProps } from "./brand.props";
+import type { BrandProps } from './brand.props';
 
-import { BrandMode } from "./enum/brand-mode.enum";
+import { BrandMode } from './enum/brand-mode.enum';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import styles from "./brand.module.css";
+import styles from './brand.module.css';
 
 export const Brand = ({
-  ariaLabel = "GNetwork",
-  className = "",
-  height = "129px",
+  ariaLabel = 'GNetwork',
+  className = '',
+  height = '129px',
   mode,
   ref,
   rotate,
-  width = "166px",
+  width = '166px',
   ...rest
 }: Readonly<BrandProps>) => {
   if (!mode) {
     console.warn(
-      "Prop mode is missing on Brand component. This component can not be render appropiately.",
+      'Prop mode is missing on Brand component. This component can not be render appropiately.',
     );
 
     return null;
@@ -34,7 +34,7 @@ export const Brand = ({
       {mode === BrandMode.DARK && (
         <svg
           aria-label={ariaLabel}
-          className={cn(className, "*:fill-foreground")}
+          className={cn(className, '*:fill-foreground')}
           xmlns="http://www.w3.org/2000/svg"
           width={width}
           height={height}
@@ -100,7 +100,7 @@ export const Brand = ({
       {mode === BrandMode.LIGHT && (
         <svg
           aria-label={ariaLabel}
-          className={cn(className, "*:fill-foreground")}
+          className={cn(className, '*:fill-foreground')}
           xmlns="http://www.w3.org/2000/svg"
           width={width}
           height={height}

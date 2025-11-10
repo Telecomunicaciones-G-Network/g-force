@@ -1,4 +1,4 @@
 export const buttonSchemes = {
-  default: "",
-  outline: "",
+  default: '',
+  outline: '',
 } as const;

@@ -5,11 +5,11 @@ import type {
   AxiosRequestConfig,
   AxiosResponse,
   InternalAxiosRequestConfig,
-} from "axios";
-import type { HttpAdapter, HttpClientConfig } from "../interfaces";
-import type { HttpErrorResponse } from "../types";
+} from 'axios';
+import type { HttpAdapter, HttpClientConfig } from '../interfaces';
+import type { HttpErrorResponse } from '../types';
 
-import axios from "axios";
+import axios from 'axios';
 
 export class Axios implements HttpAdapter {
   private axiosInstance: AxiosInstance;
@@ -59,8 +59,8 @@ export class Axios implements HttpAdapter {
 
       const response = await this.axiosInstance.get<T>(endpoint, axiosConfig);
 
-      if (!response?.data && response.statusText === "OK") {
-        throw new Error("Axios data request has failed!");
+      if (!response?.data && response.statusText === 'OK') {
+        throw new Error('Axios data request has failed!');
       }
 
       return response.data;
@@ -68,7 +68,7 @@ export class Axios implements HttpAdapter {
       const error = err as HttpErrorResponse;
 
       return {
-        error: error?.response?.data?.error ?? "An unknown error occurred",
+        error: error?.response?.data?.error ?? 'An unknown error occurred',
         extra: error?.response?.data?.extra,
         status: error?.response?.status ?? 500,
         success: false,
@@ -90,8 +90,8 @@ export class Axios implements HttpAdapter {
         axiosConfig,
       );
 
-      if (!response?.data && response.statusText === "OK") {
-        throw new Error("Axios data request has failed!");
+      if (!response?.data && response.statusText === 'OK') {
+        throw new Error('Axios data request has failed!');
       }
 
       return response.data;
@@ -99,7 +99,7 @@ export class Axios implements HttpAdapter {
       const error = err as HttpErrorResponse;
 
       return {
-        error: error?.response?.data?.error ?? "An unknown error occurred",
+        error: error?.response?.data?.error ?? 'An unknown error occurred',
         extra: error?.response?.data?.extra,
         status: error?.response?.status ?? 500,
         success: false,

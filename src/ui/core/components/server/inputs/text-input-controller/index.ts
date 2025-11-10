@@ -1,1 +1,1 @@
-export { TextInputController } from "./text-input-controller";
+export { TextInputController } from './text-input-controller';

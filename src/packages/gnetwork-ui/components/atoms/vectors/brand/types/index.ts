@@ -1,1 +1,1 @@
-export type { BrandMode } from "./brand-mode.type";
+export type { BrandMode } from './brand-mode.type';

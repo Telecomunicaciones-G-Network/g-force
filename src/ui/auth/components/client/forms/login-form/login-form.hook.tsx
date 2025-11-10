@@ -1,19 +1,19 @@
-import type { LoginFormData } from "./interface";
+import type { LoginFormData } from './interface';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-import { ClientCrypto } from "@crypto/classes/client-crypto.class";
+import { ClientCrypto } from '@crypto/classes/client-crypto.class';
 
-import { ENVS } from "@ui-core/envs/envs";
+import { ENVS } from '@ui-core/envs/envs';
 
-import { loginAction } from "@ui-auth/actions/login.action";
+import { loginAction } from '@ui-auth/actions/login.action';
 
-import { loginFormSchema } from "./schemas/login-form.schema";
+import { loginFormSchema } from './schemas/login-form.schema';
 
-import { loginFormInitialValues } from "./login-form.state";
+import { loginFormInitialValues } from './login-form.state';
 
 export const useLoginForm = () => {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -25,9 +25,9 @@ export const useLoginForm = () => {
     handleSubmit,
   } = useForm<LoginFormData>({
     defaultValues: loginFormInitialValues,
-    mode: "onSubmit",
+    mode: 'onSubmit',
     resolver: zodResolver(loginFormSchema),
-    reValidateMode: "onSubmit",
+    reValidateMode: 'onSubmit',
   });
   const { errors, isSubmitting } = formState;
 
@@ -52,7 +52,7 @@ export const useLoginForm = () => {
         ENVS.CRYPTO_KEY,
       );
 
-      formData.append("payload", encryptedPayload);
+      formData.append('payload', encryptedPayload);
 
       const result = await loginAction({}, formData);
 

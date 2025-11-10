@@ -1,1 +1,1 @@
-export { PasswordInputController } from "./password-input-controller";
+export { PasswordInputController } from './password-input-controller';

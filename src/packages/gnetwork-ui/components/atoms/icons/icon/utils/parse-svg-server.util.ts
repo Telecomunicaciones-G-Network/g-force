@@ -1,4 +1,4 @@
-import type { ParseSVGAttributesInterface } from "../interface";
+import type { ParseSVGAttributesInterface } from '../interface';
 
 export const parseSVGServer = (
   svgString: string,
@@ -12,12 +12,12 @@ export const parseSVGServer = (
   const viewBoxMatch = svgString.match(/viewBox="([^"]*)"/);
 
   return {
-    fill: fillMatch?.[1] || "none",
-    innerHTML: innerHTMLMatch?.[1] || "",
-    stroke: strokeMatch?.[1] || "currentColor",
-    strokeLinecap: strokeLinecapMatch?.[1] || "round",
-    strokeLinejoin: strokeLinejoinMatch?.[1] || "round",
-    strokeWidth: strokeWidthMatch?.[1] || "1",
-    viewBox: viewBoxMatch?.[1] || "0 0 24 24",
+    fill: fillMatch?.[1] || 'none',
+    innerHTML: innerHTMLMatch?.[1] || '',
+    stroke: strokeMatch?.[1] || 'currentColor',
+    strokeLinecap: strokeLinecapMatch?.[1] || 'round',
+    strokeLinejoin: strokeLinejoinMatch?.[1] || 'round',
+    strokeWidth: strokeWidthMatch?.[1] || '1',
+    viewBox: viewBoxMatch?.[1] || '0 0 24 24',
   };
 };

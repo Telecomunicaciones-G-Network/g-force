@@ -1,1 +1,1 @@
-export type { LoginFormData } from "./login-form.interface";
+export type { LoginFormData } from './login-form.interface';

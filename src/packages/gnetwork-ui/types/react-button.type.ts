@@ -1,6 +1,6 @@
-import type { ComponentProps, Ref } from "react";
+import type { ComponentProps, Ref } from 'react';
 
-export type ReactButton = ComponentProps<"button"> & {
+export type ReactButton = ComponentProps<'button'> & {
   className?: string;
   ref?: Ref<HTMLButtonElement>;
 };

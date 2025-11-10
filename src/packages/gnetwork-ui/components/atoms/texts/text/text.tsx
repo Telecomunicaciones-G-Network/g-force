@@ -1,9 +1,9 @@
-import type { ElementType } from "react";
-import type { TextComponent, TextProps } from "./text.props";
+import type { ElementType } from 'react';
+import type { TextComponent, TextProps } from './text.props';
 
-import { getTextClassName } from "./text.style";
+import { getTextClassName } from './text.style';
 
-export const Text: TextComponent = <C extends ElementType = "p">({
+export const Text: TextComponent = <C extends ElementType = 'p'>({
   align,
   as,
   children,
@@ -19,7 +19,7 @@ export const Text: TextComponent = <C extends ElementType = "p">({
   weight,
   ...rest
 }: Readonly<TextProps<C>>) => {
-  const Component = (as || "p") as ElementType;
+  const Component = (as || 'p') as ElementType;
 
   const classes = getTextClassName({
     align,
@@ -35,7 +35,7 @@ export const Text: TextComponent = <C extends ElementType = "p">({
 
   if (!children) {
     console.warn(
-      "Prop children is missing on Text component. This component can not be render appropiately.",
+      'Prop children is missing on Text component. This component can not be render appropiately.',
     );
   }
 

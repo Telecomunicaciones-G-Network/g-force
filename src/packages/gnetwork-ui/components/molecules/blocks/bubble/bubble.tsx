@@ -1,11 +1,11 @@
-import type { BubbleProps } from "./bubble.props";
+import type { BubbleProps } from './bubble.props';
 
-import { getBubbleClassNames } from "./bubble.style";
+import { getBubbleClassNames } from './bubble.style';
 
 export const Bubble = ({
-  className = "",
+  className = '',
   children,
-  mode = "unknown",
+  mode = 'unknown',
   ref,
   ...rest
 }: Readonly<BubbleProps>) => {

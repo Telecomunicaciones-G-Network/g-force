@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: "G-Force - Factory",
-  description: "G-Force Factory",
+  title: 'G-Force - Factory',
+  description: 'G-Force Factory',
 };
 
 export default function FactoryPage() {

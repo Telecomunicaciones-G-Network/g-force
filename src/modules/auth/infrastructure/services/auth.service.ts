@@ -1,12 +1,12 @@
-import { AuthRepository } from "../../domain/repositories/auth.repository";
+import { AuthRepository } from '../../domain/repositories/auth.repository';
 
-import { LoginUsecase } from "../../application/login.usecase";
+import { LoginUsecase } from '../../application/login.usecase';
 
-import { LoginMapper } from "../../adapters/mappers/login.mapper";
+import { LoginMapper } from '../../adapters/mappers/login.mapper';
 
-import { LoginDTO } from "../dtos/login.dto";
+import { LoginDTO } from '../dtos/login.dto';
 
-import { LoginViewModel } from "../viewmodels/login.viewmodel";
+import { LoginViewModel } from '../viewmodels/login.viewmodel';
 
 export class AuthService {
   constructor(private readonly authRepository: AuthRepository) {}

@@ -1,7 +1,7 @@
-import { useTheme } from "next-themes";
+import { useTheme } from 'next-themes';
 
-import { useIsComponentMounted } from "@hookers/use-is-component-mounted.hook";
-import { useSystemTheme } from "@hookers/use-system-theme.hook";
+import { useIsComponentMounted } from '@hookers/use-is-component-mounted.hook';
+import { useSystemTheme } from '@hookers/use-system-theme.hook';
 
 export const useLoginBrand = () => {
   const { isMounted } = useIsComponentMounted();
@@ -9,7 +9,7 @@ export const useLoginBrand = () => {
   const { theme } = useTheme();
 
   return {
-    theme: isMounted ? (theme === "system" ? systemTheme : theme) : "light",
+    theme: isMounted ? (theme === 'system' ? systemTheme : theme) : 'light',
     isMounted,
   };
 };

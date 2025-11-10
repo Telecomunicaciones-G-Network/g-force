@@ -1,8 +1,8 @@
-import type { LoginRequest, LoginResponse } from "../../domain/interfaces";
+import type { LoginRequest, LoginResponse } from '../../domain/interfaces';
 
-import { LoginDTO } from "../../infrastructure/dtos/login.dto";
+import { LoginDTO } from '../../infrastructure/dtos/login.dto';
 
-import { LoginViewModel } from "../../infrastructure/viewmodels/login.viewmodel";
+import { LoginViewModel } from '../../infrastructure/viewmodels/login.viewmodel';
 
 export class LoginMapper {
   static mapFrom(input: LoginResponse): LoginViewModel {

@@ -1,10 +1,10 @@
-import type { AlertProps } from "./alert.props";
+import type { AlertProps } from './alert.props';
 
-import { MdCancel, MdCheckCircle, MdOutlineTimer } from "react-icons/md";
+import { MdCancel, MdCheckCircle, MdOutlineTimer } from 'react-icons/md';
 
-import { AlertSchemes } from "./enums/alert-scheme.enum";
+import { AlertSchemes } from './enums/alert-scheme.enum';
 
-import { getAlertClassNames } from "./alert.style";
+import { getAlertClassNames } from './alert.style';
 
 export const Alert = ({
   className,

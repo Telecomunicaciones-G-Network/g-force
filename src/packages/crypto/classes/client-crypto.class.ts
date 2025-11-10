@@ -3,24 +3,24 @@ export class ClientCrypto {
 
   private static async getKey(password: string): Promise<CryptoKey> {
     const keyMaterial = await crypto.subtle.importKey(
-      "raw",
+      'raw',
       ClientCrypto.encoder.encode(password),
-      { name: "PBKDF2" },
+      { name: 'PBKDF2' },
       false,
-      ["deriveKey"],
+      ['deriveKey'],
     );
 
     return crypto.subtle.deriveKey(
       {
-        name: "PBKDF2",
-        salt: ClientCrypto.encoder.encode("g-network-salt-v1"),
+        name: 'PBKDF2',
+        salt: ClientCrypto.encoder.encode('g-network-salt-v1'),
         iterations: 100000,
-        hash: "SHA-256",
+        hash: 'SHA-256',
       },
       keyMaterial,
-      { name: "AES-GCM", length: 256 },
+      { name: 'AES-GCM', length: 256 },
       false,
-      ["encrypt", "decrypt"],
+      ['encrypt', 'decrypt'],
     );
   }
 
@@ -30,7 +30,7 @@ export class ClientCrypto {
     const encodedData = ClientCrypto.encoder.encode(data);
     const encryptedData = await crypto.subtle.encrypt(
       {
-        name: "AES-GCM",
+        name: 'AES-GCM',
         iv: iv,
       },
       key,

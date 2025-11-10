@@ -1,4 +1,4 @@
-import { useChatStore } from "@ui-chat/stores/chat.store";
+import { useChatStore } from '@ui-chat/stores/chat.store';
 
 export const useChatListBody = () => {
   const activeChat = useChatStore((state) => state.activeChat);

@@ -1,1 +1,1 @@
-export type { AlertSchemeType } from "./alert-scheme.type";
+export type { AlertSchemeType } from './alert-scheme.type';

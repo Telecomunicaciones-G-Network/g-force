@@ -1,25 +1,25 @@
-import type { ChatMessageProps } from "./chat-message.props";
+import type { ChatMessageProps } from './chat-message.props';
 
-import { Text } from "../../../atoms/texts/text";
-import { Bubble } from "../../../molecules/blocks/bubble";
+import { Text } from '../../../atoms/texts/text';
+import { Bubble } from '../../../molecules/blocks/bubble';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import styles from "./chat-message.module.css";
+import styles from './chat-message.module.css';
 
 export const ChatMessage = ({
-  className = "",
+  className = '',
   children,
-  direction = "unknown",
+  direction = 'unknown',
   ref,
-  time = "",
-  username = "",
+  time = '',
+  username = '',
   ...rest
 }: Readonly<ChatMessageProps>) => (
   <div
     className={cn(
       styles.base,
-      direction === "outgoing" ? "items-end" : "items-start",
+      direction === 'outgoing' ? 'items-end' : 'items-start',
       className,
     )}
     ref={ref}

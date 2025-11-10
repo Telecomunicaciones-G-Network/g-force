@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import type { ButtonProps } from "./button.props";
+import type { ButtonProps } from './button.props';
 
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from '@radix-ui/react-slot';
 
-import { useButton } from "./button.hook";
+import { useButton } from './button.hook';
 
-import { getButtonClassNames } from "./button.style";
+import { getButtonClassNames } from './button.style';
 
-import styles from "./button.module.css";
+import styles from './button.module.css';
 
 export const Button = ({
   asChild = false,
   children,
-  className = "",
+  className = '',
   color,
   fullWidth,
   isStatic,
@@ -24,7 +24,7 @@ export const Button = ({
   rightIcon,
   scheme,
   size,
-  type = "button",
+  type = 'button',
   ...rest
 }: Readonly<ButtonProps>) => {
   const classes = getButtonClassNames({
@@ -35,12 +35,12 @@ export const Button = ({
     size,
     isStatic,
   });
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? Slot : 'button';
   const { handleClick } = useButton({ onClick });
 
   if (!children) {
     console.warn(
-      "Prop children is missing on Button component. This component can not be render appropiately.",
+      'Prop children is missing on Button component. This component can not be render appropiately.',
     );
   }
 

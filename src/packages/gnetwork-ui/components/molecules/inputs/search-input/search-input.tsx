@@ -1,15 +1,15 @@
-import type { InputProps } from "../input";
+import type { InputProps } from '../input';
 
-import { MdOutlineSearch } from "react-icons/md";
+import { MdOutlineSearch } from 'react-icons/md';
 
-import { Input } from "../input";
+import { Input } from '../input';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import styles from "./search-input.module.css";
+import styles from './search-input.module.css';
 
 export const SearchInput = ({
-  className = "",
+  className = '',
   error = false,
   onFocus,
   onBlur,
@@ -23,8 +23,8 @@ export const SearchInput = ({
         <MdOutlineSearch
           className={cn(
             styles.base__icon,
-            "text-input-placeholder",
-            error && "text-warning-200",
+            'text-input-placeholder',
+            error && 'text-warning-200',
           )}
           size={24}
         />

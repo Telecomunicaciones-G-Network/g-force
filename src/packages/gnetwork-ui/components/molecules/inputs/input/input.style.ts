@@ -1,19 +1,19 @@
-import type { InputVariants } from "./input.props";
+import type { InputVariants } from './input.props';
 
-import { cva } from "class-variance-authority";
+import { cva } from 'class-variance-authority';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import { inputError } from "./variants/input-error.variant";
-import { inputFullWidth } from "./variants/input-fullwidth.variant";
-import { inputIsStatic } from "./variants/input-static.variant";
+import { inputError } from './variants/input-error.variant';
+import { inputFullWidth } from './variants/input-fullwidth.variant';
+import { inputIsStatic } from './variants/input-static.variant';
 
-import styles from "./input.module.css";
+import styles from './input.module.css';
 
 export const inputVariants = cva(
   [
     styles.base__container,
-    "gap-[6px] min-h-[40px] bg-input-background py-2 px-3",
+    'gap-[6px] min-h-[40px] bg-input-background py-2 px-3',
   ],
   {
     variants: {
@@ -26,22 +26,22 @@ export const inputVariants = cva(
         error: false,
         isStatic: false,
         class:
-          "focus-within:border focus-within:border-solid focus-within:border-neutral-50 focus-within:shadow-[0_0_0_2.5px_rgba(255,255,255,0.6)]",
+          'focus-within:border focus-within:border-solid focus-within:border-neutral-50 focus-within:shadow-[0_0_0_2.5px_rgba(255,255,255,0.6)]',
       },
       {
         error: false,
         isStatic: true,
-        class: "",
+        class: '',
       },
       {
         error: true,
         isStatic: false,
-        class: "focus-within:shadow-[0_0_0_2.5px_rgba(224,159,50,0.6)]",
+        class: 'focus-within:shadow-[0_0_0_2.5px_rgba(224,159,50,0.6)]',
       },
       {
         error: true,
         isStatic: true,
-        class: "",
+        class: '',
       },
     ],
     defaultVariants: {
@@ -53,7 +53,7 @@ export const inputVariants = cva(
 );
 
 export const getInputClassNames = ({
-  className = "",
+  className = '',
   ...configVariants
 }: InputVariants): string => {
   return cn(inputVariants({ className, ...configVariants }));

@@ -1,21 +1,21 @@
-import type { ButtonVariants } from "./button.props";
+import type { ButtonVariants } from './button.props';
 
-import { cva } from "class-variance-authority";
+import { cva } from 'class-variance-authority';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import { buttonColors } from "./variants/button-color.variant";
-import { buttonFullWidth } from "./variants/button-fullwidth.variant";
-import { buttonSchemes } from "./variants/button-scheme.variant";
-import { buttonSizes } from "./variants/button-size.variant";
-import { buttonStatic } from "./variants/button-static.variant";
+import { buttonColors } from './variants/button-color.variant';
+import { buttonFullWidth } from './variants/button-fullwidth.variant';
+import { buttonSchemes } from './variants/button-scheme.variant';
+import { buttonSizes } from './variants/button-size.variant';
+import { buttonStatic } from './variants/button-static.variant';
 
-import styles from "./button.module.css";
+import styles from './button.module.css';
 
 export const buttonVariants = cva(
   [
     styles.base,
-    "justify-center ring-offset-background rounded-lg text-left transition-colors disabled:bg-button-background-disabled disabled:text-button-text-disabled focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0",
+    'justify-center ring-offset-background rounded-lg text-left transition-colors disabled:bg-button-background-disabled disabled:text-button-text-disabled focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0',
   ],
   {
     variants: {
@@ -27,56 +27,56 @@ export const buttonVariants = cva(
     },
     compoundVariants: [
       {
-        color: "default",
+        color: 'default',
         isStatic: false,
-        class: "hover:bg-button-background-hover",
+        class: 'hover:bg-button-background-hover',
       },
       {
-        color: "default",
+        color: 'default',
         isStatic: true,
-        class: "",
+        class: '',
       },
       {
-        color: "default",
-        scheme: "outline",
+        color: 'default',
+        scheme: 'outline',
         class:
-          "bg-transparent border border-solid border-button-background text-button-text hover:bg-button-background hover:text-button-text hover:border hover:border-solid hover:border-button-border",
+          'bg-transparent border border-solid border-button-background text-button-text hover:bg-button-background hover:text-button-text hover:border hover:border-solid hover:border-button-border',
       },
       {
-        color: "gray",
-        scheme: "outline",
+        color: 'gray',
+        scheme: 'outline',
         class:
-          "bg-transparent border border-solid border-gray text-gray hover:bg-gray hover:text-chromatic-inverted hover:border-none",
+          'bg-transparent border border-solid border-gray text-gray hover:bg-gray hover:text-chromatic-inverted hover:border-none',
       },
       {
-        color: "red",
+        color: 'red',
         isStatic: false,
-        class: "focus:bg-red-800 hover:bg-red-500",
+        class: 'focus:bg-red-800 hover:bg-red-500',
       },
       {
-        color: "red",
+        color: 'red',
         isStatic: true,
-        class: "",
+        class: '',
       },
       {
-        color: "red",
-        scheme: "outline",
+        color: 'red',
+        scheme: 'outline',
         class:
-          "bg-transparent text-red-700 border border-solid border-red-700 hover:border-none hover:bg-red-700 hover:text-white",
+          'bg-transparent text-red-700 border border-solid border-red-700 hover:border-none hover:bg-red-700 hover:text-white',
       },
     ],
     defaultVariants: {
-      color: "default",
+      color: 'default',
       fullWidth: false,
       isStatic: false,
-      scheme: "default",
-      size: "default",
+      scheme: 'default',
+      size: 'default',
     },
   },
 );
 
 export const getButtonClassNames = ({
-  className = "",
+  className = '',
   ...configVariants
 }: ButtonVariants): string => {
   return cn(buttonVariants({ className, ...configVariants }));

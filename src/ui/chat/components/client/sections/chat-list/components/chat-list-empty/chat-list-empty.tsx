@@ -1,7 +1,7 @@
-import { Icon } from "@gnetwork-ui/components/atoms/icons/icon";
-import { Text } from "@gnetwork-ui/components/atoms/texts/text";
+import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
-import styles from "./chat-list-empty.module.css";
+import styles from './chat-list-empty.module.css';
 
 export const ChatListEmpty = () => (
   <div className={styles.base}>

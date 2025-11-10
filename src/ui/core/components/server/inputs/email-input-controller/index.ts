@@ -1,1 +1,1 @@
-export { EmailInputController } from "./email-input-controller";
+export { EmailInputController } from './email-input-controller';

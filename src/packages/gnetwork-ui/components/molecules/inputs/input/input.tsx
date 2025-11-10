@@ -1,27 +1,27 @@
-import type { InputProps } from "./input.props";
+import type { InputProps } from './input.props';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import { getInputClassNames } from "./input.style";
+import { getInputClassNames } from './input.style';
 
-import styles from "./input.module.css";
+import styles from './input.module.css';
 
 export const Input = ({
-  className = "",
-  containerClassName = "",
+  className = '',
+  containerClassName = '',
   error = false,
   fullWidth,
   id,
-  label = "",
+  label = '',
   leftIcon,
   isStatic = false,
-  message = "",
+  message = '',
   name,
   readOnly = false,
   required = false,
   ref,
   rightIcon,
-  type = "text",
+  type = 'text',
   ...rest
 }: Readonly<InputProps>) => {
   const classes = getInputClassNames({
@@ -33,18 +33,18 @@ export const Input = ({
 
   if (!id || !name) {
     console.warn(
-      "Prop id or name is missing on Input component. This component can not be render appropiately.",
+      'Prop id or name is missing on Input component. This component can not be render appropiately.',
     );
   }
 
   return (
-    <div className={cn(styles.base, fullWidth && "w-full", containerClassName)}>
+    <div className={cn(styles.base, fullWidth && 'w-full', containerClassName)}>
       {label && (
         <label
-          className={cn(styles.base__label, "text-chromatic-inverted")}
+          className={cn(styles.base__label, 'text-chromatic-inverted')}
           htmlFor={id || name}
         >
-          {label} {required ? " *" : ""}
+          {label} {required ? ' *' : ''}
         </label>
       )}
       <div className={cn(classes)}>
@@ -52,7 +52,7 @@ export const Input = ({
         <input
           className={cn(
             styles.base__input,
-            "font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder",
+            'font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder',
           )}
           id={id}
           name={name}
@@ -67,8 +67,8 @@ export const Input = ({
         <span
           className={cn(
             styles.base__message,
-            "text-chromatic-inverted",
-            error && "text-warning-200",
+            'text-chromatic-inverted',
+            error && 'text-warning-200',
           )}
         >
           {message}

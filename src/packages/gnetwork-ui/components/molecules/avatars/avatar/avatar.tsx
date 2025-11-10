@@ -1,13 +1,13 @@
-import type { AvatarProps } from "./avatar.props";
+import type { AvatarProps } from './avatar.props';
 
-import { ResponsiveImage } from "../../../atoms/images/responsive-image";
+import { ResponsiveImage } from '../../../atoms/images/responsive-image';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import styles from "./avatar.module.css";
+import styles from './avatar.module.css';
 
 export const Avatar = ({
-  className = "",
+  className = '',
   image,
   ref,
   ...rest
@@ -16,7 +16,7 @@ export const Avatar = ({
     ref={ref}
     className={cn(
       styles.base,
-      "aspect-48/48 border-none gap-2 max-w-[48px] p-0 rounded-lg w-full",
+      'aspect-48/48 border-none gap-2 max-w-[48px] p-0 rounded-lg w-full',
       className,
     )}
     {...rest}

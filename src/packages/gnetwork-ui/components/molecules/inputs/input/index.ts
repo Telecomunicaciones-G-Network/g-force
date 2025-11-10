@@ -1,3 +1,3 @@
-export type { InputProps } from "./input.props";
+export type { InputProps } from './input.props';
 
-export { Input } from "./input";
+export { Input } from './input';

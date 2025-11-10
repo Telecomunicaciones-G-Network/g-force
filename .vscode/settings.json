@@ -25,6 +25,7 @@
     "buttons": "include",
     "chat-card": "react-components",
     "chat-conversation": "react-components",
+    "chat-empty": "react-components",
     "chat-input": "react-components",
     "chat-list-body": "react-components",
     "chat-list-empty": "react-components",
@@ -421,6 +422,6 @@
   "workbench.tree.indent": 8,
   "workbench.tree.renderIndentGuides": "always",
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }

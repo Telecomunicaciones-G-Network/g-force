@@ -1,1 +1,1 @@
-export type BrandMode = "dark" | "light";
+export type BrandMode = 'dark' | 'light';

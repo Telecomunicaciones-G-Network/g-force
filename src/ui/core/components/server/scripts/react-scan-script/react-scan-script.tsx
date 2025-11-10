@@ -1,11 +1,11 @@
 export const ReactScanScript = () => {
-  if (process.env.NODE_ENV === "development") {
-    console.log("ReactScanScript");
+  if (process.env.NODE_ENV === 'development') {
+    console.log('ReactScanScript');
   }
 
   return (
     <>
-      {process.env.MODE === "development" &&
+      {process.env.MODE === 'development' &&
         Boolean(process.env.REACT_SCAN_ON) && (
           <script
             async

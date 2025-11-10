@@ -1,9 +1,9 @@
-import type { FieldValues } from "react-hook-form";
-import type { PasswordInputControllerProps } from "./password-input-controller.props";
+import type { FieldValues } from 'react-hook-form';
+import type { PasswordInputControllerProps } from './password-input-controller.props';
 
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 
-import { PasswordInput } from "@gnetwork-ui/components/molecules/inputs/password-input";
+import { PasswordInput } from '@gnetwork-ui/components/molecules/inputs/password-input';
 
 export const PasswordInputController = <T extends FieldValues = FieldValues>({
   control,

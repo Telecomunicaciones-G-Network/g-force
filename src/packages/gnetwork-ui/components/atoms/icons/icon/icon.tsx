@@ -1,16 +1,16 @@
-import type { IconProps } from "./icon.props";
+import type { IconProps } from './icon.props';
 
-import { ButtonIcon } from "./components/button-icon/button-icon";
-import { UnknownIcon } from "./components/unknown-icon/unknown-icon";
+import { ButtonIcon } from './components/button-icon/button-icon';
+import { UnknownIcon } from './components/unknown-icon/unknown-icon';
 
-import { iconDictionary } from "./dictionaries/icon.dictionary";
+import { iconDictionary } from './dictionaries/icon.dictionary';
 
-import { parseSVGServer } from "./utils/parse-svg-server.util";
-import { processIconClassNames } from "./utils/process-icon-classnames.util";
+import { parseSVGServer } from './utils/parse-svg-server.util';
+import { processIconClassNames } from './utils/process-icon-classnames.util';
 
 export const Icon = ({
-  className = "",
-  color = "currentColor",
+  className = '',
+  color = 'currentColor',
   name,
   onClick,
   size = 24,
@@ -33,8 +33,8 @@ export const Icon = ({
       fill={svgData.fill}
       height={size}
       stroke={svgData.stroke}
-      strokeLinecap={svgData.strokeLinecap as "round" | "butt" | "square"}
-      strokeLinejoin={svgData.strokeLinejoin as "round" | "miter" | "bevel"}
+      strokeLinecap={svgData.strokeLinecap as 'round' | 'butt' | 'square'}
+      strokeLinejoin={svgData.strokeLinejoin as 'round' | 'miter' | 'bevel'}
       strokeWidth={svgData.strokeWidth}
       style={{ color }}
       viewBox={svgData.viewBox}

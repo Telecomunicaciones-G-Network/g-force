@@ -1,1 +1,1 @@
-export { ResponsiveImage } from "./responsive-image";
+export { ResponsiveImage } from './responsive-image';

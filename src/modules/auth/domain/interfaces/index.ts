@@ -1,6 +1,6 @@
-export type { LoginRequest } from "./login-request.interface";
+export type { LoginRequest } from './login-request.interface';
 export type {
   LoginResponse,
   LoginResult,
   LoginResultUser,
-} from "./login-response.interface";
+} from './login-response.interface';

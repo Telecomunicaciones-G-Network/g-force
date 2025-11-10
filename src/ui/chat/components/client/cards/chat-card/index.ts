@@ -1,1 +1,1 @@
-export { ChatCard } from "./chat-card";
+export { ChatCard } from './chat-card';

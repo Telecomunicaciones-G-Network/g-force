@@ -1,15 +1,15 @@
-import type { ResponsiveImageProps } from "./responsive-image.props";
+import type { ResponsiveImageProps } from './responsive-image.props';
 
-import Img from "react-cool-img";
+import Img from 'react-cool-img';
 
-import { cn } from "../../../../utils/cn.util";
+import { cn } from '../../../../utils/cn.util';
 
-import styles from "./responsive-image.module.css";
+import styles from './responsive-image.module.css';
 
 export const ResponsiveImage = ({
-  alt = "Image",
+  alt = 'Image',
   cache = false,
-  className = "",
+  className = '',
   customImageComponent,
   lazy = false,
   objectFit,
@@ -19,12 +19,12 @@ export const ResponsiveImage = ({
 }: Readonly<ResponsiveImageProps>) => {
   if (!customImageComponent && !src) {
     console.warn(
-      "customImageComponent or src prop is missing on ResponsiveImage component. This can not be render appropiately.",
+      'customImageComponent or src prop is missing on ResponsiveImage component. This can not be render appropiately.',
     );
   }
   if (customImageComponent && src) {
     console.warn(
-      "customImageComponent and src props are been using at the same time. This can not be render appropiately.",
+      'customImageComponent and src props are been using at the same time. This can not be render appropiately.',
     );
 
     return null;

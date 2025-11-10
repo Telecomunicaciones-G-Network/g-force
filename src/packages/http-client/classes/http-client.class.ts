@@ -1,4 +1,4 @@
-import type { HttpAdapter, HttpClientConfig } from "../interfaces";
+import type { HttpAdapter, HttpClientConfig } from '../interfaces';
 
 export class HttpClient {
   constructor(
