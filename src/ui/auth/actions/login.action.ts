@@ -10,6 +10,7 @@ import { redirect } from 'next/navigation';
 
 import { ServerCrypto } from '@crypto/classes/server-crypto.class';
 import { daysToSeconds } from '@timer/utils/days-to-seconds.util';
+import { minutesToSeconds } from '@timer/utils/minutes-to-seconds.util';
 
 import { ENVS } from '@ui-core/envs/envs';
 
@@ -45,7 +46,7 @@ export async function loginAction(
 
       cookieStore.set('access_token', response.access, {
         httpOnly: true,
-        maxAge: daysToSeconds(1),
+        maxAge: minutesToSeconds(60),
         path: '/',
         sameSite: 'lax',
         secure: ENVS.NODE_ENV === 'production',
@@ -53,7 +54,7 @@ export async function loginAction(
 
       cookieStore.set('refresh_token', response.refresh, {
         httpOnly: true,
-        maxAge: daysToSeconds(7),
+        maxAge: daysToSeconds(1),
         path: '/',
         sameSite: 'lax',
         secure: ENVS.NODE_ENV === 'production',
@@ -61,7 +62,7 @@ export async function loginAction(
 
       cookieStore.set('user_data', JSON.stringify(response.user), {
         httpOnly: true,
-        maxAge: daysToSeconds(1),
+        maxAge: minutesToSeconds(60),
         path: '/',
         sameSite: 'lax',
         secure: ENVS.NODE_ENV === 'production',
