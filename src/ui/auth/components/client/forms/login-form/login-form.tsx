@@ -1,64 +1,20 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z as zod } from "zod";
-
-import { ClientCrypto } from "@crypto/classes/client-crypto.class";
-
-import { loginAction } from "@ui-auth/actions/login.action";
-
 import { Alert } from "@gnetwork-ui/components/molecules/alerts/alert";
 import { Button } from "@gnetwork-ui/components/molecules/buttons/button";
 import { EmailInputController } from "@ui-core/components/server/inputs/email-input-controller";
 import { PasswordInputController } from "@ui-core/components/server/inputs/password-input-controller";
 import { LoginBrand } from "./components/login-brand/login-brand";
 
-import { ENVS } from "@ui-core/envs/envs";
-
 import { cn } from "@gnetwork-ui/utils/cn.util";
+
+import { useLoginForm } from "./login-form.hook";
 
 import styles from "./login-form.module.css";
 
-const loginFormSchema = zod.object({
-  email: zod.string().email("El email no es válido"),
-  password: zod
-    .string()
-    .min(6, "La contraseña debe tener al menos 6 caracteres"),
-});
-
-type LoginFormData = zod.infer<typeof loginFormSchema>;
-
 export const LoginForm = () => {
-  const {
-    control,
-    formState: { isSubmitting },
-    handleSubmit,
-  } = useForm<LoginFormData>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    resolver: zodResolver(loginFormSchema),
-  });
-
-  const onSubmit = async (data: LoginFormData) => {
-    const formData = new FormData();
-
-    const encryptedPayload = await ClientCrypto.encryptObject(
-      {
-        email: data.email,
-        password: data.password,
-      },
-      ENVS.CRYPTO_KEY,
-    );
-
-    formData.append("payload", encryptedPayload);
-
-    const result = await loginAction({}, formData);
-
-    console.log(result);
-  };
+  const { clearErrors, control, errors, handleSubmit, isSubmitting, onSubmit } =
+    useLoginForm();
 
   return (
     <form
@@ -82,6 +38,7 @@ export const LoginForm = () => {
             id="login_email"
             label="Email"
             name="email"
+            onClear={() => clearErrors()}
             placeholder="Introduce tu email"
             required
           />
@@ -93,13 +50,20 @@ export const LoginForm = () => {
             id="login_password"
             label="Contraseña"
             name="password"
+            onClear={() => clearErrors()}
             placeholder="Introduce tu contraseña"
             required
           />
         </div>
       </div>
       <div className={styles.base__button}>
-        <Button color="red" disabled={isSubmitting} fullWidth type="submit">
+        <Button
+          color="red"
+          disabled={!!Object.keys(errors)?.length || isSubmitting}
+          fullWidth
+          loading={isSubmitting}
+          type="submit"
+        >
           Iniciar sesión
         </Button>
       </div>

@@ -1,4 +1,7 @@
+// TODO: Debo mejorar los mensajes de error colocando un chalker o algo asi en la consola
+
 import type {
+  AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
@@ -30,6 +33,13 @@ export class Axios implements HttpAdapter {
   private applyResponseInterceptor() {
     this.axiosInstance.interceptors.response.use(
       (response: AxiosResponse) => response,
+      (
+        error: AxiosError<{ success: boolean; error: string; status: number }>,
+      ) => {
+        console.error(`ERROR: ${error.response?.data?.error}`);
+
+        return Promise.reject(error);
+      },
     );
   }
 
@@ -37,8 +47,8 @@ export class Axios implements HttpAdapter {
     configurations?: HttpClientConfig,
   ): AxiosRequestConfig {
     return {
+      headers: configurations?.headers,
       params: configurations?.searchParams,
-      headers: configurations?.headers as Record<string, string>,
     };
   }
 
@@ -58,8 +68,6 @@ export class Axios implements HttpAdapter {
       return response.data;
     } catch (err) {
       const error = err as Error;
-
-      console.log(error);
 
       return error;
     }
@@ -87,7 +95,7 @@ export class Axios implements HttpAdapter {
     } catch (err) {
       const error = err as Error;
 
-      console.log(error);
+      console.error("aqui jeykher", error?.message);
 
       return error;
     }

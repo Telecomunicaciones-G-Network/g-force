@@ -3,7 +3,7 @@
   "javascript.suggest.autoImports": true,
   "typescript.suggest.autoImports": true,
   // Formatting
-  "editor.formatter": "biomejs.biome",
+  "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
@@ -12,13 +12,14 @@
     "(auth)": "public",
     "(private)": "secure",
     "(public)": "public",
+    "actions": "cue",
     "alert": "react-components",
     "avatar": "react-components",
     "avatars": "linux",
     "blocks": "mjml",
+    "brand-skeleton": "react-components",
     "brand": "react-components",
     "button-icon": "react-components",
-    "brand-skeleton": "react-components",
     "button": "react-components",
     "buttons": "include",
     "chat-card": "react-components",
@@ -33,7 +34,6 @@
     "fetchers": "salesforce",
     "forms": "custom",
     "hookers": "hook",
-    "http-client": "gemini",
     "icon": "react-components",
     "icons": "jupyter",
     "input": "react-components",
@@ -44,22 +44,28 @@
     "password-input": "react-components",
     "react-scan-script": "react-components",
     "responsive-image": "react-components",
+    "schemas": "scala",
     "search-input": "react-components",
     "text": "react-components",
     "texts": "font",
-    "unknown-icon": "react-components"
+    "unknown-icon": "react-components",
+    "viewmodels": "job"
   },
   "material-icon-theme.files.associations": {
+    "*.action.ts": "cue",
     "*.class.ts": "capnp",
     "*.constant.ts": "command",
     "*.dictionary.ts": "denizenscript",
+    "*.dto.ts": "hurl",
     "*.fetcher.ts": "salesforce",
     "*.font.ts": "font",
     "*.interface.ts": "less",
     "*.mapper.ts": "xml",
     "*.mdc": "snowpack",
     "*.props.ts": "svgr",
+    "*.regex.ts": "scheme",
     "*.repository.ts": "trigger",
+    "*.schema.ts": "scala",
     "*.tsx": "react",
     "*.util.ts": "credits",
     "components.json": "regedit",
@@ -84,12 +90,6 @@
       "folderNames": ["alerts"]
     },
     {
-      "name": "App",
-      "base": "app",
-      "color": "blue-500",
-      "folderNames": ["app"]
-    },
-    {
       "name": "Application",
       "base": "src",
       "color": "blue-500",
@@ -112,6 +112,12 @@
       "base": "src",
       "color": "yellow-800",
       "folderNames": ["domain", "props"]
+    },
+    {
+      "name": "DTOs",
+      "base": "connection",
+      "color": "pink-400",
+      "folderNames": ["dtos"]
     },
     {
       "name": "Fetchers",
@@ -139,7 +145,7 @@
     },
     {
       "name": "Modules",
-      "base": "animation",
+      "base": "plugins",
       "color": "red-500",
       "folderNames": ["modules"]
     },
@@ -148,6 +154,12 @@
       "base": "packages",
       "color": "green-600",
       "folderNames": ["packages"]
+    },
+    {
+      "name": "React Module CSS",
+      "base": "react",
+      "color": "purple-300",
+      "fileExtensions": ["module.css"]
     },
     {
       "name": "React Iterators",
@@ -178,6 +190,12 @@
       "base": "react-components",
       "color": "light-green-500",
       "folderNames": ["variants"]
+    },
+    {
+      "name": "Regexs",
+      "base": "tasks",
+      "color": "red-500",
+      "folderNames": ["regexs"]
     },
     {
       "name": "Sections",
@@ -216,6 +234,12 @@
       "base": "ember",
       "color": "teal-400",
       "fileExtensions": ["enum.ts"]
+    },
+    {
+      "name": "Env Example",
+      "base": "tune",
+      "color": "blue-400",
+      "fileNames": [".env.example"]
     },
     {
       "name": "Global DTS",
@@ -278,6 +302,12 @@
       "fileExtensions": ["provider.tsx"]
     },
     {
+      "name": "React States",
+      "base": "react",
+      "color": "green-600",
+      "fileExtensions": ["state.ts"]
+    },
+    {
       "name": "React Stores",
       "base": "react",
       "color": "lime-500",
@@ -312,6 +342,12 @@
       "base": "typst",
       "color": "blue-500",
       "fileExtensions": ["type.ts"]
+    },
+    {
+      "name": "View Models",
+      "base": "vagrant",
+      "color": "yellow-700",
+      "fileExtensions": ["viewmodel.ts"]
     }
   ],
   // Peacok Configuration
@@ -363,5 +399,8 @@
   "workbench.editor.showTabs": "multiple",
   "workbench.sideBar.location": "right",
   "workbench.tree.indent": 8,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

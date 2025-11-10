@@ -1,14 +1,10 @@
-// TODO: Debo revisar mas a fondo este archivo
-
 "use server";
-
-// import axios from "axios";
-
-import { Axios } from "@http-client/classes/axios.class";
 
 import { ServerCrypto } from "@crypto/classes/server-crypto.class";
 
 import { ENVS } from "@ui-core/envs/envs";
+
+import { authService } from "@ui-auth/services/auth.service";
 
 export type LoginState = {
   errors?: {
@@ -20,14 +16,6 @@ export type LoginState = {
   message?: string;
 };
 
-const apiClient = new Axios({
-  baseURL: ENVS.GNETWORK_API_BASE_URL,
-  headers: {
-    Accept: "application/json; version=1.0.0",
-    "Content-Type": "application/json",
-  },
-});
-
 export async function loginAction(
   _prevState: LoginState,
   formData: FormData,
@@ -38,7 +26,7 @@ export async function loginAction(
     if (!encryptedPayload) {
       return {
         errors: {
-          _form: ["Datos inválidos"],
+          _form: ["Payload can not be encrypted"],
         },
       };
     }
@@ -50,47 +38,27 @@ export async function loginAction(
 
     const data = { email, password };
 
-    // Validación
-    if (!email || !email.includes("@")) {
+    const response = await authService.login(data);
+
+    if (response instanceof Error) {
       return {
         errors: {
-          email: ["Email inválido"],
+          _form: [response.message || "Login failed"],
         },
       };
     }
-
-    if (!password || password.length < 6) {
-      return {
-        errors: {
-          password: ["La contraseña debe tener al menos 6 caracteres"],
-        },
-      };
-    }
-
-    const response = await apiClient.post("/user/auth/login/", data);
-
-    /*const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_GNETWORK_API_BASE_URL}/user/auth/login/`,
-      data,
-      {
-        headers: {
-          Accept: "application/json; version=1.0.0",
-          "Content-Type": "application/json",
-        },
-      }
-    ); */
 
     console.log("response", { response: response });
 
     return {
       success: true,
-      message: "login exitoso",
+      message: "Login successful",
     };
   } catch (err) {
     const error = err as Error;
     return {
       errors: {
-        _form: [error.message || "Error en el inicio de sesión"],
+        _form: [error.message || "Login failed"],
       },
     };
   }

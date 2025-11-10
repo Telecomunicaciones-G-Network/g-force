@@ -22,6 +22,7 @@
       "@gnetwork-ui/*": ["./src/packages/gnetwork-ui/*"],
       "@hookers/*": ["./src/packages/hookers/*"],
       "@http-client/*": ["./src/packages/http-client/*"],
+      "@regexs/*": ["./src/packages/regexs/*"],
       "@ui/*": ["./src/ui/*"],
       "@ui-core/*": ["./src/ui/core/*"],
       "@ui-auth/*": ["./src/ui/auth/*"],

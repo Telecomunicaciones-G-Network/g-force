@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { LoginForm } from "@ui-auth/components/forms/login-form";
+import { LoginForm } from "@ui-auth/components/client/forms/login-form";
 
 export const metadata: Metadata = {
   title: "G-Force Login",

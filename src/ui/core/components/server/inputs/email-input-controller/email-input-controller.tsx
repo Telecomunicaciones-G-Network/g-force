@@ -10,6 +10,7 @@ export const EmailInputController = <T extends FieldValues = FieldValues>({
   defaultValue,
   id,
   name,
+  onClear,
   rules,
   ...rest
 }: Readonly<EmailInputControllerProps<T>>) => (
@@ -19,10 +20,14 @@ export const EmailInputController = <T extends FieldValues = FieldValues>({
     name={name}
     render={({ field, fieldState }) => (
       <EmailInput
+        {...field}
         error={!!fieldState.error}
         id={id || name}
         message={fieldState.error?.message}
-        {...field}
+        onChange={(e) => {
+          field.onChange(e);
+          onClear?.();
+        }}
         {...rest}
       />
     )}

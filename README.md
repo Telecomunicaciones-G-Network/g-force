@@ -1,4 +1,15 @@
-# 👨‍💻 GNetwork @ Communication
+# 👨‍💻 GNetwork @ G-Force
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Bun-1.3-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun">
+  <img src="https://img.shields.io/badge/License-YENDES-yellow?style=for-the-badge" alt="License">
+</div>
+
+<br/>
+
 
 ## 📝 Overview
 
@@ -59,7 +70,7 @@ bun build
 ## 🗂️ Project Structure
 
 ```
-next/
+g-force/
 ├── docs/                                  # Project documentation
 │   ├── COMMIT_CONVENTION.md              # Commit message guidelines
 │   ├── GIT_WORKFLOW.md                   # Git workflow documentation
@@ -128,66 +139,6 @@ next/
 - **Geist Font**: Modern, optimized font family by Vercel for better readability
 - **Custom Theming**: Built-in theme support with light/dark modes using CSS variables
 
+---
+
 **Built with ❤️ by the GNetwork Team**
-
-```typescript
-"use client";
-
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { loginAction } from "../../../actions/login.action";
-
-const loginSchema = z.object({
-  email: z.string().email("Email inválido"),
-  password: z.string().min(6, "Mínimo 6 caracteres"),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
-
-export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    setError,
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-  });
-
-  const onSubmit = async (data: LoginFormData) => {
-    const formData = new FormData();
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-
-    const result = await loginAction({}, formData);
-
-    if (result.errors) {
-      // Mapear errores del servidor a React Hook Form
-      if (result.errors.email) {
-        setError("email", { message: result.errors.email[0] });
-      }
-      if (result.errors.password) {
-        setError("password", { message: result.errors.password[0] });
-      }
-      if (result.errors._form) {
-        setError("root", { message: result.errors._form[0] });
-      }
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <EmailInput {...register("email")} error={errors.email?.message} />
-      <PasswordInput
-        {...register("password")}
-        error={errors.password?.message}
-      />
-      {errors.root && <Alert>{errors.root.message}</Alert>}
-      <Button type="submit" disabled={isSubmitting}>
-        Iniciar sesión
-      </Button>
-    </form>
-  );
-};
-```

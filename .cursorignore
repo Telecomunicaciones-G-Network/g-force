@@ -1,21 +1,29 @@
-# Cursor ignore
+# Curso ignore
 
-# Build outputs
-dist/
+# Build
 build/
+dist/
 
-# Dependencies
+# Dart
+.dart_tool/
+
+# Editors
+.idea/
+
+# Environments
+.env
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+
+# Git
+.git/
+.gitignore
+.husky/
+
+# Node
 node_modules/
 
-# Database
-data/
-**/data/
-
-# Logs
-*.log
-logs/
-
-# Coverage
-coverage/
-.nyc_output/
-
+# Versioning
+.changeset/
