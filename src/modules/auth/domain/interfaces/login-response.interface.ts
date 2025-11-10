@@ -1,5 +1,3 @@
-// TODO: Debo colocar bien la interfaz de User
-
 import type { ApiResponse } from "@module-core/interfaces";
 
 export interface LoginResultUser {

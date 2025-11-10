@@ -23,6 +23,7 @@
         "noStaticOnlyClass": "off"
       },
       "suspicious": {
+        "noGlobalIsNan": "off",
         "noUnknownAtRules": "off"
       },
       "style": {

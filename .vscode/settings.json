@@ -31,7 +31,7 @@
     "dictionaries": "resource",
     "email-input-controller": "react-components",
     "email-input": "react-components",
-    "fetchers": "salesforce",
+    "entities": "svg",
     "forms": "custom",
     "hookers": "hook",
     "icon": "react-components",
@@ -57,6 +57,7 @@
     "*.constant.ts": "command",
     "*.dictionary.ts": "denizenscript",
     "*.dto.ts": "hurl",
+    "*.entity.ts": "sketch",
     "*.fetcher.ts": "salesforce",
     "*.font.ts": "font",
     "*.interface.ts": "less",
@@ -72,6 +73,7 @@
     "css-data.json": "vscode",
     "envs.ts": "ejs",
     "globals.css": "css-map",
+    "middleware.ts": "pipeline",
     "post-install": "console",
     "settings.json": "vscode",
     "variables.css": "vala"
@@ -216,10 +218,22 @@
       "folderNames": ["skeletons"]
     },
     {
+      "name": "Timer",
+      "base": "backup",
+      "color": "teal-400",
+      "folderNames": ["timer"]
+    },
+    {
       "name": "Usecase Post",
       "base": "powershell",
       "color": "yellow-700",
       "fileNames": ["login.usecase.ts"]
+    },
+    {
+      "name": "User",
+      "base": "admin",
+      "color": "blue-500",
+      "folderNames": ["user"]
     }
   ],
   "material-icon-theme.files.customClones": [

@@ -1,13 +1,13 @@
 // TODO: Debo mejorar los mensajes de error colocando un chalker o algo asi en la consola
 
 import type {
-  AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
 import type { HttpAdapter, HttpClientConfig } from "../interfaces";
+import type { HttpErrorResponse } from "../types";
 
 import axios from "axios";
 
@@ -33,9 +33,7 @@ export class Axios implements HttpAdapter {
   private applyResponseInterceptor() {
     this.axiosInstance.interceptors.response.use(
       (response: AxiosResponse) => response,
-      (
-        error: AxiosError<{ success: boolean; error: string; status: number }>,
-      ) => {
+      (error: HttpErrorResponse) => {
         console.error(`ERROR: ${error.response?.data?.error}`);
 
         return Promise.reject(error);
@@ -55,7 +53,7 @@ export class Axios implements HttpAdapter {
   public async get<T = Response>(
     endpoint: string,
     configurations?: HttpClientConfig,
-  ): Promise<T | Error> {
+  ): Promise<T> {
     try {
       const axiosConfig = this.getRequestConfiguration(configurations);
 
@@ -67,9 +65,14 @@ export class Axios implements HttpAdapter {
 
       return response.data;
     } catch (err) {
-      const error = err as Error;
+      const error = err as HttpErrorResponse;
 
-      return error;
+      return {
+        error: error?.response?.data?.error ?? "An unknown error occurred",
+        extra: error?.response?.data?.extra,
+        status: error?.response?.status ?? 500,
+        success: false,
+      } as T;
     }
   }
 
@@ -77,7 +80,7 @@ export class Axios implements HttpAdapter {
     endpoint: string,
     body?: T,
     configurations?: HttpClientConfig,
-  ): Promise<R | Error> {
+  ): Promise<R> {
     try {
       const axiosConfig = this.getRequestConfiguration(configurations);
 
@@ -93,11 +96,14 @@ export class Axios implements HttpAdapter {
 
       return response.data;
     } catch (err) {
-      const error = err as Error;
+      const error = err as HttpErrorResponse;
 
-      console.error("aqui jeykher", error?.message);
-
-      return error;
+      return {
+        error: error?.response?.data?.error ?? "An unknown error occurred",
+        extra: error?.response?.data?.extra,
+        status: error?.response?.status ?? 500,
+        success: false,
+      } as R;
     }
   }
 }

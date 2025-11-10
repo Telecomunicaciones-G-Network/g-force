@@ -4,11 +4,11 @@ export interface HttpAdapter {
   get<T = Response>(
     endpoint: string,
     configurations?: HttpClientConfig,
-  ): Promise<T | Error>;
+  ): Promise<T>;
 
   post<T = Request, R = Response>(
     endpoint: string,
     body?: T,
     configurations?: HttpClientConfig,
-  ): Promise<R | Error>;
+  ): Promise<R>;
 }

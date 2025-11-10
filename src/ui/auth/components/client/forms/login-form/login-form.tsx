@@ -1,3 +1,5 @@
+// TODO: Debo terminar de acomodar todo esto
+
 "use client";
 
 import { Alert } from "@gnetwork-ui/components/molecules/alerts/alert";
@@ -13,8 +15,15 @@ import { useLoginForm } from "./login-form.hook";
 import styles from "./login-form.module.css";
 
 export const LoginForm = () => {
-  const { clearErrors, control, errors, handleSubmit, isSubmitting, onSubmit } =
-    useLoginForm();
+  const {
+    clearErrors,
+    control,
+    errors,
+    handleSubmit,
+    isSubmitting,
+    onSubmit,
+    serverError,
+  } = useLoginForm();
 
   return (
     <form
@@ -24,9 +33,11 @@ export const LoginForm = () => {
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      {false && (
+      {serverError && (
         <div className={styles.base__alert}>
-          <Alert className="animated-fade-in">alerta</Alert>
+          <Alert className="animated-fade-in" scheme="error">
+            {serverError}
+          </Alert>
         </div>
       )}
       <LoginBrand />

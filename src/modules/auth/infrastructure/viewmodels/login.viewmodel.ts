@@ -1,9 +1,9 @@
-// TODO: Debo crear bien la interfaz de User
-
-import type { LoginResult, LoginResultUser } from "../../domain/interfaces";
+import type { LoginResultUser } from "../../domain/interfaces";
 
 export class LoginViewModel {
   access?: string;
+
+  error?: string;
 
   refresh?: string;
 

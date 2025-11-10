@@ -13,14 +13,10 @@ export class AuthService {
 
   private readonly loginUsecase = new LoginUsecase(this.authRepository);
 
-  public async login(data: LoginDTO): Promise<LoginViewModel | Error> {
+  public async login(data: LoginDTO): Promise<LoginViewModel> {
     const body = LoginMapper.mapTo(data);
 
     const response = await this.loginUsecase.execute(body);
-
-    if (response instanceof Error) {
-      return response;
-    }
 
     return LoginMapper.mapFrom(response);
   }

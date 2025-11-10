@@ -5,13 +5,10 @@ import { LoginDTO } from "../../infrastructure/dtos/login.dto";
 import { LoginViewModel } from "../../infrastructure/viewmodels/login.viewmodel";
 
 export class LoginMapper {
-  static mapFrom(input: LoginResponse | Error): LoginViewModel | Error {
-    if (input instanceof Error) {
-      return input;
-    }
-
+  static mapFrom(input: LoginResponse): LoginViewModel {
     return {
       access: input?.results?.access,
+      error: input?.error,
       refresh: input?.results?.refresh,
       user: input?.results?.user,
     };

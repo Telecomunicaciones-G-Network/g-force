@@ -1,5 +1,7 @@
 import type { LoginFormData } from "./interface";
 
+import { useState } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -14,6 +16,8 @@ import { loginFormSchema } from "./schemas/login-form.schema";
 import { loginFormInitialValues } from "./login-form.state";
 
 export const useLoginForm = () => {
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const {
     clearErrors: clearErrorsForm,
     control,
@@ -29,24 +33,35 @@ export const useLoginForm = () => {
 
   const clearErrors = (
     fieldName?: keyof LoginFormData | (keyof LoginFormData)[],
-  ) => clearErrorsForm(fieldName);
+  ) => {
+    clearErrorsForm(fieldName);
+    setServerError(null);
+  };
 
   const onSubmit = async (data: LoginFormData) => {
-    const formData = new FormData();
+    try {
+      setServerError(null);
 
-    const encryptedPayload = await ClientCrypto.encryptObject(
-      {
-        email: data.email,
-        password: data.password,
-      },
-      ENVS.CRYPTO_KEY,
-    );
+      const formData = new FormData();
 
-    formData.append("payload", encryptedPayload);
+      const encryptedPayload = await ClientCrypto.encryptObject(
+        {
+          email: data.email,
+          password: data.password,
+        },
+        ENVS.CRYPTO_KEY,
+      );
 
-    const result = await loginAction({}, formData);
+      formData.append("payload", encryptedPayload);
 
-    console.log(result);
+      const result = await loginAction({}, formData);
+
+      if (result && !result.success && result.errors?.form) {
+        setServerError(result.errors.form[0]);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return {
@@ -56,5 +71,6 @@ export const useLoginForm = () => {
     handleSubmit,
     isSubmitting,
     onSubmit,
+    serverError,
   };
 };

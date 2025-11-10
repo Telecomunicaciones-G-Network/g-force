@@ -9,7 +9,7 @@ export class HttpClient {
   async get<T = Response>(
     endpoint: string,
     configurations?: HttpClientConfig,
-  ): Promise<T | Error> {
+  ): Promise<T> {
     return await this.fetcher.get<T>(
       `${this.baseUrl}${endpoint}`,
       configurations,
@@ -20,7 +20,7 @@ export class HttpClient {
     endpoint: string,
     body?: T,
     configurations?: HttpClientConfig,
-  ): Promise<R | Error> {
+  ): Promise<R> {
     return await this.fetcher.post<T, R>(
       `${this.baseUrl}${endpoint}`,
       body,

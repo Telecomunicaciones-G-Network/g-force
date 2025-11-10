@@ -3,12 +3,10 @@ import type { LoginRequest, LoginResponse } from "../domain/interfaces";
 
 import { AuthRepository } from "../domain/repositories/auth.repository";
 
-export class LoginUsecase
-  implements Usecase<LoginRequest, LoginResponse | Error>
-{
+export class LoginUsecase implements Usecase<LoginRequest, LoginResponse> {
   constructor(private readonly authRepository: AuthRepository) {}
 
-  async execute(body: LoginRequest): Promise<LoginResponse | Error> {
+  async execute(body: LoginRequest): Promise<LoginResponse> {
     return await this.authRepository.login(body);
   }
 }
