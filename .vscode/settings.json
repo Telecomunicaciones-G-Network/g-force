@@ -74,6 +74,11 @@
     "responsive-image": "react-components",
     "schemas": "scala",
     "search-input": "react-components",
+    "tab-content": "react-components",
+    "tab": "react-components",
+    "tabs-container": "react-components",
+    "tabs-triggers": "react-components",
+    "tabs": "zeabur",
     "text-input-controller": "react-components",
     "text-input": "react-components",
     "text": "react-components",
@@ -445,6 +450,9 @@
   "workbench.tree.indent": 8,
   "workbench.tree.renderIndentGuides": "always",
   "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   }
 }
