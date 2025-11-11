@@ -1,4 +1,4 @@
 export const inputFullWidth = {
-  true: 'w-full',
   false: 'w-fit',
+  true: 'w-full',
 } as const;

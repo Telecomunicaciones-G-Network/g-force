@@ -1,8 +1,3 @@
-// TODO: Debo fragmentar este middlewware en trozos mas pequenos
-// TODO: Debo agregar las rutas publicas y privadas en una configuracion aparte para que no se este hardcodeado
-// TODO: Debo revisar a fondo el middleware para optimizarlo al maximo
-// TODO: The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy reparar este warning
-
 import type { NextRequest } from 'next/server';
 
 import { NextResponse } from 'next/server';

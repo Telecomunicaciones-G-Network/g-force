@@ -1,4 +1,4 @@
-export function minutesToSeconds(minutes: number): number {
+export const minutesToSeconds = (minutes: number): number => {
   if (
     typeof minutes !== 'number' ||
     !Number.isFinite(minutes) ||
@@ -9,4 +9,4 @@ export function minutesToSeconds(minutes: number): number {
   }
 
   return Math.floor(minutes * 60);
-}
+};

@@ -1,5 +1,3 @@
-// TODO: Debo crear un build para colocar el recurso y la accion al llamar al endpoint
-
 import type { LoginRequest, LoginResponse } from '../../domain/interfaces';
 
 import { HttpClient } from '@http-client/classes/http-client.class';

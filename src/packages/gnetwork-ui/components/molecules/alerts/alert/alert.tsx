@@ -7,8 +7,8 @@ import { AlertSchemes } from './enums/alert-scheme.enum';
 import { getAlertClassNames } from './alert.style';
 
 export const Alert = ({
-  className,
   children,
+  className,
   ref,
   scheme,
   ...rest

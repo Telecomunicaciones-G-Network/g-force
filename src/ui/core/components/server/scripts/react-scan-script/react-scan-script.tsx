@@ -1,6 +1,6 @@
 export const ReactScanScript = () => {
-  if (process.env.NODE_ENV === 'development') {
-    console.log('ReactScanScript');
+  if (process.env.MODE === 'development') {
+    console.log('🚀 ReactScanScript is running on development mode');
   }
 
   return (

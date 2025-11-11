@@ -1,6 +1,3 @@
-// TODO: Debo quitar la implementacion de las cookies en esta action y crear una clase que me permita manejar estas cookies
-// TODO: Debo pasar esta implementacion de manejar las cookies mediante el codigo directo y pasarle como repositorio de almacenamiento de datos en auth
-
 'use server';
 
 import type { LoginActionState } from '@ui-auth/interfaces';
@@ -12,9 +9,9 @@ import { ServerCrypto } from '@crypto/classes/server-crypto.class';
 import { daysToSeconds } from '@timer/utils/days-to-seconds.util';
 import { minutesToSeconds } from '@timer/utils/minutes-to-seconds.util';
 
-import { ENVS } from '@ui-core/envs/envs';
-
 import { LoginDTO } from '@module-auth/infrastructure/dtos/login.dto';
+
+import { ENVS } from '@ui-core/envs/envs';
 
 import { authService } from '@ui-auth/services/auth.service';
 
@@ -79,7 +76,10 @@ export async function loginAction(
 
     return {
       errors: {
-        form: [error?.message || 'Login failed'],
+        form: [
+          error?.message ||
+            'Lo sentimos, ha ocurrido un error al iniciar sesión. Por favor intente nuevamente.',
+        ],
       },
       message: 'Login Failed',
       success: false,

@@ -1,4 +1,4 @@
-# 👨‍💻 GNetwork @ G-Force
+# 👨‍💻 GNetwork @ GForce
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
@@ -9,7 +9,6 @@
 </div>
 
 <br/>
-
 
 ## 📝 Overview
 

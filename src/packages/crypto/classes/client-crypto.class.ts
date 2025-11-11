@@ -24,7 +24,7 @@ export class ClientCrypto {
     );
   }
 
-  static async encrypt(data: string, password: string): Promise<string> {
+  public static async encrypt(data: string, password: string): Promise<string> {
     const key = await ClientCrypto.getKey(password);
     const iv = crypto.getRandomValues(new Uint8Array(12));
     const encodedData = ClientCrypto.encoder.encode(data);
@@ -45,7 +45,7 @@ export class ClientCrypto {
     return btoa(String.fromCharCode(...combined));
   }
 
-  static async encryptObject<T extends Record<string, unknown>>(
+  public static async encryptObject<T extends Record<string, unknown>>(
     obj: T,
     password: string,
   ): Promise<string> {

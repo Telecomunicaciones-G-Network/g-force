@@ -1,11 +1,11 @@
 export const textWeights = {
-  thin: 'font-thin',
-  extralight: 'font-extralight',
-  light: 'font-light',
-  normal: 'font-normal',
-  medium: 'font-medium',
-  semibold: 'font-semibold',
+  black: 'font-black',
   bold: 'font-bold',
   extrabold: 'font-extrabold',
-  black: 'font-black',
+  extralight: 'font-extralight',
+  light: 'font-light',
+  medium: 'font-medium',
+  normal: 'font-normal',
+  semibold: 'font-semibold',
+  thin: 'font-thin',
 } as const;

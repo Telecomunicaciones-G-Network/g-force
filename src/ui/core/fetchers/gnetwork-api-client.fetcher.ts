@@ -1,5 +1,3 @@
-// TODO: Debo pasar esa configuracion de headers a un archivo de configuracion o constante
-
 import { Axios } from '@http-client/classes/axios.class';
 import { HttpClient } from '@http-client/classes/http-client.class';
 

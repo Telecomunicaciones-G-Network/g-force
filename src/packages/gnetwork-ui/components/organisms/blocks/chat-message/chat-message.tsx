@@ -8,8 +8,8 @@ import { cn } from '../../../../utils/cn.util';
 import styles from './chat-message.module.css';
 
 export const ChatMessage = ({
-  className = '',
   children,
+  className = '',
   direction = 'unknown',
   ref,
   time = '',

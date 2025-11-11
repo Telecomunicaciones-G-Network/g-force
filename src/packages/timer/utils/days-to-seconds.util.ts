@@ -1,4 +1,4 @@
-export function daysToSeconds(days: unknown): number {
+export const daysToSeconds = (days: number): number => {
   if (
     typeof days !== 'number' ||
     !Number.isFinite(days) ||
@@ -9,4 +9,4 @@ export function daysToSeconds(days: unknown): number {
   }
 
   return Math.floor(days * 24 * 60 * 60);
-}
+};

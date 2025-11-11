@@ -10,8 +10,8 @@ import { Providers } from '@ui-core/providers/providers/providers.provider';
 import '@ui-core/styles/main.css';
 
 export const metadata: Metadata = {
-  title: 'GNetwork - G-Force',
-  description: 'Telecomunicaciones GNetwork G-Force',
+  title: 'GNetwork - Gforce',
+  description: 'Telecomunicaciones GNetwork Gforce',
 };
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {

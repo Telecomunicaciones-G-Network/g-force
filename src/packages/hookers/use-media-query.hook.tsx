@@ -11,17 +11,18 @@ type UseMediaQueryOptions = {
 
 const IS_SERVER = typeof window === 'undefined';
 
-export function useMediaQuery(
+export const useMediaQuery = (
   query: string,
   {
     defaultValue = false,
     initializeWithValue = true,
   }: UseMediaQueryOptions = {},
-): boolean {
+): boolean => {
   const getMatches = (query: string): boolean => {
     if (IS_SERVER) {
       return defaultValue;
     }
+
     return window.matchMedia(query).matches;
   };
 
@@ -29,12 +30,11 @@ export function useMediaQuery(
     if (initializeWithValue) {
       return getMatches(query);
     }
+
     return defaultValue;
   });
 
-  function handleChange() {
-    setMatches(getMatches(query));
-  }
+  const handleChange = () => setMatches(getMatches(query));
 
   useIsomorphicLayoutEffect(() => {
     const matchMedia = window.matchMedia(query);
@@ -57,4 +57,4 @@ export function useMediaQuery(
   }, [query]);
 
   return matches;
-}
+};

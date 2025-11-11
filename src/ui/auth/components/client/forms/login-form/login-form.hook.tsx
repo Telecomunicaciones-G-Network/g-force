@@ -1,6 +1,7 @@
 import type { LoginFormData } from './interface';
+import type { LoginActionState } from '@ui-auth/interfaces';
 
-import { useState } from 'react';
+import { startTransition, useActionState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -15,13 +16,22 @@ import { loginFormSchema } from './schemas/login-form.schema';
 
 import { loginFormInitialValues } from './login-form.state';
 
+const initialState: LoginActionState = {
+  errors: undefined,
+  message: undefined,
+  success: undefined,
+};
+
 export const useLoginForm = () => {
-  const [serverError, setServerError] = useState<string | null>(null);
+  const [formState, formAction, isPending] = useActionState(
+    loginAction,
+    initialState,
+  );
 
   const {
     clearErrors: clearErrorsForm,
     control,
-    formState,
+    formState: formStateHook,
     handleSubmit,
   } = useForm<LoginFormData>({
     defaultValues: loginFormInitialValues,
@@ -29,19 +39,17 @@ export const useLoginForm = () => {
     resolver: zodResolver(loginFormSchema),
     reValidateMode: 'onSubmit',
   });
-  const { errors, isSubmitting } = formState;
+  const { errors, isSubmitting } = formStateHook;
+  const serverError = formState?.errors?.form?.[0];
 
   const clearErrors = (
     fieldName?: keyof LoginFormData | (keyof LoginFormData)[],
   ) => {
     clearErrorsForm(fieldName);
-    setServerError(null);
   };
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      setServerError(null);
-
       const formData = new FormData();
 
       const encryptedPayload = await ClientCrypto.encryptObject(
@@ -54,11 +62,9 @@ export const useLoginForm = () => {
 
       formData.append('payload', encryptedPayload);
 
-      const result = await loginAction({}, formData);
-
-      if (result && !result.success && result.errors?.form) {
-        setServerError(result.errors.form[0]);
-      }
+      startTransition(() => {
+        formAction(formData);
+      });
     } catch (error) {
       console.error(error);
     }
@@ -68,8 +74,9 @@ export const useLoginForm = () => {
     clearErrors,
     control,
     errors,
+    formAction,
     handleSubmit,
-    isSubmitting,
+    isSubmitting: isSubmitting || isPending,
     onSubmit,
     serverError,
   };

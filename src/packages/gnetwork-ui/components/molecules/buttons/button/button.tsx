@@ -31,11 +31,12 @@ export const Button = ({
     className,
     color,
     fullWidth,
+    isStatic,
     scheme,
     size,
-    isStatic,
   });
   const Comp = asChild ? Slot : 'button';
+
   const { handleClick } = useButton({ onClick });
 
   if (!children) {

@@ -1,5 +1,3 @@
-// TODO: Debo mejorar los mensajes de error colocando un chalker o algo asi en la consola
-
 import type {
   AxiosInstance,
   AxiosRequestConfig,

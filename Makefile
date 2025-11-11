@@ -27,6 +27,6 @@ upgradePackages:
 
 # make upgradeVersion
 upgradeVersion:
-	bun changeset add
-	bun changeset version
-	bun changeset publish
+	bunx changeset add
+	bunx changeset version
+	bunx changeset publish

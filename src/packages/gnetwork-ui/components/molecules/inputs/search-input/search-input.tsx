@@ -11,8 +11,8 @@ import styles from './search-input.module.css';
 export const SearchInput = ({
   className = '',
   error = false,
-  onFocus,
   onBlur,
+  onFocus,
   ...rest
 }: Readonly<InputProps>) => {
   return (

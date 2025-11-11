@@ -1,5 +1,5 @@
 import type { VariantProps } from 'class-variance-authority';
-import type { ReactDiv } from '@gnetwork-ui/types';
+import type { ReactDiv } from '../../../../types';
 import type { BubbleMode } from './types';
 
 import { bubbleVariants } from './bubble.style';

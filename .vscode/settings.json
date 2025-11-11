@@ -7,6 +7,29 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  // Hightlight Extension
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "DONE:",
+      "color": "#ffffff",
+      "backgroundColor": "#499167",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "IMPROVE:",
+      "color": "#ffffff",
+      "backgroundColor": "#2081c3",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "PENDING:",
+      "color": "#ffffff",
+      "backgroundColor": "#d84727",
+      "overviewRulerColor": "grey"
+    }
+  ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
     "(auth)": "public",
