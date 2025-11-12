@@ -46,7 +46,7 @@ export const buttonVariants = cva(
         color: 'gray',
         scheme: 'outline',
         class:
-          'bg-transparent border border-solid border-gray text-gray hover:bg-gray hover:text-chromatic-inverted hover:border-none',
+          'bg-transparent border border-solid border-gray text-gray hover:bg-gray hover:text-white hover:border-none',
       },
       {
         color: 'red',

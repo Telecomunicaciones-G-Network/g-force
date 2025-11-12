@@ -25,6 +25,7 @@ FIXME: Solve this middleware warning ⚠ The "middleware" file convention is dep
 
 ## Improves
 
+IMPROVE: Fragment my chat contact component on parts
 IMPROVE: Fragment my chat detail tabs component
 IMPROVE: On chat conversation make iterable a button group
 IMPROVE: Create button group component and replace buttons on chat conversation header

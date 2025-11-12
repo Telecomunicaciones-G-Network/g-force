@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import {
   MdEditNote,
   MdHistory,
@@ -8,6 +10,7 @@ import {
   MdSell,
 } from 'react-icons/md';
 
+import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { TabContent } from '@gnetwork-ui/components/molecules/tabs/tab-content';
 import { TabsTriggers } from '@gnetwork-ui/components/molecules/tabs/tabs-triggers';
@@ -16,6 +19,10 @@ import { TabButton } from '@gnetwork-ui/components/organisms/tabs/tab-button/tab
 import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
+
+import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
+
+import { chatDetailTabsDictionary } from './dictionaries/chat-detail-tabs.dictionary';
 
 import { useChatDetailTabs } from './chat-detail-tabs.hook';
 
@@ -41,11 +48,29 @@ export const ChatDetailTabs = () => {
           styles.base__header,
         )}
       >
-        <div className="flex items-center gap-2">
+        <div className={styles.base__header_top}>
           <BackButton onClick={goBackChat} />
           <Text as="h3" level="small" scheme="label">
-            Contacto
+            {chatDetailTabsDictionary?.[activeTab]}
           </Text>
+        </div>
+        <div
+          className={cn(
+            styles.base__header_image,
+            'min-h-[138px] tablet:min-h-[172px]',
+          )}
+        >
+          <ResponsiveImage
+            customImageComponent={
+              <Image
+                alt="Contact image"
+                className="responsive-image-cover rounded-lg"
+                fill
+                src="/images/chat_user_avatar_1_contact.png"
+                sizes="100%"
+              />
+            }
+          />
         </div>
       </div>
       <TabsTriggers
@@ -71,7 +96,7 @@ export const ChatDetailTabs = () => {
         </TabButton>
       </TabsTriggers>
       <TabContent className={styles.base__content} value="contact">
-        contacto
+        <ChatContact />
       </TabContent>
       <TabContent className={styles.base__content} value="invoices">
         facturacion
