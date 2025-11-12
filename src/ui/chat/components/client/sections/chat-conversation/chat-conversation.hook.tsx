@@ -21,10 +21,14 @@ export const useChatConversation = () => {
     setActiveChat(null);
   };
 
+  const goToChatDetails = () =>
+    useChatStore.setState({ chatMode: ChatModes.DETAILS });
+
   return {
     activeChat,
     chatMode,
     goBackChatList,
+    goToChatDetails,
     isDesktop,
   };
 };

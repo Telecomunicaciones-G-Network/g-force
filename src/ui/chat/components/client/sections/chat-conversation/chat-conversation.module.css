@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.base__avatar_button {
+  max-width: 48px;
+  width: 100%;
+}
+
 .base__chat {
   display: flex;
   flex-direction: column;

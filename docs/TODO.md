@@ -25,6 +25,9 @@ FIXME: Solve this middleware warning ⚠ The "middleware" file convention is dep
 
 ## Improves
 
+IMPROVE: Fragment my chat detail tabs component
+IMPROVE: On chat conversation make iterable a button group
+IMPROVE: Create button group component and replace buttons on chat conversation header
 IMPROVE: Create a class or utility to handler coookies on server and client using nextjs
 IMPROVE: Quit serverError from login form hook and improve this hook
 IMPROVE: Create a build pattern or dictionary to handler resources and actions or create a http strategy to build a path. Apply this on http-client.class.ts

@@ -2,6 +2,8 @@
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
+import { ChatDetailTabs } from '@ui-chat/components/client/tabs/chat-detail-tabs';
+
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useChatDetails } from './chat-details.hook';
@@ -19,7 +21,7 @@ export const ChatDetails = () => {
           <section
             className={cn(styles.base, 'w-full lg:min-w-[327px] lg:w-[327px]')}
           >
-            detalles
+            <ChatDetailTabs />
           </section>
         )}
     </>

@@ -12,7 +12,6 @@ import styles from './chat-empty.module.css';
 export const ChatEmpty = () => {
   const { activeChat } = useChatEmpty();
 
-  console.log('activeChat', activeChat);
   return (
     <>
       {(activeChat === null || activeChat === undefined) && (

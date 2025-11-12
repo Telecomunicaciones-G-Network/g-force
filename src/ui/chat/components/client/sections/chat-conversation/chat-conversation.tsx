@@ -24,7 +24,7 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './chat-conversation.module.css';
 
 export const ChatConversation = () => {
-  const { activeChat, chatMode, goBackChatList, isDesktop } =
+  const { activeChat, chatMode, goBackChatList, goToChatDetails, isDesktop } =
     useChatConversation();
 
   return (
@@ -36,21 +36,26 @@ export const ChatConversation = () => {
             <div className={styles.base__header}>
               <div className={styles.base__header_info}>
                 <BackButton onClick={goBackChatList} />
-                <Avatar
-                  className="flex lg:hidden"
-                  image={{
-                    customImageComponent: (
-                      <Image
-                        alt="Angela"
-                        className="responsive-image-cover"
-                        fill
-                        priority
-                        sizes="100%"
-                        src="/images/chat_user_avatar_1.png"
-                      />
-                    ),
-                  }}
-                />
+                <button
+                  className={cn('flex lg:hidden', styles.base__avatar_button)}
+                  onClick={goToChatDetails}
+                  type="button"
+                >
+                  <Avatar
+                    image={{
+                      customImageComponent: (
+                        <Image
+                          alt="Angela"
+                          className="responsive-image-cover"
+                          fill
+                          priority
+                          sizes="100%"
+                          src="/images/chat_user_avatar_1.png"
+                        />
+                      ),
+                    }}
+                  />
+                </button>
                 <Text
                   as="h3"
                   className="font-medium text-sm lg:font-medium lg:text-lg"
