@@ -1,3 +1,5 @@
+'use client';
+
 import type { TabContentProps } from './tab-content.props';
 
 import * as TabsPrimitive from '@radix-ui/react-tabs';

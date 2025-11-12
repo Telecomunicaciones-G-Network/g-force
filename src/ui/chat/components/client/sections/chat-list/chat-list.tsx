@@ -1,5 +1,7 @@
 'use client';
 
+import { cn } from '@gnetwork-ui/utils/cn.util';
+
 import { ChatListBody } from './components/chat-list-body';
 import { ChatListHeader } from './components/chat-list-header';
 
@@ -15,7 +17,12 @@ export const ChatList = () => {
   return (
     <>
       {(chatMode === ChatModes.LIST || isDesktop) && (
-        <section className={styles.base}>
+        <section
+          className={cn(
+            styles.base,
+            'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px]',
+          )}
+        >
           <ChatListHeader />
           <ChatListBody />
         </section>

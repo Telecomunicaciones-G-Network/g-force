@@ -1,15 +1,17 @@
-// TODO: Debo fragmentar este componente en varias partes
-
 'use client';
 
 import { Fragment } from 'react';
 
+import Image from 'next/image';
+
 import { MdCall, MdMailOutline, MdMoreVert, MdSend } from 'react-icons/md';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 import { ChatMessage } from '@gnetwork-ui/components/organisms/blocks/chat-message';
+import { BackButton } from '@gnetwork-ui/components/organisms/buttons/back-button';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -22,7 +24,8 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './chat-conversation.module.css';
 
 export const ChatConversation = () => {
-  const { activeChat, chatMode, isDesktop } = useChatConversation();
+  const { activeChat, chatMode, goBackChatList, isDesktop } =
+    useChatConversation();
 
   return (
     <>
@@ -31,9 +34,32 @@ export const ChatConversation = () => {
         activeChat !== undefined && (
           <section className={cn(styles.base, 'divide-y divide-neutral-200')}>
             <div className={styles.base__header}>
-              <Text as="h3" level="large" scheme="label">
-                Angela Goncalves
-              </Text>
+              <div className={styles.base__header_info}>
+                <BackButton onClick={goBackChatList} />
+                <Avatar
+                  className="flex lg:hidden"
+                  image={{
+                    customImageComponent: (
+                      <Image
+                        alt="Angela"
+                        className="responsive-image-cover"
+                        fill
+                        priority
+                        sizes="100%"
+                        src="/images/chat_user_avatar_1.png"
+                      />
+                    ),
+                  }}
+                />
+                <Text
+                  as="h3"
+                  className="font-medium text-sm lg:font-medium lg:text-lg"
+                  level="large"
+                  scheme="label"
+                >
+                  Angela Goncalves
+                </Text>
+              </div>
               <div className={styles.base__header_buttons}>
                 <Button className="px-2" isStatic>
                   <MdCall className="min-h-6 min-w-6 size-6" />

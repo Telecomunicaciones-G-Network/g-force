@@ -1,3 +1,5 @@
+'use client';
+
 import type { TabsTriggersProps } from './tabs-triggers.props';
 
 import * as TabsPrimitive from '@radix-ui/react-tabs';

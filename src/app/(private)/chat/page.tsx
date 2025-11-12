@@ -4,6 +4,7 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
+import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
 import { ChatList } from '@ui-chat/components/client/sections/chat-list';
 
 import styles from './page.module.css';
@@ -18,6 +19,7 @@ export default function ChatPage() {
     <div className={cn(styles.base, 'divide-x divide-neutral-200')}>
       <ChatList />
       <ChatConversation />
+      <ChatDetails />
       <ChatEmpty />
     </div>
   );

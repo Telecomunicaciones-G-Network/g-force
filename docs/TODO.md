@@ -22,6 +22,7 @@ PENDING: /src/middleware.ts
 
 FIXME: Load Gnetwork brand from server but it has not to show on login page
 FIXME: Solve this middleware warning ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+FIXME: Loading button on loading must be red on login page
 
 ## Improves
 
@@ -43,9 +44,13 @@ IMPROVE: Create a error dictionary and apply on axios class http client
 IMPROVE: On getwork-api-client.fetcher.ts transfer configuration into a constant config file
 IMPROVE: Props for input controller are the same DRY and unify
 IMPROVE: Fragment login form component on parts
+IMPROVE: Fragment chat conversation components on parts
+IMPROVE: Fragment chat card component on parts
 
 ## Todos
 
+TODO: When user open chat conversation we need to automatically go scroll down for messages
+TODO: On chat conversation on mobile viewport put avatar and go back icon
 TODO: Add token to http client using axios request interceptor
 TODO: Create dashboard layout
 TODO: Handler permissions and roles for routing

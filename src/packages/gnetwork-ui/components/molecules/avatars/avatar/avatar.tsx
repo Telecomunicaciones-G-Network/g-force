@@ -16,7 +16,7 @@ export const Avatar = ({
     ref={ref}
     className={cn(
       styles.base,
-      'aspect-48/48 border-none gap-2 max-w-[48px] p-0 rounded-lg w-full',
+      'aspect-48/48 border-none flex gap-2 max-w-[48px] p-0 rounded-lg w-full',
       className,
     )}
     {...rest}

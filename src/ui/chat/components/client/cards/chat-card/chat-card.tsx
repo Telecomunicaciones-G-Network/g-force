@@ -1,5 +1,3 @@
-// TODO: Debo fragmentar este componente en varias partes
-
 'use client';
 
 import type { ChatCardProps } from './chat-card.props';
