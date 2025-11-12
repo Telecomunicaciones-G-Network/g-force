@@ -15,7 +15,7 @@ import styles from './button.module.css';
 export const buttonVariants = cva(
   [
     styles.base,
-    'justify-center ring-offset-background rounded-lg text-left transition-colors disabled:bg-button-background-disabled disabled:text-button-text-disabled focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0',
+    'justify-center ring-offset-background rounded-lg text-left transition-colors focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0',
   ],
   {
     variants: {

@@ -4,6 +4,8 @@ import type { ButtonProps } from './button.props';
 
 import { Slot } from '@radix-ui/react-slot';
 
+import { cn } from '../../../../utils/cn.util';
+
 import { useButton } from './button.hook';
 
 import { getButtonClassNames } from './button.style';
@@ -15,6 +17,7 @@ export const Button = ({
   children,
   className = '',
   color,
+  disabled = false,
   fullWidth,
   isStatic,
   leftIcon,
@@ -47,7 +50,13 @@ export const Button = ({
 
   return (
     <Comp
-      className={classes}
+      className={cn(
+        classes,
+        disabled &&
+          !loading &&
+          'disabled:bg-button-background-disabled disabled:text-button-text-disabled',
+      )}
+      disabled={disabled || loading}
       onClick={handleClick}
       ref={ref}
       type={type}

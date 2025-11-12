@@ -8,9 +8,7 @@
 .base__chat {
   display: flex;
   flex-direction: column;
-  gap: 24px;
   overflow: auto;
-  padding: 24px;
 }
 
 .base__content {
@@ -39,7 +37,7 @@
   align-items: center;
   display: flex;
   gap: 8px;
-  justify-content: center;
+  flex: 1;
 }
 
 .base__header_buttons {

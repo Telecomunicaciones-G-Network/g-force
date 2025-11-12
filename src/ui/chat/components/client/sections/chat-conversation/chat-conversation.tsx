@@ -73,7 +73,12 @@ export const ChatConversation = () => {
               </div>
             </div>
             <div className={styles.base__content}>
-              <div className={styles.base__chat}>
+              <div
+                className={cn(
+                  styles.base__chat,
+                  'gap-6 px-4 py-6 tablet:gap-8 tablet:px-8 lg:gap-6 lg:p-6',
+                )}
+              >
                 {chatMessages?.map((chatMessage) => (
                   <Fragment key={chatMessage?.id}>
                     {chatMessage?.message && (

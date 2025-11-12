@@ -22,7 +22,6 @@ PENDING: /src/middleware.ts
 
 FIXME: Load Gnetwork brand from server but it has not to show on login page
 FIXME: Solve this middleware warning ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-FIXME: Loading button on loading must be red on login page
 
 ## Improves
 
