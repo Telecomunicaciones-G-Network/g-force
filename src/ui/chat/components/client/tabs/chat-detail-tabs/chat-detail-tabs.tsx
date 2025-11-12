@@ -21,6 +21,9 @@ import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
+import { ChatInvoices } from '@ui-chat/components/server/blocks/chat-invoices';
+
+import { ChatDetailTabs as ChatDetailTabsValues } from './enums/chat-detail-tabs.enum';
 
 import { chatDetailTabsDictionary } from './dictionaries/chat-detail-tabs.dictionary';
 
@@ -29,8 +32,8 @@ import { useChatDetailTabs } from './chat-detail-tabs.hook';
 import styles from './chat-detail-tabs.module.css';
 
 export const ChatDetailTabs = () => {
-  const { activeTab, changeActiveTab, goBackChat } =
-    useChatDetailTabs('contact');
+  const { activeTab, changeActiveTab, goBackChat, isActiveTab } =
+    useChatDetailTabs(ChatDetailTabsValues.CONTACT);
 
   return (
     <Tabs
@@ -38,7 +41,7 @@ export const ChatDetailTabs = () => {
         styles.base,
         'py-6 tablet:py-8 lg:divide-y lg:divide-gray-200 lg:p-0',
       )}
-      defaultValue="contact"
+      defaultValue={ChatDetailTabsValues.CONTACT}
       onValueChange={changeActiveTab}
       value={activeTab}
     >
@@ -79,35 +82,69 @@ export const ChatDetailTabs = () => {
           'flex-wrap p-6 tablet:pb-8 tablet:pt-8 tablet:px-8 lg:flex-nowrap lg:pb-6',
         )}
       >
-        <TabButton value="contact">
+        <TabButton
+          color={isActiveTab(ChatDetailTabsValues.CONTACT) ? 'red' : 'default'}
+          value={ChatDetailTabsValues.CONTACT}
+        >
           <MdPersonOutline className="min-h-6 min-w-6 size-6" />
         </TabButton>
-        <TabButton value="invoices">
+        <TabButton
+          color={isActiveTab(ChatDetailTabsValues.INVOICES) ? 'red' : 'default'}
+          value={ChatDetailTabsValues.INVOICES}
+        >
           <MdReceiptLong className="min-h-6 min-w-6 size-6" />
         </TabButton>
-        <TabButton value="contracts">
+        <TabButton
+          color={
+            isActiveTab(ChatDetailTabsValues.CONTRACTS) ? 'red' : 'default'
+          }
+          value={ChatDetailTabsValues.CONTRACTS}
+        >
           <MdEditNote className="min-h-6 min-w-6 size-6" />
         </TabButton>
-        <TabButton value="status">
+        <TabButton
+          color={isActiveTab(ChatDetailTabsValues.STATUS) ? 'red' : 'default'}
+          value={ChatDetailTabsValues.STATUS}
+        >
           <MdSell className="min-h-6 min-w-6 size-6" />
         </TabButton>
-        <TabButton value="historical">
+        <TabButton
+          color={
+            isActiveTab(ChatDetailTabsValues.HISTORICAL) ? 'red' : 'default'
+          }
+          value={ChatDetailTabsValues.HISTORICAL}
+        >
           <MdHistory className="min-h-6 min-w-6 size-6" />
         </TabButton>
       </TabsTriggers>
-      <TabContent className={styles.base__content} value="contact">
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.CONTACT}
+      >
         <ChatContact />
       </TabContent>
-      <TabContent className={styles.base__content} value="invoices">
-        facturacion
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.INVOICES}
+      >
+        <ChatInvoices />
       </TabContent>
-      <TabContent className={styles.base__content} value="contracts">
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.CONTRACTS}
+      >
         contratos
       </TabContent>
-      <TabContent className={styles.base__content} value="status">
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.STATUS}
+      >
         status
       </TabContent>
-      <TabContent className={styles.base__content} value="historical">
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.HISTORICAL}
+      >
         historico
       </TabContent>
     </Tabs>

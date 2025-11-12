@@ -25,6 +25,8 @@ FIXME: Solve this middleware warning ⚠ The "middleware" file convention is dep
 
 ## Improves
 
+IMPROVE: Iterate base infos on chat invoice card
+IMPROVE: Info list on chat contact component can be replace using a iterator and map this
 IMPROVE: Fragment my chat contact component on parts
 IMPROVE: Fragment my chat detail tabs component
 IMPROVE: On chat conversation make iterable a button group
@@ -34,7 +36,6 @@ IMPROVE: Quit serverError from login form hook and improve this hook
 IMPROVE: Create a build pattern or dictionary to handler resources and actions or create a http strategy to build a path. Apply this on http-client.class.ts
 IMPROVE: Allow to close alert when this one is clicked on x icon on login page
 IMPROVE: Avatar on chat list on chat page should be use skeleton on loading
-IMPROVE: Customize scrollbar to more elegance
 IMPROVE: Apply validation schema on environment variables
 IMPROVE: Fragment the middleware.ts in short codes
 IMPROVE: I must to improve the private and public routes on middleware.ts
@@ -49,9 +50,12 @@ IMPROVE: Props for input controller are the same DRY and unify
 IMPROVE: Fragment login form component on parts
 IMPROVE: Fragment chat conversation components on parts
 IMPROVE: Fragment chat card component on parts
+IMPROVE: Create a layout for tab content on chat details
+IMPROVE: Fragment chat invoices component
 
 ## Todos
 
+TODO: When user on historical chat view hide close conversation button on chat details for contact
 TODO: When user open chat conversation we need to automatically go scroll down for messages
 TODO: On chat conversation on mobile viewport put avatar and go back icon
 TODO: Add token to http client using axios request interceptor
@@ -61,7 +65,6 @@ TODO: Handler permissions and roles for elements on views
 TODO: Create navbar
 TODO: Create sidebar
 TODO: Handler routes on sidebar
-TODO: Create contact detail on chat
 TODO: Create Invoicing detail on chat
 TODO: Create contract details on chat
 TODO: Create client status on details chat

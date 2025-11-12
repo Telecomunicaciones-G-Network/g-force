@@ -1,9 +1,12 @@
 .base {
   display: flex;
   flex-direction: column;
-  flex: 1;
   gap: 32px;
+  height: fit-content;
+  min-height: 100%;
+  overflow-y: auto;
   padding: 24px 32px;
+  width: 100%;
 }
 
 .base__content {
@@ -14,6 +17,7 @@
 }
 
 .base__image {
+  height: 138px;
   min-height: 138px;
   position: relative;
   width: 100%;

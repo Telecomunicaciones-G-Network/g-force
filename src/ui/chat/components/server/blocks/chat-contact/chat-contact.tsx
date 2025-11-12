@@ -4,13 +4,14 @@ import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
+import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './chat-contact.module.css';
 
 export const ChatContact = () => (
-  <section className={styles.base}>
+  <section className={cn(styles.base, 'py-6 px-4 tablet:p-8 lg:py-6 lg:px-8')}>
     <Text as="h5" level="large" scheme="label">
       Contacto
     </Text>
@@ -56,6 +57,13 @@ export const ChatContact = () => (
         >
           Natural
         </Text>
+      </div>
+      <Separator />
+      <div className={styles.base__info}>
+        <Text as="span" level="small" scheme="label">
+          Estado actual:
+        </Text>
+        <Tag color="green">Activo</Tag>
       </div>
       <Separator />
       <div className={styles.base__info}>

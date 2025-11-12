@@ -42,6 +42,10 @@
   --color-success-100: var(--success-100);
   --color-success-200: var(--success-200);
   --color-success-300: var(--success-300);
+  --color-tag-blue-background: var(--tag-blue-background);
+  --color-tag-blue-foreground: var(--tag-blue-foreground);
+  --color-tag-green-background: var(--tag-green-background);
+  --color-tag-green-foreground: var(--tag-green-foreground);
   --color-warning-100: var(--warning-100);
   --color-warning-200: var(--warning-200);
   --color-warning-300: var(--warning-300);

@@ -19,9 +19,12 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
 
   const goBackChat = () => setChatMode(ChatModes.CHAT);
 
+  const isActiveTab = (tab: ChatDetailTab) => activeTab === tab;
+
   return {
     activeTab,
     changeActiveTab,
     goBackChat,
+    isActiveTab,
   };
 };

@@ -1,0 +1,10 @@
+.base {
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  gap: 16px;
+  outline: none;
+}
