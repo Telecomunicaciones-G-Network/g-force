@@ -22,9 +22,11 @@ PENDING: /src/middleware.ts
 
 FIXME: Load Gnetwork brand from server but it has not to show on login page
 FIXME: Solve this middleware warning ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+FIXME: Check and fix every icon on web application
 
 ## Improves
 
+IMPROVE: On chat contract card use iterator to map info
 IMPROVE: Iterate base infos on chat invoice card
 IMPROVE: Info list on chat contact component can be replace using a iterator and map this
 IMPROVE: Fragment my chat contact component on parts
@@ -50,7 +52,6 @@ IMPROVE: Props for input controller are the same DRY and unify
 IMPROVE: Fragment login form component on parts
 IMPROVE: Fragment chat conversation components on parts
 IMPROVE: Fragment chat card component on parts
-IMPROVE: Create a layout for tab content on chat details
 IMPROVE: Fragment chat invoices component
 
 ## Todos

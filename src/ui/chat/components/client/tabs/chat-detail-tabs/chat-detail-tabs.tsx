@@ -21,6 +21,7 @@ import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
+import { ChatContracts } from '@ui-chat/components/server/blocks/chat-contracts';
 import { ChatInvoices } from '@ui-chat/components/server/blocks/chat-invoices';
 
 import { ChatDetailTabs as ChatDetailTabsValues } from './enums/chat-detail-tabs.enum';
@@ -121,19 +122,19 @@ export const ChatDetailTabs = () => {
         className={styles.base__content}
         value={ChatDetailTabsValues.CONTACT}
       >
-        <ChatContact />
+        <ChatContact title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
       <TabContent
         className={styles.base__content}
         value={ChatDetailTabsValues.INVOICES}
       >
-        <ChatInvoices />
+        <ChatInvoices title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
       <TabContent
         className={styles.base__content}
         value={ChatDetailTabsValues.CONTRACTS}
       >
-        contratos
+        <ChatContracts title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
       <TabContent
         className={styles.base__content}

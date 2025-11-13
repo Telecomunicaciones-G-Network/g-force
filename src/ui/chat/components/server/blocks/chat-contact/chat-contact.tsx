@@ -1,3 +1,5 @@
+import type { ChatContactProps } from './chat-contact.props';
+
 import Image from 'next/image';
 
 import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
@@ -8,13 +10,12 @@ import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
+import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-content-layout';
+
 import styles from './chat-contact.module.css';
 
-export const ChatContact = () => (
-  <section className={cn(styles.base, 'py-6 px-4 tablet:p-8 lg:py-6 lg:px-8')}>
-    <Text as="h5" level="large" scheme="label">
-      Contacto
-    </Text>
+export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => (
+  <ChatDetailsTabContentLayout title={title}>
     <div className={cn(styles.base__image, 'hidden lg:flex')}>
       <ResponsiveImage
         customImageComponent={
@@ -98,5 +99,5 @@ export const ChatContact = () => (
     <Button className="min-h-[48px]" color="gray" fullWidth scheme="outline">
       Cerrar conversación
     </Button>
-  </section>
+  </ChatDetailsTabContentLayout>
 );

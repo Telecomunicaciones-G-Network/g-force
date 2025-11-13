@@ -1,4 +1,6 @@
-export const ChatInvoices = [
+import type { ChatInvoice } from '@ui-chat/interfaces';
+
+export const ChatInvoices: ChatInvoice[] = [
   {
     id: 1,
     amount: '45,00$',

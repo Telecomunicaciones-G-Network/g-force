@@ -1,14 +1,3 @@
-.base {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  height: fit-content;
-  min-height: 100%;
-  overflow-y: auto;
-  padding: 24px 32px;
-  width: 100%;
-}
-
 .base__body {
   display: flex;
   flex-direction: column;

@@ -1,14 +1,8 @@
-.base__content {
+.base {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0px;
-}
-
-.base__image {
-  height: 138px;
-  min-height: 138px;
-  position: relative;
+  padding: 16px 0 0 0;
   width: 100%;
 }
 
