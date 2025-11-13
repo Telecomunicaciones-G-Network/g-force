@@ -1,21 +1,21 @@
 export class User {
-  createdAt!: Date;
-
-  dateJoined!: Date;
-
-  email!: string;
-
-  firstname!: string;
-
   id!: string;
 
-  isactive!: boolean;
+  createdAt: Date;
 
-  lastname!: string;
+  dateJoined: Date;
 
-  permissions!: string[];
+  email: string;
 
-  roles!: string[];
+  firstname: string;
 
-  updatedAt!: Date;
+  isactive: boolean;
+
+  lastname: string;
+
+  permissions: string[];
+
+  roles: string[];
+
+  updatedAt: Date;
 }

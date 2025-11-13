@@ -157,8 +157,8 @@
       "folderNames": ["alerts"]
     },
     {
-      "name": "Application",
-      "base": "src",
+      "name": "App",
+      "base": "app",
       "color": "blue-500",
       "folderNames": ["application"]
     },
@@ -293,6 +293,12 @@
       "base": "backup",
       "color": "teal-400",
       "folderNames": ["timer"]
+    },
+    {
+      "name": "Usecase Get",
+      "base": "powershell",
+      "color": "green-500",
+      "fileNames": ["get-contacts.usecase.ts"]
     },
     {
       "name": "Usecase Post",

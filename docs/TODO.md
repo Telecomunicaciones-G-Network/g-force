@@ -28,6 +28,8 @@ FIXME: My chat details components overhead without reaching responsive mode
 
 ## Improves
 
+IMPROVE: Get better login mappers as get contacts chat mapper
+IMPROVE: Get better clean architecture application
 IMPROVE: We need to iterate information on chat status card
 IMPROVE: On chat contract card use iterator to map info
 IMPROVE: Iterate base infos on chat invoice card
@@ -59,6 +61,7 @@ IMPROVE: Fragment chat invoices component
 
 ## Todos
 
+TODO: When socket connection fall down or internet connection failed we need to set a global state to block user socket interaction until connection being established again
 TODO: When user on historical chat view hide close conversation button on chat details for contact
 TODO: When user open chat conversation we need to automatically go scroll down for messages
 TODO: On chat conversation on mobile viewport put avatar and go back icon
@@ -188,23 +191,6 @@ export async function getCurrentUser(): Promise<LoginResultUser | null> {
     return JSON.parse(userDataCookie.value) as LoginResultUser;
   } catch (error) {
     console.error("Error al obtener el usuario actual:", error);
-    return null;
-  }
-}
-
-/**
- * Obtiene el access token actual desde las cookies
- *
- * @returns El access token o null si no está disponible
- */
-export async function getAccessToken(): Promise<string | null> {
-  try {
-    const cookieStore = await cookies();
-    const tokenCookie = cookieStore.get("access_token");
-
-    return tokenCookie?.value ?? null;
-  } catch (error) {
-    console.error("Error al obtener el access token:", error);
     return null;
   }
 }

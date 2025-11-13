@@ -7,3 +7,8 @@
   padding-right: 32px;
   width: 100%;
 }
+
+.base__actions {
+  align-items: center;
+  display: flex;
+}

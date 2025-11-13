@@ -18,6 +18,6 @@ export const Navbar = () => (
       name="global-search"
       placeholder="Busqueda global..."
     />
-    <div>avatar</div>
+    <div className={styles.base__actions}>avatar</div>
   </header>
 );
