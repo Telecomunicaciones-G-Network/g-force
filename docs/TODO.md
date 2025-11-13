@@ -23,6 +23,8 @@ PENDING: /src/middleware.ts
 FIXME: Load Gnetwork brand from server but it has not to show on login page
 FIXME: Solve this middleware warning ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 FIXME: Check and fix every icon on web application
+FIXME: Chat send input always must be fixed on bottom for chat conversation
+FIXME: My chat details components overhead without reaching responsive mode
 
 ## Improves
 

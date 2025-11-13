@@ -1,0 +1,7 @@
+.base__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  row-gap: 20px;
+}

@@ -72,6 +72,10 @@
     "chat-status": "react-components",
     "chat-ticket-card": "react-components",
     "components": "react-components",
+    "dashboard-layout-body": "react-components",
+    "dashboard-layout-header": "react-components",
+    "dashboard-layout-sidebar": "react-components",
+    "dashboard-layout": "react-components",
     "dictionaries": "resource",
     "email-input-controller": "react-components",
     "email-input": "react-components",
@@ -84,6 +88,8 @@
     "login-brand": "react-components",
     "login-form": "react-components",
     "mappers": "mappings",
+    "navbar": "react-components",
+    "navbars": "serverless",
     "password-input-controller": "react-components",
     "password-input": "react-components",
     "react-scan-script": "react-components",
@@ -272,6 +278,12 @@
       "base": "components",
       "color": "gray-700",
       "folderNames": ["skeletons"]
+    },
+    {
+      "name": "Templates",
+      "base": "template",
+      "color": "red-400",
+      "folderNames": ["templates"]
     },
     {
       "name": "Timer",

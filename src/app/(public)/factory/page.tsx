@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function FactoryPage() {
-  return <div className={styles.base}>Mount your component here</div>;
+  return <main className={styles.base}>Mount your component here</main>;
 }

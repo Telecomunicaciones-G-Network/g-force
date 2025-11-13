@@ -2,8 +2,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 0;
-  max-height: 100dvh;
-  min-height: 100dvh;
   overflow: hidden;
+  height: calc(100dvh - 72px);
   width: 100%;
 }

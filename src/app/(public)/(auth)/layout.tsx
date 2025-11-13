@@ -6,7 +6,7 @@ import styles from './layout.module.css';
 
 export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <div
+    <main
       className={cn(
         styles.base,
         'flex-col items-start desktop:flex-row desktop:items-center',
@@ -30,6 +30,6 @@ export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
       >
         {children}
       </main>
-    </div>
+    </main>
   );
 }
