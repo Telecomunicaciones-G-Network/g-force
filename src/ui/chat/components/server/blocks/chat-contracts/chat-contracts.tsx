@@ -11,7 +11,7 @@ import styles from './chat-contracts.module.css';
 
 export const ChatContracts = ({ title = '' }: Readonly<ChatContractsProps>) => (
   <ChatDetailsTabContentLayout title={title}>
-    <div className={styles.base__body}>
+    <div className={styles.base}>
       {ChatContractsList?.map((contract: ChatContract) => (
         <ChatContractCard key={contract?.id} open={true} {...contract} />
       ))}

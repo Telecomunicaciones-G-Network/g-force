@@ -26,6 +26,7 @@ FIXME: Check and fix every icon on web application
 
 ## Improves
 
+IMPROVE: We need to iterate information on chat status card
 IMPROVE: On chat contract card use iterator to map info
 IMPROVE: Iterate base infos on chat invoice card
 IMPROVE: Info list on chat contact component can be replace using a iterator and map this

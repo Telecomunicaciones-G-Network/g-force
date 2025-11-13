@@ -67,6 +67,7 @@
     "chat-list-header": "react-components",
     "chat-list": "react-components",
     "chat-message": "react-components",
+    "chat-status": "react-components",
     "components": "react-components",
     "dictionaries": "resource",
     "email-input-controller": "react-components",
