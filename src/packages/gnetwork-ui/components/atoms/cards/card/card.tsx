@@ -1,20 +1,25 @@
-import type { ReactDiv } from '../../../../types';
+import type { CardProps } from './card.props';
 
-import { cn } from '../../../../utils/cn.util';
-
-import styles from './card.module.css';
+import { getCardClassNames } from './card.style';
 
 export const Card = ({
   className = '',
   children,
+  fullWidth = false,
   ref,
   ...rest
-}: Readonly<ReactDiv>) => (
-  <div
-    className={cn(styles.base, 'bg-chromatic gap-4 p-4', className)}
-    ref={ref}
-    {...rest}
-  >
-    {children}
-  </div>
-);
+}: Readonly<CardProps>) => {
+  const classes = getCardClassNames({ className, fullWidth });
+
+  if (!children) {
+    console.warn(
+      'Prop children is missing on Card component. This component can not be render appropiately.',
+    );
+  }
+
+  return (
+    <div className={classes} ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};

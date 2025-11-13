@@ -67,10 +67,6 @@ TODO: Handler permissions and roles for elements on views
 TODO: Create navbar
 TODO: Create sidebar
 TODO: Handler routes on sidebar
-TODO: Create Invoicing detail on chat
-TODO: Create contract details on chat
-TODO: Create client status on details chat
-TODO: Create historical on details chat
 TODO: Create user navbar menu
 TODO: Change light and dark mode from user navbar menu
 TODO: Check all code

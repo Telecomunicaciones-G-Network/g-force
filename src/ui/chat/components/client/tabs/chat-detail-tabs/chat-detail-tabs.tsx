@@ -22,6 +22,7 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
 import { ChatContracts } from '@ui-chat/components/server/blocks/chat-contracts';
+import { ChatHistory } from '@ui-chat/components/server/blocks/chat-history';
 import { ChatInvoices } from '@ui-chat/components/server/blocks/chat-invoices';
 import { ChatStatus } from '@ui-chat/components/server/blocks/chat-status';
 
@@ -153,7 +154,7 @@ export const ChatDetailTabs = () => {
         className={styles.base__content}
         value={ChatDetailTabsValues.HISTORICAL}
       >
-        historico
+        <ChatHistory title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
     </Tabs>
   );
