@@ -24,6 +24,7 @@
       "@hookers/*": ["./src/packages/hookers/*"],
       "@http-client/*": ["./src/packages/http-client/*"],
       "@regexs/*": ["./src/packages/regexs/*"],
+      "@socketio/*": ["./src/packages/socketio/*"],
       "@timer/*": ["./src/packages/timer/*"],
       "@ui/*": ["./src/ui/*"],
       "@ui-core/*": ["./src/ui/core/*"],

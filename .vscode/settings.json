@@ -98,6 +98,7 @@
     "search-input": "react-components",
     "separator": "react-components",
     "separators": "base",
+    "socketio": "wakatime",
     "tab-button": "react-components",
     "tab-content": "react-components",
     "tab": "react-components",
@@ -116,6 +117,7 @@
   "material-icon-theme.files.associations": {
     "*.action.ts": "cue",
     "*.class.ts": "capnp",
+    "*.config.ts": "settings",
     "*.constant.ts": "command",
     "*.dictionary.ts": "denizenscript",
     "*.dto.ts": "hurl",
@@ -132,6 +134,7 @@
     "*.tsx": "react",
     "*.util.ts": "credits",
     "components.json": "regedit",
+    "config.ts": "settings",
     "css-data.json": "vscode",
     "envs.ts": "ejs",
     "globals.css": "css-map",
