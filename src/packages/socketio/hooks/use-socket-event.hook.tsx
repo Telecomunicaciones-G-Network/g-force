@@ -1,32 +1,35 @@
 'use client';
 
+import type { SocketEventListener } from '../types';
+
 import { useEffect, useRef } from 'react';
 
 import { useSocket } from './use-socket.hook';
 
 export const useSocketEvent = <T = unknown>(
-  eventName: string,
-  callback: (data: T) => void,
+  event: string,
+  listener: SocketEventListener<T>,
+  deps: unknown[] = [],
 ) => {
-  const callbackRef = useRef(callback);
+  const listenerRef = useRef(listener);
 
   const { socket, isConnected } = useSocket();
 
   useEffect(() => {
-    callbackRef.current = callback;
-  }, [callback]);
+    listenerRef.current = listener;
+  }, [listener]);
 
   useEffect(() => {
     if (!socket || !isConnected) return;
 
-    const handler = (data: T) => {
-      callbackRef.current(data);
+    const wrappedListener = (data: T) => {
+      listenerRef.current(data);
     };
 
-    socket.on(eventName, handler);
+    const unsubscribe = socket.on<T>(event, wrappedListener);
 
     return () => {
-      socket.off(eventName, handler);
+      unsubscribe();
     };
-  }, [socket, isConnected, eventName]);
+  }, [socket, isConnected, event, ...deps]);
 };

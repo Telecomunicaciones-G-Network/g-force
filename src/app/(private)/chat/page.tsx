@@ -4,11 +4,9 @@ import { SocketProvider } from '@socketio/providers/socket.provider';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { ENVS } from '@ui-core/envs/envs';
-
-import { CONFIG } from '@ui-core/config/config';
-
 import { getTokenAction } from '@ui-auth/actions/get-token.action';
+
+import { socketConfig } from '@ui-core/config/socket.config';
 
 import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
@@ -26,15 +24,7 @@ export default async function ChatPage() {
   const token = await getTokenAction();
 
   return (
-    <SocketProvider
-      socketUrl={ENVS.GNETWORK_SOCKET_BASE_URL}
-      config={{
-        ...CONFIG.socket,
-        auth: {
-          token,
-        },
-      }}
-    >
+    <SocketProvider config={socketConfig} token={token}>
       <div className={cn(styles.base, 'divide-x divide-neutral-200')}>
         <ChatList />
         <ChatConversation />

@@ -223,6 +223,12 @@
       "folderNames": ["packages"]
     },
     {
+      "name": "React Contexts",
+      "base": "react-components",
+      "color": "teal-500",
+      "folderNames": ["contexts"]
+    },
+    {
       "name": "React Module CSS",
       "base": "react",
       "color": "purple-300",
@@ -361,6 +367,12 @@
       "base": "typescript-def",
       "color": "gray-500",
       "fileNames": ["next-env.d.ts"]
+    },
+    {
+      "name": "React Contexts",
+      "base": "react",
+      "color": "teal-300",
+      "fileExtensions": ["context.tsx"]
     },
     {
       "name": "React Hooks",

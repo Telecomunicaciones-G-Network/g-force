@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
-import type { SocketConfig } from '../types';
+import type { SocketConfig } from '../interfaces';
 
 export interface SocketProviderProps extends PropsWithChildren {
-  socketUrl?: string;
-  config?: SocketConfig;
+  config: SocketConfig;
+  token: string | null;
 }

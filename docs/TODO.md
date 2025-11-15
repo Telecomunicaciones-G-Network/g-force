@@ -61,6 +61,9 @@ IMPROVE: Fragment chat invoices component
 
 ## Todos
 
+TODO: Review all socket connection package
+TODO: Optimize clean architecture structure
+TODO: Connect chat list endpoint
 TODO: When socket connection fall down or internet connection failed we need to set a global state to block user socket interaction until connection being established again
 TODO: When user on historical chat view hide close conversation button on chat details for contact
 TODO: When user open chat conversation we need to automatically go scroll down for messages

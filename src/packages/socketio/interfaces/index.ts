@@ -1,1 +1,1 @@
-export type { SocketClientGetInstanceParams } from './socket-client-get-instance-params.interface';
+export type { SocketConfig } from './socket-config.interface';

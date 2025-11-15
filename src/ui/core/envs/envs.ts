@@ -7,6 +7,8 @@ export const ENVS = {
   GNETWORK_SOCKET_BASE_URL:
     process.env.NEXT_PUBLIC_GNETWORK_SOCKET_BASE_URL ?? 'http://localhost:3000',
   GNETWORK_SOCKET_NAMESPACE:
-    process.env.NEXT_PUBLIC_GNETWORK_SOCKET_NAMESPACE ?? '/api/chat/socket.io',
+    process.env.NEXT_PUBLIC_GNETWORK_SOCKET_NAMESPACE ?? '',
+  GNETWORK_SOCKET_PATH:
+    process.env.NEXT_PUBLIC_GNETWORK_SOCKET_PATH ?? '/socket.io',
   REACT_SCAN_ON: process.env.REACT_SCAN_ON ?? 'false',
 };
