@@ -2,10 +2,10 @@ import type { ChatContractCardProps } from './chat-contract-card.props';
 
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
 import styles from './chat-contract-card.module.css';
-import { Tag } from '@/src/packages/gnetwork-ui/components/molecules/tags/tag';
 
 export const ChatContractCard = ({
   expirationDate = '',

@@ -1,21 +1,30 @@
 import type {
+  AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import type { HttpAdapter, HttpClientConfig } from '../interfaces';
-import type { HttpErrorResponse } from '../types';
+import type {
+  HttpAdapter,
+  HttpClientConfiguration,
+  HttpErrorResponse,
+  HttpLoggerAdapter,
+} from '../interfaces';
 
 import axios from 'axios';
 
+import { LogLevels } from '../enums/log-levels.enum';
+
 export class Axios implements HttpAdapter {
   private axiosInstance: AxiosInstance;
+  private readonly logger?: HttpLoggerAdapter;
 
-  constructor(config?: AxiosRequestConfig) {
+  constructor(config?: AxiosRequestConfig, logger?: HttpLoggerAdapter) {
     this.axiosInstance = axios.create({
       ...config,
     });
+    this.logger = logger;
     this.applyRequestInterceptor();
     this.applyResponseInterceptor();
   }
@@ -31,75 +40,75 @@ export class Axios implements HttpAdapter {
   private applyResponseInterceptor() {
     this.axiosInstance.interceptors.response.use(
       (response: AxiosResponse) => response,
-      (error: HttpErrorResponse) => {
-        console.error(`ERROR: ${error.response?.data?.error}`);
+      (error: AxiosError<HttpErrorResponse>) => {
+        this.logger?.log(error.message, LogLevels.ERROR);
 
         return Promise.reject(error);
       },
     );
   }
 
-  private getRequestConfiguration(
-    configurations?: HttpClientConfig,
+  private parseAxiosConfiguration(
+    configuration?: HttpClientConfiguration,
   ): AxiosRequestConfig {
     return {
-      headers: configurations?.headers,
-      params: configurations?.searchParams,
+      headers: configuration?.headers,
     };
   }
 
-  public async get<T = Response>(
+  public async get<T = unknown>(
     endpoint: string,
-    configurations?: HttpClientConfig,
+    configuration?: HttpClientConfiguration,
   ): Promise<T> {
     try {
-      const axiosConfig = this.getRequestConfiguration(configurations);
+      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
 
-      const response = await this.axiosInstance.get<T>(endpoint, axiosConfig);
-
-      if (!response?.data && response.statusText === 'OK') {
-        throw new Error('Axios data request has failed!');
-      }
-
-      return response.data;
-    } catch (err) {
-      const error = err as HttpErrorResponse;
-
-      return {
-        error: error?.response?.data?.error ?? 'An unknown error occurred',
-        extra: error?.response?.data?.extra,
-        status: error?.response?.status ?? 500,
-        success: false,
-      } as T;
-    }
-  }
-
-  public async post<T = Request, R = Response>(
-    endpoint: string,
-    body?: T,
-    configurations?: HttpClientConfig,
-  ): Promise<R> {
-    try {
-      const axiosConfig = this.getRequestConfiguration(configurations);
-
-      const response = await this.axiosInstance.post<R>(
+      const response = await this.axiosInstance.get<T>(
         endpoint,
-        body,
-        axiosConfig,
+        axiosConfiguration,
       );
 
       if (!response?.data && response.statusText === 'OK') {
         throw new Error('Axios data request has failed!');
       }
 
-      return response.data;
+      return response?.data;
     } catch (err) {
-      const error = err as HttpErrorResponse;
+      const error = err as AxiosError<HttpErrorResponse>;
 
       return {
-        error: error?.response?.data?.error ?? 'An unknown error occurred',
-        extra: error?.response?.data?.extra,
-        status: error?.response?.status ?? 500,
+        error: error?.response?.data?.error ?? error?.message,
+        status: error?.response?.data?.status ?? 500,
+        success: false,
+      } as T;
+    }
+  }
+
+  public async post<T = unknown, R = unknown>(
+    endpoint: string,
+    body?: T,
+    configuration?: HttpClientConfiguration,
+  ): Promise<R> {
+    try {
+      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
+
+      const response = await this.axiosInstance.post<R>(
+        endpoint,
+        body,
+        axiosConfiguration,
+      );
+
+      if (!response?.data && response.statusText === 'OK') {
+        throw new Error('Axios data request has failed!');
+      }
+
+      return response?.data;
+    } catch (err) {
+      const error = err as AxiosError<HttpErrorResponse>;
+
+      return {
+        error: error?.response?.data?.error ?? error?.message,
+        status: error?.response?.data?.status ?? 500,
         success: false,
       } as R;
     }

@@ -25,6 +25,7 @@ FIXME: Solve this middleware warning ⚠ The "middleware" file convention is dep
 FIXME: Check and fix every icon on web application
 FIXME: Chat send input always must be fixed on bottom for chat conversation
 FIXME: My chat details components overhead without reaching responsive mode
+FIXME: On login page for tablet and mobile alert is on left side but must be on center
 
 ## Improves
 
@@ -58,10 +59,10 @@ IMPROVE: Fragment login form component on parts
 IMPROVE: Fragment chat conversation components on parts
 IMPROVE: Fragment chat card component on parts
 IMPROVE: Fragment chat invoices component
+IMPROVE: When I create a new gnetwork api client instance put on constantes headers
 
 ## Todos
 
-TODO: Review all socket connection package
 TODO: Optimize clean architecture structure
 TODO: Connect chat list endpoint
 TODO: When socket connection fall down or internet connection failed we need to set a global state to block user socket interaction until connection being established again

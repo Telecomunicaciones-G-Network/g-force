@@ -23,6 +23,7 @@
       "@gnetwork-ui/*": ["./src/packages/gnetwork-ui/*"],
       "@hookers/*": ["./src/packages/hookers/*"],
       "@http-client/*": ["./src/packages/http-client/*"],
+      "@logger/*": ["./src/packages/logger/*"],
       "@regexs/*": ["./src/packages/regexs/*"],
       "@socketio/*": ["./src/packages/socketio/*"],
       "@timer/*": ["./src/packages/timer/*"],

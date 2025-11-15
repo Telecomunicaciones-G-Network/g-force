@@ -1,4 +1,5 @@
-import { useMediaQuery } from '@/src/packages/hookers/use-media-query.hook';
+import { useMediaQuery } from '@hookers/use-media-query.hook';
+
 import { useChatStore } from '@ui-chat/stores/chat.store';
 
 export const useChatList = () => {

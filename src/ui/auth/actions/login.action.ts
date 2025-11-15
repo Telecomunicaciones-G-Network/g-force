@@ -38,10 +38,14 @@ export async function loginAction(
       throw new Error(response?.error);
     }
 
-    if (response?.access && response?.refresh && response?.user) {
+    if (
+      response?.results?.access &&
+      response?.results?.refresh &&
+      response?.results?.user
+    ) {
       const cookieStore = await cookies();
 
-      cookieStore.set('access_token', response.access, {
+      cookieStore.set('access_token', response.results.access, {
         httpOnly: true,
         maxAge: minutesToSeconds(60),
         path: '/',
@@ -49,7 +53,7 @@ export async function loginAction(
         secure: ENVS.NODE_ENV === 'production',
       });
 
-      cookieStore.set('refresh_token', response.refresh, {
+      cookieStore.set('refresh_token', response.results.refresh, {
         httpOnly: true,
         maxAge: daysToSeconds(1),
         path: '/',
@@ -57,7 +61,7 @@ export async function loginAction(
         secure: ENVS.NODE_ENV === 'production',
       });
 
-      cookieStore.set('user_data', JSON.stringify(response.user), {
+      cookieStore.set('user_data', JSON.stringify(response.results.user), {
         httpOnly: true,
         maxAge: minutesToSeconds(60),
         path: '/',

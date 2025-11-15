@@ -85,6 +85,7 @@
     "icon": "react-components",
     "icons": "jupyter",
     "input": "react-components",
+    "logger": "log",
     "login-brand": "react-components",
     "login-form": "react-components",
     "mappers": "mappings",

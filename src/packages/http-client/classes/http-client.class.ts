@@ -1,4 +1,4 @@
-import type { HttpAdapter, HttpClientConfig } from '../interfaces';
+import type { HttpAdapter, HttpClientConfiguration } from '../interfaces';
 
 export class HttpClient {
   constructor(
@@ -6,25 +6,25 @@ export class HttpClient {
     private readonly fetcher: HttpAdapter,
   ) {}
 
-  async get<T = Response>(
+  public async get<T = unknown>(
     endpoint: string,
-    configurations?: HttpClientConfig,
+    configuration?: HttpClientConfiguration,
   ): Promise<T> {
     return await this.fetcher.get<T>(
       `${this.baseUrl}${endpoint}`,
-      configurations,
+      configuration,
     );
   }
 
-  async post<T = Request, R = Response>(
+  public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,
-    configurations?: HttpClientConfig,
+    configuration?: HttpClientConfiguration,
   ): Promise<R> {
     return await this.fetcher.post<T, R>(
       `${this.baseUrl}${endpoint}`,
       body,
-      configurations,
+      configuration,
     );
   }
 }
