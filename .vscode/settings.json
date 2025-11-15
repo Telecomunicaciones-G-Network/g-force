@@ -3,37 +3,321 @@
   "javascript.suggest.autoImports": true,
   "typescript.suggest.autoImports": true,
   // Formatting
-  "editor.formatter": "biomejs.biome",
+  "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  // Hightlight Extension
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "DONE:",
+      "color": "#ffffff",
+      "backgroundColor": "#499167",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "IMPROVE:",
+      "color": "#ffffff",
+      "backgroundColor": "#2081c3",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "PENDING:",
+      "color": "#ffffff",
+      "backgroundColor": "#d84727",
+      "overviewRulerColor": "grey"
+    }
+  ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
-    "react-scan-script": "react-components"
+    "(auth)": "public",
+    "(private)": "secure",
+    "(public)": "public",
+    "accordion": "react-components",
+    "accordions": "stencil",
+    "actions": "cue",
+    "alert": "react-components",
+    "avatar": "react-components",
+    "avatars": "linux",
+    "back-button": "react-components",
+    "blocks": "mjml",
+    "brand-skeleton": "react-components",
+    "brand": "react-components",
+    "bubble": "react-components",
+    "button-icon": "react-components",
+    "button": "react-components",
+    "buttons": "include",
+    "card": "react-components",
+    "chat-card": "react-components",
+    "chat-comment-card": "react-components",
+    "chat-contact": "react-components",
+    "chat-contract-card": "react-components",
+    "chat-contracts": "react-components",
+    "chat-conversation": "react-components",
+    "chat-detail-tabs": "react-components",
+    "chat-details-tab-content-layout": "react-components",
+    "chat-details": "react-components",
+    "chat-empty": "react-components",
+    "chat-history": "react-components",
+    "chat-input": "react-components",
+    "chat-invoice-card": "react-components",
+    "chat-invoices": "react-components",
+    "chat-list-body": "react-components",
+    "chat-list-empty": "react-components",
+    "chat-list-header": "react-components",
+    "chat-list": "react-components",
+    "chat-message": "react-components",
+    "chat-status": "react-components",
+    "chat-ticket-card": "react-components",
+    "components": "react-components",
+    "dashboard-layout-body": "react-components",
+    "dashboard-layout-header": "react-components",
+    "dashboard-layout-sidebar": "react-components",
+    "dashboard-layout": "react-components",
+    "dictionaries": "resource",
+    "email-input-controller": "react-components",
+    "email-input": "react-components",
+    "entities": "svg",
+    "forms": "custom",
+    "hookers": "hook",
+    "icon": "react-components",
+    "icons": "jupyter",
+    "input": "react-components",
+    "logger": "log",
+    "login-brand": "react-components",
+    "login-form": "react-components",
+    "mappers": "mappings",
+    "navbar": "react-components",
+    "navbars": "serverless",
+    "password-input-controller": "react-components",
+    "password-input": "react-components",
+    "react-scan-script": "react-components",
+    "responsive-image": "react-components",
+    "schemas": "scala",
+    "search-input": "react-components",
+    "separator": "react-components",
+    "separators": "base",
+    "socketio": "wakatime",
+    "tab-button": "react-components",
+    "tab-content": "react-components",
+    "tab": "react-components",
+    "tabs-container": "react-components",
+    "tabs-triggers": "react-components",
+    "tabs": "zeabur",
+    "tag": "react-components",
+    "tags": "taskfile",
+    "text-input-controller": "react-components",
+    "text-input": "react-components",
+    "text": "react-components",
+    "texts": "font",
+    "unknown-icon": "react-components",
+    "viewmodels": "job"
   },
   "material-icon-theme.files.associations": {
+    "*.action.ts": "cue",
+    "*.class.ts": "capnp",
+    "*.config.ts": "settings",
     "*.constant.ts": "command",
+    "*.dictionary.ts": "denizenscript",
+    "*.dto.ts": "hurl",
+    "*.entity.ts": "sketch",
+    "*.fetcher.ts": "salesforce",
     "*.font.ts": "font",
+    "*.interface.ts": "less",
+    "*.mapper.ts": "xml",
     "*.mdc": "snowpack",
+    "*.props.ts": "svgr",
+    "*.regex.ts": "scheme",
+    "*.repository.ts": "trigger",
+    "*.schema.ts": "scala",
     "*.tsx": "react",
+    "*.util.ts": "credits",
+    "components.json": "regedit",
+    "config.ts": "settings",
     "css-data.json": "vscode",
+    "envs.ts": "ejs",
     "globals.css": "css-map",
+    "middleware.ts": "pipeline",
     "post-install": "console",
     "settings.json": "vscode",
     "variables.css": "vala"
   },
   "material-icon-theme.folders.customClones": [
     {
+      "name": "Adapters",
+      "base": "src",
+      "color": "red-400",
+      "folderNames": ["adapters"]
+    },
+    {
+      "name": "Alerts",
+      "base": "job",
+      "color": "red-500",
+      "folderNames": ["alerts"]
+    },
+    {
       "name": "App",
       "base": "app",
       "color": "blue-500",
-      "folderNames": ["app"]
+      "folderNames": ["application"]
+    },
+    {
+      "name": "Cards",
+      "base": "element",
+      "color": "blue-400",
+      "folderNames": ["cards"]
+    },
+    {
+      "name": "Crypto",
+      "base": "keys",
+      "color": "yellow-700",
+      "folderNames": ["crypto"]
+    },
+    {
+      "name": "Domain",
+      "base": "src",
+      "color": "yellow-800",
+      "folderNames": ["domain", "props"]
+    },
+    {
+      "name": "DTOs",
+      "base": "connection",
+      "color": "pink-400",
+      "folderNames": ["dtos"]
+    },
+    {
+      "name": "Fetchers",
+      "base": "aws",
+      "color": "light-blue-500",
+      "folderNames": ["fetchers"]
+    },
+    {
+      "name": "GNetwork UI",
+      "base": "ui",
+      "color": "red-400",
+      "folderNames": ["gnetwork-ui"]
+    },
+    {
+      "name": "Http Clients",
+      "base": "public",
+      "color": "green-600",
+      "folderNames": ["http-client"]
+    },
+    {
+      "name": "Infrastructure",
+      "base": "src",
+      "color": "green-400",
+      "folderNames": ["infrastructure"]
+    },
+    {
+      "name": "Modules",
+      "base": "plugins",
+      "color": "red-500",
+      "folderNames": ["modules"]
+    },
+    {
+      "name": "Packages",
+      "base": "packages",
+      "color": "green-600",
+      "folderNames": ["packages"]
+    },
+    {
+      "name": "React Contexts",
+      "base": "react-components",
+      "color": "teal-500",
+      "folderNames": ["contexts"]
+    },
+    {
+      "name": "React Module CSS",
+      "base": "react",
+      "color": "purple-300",
+      "fileExtensions": ["module.css"]
+    },
+    {
+      "name": "React Iterators",
+      "base": "react-components",
+      "color": "indigo-500",
+      "folderNames": ["iterators"]
+    },
+    {
+      "name": "React Pages",
+      "base": "react-components",
+      "color": "orange-500",
+      "folderNames": ["factory", "login"]
     },
     {
       "name": "React Providers",
       "base": "react-components",
       "color": "orange-400",
       "folderNames": ["providers", "theme-provider"]
+    },
+    {
+      "name": "React Stores",
+      "base": "react-components",
+      "color": "lime-700",
+      "folderNames": ["stores"]
+    },
+    {
+      "name": "React Variants",
+      "base": "react-components",
+      "color": "light-green-500",
+      "folderNames": ["variants"]
+    },
+    {
+      "name": "Regexs",
+      "base": "tasks",
+      "color": "red-500",
+      "folderNames": ["regexs"]
+    },
+    {
+      "name": "Sections",
+      "base": "mjml",
+      "color": "green-500",
+      "folderNames": ["sections"]
+    },
+    {
+      "name": "Services",
+      "base": "shader",
+      "color": "yellow-800",
+      "folderNames": ["services"]
+    },
+    {
+      "name": "Skeletons",
+      "base": "components",
+      "color": "gray-700",
+      "folderNames": ["skeletons"]
+    },
+    {
+      "name": "Templates",
+      "base": "template",
+      "color": "red-400",
+      "folderNames": ["templates"]
+    },
+    {
+      "name": "Timer",
+      "base": "backup",
+      "color": "teal-400",
+      "folderNames": ["timer"]
+    },
+    {
+      "name": "Usecase Get",
+      "base": "powershell",
+      "color": "green-500",
+      "fileNames": ["get-contacts.usecase.ts"]
+    },
+    {
+      "name": "Usecase Post",
+      "base": "powershell",
+      "color": "yellow-700",
+      "fileNames": ["login.usecase.ts"]
+    },
+    {
+      "name": "User",
+      "base": "admin",
+      "color": "blue-500",
+      "folderNames": ["user"]
     }
   ],
   "material-icon-theme.files.customClones": [
@@ -42,6 +326,18 @@
       "base": "renovate",
       "color": "gray-700",
       "fileNames": ["dark.theme.css"]
+    },
+    {
+      "name": "Enums",
+      "base": "ember",
+      "color": "teal-400",
+      "fileExtensions": ["enum.ts"]
+    },
+    {
+      "name": "Env Example",
+      "base": "tune",
+      "color": "blue-400",
+      "fileNames": [".env.example"]
     },
     {
       "name": "Global DTS",
@@ -74,6 +370,24 @@
       "fileNames": ["next-env.d.ts"]
     },
     {
+      "name": "React Contexts",
+      "base": "react",
+      "color": "teal-300",
+      "fileExtensions": ["context.tsx"]
+    },
+    {
+      "name": "React Hooks",
+      "base": "react",
+      "color": "amber-300",
+      "fileExtensions": ["hook.tsx"]
+    },
+    {
+      "name": "React Iterators",
+      "base": "react",
+      "color": "indigo-300",
+      "fileExtensions": ["iterator.tsx"]
+    },
+    {
       "name": "React Layouts",
       "base": "react",
       "color": "cyan-200",
@@ -90,6 +404,54 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React States",
+      "base": "react",
+      "color": "green-600",
+      "fileExtensions": ["state.ts"]
+    },
+    {
+      "name": "React Stores",
+      "base": "react",
+      "color": "lime-500",
+      "fileExtensions": ["store.tsx"]
+    },
+    {
+      "name": "React Styles",
+      "base": "react",
+      "color": "pink-400",
+      "fileExtensions": ["style.ts"]
+    },
+    {
+      "name": "React Variants",
+      "base": "react",
+      "color": "light-green-500",
+      "fileExtensions": ["variant.ts"]
+    },
+    {
+      "name": "Services",
+      "base": "replit",
+      "color": "yellow-700",
+      "fileExtensions": ["service.ts"]
+    },
+    {
+      "name": "Theme CSS",
+      "base": "renovate",
+      "color": "purple-300",
+      "fileNames": ["theme.css"]
+    },
+    {
+      "name": "Types",
+      "base": "typst",
+      "color": "blue-500",
+      "fileExtensions": ["type.ts"]
+    },
+    {
+      "name": "View Models",
+      "base": "vagrant",
+      "color": "yellow-700",
+      "fileExtensions": ["viewmodel.ts"]
     }
   ],
   // Peacok Configuration
@@ -141,5 +503,11 @@
   "workbench.editor.showTabs": "multiple",
   "workbench.sideBar.location": "right",
   "workbench.tree.indent": 8,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

@@ -1,0 +1,21 @@
+.base__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0px;
+}
+
+.base__image {
+  height: 138px;
+  min-height: 138px;
+  position: relative;
+  width: 100%;
+}
+
+.base__info {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  width: 100%;
+}

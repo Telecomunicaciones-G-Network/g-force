@@ -1,0 +1,17 @@
+.base {
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.base__image {
+  aspect-ratio: 1 / 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+  width: 100%;
+}

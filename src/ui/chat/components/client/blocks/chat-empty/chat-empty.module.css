@@ -1,0 +1,14 @@
+.base {
+  align-items: center;
+  justify-content: center;
+  padding-top: 98px;
+  width: 100%;
+}
+
+.base__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 311px;
+}

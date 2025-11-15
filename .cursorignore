@@ -1,0 +1,29 @@
+# Curso ignore
+
+# Build
+build/
+dist/
+
+# Dart
+.dart_tool/
+
+# Editors
+.idea/
+
+# Environments
+.env
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+
+# Git
+.git/
+.gitignore
+.husky/
+
+# Node
+node_modules/
+
+# Versioning
+.changeset/

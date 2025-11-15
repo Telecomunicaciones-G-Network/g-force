@@ -1,0 +1,16 @@
+.base {
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 300;
+  gap: 8px;
+  letter-spacing: 0;
+  line-height: 120%;
+  max-width: 313px;
+  padding: 8px;
+  text-align: left;
+  white-space: pre-line;
+  width: fit-content;
+}

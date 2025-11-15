@@ -1,0 +1,3 @@
+.base:has(input:focus) .base__icon:not(.text-warning-200) {
+  color: var(--chromatic-inverted);
+}

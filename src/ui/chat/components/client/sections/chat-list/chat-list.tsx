@@ -1,0 +1,32 @@
+'use client';
+
+import { cn } from '@gnetwork-ui/utils/cn.util';
+
+import { ChatListBody } from './components/chat-list-body';
+import { ChatListHeader } from './components/chat-list-header';
+
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
+
+import { useChatList } from './chat-list.hook';
+
+import styles from './chat-list.module.css';
+
+export const ChatList = () => {
+  const { chatMode, isDesktop } = useChatList();
+
+  return (
+    <>
+      {(chatMode === ChatModes.LIST || isDesktop) && (
+        <section
+          className={cn(
+            styles.base,
+            'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px]',
+          )}
+        >
+          <ChatListHeader />
+          <ChatListBody />
+        </section>
+      )}
+    </>
+  );
+};

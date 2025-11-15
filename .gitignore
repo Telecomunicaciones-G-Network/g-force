@@ -1,14 +1,26 @@
 # Gitignore
 
 # Android
-.idea
-.gradle
-local.properties
-*.iml
-*.hprof
-.cxx/
-*.keystore
 !debug.keystore
+.cxx
+.DS_Store
+.externalNativeBuild
+.gradle
+*.hprof
+*.iml
+*.keystore
+/.idea/assetWizardSettings.xml
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/navEditor.xml
+/.idea/workspace.xml
+/android/app/debug
+/android/app/profile
+/android/app/release
+/build
+/captures
+local.properties
 
 # Angular
 .angular
@@ -28,6 +40,16 @@ bun.lock
 ## Cypress
 /cypress/videos/
 /cypress/screenshots/
+
+# Dart Flutter Pub
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+/build/
+/coverage/
 
 # Environment variables
 .*env
@@ -53,9 +75,12 @@ web-build/
 .c9/
 .classpath
 .DS_Store
-.idea
+.idea/
 .project
 .settings/
+*.iml
+*.ipr
+*.iws
 *.launch
 *.njsproj
 *.ntvs*
@@ -63,7 +88,6 @@ web-build/
 *.sublime-workspace
 *.suo
 *.sw?
-/.idea
 
 # Logs
 *.log

@@ -1,4 +1,14 @@
-# 👨‍💻 GNetwork @ Communication
+# 👨‍💻 GNetwork @ GForce
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Bun-1.3-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun">
+  <img src="https://img.shields.io/badge/License-YENDES-yellow?style=for-the-badge" alt="License">
+</div>
+
+<br/>
 
 ## 📝 Overview
 
@@ -59,7 +69,7 @@ bun build
 ## 🗂️ Project Structure
 
 ```
-next/
+g-force/
 ├── docs/                                  # Project documentation
 │   ├── COMMIT_CONVENTION.md              # Commit message guidelines
 │   ├── GIT_WORKFLOW.md                   # Git workflow documentation
@@ -127,5 +137,7 @@ next/
 - **React Compiler**: Automatic optimization of React components
 - **Geist Font**: Modern, optimized font family by Vercel for better readability
 - **Custom Theming**: Built-in theme support with light/dark modes using CSS variables
+
+---
 
 **Built with ❤️ by the GNetwork Team**

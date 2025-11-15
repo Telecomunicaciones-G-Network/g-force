@@ -1,0 +1,125 @@
+erDiagram
+    Contact |o..o{ Message : "sends"
+    Contact ||--o{ Conversation : "has"
+    Conversation ||--o{ Message : "contains"
+    Team |o..o{ Conversation : "is assigned to"
+    Agent |o..o{ Conversation : "is assigned to"
+    Agent |o..o{ Message : "sends"
+    Conversation ||--o{ Note : "contains"
+    Message ||--o| MessageMedia : "contains"
+    Message ||--o{ MessageReaction : "has"
+    Message ||--o| MessageLocation : "has"
+    Message ||--o{ MessageContact : "contains"
+    Team ||--o{ TeamAgent : ""
+    TeamAgent }o--|| Agent : ""
+
+    Contact {
+        uuid id PK
+        str_enum platform "whatsapp, ..."
+        str platform_id "External platform ID. Unique for same platform."
+        str display_name
+        optional[str] phone_number
+        datetime created_at
+        optional[datetime] updated_at
+        optional[datetime] last_message_at
+    }
+    Message {
+        uuid id PK
+        str_enum platform "whatsapp, ..."
+        optional[str] platform_id "External platform ID (null allowed only if status is PENDING)"
+        str_enum type "text, image, video, audio, document, sticker, location, contacts, interactive_buttons, interactive_button_reply, interactive_list_options, interactive_list_selection"
+        uuid conversation_id FK
+        str_enum direction "incoming, outgoing"
+        optional[uuid] contact_id FK "Only if message is incoming"
+        optional[uuid] agent_id FK "Only if message is outgoing"
+        optional[uuid] reply_to_message_id FK
+        optional[str] reply_to_message_platform_id "Just in case we don't have the referenced message in the database"
+        bool forwarded
+        bool forwarded_many_times "If True, forwarded must be True too"
+        optional[str] text
+        optional[uuid] media_id FK "Only if message is of type image, video, audio, document, or sticker"
+        optional[str] caption "Only if image, video, or document message"
+        optional[json] extra_metadata
+        optional[json] interactive_options "JSON list of objects with interactive button or list item options. Only if interactive button or interactive list message"
+        optional[str] interactive_reply_id "ID of the interactive button or list item selected. Only if interactive button reply or interactive list selection message"
+        optional[str] interactive_reply_title "Title or label of the interactive button or list item. Only if interactive button reply or interactive list selection message"
+        str status "pending, sent, delivered, read, failed"
+        datetime created_at
+        optional[datetime] updated_at
+        optional[datetime] sent_at
+        optional[datetime] delivered_at
+        optional[datetime] read_at
+        optional[datetime] failed_at
+    }
+    Conversation {
+        uuid id PK
+        uuid contact_id FK
+        optional[str] team_id FK "Only from status assigned onward. References teams.codename. TODO: Rename to team_codename"
+        optional[uuid] agent_id FK "Only from status assigned onward"
+        str_enum status "waiting, assigned, active, finished"
+        datetime created_at
+        optional[datetime] updated_at
+        optional[datetime] finished_at
+    }
+    Agent {
+        uuid id PK
+        optional[uuid] user_id "Soft FK (user backend). Only if not a bot."
+        str full_name
+        str_enum status "offline, away, do_not_disturb, online"
+        datetime created_at
+        optional[datetime] updated_at
+        bool is_bot
+    }
+    Team {
+        str codename PK "Regex: ^[a-z]+(_[a-z]+)*$"
+        str name
+        datetime created_at
+    }
+    TeamAgent {
+        str team_codename FK, PK "References teams.codename"
+        uuid agent_id FK, PK
+        datetime joined_at
+        optional[datetime] updated_at
+        bool can_view_all_chats "If True, can view all conversations assigned to team members"
+    }
+    Note {
+        uuid id PK
+        uuid conversation_id FK
+        uuid agent_id FK
+        str text
+        datetime created_at
+    }
+    MessageMedia {
+        uuid id PK
+        str_enum type "image, video, audio, document, sticker"
+        str mime_type
+        str storage_bucket
+        str storage_path
+        str platform_id "External platform ID"
+        str platform_url "External platform URL"
+        str sha256
+    }
+    MessageReaction {
+        uuid id PK
+        uuid message_id FK
+        str emoji
+        optional[uuid] contact_id FK "Only if the reaction was by the contact"
+        optional[uuid] agent_id FK "Only if the reaction was by the agent"
+    }
+    MessageLocation {
+        uuid id PK
+        uuid message_id FK
+        float latitude
+        float longitude
+        optional[str] name
+        optional[str] address
+    }
+    MessageContact {
+        uuid id PK
+        uuid message_id FK
+        str formatted_name
+        optional[date] birthday
+        list[str] phone_numbers
+        list[str] emails
+        list[str] urls
+    }

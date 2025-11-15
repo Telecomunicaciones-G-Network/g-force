@@ -1,28 +1,28 @@
-import type { PropsWithChildren } from "react";
-import type { Metadata } from "next";
+import type { PropsWithChildren } from 'react';
+import type { Metadata } from 'next';
 
-import { ReactScanScript } from "@ui-core/components/server/scripts/react-scan-script";
+import { ReactScanScript } from '@ui-core/components/server/scripts/react-scan-script';
 
-import { geistMono } from "@ui-core/fonts/geist-mono.font";
-import { geistSans } from "@ui-core/fonts/geist.font";
+import { inter } from '@ui-core/fonts/inter.font';
 
-import { Providers } from "@ui-core/providers/providers/providers.provider";
+import { Providers } from '@ui-core/providers/providers/providers.provider';
 
-import "@ui-core/styles/main.css";
+import '@ui-core/styles/main.css';
 
 export const metadata: Metadata = {
-  title: "GNetwork",
-  description: "Gnetwork Communication Chat",
+  title: 'GNetwork - Gforce',
+  description: 'Telecomunicaciones GNetwork Gforce',
 };
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html suppressHydrationWarning lang="en">
       <head>
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
         <ReactScanScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} antialiased bg-background text-foreground`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -1,0 +1,42 @@
+.base {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  gap: 12px;
+  max-width: none;
+}
+
+.base__container {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.base__input {
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 20px;
+  min-width: 0;
+  outline: none;
+  width: 100%;
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+  }
+}
+
+.base__label,
+.base__message {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 120%;
+}

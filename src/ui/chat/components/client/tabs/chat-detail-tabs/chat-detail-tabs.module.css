@@ -1,0 +1,30 @@
+.base {
+  width: 100%;
+}
+
+.base__header {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.base__header_top {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.base__header_image {
+  border-radius: 8px;
+  display: flex;
+  position: relative;
+}
+
+.base__triggers {
+  gap: 16px;
+}
+
+.base__content {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

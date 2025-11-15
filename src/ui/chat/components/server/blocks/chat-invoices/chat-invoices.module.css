@@ -1,0 +1,36 @@
+.base__body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0;
+}
+
+.base__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+}
+
+.base__info {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.base__invoices {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+}
+
+.base__payment {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 0;
+}

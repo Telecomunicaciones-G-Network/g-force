@@ -1,0 +1,59 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.base__avatar_button {
+  max-width: 48px;
+  width: 100%;
+}
+
+.base__chat {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.base__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  overflow: auto;
+}
+
+.base__footer {
+  align-items: flex-end;
+  display: flex;
+  padding: 0 24px 24px 24px;
+  min-height: 86px;
+}
+
+.base__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 24px 24px 24px;
+}
+
+.base__header_info {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.base__header_buttons {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.base__sender {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
