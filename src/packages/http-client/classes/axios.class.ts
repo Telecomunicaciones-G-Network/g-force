@@ -14,6 +14,8 @@ import type {
 
 import axios from 'axios';
 
+import Cookies from 'js-cookie';
+
 import { LogLevels } from '../enums/log-levels.enum';
 
 export class Axios implements HttpAdapter {
@@ -21,9 +23,7 @@ export class Axios implements HttpAdapter {
   private readonly logger?: HttpLoggerAdapter;
 
   constructor(config?: AxiosRequestConfig, logger?: HttpLoggerAdapter) {
-    this.axiosInstance = axios.create({
-      ...config,
-    });
+    this.axiosInstance = axios.create(config);
     this.logger = logger;
     this.applyRequestInterceptor();
     this.applyResponseInterceptor();
@@ -32,6 +32,12 @@ export class Axios implements HttpAdapter {
   private applyRequestInterceptor() {
     this.axiosInstance.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
+        const token = Cookies.get('token');
+
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+
         return config;
       },
     );
@@ -48,40 +54,24 @@ export class Axios implements HttpAdapter {
     );
   }
 
-  private parseAxiosConfiguration(
-    configuration?: HttpClientConfiguration,
-  ): AxiosRequestConfig {
-    return {
-      headers: configuration?.headers,
-    };
-  }
-
   public async get<T = unknown>(
     endpoint: string,
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
-    try {
-      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
+    return this.axiosInstance
+      .get<T>(endpoint, configuration)
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios data request has failed!');
+        }
 
-      const response = await this.axiosInstance.get<T>(
-        endpoint,
-        axiosConfiguration,
-      );
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
 
-      if (!response?.data && response.statusText === 'OK') {
-        throw new Error('Axios data request has failed!');
-      }
-
-      return response?.data;
-    } catch (err) {
-      const error = err as AxiosError<HttpErrorResponse>;
-
-      return {
-        error: error?.response?.data?.error ?? error?.message,
-        status: error?.response?.data?.status ?? 500,
-        success: false,
-      } as T;
-    }
+        throw error;
+      });
   }
 
   public async post<T = unknown, R = unknown>(
@@ -89,28 +79,19 @@ export class Axios implements HttpAdapter {
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
-    try {
-      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
+    return this.axiosInstance
+      .post<R>(endpoint, body, configuration)
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios data request has failed!');
+        }
 
-      const response = await this.axiosInstance.post<R>(
-        endpoint,
-        body,
-        axiosConfiguration,
-      );
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
 
-      if (!response?.data && response.statusText === 'OK') {
-        throw new Error('Axios data request has failed!');
-      }
-
-      return response?.data;
-    } catch (err) {
-      const error = err as AxiosError<HttpErrorResponse>;
-
-      return {
-        error: error?.response?.data?.error ?? error?.message,
-        status: error?.response?.data?.status ?? 500,
-        success: false,
-      } as R;
-    }
+        throw error;
+      });
   }
 }

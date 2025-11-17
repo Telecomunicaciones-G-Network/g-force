@@ -1,5 +1,5 @@
 export interface HttpErrorResponse {
-  error?: string;
+  error: string;
   status: number;
   success: boolean;
 }

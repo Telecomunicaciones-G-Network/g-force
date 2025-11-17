@@ -209,3 +209,129 @@ export async function isAuthenticated(): Promise<boolean> {
   return !!token;
 }
 ```
+
+## Login action
+
+```typescript
+'use server';
+
+import type { LoginActionState } from '@ui-auth/interfaces';
+
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+
+import { ServerCrypto } from '@crypto/classes/server-crypto.class';
+import { daysToSeconds } from '@timer/utils/days-to-seconds.util';
+import { minutesToSeconds } from '@timer/utils/minutes-to-seconds.util';
+
+import { LoginDTO } from '@module-auth/infrastructure/dtos/login.dto';
+
+import { ENVS } from '@ui-core/envs/envs';
+
+import { authService } from '@ui-auth/services/auth.service';
+
+export async function loginAction(
+  _prevState: LoginActionState,
+  formData: FormData,
+): Promise<LoginActionState> {
+  try {
+    const encryptedPayload = formData.get('payload') as string;
+
+    if (!encryptedPayload) {
+      throw new Error('Payload can not be encrypted');
+    }
+
+    const { email, password } = ServerCrypto.decryptObject<LoginDTO>(
+      encryptedPayload,
+      ENVS.CRYPTO_KEY,
+    );
+    const data = { email, password };
+
+    const response = await authService.login(data);
+
+    if (response?.error) {
+      throw new Error(response?.error);
+    }
+
+    if (
+      response?.results?.access &&
+      response?.results?.refresh &&
+      response?.results?.user
+    ) {
+      const cookieStore = await cookies();
+
+      cookieStore.set('access_token', response.results.access, {
+        httpOnly: true,
+        maxAge: minutesToSeconds(60),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+
+      cookieStore.set('refresh_token', response.results.refresh, {
+        httpOnly: true,
+        maxAge: daysToSeconds(1),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+
+      cookieStore.set('user_data', JSON.stringify(response.results.user), {
+        httpOnly: true,
+        maxAge: minutesToSeconds(60),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+    }
+
+    redirect('/chat');
+  } catch (err) {
+    const error = err as Error;
+
+    if (error.message === 'NEXT_REDIRECT') {
+      throw error;
+    }
+
+    return {
+      errors: {
+        form: [
+          error?.message ||
+            'Lo sentimos, ha ocurrido un error al iniciar sesión. Por favor intente nuevamente.',
+        ],
+      },
+      message: 'Login Failed',
+      success: false,
+    };
+  }
+}
+
+```
+
+## Forma de clean architecture login
+
+1. Mi UI Form va a tomar los datos del login y pasarlo como **LoginDTO** al Login ✅
+
+2. El Login va a pasar el **LoginDTO** al loginAdapter ✅
+
+3. El adaptador va a convertir el **LoginDTO** a **LoginRequest** y va a pasar este **LoginRequest** al Login ✅
+
+4. El Login va a pasar el **LoginRequest** al LoginUsecase. ✅
+
+5. El LoginUsecase va a pasar el **LoginRequest** al HttpAuthRepository ✅
+
+6. El HttpAuthRepository va a aplicar la implementacion u opcional va a pasar esto a una funcion de servicio del cual puede obtener **LoginResponse** ✅
+
+7. El HttpAuthRepository va a pasar el **LoginResponse** al loginMapper o lo puede hacer nuestro servicio ✅
+
+8. El loginMapper va a convertir el **LoginResponse** a **LoginTransformed** que es del dominio y devolverlo al HttpAuthRepository ✅
+
+9. El HttpAuthRepository va a devolver el **LoginTransformed** al LoginUsecase ✅
+
+10. El LoginUsecase va a devolver el **LoginTransformed** al Login ✅
+
+11. El Login va a pasar el **LoginTransformed** al loginPresenter ✅
+
+12. El loginPresenter va a transformar el **LoginModel** en el **LoginViewModel** y devolverlo al Login
+
+13. El Login devuelve a la UI el **LoginViewModel**

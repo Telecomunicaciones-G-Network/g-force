@@ -1,21 +1,9 @@
+import type { UserValues } from '../interfaces';
+
 export class User {
-  id: string;
+  constructor(private values: UserValues) {}
 
-  createdAt: Date;
-
-  dateJoined: Date;
-
-  email: string;
-
-  firstname: string;
-
-  isactive: boolean;
-
-  lastname: string;
-
-  permissions: string[];
-
-  roles: string[];
-
-  updatedAt: Date;
+  public toValues(): UserValues {
+    return this.values;
+  }
 }

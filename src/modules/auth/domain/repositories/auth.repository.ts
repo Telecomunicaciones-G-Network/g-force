@@ -1,5 +1,5 @@
-import type { LoginRequest, LoginResponse } from '../interfaces';
+import type { LoginRequest, LoginTransformed } from '../interfaces';
 
 export interface AuthRepository {
-  login(data: LoginRequest): Promise<LoginResponse>;
+  login(request: LoginRequest): Promise<LoginTransformed>;
 }

@@ -1,5 +1,3 @@
-export class LoginDTO {
-  email: string;
+import type { LoginRequest } from '../../domain/interfaces';
 
-  password: string;
-}
+export type LoginDTO = LoginRequest;

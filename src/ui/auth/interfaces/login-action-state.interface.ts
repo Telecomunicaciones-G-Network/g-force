@@ -4,7 +4,8 @@ interface LoginActionStateErrors {
   password?: string[];
 }
 
-export interface LoginActionState {
+export interface LoginActionState<T> {
+  data?: T;
   errors?: LoginActionStateErrors;
   message?: string;
   success?: boolean;
