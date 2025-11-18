@@ -24,10 +24,8 @@ interface ChatListProps {
 export const ChatList = ({
   chatContactsResponsePromise,
 }: Readonly<ChatListProps>) => {
-  const chatContactsResponse = use(chatContactsResponsePromise);
+  const { contacts: chats = [] } = use(chatContactsResponsePromise);
   const { chatMode, isDesktop } = useChatList();
-
-  console.log('chatContacts', JSON.stringify(chatContactsResponse));
 
   return (
     <>
@@ -38,8 +36,8 @@ export const ChatList = ({
             'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px]',
           )}
         >
-          <ChatListHeader />
-          <ChatListBody />
+          {chats?.length > 0 && <ChatListHeader hideFilterButton />}
+          <ChatListBody chats={chats} />
         </section>
       )}
     </>

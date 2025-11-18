@@ -1,10 +1,18 @@
+// PENDING:
+
+import type { NavbarProps } from './navbar.props';
+
 import { SearchInput } from '@gnetwork-ui/components/molecules/inputs/search-input';
+
+import { MdNotificationsNone } from 'react-icons/md';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './navbar.module.css';
 
-export const Navbar = () => (
+export const Navbar = ({
+  hideNotificationsButton = false,
+}: Readonly<NavbarProps>) => (
   <header
     className={cn(
       styles.base,
@@ -18,6 +26,10 @@ export const Navbar = () => (
       name="global-search"
       placeholder="Busqueda global..."
     />
-    <div className={styles.base__actions}>avatar</div>
+    <div className={styles.base__actions}>
+      {!hideNotificationsButton && (
+        <MdNotificationsNone className="cursor-pointer size-6" />
+      )}
+    </div>
   </header>
 );

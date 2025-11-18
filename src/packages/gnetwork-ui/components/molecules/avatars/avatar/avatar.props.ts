@@ -3,4 +3,5 @@ import type { ResponsiveImageProps } from '../../../atoms/images/responsive-imag
 
 export interface AvatarProps extends ReactDiv {
   image?: ResponsiveImageProps;
+  username?: string;
 }

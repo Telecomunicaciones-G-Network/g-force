@@ -60,6 +60,7 @@
     "*.interface.ts": "less",
     "*.mapper.ts": "xml",
     "*.presenter.ts": "sentry",
+    "*.props.ts": "svgr",
     "*.repository.ts": "wxt",
     "*.util.ts": "credits",
     "clean-architecture.md": "document",

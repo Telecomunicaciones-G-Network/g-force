@@ -1,3 +1,7 @@
+// PENDING:
+
+import type { ChatListHeaderProps } from './chat-list-header.props';
+
 import { MdFilterList } from 'react-icons/md';
 
 import { SearchInput } from '@gnetwork-ui/components/molecules/inputs/search-input';
@@ -7,7 +11,9 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './chat-list-header.module.css';
 
-export const ChatListHeader = () => (
+export const ChatListHeader = ({
+  hideFilterButton = false,
+}: Readonly<ChatListHeaderProps>) => (
   <div
     className={cn(
       styles.base,
@@ -21,8 +27,10 @@ export const ChatListHeader = () => (
       name="chat-search"
       placeholder="Buscar chat..."
     />
-    <Button className="p-2" isStatic>
-      <MdFilterList />
-    </Button>
+    {!hideFilterButton && (
+      <Button className="p-2" isStatic>
+        <MdFilterList />
+      </Button>
+    )}
   </div>
 );

@@ -1,8 +1,8 @@
 import type { ChatMode } from '@ui-chat/types';
 
 export interface ChatStoreState {
-  activeChat: number | null;
+  activeChat: string | null;
   chatMode: ChatMode;
-  setActiveChat: (chatId: number | null) => void;
+  setActiveChat: (chatId: string | null) => void;
   setChatMode: (mode: ChatMode) => void;
 }

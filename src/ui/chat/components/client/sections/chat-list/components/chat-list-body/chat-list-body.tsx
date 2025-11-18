@@ -1,19 +1,20 @@
+// PENDING:
+
 'use client';
 
-import type { Chat } from '@ui-chat/interfaces';
+import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { ChatListBodyProps } from './chat-list-body.props';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
 import { ChatListEmpty } from '../chat-list-empty';
 
-import { chats } from '@ui-chat/iterators/chats.iterator';
-
 import { useChatListBody } from './chat-list-body.hook';
 
 import styles from './chat-list-body.module.css';
 
-export const ChatListBody = () => {
+export const ChatListBody = ({ chats = [] }: Readonly<ChatListBodyProps>) => {
   const { activeChat, changeActiveChat } = useChatListBody();
 
   return (
@@ -24,12 +25,14 @@ export const ChatListBody = () => {
       )}
     >
       {chats?.length > 0 ? (
-        chats.map((chat: Chat) => (
+        chats.map((chat: ContactValues) => (
           <ChatCard
-            key={chat?.id}
             isActive={activeChat === chat?.id}
+            key={chat?.id}
+            lastMessage={chat?.latestMessage?.message}
+            lastMessageTime={chat?.latestMessage?.createdAt}
             onClick={() => changeActiveChat(chat?.id)}
-            {...chat}
+            username={chat?.name}
           />
         ))
       ) : (

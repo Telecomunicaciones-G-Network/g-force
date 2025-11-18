@@ -10,5 +10,5 @@ export type MessageValues = {
   message: string;
   direction: MessageDirection;
   customer: CustomerValues;
-  createdAt: Date;
+  createdAt: string;
 };

@@ -31,7 +31,7 @@ export interface GetContactsResultLatestMessageSender {
 }
 
 export interface GetContactsResultLatestMessage {
-  createdAt: Date;
+  createdAt: string;
   direction: MessageDirection;
   id: string;
   sender: GetContactsResultLatestMessageSender;

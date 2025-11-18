@@ -8,7 +8,7 @@ export const useChatListBody = () => {
   const setActiveChat = useChatStore((state) => state.setActiveChat);
   const setChatMode = useChatStore((state) => state.setChatMode);
 
-  const setChat = (chatId: number) => {
+  const setChat = (chatId: string) => {
     setActiveChat(chatId);
     setChatMode(ChatModes.CHAT);
   };

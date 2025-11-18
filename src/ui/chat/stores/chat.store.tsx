@@ -9,6 +9,6 @@ export const useChatStore = create<ChatStoreState>((set) => ({
   activeChat: null,
   chatMode: ChatModes.LIST,
 
-  setActiveChat: (chatId: number | null) => set({ activeChat: chatId }),
+  setActiveChat: (chatId: string | null) => set({ activeChat: chatId }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
 }));
