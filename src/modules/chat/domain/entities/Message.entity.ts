@@ -1,3 +1,5 @@
+// CHECKED:
+
 import type { MessageValues } from '../interfaces';
 
 export class Message {

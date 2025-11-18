@@ -1,8 +1,7 @@
-import type {
-  GetContactsMappedResponse,
-  GetContactsRequest,
-} from '../interfaces';
+// CHECKED:
+
+import type { GetContactsRequest, GetContactsResponse } from '../interfaces';
 
 export interface ChatRepository {
-  getContacts(request?: GetContactsRequest): Promise<GetContactsMappedResponse>;
+  getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
 }

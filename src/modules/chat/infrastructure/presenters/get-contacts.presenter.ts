@@ -1,13 +1,15 @@
-import type { GetContactsMappedResponse } from '../../domain/interfaces';
+// CHECKED:
+
+import type { GetContactsResponse } from '../../domain/interfaces';
 import type { GetContactsViewModel } from '../viewmodels';
 
 export const getContactsPresenter = (
-  input: GetContactsMappedResponse,
+  input: GetContactsResponse,
 ): GetContactsViewModel => {
   return {
-    contacts: input?.results,
-    cursor: input?.cursor,
-    hasMore: input?.hasMore,
-    nextCursor: input?.nextCursor,
+    contacts: input?.contacts ?? [],
+    cursor: input?.cursor ?? null,
+    hasMore: input?.hasMore ?? false,
+    nextCursor: input?.nextCursor ?? null,
   };
 };

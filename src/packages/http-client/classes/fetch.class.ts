@@ -1,3 +1,6 @@
+// TODO: Debo implementar la forma de hacer un interceptor de request
+// TODO: Debo implementar la forma de hacer un interceptor de response
+
 import type {
   FetchConfig,
   HttpAdapter,
@@ -10,6 +13,8 @@ import { cookies } from 'next/headers';
 import Cookies from 'js-cookie';
 
 import { LogLevels } from '../enums/log-levels.enum';
+
+import { snakeToCamelCase } from '../utils/snake-to-camelcase.util';
 
 export class Fetch implements HttpAdapter {
   constructor(
@@ -61,6 +66,7 @@ export class Fetch implements HttpAdapter {
     configurations: HttpClientConfiguration,
   ): RequestInit {
     delete configurations.params;
+    delete configurations.parseResponseOnCamelCase;
     delete configurations.searchParams;
 
     return configurations;
@@ -94,10 +100,14 @@ export class Fetch implements HttpAdapter {
         ...tokenHeadersObject,
       },
     })
-      .then((response) => {
-        const data = response.json() as T;
+      .then(async (response) => {
+        const data = await response.json();
 
-        return data;
+        const parsedData = this.configuration?.parseResponseOnCamelCase
+          ? snakeToCamelCase<T>(data)
+          : data;
+
+        return parsedData;
       })
       .catch((err) => {
         this.logger?.log(err.message, LogLevels.ERROR);
@@ -127,10 +137,14 @@ export class Fetch implements HttpAdapter {
       },
       body: JSON.stringify(body),
     })
-      .then((response) => {
-        const data = response.json() as R;
+      .then(async (response) => {
+        const data = await response.json();
 
-        return data;
+        const parsedData = this.configuration?.parseResponseOnCamelCase
+          ? snakeToCamelCase<R>(data)
+          : data;
+
+        return parsedData;
       })
       .catch((err) => {
         this.logger?.log(err.message, LogLevels.ERROR);

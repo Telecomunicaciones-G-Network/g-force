@@ -1,3 +1,5 @@
+// CHECKED:
+
 import type { ConversationValues } from '../interfaces';
 
 export class Conversation {

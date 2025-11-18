@@ -1,6 +1,6 @@
 // CHECKED:
 
-export interface AgentValues {
+export interface CustomerValues {
   id: string;
   name: string;
 }

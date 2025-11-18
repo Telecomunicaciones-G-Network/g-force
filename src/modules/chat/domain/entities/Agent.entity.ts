@@ -1,3 +1,5 @@
+// CHECKED:
+
 import type { AgentValues } from '../interfaces';
 
 export class Agent {

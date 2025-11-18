@@ -1,3 +1,5 @@
+// CHECKED:
+
 import type { ContactValues } from '../interfaces';
 
 export class Contact {

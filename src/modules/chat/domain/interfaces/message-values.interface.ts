@@ -1,12 +1,14 @@
-import type { MessageDirection, MessageStatus, MessageType } from '../types';
-import type { AgentValues } from './agent-values.interface';
+// CHECKED:
 
-export interface MessageValues {
-  createdAt: Date;
-  direction: MessageDirection;
+import type { MessageDirection, MessageStatus, MessageType } from '../types';
+import type { CustomerValues } from './customer-values.interface';
+
+export type MessageValues = {
   id: string;
-  sender: AgentValues;
   status: MessageStatus;
-  textPreview: string;
   type: MessageType;
-}
+  message: string;
+  direction: MessageDirection;
+  customer: CustomerValues;
+  createdAt: Date;
+};

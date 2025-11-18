@@ -1,3 +1,5 @@
+// CHECKED:
+
 export enum Assignments {
   ALL = 'all',
   AGENT_ONLY = 'agent-only',

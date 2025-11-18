@@ -12,6 +12,12 @@
   "todohighlight.isCaseSensitive": true,
   "todohighlight.keywords": [
     {
+      "text": "CHECKED:",
+      "color": "#ffffff",
+      "backgroundColor": "#499167",
+      "overviewRulerColor": "grey"
+    },
+    {
       "text": "DONE:",
       "color": "#ffffff",
       "backgroundColor": "#499167",
@@ -56,6 +62,7 @@
     "*.presenter.ts": "sentry",
     "*.repository.ts": "wxt",
     "*.util.ts": "credits",
+    "clean-architecture.md": "document",
     "css-data.json": "vscode",
     "settings.json": "vscode"
   },
@@ -171,10 +178,22 @@
       "fileExtensions": ["query.ts"]
     },
     {
+      "name": "React Module CSS",
+      "base": "react",
+      "color": "purple-300",
+      "fileExtensions": ["module.css"]
+    },
+    {
       "name": "React Hooks",
       "base": "react",
       "color": "amber-300",
       "fileExtensions": ["hook.tsx"]
+    },
+    {
+      "name": "React Pages",
+      "base": "react",
+      "color": "orange-500",
+      "fileNames": ["page.tsx"]
     },
     {
       "name": "Types",

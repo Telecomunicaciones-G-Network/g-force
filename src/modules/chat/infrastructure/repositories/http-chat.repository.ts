@@ -1,9 +1,11 @@
+// CHECKED:
+
 import type {
-  GetContactsMappedResponse,
   GetContactsRequest,
   GetContactsResponse,
 } from '../../domain/interfaces';
 import type { ChatRepository } from '../../domain/repositories/chat.repository';
+import type { GetContactsResponseDTO } from '../dtos';
 
 import { HttpCaches } from '@http-client/enums/http-caches.enum';
 
@@ -13,13 +15,13 @@ import { gnetworkFetchApiClient } from '@ui-core/fetchers/gnetwork-fetch-api-cli
 
 import { CHAT_RESOURCES } from '../dictionaries/chat-resources.dictionary';
 
-import { getContactsMapper } from '../mappers/get-contacts.mapper';
+import { GetContactsMapper } from '../mappers/get-contacts.mapper';
 
 export const httpChatRepository: ChatRepository = {
   getContacts: async (
     query?: GetContactsRequest,
-  ): Promise<GetContactsMappedResponse> => {
-    const response = await gnetworkFetchApiClient.get<GetContactsResponse>(
+  ): Promise<GetContactsResponse> => {
+    const response = await gnetworkFetchApiClient.get<GetContactsResponseDTO>(
       CHAT_RESOURCES.GET_CONTACTS,
       {
         cache: HttpCaches.NO_STORE,
@@ -36,6 +38,6 @@ export const httpChatRepository: ChatRepository = {
       });
     }
 
-    return getContactsMapper(response);
+    return GetContactsMapper.mapFrom(response);
   },
 };

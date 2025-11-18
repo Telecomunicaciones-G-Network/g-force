@@ -1,3 +1,5 @@
+// CHECKED:
+
 import type { TeamValues } from '../interfaces';
 
 export class Team {

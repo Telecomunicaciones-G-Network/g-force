@@ -1,6 +1,8 @@
+// CHECKED:
+
 import type {
-  GetContactsMappedResponse,
   GetContactsRequest,
+  GetContactsResponse,
 } from '../../domain/interfaces';
 import type { ChatRepository } from '../../domain/repositories/chat.repository';
 
@@ -10,7 +12,7 @@ import { GetContactsException } from '../../domain/exceptions/get-contacts.excep
 export const getContactsUsecase = async (
   httpChatRepository: ChatRepository,
   request?: GetContactsRequest,
-): Promise<GetContactsMappedResponse> => {
+): Promise<GetContactsResponse> => {
   return httpChatRepository
     .getContacts(request)
     .then((response) => response)

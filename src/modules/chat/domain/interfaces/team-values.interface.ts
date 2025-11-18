@@ -1,4 +1,6 @@
+// CHECKED:
+
 export interface TeamValues {
-  codename: string;
+  id: string;
   name: string;
 }

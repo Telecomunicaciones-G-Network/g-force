@@ -1,3 +1,5 @@
+// CHECKED:
+
 export enum ConversationStatus {
   ACTIVE = 'ACTIVE',
   ASSIGNED = 'ASSIGNED',

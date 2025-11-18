@@ -1,3 +1,5 @@
+// PENDING:
+
 'use client';
 
 import type { GetContactsViewModel } from '@module-chat/infrastructure/viewmodels';
