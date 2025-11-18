@@ -1,16 +1,9 @@
-import type { ContactPlatform } from '../types';
-
-import { Conversation } from './Conversation.entity';
-import { Message } from './Message.entity';
+import type { ContactValues } from '../interfaces';
 
 export class Contact {
-  id: string;
+  constructor(private values: ContactValues) {}
 
-  latestConversation: Conversation;
-
-  latestMessage: Message;
-
-  platform: ContactPlatform;
-
-  platformId: string;
+  public toValues(): ContactValues {
+    return this.values;
+  }
 }

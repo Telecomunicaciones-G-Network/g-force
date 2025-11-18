@@ -43,16 +43,19 @@
   "material-icon-theme.files.associations": {
     "*.action.ts": "cue",
     "*.class.ts": "capnp",
+    "*.constant.ts": "command",
     "*.dependency.ts": "varnish",
     "*.dictionary.ts": "denizenscript",
     "*.dto.ts": "hurl",
     "*.entity.ts": "sketch",
     "*.error.ts": "erlang",
+    "*.exception.ts": "ember",
     "*.fetcher.ts": "salesforce",
     "*.interface.ts": "less",
     "*.mapper.ts": "xml",
     "*.presenter.ts": "sentry",
     "*.repository.ts": "wxt",
+    "*.util.ts": "credits",
     "css-data.json": "vscode",
     "settings.json": "vscode"
   },
@@ -67,7 +70,7 @@
       "name": "Application",
       "base": "src",
       "color": "blue-500",
-      "folderNames": ["application"]
+      "folderNames": ["app", "application"]
     },
     {
       "name": "Domain",
@@ -80,6 +83,12 @@
       "base": "connection",
       "color": "pink-400",
       "folderNames": ["dtos"]
+    },
+    {
+      "name": "Exceptions",
+      "base": "error",
+      "color": "orange-500",
+      "folderNames": ["exceptions"]
     },
     {
       "name": "Fetchers",
@@ -104,6 +113,30 @@
       "base": "src",
       "color": "green-500",
       "folderNames": ["infrastructure"]
+    },
+    {
+      "name": "Modules",
+      "base": "plugin",
+      "color": "red-500",
+      "folderNames": ["modules"]
+    },
+    {
+      "name": "Packages",
+      "base": "packages",
+      "color": "green-600",
+      "folderNames": ["packages"]
+    },
+    {
+      "name": "Queries",
+      "base": "command",
+      "color": "deep-orange-400",
+      "folderNames": ["queries"]
+    },
+    {
+      "name": "Stringify",
+      "base": "font",
+      "color": "amber-700",
+      "folderNames": ["stringify"]
     },
     {
       "name": "User",
@@ -132,6 +165,12 @@
       "fileExtensions": ["enum.ts"]
     },
     {
+      "name": "Queries",
+      "base": "templ",
+      "color": "deep-orange-400",
+      "fileExtensions": ["query.ts"]
+    },
+    {
       "name": "React Hooks",
       "base": "react",
       "color": "amber-300",
@@ -142,6 +181,12 @@
       "base": "typst",
       "color": "blue-500",
       "fileExtensions": ["type.ts"]
+    },
+    {
+      "name": "Usecase Get",
+      "base": "powershell",
+      "color": "green-500",
+      "fileNames": ["get-contacts.usecase.ts"]
     },
     {
       "name": "Usecase Post",

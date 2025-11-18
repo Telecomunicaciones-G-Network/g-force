@@ -1,5 +1,9 @@
 'use client';
 
+import type { GetContactsViewModel } from '@module-chat/infrastructure/viewmodels';
+
+import { use } from 'react';
+
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatListBody } from './components/chat-list-body';
@@ -11,8 +15,17 @@ import { useChatList } from './chat-list.hook';
 
 import styles from './chat-list.module.css';
 
-export const ChatList = () => {
+interface ChatListProps {
+  chatContactsResponsePromise: Promise<GetContactsViewModel>;
+}
+
+export const ChatList = ({
+  chatContactsResponsePromise,
+}: Readonly<ChatListProps>) => {
+  const chatContactsResponse = use(chatContactsResponsePromise);
   const { chatMode, isDesktop } = useChatList();
+
+  console.log('chatContacts', JSON.stringify(chatContactsResponse));
 
   return (
     <>

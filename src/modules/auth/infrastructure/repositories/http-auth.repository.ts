@@ -8,21 +8,23 @@ import type { AuthRepository } from '../../domain/repositories';
 
 import { AxiosError } from 'axios';
 
-import { BaseError } from '@module-core/errors/base-error.error';
+import { HttpClient } from '@http-client/classes/http-client.class';
 
-import { gnetworkApiClient } from '@ui-core/fetchers/gnetwork-api-client.fetcher';
+import { BaseError } from '@module-core/errors/base-error.error';
 
 import { AUTH_RESOURCES } from '../dictionaries/auth-resources.dictionary';
 
 import { loginMapper } from '../mappers/login.mapper';
 
 export class HttpAuthRepository implements AuthRepository {
-  async login(request: LoginRequest): Promise<LoginTransformed> {
+  constructor(private readonly httpClient: HttpClient) {}
+
+  public async login(request: LoginRequest): Promise<LoginTransformed> {
     try {
-      const response = await gnetworkApiClient.post<
-        LoginRequest,
-        LoginResponse
-      >(AUTH_RESOURCES.LOGIN, request);
+      const response = await this.httpClient.post<LoginRequest, LoginResponse>(
+        AUTH_RESOURCES.LOGIN,
+        request,
+      );
 
       return loginMapper(response);
     } catch (err) {

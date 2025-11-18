@@ -1,14 +1,9 @@
-import type { ConversationStatus } from '../types';
-
-import { Agent } from './Agent.entity';
-import { Team } from './Team.entity';
+import type { ConversationValues } from '../interfaces';
 
 export class Conversation {
-  id: string;
+  constructor(private values: ConversationValues) {}
 
-  agent: Agent;
-
-  status: ConversationStatus;
-
-  team: Team;
+  public toValues(): ConversationValues {
+    return this.values;
+  }
 }

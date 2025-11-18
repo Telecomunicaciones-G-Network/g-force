@@ -1,15 +1,41 @@
-import type { GetContactsResponse } from '../../domain/interfaces';
+import type {
+  GetContactsMappedResponse,
+  GetContactsRequest,
+  GetContactsResponse,
+} from '../../domain/interfaces';
+import type { ChatRepository } from '../../domain/repositories/chat.repository';
 
-import { HttpClient } from '@http-client/classes/http-client.class';
+import { HttpCaches } from '@http-client/enums/http-caches.enum';
 
-import { ChatRepository } from '../../domain/repositories/chat.repository';
+import { BaseException } from '@http-client/exceptions/base.exception';
 
-export class HttpChatRepository implements ChatRepository {
-  constructor(private readonly httpClient: HttpClient) {}
+import { gnetworkFetchApiClient } from '@ui-core/fetchers/gnetwork-fetch-api-client.fetcher';
 
-  async getContacts(): Promise<GetContactsResponse> {
-    return await this.httpClient.get<GetContactsResponse>(
-      '/chat/chat/contacts/',
+import { CHAT_RESOURCES } from '../dictionaries/chat-resources.dictionary';
+
+import { getContactsMapper } from '../mappers/get-contacts.mapper';
+
+export const httpChatRepository: ChatRepository = {
+  getContacts: async (
+    query?: GetContactsRequest,
+  ): Promise<GetContactsMappedResponse> => {
+    const response = await gnetworkFetchApiClient.get<GetContactsResponse>(
+      CHAT_RESOURCES.GET_CONTACTS,
+      {
+        cache: HttpCaches.NO_STORE,
+        searchParams: {
+          ...(query || {}),
+        },
+      },
     );
-  }
-}
+
+    if (response?.error || !response?.results) {
+      throw new BaseException({
+        message: response?.error,
+        status: response?.status,
+      });
+    }
+
+    return getContactsMapper(response);
+  },
+};

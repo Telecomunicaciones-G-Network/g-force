@@ -1,5 +1,8 @@
-import type { GetContactsResponse } from '../interfaces';
+import type {
+  GetContactsMappedResponse,
+  GetContactsRequest,
+} from '../interfaces';
 
-export abstract class ChatRepository {
-  abstract getContacts(): Promise<GetContactsResponse>;
+export interface ChatRepository {
+  getContacts(request?: GetContactsRequest): Promise<GetContactsMappedResponse>;
 }

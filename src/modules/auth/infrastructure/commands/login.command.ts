@@ -7,7 +7,9 @@ import { loginUsecase } from '../dependencies/login.dependency';
 
 import { LoginPresenter } from '../presenters/login.presenter';
 
-export const Login = async (command: LoginDTO): Promise<LoginViewModel> => {
+export const LoginCommand = async (
+  command: LoginDTO,
+): Promise<LoginViewModel> => {
   const request = loginAdapter(command);
 
   const response = await loginUsecase.execute(request);

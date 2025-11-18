@@ -1,5 +1,9 @@
-export class Agent {
-  id: string;
+import type { AgentValues } from '../interfaces';
 
-  name: string;
+export class Agent {
+  constructor(private values: AgentValues) {}
+
+  public toValues(): AgentValues {
+    return this.values;
+  }
 }

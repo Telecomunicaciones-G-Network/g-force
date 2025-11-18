@@ -1,3 +1,5 @@
+// TODO: Debo implementar un error del dominio en la propagacion del error que se lanza en este mapper
+
 import type { LoginResponse, LoginTransformed } from '../../domain/interfaces';
 
 import { User } from '@module-user/domain/entities/user.entity';

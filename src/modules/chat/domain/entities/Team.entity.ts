@@ -1,5 +1,9 @@
-export class Team {
-  codename: string;
+import type { TeamValues } from '../interfaces';
 
-  name: string;
+export class Team {
+  constructor(private values: TeamValues) {}
+
+  public toValues(): TeamValues {
+    return this.values;
+  }
 }

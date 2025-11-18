@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation';
 import { daysToSeconds } from '@timer/utils/days-to-seconds.util';
 import { minutesToSeconds } from '@timer/utils/minutes-to-seconds.util';
 
-import { Login } from '@module-auth/infrastructure/commands/login.command';
+import { LoginCommand } from '@module-auth/infrastructure/commands/login.command';
 
 import { BaseError } from '@module-core/errors/base-error.error';
 
@@ -27,7 +27,7 @@ export async function loginAction(
       password: formData.get('password') as string,
     };
 
-    const response = await Login(data);
+    const response = await LoginCommand(data);
 
     if (response?.refresh && response?.token && response?.user) {
       const cookieStore = await cookies();
@@ -64,6 +64,10 @@ export async function loginAction(
     const error = err as BaseError;
 
     // TODO: Debo manejar el mensaje si la redireccion de next falla
+
+    if (error.message === 'NEXT_REDIRECT') {
+      throw error;
+    }
 
     return {
       errors: {

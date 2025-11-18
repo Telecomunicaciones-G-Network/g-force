@@ -4,6 +4,7 @@ export class BaseError extends Error {
 
   constructor(message?: string, status?: number) {
     super(message || 'Unknown error');
+
     this.name = 'BaseError';
     this.status = status ?? 500;
   }

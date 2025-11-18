@@ -1,19 +1,9 @@
-import type { MessageDirection, MessageStatus, MessageType } from '../types';
-
-import { Agent } from './Agent.entity';
+import type { MessageValues } from '../interfaces';
 
 export class Message {
-  id: string;
+  constructor(private values: MessageValues) {}
 
-  direction: MessageDirection;
-
-  sender: Agent;
-
-  status: MessageStatus;
-
-  textPreview: string;
-
-  type: MessageType;
-
-  createAt: Date;
+  public toValues(): MessageValues {
+    return this.values;
+  }
 }

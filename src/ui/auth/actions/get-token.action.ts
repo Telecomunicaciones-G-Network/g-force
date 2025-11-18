@@ -1,14 +1,17 @@
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export async function getTokenAction(): Promise<string | null> {
-  try {
-    const cookieStore = await cookies();
-    const tokenCookie = cookieStore.get('token');
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token');
 
-    return tokenCookie?.value ?? null;
-  } catch (error) {
-    console.error('Token can not be obtained :(', error);
+  if (!token) {
+    cookieStore.delete('token');
+    cookieStore.delete('refresh');
+    cookieStore.delete('user');
 
-    return null;
+    redirect('/login');
   }
+
+  return token?.value ?? null;
 }

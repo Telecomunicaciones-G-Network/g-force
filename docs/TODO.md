@@ -1,6 +1,6 @@
 # TODO
 
-## Dones
+## PENDING
 
 PENDING: /src/app/(public)/auth/layout.tsx
 PENDING: /src/app/(public)/factory/~
@@ -307,31 +307,3 @@ export async function loginAction(
 }
 
 ```
-
-## Forma de clean architecture login
-
-1. Mi UI Form va a tomar los datos del login y pasarlo como **LoginDTO** al Login ✅
-
-2. El Login va a pasar el **LoginDTO** al loginAdapter ✅
-
-3. El adaptador va a convertir el **LoginDTO** a **LoginRequest** y va a pasar este **LoginRequest** al Login ✅
-
-4. El Login va a pasar el **LoginRequest** al LoginUsecase. ✅
-
-5. El LoginUsecase va a pasar el **LoginRequest** al HttpAuthRepository ✅
-
-6. El HttpAuthRepository va a aplicar la implementacion u opcional va a pasar esto a una funcion de servicio del cual puede obtener **LoginResponse** ✅
-
-7. El HttpAuthRepository va a pasar el **LoginResponse** al loginMapper o lo puede hacer nuestro servicio ✅
-
-8. El loginMapper va a convertir el **LoginResponse** a **LoginTransformed** que es del dominio y devolverlo al HttpAuthRepository ✅
-
-9. El HttpAuthRepository va a devolver el **LoginTransformed** al LoginUsecase ✅
-
-10. El LoginUsecase va a devolver el **LoginTransformed** al Login ✅
-
-11. El Login va a pasar el **LoginTransformed** al loginPresenter ✅
-
-12. El loginPresenter va a transformar el **LoginModel** en el **LoginViewModel** y devolverlo al Login
-
-13. El Login devuelve a la UI el **LoginViewModel**

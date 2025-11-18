@@ -4,14 +4,13 @@ import { Logger } from '@logger/classes/logger.class';
 
 import { ENVS } from '@ui-core/envs/envs';
 
+import { GNETWORK_HTTP_BASE_HEADERS } from '@ui-core/constants/gnetwork-http-base-headers.constant';
+
 const logger = new Logger('GnetworkApiClient');
 
 const fetcher = new Axios(
   {
-    headers: {
-      Accept: 'application/json; version=1.0.0',
-      'Content-Type': 'application/json',
-    },
+    headers: GNETWORK_HTTP_BASE_HEADERS,
   },
   logger,
 );
