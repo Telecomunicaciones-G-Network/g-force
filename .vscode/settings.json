@@ -38,9 +38,19 @@
   ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
+    "(public)": "public",
     "actions": "cue",
     "dictionaries": "resource",
+    "dropdown-base": "react-components",
+    "dropdown-container": "react-components",
+    "dropdown-item": "react-components",
+    "dropdown-separator": "react-components",
+    "dropdown-title": "react-components",
+    "dropdown-trigger": "react-components",
+    "dropdown": "react-components",
+    "dropdowns": "content",
     "entities": "svg",
+    "factory": "mjml",
     "mappers": "mappings",
     "presenters": "delta",
     "usecases": "vm",
@@ -62,6 +72,7 @@
     "*.presenter.ts": "sentry",
     "*.props.ts": "svgr",
     "*.repository.ts": "wxt",
+    "*.tsx": "react",
     "*.util.ts": "credits",
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
@@ -103,6 +114,12 @@
       "base": "aws",
       "color": "light-blue-500",
       "folderNames": ["fetchers"]
+    },
+    {
+      "name": "GNetwork UI",
+      "base": "ui",
+      "color": "red-400",
+      "folderNames": ["gnetwork-ui"]
     },
     {
       "name": "HTTP Client",
