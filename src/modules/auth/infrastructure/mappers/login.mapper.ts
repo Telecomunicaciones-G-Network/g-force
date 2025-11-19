@@ -9,18 +9,18 @@ export const loginMapper = (input: LoginResponse): LoginTransformed => {
     throw new Error('Login response results are missing for login user mapper');
   }
 
-  const user = new User({
-    createdAt: input?.results?.user?.created_at,
-    dateJoined: input?.results?.user?.date_joined,
-    email: input?.results?.user?.email,
-    firstname: input?.results?.user?.first_name,
-    id: input?.results?.user?.id,
-    isActive: input?.results?.user?.is_active,
-    lastname: input?.results?.user?.last_name,
-    permissions: input?.results?.user?.permissions,
-    roles: input?.results?.user?.roles,
-    updatedAt: input?.results?.user?.updated_at,
-  });
+  const user = new User(
+    input?.results?.user?.id,
+    input?.results?.user?.created_at,
+    input?.results?.user?.date_joined,
+    input?.results?.user?.email,
+    input?.results?.user?.first_name,
+    input?.results?.user?.is_active,
+    input?.results?.user?.last_name,
+    input?.results?.user?.permissions,
+    input?.results?.user?.roles,
+    input?.results?.user?.updated_at,
+  );
 
   return {
     ...input,

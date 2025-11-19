@@ -1,3 +1,5 @@
+// TODO: Debo eliminar este archivo y usar el action getCookieFromServer
+
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 

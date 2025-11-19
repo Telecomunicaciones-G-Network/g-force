@@ -52,6 +52,8 @@
     "entities": "svg",
     "factory": "mjml",
     "mappers": "mappings",
+    "navbars": "serverless",
+    "navbar": "react-components",
     "presenters": "delta",
     "usecases": "vm",
     "viewmodels": "job"
@@ -158,6 +160,24 @@
       "folderNames": ["queries"]
     },
     {
+      "name": "React Contexts",
+      "base": "react-components",
+      "color": "teal-500",
+      "folderNames": ["contexts"]
+    },
+    {
+      "name": "React Hooks",
+      "base": "react-components",
+      "color": "amber-500",
+      "folderNames": ["hooks"]
+    },
+    {
+      "name": "React Providers",
+      "base": "react-components",
+      "color": "orange-400",
+      "folderNames": ["providers", "auth-provider"]
+    },
+    {
       "name": "Stringify",
       "base": "font",
       "color": "amber-700",
@@ -196,6 +216,12 @@
       "fileExtensions": ["query.ts"]
     },
     {
+      "name": "React Contexts",
+      "base": "react",
+      "color": "teal-400",
+      "fileExtensions": ["context.tsx"]
+    },
+    {
       "name": "React Module CSS",
       "base": "react",
       "color": "purple-300",
@@ -212,6 +238,12 @@
       "base": "react",
       "color": "orange-500",
       "fileNames": ["page.tsx"]
+    },
+    {
+      "name": "React Providers",
+      "base": "react",
+      "color": "deep-orange-400",
+      "fileExtensions": ["provider.tsx"]
     },
     {
       "name": "Types",
