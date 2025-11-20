@@ -1,15 +1,15 @@
-// CHECKED:
+// DONE:
 
 import type {
-  ContactValues,
   GetContactsResponse,
+  GetContactsResponseContact,
 } from '../../domain/interfaces';
 
 export interface GetContactsViewModel
   extends Partial<
     Omit<GetContactsResponse, 'error' | 'extra' | 'status' | 'success'>
   > {
-  contacts?: ContactValues[];
+  contacts?: GetContactsResponseContact[];
   cursor?: string | null;
   hasMore?: boolean;
   nextCursor?: string | null;

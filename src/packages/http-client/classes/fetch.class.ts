@@ -52,12 +52,22 @@ export class Fetch implements HttpAdapter {
     return `/${parseParams}`;
   }
 
-  private parseSearchParams(searchParams: Record<string, string>): string {
+  private parseSearchParams(
+    searchParams?: Record<string, string | undefined>,
+  ): string {
     if (!searchParams || typeof searchParams !== 'object') {
       return '';
     }
 
-    const formattedSearchParams = new URLSearchParams(searchParams);
+    const filteredParams: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(searchParams)) {
+      if (value !== undefined) {
+        filteredParams[key] = value;
+      }
+    }
+
+    const formattedSearchParams = new URLSearchParams(filteredParams);
 
     return `?${formattedSearchParams}`;
   }

@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 import type { Assignment, ContactPlatform, ConversationStatus } from '../types';
 

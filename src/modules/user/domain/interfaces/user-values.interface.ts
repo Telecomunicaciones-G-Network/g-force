@@ -1,9 +1,9 @@
 export interface UserValues {
+  id: string;
   createdAt: Date;
   dateJoined: Date;
   email: string;
   firstname: string;
-  id: string;
   isActive: boolean;
   lastname: string;
   permissions: string[];

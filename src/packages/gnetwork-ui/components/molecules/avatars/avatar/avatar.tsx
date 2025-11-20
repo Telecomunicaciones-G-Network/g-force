@@ -12,6 +12,7 @@ import styles from './avatar.module.css';
 
 export const Avatar = ({
   className = '',
+  customBackgroundColor,
   image,
   ref,
   username = '',
@@ -35,6 +36,7 @@ export const Avatar = ({
           styles.base__username_container,
           'bg-foreground font-semibold rounded-lg text-base text-chromatic',
         )}
+        style={{ backgroundColor: customBackgroundColor }}
       >
         <span className={styles.base__username_container_text}>
           {usernameToInitials(username)}

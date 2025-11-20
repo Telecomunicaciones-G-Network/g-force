@@ -1,5 +1,3 @@
-// CHECKED:
-
 import type { PropsWithChildren } from 'react';
 
 import { DashboardLayout } from '@gnetwork-ui/components/templates/dashboard-layout';

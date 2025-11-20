@@ -1,3 +1,5 @@
+'use client';
+
 import { useMediaQuery } from '@hookers/use-media-query.hook';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';

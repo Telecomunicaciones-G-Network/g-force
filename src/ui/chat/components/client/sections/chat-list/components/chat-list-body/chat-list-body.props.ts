@@ -1,7 +1,5 @@
-// CHECKED:
-
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { GetContactsResponseContact } from '@module-chat/domain/interfaces';
 
 export interface ChatListBodyProps {
-  chats?: ContactValues[];
+  contacts?: GetContactsResponseContact[];
 }

@@ -1,8 +1,9 @@
 // PENDING:
+// IMPROVE: Debo renombrar este componente como contact list body para tener coherencia con los datos
 
 'use client';
 
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { GetContactsResponseContact } from '@module-chat/domain/interfaces';
 import type { ChatListBodyProps } from './chat-list-body.props';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
@@ -14,7 +15,9 @@ import { useChatListBody } from './chat-list-body.hook';
 
 import styles from './chat-list-body.module.css';
 
-export const ChatListBody = ({ chats = [] }: Readonly<ChatListBodyProps>) => {
+export const ChatListBody = ({
+  contacts = [],
+}: Readonly<ChatListBodyProps>) => {
   const { activeChat, changeActiveChat } = useChatListBody();
 
   return (
@@ -24,15 +27,16 @@ export const ChatListBody = ({ chats = [] }: Readonly<ChatListBodyProps>) => {
         'pb-4 px-4 tablet:pb-[27px] tablet:px-8 lg:p-0',
       )}
     >
-      {chats?.length > 0 ? (
-        chats.map((chat: ContactValues) => (
+      {contacts?.length > 0 ? (
+        contacts.map((contact: GetContactsResponseContact) => (
           <ChatCard
-            isActive={activeChat === chat?.id}
-            key={chat?.id}
-            lastMessage={chat?.latestMessage?.message}
-            lastMessageTime={chat?.latestMessage?.createdAt}
-            onClick={() => changeActiveChat(chat?.id)}
-            username={chat?.name}
+            contactId={contact?.id}
+            isActive={activeChat === contact?.id}
+            key={contact?.id}
+            lastMessage={contact?.latestMessage?.text}
+            lastMessageTime={contact?.latestMessage?.createdAt}
+            onClick={() => changeActiveChat(contact?.id)}
+            username={contact?.name}
           />
         ))
       ) : (

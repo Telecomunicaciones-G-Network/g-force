@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 import type {
   ContactPlatform,
@@ -19,8 +19,8 @@ export interface GetContactsResultLatestConversationTeam {
 }
 
 export interface GetContactsResultLatestConversation {
-  agent: GetContactsResultLatestConversationAgent;
   id: string;
+  agent: GetContactsResultLatestConversationAgent;
   status: ConversationStatus;
   team: GetContactsResultLatestConversationTeam;
 }
@@ -31,9 +31,9 @@ export interface GetContactsResultLatestMessageSender {
 }
 
 export interface GetContactsResultLatestMessage {
+  id: string;
   createdAt: string;
   direction: MessageDirection;
-  id: string;
   sender: GetContactsResultLatestMessageSender;
   status: MessageStatus;
   textPreview: string;

@@ -1,4 +1,4 @@
-TODO: I should to translate into English
+TODO: Debo traducir este archivo completamente a Ingles
 
 # Clean Architecture
 

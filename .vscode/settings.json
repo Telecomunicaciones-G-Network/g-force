@@ -12,12 +12,6 @@
   "todohighlight.isCaseSensitive": true,
   "todohighlight.keywords": [
     {
-      "text": "CHECKED:",
-      "color": "#ffffff",
-      "backgroundColor": "#499167",
-      "overviewRulerColor": "grey"
-    },
-    {
       "text": "DONE:",
       "color": "#ffffff",
       "backgroundColor": "#499167",
@@ -32,7 +26,7 @@
     {
       "text": "PENDING:",
       "color": "#ffffff",
-      "backgroundColor": "#d84727",
+      "backgroundColor": "#f58549",
       "overviewRulerColor": "grey"
     }
   ],
@@ -40,6 +34,9 @@
   "material-icon-theme.folders.associations": {
     "(public)": "public",
     "actions": "cue",
+    "chat-container": "react-components",
+    "chat-conversation": "react-components",
+    "chat-list": "react-components",
     "dictionaries": "resource",
     "dropdown-base": "react-components",
     "dropdown-container": "react-components",
@@ -55,6 +52,7 @@
     "navbars": "serverless",
     "navbar": "react-components",
     "presenters": "delta",
+    "socketio": "wakatime",
     "usecases": "vm",
     "viewmodels": "job"
   },
@@ -71,6 +69,7 @@
     "*.fetcher.ts": "salesforce",
     "*.interface.ts": "less",
     "*.mapper.ts": "xml",
+    "*.model.ts": "sml",
     "*.presenter.ts": "sentry",
     "*.props.ts": "svgr",
     "*.repository.ts": "wxt",
@@ -154,6 +153,12 @@
       "folderNames": ["packages"]
     },
     {
+      "name": "Presenters",
+      "base": "connection",
+      "color": "pink-400",
+      "folderNames": ["presenters"]
+    },
+    {
       "name": "Queries",
       "base": "command",
       "color": "deep-orange-400",
@@ -184,6 +189,12 @@
       "folderNames": ["stringify"]
     },
     {
+      "name": "Templates",
+      "base": "template",
+      "color": "red-400",
+      "folderNames": ["templates"]
+    },
+    {
       "name": "User",
       "base": "admin",
       "color": "blue-600",
@@ -210,6 +221,12 @@
       "fileExtensions": ["enum.ts"]
     },
     {
+      "name": "Presenters",
+      "base": "capacitor",
+      "color": "pink-300",
+      "fileExtensions": ["presenter.ts"]
+    },
+    {
       "name": "Queries",
       "base": "templ",
       "color": "deep-orange-400",
@@ -234,6 +251,12 @@
       "fileExtensions": ["hook.tsx"]
     },
     {
+      "name": "React Layouts",
+      "base": "react",
+      "color": "cyan-200",
+      "fileNames": ["layout.tsx"]
+    },
+    {
       "name": "React Pages",
       "base": "react",
       "color": "orange-500",
@@ -255,7 +278,7 @@
       "name": "Usecase Get",
       "base": "powershell",
       "color": "green-500",
-      "fileNames": ["get-contacts.usecase.ts"]
+      "fileNames": ["get-chat-messages.usecase.ts", "get-contacts.usecase.ts"]
     },
     {
       "name": "Usecase Post",

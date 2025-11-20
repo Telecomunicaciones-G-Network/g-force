@@ -1,5 +1,3 @@
-// PENDING:
-
 import type { NavbarProps } from './navbar.props';
 
 import { plainToClass } from 'class-transformer';
@@ -23,6 +21,7 @@ import styles from './navbar.module.css';
 
 export const Navbar = async ({
   hideNotificationsButton = false,
+  hideUserActions = false,
 }: Readonly<NavbarProps>) => {
   const userCookie = await getUserAction();
   const user = plainToClass(User, userCookie);
@@ -45,7 +44,7 @@ export const Navbar = async ({
         {!hideNotificationsButton && (
           <MdNotificationsNone className="cursor-pointer size-6" />
         )}
-        {user && (
+        {user && !hideUserActions && (
           <Dropdown
             triggerComponent={
               <Button

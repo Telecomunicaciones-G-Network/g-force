@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 import type {
   GetContactsRequest,

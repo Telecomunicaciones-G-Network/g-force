@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 import type { GetContactsRequest } from '../../domain/interfaces';
 import type { GetContactsViewModel } from '../viewmodels';

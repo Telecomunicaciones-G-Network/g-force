@@ -1,11 +1,11 @@
-// CHECKED:
+// DONE:
 
 import type {
-  ContactValues,
   GetContactsResponse,
+  GetContactsResponseContact,
 } from '../../domain/interfaces';
-import type { GetContactsResponseDTO } from '../dtos';
 import type { GetContactsResult } from '../interfaces';
+import type { GetContactsResponseDTO } from '../dtos';
 
 export class GetContactsMapper {
   static mapFrom(input: GetContactsResponseDTO): GetContactsResponse {
@@ -18,30 +18,22 @@ export class GetContactsMapper {
     };
   }
 
-  static mapFromContactArray(input: GetContactsResult): ContactValues {
+  static mapFromContactArray(
+    input: GetContactsResult,
+  ): GetContactsResponseContact {
     return {
       id: input?.contactId,
       name: input?.latestMessage?.sender?.name,
-      platform: input?.platform,
-      latestConversation: {
-        agent: input?.latestConversation?.agent,
-        id: input?.latestConversation?.id,
-        status: input?.latestConversation?.status,
-        team: {
-          id: input?.latestConversation?.team?.codename,
-          name: input?.latestConversation?.team?.name,
-        },
-      },
       latestMessage: {
+        id: input?.latestMessage?.id,
         createdAt: input?.latestMessage?.createdAt,
         direction: input?.latestMessage?.direction,
-        id: input?.latestMessage?.id,
-        customer: {
+        sender: {
           id: input?.latestMessage?.sender?.id,
           name: input?.latestMessage?.sender?.name,
         },
         status: input?.latestMessage?.status,
-        message: input?.latestMessage?.textPreview,
+        text: input?.latestMessage?.textPreview,
         type: input?.latestMessage?.type,
       },
     };

@@ -1,5 +1,3 @@
-// CHECKED:
-
 export const isoToTime = (data: string): string => {
   if (!data || typeof data !== 'string') {
     return '';

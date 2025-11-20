@@ -1,4 +1,4 @@
-// PENDING:
+//  IMPROVE: Colocar este componente como contact list para tener coherencia con los datos
 
 'use client';
 
@@ -24,7 +24,7 @@ interface ChatListProps {
 export const ChatList = ({
   chatContactsResponsePromise,
 }: Readonly<ChatListProps>) => {
-  const { contacts: chats = [] } = use(chatContactsResponsePromise);
+  const { contacts = [] } = use(chatContactsResponsePromise);
   const { chatMode, isDesktop } = useChatList();
 
   return (
@@ -36,8 +36,8 @@ export const ChatList = ({
             'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px]',
           )}
         >
-          {chats?.length > 0 && <ChatListHeader hideFilterButton />}
-          <ChatListBody chats={chats} />
+          {contacts?.length > 0 && <ChatListHeader hideFilterButton />}
+          <ChatListBody contacts={contacts} />
         </section>
       )}
     </>

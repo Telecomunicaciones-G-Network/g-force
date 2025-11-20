@@ -1,11 +1,20 @@
-// CHECKED:
+// DONE:
 
 import type { AgentValues } from '../interfaces';
 
 export class Agent {
-  constructor(private values: AgentValues) {}
+  private id: string;
+  private name: string;
+
+  constructor(id: string, name: string) {
+    this.id = id;
+    this.name = name;
+  }
 
   public toValues(): AgentValues {
-    return this.values;
+    return {
+      id: this.id,
+      name: this.name,
+    };
   }
 }

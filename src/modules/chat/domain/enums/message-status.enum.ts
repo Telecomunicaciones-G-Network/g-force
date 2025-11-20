@@ -1,5 +1,3 @@
-// CHECKED:
-
 export enum MessageStatus {
   DELIVERED = 'DELIVERED',
   FAILED = 'FAILED',

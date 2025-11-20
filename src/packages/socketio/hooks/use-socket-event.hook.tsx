@@ -6,21 +6,21 @@ import { useEffect, useRef } from 'react';
 
 import { useSocket } from './use-socket.hook';
 
-export const useSocketEvent = <T = unknown>(
+export const onSocketEvent = <T = unknown>(
   event: string,
   listener: SocketEventListener<T>,
   deps: unknown[] = [],
 ) => {
   const listenerRef = useRef(listener);
 
-  const { socket, isConnected } = useSocket();
+  const { socket } = useSocket();
 
   useEffect(() => {
     listenerRef.current = listener;
   }, [listener]);
 
   useEffect(() => {
-    if (!socket || !isConnected) return;
+    if (!socket) return;
 
     const wrappedListener = (data: T) => {
       listenerRef.current(data);
@@ -31,5 +31,5 @@ export const useSocketEvent = <T = unknown>(
     return () => {
       unsubscribe();
     };
-  }, [socket, isConnected, event, ...deps]);
+  }, [socket, event, ...deps]);
 };

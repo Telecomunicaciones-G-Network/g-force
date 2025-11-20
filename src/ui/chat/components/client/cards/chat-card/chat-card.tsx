@@ -17,6 +17,7 @@ import styles from './chat-card.module.css';
 export const ChatCard = ({
   avatarAlt = '',
   avatarSrc = '',
+  contactId,
   isActive = false,
   lastMessage = '',
   lastMessageTime = '',
@@ -36,6 +37,7 @@ export const ChatCard = ({
   >
     <div className={styles.base__container}>
       <Avatar
+        customBackgroundColor={contactId && `#${contactId?.slice(0, 6)}`}
         image={
           avatarSrc
             ? {

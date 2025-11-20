@@ -21,7 +21,6 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
     <html suppressHydrationWarning lang="en">
       <head>
         <link rel="icon" type="image/x-icon" href="favicon.png" />
-        <script src="node_modules/reflect-metadata/Reflect.js"></script>
         <ReactScanScript />
       </head>
       <body

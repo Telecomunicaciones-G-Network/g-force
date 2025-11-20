@@ -1,5 +1,3 @@
-// CHECKED:
-
 'use server';
 
 import type { UserValues } from '@module-user/domain/interfaces';

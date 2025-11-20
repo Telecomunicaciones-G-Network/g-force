@@ -1,5 +1,3 @@
-// PENDING:
-
 import type { ChatListHeaderProps } from './chat-list-header.props';
 
 import { MdFilterList } from 'react-icons/md';

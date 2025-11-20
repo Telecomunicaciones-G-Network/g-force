@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 export class GetContactsException extends Error {
   public code: string;

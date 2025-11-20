@@ -1,5 +1,3 @@
-// CHECKED:
-
 export type MessageStatus =
   | 'DELIVERED'
   | 'FAILED'

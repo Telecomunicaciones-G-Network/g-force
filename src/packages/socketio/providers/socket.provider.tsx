@@ -2,7 +2,7 @@
 
 import type { SocketProviderProps } from './socket-provider.props';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { SocketClient } from '../classes/socket-client.class';
 
@@ -13,30 +13,33 @@ export function SocketProvider({
   config,
   token,
 }: SocketProviderProps) {
-  const socketRef = useRef<SocketClient | null>(null);
+  const [socket, setSocket] = useState<SocketClient | null>(null);
+
+  const mergedConfig = useMemo(
+    () => ({
+      ...config,
+      ...(token && {
+        auth: {
+          token,
+        },
+      }),
+    }),
+    [config, token],
+  );
 
   useEffect(() => {
-    if (!socketRef.current) {
-      socketRef.current = new SocketClient({
-        ...config,
-        ...(token && {
-          auth: {
-            token,
-          },
-        }),
-      });
-    }
+    const socketClient = new SocketClient(mergedConfig);
+
+    setSocket(socketClient);
 
     return () => {
-      if (socketRef.current) {
-        socketRef.current.destroy();
-        socketRef.current = null;
-      }
+      socketClient.destroy();
+      setSocket(null);
     };
-  }, [config, token]);
+  }, [mergedConfig]);
 
   return (
-    <SocketContext.Provider value={{ socket: socketRef.current }}>
+    <SocketContext.Provider value={{ socket }}>
       {children}
     </SocketContext.Provider>
   );

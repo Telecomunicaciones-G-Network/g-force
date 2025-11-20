@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 import type { ApiResponse } from '@module-core/interfaces';
 import type { GetContactsResult } from '../interfaces';

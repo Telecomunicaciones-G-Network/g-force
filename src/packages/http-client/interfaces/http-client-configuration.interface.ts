@@ -6,5 +6,5 @@ export interface HttpClientConfiguration {
   method?: HttpMethod;
   params?: string[];
   parseResponseOnCamelCase?: boolean;
-  searchParams?: Record<string, string>;
+  searchParams?: Record<string, string | undefined>;
 }

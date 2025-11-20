@@ -1,5 +1,3 @@
-// CHECKED:
-
 export const usernameToInitials = (username: string): string => {
   if (!username || typeof username !== 'string') return '';
 

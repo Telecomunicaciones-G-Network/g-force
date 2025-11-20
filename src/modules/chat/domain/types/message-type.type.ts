@@ -1,5 +1,3 @@
-// CHECKED:
-
 export type MessageType =
   | 'AUDIO'
   | 'CONTACTS'

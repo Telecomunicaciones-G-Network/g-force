@@ -1,5 +1,3 @@
-// CHECKED:
-
 export enum MessageTypes {
   AUDIO = 'AUDIO',
   CONTACTS = 'CONTACTS',

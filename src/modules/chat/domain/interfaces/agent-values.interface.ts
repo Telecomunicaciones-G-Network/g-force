@@ -1,4 +1,4 @@
-// CHECKED:
+// DONE:
 
 export interface AgentValues {
   id: string;
