@@ -201,7 +201,7 @@
       "name": "React Stores",
       "base": "react-components",
       "color": "lime-500",
-      "folderNames": ["stores"]
+      "folderNames": ["stores", "chat-store", "contact-store"]
     },
     {
       "name": "Sections",

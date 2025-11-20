@@ -27,11 +27,11 @@ import styles from './chat-conversation.module.css';
 export const ChatConversation = () => {
   const {
     activeContact,
-    chatMessages,
     goBackChatList,
     goToChatDetails,
     isError,
     isLoading,
+    messages,
   } = useChatConversation();
 
   return (
@@ -76,7 +76,7 @@ export const ChatConversation = () => {
         <>
           {isLoading && <div>...loading</div>}
           {isError && <div>error</div>}
-          {!isLoading && !isError && chatMessages?.length > 0 && (
+          {!isLoading && !isError && messages?.length > 0 && (
             <div className={styles.base__content}>
               <div
                 className={cn(
@@ -84,19 +84,19 @@ export const ChatConversation = () => {
                   'gap-6 px-4 py-6 tablet:gap-8 tablet:px-8 lg:gap-6 lg:p-6',
                 )}
               >
-                {chatMessages?.map((chatMessage) => (
-                  <Fragment key={chatMessage?.id}>
-                    {chatMessage?.id && (
+                {messages?.map((message) => (
+                  <Fragment key={message?.id}>
+                    {message?.id && (
                       <ChatMessage
                         direction={
-                          chatMessage?.direction === 'INCOMING'
+                          message?.direction === 'INCOMING'
                             ? 'incoming'
                             : 'outgoing'
                         }
-                        time={isoToTime(chatMessage?.createdAt ?? '')}
-                        username={chatMessage?.sender?.name}
+                        time={isoToTime(message?.createdAt ?? '')}
+                        username={message?.sender?.name}
                       >
-                        {chatMessage?.text}
+                        {message?.text}
                       </ChatMessage>
                     )}
                   </Fragment>

@@ -1,3 +1,5 @@
+// PENDING:
+
 import type { Socket } from 'socket.io-client';
 import type { SocketConfig } from '../interfaces';
 import type {
@@ -204,6 +206,31 @@ export class SocketClient {
 
     this.socket.emit(event, data);
     this.log(`Emitted event: ${event}`, SocketLogLevels.INFO, data);
+  }
+
+  public emitWithAck<TData = unknown, TResponse = unknown>(
+    event: string,
+    data?: TData,
+  ): Promise<TResponse> {
+    return new Promise((resolve, reject) => {
+      if (!this.socket?.connected) {
+        const errorMessage = `Cannot emit "${event}": Socket not connected`;
+        this.log(errorMessage, SocketLogLevels.WARN);
+        reject(new Error(errorMessage));
+        return;
+      }
+
+      this.socket.emit(event, data, (response: TResponse) => {
+        this.log(
+          `Received ack for event: ${event}`,
+          SocketLogLevels.SUCCESS,
+          response,
+        );
+        resolve(response);
+      });
+
+      this.log(`Emitted event with ack: ${event}`, SocketLogLevels.INFO, data);
+    });
   }
 
   public getId(): string | undefined {

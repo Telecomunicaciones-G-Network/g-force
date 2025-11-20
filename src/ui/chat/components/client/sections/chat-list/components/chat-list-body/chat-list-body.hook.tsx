@@ -6,13 +6,13 @@ import type { ContactValues } from '@module-chat/domain/interfaces';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
-import { useChatStore } from '@ui-chat/stores/chat.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatListBody = () => {
-  const activeContact = useChatStore((state) => state.activeContact);
+  const activeContact = useContactStore((state) => state.activeContact);
 
-  const setActiveContact = useChatStore((state) => state.setActiveContact);
-  const setChatMode = useChatStore((state) => state.setChatMode);
+  const setActiveContact = useContactStore((state) => state.setActiveContact);
+  const setChatMode = useContactStore((state) => state.setChatMode);
 
   const changeActiveContact = (contact: ContactValues) => {
     setActiveContact(contact);

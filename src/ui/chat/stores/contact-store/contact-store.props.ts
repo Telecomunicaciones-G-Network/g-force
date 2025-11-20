@@ -3,7 +3,7 @@
 import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 
-export interface ChatStoreState {
+export interface ContactStoreState {
   activeContact: ContactValues | null;
   chatMode: ChatMode;
   contacts: ContactValues[];

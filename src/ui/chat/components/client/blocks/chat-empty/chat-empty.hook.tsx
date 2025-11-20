@@ -2,10 +2,10 @@
 
 'use client';
 
-import { useChatStore } from '@ui-chat/stores/chat.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatEmpty = () => {
-  const activeContact = useChatStore((state) => state.activeContact);
+  const activeContact = useContactStore((state) => state.activeContact);
 
   return { activeContact };
 };

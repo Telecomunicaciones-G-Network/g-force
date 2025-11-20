@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
-import { useChatStore } from '@ui-chat/stores/chat.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 import { ChatDetailTabs } from './enums/chat-detail-tabs.enum';
 
@@ -13,7 +13,7 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
     defaultValue || ChatDetailTabs.CONTACT,
   );
 
-  const setChatMode = useChatStore((state) => state.setChatMode);
+  const setChatMode = useContactStore((state) => state.setChatMode);
 
   const changeActiveTab = (tab: string) => setActiveTab(tab as ChatDetailTab);
 
