@@ -14,12 +14,14 @@ import { ChatConversation } from '@ui-chat/components/client/sections/chat-conve
 import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
 import { ChatList } from '@ui-chat/components/client/sections/chat-list';
 
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
+
 import { useChatContainer } from './chat-container.hook';
 
 export const ChatContainer = ({
   chatContactsResponsePromise,
 }: Readonly<ChatContainerProps>) => {
-  useChatContainer();
+  const { activeContact, chatMode, isDesktop } = useChatContainer();
 
   return (
     <>
@@ -28,7 +30,9 @@ export const ChatContainer = ({
           <ChatList chatContactsResponsePromise={chatContactsResponsePromise} />
         </Suspense>
       </ErrorBoundary>
-      <ChatConversation />
+      {(chatMode === ChatModes.CHAT || isDesktop) &&
+        activeContact !== null &&
+        activeContact !== undefined && <ChatConversation />}
       <ChatDetails />
       <ChatEmpty />
     </>

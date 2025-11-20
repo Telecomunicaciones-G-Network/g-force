@@ -1,3 +1,5 @@
+// PENDING:
+
 'use server';
 
 import type { LoginViewModel } from '@module-auth/infrastructure/viewmodels/login.viewmodel';
@@ -33,7 +35,7 @@ export async function loginAction(
       const cookieStore = await cookies();
 
       cookieStore.set('token', response.token, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: minutesToSeconds(60),
         path: '/',
         sameSite: 'lax',

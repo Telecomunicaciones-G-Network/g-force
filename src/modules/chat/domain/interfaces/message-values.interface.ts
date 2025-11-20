@@ -13,8 +13,8 @@ export interface MessageValues {
   createdAt: string;
   deliveredAt?: string;
   direction: MessageDirection;
-  failedAt?: string;
-  readAt?: string;
+  failedAt?: string | null;
+  readAt?: string | null;
   sender: MessageSenderValues;
   sentAt?: string;
   status: MessageStatus;

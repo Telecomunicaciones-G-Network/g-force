@@ -274,7 +274,7 @@
     {
       "name": "React Module CSS",
       "base": "react",
-      "color": "deep-purple-300",
+      "color": "deep-purple-400",
       "fileExtensions": ["module.css"]
     },
     {

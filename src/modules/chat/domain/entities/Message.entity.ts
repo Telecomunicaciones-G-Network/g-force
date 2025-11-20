@@ -9,8 +9,8 @@ export class Message {
   private createdAt: string;
   private deliveredAt: string;
   private direction: MessageDirection;
-  private failedAt: string;
-  private readAt: string;
+  private failedAt?: string | null;
+  private readAt?: string | null;
   private sender: MessageSenderValues;
   private sentAt: string;
   private status: MessageStatus;
@@ -23,8 +23,8 @@ export class Message {
     createdAt: string = new Date().toISOString(),
     deliveredAt: string = new Date().toISOString(),
     direction: MessageDirection,
-    failedAt: string = new Date().toISOString(),
-    readAt: string,
+    failedAt: string | null = null,
+    readAt: string | null = null,
     sender: MessageSenderValues,
     sentAt: string,
     status: MessageStatus,

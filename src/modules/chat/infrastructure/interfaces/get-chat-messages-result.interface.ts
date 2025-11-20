@@ -10,8 +10,8 @@ import type {
 export interface GetChatMessagesResultContact {
   birthday: string;
   emails: string[];
-  formatted_name: string;
-  phone_numbers: string[];
+  formattedName: string;
+  phoneNumbers: string[];
   urls: string[];
 }
 
@@ -23,14 +23,14 @@ export interface GetChatMessagesResultLocation {
 }
 
 export interface GetChatMessagesResultMedia {
-  mime_type: string;
+  mimeType: string;
   type: string;
   url: string;
 }
 
 export interface GetChatMessagesResultReaction {
-  agent_id: string;
-  contact_id: string;
+  agentId: string;
+  contactId: string;
   emoji: string;
 }
 
@@ -43,22 +43,22 @@ export interface GetChatMessagesResult {
   id: string;
   caption: string;
   contacts: GetChatMessagesResultContact[];
-  conversation_id: string;
-  created_at: string;
-  delivered_at: string;
+  conversationId: string;
+  createdAt: string;
+  deliveredAt: string;
   direction: MessageDirection;
-  extra_metadata: Record<string, unknown>;
-  failed_at: string;
-  forwarded_many_times: boolean;
+  extraMetadata: Record<string, unknown>;
+  failedAt: string | null;
+  forwardedManyTimes: boolean;
   forwarded: boolean;
   location: GetChatMessagesResultLocation;
   media: GetChatMessagesResultMedia;
-  platform_id: string;
+  platformId: string;
   platform: ContactPlatform;
   reactions: GetChatMessagesResultReaction[];
-  read_at: string;
+  readAt: string | null;
   sender: GetChatMessagesResultSender;
-  sent_at: string;
+  sentAt: string;
   status: MessageStatus;
   text: string;
   type: MessageType;

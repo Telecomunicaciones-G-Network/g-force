@@ -16,7 +16,7 @@ export default async function PrivateLayout({
   return (
     <AuthProvider token={authData?.token ?? null} user={authData?.user ?? null}>
       <DashboardLayout
-        headerContent={<Navbar />}
+        headerContent={<Navbar hideUserActions />}
         sidebarContent={<div>Sidebar</div>}
       >
         {children}

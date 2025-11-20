@@ -1,3 +1,5 @@
+// PENDING:
+
 import type { ChatMessageProps } from './chat-message.props';
 
 import { Text } from '../../../atoms/texts/text';
@@ -39,7 +41,7 @@ export const ChatMessage = ({
       {username && time && (
         <Text
           as="span"
-          className="text-neutral-100"
+          className="text-neutral-900"
           level="small"
           scheme="label"
         >

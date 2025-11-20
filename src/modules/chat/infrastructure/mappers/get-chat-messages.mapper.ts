@@ -20,22 +20,19 @@ export class GetChatMessagesMapper {
       hasMore: input?.hasMore,
       nextCursor: input?.nextCursor,
       error: input?.error,
-      messages:
-        input?.results?.map((item) =>
-          GetChatMessagesMapper.mapFromArray(item),
-        ) ?? [],
+      messages: input?.results?.map(GetChatMessagesMapper.mapFromArray) ?? [],
     };
   }
 
   static mapFromArray(input: GetChatMessagesResult): MessageValues {
     return {
       id: input?.id,
-      conversationId: input?.conversation_id,
-      createdAt: input?.created_at,
-      deliveredAt: input?.delivered_at,
+      conversationId: input?.conversationId,
+      createdAt: input?.createdAt,
+      deliveredAt: input?.deliveredAt,
       direction: input?.direction,
-      failedAt: input?.failed_at,
-      readAt: input?.read_at,
+      failedAt: input?.failedAt,
+      readAt: input?.readAt,
       sender: input?.sender,
       status: input?.status,
       text: input?.text,

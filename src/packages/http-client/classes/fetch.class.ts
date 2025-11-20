@@ -8,8 +8,6 @@ import type {
   HttpLoggerAdapter,
 } from '../interfaces';
 
-import { cookies } from 'next/headers';
-
 import Cookies from 'js-cookie';
 
 import { LogLevels } from '../enums/log-levels.enum';
@@ -28,6 +26,7 @@ export class Fetch implements HttpAdapter {
     let token: string | undefined;
 
     try {
+      const { cookies } = await import('next/headers');
       const cookieStore = await cookies();
 
       token = cookieStore.get('token')?.value;
@@ -65,6 +64,10 @@ export class Fetch implements HttpAdapter {
       if (value !== undefined) {
         filteredParams[key] = value;
       }
+    }
+
+    if (Object.keys(filteredParams).length === 0) {
+      return '';
     }
 
     const formattedSearchParams = new URLSearchParams(filteredParams);
