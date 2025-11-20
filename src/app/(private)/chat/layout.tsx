@@ -11,6 +11,8 @@ export default async function ChatLayout({
 }: Readonly<PropsWithChildren>) {
   const token = await getTokenAction();
 
+  console.log('token', token);
+
   return (
     <SocketProvider config={socketConfig} token={token}>
       {children}

@@ -184,7 +184,7 @@
       "name": "React Hooks",
       "base": "react-components",
       "color": "purple-400",
-      "folderNames": ["hooks"]
+      "folderNames": ["hooks", "hookers"]
     },
     {
       "name": "React Providers",
@@ -324,6 +324,12 @@
       "base": "powershell",
       "color": "yellow-700",
       "fileNames": ["login.usecase.ts"]
+    },
+    {
+      "name": "Usecase Socket On",
+      "base": "powershell",
+      "color": "orange-700",
+      "fileNames": ["on-incomming-message.usecase.ts"]
     }
   ],
   // Peacok Configuration

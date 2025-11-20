@@ -8,10 +8,16 @@
 'use client';
 
 import type { GetChatMessagesResponse } from '@module-chat/domain/interfaces';
+import type { OnIncommingMessageResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { useEffect } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
+
+import { useScrollToBottom } from '@hookers/use-scroll-to-bottom.hook';
+import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
+
+import { GetSocketOnIncommingMessage } from '@module-chat/application/usecases/on-incomming-message.usecase';
 
 import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-chat-messages.query';
 
@@ -29,6 +35,12 @@ export const useChatConversation = () => {
 
   const activeContact = useContactStore((state) => state.activeContact);
   const messages = useChatStore((state) => state.messages);
+
+  const { ref: messagesContainerRef } = useScrollToBottom<HTMLDivElement>({
+    autoScroll: true,
+    dependencies: [messages],
+    behavior: 'smooth',
+  });
 
   const {
     data: chatMessagesResponse,
@@ -62,6 +74,27 @@ export const useChatConversation = () => {
     }
   }, [chatMessagesResponse?.messages, setMessages]);
 
+  onSocketEvent(
+    'incoming_message',
+    (data: OnIncommingMessageResponseDTO) => {
+      console.log(
+        'New message received:',
+        JSON.parse(data as unknown as string),
+      );
+
+      const parseResponse = JSON.parse(data as unknown as string);
+
+      const contact_id = activeContact?.id ?? '';
+      const newMessage = GetSocketOnIncommingMessage(parseResponse, {
+        id: contact_id,
+        name: activeContact?.name ?? '',
+      });
+
+      setMessages([...messages, newMessage]);
+    },
+    [activeContact?.id],
+  );
+
   useEffect(() => {
     if (!activeContact?.id || !isConnected || !emitWithAck || !emit) return;
 
@@ -92,5 +125,6 @@ export const useChatConversation = () => {
     isError,
     isLoading,
     messages,
+    messagesContainerRef,
   };
 };

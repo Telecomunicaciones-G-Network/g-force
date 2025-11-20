@@ -32,6 +32,7 @@ export const ChatConversation = () => {
     isError,
     isLoading,
     messages,
+    messagesContainerRef,
   } = useChatConversation();
 
   return (
@@ -79,6 +80,7 @@ export const ChatConversation = () => {
           {!isLoading && !isError && messages?.length > 0 && (
             <div className={styles.base__content}>
               <div
+                ref={messagesContainerRef}
                 className={cn(
                   styles.base__chat,
                   'gap-6 px-4 py-6 tablet:gap-8 tablet:px-8 lg:gap-6 lg:p-6',
