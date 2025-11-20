@@ -32,11 +32,14 @@
   ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
+    "(private)": "secure",
     "(public)": "public",
     "actions": "cue",
+    "chat-card": "react-components",
     "chat-container": "react-components",
     "chat-conversation": "react-components",
     "chat-list": "react-components",
+    "chat-list-body": "react-components",
     "dictionaries": "resource",
     "dropdown-base": "react-components",
     "dropdown-container": "react-components",
@@ -91,6 +94,12 @@
       "base": "src",
       "color": "blue-500",
       "folderNames": ["app", "application"]
+    },
+    {
+      "name": "Cards",
+      "base": "element",
+      "color": "blue-400",
+      "folderNames": ["cards"]
     },
     {
       "name": "Domain",
@@ -181,6 +190,12 @@
       "base": "react-components",
       "color": "orange-400",
       "folderNames": ["providers", "auth-provider"]
+    },
+    {
+      "name": "Sections",
+      "base": "mjml",
+      "color": "green-500",
+      "folderNames": ["sections"]
     },
     {
       "name": "Stringify",

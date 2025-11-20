@@ -11,6 +11,7 @@ export interface GetContactsResponseContact extends ContactValues {
   >;
 }
 
-export interface GetContactsResponse extends Omit<ApiResponse, 'results'> {
+export interface GetContactsResponse
+  extends Omit<ApiResponse, 'extra' | 'results'> {
   contacts: GetContactsResponseContact[];
 }

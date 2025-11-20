@@ -1,3 +1,5 @@
+// PENDING:
+
 import type { ChatMode } from '@ui-chat/types';
 
 export interface ChatStoreState {

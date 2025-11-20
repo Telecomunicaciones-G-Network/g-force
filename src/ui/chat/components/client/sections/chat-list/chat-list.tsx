@@ -1,3 +1,4 @@
+// PENDING:
 //  IMPROVE: Colocar este componente como contact list para tener coherencia con los datos
 
 'use client';

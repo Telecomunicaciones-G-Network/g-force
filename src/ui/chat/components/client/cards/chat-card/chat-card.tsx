@@ -1,4 +1,5 @@
 // PENDING:
+// IMPROVE: Debo renombrar este componente como contact card para tener coherencia con los datos
 
 'use client';
 
