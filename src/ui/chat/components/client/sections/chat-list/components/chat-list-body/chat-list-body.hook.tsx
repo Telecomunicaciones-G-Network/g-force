@@ -1,17 +1,23 @@
+// PENDING:
+
+'use client';
+
+import type { ContactValues } from '@module-chat/domain/interfaces';
+
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useChatStore } from '@ui-chat/stores/chat.store';
 
 export const useChatListBody = () => {
-  const activeChat = useChatStore((state) => state.activeChat);
+  const activeContact = useChatStore((state) => state.activeContact);
 
-  const setActiveChat = useChatStore((state) => state.setActiveChat);
+  const setActiveContact = useChatStore((state) => state.setActiveContact);
   const setChatMode = useChatStore((state) => state.setChatMode);
 
-  const setChat = (chatId: string) => {
-    setActiveChat(chatId);
+  const changeActiveContact = (contact: ContactValues) => {
+    setActiveContact(contact);
     setChatMode(ChatModes.CHAT);
   };
 
-  return { activeChat, changeActiveChat: setChat };
+  return { activeContact, changeActiveContact };
 };

@@ -24,8 +24,6 @@ export const ChatList = ({
   const { contacts = [] } = use(chatContactsResponsePromise);
   const { chatMode, isDesktop } = useChatList();
 
-  console.log('contacts', contacts);
-
   return (
     <>
       {(chatMode === ChatModes.LIST || isDesktop) && (

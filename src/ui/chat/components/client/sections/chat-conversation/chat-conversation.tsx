@@ -26,14 +26,19 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './chat-conversation.module.css';
 
 export const ChatConversation = () => {
-  const { activeChat, chatMode, goBackChatList, goToChatDetails, isDesktop } =
-    useChatConversation();
+  const {
+    activeContact,
+    chatMode,
+    goBackChatList,
+    goToChatDetails,
+    isDesktop,
+  } = useChatConversation();
 
   return (
     <>
       {(chatMode === ChatModes.CHAT || isDesktop) &&
-        activeChat !== null &&
-        activeChat !== undefined && (
+        activeContact !== null &&
+        activeContact !== undefined && (
           <section className={cn(styles.base, 'divide-y divide-neutral-200')}>
             <div className={styles.base__header}>
               <div className={styles.base__header_info}>

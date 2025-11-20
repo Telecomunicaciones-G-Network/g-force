@@ -1,10 +1,11 @@
 // PENDING:
 
+import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 
 export interface ChatStoreState {
-  activeChat: string | null;
+  activeContact: ContactValues | null;
   chatMode: ChatMode;
-  setActiveChat: (chatId: string | null) => void;
+  setActiveContact: (contact: ContactValues | null) => void;
   setChatMode: (mode: ChatMode) => void;
 }

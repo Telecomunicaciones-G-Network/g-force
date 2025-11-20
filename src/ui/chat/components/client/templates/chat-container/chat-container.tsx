@@ -1,4 +1,5 @@
 // TODO: Usar el context para pasar la promesa y no usar props drilling
+// TODO: Debo agregar la validacion del socket de isConnected para deshabilitar y habilitar elementos del chat
 
 'use client';
 

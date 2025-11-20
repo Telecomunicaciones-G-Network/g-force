@@ -181,7 +181,7 @@
     {
       "name": "React Hooks",
       "base": "react-components",
-      "color": "amber-500",
+      "color": "purple-400",
       "folderNames": ["hooks"]
     },
     {
@@ -255,13 +255,13 @@
     {
       "name": "React Module CSS",
       "base": "react",
-      "color": "purple-300",
+      "color": "deep-purple-300",
       "fileExtensions": ["module.css"]
     },
     {
       "name": "React Hooks",
       "base": "react",
-      "color": "amber-300",
+      "color": "purple-200",
       "fileExtensions": ["hook.tsx"]
     },
     {

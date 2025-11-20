@@ -1,3 +1,5 @@
+// PENDING:
+
 'use client';
 
 import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
@@ -10,11 +12,11 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './chat-empty.module.css';
 
 export const ChatEmpty = () => {
-  const { activeChat } = useChatEmpty();
+  const { activeContact } = useChatEmpty();
 
   return (
     <>
-      {(activeChat === null || activeChat === undefined) && (
+      {(activeContact === null || activeContact === undefined) && (
         <section className={cn(styles.base, 'hidden lg:flex')}>
           <div className={styles.base__container}>
             <Icon name="message_info" size={40} />

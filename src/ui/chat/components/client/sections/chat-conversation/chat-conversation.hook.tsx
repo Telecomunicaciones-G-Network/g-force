@@ -1,3 +1,5 @@
+// PENDING:
+
 'use client';
 
 import { useMediaQuery } from '@hookers/use-media-query.hook';
@@ -7,7 +9,7 @@ import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 import { useChatStore } from '@ui-chat/stores/chat.store';
 
 export const useChatConversation = () => {
-  const activeChat = useChatStore((state) => state.activeChat);
+  const activeContact = useChatStore((state) => state.activeContact);
   const chatMode = useChatStore((state) => state.chatMode);
 
   const isDesktop = useMediaQuery('(width >= 1024px)', {
@@ -15,19 +17,19 @@ export const useChatConversation = () => {
     initializeWithValue: false,
   });
 
-  const setActiveChat = useChatStore((state) => state.setActiveChat);
+  const setActiveContact = useChatStore((state) => state.setActiveContact);
   const setChatMode = useChatStore((state) => state.setChatMode);
 
   const goBackChatList = () => {
     setChatMode(ChatModes.LIST);
-    setActiveChat(null);
+    setActiveContact(null);
   };
 
   const goToChatDetails = () =>
     useChatStore.setState({ chatMode: ChatModes.DETAILS });
 
   return {
-    activeChat,
+    activeContact,
     chatMode,
     goBackChatList,
     goToChatDetails,

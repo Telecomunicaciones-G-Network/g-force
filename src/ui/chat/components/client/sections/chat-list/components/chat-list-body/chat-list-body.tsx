@@ -18,7 +18,7 @@ import styles from './chat-list-body.module.css';
 export const ChatListBody = ({
   contacts = [],
 }: Readonly<ChatListBodyProps>) => {
-  const { activeChat, changeActiveChat } = useChatListBody();
+  const { activeContact, changeActiveContact } = useChatListBody();
 
   return (
     <div
@@ -31,11 +31,11 @@ export const ChatListBody = ({
         contacts.map((contact: ContactValues) => (
           <ChatCard
             contactId={contact?.id}
-            isActive={activeChat === contact?.id}
+            isActive={activeContact?.id === contact?.id}
             key={contact?.id}
             lastMessage={contact?.latestMessage?.text}
             lastMessageTime={contact?.latestMessage?.createdAt}
-            onClick={() => changeActiveChat(contact?.id)}
+            onClick={() => changeActiveContact(contact)}
             username={contact?.name}
           />
         ))
