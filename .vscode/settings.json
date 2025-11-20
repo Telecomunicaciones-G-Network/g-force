@@ -56,8 +56,7 @@
     "navbar": "react-components",
     "presenters": "delta",
     "socketio": "wakatime",
-    "usecases": "vm",
-    "viewmodels": "job"
+    "usecases": "vm"
   },
   "material-icon-theme.files.associations": {
     "*.action.ts": "cue",
@@ -300,12 +299,6 @@
       "base": "powershell",
       "color": "yellow-700",
       "fileNames": ["login.usecase.ts"]
-    },
-    {
-      "name": "View Models",
-      "base": "vagrant",
-      "color": "yellow-700",
-      "fileExtensions": ["viewmodel.ts"]
     }
   ],
   // Peacok Configuration

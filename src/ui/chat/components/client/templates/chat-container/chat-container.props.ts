@@ -1,7 +1,7 @@
 // TODO: Debo pasar la promesa por un context asi no tengo que hacer props drilling y este archivo no deberia ir
 
-import type { GetContactsViewModel } from '@module-chat/infrastructure/viewmodels';
+import type { GetContactsResponse } from '@module-chat/domain/interfaces';
 
 export interface ChatContainerProps {
-  chatContactsResponsePromise: Promise<GetContactsViewModel>;
+  chatContactsResponsePromise: Promise<GetContactsResponse>;
 }

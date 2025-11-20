@@ -1,8 +1,8 @@
 // DONE:
 
 import type {
+  ContactValues,
   GetContactsResponse,
-  GetContactsResponseContact,
 } from '../../domain/interfaces';
 import type { GetContactsResult } from '../interfaces';
 import type { GetContactsResponseDTO } from '../dtos';
@@ -18,9 +18,7 @@ export class GetContactsMapper {
     };
   }
 
-  static mapFromContactArray(
-    input: GetContactsResult,
-  ): GetContactsResponseContact {
+  static mapFromContactArray(input: GetContactsResult): ContactValues {
     return {
       id: input?.contactId,
       name: input?.latestMessage?.sender?.name,

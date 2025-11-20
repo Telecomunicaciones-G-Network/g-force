@@ -3,7 +3,7 @@
 
 'use client';
 
-import type { GetContactsResponseContact } from '@module-chat/domain/interfaces';
+import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatListBodyProps } from './chat-list-body.props';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
@@ -28,7 +28,7 @@ export const ChatListBody = ({
       )}
     >
       {contacts?.length > 0 ? (
-        contacts.map((contact: GetContactsResponseContact) => (
+        contacts.map((contact: ContactValues) => (
           <ChatCard
             contactId={contact?.id}
             isActive={activeChat === contact?.id}
