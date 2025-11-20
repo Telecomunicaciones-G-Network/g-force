@@ -55,6 +55,7 @@
     "navbars": "serverless",
     "navbar": "react-components",
     "presenters": "delta",
+    "react-query-devtools": "react-components",
     "socketio": "wakatime",
     "usecases": "vm"
   },
@@ -79,6 +80,7 @@
     "*.util.ts": "credits",
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
+    "envs.ts": "ejs",
     "settings.json": "vscode"
   },
   "material-icon-theme.folders.customClones": [
@@ -187,8 +189,19 @@
     {
       "name": "React Providers",
       "base": "react-components",
-      "color": "orange-400",
-      "folderNames": ["providers", "auth-provider"]
+      "color": "orange-700",
+      "folderNames": [
+        "providers",
+        "auth-provider",
+        "react-query-provider",
+        "theme-provider"
+      ]
+    },
+    {
+      "name": "React Stores",
+      "base": "react-components",
+      "color": "lime-500",
+      "folderNames": ["stores"]
     },
     {
       "name": "Sections",
@@ -233,6 +246,12 @@
       "base": "ember",
       "color": "teal-400",
       "fileExtensions": ["enum.ts"]
+    },
+    {
+      "name": "Env Example",
+      "base": "tune",
+      "color": "blue-400",
+      "fileNames": [".env.example"]
     },
     {
       "name": "Presenters",
@@ -281,6 +300,12 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React Stores",
+      "base": "react",
+      "color": "lime-700",
+      "fileExtensions": ["store.ts", "store.tsx"]
     },
     {
       "name": "Types",

@@ -21,8 +21,8 @@ import styles from './chat-list.module.css';
 export const ChatList = ({
   chatContactsResponsePromise,
 }: Readonly<ChatListProps>) => {
-  const { contacts = [] } = use(chatContactsResponsePromise);
-  const { chatMode, isDesktop } = useChatList();
+  const { contacts: contactsResponse = [] } = use(chatContactsResponsePromise);
+  const { chatMode, contacts, isDesktop } = useChatList(contactsResponse);
 
   return (
     <>

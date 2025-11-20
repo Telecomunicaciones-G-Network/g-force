@@ -1,3 +1,5 @@
+// DONE:
+
 import { Axios } from '@http-client/classes/axios.class';
 import { HttpClient } from '@http-client/classes/http-client.class';
 import { Logger } from '@logger/classes/logger.class';
@@ -6,7 +8,7 @@ import { ENVS } from '@ui-core/envs/envs';
 
 import { GNETWORK_HTTP_BASE_HEADERS } from '@ui-core/constants/gnetwork-http-base-headers.constant';
 
-const logger = new Logger('GnetworkApiClient');
+const logger = new Logger('GnetworkAxiosApiClient');
 
 const fetcher = new Axios(
   {
@@ -15,7 +17,7 @@ const fetcher = new Axios(
   logger,
 );
 
-export const gnetworkApiClient = new HttpClient(
+export const gnetworkAxiosApiClient = new HttpClient(
   ENVS.GNETWORK_API_BASE_URL,
   fetcher,
 );
