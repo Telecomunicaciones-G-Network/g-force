@@ -42,6 +42,8 @@
     "chat-card": "react-components",
     "chat-container": "react-components",
     "chat-conversation": "react-components",
+    "chat-conversation-body": "react-components",
+    "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
     "chat-list": "react-components",
     "chat-list-body": "react-components",
@@ -61,6 +63,7 @@
     "navbar": "react-components",
     "presenters": "delta",
     "react-query-devtools": "react-components",
+    "skeleton": "react-components",
     "socketio": "wakatime",
     "usecases": "vm"
   },
@@ -219,6 +222,12 @@
       "base": "mjml",
       "color": "green-500",
       "folderNames": ["sections"]
+    },
+    {
+      "name": "Skeletons",
+      "base": "components",
+      "color": "gray-700",
+      "folderNames": ["skeletons"]
     },
     {
       "name": "Stringify",

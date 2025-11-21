@@ -1,5 +1,3 @@
-// DONE:
-
 'use client';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';

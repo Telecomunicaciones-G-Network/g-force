@@ -9,8 +9,8 @@ import { Suspense } from 'react';
 
 import { ErrorBoundary } from '@gnetwork-ui/components/atoms/logics/error-boundary';
 
-import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
+import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
 import { ChatList } from '@ui-chat/components/client/sections/chat-list';
 

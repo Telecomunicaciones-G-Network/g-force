@@ -9,6 +9,7 @@ import styles from './input.module.css';
 export const Input = ({
   className = '',
   containerClassName = '',
+  disabled = false,
   error = false,
   fullWidth,
   id,
@@ -38,7 +39,14 @@ export const Input = ({
   }
 
   return (
-    <div className={cn(styles.base, fullWidth && 'w-full', containerClassName)}>
+    <div
+      className={cn(
+        styles.base,
+        fullWidth && 'w-full',
+        containerClassName,
+        disabled ? 'opacity-50 cursor-not-allowed' : '',
+      )}
+    >
       {label && (
         <label
           className={cn(styles.base__label, 'text-chromatic-inverted')}
@@ -54,9 +62,10 @@ export const Input = ({
             styles.base__input,
             'font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder',
           )}
+          disabled={disabled}
           id={id}
           name={name}
-          readOnly={readOnly}
+          readOnly={readOnly || disabled}
           ref={ref}
           type={type}
           {...rest}

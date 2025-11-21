@@ -2,26 +2,26 @@
 
 ## TODO:
 
+[Notificaciones]
+
+TODO: Debo crear el componente Toast
+TODO: Debo crear la funcionalidad de notificaciones en local por toast
+TODO: Verificar el modo oscuro
+TODO: Colocar una alerta cuando se haya perdido la conexion a internet o la conexion del socket
+
 [Chat Conversation]
 
 TODO: Ordenar los mensajes por fecha (Samuel debe agregar una propiedad llamada updatedAt)
 TODO: Crear separadores por fecha como lo hace whatsapp
-TODO: En el component chat-conversation debo poder tener una props para poder ocultar los botones
 TODO: Debo hacer el dropdown del boton de tres puntos del componente chat-conversation
-TODO: Debo coultar el boton de llamada
-TODO: Debo ocultar el boton de email
 TODO: Debo implementar la funcionalidad de fijar en el dropdown del componente chat-conversation (samuel debe agregar una propiedade en el contacto para saber que esta fijado)
 TODO: Ocultar la funcionalidad de marcar como leido
 TODO: Debo aplicar la funcionalidad de silenciar las notificaciones
-TODO: Debo crear el componente Toast
-TODO: Debo crear la funcionalidad de notificaciones en local por toast
 TODO: Debo crear la funcionalidad de los sonidos en notificaciones y recepcion de mensajes
 TODO: Debo agregar la funcionalidad de transferir chat
 TODO: Verificar el modo oscuro
 TODO: Poder recibir un mensaje
 TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala
-TODO: Deshabilitar el input de envio de mensaje si no hay conexion de socket o si el usuario no esta en la sala
-TODO: Como saber si la conexion de la sala se perdio mediante un flag
 TODO: Poder enviar un mensaje con todo su flujo
 TODO: Limpiar el input de formulario despues del envio del mensaje
 
@@ -31,23 +31,31 @@ TODO: Limpiar el input de formulario despues del envio del mensaje
 
 FIXME: La consulta de obtencion de los mensajes esta tardando mucho
 FIXME: Acomodar las entidades de chat como realmente lo requiero
-FIXME: El chat input debe estar deshabilitado hasta que carguen los mensajes, este el socket conectado y el usuario este unido a la sala
-FIXME: Acomodar el layout para que siempre se vea abajo el chat input
 
 ## IMPROVE:
 
 [Chat Conversation]
 
-IMPROVE: Debo fragmentar el componente chat-conversation en varios subcomponentes
 IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
 
 
 ## DONE:
 
 /src
+  /app
+    /public
+      /factory~ ✅
+  /modules
+    /chat
+      /infrastructure
+        /dictionaries
+          /socket-events.dictionary.ts ✅
   /packages
     /gnetwork-ui
       /components
+        /atoms
+          /skeletons
+            /skeleton~ ✅
         /organisms
           /buttons
             /button-group~ ✅
@@ -55,6 +63,8 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
     /chat
       /constants
         /chat-desktop-viewport.constant.ts ✅
+      /dictionaries
+        /query-keys.dictionary.ts ✅
 
 ## Logout Button
 

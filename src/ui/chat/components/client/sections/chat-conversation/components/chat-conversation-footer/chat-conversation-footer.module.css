@@ -1,0 +1,12 @@
+.base {
+  align-items: flex-end;
+  display: flex;
+  min-height: 86px;
+  padding: 0 24px 24px 24px;
+}
+
+.base__input {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}

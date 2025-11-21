@@ -38,7 +38,7 @@ export const ChatCard = ({
   >
     <div className={styles.base__container}>
       <Avatar
-        customBackgroundColor={contactId && `#${contactId?.slice(0, 6)}`}
+        customBackgroundColor={contactId && `#${contactId?.slice(-6)}`}
         image={
           avatarSrc
             ? {

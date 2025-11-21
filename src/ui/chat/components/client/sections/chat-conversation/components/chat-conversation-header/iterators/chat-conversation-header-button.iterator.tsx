@@ -1,5 +1,3 @@
-// DONE:
-
 import type { ButtonGroupButton } from '@gnetwork-ui/components/organisms/buttons/button-group';
 
 import { MdCall, MdMailOutline, MdMoreVert } from 'react-icons/md';

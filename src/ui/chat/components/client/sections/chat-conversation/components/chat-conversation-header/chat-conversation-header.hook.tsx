@@ -1,5 +1,3 @@
-// DONE:
-
 'use client';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
