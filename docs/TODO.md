@@ -29,7 +29,6 @@ TODO: Limpiar el input de formulario despues del envio del mensaje
 
 [Chat Conversation]
 
-FIXME: Para el viewport actual del modo desktop se esta solapando
 FIXME: La consulta de obtencion de los mensajes esta tardando mucho
 FIXME: Acomodar las entidades de chat como realmente lo requiero
 FIXME: El chat input debe estar deshabilitado hasta que carguen los mensajes, este el socket conectado y el usuario este unido a la sala
@@ -52,6 +51,10 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
         /organisms
           /buttons
             /button-group~ ✅
+  /ui
+    /chat
+      /constants
+        /chat-desktop-viewport.constant.ts ✅
 
 ## Logout Button
 

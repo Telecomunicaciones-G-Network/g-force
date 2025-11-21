@@ -9,9 +9,10 @@ import { useEffect } from 'react';
 import { useMediaQuery } from '@hookers/use-media-query.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 
 export const useChatList = (contactsResponse: ContactValues[]) => {
-  const isDesktop = useMediaQuery('(width >= 1024px)');
+  const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
 
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
