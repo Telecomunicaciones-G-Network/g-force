@@ -1,5 +1,3 @@
-// DONE:
-
 import type { Assignment, ContactPlatform, ConversationStatus } from '../types';
 
 export interface GetContactsRequest {

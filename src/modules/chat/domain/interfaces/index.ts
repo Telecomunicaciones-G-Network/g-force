@@ -7,6 +7,8 @@ export type { GetContactsRequest } from './get-contacts-request.interface';
 export type { GetContactsResponse } from './get-contacts-response.interface';
 export type { MediaValues } from './media-values.interface';
 export type {
+  MessageContactValues,
+  MessageLocationValues,
   MessageSenderValues,
   MessageValues,
 } from './message-values.interface';

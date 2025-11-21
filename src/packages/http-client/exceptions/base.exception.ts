@@ -1,5 +1,3 @@
-// DONE:
-
 import type { HttpExceptionConfig } from '../interfaces';
 
 export class BaseException extends Error {

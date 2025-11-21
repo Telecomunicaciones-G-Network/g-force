@@ -2,6 +2,10 @@
 
 ## TODO:
 
+[Autenticacion]
+
+TODO: Debo implementar el refresh token para poder extender la sesion del usuario
+
 [Notificaciones]
 
 TODO: Debo crear el componente Toast
@@ -24,6 +28,7 @@ TODO: Poder recibir un mensaje
 TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala
 TODO: Poder enviar un mensaje con todo su flujo
 TODO: Limpiar el input de formulario despues del envio del mensaje
+TODO: Cuando el usuario va hasta el ultimo mensaje de arriba si existe un siguiente has_next debo hacer una nueva peticion con el nuevo cursor y agregar los nuevos mensajes al estado aplicando infinite scroll
 
 ## FIXME:
 
@@ -46,10 +51,61 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
     /public
       /factory~ ✅
   /modules
+    /core
+      /interface
+        /api-response.interface.ts ✅
     /chat
+      /application
+        /usecases
+          /get-contacts.usecase.ts ✅
+      /domain
+        /entities
+          /agent.entity.ts ✅
+          /contact.entity.ts ✅
+          /conversation.entity.ts ✅
+          /media.entity.ts ✅
+          /message.entity.ts ✅
+          /team.entity.ts ✅
+        /enums
+          /assignments.enum.ts ✅
+          /contact-platforms.enum.ts ✅
+          /conversation-status.enum.ts ✅
+          /message-directions.enum.ts ✅
+          /message-status.enum.ts ✅
+          /message-types.enum.ts ✅
+          /platforms.enum.ts ✅
+        /exceptions
+          /get-contacts.exception.ts ✅
+        /interfaces
+          /agent-values.interfaces.ts ✅
+          /contact-values.interface.ts ✅
+          /conversation-values.interface.ts ✅
+          /get-contacts-request.interface.ts ✅
+          /get-contacts-response.interface.ts ✅
+          /media-values.interface.ts ✅
+          /message-values.interface.ts ✅
+          /team-values.interfaces.ts ✅
+        /types
+          /assignment.type.ts ✅
+          /contact-platform.type.ts ✅
+          /conversation-status.type.ts ✅
+          /media-type.type.ts ✅
+          /message-direction.type.ts ✅
+          /message-status.type.ts ✅
+          /message-type.type.ts ✅
+          /platform.type.ts ✅
       /infrastructure
         /dictionaries
+          /chat-resources.dictionary.ts ✅
           /socket-events.dictionary.ts ✅
+        /dtos
+          /get-contacts-response.dto.ts ✅
+        /interfaces
+          /get-contacts-result.interface.ts ✅
+        /mappers
+          /get-contacts.mapper.ts ✅
+        /queries
+          /get-contacts.query.ts ✅
   /packages
     /gnetwork-ui
       /components
@@ -60,6 +116,9 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
           /buttons
             /button-group~ ✅
   /ui
+    /core
+      /fetchers
+        /gnetwork-fetch-api-client.fetcher.ts ✅
     /chat
       /constants
         /chat-desktop-viewport.constant.ts ✅

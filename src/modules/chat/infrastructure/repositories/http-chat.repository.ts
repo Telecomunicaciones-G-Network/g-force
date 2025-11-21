@@ -33,6 +33,7 @@ export const httpChatRepository: ChatRepository = {
       await gnetworkFetchApiClient.get<GetChatMessagesResponseDTO>(
         CHAT_RESOURCES.GET_CHAT_MESSAGES(requestDto?.contact_id),
         {
+          cache: HttpCaches.NO_STORE,
           searchParams: {
             cursor: requestDto?.cursor,
             limit: requestDto?.limit?.toString(),

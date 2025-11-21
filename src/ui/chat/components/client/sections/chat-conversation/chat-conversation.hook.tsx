@@ -1,6 +1,3 @@
-// PENDING:
-// TODO: Debo ver ese caso de uso que no cuadra alli
-
 'use client';
 
 import type { GetChatMessagesResponse } from '@module-chat/domain/interfaces';

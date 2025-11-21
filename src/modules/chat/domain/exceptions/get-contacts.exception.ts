@@ -1,5 +1,3 @@
-// DONE:
-
 export class GetContactsException extends Error {
   public code: string;
   public status: number = 500;

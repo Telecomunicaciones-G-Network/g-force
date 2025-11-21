@@ -1,5 +1,3 @@
-// DONE:
-
 import type {
   AgentValues,
   ConversationValues,
@@ -11,7 +9,7 @@ export class Conversation {
   private id: string;
   private agent: AgentValues;
   private status: ConversationStatus;
-  private team: TeamValues;
+  private team?: TeamValues;
 
   constructor(
     id: string,

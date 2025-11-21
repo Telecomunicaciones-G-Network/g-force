@@ -1,23 +1,33 @@
-// DONE:
-
-import type { ContactValues, MessageValues } from '../interfaces';
+import type {
+  ContactValues,
+  ConversationValues,
+  MessageValues,
+} from '../interfaces';
 
 export class Contact {
   private id: string;
-  private name: string;
+  private latestConversation: ConversationValues;
   private latestMessage: MessageValues;
+  private name: string;
 
-  constructor(id: string, name: string, latestMessage: MessageValues) {
+  constructor(
+    id: string,
+    latestConversation: ConversationValues,
+    latestMessage: MessageValues,
+    name: string,
+  ) {
     this.id = id;
-    this.name = name;
+    this.latestConversation = latestConversation;
     this.latestMessage = latestMessage;
+    this.name = name;
   }
 
   public toValues(): ContactValues {
     return {
       id: this.id,
-      name: this.name,
+      latestConversation: this.latestConversation,
       latestMessage: this.latestMessage,
+      name: this.name,
     };
   }
 }

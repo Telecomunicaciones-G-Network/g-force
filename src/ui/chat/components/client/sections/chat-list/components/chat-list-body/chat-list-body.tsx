@@ -33,7 +33,7 @@ export const ChatListBody = ({
             contactId={contact?.id}
             isActive={activeContact?.id === contact?.id}
             key={contact?.id}
-            lastMessage={contact?.latestMessage?.text}
+            lastMessage={contact?.latestMessage?.text ?? ''}
             lastMessageTime={contact?.latestMessage?.createdAt}
             onClick={() => changeActiveContact(contact)}
             username={contact?.name}

@@ -1,5 +1,3 @@
-// DONE:
-
 import type {
   ContactPlatform,
   ConversationStatus,

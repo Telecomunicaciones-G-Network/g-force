@@ -1,5 +1,3 @@
-// DONE:
-
 import type {
   ContactValues,
   GetContactsResponse,
@@ -10,18 +8,31 @@ import type { GetContactsResponseDTO } from '../dtos';
 export class GetContactsMapper {
   static mapFrom(input: GetContactsResponseDTO): GetContactsResponse {
     return {
-      ...input,
+      cursor: input?.cursor,
       contacts:
         input?.results?.map((item) =>
           GetContactsMapper.mapFromContactArray(item),
         ) ?? [],
+      error: input?.error,
+      hasMore: input?.hasMore,
+      nextCursor: input?.nextCursor,
+      status: input?.status,
+      success: input?.success,
     };
   }
 
   static mapFromContactArray(input: GetContactsResult): ContactValues {
     return {
       id: input?.contactId,
-      name: input?.latestMessage?.sender?.name,
+      latestConversation: {
+        id: input?.latestConversation?.id,
+        agent: input?.latestConversation?.agent,
+        status: input?.latestConversation?.status,
+        team: {
+          id: input?.latestConversation?.team?.codename,
+          name: input?.latestConversation?.team?.name,
+        },
+      },
       latestMessage: {
         id: input?.latestMessage?.id,
         createdAt: input?.latestMessage?.createdAt,
@@ -34,6 +45,7 @@ export class GetContactsMapper {
         text: input?.latestMessage?.textPreview,
         type: input?.latestMessage?.type,
       },
+      name: input?.latestMessage?.sender?.name,
     };
   }
 }

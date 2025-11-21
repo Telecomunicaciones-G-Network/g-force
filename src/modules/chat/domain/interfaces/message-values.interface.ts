@@ -1,6 +1,20 @@
-// DONE:
-
 import type { MessageDirection, MessageStatus, MessageType } from '../types';
+import type { MediaValues } from './media-values.interface';
+
+export interface MessageContactValues {
+  birthday: string;
+  emails: string[];
+  formattedName: string;
+  phoneNumbers: string[];
+  urls: string[];
+}
+
+export interface MessageLocationValues {
+  address: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+}
 
 export interface MessageSenderValues {
   id: string;
@@ -9,15 +23,21 @@ export interface MessageSenderValues {
 
 export interface MessageValues {
   id: string;
+  caption?: string;
+  contacts?: MessageContactValues[];
   conversationId?: string;
   createdAt: string;
-  deliveredAt?: string;
+  deliveredAt?: string | null;
   direction: MessageDirection;
   failedAt?: string | null;
+  forwarded?: boolean;
+  forwardedManyTimes?: boolean;
+  location?: MessageLocationValues;
+  media?: MediaValues;
   readAt?: string | null;
   sender: MessageSenderValues;
-  sentAt?: string;
+  sentAt?: string | null;
   status: MessageStatus;
-  text: string;
+  text?: string | null;
   type: MessageType;
 }
