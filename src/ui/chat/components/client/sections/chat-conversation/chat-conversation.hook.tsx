@@ -23,8 +23,6 @@ import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-ch
 
 import { useSocket } from '@socketio/hooks/use-socket.hook';
 
-import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
-
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -57,16 +55,6 @@ export const useChatConversation = () => {
   });
 
   const setMessages = useChatStore((state) => state.setMessages);
-  const setActiveContact = useContactStore((state) => state.setActiveContact);
-  const setChatMode = useContactStore((state) => state.setChatMode);
-
-  const goBackChatList = () => {
-    setChatMode(ChatModes.LIST);
-    setActiveContact(null);
-  };
-
-  const goToChatDetails = () =>
-    useContactStore.setState({ chatMode: ChatModes.DETAILS });
 
   useEffect(() => {
     if (chatMessagesResponse?.messages) {
@@ -120,8 +108,6 @@ export const useChatConversation = () => {
 
   return {
     activeContact,
-    goBackChatList,
-    goToChatDetails,
     isError,
     isLoading,
     messages,

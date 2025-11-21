@@ -35,9 +35,14 @@
     "(private)": "secure",
     "(public)": "public",
     "actions": "cue",
+    "back-button": "react-components",
+    "button": "react-components",
+    "button-group": "react-components",
+    "buttons": "include",
     "chat-card": "react-components",
     "chat-container": "react-components",
     "chat-conversation": "react-components",
+    "chat-conversation-header": "react-components",
     "chat-list": "react-components",
     "chat-list-body": "react-components",
     "dictionaries": "resource",
@@ -187,6 +192,12 @@
       "folderNames": ["hooks", "hookers"]
     },
     {
+      "name": "React Iterators",
+      "base": "react-components",
+      "color": "indigo-500",
+      "folderNames": ["iterators"]
+    },
+    {
       "name": "React Providers",
       "base": "react-components",
       "color": "orange-700",
@@ -282,6 +293,12 @@
       "base": "react",
       "color": "purple-200",
       "fileExtensions": ["hook.tsx"]
+    },
+    {
+      "name": "React Iterators",
+      "base": "react",
+      "color": "indigo-300",
+      "fileExtensions": ["iterator.tsx"]
     },
     {
       "name": "React Layouts",
