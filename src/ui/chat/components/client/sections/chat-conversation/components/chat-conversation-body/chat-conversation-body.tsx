@@ -2,15 +2,10 @@
 
 import type { ChatConversationBodyProps } from './chat-conversation-body.props';
 
-import { Fragment } from 'react';
-
-import { isoToTime } from '@timer/utils/iso-to-time.util';
-
-import { ChatMessage } from '@gnetwork-ui/components/organisms/blocks/chat-message';
-
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatConversationBodySkeleton } from './chat-conversation-body-skeleton';
+import { ChatConversationController } from '../chat-conversation-controller';
 
 import { useChatConversationBody } from './chat-conversation-body.hook';
 
@@ -38,19 +33,7 @@ export const ChatConversationBody = ({
           )}
         >
           {messages?.map((message) => (
-            <Fragment key={message?.id}>
-              {message?.id && (
-                <ChatMessage
-                  direction={
-                    message?.direction === 'INCOMING' ? 'incoming' : 'outgoing'
-                  }
-                  time={isoToTime(message?.createdAt ?? '')}
-                  username={message?.sender?.name}
-                >
-                  {message?.text}
-                </ChatMessage>
-              )}
-            </Fragment>
+            <ChatConversationController key={message?.id} message={message} />
           ))}
         </div>
       )}

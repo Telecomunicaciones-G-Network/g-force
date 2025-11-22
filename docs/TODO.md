@@ -26,7 +26,6 @@ TODO: Colocar una alerta cuando se haya perdido la conexion a internet o la cone
 TODO: Agregar a los componentes de mensaje que envia el agente los check o simbolos de status
 TODO: Crear el mensaje de tipo texto
 TODO: Crear el mensaje de tipo imagen
-TODO: Crear un componente que sea controlador de mensajes
 TODO: Ver el manejo de la fecha que ahora es updateAt y si no viene dar prioridad por orden de fechas
 TODO: Crear separadores por fecha como lo hace whatsapp
 TODO: Debo hacer el dropdown del boton de tres puntos del componente chat-conversation
@@ -36,7 +35,7 @@ TODO: Debo aplicar la funcionalidad de silenciar las notificaciones
 TODO: Debo crear la funcionalidad de los sonidos en notificaciones y recepcion de mensajes
 TODO: Debo agregar la funcionalidad de transferir chat
 TODO: Verificar el modo oscuro
-TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala
+TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala con la emision del evento y al recibir el ack de success marcarlo en el arreglo del store en dicho mensaje
 TODO: Poder enviar un mensaje con todo su flujo
 TODO: Limpiar el input de formulario despues del envio del mensaje
 TODO: Cuando el usuario va hasta el ultimo mensaje de arriba si existe un siguiente has_next debo hacer una nueva peticion con el nuevo cursor y agregar los nuevos mensajes al estado aplicando infinite scroll
