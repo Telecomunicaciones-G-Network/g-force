@@ -13,5 +13,7 @@ export interface InputProps extends ReactInput, InputVariants {
   label?: string;
   leftIcon?: ReactChild;
   message?: string;
+  noErrorHandler?: boolean;
+  noMessageHandler?: boolean;
   rightIcon?: ReactChild;
 }

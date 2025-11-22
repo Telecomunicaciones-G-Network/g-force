@@ -18,6 +18,8 @@ export const Input = ({
   leftIcon,
   message = '',
   name,
+  noErrorHandler = false,
+  noMessageHandler = false,
   readOnly = false,
   ref,
   required = false,
@@ -27,7 +29,7 @@ export const Input = ({
 }: Readonly<InputProps>) => {
   const classes = getInputClassNames({
     className,
-    error,
+    error: noErrorHandler ? false : error,
     fullWidth,
     isStatic: !!(isStatic || readOnly),
   });
@@ -72,12 +74,12 @@ export const Input = ({
         />
         {rightIcon && rightIcon}
       </div>
-      {message && (
+      {message && !noMessageHandler && (
         <span
           className={cn(
             styles.base__message,
             'text-chromatic-inverted',
-            error && 'text-warning-200',
+            noErrorHandler ? false : error && 'text-warning-200',
           )}
         >
           {message}

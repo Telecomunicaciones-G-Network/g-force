@@ -61,6 +61,8 @@ export function useSocket() {
     emit: socket?.emit.bind(socket),
     emitWithAck: socket?.emitWithAck.bind(socket),
     isConnected,
+    isConnectedAndStatusConnected:
+      isConnected && status === SocketStatusValues.CONNECTED,
     off: socket?.off.bind(socket),
     on: socket?.on.bind(socket),
     once: socket?.once.bind(socket),

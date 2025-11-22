@@ -53,6 +53,7 @@ FIXME: Hay un error del backend al enviar el evento mark_message_as_read
 [Chat Conversation]
 
 IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
+IMPROVE: Mi chat input en realidad debe ser un text area
 
 
 ## DONE:
@@ -146,6 +147,8 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
         /organisms
           /buttons
             /button-group~ ✅ 😄
+    /hookers
+      /use-debounce.hook.tsx ✅ 😄
     /objecter~ ✅ 😄
   /ui
     /core
@@ -160,6 +163,8 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
         /chat-desktop-viewport.constant.ts ✅ 😄
       /dictionaries
         /query-keys.dictionary.ts ✅
+      /schemas
+        /chat-conversation-form.schema.ts ✅
       /stores
         /chat-store~ ✅
 
@@ -467,5 +472,18 @@ Se ejecuta para avisar al agente que un mensaje cambio
 ```json
 {
   "contact_id": "6b7c0798-c8b7-40cb-88fb-bbf504be6125"
+}
+```
+
+### Enviar un mensaje
+
+```bash
+send_text_message [ACK]
+```
+
+```json
+{
+  "success": true,
+  "message_id": "be085c6d-9985-4163-abc5-a3ae1ff6d07c"
 }
 ```
