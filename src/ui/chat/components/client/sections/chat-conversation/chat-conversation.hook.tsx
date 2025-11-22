@@ -8,7 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useContactRoomStatus } from '@socketio/hooks/use-contact-room-status.hook';
 
-import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
+import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
+
 import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-chat-messages.query';
 
 import { queryKeysDictionary } from '@/src/ui/chat/dictionaries/query-keys.dictionary';
@@ -41,8 +42,8 @@ export const useChatConversation = () => {
   const { isConnected, isInRoom } = useContactRoomStatus({
     autoJoin: true,
     contactId: activeContact?.id,
-    joinRoomEventName: socketEventsDictionary.JOIN_CONTACT_ROOM,
-    leaveRoomEventName: socketEventsDictionary.LEAVE_CONTACT_ROOM,
+    joinRoomEventName: socketEmissionsDictionary.JOIN_CONTACT_ROOM,
+    leaveRoomEventName: socketEmissionsDictionary.LEAVE_CONTACT_ROOM,
   });
 
   useEffect(() => {

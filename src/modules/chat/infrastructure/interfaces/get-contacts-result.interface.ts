@@ -20,7 +20,7 @@ export interface GetContactsResultLatestConversation {
   id: string;
   agent: GetContactsResultLatestConversationAgent;
   status: ConversationStatus;
-  team: GetContactsResultLatestConversationTeam;
+  team: GetContactsResultLatestConversationTeam | null;
 }
 
 export interface GetContactsResultLatestMessageSender {
@@ -36,12 +36,15 @@ export interface GetContactsResultLatestMessage {
   status: MessageStatus;
   textPreview: string;
   type: MessageType;
+  updatedAt: string | null;
 }
 
 export interface GetContactsResult {
   contactId: string;
+  displayName: string;
   latestConversation: GetContactsResultLatestConversation;
   latestMessage: GetContactsResultLatestMessage;
+  phoneNumber: string;
   platform: ContactPlatform;
   platformId: string;
 }

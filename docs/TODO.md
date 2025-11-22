@@ -2,9 +2,17 @@
 
 ## TODO:
 
+[General]
+
+TODO: No permitir que se vean logs en la app
+
 [Autenticacion]
 
 TODO: Debo implementar el refresh token para poder extender la sesion del usuario
+
+[Websocket]
+
+TODO: No permitir que se vean logs en modo de produccion
 
 [Notificaciones]
 
@@ -15,6 +23,10 @@ TODO: Colocar una alerta cuando se haya perdido la conexion a internet o la cone
 
 [Chat Conversation]
 
+TODO: Crear el mensaje de tipo texto
+TODO: Crear el mensaje de tipo imagen
+TODO: Crear un componente que sea controlador de mensajes
+TODO: Ver el manejo de la fecha que ahora es updateAt y si no viene dar prioridad por orden de fechas
 TODO: Ordenar los mensajes por fecha (Samuel debe agregar una propiedad llamada updatedAt)
 TODO: Crear separadores por fecha como lo hace whatsapp
 TODO: Debo hacer el dropdown del boton de tres puntos del componente chat-conversation
@@ -34,8 +46,8 @@ TODO: Cuando el usuario va hasta el ultimo mensaje de arriba si existe un siguie
 
 [Chat Conversation]
 
+FIXME: Debo ver que hacer cuando los messages del chat aun se estan cargando con react query pero antes de que se terminen de cargar llega un mensaje por socket
 FIXME: La consulta de obtencion de los mensajes esta tardando mucho
-FIXME: Acomodar las entidades de chat como realmente lo requiero
 
 ## IMPROVE:
 
@@ -315,4 +327,96 @@ export async function loginAction(
   }
 }
 
+```
+
+## Tipos de mensaje
+
+### Tipo texto por endpoint
+
+```json
+{
+    "id": "24984c3d-73c6-4e62-9741-f307acb4b24a",
+    "platform": "WHATSAPP",
+    "platform_id": "wamid.HBgMNTg0MTQyNDE1OTI3FQIAEhggQUM4QUZDMTkzQkFGQjRFOTFENTIyRENCRDQ0NTZGNDAA",
+    "conversation_id": "6bb87f32-4be0-49fb-bb70-972baa7d6d4a",
+    "type": "TEXT",
+    "direction": "INCOMING",
+    "status": "READ",
+    "sender": {
+        "id": "7fad41a6-9320-4ad2-a36c-1b5dce2e7f9e",
+        "name": "Samuel Ochoa"
+    },
+    "text": "Qlq qlq qlq",
+    "media": null,
+    "caption": null,
+    "location": null,
+    "contacts": [],
+    "extra_metadata": null,
+    "reactions": [],
+    "forwarded": false,
+    "forwarded_many_times": false,
+    "created_at": "2025-11-14T16:58:50.433730Z",
+    "updated_at": "2025-11-14T17:00:20.621107Z",
+    "sent_at": "2025-11-14T16:58:49Z",
+    "delivered_at": "2025-11-14T16:58:49Z",
+    "read_at": "2025-11-14T17:00:20.625544Z",
+    "failed_at": null
+}
+```
+
+## Tipo texto por socket
+
+```json
+{
+    "message_id": "6ae41b0c-29dd-4415-9049-1e35a1dc2cdb",
+    "conversation_id": "8464efdb-4f72-41e1-a6e8-b3884dc32179",
+    "type": "TEXT",
+    "text": "Other test",
+    "media": null,
+    "caption": null,
+    "location": null,
+    "contacts": null,
+    "reply_to_message_id": null,
+    "forwarded": false,
+    "forwarded_many_times": false,
+    "timestamp": "2025-11-22T03:26:57+00:00"
+}
+```
+
+## Tipo imagen
+
+```json
+{
+    "id": "60e118d3-fd21-458c-a7e6-b98bbba4f9dd",
+    "platform": "WHATSAPP",
+    "platform_id": "wamid.HBgMNTg0MTQyNDE1OTI3FQIAEhggQUNFNjIwQzZGQkNENDhFMUI2REI0NjlFRDI1REZFM0YA",
+    "conversation_id": "6bb87f32-4be0-49fb-bb70-972baa7d6d4a",
+    "type": "IMAGE",
+    "direction": "INCOMING",
+    "status": "DELIVERED",
+    "sender": {
+        "id": "7fad41a6-9320-4ad2-a36c-1b5dce2e7f9e",
+        "name": "Samuel Ochoa"
+    },
+    "text": null,
+    "media": {
+        "id": "213b451b-0091-42eb-819f-20bb0eb760b2",
+        "type": "IMAGE",
+        "mime_type": "image/jpeg",
+        "filename": "2441955266250779"
+    },
+    "caption": null,
+    "location": null,
+    "contacts": [],
+    "extra_metadata": null,
+    "reactions": [],
+    "forwarded": false,
+    "forwarded_many_times": false,
+    "created_at": "2025-11-21T19:46:52.938614Z",
+    "updated_at": null,
+    "sent_at": "2025-11-21T19:46:49Z",
+    "delivered_at": "2025-11-21T19:46:49Z",
+    "read_at": null,
+    "failed_at": null
+},
 ```

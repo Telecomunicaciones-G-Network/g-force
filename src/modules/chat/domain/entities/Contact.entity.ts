@@ -1,25 +1,28 @@
 import type {
+  ContactLatestMessageValues,
   ContactValues,
   ConversationValues,
-  MessageValues,
 } from '../interfaces';
 
 export class Contact {
   private id: string;
   private latestConversation: ConversationValues;
-  private latestMessage: MessageValues;
+  private latestMessage: ContactLatestMessageValues;
   private name: string;
+  private phoneNumber: string;
 
   constructor(
     id: string,
     latestConversation: ConversationValues,
-    latestMessage: MessageValues,
+    latestMessage: ContactLatestMessageValues,
     name: string,
+    phoneNumber: string,
   ) {
     this.id = id;
     this.latestConversation = latestConversation;
     this.latestMessage = latestMessage;
     this.name = name;
+    this.phoneNumber = phoneNumber;
   }
 
   public toValues(): ContactValues {
@@ -28,6 +31,7 @@ export class Contact {
       latestConversation: this.latestConversation,
       latestMessage: this.latestMessage,
       name: this.name,
+      phoneNumber: this.phoneNumber,
     };
   }
 }

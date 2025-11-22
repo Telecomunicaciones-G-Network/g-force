@@ -1,7 +1,6 @@
-// DONE:
-
 import type {
   ContactPlatform,
+  MediaType,
   MessageDirection,
   MessageStatus,
   MessageType,
@@ -23,9 +22,10 @@ export interface GetChatMessagesResultLocation {
 }
 
 export interface GetChatMessagesResultMedia {
+  filename: string;
+  id: string;
   mimeType: string;
-  type: string;
-  url: string;
+  type: MediaType;
 }
 
 export interface GetChatMessagesResultReaction {
@@ -41,25 +41,26 @@ export interface GetChatMessagesResultSender {
 
 export interface GetChatMessagesResult {
   id: string;
-  caption: string;
+  caption: string | null;
   contacts: GetChatMessagesResultContact[];
   conversationId: string;
   createdAt: string;
-  deliveredAt: string;
+  deliveredAt: string | null;
   direction: MessageDirection;
-  extraMetadata: Record<string, unknown>;
+  extraMetadata: Record<string, unknown> | null;
   failedAt: string | null;
-  forwardedManyTimes: boolean;
   forwarded: boolean;
-  location: GetChatMessagesResultLocation;
-  media: GetChatMessagesResultMedia;
-  platformId: string;
+  forwardedManyTimes: boolean;
+  location: GetChatMessagesResultLocation | null;
+  media: GetChatMessagesResultMedia | null;
   platform: ContactPlatform;
+  platformId: string;
   reactions: GetChatMessagesResultReaction[];
   readAt: string | null;
   sender: GetChatMessagesResultSender;
-  sentAt: string;
+  sentAt: string | null;
   status: MessageStatus;
-  text: string;
+  text: string | null;
   type: MessageType;
+  updatedAt: string | null;
 }

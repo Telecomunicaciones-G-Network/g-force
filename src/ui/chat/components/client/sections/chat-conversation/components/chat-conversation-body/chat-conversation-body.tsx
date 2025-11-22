@@ -1,5 +1,3 @@
-// PENDING:
-
 'use client';
 
 import type { ChatConversationBodyProps } from './chat-conversation-body.props';

@@ -224,6 +224,12 @@
       "folderNames": ["sections"]
     },
     {
+      "name": "Services",
+      "base": "shader",
+      "color": "yellow-800",
+      "folderNames": ["services"]
+    },
+    {
       "name": "Skeletons",
       "base": "components",
       "color": "gray-700",
@@ -234,6 +240,12 @@
       "base": "font",
       "color": "amber-700",
       "folderNames": ["stringify"]
+    },
+    {
+      "name": "Subscriptions",
+      "base": "command",
+      "color": "indigo-400",
+      "folderNames": ["subscriptions"]
     },
     {
       "name": "Templates",
@@ -334,6 +346,18 @@
       "fileExtensions": ["store.ts", "store.tsx"]
     },
     {
+      "name": "Services",
+      "base": "replit",
+      "color": "yellow-700",
+      "fileExtensions": ["service.ts"]
+    },
+    {
+      "name": "Subscriptions",
+      "base": "templ",
+      "color": "indigo-400",
+      "fileExtensions": ["subscription.ts"]
+    },
+    {
       "name": "Types",
       "base": "typst",
       "color": "blue-500",
@@ -350,12 +374,6 @@
       "base": "powershell",
       "color": "yellow-700",
       "fileNames": ["login.usecase.ts"]
-    },
-    {
-      "name": "Usecase Socket On",
-      "base": "powershell",
-      "color": "orange-700",
-      "fileNames": ["on-incomming-message.usecase.ts"]
     }
   ],
   // Peacok Configuration

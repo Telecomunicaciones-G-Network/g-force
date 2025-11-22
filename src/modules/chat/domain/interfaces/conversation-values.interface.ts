@@ -6,5 +6,5 @@ export interface ConversationValues {
   id: string;
   agent: AgentValues;
   status: ConversationStatus;
-  team?: TeamValues;
+  team: TeamValues | null;
 }

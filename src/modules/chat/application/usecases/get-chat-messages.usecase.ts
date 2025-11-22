@@ -1,10 +1,8 @@
-// DONE:
-
 import type {
   GetChatMessagesRequest,
   GetChatMessagesResponse,
 } from '../../domain/interfaces';
-import type { ChatRepository } from '../../domain/repositories/chat.repository';
+import type { ChatRepository } from '../../domain/repositories';
 
 import { BaseException } from '@http-client/exceptions/base.exception';
 

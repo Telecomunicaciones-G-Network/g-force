@@ -4,13 +4,13 @@ import type { MediaType } from '../types';
 export class Media {
   private id: string;
   private filename: string;
-  private mimetype: string;
+  private mimeType: string;
   private type: MediaType;
 
-  constructor(id: string, filename: string, mimetype: string, type: MediaType) {
+  constructor(id: string, filename: string, mimeType: string, type: MediaType) {
     this.id = id;
     this.filename = filename;
-    this.mimetype = mimetype;
+    this.mimeType = mimeType;
     this.type = type;
   }
 
@@ -18,7 +18,7 @@ export class Media {
     return {
       id: this.id,
       filename: this.filename,
-      mimetype: this.mimetype,
+      mimeType: this.mimeType,
       type: this.type,
     };
   }

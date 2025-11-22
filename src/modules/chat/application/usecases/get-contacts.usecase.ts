@@ -2,7 +2,7 @@ import type {
   GetContactsRequest,
   GetContactsResponse,
 } from '../../domain/interfaces';
-import type { ChatRepository } from '../../domain/repositories/chat.repository';
+import type { ChatRepository } from '../../domain/repositories';
 
 import { BaseException } from '@http-client/exceptions/base.exception';
 import { GetContactsException } from '../../domain/exceptions/get-contacts.exception';

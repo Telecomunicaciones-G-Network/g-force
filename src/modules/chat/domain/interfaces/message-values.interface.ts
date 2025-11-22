@@ -16,6 +16,12 @@ export interface MessageLocationValues {
   name: string;
 }
 
+export interface MessageReactionValues {
+  agentId: string;
+  contactId: string;
+  emoji: string;
+}
+
 export interface MessageSenderValues {
   id: string;
   name: string;
@@ -23,21 +29,23 @@ export interface MessageSenderValues {
 
 export interface MessageValues {
   id: string;
-  caption?: string;
-  contacts?: MessageContactValues[];
-  conversationId?: string;
+  caption: string | null;
+  contacts: MessageContactValues[];
+  conversationId: string;
   createdAt: string;
-  deliveredAt?: string | null;
+  deliveredAt: string | null;
   direction: MessageDirection;
-  failedAt?: string | null;
-  forwarded?: boolean;
-  forwardedManyTimes?: boolean;
-  location?: MessageLocationValues;
-  media?: MediaValues;
-  readAt?: string | null;
+  failedAt: string | null;
+  forwarded: boolean;
+  forwardedManyTimes: boolean;
+  location: MessageLocationValues | null;
+  media: MediaValues | null;
+  reactions: MessageReactionValues[];
+  readAt: string | null;
   sender: MessageSenderValues;
-  sentAt?: string | null;
+  sentAt: string | null;
   status: MessageStatus;
-  text?: string | null;
+  text: string | null;
   type: MessageType;
+  updatedAt: string | null;
 }

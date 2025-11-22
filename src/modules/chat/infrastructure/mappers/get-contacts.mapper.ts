@@ -8,11 +8,11 @@ import type { GetContactsResponseDTO } from '../dtos';
 export class GetContactsMapper {
   static mapFrom(input: GetContactsResponseDTO): GetContactsResponse {
     return {
-      cursor: input?.cursor,
       contacts:
         input?.results?.map((item) =>
           GetContactsMapper.mapFromContactArray(item),
         ) ?? [],
+      cursor: input?.cursor,
       error: input?.error,
       hasMore: input?.hasMore,
       nextCursor: input?.nextCursor,
@@ -28,10 +28,12 @@ export class GetContactsMapper {
         id: input?.latestConversation?.id,
         agent: input?.latestConversation?.agent,
         status: input?.latestConversation?.status,
-        team: {
-          id: input?.latestConversation?.team?.codename,
-          name: input?.latestConversation?.team?.name,
-        },
+        team: input?.latestConversation?.team
+          ? {
+              id: input?.latestConversation?.team?.codename,
+              name: input?.latestConversation?.team?.name,
+            }
+          : null,
       },
       latestMessage: {
         id: input?.latestMessage?.id,
@@ -44,8 +46,10 @@ export class GetContactsMapper {
         status: input?.latestMessage?.status,
         text: input?.latestMessage?.textPreview,
         type: input?.latestMessage?.type,
+        updatedAt: input?.latestMessage?.updatedAt,
       },
-      name: input?.latestMessage?.sender?.name,
+      name: input?.displayName,
+      phoneNumber: input?.phoneNumber,
     };
   }
 }
