@@ -53,9 +53,8 @@ export const useChatConversation = () => {
   }, [chatMessagesResponse?.messages, setMessages]);
 
   return {
-    isConnected,
+    disabledChat: !isConnected || isError || !isInRoom || isLoading,
     isError,
-    isInRoom,
     isLoading,
   };
 };

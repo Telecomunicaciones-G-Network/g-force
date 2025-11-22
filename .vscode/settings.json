@@ -61,6 +61,7 @@
     "mappers": "mappings",
     "navbars": "serverless",
     "navbar": "react-components",
+    "objecter": "json",
     "presenters": "delta",
     "react-query-devtools": "react-components",
     "skeleton": "react-components",

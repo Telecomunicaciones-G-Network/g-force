@@ -25,6 +25,7 @@
       "@hookers/*": ["./src/packages/hookers/*"],
       "@http-client/*": ["./src/packages/http-client/*"],
       "@logger/*": ["./src/packages/logger/*"],
+      "@objecter/*": ["./src/packages/objecter/*"],
       "@regexs/*": ["./src/packages/regexs/*"],
       "@socketio/*": ["./src/packages/socketio/*"],
       "@stringify/*": ["./src/packages/stringify/*"],

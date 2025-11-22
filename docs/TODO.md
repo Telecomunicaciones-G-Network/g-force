@@ -23,11 +23,11 @@ TODO: Colocar una alerta cuando se haya perdido la conexion a internet o la cone
 
 [Chat Conversation]
 
+TODO: Agregar a los componentes de mensaje que envia el agente los check o simbolos de status
 TODO: Crear el mensaje de tipo texto
 TODO: Crear el mensaje de tipo imagen
 TODO: Crear un componente que sea controlador de mensajes
 TODO: Ver el manejo de la fecha que ahora es updateAt y si no viene dar prioridad por orden de fechas
-TODO: Ordenar los mensajes por fecha (Samuel debe agregar una propiedad llamada updatedAt)
 TODO: Crear separadores por fecha como lo hace whatsapp
 TODO: Debo hacer el dropdown del boton de tres puntos del componente chat-conversation
 TODO: Debo implementar la funcionalidad de fijar en el dropdown del componente chat-conversation (samuel debe agregar una propiedade en el contacto para saber que esta fijado)
@@ -36,7 +36,6 @@ TODO: Debo aplicar la funcionalidad de silenciar las notificaciones
 TODO: Debo crear la funcionalidad de los sonidos en notificaciones y recepcion de mensajes
 TODO: Debo agregar la funcionalidad de transferir chat
 TODO: Verificar el modo oscuro
-TODO: Poder recibir un mensaje
 TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala
 TODO: Poder enviar un mensaje con todo su flujo
 TODO: Limpiar el input de formulario despues del envio del mensaje
@@ -48,6 +47,7 @@ TODO: Cuando el usuario va hasta el ultimo mensaje de arriba si existe un siguie
 
 FIXME: Debo ver que hacer cuando los messages del chat aun se estan cargando con react query pero antes de que se terminen de cargar llega un mensaje por socket
 FIXME: La consulta de obtencion de los mensajes esta tardando mucho
+FIXME: Hay un error del backend al enviar el evento mark_message_as_read
 
 ## IMPROVE:
 
@@ -69,6 +69,7 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
     /chat
       /application
         /usecases
+          /get-chat-messages.usecase.ts ✅
           /get-contacts.usecase.ts ✅
       /domain
         /entities
@@ -87,16 +88,21 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
           /message-types.enum.ts ✅
           /platforms.enum.ts ✅
         /exceptions
+          /get-chat-messages.exception.ts ✅
           /get-contacts.exception.ts ✅
         /interfaces
           /agent-values.interfaces.ts ✅
           /contact-values.interface.ts ✅
           /conversation-values.interface.ts ✅
+          /get-chat-messages-request.interface.ts ✅
+          /get-chat-messages-response.interface.ts ✅
           /get-contacts-request.interface.ts ✅
           /get-contacts-response.interface.ts ✅
           /media-values.interface.ts ✅
           /message-values.interface.ts ✅
           /team-values.interfaces.ts ✅
+        /repositories
+          /chat.repository.ts ✅
         /types
           /assignment.type.ts ✅
           /contact-platform.type.ts ✅
@@ -109,33 +115,54 @@ IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
       /infrastructure
         /dictionaries
           /chat-resources.dictionary.ts ✅
+          /socket-emissions.dictionary.ts ✅
           /socket-events.dictionary.ts ✅
         /dtos
+          /get-chat-messages-request.dto.ts ✅
+          /get-chat-messages-response.dto.ts ✅
           /get-contacts-response.dto.ts ✅
+          /on-incomming-message.dto.ts ✅
         /interfaces
+          /get-chat-messages-result.interface.ts ✅
           /get-contacts-result.interface.ts ✅
         /mappers
+          /get-chat-messages.mapper.ts ✅
           /get-contacts.mapper.ts ✅
         /queries
+          /get-chat-messages.query.ts ✅
           /get-contacts.query.ts ✅
+        /repositories
+          /http-chat.repository.ts ✅
+        /services
+          /get-chat-messages.service.ts ✅
+          /get-contacts.service.ts ✅
+        /subscriptions
+          /on-incomming-message.subscription.ts ✅
   /packages
     /gnetwork-ui
       /components
         /atoms
           /skeletons
-            /skeleton~ ✅
+            /skeleton~ ✅ 😄
         /organisms
           /buttons
-            /button-group~ ✅
+            /button-group~ ✅ 😄
+    /objecter~ ✅ 😄
   /ui
     /core
       /fetchers
         /gnetwork-fetch-api-client.fetcher.ts ✅
     /chat
+      /components
+        /client
+          /sections
+            /chat-conversation~ ⚠️
       /constants
-        /chat-desktop-viewport.constant.ts ✅
+        /chat-desktop-viewport.constant.ts ✅ 😄
       /dictionaries
         /query-keys.dictionary.ts ✅
+      /stores
+        /chat-store~ ✅
 
 ## Logout Button
 
@@ -419,4 +446,27 @@ export async function loginAction(
     "read_at": null,
     "failed_at": null
 },
+```
+
+## Eventos
+
+### message_status_changed
+
+Se ejecuta cuando un mensaje cambio de status
+
+```json
+{
+  "message_id": "a3b9ce4d-e7ca-446d-a4ea-4e21564d9c27",
+  "status": "READ"
+}
+```
+
+### message_status_updated
+
+Se ejecuta para avisar al agente que un mensaje cambio
+
+```json
+{
+  "contact_id": "6b7c0798-c8b7-40cb-88fb-bbf504be6125"
+}
 ```

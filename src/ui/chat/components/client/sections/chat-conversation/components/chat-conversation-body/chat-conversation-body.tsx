@@ -17,10 +17,13 @@ import { useChatConversationBody } from './chat-conversation-body.hook';
 import styles from './chat-conversation-body.module.css';
 
 export const ChatConversationBody = ({
+  disabledChat = false,
   isError = false,
   isLoading = false,
 }: Readonly<ChatConversationBodyProps>) => {
-  const { messages, messagesContainerRef } = useChatConversationBody();
+  const { messages, messagesContainerRef } = useChatConversationBody({
+    disabledChat,
+  });
 
   return (
     <>
