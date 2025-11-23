@@ -8,10 +8,10 @@ import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionar
 
 import { EmitMarkMessageAsReadMapper } from '@module-chat/infrastructure/mappers/emit-mark-message-as-read.mapper';
 
-export const useMarkMessageAsRead = () => {
+export const useEmitMarkMessageAsRead = () => {
   const { emitWithAck } = useSocket();
 
-  const markMessageAsRead = useCallback(
+  const emitMarkMessageAsRead = useCallback(
     async (messageId: string) => {
       try {
         const request = EmitMarkMessageAsReadMapper.mapTo({ messageId });
@@ -28,6 +28,6 @@ export const useMarkMessageAsRead = () => {
   );
 
   return {
-    markMessageAsRead,
+    emitMarkMessageAsRead,
   };
 };

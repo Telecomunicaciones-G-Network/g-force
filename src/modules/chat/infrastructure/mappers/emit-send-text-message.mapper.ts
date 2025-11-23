@@ -20,10 +20,14 @@ export class EmitSendTextMessageMapper {
 
   static mapTo(
     output: EmitSendTextMessageRequest,
-  ): EmitSendTextMessageRequestDTO {
+  ): EmitSendTextMessageRequestDTO | null {
+    if (!output?.message?.text) {
+      return null;
+    }
+
     return {
       conversation_id: output?.conversationId,
-      text: output?.text,
+      text: output?.message?.text,
     };
   }
 }

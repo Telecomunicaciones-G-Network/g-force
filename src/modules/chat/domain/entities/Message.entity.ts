@@ -74,6 +74,10 @@ export class Message {
     this.updatedAt = updatedAt;
   }
 
+  public getId(): string {
+    return this.id;
+  }
+
   public toValues(): MessageValues {
     return {
       id: this.id,

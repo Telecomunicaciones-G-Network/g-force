@@ -28,6 +28,7 @@
       "@objecter/*": ["./src/packages/objecter/*"],
       "@regexs/*": ["./src/packages/regexs/*"],
       "@socketio/*": ["./src/packages/socketio/*"],
+      "@sounder/*": ["./src/packages/sounder/*"],
       "@stringify/*": ["./src/packages/stringify/*"],
       "@timer/*": ["./src/packages/timer/*"],
       "@ui/*": ["./src/ui/*"],

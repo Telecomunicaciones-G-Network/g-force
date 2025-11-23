@@ -6,7 +6,7 @@ import { useScrollToBottom } from '@hookers/use-scroll-to-bottom.hook';
 
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 
-import { useMarkMessageAsRead } from '@ui-chat/hooks/useMarkMessageAsRead.hook';
+import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/useEmitMarkMessageAsRead.hook';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
@@ -15,7 +15,7 @@ export const useChatConversationContainer = () => {
 
   const messages = useChatStore((state) => state.messages);
 
-  const { markMessageAsRead } = useMarkMessageAsRead();
+  const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
   const { ref: messagesContainerRef } = useScrollToBottom<HTMLDivElement>({
     autoScroll: true,
     dependencies: [messages],
@@ -37,8 +37,8 @@ export const useChatConversationContainer = () => {
     }
 
     lastProcessedMessageIdRef.current = lastMessage?.id;
-    markMessageAsRead(lastMessage?.id);
-  }, [lastMessage, markMessageAsRead]);
+    emitMarkMessageAsRead(lastMessage?.id);
+  }, [lastMessage, emitMarkMessageAsRead]);
 
   return {
     messages,

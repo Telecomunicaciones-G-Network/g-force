@@ -26,4 +26,9 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
       set({ messages: [...messages, message] });
     }
   },
+  deleteOneMessageById: (messageId: string) => {
+    const { messages } = get();
+
+    set({ messages: messages.filter((message) => message.id !== messageId) });
+  },
 }));

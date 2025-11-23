@@ -77,6 +77,7 @@
     "sidebar-collapse-trigger": "react-components",
     "sidebar-header": "react-components",
     "socketio": "wakatime",
+    "sounder": "audio",
     "usecases": "vm"
   },
   "material-icon-theme.files.associations": {
@@ -122,6 +123,12 @@
       "base": "element",
       "color": "blue-400",
       "folderNames": ["cards"]
+    },
+    {
+      "name": "Development",
+      "base": "src",
+      "color": "green-500",
+      "folderNames": ["development"]
     },
     {
       "name": "Domain",
@@ -291,6 +298,12 @@
       "base": "templ",
       "color": "blue-500",
       "fileExtensions": ["command.ts"]
+    },
+    {
+      "name": "Dockerfile development",
+      "base": "docker",
+      "color": "yellow-600",
+      "fileNames": ["dockerfile.development"]
     },
     {
       "name": "Enums",

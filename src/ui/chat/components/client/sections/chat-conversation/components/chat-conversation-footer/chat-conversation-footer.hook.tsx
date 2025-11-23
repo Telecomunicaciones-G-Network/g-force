@@ -1,13 +1,6 @@
 'use client';
 
-// import type { EmitSendTextMessageRequest } from '@module-chat/domain/interfaces';
-/* import type {
-  EmitSendTextMessageRequestDTO,
-  EmitSendTextMessageResponseDTO,
-} from '@module-chat/infrastructure/dtos'; */
 import type { ChatConversationFormData } from './interfaces';
-
-// import { useCallback } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -19,21 +12,15 @@ import { MessageDirections } from '@module-chat/domain/enums/message-directions.
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
-// import { useSocket } from '@socketio/hooks/use-socket.hook';
-
-// import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
-
-// import { EmitSendTextMessageMapper } from '@module-chat/infrastructure/mappers/emit-send-text-message.mapper';
-
 import { chatConversationFormSchema } from '@ui-chat/schemas/chat-conversation-form.schema';
 
-import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+import { useEmitSendTextMessage } from '@ui-chat/hooks/useEmitSendTextMessage.hook';
 
 export const useChatConversationFooter = () => {
-  const activeContact = useContactStore((state) => state.activeContact);
+  const { emitSendTextMessage } = useEmitSendTextMessage();
 
-  const addMessage = useChatStore((state) => state.addMessage);
+  const activeContact = useContactStore((state) => state.activeContact);
 
   const { control, handleSubmit, setValue } = useForm<ChatConversationFormData>(
     {
@@ -45,7 +32,6 @@ export const useChatConversationFooter = () => {
       reValidateMode: 'onSubmit',
     },
   );
-  // const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
 
   const onSubmit = async (data: ChatConversationFormData) => {
     if (!activeContact?.latestConversation?.id) return;
@@ -76,45 +62,14 @@ export const useChatConversationFooter = () => {
       null,
     );
 
-    addMessage(newMessage.toValues());
-
-    setValue('text', '');
-
-    /* const response = await sendTextMessage({
+    emitSendTextMessage({
       conversationId: activeContact?.latestConversation?.id,
-      text: data?.text?.trim(),
-    });
-
-    console.log('response back', response); */
-  };
-
-  /* const sendTextMessage = useCallback(
-    async (emission: EmitSendTextMessageRequest) => {
-      try {
-        if (!emitWithAck || !isConnectedAndStatusConnected) return;
-
-        const request = EmitSendTextMessageMapper.mapTo(emission);
-
-        const ack = await emitWithAck<
-          EmitSendTextMessageRequestDTO,
-          EmitSendTextMessageResponseDTO
-        >(socketEmissionsDictionary.SEND_TEXT_MESSAGE, request);
-
-        const parseAck = JSON.parse(ack as unknown as string);
-
-        const response = EmitSendTextMessageMapper.mapFrom(parseAck);
-
-        if (!response?.success) return;
-
+      message: newMessage.toValues(),
+      onSuccess: () => {
         setValue('text', '');
-
-        return response;
-      } catch (error) {
-        console.error('error', error);
-      }
-    },
-    [emitWithAck, isConnectedAndStatusConnected, setValue],
-  ); */
+      },
+    });
+  };
 
   return {
     control,
