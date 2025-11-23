@@ -45,6 +45,7 @@
     "chat-container": "react-components",
     "chat-conversation": "react-components",
     "chat-conversation-body": "react-components",
+    "chat-conversation-container": "react-components",
     "chat-conversation-controller": "react-components",
     "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
