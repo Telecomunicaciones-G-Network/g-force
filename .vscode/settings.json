@@ -36,6 +36,7 @@
     "(public)": "public",
     "actions": "cue",
     "back-button": "react-components",
+    "brand": "react-components",
     "bubble": "react-components",
     "bubble-icon-controller": "react-components",
     "button": "react-components",
@@ -72,6 +73,9 @@
     "react-query-devtools": "react-components",
     "schemas": "scala",
     "skeleton": "react-components",
+    "sidebar": "react-components",
+    "sidebar-collapse-trigger": "react-components",
+    "sidebar-header": "react-components",
     "socketio": "wakatime",
     "usecases": "vm"
   },
@@ -227,6 +231,12 @@
       "folderNames": ["stores", "chat-store", "contact-store"]
     },
     {
+      "name": "React Variants",
+      "base": "react-components",
+      "color": "light-green-500",
+      "folderNames": ["variants"]
+    },
+    {
       "name": "Sections",
       "base": "mjml",
       "color": "green-500",
@@ -243,6 +253,12 @@
       "base": "components",
       "color": "gray-700",
       "folderNames": ["skeletons"]
+    },
+    {
+      "name": "Sidebars",
+      "base": "constant",
+      "color": "green-400",
+      "folderNames": ["sidebars"]
     },
     {
       "name": "Stringify",
@@ -347,6 +363,18 @@
       "base": "react",
       "color": "lime-700",
       "fileExtensions": ["store.ts", "store.tsx"]
+    },
+    {
+      "name": "React Styles",
+      "base": "react",
+      "color": "pink-400",
+      "fileExtensions": ["style.ts"]
+    },
+    {
+      "name": "React Variants",
+      "base": "react",
+      "color": "light-green-500",
+      "fileExtensions": ["variant.ts"]
     },
     {
       "name": "Services",

@@ -13,6 +13,7 @@ export const Icon = ({
   color = 'currentColor',
   name,
   onClick,
+  rotate,
   size = 24,
 }: Readonly<IconProps>) => {
   const svgString = iconDictionary[name];
@@ -53,7 +54,15 @@ export const Icon = ({
   }
 
   return (
-    <div className={classes} style={{ width: size, height: size, color }}>
+    <div
+      className={classes}
+      style={{
+        width: size,
+        height: size,
+        color,
+        transform: rotate ? `rotate(${rotate}deg)` : undefined,
+      }}
+    >
       {svgElement}
     </div>
   );

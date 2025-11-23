@@ -1,6 +1,3 @@
-// PENDING:
-//  IMPROVE: Colocar este componente como contact list para tener coherencia con los datos
-
 'use client';
 
 import type { ChatListProps } from './chat-list.props';
@@ -33,7 +30,7 @@ export const ChatList = ({
             'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px]',
           )}
         >
-          {contacts?.length > 0 && <ChatListHeader hideFilterButton />}
+          {contacts?.length > 0 && <ChatListHeader />}
           <ChatListBody contacts={contacts} />
         </section>
       )}

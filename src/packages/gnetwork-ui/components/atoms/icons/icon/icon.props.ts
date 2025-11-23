@@ -5,5 +5,6 @@ export interface IconProps {
   color?: string;
   name: keyof typeof iconDictionary;
   onClick?: () => void;
+  rotate?: number;
   size?: number | string;
 }

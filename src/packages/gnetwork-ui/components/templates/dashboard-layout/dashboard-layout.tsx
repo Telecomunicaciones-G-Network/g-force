@@ -2,18 +2,21 @@ import type { DashboardLayoutProps } from './dashboard-layout.props';
 
 import { cn } from '../../../utils/cn.util';
 
-import { DashboardLayoutBody } from './components/dashboard-layout-body';
-import { DashboardLayoutHeader } from './components/dashboard-layout-header';
+import { DashboardLayoutContainer } from './components/dashboard-layout-container';
 import { DashboardLayoutSidebar } from './components/dashboard-layout-sidebar';
+
+import { DashboardLayoutProvider } from './providers/dashboard-layout.provider';
 
 import styles from './dashboard-layout.module.css';
 
 export const DashboardLayout = ({
   children,
   className = '',
+  containerClassName,
   headerContent,
   headerHeight,
   ref,
+  sidebarClassName,
   sidebarContent,
   ...rest
 }: Readonly<DashboardLayoutProps>) => {
@@ -36,14 +39,20 @@ export const DashboardLayout = ({
   }
 
   return (
-    <div ref={ref} className={cn(styles.base, className)} {...rest}>
-      <DashboardLayoutSidebar sidebarContent={sidebarContent} />
-      <div className="lg:pl-[256px]">
-        <DashboardLayoutHeader headerHeight={headerHeight}>
-          {headerContent}
-        </DashboardLayoutHeader>
-        <DashboardLayoutBody>{children}</DashboardLayoutBody>
+    <DashboardLayoutProvider>
+      <div ref={ref} className={cn(styles.base, className)} {...rest}>
+        <DashboardLayoutSidebar
+          className={sidebarClassName}
+          sidebarContent={sidebarContent}
+        />
+        <DashboardLayoutContainer
+          className={containerClassName}
+          headerContent={headerContent}
+          headerHeight={headerHeight}
+        >
+          {children}
+        </DashboardLayoutContainer>
       </div>
-    </div>
+    </DashboardLayoutProvider>
   );
 };
