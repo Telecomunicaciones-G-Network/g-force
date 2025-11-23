@@ -1,11 +1,14 @@
 import type { BubbleProps } from './bubble.props';
 
+import { BubbleIconController } from './components/bubble-icon-controller';
+
 import { getBubbleClassNames } from './bubble.style';
 
 export const Bubble = ({
   className = '',
   children,
   mode = 'unknown',
+  status = 'none',
   ref,
   ...rest
 }: Readonly<BubbleProps>) => {
@@ -14,6 +17,7 @@ export const Bubble = ({
   return (
     <div className={classes} ref={ref} {...rest}>
       {children}
+      <BubbleIconController status={status} />
     </div>
   );
 };

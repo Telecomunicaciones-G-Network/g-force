@@ -1,23 +1,24 @@
-// PENDING:
-
-import type { ChatMessageProps } from './chat-message.props';
+import type { ChatTextMessageProps } from './chat-text-message.props';
 
 import { Text } from '../../../atoms/texts/text';
 import { Bubble } from '../../../molecules/blocks/bubble';
 
+import { BubbleStatus } from '../../../molecules/blocks/bubble/enums/bubble-status.enum';
+
 import { cn } from '../../../../utils/cn.util';
 
-import styles from './chat-message.module.css';
+import styles from './chat-text-message.module.css';
 
-export const ChatMessage = ({
+export const ChatTextMessage = ({
   children,
   className = '',
   direction = 'unknown',
   ref,
+  status = 'none',
   time = '',
   username = '',
   ...rest
-}: Readonly<ChatMessageProps>) => (
+}: Readonly<ChatTextMessageProps>) => (
   <div
     className={cn(
       styles.base,
@@ -59,6 +60,11 @@ export const ChatMessage = ({
         </Text>
       )}
     </div>
-    <Bubble mode={direction}>{children}</Bubble>
+    <Bubble
+      mode={direction}
+      status={direction === 'incoming' ? BubbleStatus.NONE : status}
+    >
+      {children}
+    </Bubble>
   </div>
 );

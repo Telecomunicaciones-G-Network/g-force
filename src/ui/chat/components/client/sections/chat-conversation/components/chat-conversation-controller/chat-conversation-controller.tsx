@@ -1,6 +1,7 @@
+import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from './chat-conversation-controller.props';
 
-import { ChatMessage } from '@gnetwork-ui/components/organisms/blocks/chat-message';
+import { ChatTextMessage } from '@gnetwork-ui/components/organisms/blocks/chat-text-message';
 
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
 
@@ -17,17 +18,18 @@ export const ChatConversationController = ({
   switch (message?.type) {
     case MessageTypes.TEXT:
       return (
-        <ChatMessage
+        <ChatTextMessage
           direction={
             message?.direction === MessageDirections.INCOMING
               ? BubbleModes.INCOMING
               : BubbleModes.OUTGOING
           }
+          status={message?.status.toLowerCase() as BubbleStatus}
           time={isoToTime(message?.createdAt ?? '')}
           username={message?.sender?.name}
         >
           {message?.text}
-        </ChatMessage>
+        </ChatTextMessage>
       );
     default:
       return null;

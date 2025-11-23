@@ -10,7 +10,9 @@
   line-height: 120%;
   max-width: 313px;
   padding: 8px;
+  position: relative;
   text-align: left;
   white-space: pre-line;
   width: fit-content;
+  word-break: break-word;
 }

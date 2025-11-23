@@ -1,60 +1,5 @@
 # TODO
 
-## TODO:
-
-[General]
-
-TODO: No permitir que se vean logs en la app
-
-[Autenticacion]
-
-TODO: Debo implementar el refresh token para poder extender la sesion del usuario
-
-[Websocket]
-
-TODO: No permitir que se vean logs en modo de produccion
-
-[Notificaciones]
-
-TODO: Debo crear el componente Toast
-TODO: Debo crear la funcionalidad de notificaciones en local por toast
-TODO: Verificar el modo oscuro
-TODO: Colocar una alerta cuando se haya perdido la conexion a internet o la conexion del socket
-
-[Chat Conversation]
-
-TODO: Agregar a los componentes de mensaje que envia el agente los check o simbolos de status
-TODO: Crear el mensaje de tipo texto
-TODO: Crear el mensaje de tipo imagen
-TODO: Ver el manejo de la fecha que ahora es updateAt y si no viene dar prioridad por orden de fechas
-TODO: Crear separadores por fecha como lo hace whatsapp
-TODO: Debo hacer el dropdown del boton de tres puntos del componente chat-conversation
-TODO: Debo implementar la funcionalidad de fijar en el dropdown del componente chat-conversation (samuel debe agregar una propiedade en el contacto para saber que esta fijado)
-TODO: Ocultar la funcionalidad de marcar como leido
-TODO: Debo aplicar la funcionalidad de silenciar las notificaciones
-TODO: Debo crear la funcionalidad de los sonidos en notificaciones y recepcion de mensajes
-TODO: Debo agregar la funcionalidad de transferir chat
-TODO: Verificar el modo oscuro
-TODO: Poder marcar como leido un mensaje siempre y cuando haya conexion de socket, el usuario este unido a la sala con la emision del evento y al recibir el ack de success marcarlo en el arreglo del store en dicho mensaje
-TODO: Poder enviar un mensaje con todo su flujo
-TODO: Limpiar el input de formulario despues del envio del mensaje
-TODO: Cuando el usuario va hasta el ultimo mensaje de arriba si existe un siguiente has_next debo hacer una nueva peticion con el nuevo cursor y agregar los nuevos mensajes al estado aplicando infinite scroll
-
-## FIXME:
-
-[Chat Conversation]
-
-FIXME: Debo ver que hacer cuando los messages del chat aun se estan cargando con react query pero antes de que se terminen de cargar llega un mensaje por socket
-FIXME: La consulta de obtencion de los mensajes esta tardando mucho
-FIXME: Hay un error del backend al enviar el evento mark_message_as_read
-
-## IMPROVE:
-
-[Chat Conversation]
-
-IMPROVE: Debo mejorar la forma en la que se esta pasando el message direction
-IMPROVE: Mi chat input en realidad debe ser un text area
-
 
 ## DONE:
 
@@ -472,18 +417,5 @@ Se ejecuta para avisar al agente que un mensaje cambio
 ```json
 {
   "contact_id": "6b7c0798-c8b7-40cb-88fb-bbf504be6125"
-}
-```
-
-### Enviar un mensaje
-
-```bash
-send_text_message [ACK]
-```
-
-```json
-{
-  "success": true,
-  "message_id": "be085c6d-9985-4163-abc5-a3ae1ff6d07c"
 }
 ```
