@@ -12,10 +12,11 @@ import { MessageDirections } from '@module-chat/domain/enums/message-directions.
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
+import { useEmitSendTextMessage } from '@ui-chat/hooks/emit-send-text-message.hook';
+
 import { chatConversationFormSchema } from '@ui-chat/schemas/chat-conversation-form.schema';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-import { useEmitSendTextMessage } from '@ui-chat/hooks/useEmitSendTextMessage.hook';
 
 export const useChatConversationFooter = () => {
   const { emitSendTextMessage } = useEmitSendTextMessage();

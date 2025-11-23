@@ -2,7 +2,7 @@
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
-import { useOnIncommingMessage } from '@ui-chat/hooks/useOnIncommingMessage.hook';
+import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
 
 interface UseChatConversationBodyProps {
   disabledChat?: boolean;

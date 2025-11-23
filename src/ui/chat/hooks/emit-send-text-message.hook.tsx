@@ -25,7 +25,13 @@ export const useEmitSendTextMessage = () => {
   const emitSendTextMessage = useCallback(
     async (emission: EmitSendTextMessageRequest) => {
       try {
-        if (!emitWithAck || !isConnectedAndStatusConnected) return;
+        if (
+          !emitWithAck ||
+          !isConnectedAndStatusConnected ||
+          !emission?.conversationId ||
+          !emission?.message?.text
+        )
+          return;
 
         const request = EmitSendTextMessageMapper.mapTo(emission);
 
@@ -47,7 +53,7 @@ export const useEmitSendTextMessage = () => {
         if (response?.messageId && emission?.message) {
           const sounder = new Sounder('/sounds/whatsapp_emit_message.mp3');
 
-          addMessage(emission?.message);
+          addMessage({ ...emission?.message, id: response?.messageId });
           sounder.playAudio();
           emission?.onSuccess?.();
         }

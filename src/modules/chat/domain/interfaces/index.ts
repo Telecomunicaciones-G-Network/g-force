@@ -20,4 +20,5 @@ export type {
   MessageSenderValues,
   MessageValues,
 } from './message-values.interface';
+export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { TeamValues } from './team-values.interface';

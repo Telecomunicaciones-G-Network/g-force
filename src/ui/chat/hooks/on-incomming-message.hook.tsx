@@ -9,7 +9,7 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
 
 import { OnIncommingMessageMapper } from '@module-chat/infrastructure/mappers/on-incomming-message.mapper';
 
-import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/useEmitMarkMessageAsRead.hook';
+import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/emit-mark-message-as-read.hook';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
