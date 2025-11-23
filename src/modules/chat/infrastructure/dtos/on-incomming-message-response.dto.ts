@@ -5,7 +5,7 @@ import type {
 } from '../../domain/interfaces';
 import type { MessageType } from '../../domain/types';
 
-export interface OnIncommingMessageDTO {
+export interface OnIncommingMessageResponseDTO {
   message_id: string;
   caption: string | null;
   contacts: MessageContactValues[] | null;

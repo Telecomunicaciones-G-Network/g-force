@@ -4,6 +4,10 @@ export type {
   ContactValues,
 } from './contact-values.interface';
 export type { ConversationValues } from './conversation-values.interface';
+export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
+export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
+export type { EmitSendTextMessageRequest } from './emit-send-text-message-request.interface';
+export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';
 export type { GetContactsRequest } from './get-contacts-request.interface';

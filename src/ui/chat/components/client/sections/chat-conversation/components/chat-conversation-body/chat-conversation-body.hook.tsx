@@ -1,6 +1,6 @@
 'use client';
 
-import type { OnIncommingMessageDTO } from '@module-chat/infrastructure/dtos';
+import type { OnIncommingMessageResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { useCallback } from 'react';
 
@@ -11,7 +11,8 @@ import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
-import { OnIncommingMessageSubscription } from '@module-chat/infrastructure/subscriptions/on-incomming-message.subscription';
+import { EmitMarkMessageAsReadMapper } from '@module-chat/infrastructure/mappers/emit-mark-message-as-read.mapper';
+import { OnIncommingMessageMapper } from '@module-chat/infrastructure/mappers/on-incomming-message.mapper';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
@@ -38,40 +39,34 @@ export const useChatConversationBody = ({
   const markMessageAsRead = useCallback(
     async (messageId: string) => {
       try {
-        const response = await emitWithAck?.(
-          socketEmissionsDictionary.MARK_MESSAGE_AS_READ,
-          {
-            message_id: messageId,
-          },
-        );
+        const request = EmitMarkMessageAsReadMapper.mapTo({ messageId });
 
-        console.log('response', response);
-      } catch (error) {
-        console.error('error', error);
+        await emitWithAck?.(
+          socketEmissionsDictionary.MARK_MESSAGE_AS_READ,
+          request,
+        );
+      } catch (_error) {
+        return;
       }
     },
     [emitWithAck],
   );
 
-  onSocketEvent<OnIncommingMessageDTO>(
+  onSocketEvent<OnIncommingMessageResponseDTO>(
     socketEventsDictionary.INCOMING_MESSAGE,
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      const newMessage = OnIncommingMessageSubscription(
+      const newMessage = OnIncommingMessageMapper.mapFrom(
         parseResponse,
         activeContact,
       );
 
-      if (newMessage) {
-        addMessage(newMessage);
-      }
+      if (!newMessage) return;
 
-      if (newMessage && !disabledChat) {
-        console.log('Debo marcar el mensaje como leido', newMessage?.id);
+      if (newMessage) addMessage(newMessage);
 
-        markMessageAsRead(newMessage?.id);
-      }
+      if (newMessage && !disabledChat) markMessageAsRead(newMessage?.id);
     },
     [activeContact?.id, addMessage],
   );

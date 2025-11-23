@@ -250,12 +250,6 @@
       "folderNames": ["stringify"]
     },
     {
-      "name": "Subscriptions",
-      "base": "command",
-      "color": "indigo-400",
-      "folderNames": ["subscriptions"]
-    },
-    {
       "name": "Templates",
       "base": "template",
       "color": "red-400",
@@ -358,12 +352,6 @@
       "base": "replit",
       "color": "yellow-700",
       "fileExtensions": ["service.ts"]
-    },
-    {
-      "name": "Subscriptions",
-      "base": "templ",
-      "color": "indigo-400",
-      "fileExtensions": ["subscription.ts"]
     },
     {
       "name": "Types",

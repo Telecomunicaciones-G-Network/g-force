@@ -38,7 +38,11 @@ export const useChatConversation = () => {
         limit: 10,
       }),
     enabled: !!activeContact?.id,
+    gcTime: 0,
+    refetchOnMount: true,
+    staleTime: 0,
   });
+
   const { isConnected, isInRoom } = useContactRoomStatus({
     autoJoin: true,
     contactId: activeContact?.id,
