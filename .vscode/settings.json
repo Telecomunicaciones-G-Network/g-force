@@ -94,6 +94,7 @@
     "*.interface.ts": "less",
     "*.mapper.ts": "xml",
     "*.model.ts": "sml",
+    "*.pipeline.yml": "github-actions-workflow",
     "*.presenter.ts": "sentry",
     "*.props.ts": "svgr",
     "*.repository.ts": "wxt",

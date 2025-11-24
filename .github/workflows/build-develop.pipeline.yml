@@ -1,0 +1,45 @@
+name: Build GOffice Pipeline Development
+
+on:
+  push:
+    branches:
+      - "develop"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.21.1
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          bun install
+
+      - name: Create environment file
+        run: |
+          echo "Creating environment file..."
+          echo "${{ secrets.DEV_ENV_VARS }}" > .env
+          echo "${{ secrets.DEV_ENV_VARS }}" > .env.development
+          echo "${{ secrets.DEV_ENV_VARS }}" > .env.production
+
+      - name: Build
+        run: |
+          echo "Building development..."
+          bun run build
