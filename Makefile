@@ -10,6 +10,14 @@ init:
 build:
 	bun run build
 
+# make buildDockerDevelopment TAG=dev-v0.0.9
+buildDockerDevelopment:
+	docker build . -t gforce:${TAG} -f docker/Dockerfile.development
+
+# make clean
+clean:
+	bun clean
+
 # make check
 check:
 	bun typecheck
@@ -19,6 +27,9 @@ check:
 # make format
 format:
 	bun format
+
+install:
+	bun install
 
 # make upgradePackages
 upgradePackages:

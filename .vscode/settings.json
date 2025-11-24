@@ -125,12 +125,6 @@
       "folderNames": ["cards"]
     },
     {
-      "name": "Development",
-      "base": "src",
-      "color": "green-500",
-      "folderNames": ["development"]
-    },
-    {
       "name": "Domain",
       "base": "src",
       "color": "yellow-800",
