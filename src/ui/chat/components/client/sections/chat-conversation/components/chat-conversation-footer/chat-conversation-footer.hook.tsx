@@ -1,12 +1,11 @@
 'use client';
 
+import type { MessageValues } from '@module-chat/domain/interfaces';
 import type { ChatConversationFormData } from './interfaces';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
-
-import { Message } from '@module-chat/domain/entities/message.entity';
 
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
@@ -37,35 +36,35 @@ export const useChatConversationFooter = () => {
   const onSubmit = async (data: ChatConversationFormData) => {
     if (!activeContact?.latestConversation?.id) return;
 
-    const newMessage = new Message(
-      uuidv4(),
-      null,
-      [],
-      activeContact?.latestConversation?.id,
-      new Date().toISOString(),
-      null,
-      MessageDirections.OUTGOING,
-      null,
-      false,
-      false,
-      null,
-      null,
-      [],
-      null,
-      {
+    const newMessage: MessageValues = {
+      id: uuidv4(),
+      caption: null,
+      contacts: [],
+      conversationId: activeContact?.latestConversation?.id,
+      createdAt: new Date().toISOString(),
+      deliveredAt: null,
+      direction: MessageDirections.OUTGOING,
+      failedAt: null,
+      forwarded: false,
+      forwardedManyTimes: false,
+      location: null,
+      media: null,
+      reactions: [],
+      readAt: null,
+      sender: {
         id: activeContact?.latestConversation?.agent?.id,
         name: activeContact?.latestConversation?.agent?.name,
       },
-      null,
-      MessageStatus.PENDING,
-      data?.text?.trim(),
-      MessageTypes.TEXT,
-      null,
-    );
+      sentAt: null,
+      status: MessageStatus.PENDING,
+      text: data?.text?.trim(),
+      type: MessageTypes.TEXT,
+      updatedAt: null,
+    };
 
     emitSendTextMessage({
       conversationId: activeContact?.latestConversation?.id,
-      message: newMessage.toValues(),
+      message: newMessage,
       onSuccess: () => {
         setValue('text', '');
       },
