@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 
-import { useScrollToBottom } from '@hookers/use-scroll-to-bottom.hook';
+import { useScrollToBottom } from '@hook/use-scroll-to-bottom.hook';
 
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 

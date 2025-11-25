@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useMediaQuery } from '@hookers/use-media-query.hook';
+import { useMediaQuery } from '@hook/use-media-query.hook';
 
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 

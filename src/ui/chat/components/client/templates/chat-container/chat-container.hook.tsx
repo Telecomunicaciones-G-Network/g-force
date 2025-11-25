@@ -3,7 +3,7 @@
 'use client';
 
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
-import { useMediaQuery } from '@hookers/use-media-query.hook';
+import { useMediaQuery } from '@hook/use-media-query.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 

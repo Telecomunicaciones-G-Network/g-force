@@ -2,8 +2,8 @@
 
 import { useTheme } from 'next-themes';
 
-import { useIsComponentMounted } from '@hookers/use-is-component-mounted.hook';
-import { useSystemTheme } from '@hookers/use-system-theme.hook';
+import { useIsComponentMounted } from '@hook/use-is-component-mounted.hook';
+import { useSystemTheme } from '@hook/use-system-theme.hook';
 
 export const useBrand = () => {
   const { isMounted } = useIsComponentMounted();

@@ -207,7 +207,7 @@
       "name": "React Hooks",
       "base": "react-components",
       "color": "purple-400",
-      "folderNames": ["hooks", "hookers"]
+      "folderNames": ["hooks"]
     },
     {
       "name": "React Iterators",

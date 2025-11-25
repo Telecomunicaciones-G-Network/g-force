@@ -6,7 +6,7 @@ import type { ContactValues } from '@module-chat/domain/interfaces';
 
 import { useEffect } from 'react';
 
-import { useMediaQuery } from '@hookers/use-media-query.hook';
+import { useMediaQuery } from '@hook/use-media-query.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
