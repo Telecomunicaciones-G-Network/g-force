@@ -10,10 +10,17 @@ import { create } from 'zustand';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
-export const useContactStore = create<ContactStoreState>((set) => ({
+export const useContactStore = create<ContactStoreState>((set, get) => ({
   activeContact: null,
   chatMode: ChatModes.LIST,
   contacts: [],
+  existContactOnStore: (contactId: string): boolean => {
+    const { contacts } = get();
+
+    return contacts?.some(
+      (contact: ContactValues) => contact?.id === contactId,
+    );
+  },
   setActiveContact: (contact: ContactValues | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),

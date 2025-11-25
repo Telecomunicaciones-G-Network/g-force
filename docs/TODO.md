@@ -419,3 +419,13 @@ Se ejecuta para avisar al agente que un mensaje cambio
   "contact_id": "6b7c0798-c8b7-40cb-88fb-bbf504be6125"
 }
 ```
+
+### new_message_received
+
+```json
+{
+    "conversation_id": "20ff5c7d-c93b-4398-948f-5c986ba33605",
+    "conversation_status": "WAITING",
+    "contact_id": "a70f7cea-0f0a-465e-870b-a76e2e196504"
+}
+```

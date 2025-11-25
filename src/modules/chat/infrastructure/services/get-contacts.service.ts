@@ -21,6 +21,9 @@ export const getContactsService = async (
     CHAT_RESOURCES.GET_CONTACTS,
     {
       cache: HttpCaches.NO_STORE,
+      next: {
+        tags: ['get-chat-contacts'],
+      },
       searchParams: {
         ...(request || {}),
       },

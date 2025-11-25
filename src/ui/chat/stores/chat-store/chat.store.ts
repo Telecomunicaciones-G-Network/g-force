@@ -40,9 +40,6 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
     messageId: string,
     messageStatus: MessageStatus,
   ) => {
-    console.log(
-      `Debo actualizar el mensaje con id ${messageId} con status: ${messageStatus}`,
-    );
     if (!messageId || !messageStatus) {
       return;
     }
@@ -59,8 +56,6 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
 
       return message;
     });
-
-    console.log(newMessages);
 
     set({ messages: newMessages });
   },

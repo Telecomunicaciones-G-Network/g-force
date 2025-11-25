@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import { useScrollToBottom } from '@hook/use-scroll-to-bottom.hook';
 
+import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 
 import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/emit-mark-message-as-read.hook';
@@ -33,6 +34,7 @@ export const useChatConversationContainer = () => {
     if (
       !lastMessage ||
       lastMessage.status === MessageStatus.READ ||
+      lastMessage.direction === MessageDirections.OUTGOING ||
       lastProcessedMessageIdRef.current === lastMessage?.id
     ) {
       return;

@@ -8,14 +8,18 @@ import { useEffect } from 'react';
 
 import { useMediaQuery } from '@hook/use-media-query.hook';
 
-import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 
-export const useChatList = (contactsResponse: ContactValues[]) => {
-  const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
+import { useOnNewMessageReceived } from '@ui-chat/hooks/on-new-message-received.hook';
 
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+
+export const useChatList = (contactsResponse: ContactValues[]) => {
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
+
+  const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
+  useOnNewMessageReceived();
 
   const setContacts = useContactStore((state) => state.setContacts);
 

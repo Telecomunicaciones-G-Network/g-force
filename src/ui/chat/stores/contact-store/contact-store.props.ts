@@ -8,6 +8,7 @@ export interface ContactStoreState {
   chatMode: ChatMode;
   contacts: ContactValues[];
 
+  existContactOnStore: (contactId: string) => boolean;
   setActiveContact: (contact: ContactValues | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: ContactValues[]) => void;

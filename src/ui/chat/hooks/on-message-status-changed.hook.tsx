@@ -19,8 +19,6 @@ export const useOnMessageStatusChanged = () => {
       const parseResponse = JSON.parse(data as unknown as string);
       const response = OnMessageStatusChangedMapper.mapFrom(parseResponse);
 
-      console.log('response', response);
-
       if (!response?.messageId || !response?.status) {
         return;
       }
