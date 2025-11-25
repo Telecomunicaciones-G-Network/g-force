@@ -9,9 +9,6 @@ on:
       - develop
   workflow_dispatch:
 
-env:
-  REGISTRY: ghcr.io
-
 permissions:
   contents: read
   packages: write
@@ -46,7 +43,7 @@ jobs:
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -62,8 +59,7 @@ jobs:
         run: |
           REPO_LOWERCASE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           VERSION=$(jq -r '.version' package.json)
-          echo "tag=${{ env.REGISTRY }}/${REPO_LOWERCASE}:dev-v${VERSION}" >> $GITHUB_OUTPUT
-          echo "image=${{ env.REGISTRY }}/${REPO_LOWERCASE}" >> $GITHUB_OUTPUT
+          echo "tag=ghcr.io/${REPO_LOWERCASE}:dev-v${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Build and push development Docker image
         uses: docker/build-push-action@v6
@@ -72,5 +68,5 @@ jobs:
           file: ./docker/Dockerfile.development
           push: true
           tags: ${{ steps.tag.outputs.tag }}
-          cache-from: type=gha,scope=${{ steps.tag.outputs.image }}
-          cache-to: type=gha,mode=max,scope=${{ steps.tag.outputs.image }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
