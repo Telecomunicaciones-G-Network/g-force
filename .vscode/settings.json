@@ -54,6 +54,8 @@
     "chat-list": "react-components",
     "chat-list-body": "react-components",
     "chat-text-message": "react-components",
+    "chat-list-skeleton": "react-components",
+    "contact-card-skeleton": "react-components",
     "dictionaries": "resource",
     "dropdown-base": "react-components",
     "dropdown-container": "react-components",

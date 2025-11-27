@@ -29,9 +29,9 @@ export interface GetContactsResultLatestMessageSender {
 }
 
 export interface GetContactsResultLatestMessage {
-  id: string;
   createdAt: string;
   direction: MessageDirection;
+  id: string;
   sender: GetContactsResultLatestMessageSender;
   status: MessageStatus;
   textPreview: string;
@@ -47,4 +47,5 @@ export interface GetContactsResult {
   phoneNumber: string;
   platform: ContactPlatform;
   platformId: string;
+  unread_count: number;
 }

@@ -1,6 +1,3 @@
-// PENDING:
-// IMPROVE: Debo renombrar este componente como contact list body para tener coherencia con los datos
-
 'use client';
 
 import type { ContactValues } from '@module-chat/domain/interfaces';

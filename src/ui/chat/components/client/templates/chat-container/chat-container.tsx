@@ -1,6 +1,3 @@
-// TODO: Usar el context para pasar la promesa y no usar props drilling
-// TODO: Debo agregar la validacion del socket de isConnected para deshabilitar y habilitar elementos del chat
-
 'use client';
 
 import type { ChatContainerProps } from './chat-container.props';
@@ -13,6 +10,7 @@ import { ChatConversation } from '@ui-chat/components/client/sections/chat-conve
 import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
 import { ChatList } from '@ui-chat/components/client/sections/chat-list';
+import { ChatListSkeleton } from '@ui-chat/components/client/sections/chat-list/components/chat-list-skeleton';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -26,7 +24,7 @@ export const ChatContainer = ({
   return (
     <>
       <ErrorBoundary>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ChatListSkeleton />}>
           <ChatList chatContactsResponsePromise={chatContactsResponsePromise} />
         </Suspense>
       </ErrorBoundary>

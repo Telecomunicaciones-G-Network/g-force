@@ -19,4 +19,5 @@ export interface ContactValues {
   latestMessage: ContactLatestMessageValues;
   name: string;
   phoneNumber: string;
+  unreadCount: number;
 }
