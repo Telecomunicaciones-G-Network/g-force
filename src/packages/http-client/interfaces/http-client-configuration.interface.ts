@@ -1,6 +1,7 @@
 import { HttpCache, HttpMethod } from '../types';
 
 export interface HttpClientConfigurationNext {
+  revalidate?: number | false;
   tags?: string[];
 }
 

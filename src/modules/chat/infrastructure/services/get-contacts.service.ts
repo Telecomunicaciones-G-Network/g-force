@@ -26,6 +26,7 @@ export const getContactsService = async (
       cache: HttpCaches.NO_STORE,
       next: {
         tags: [CHAT_TAGS.GET_CHAT_CONTACTS],
+        revalidate: 0,
       },
       searchParams: {
         ...request,

@@ -76,10 +76,17 @@
     "schemas": "scala",
     "skeleton": "react-components",
     "sidebar": "react-components",
+    "sidebar-branch": "react-components",
     "sidebar-collapse-trigger": "react-components",
+    "sidebar-body": "react-components",
     "sidebar-header": "react-components",
     "socketio": "wakatime",
     "sounder": "audio",
+    "tooltip": "react-components",
+    "tooltip-base": "react-components",
+    "tooltip-content": "react-components",
+    "tooltip-trigger": "react-components",
+    "tooltips": "prompts",
     "usecases": "vm"
   },
   "material-icon-theme.files.associations": {
