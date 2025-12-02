@@ -15,11 +15,13 @@ import { useEmitSendTextMessage } from '@ui-chat/hooks/emit-send-text-message.ho
 
 import { chatConversationFormSchema } from '@ui-chat/schemas/chat-conversation-form.schema';
 
+import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversationFooter = () => {
   const { emitSendTextMessage } = useEmitSendTextMessage();
 
+  const sendMode = useChatStore((state) => state.sendMode);
   const activeContact = useContactStore((state) => state.activeContact);
 
   const { control, handleSubmit, setValue } = useForm<ChatConversationFormData>(
@@ -75,5 +77,6 @@ export const useChatConversationFooter = () => {
     control,
     handleSubmit,
     onSubmit,
+    sendMode,
   };
 };

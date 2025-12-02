@@ -1,0 +1,7 @@
+.base {
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+  position: relative;
+  user-select: none;
+}

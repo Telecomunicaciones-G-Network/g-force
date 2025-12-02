@@ -141,6 +141,3 @@ g-force/
 ---
 
 **Built with ❤️ by the GNetwork Team**
-
-                     D                      D
-Repository => GetContactsResponse => GetContactsModel -> Caso de uso =>

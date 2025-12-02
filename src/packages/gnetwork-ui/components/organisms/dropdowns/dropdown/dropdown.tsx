@@ -7,7 +7,11 @@ import { DropdownContainer } from './components/dropdown-container';
 import { DropdownTrigger } from './components/dropdown-trigger';
 
 export const Dropdown = ({
+  align = 'start',
+  alignOffset = 0,
   children,
+  contentClassName = '',
+  side = 'bottom',
   triggerComponent,
   sideOffset = 4,
   ...rest
@@ -23,7 +27,13 @@ export const Dropdown = ({
           <DropdownTrigger className="cursor-pointer outline-none" asChild>
             {triggerComponent}
           </DropdownTrigger>
-          <DropdownContainer sideOffset={sideOffset}>
+          <DropdownContainer
+            align={align}
+            alignOffset={alignOffset}
+            className={contentClassName}
+            side={side}
+            sideOffset={sideOffset}
+          >
             {children}
           </DropdownContainer>
         </DropdownBase>

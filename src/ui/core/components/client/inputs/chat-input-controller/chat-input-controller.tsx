@@ -9,6 +9,7 @@ import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 
 export const ChatInputController = <T extends FieldValues = FieldValues>({
   control,
+  customLeftIcon,
   defaultValue,
   id,
   name,
@@ -23,6 +24,7 @@ export const ChatInputController = <T extends FieldValues = FieldValues>({
     render={({ field, fieldState }) => (
       <ChatInput
         {...field}
+        customLeftIcon={customLeftIcon}
         error={!!fieldState.error}
         id={id || name}
         message={fieldState.error?.message}
