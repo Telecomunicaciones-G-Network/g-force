@@ -20,7 +20,6 @@ TODO: Cuando le de click al logo debe ir a la ruta principal
 
 TODO: Acomodar el componente chat card
 TODO: Validar como se esta obteniendo la lista de contactos
-TODO: Mostrar la cantidad de mensajes sin leer
 TODO: Si llega un nuevo mensaje y el chat no esta activo subir el contador de mensajes no leeidos
 TODO: Si el ultimo mensaje es imagen mostrar un icono de la imagen y el nombre de la misma
 TODO: Aplicar busqueda desde el search input y ajustar un delay
@@ -28,6 +27,7 @@ TODO: Hacer el dropdown de los filtros
 TODO: Aplicar filtros de nivel de endpoint
 TODO: Aplicar scroll infinito en el listado de contactos
 TODO: Si me voy a la pagina de gestion y vuelvo a la pagina de conversaciones la lista de contactos se recarga y muestra nuevamente el fallback
+TODO: Si llega un nuevo mensaje y el chat no esta activo debo aplicar el sonido de que llego un nuevo mensaje
 
 ## Logout Button
 

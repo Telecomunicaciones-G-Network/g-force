@@ -17,8 +17,6 @@ export const ChatListBody = ({
 }: Readonly<ChatListBodyProps>) => {
   const { activeContact, changeActiveContact } = useChatListBody();
 
-  console.log(contacts);
-
   return (
     <div
       className={cn(

@@ -1,5 +1,3 @@
-// DONE:
-
 import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 
@@ -8,8 +6,10 @@ export interface ContactStoreState {
   chatMode: ChatMode;
   contacts: ContactValues[];
 
-  existContactOnStore: (contactId: string) => boolean;
   setActiveContact: (contact: ContactValues | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: ContactValues[]) => void;
+
+  clearUnreadMessagesFromOneContact: (contactId: string) => void;
+  existContactOnStore: (contactId: string) => boolean;
 }

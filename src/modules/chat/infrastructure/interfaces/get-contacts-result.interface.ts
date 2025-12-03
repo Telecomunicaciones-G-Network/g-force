@@ -47,5 +47,5 @@ export interface GetContactsResult {
   phoneNumber: string;
   platform: ContactPlatform;
   platformId: string;
-  unread_count: number;
+  unreadCount: number;
 }

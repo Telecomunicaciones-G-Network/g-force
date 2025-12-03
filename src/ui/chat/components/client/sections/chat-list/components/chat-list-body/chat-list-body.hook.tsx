@@ -1,5 +1,3 @@
-// PENDING:
-
 'use client';
 
 import type { ContactValues } from '@module-chat/domain/interfaces';
@@ -14,9 +12,14 @@ export const useChatListBody = () => {
   const setActiveContact = useContactStore((state) => state.setActiveContact);
   const setChatMode = useContactStore((state) => state.setChatMode);
 
+  const clearUnreadMessagesFromOneContact = useContactStore(
+    (state) => state.clearUnreadMessagesFromOneContact,
+  );
+
   const changeActiveContact = (contact: ContactValues) => {
     setActiveContact(contact);
     setChatMode(ChatModes.CHAT);
+    clearUnreadMessagesFromOneContact(contact?.id);
   };
 
   return { activeContact, changeActiveContact };
