@@ -1,3 +1,7 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+
 import type { AccordionProps } from './accordion.props';
 
 import { MdKeyboardArrowUp } from 'react-icons/md';
@@ -14,12 +18,35 @@ export const Accordion = ({
   className,
   children,
   fullWidth,
+  hideSeparator = false,
   label = '',
+  labelComponent,
   open = false,
   ref,
   ...rest
 }: Readonly<AccordionProps>) => {
+  const [isOpen, setIsOpen] = useState(open);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
   const classes = getAccordionClassNames({ className, fullWidth });
+
+  useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
+  useEffect(() => {
+    const detailsElement = detailsRef.current;
+    if (!detailsElement) return;
+
+    const handleToggle = () => {
+      setIsOpen(detailsElement.open);
+    };
+
+    detailsElement.addEventListener('toggle', handleToggle);
+
+    return () => {
+      detailsElement.removeEventListener('toggle', handleToggle);
+    };
+  }, []);
 
   if (!children) {
     console.warn(
@@ -29,10 +56,18 @@ export const Accordion = ({
 
   return (
     <Card className={classes} ref={ref} {...rest}>
-      <details className={styles.base__body} open={open}>
-        <summary className={cn(styles.base__header, 'text-neutral-900')}>
+      <details ref={detailsRef} className={styles.base__body} open={isOpen}>
+        <summary
+          className={cn(
+            styles.base__header,
+            'text-neutral-900',
+            isOpen &&
+              !hideSeparator &&
+              'border-b border-solid border-neutral-200',
+          )}
+        >
           <div className={styles.base__header_content}>
-            {label}
+            {labelComponent || label}
             <MdKeyboardArrowUp className={styles.base__arrow} />
           </div>
         </summary>

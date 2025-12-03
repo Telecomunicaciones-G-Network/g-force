@@ -20,6 +20,7 @@
   --color-button-text: var(--button-text);
   --color-button-text-disabled: var(--button-text-disabled);
   --color-chromatic: var(--chromatic);
+  --color-chromatic-inverted: var(--chromatic-inverted);
   --color-dark-blue-background: var(--dark-blue-background);
   --color-dark-blue-foreground: var(--dark-blue-foreground);
   --color-foreground: var(--foreground);

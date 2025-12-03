@@ -23,6 +23,8 @@ export const SidebarBranch = () => {
     >
       <Tooltip
         disabled={!isSidebarCollapsed}
+        side="right"
+        sideOffset={20}
         triggerComponent={<MdOutlineMap className="size-6" />}
       >
         Sede Montesano

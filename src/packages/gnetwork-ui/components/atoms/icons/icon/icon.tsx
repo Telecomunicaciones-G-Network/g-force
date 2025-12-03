@@ -9,12 +9,14 @@ import { parseSVGServer } from './utils/parse-svg-server.util';
 import { processIconClassNames } from './utils/process-icon-classnames.util';
 
 export const Icon = ({
-  className = '',
+  className = 'size-6',
+  height,
   color = 'currentColor',
   name,
   onClick,
   rotate,
-  size = 24,
+  size,
+  width,
 }: Readonly<IconProps>) => {
   const svgString = iconDictionary[name];
   const svgData = svgString ? parseSVGServer(svgString) : null;
@@ -57,8 +59,8 @@ export const Icon = ({
     <div
       className={classes}
       style={{
-        width: size,
-        height: size,
+        width: width || size,
+        height: height || size,
         color,
         transform: rotate ? `rotate(${rotate}deg)` : undefined,
       }}

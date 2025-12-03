@@ -48,7 +48,6 @@
 }
 
 .base__body[open] .base__header {
-  border-bottom: 1px solid var(--neutral-200);
   min-height: 40px;
 }
 

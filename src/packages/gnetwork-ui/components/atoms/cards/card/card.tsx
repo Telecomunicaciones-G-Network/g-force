@@ -3,13 +3,14 @@ import type { CardProps } from './card.props';
 import { getCardClassNames } from './card.style';
 
 export const Card = ({
+  bordered = false,
   className = '',
   children,
   fullWidth = false,
   ref,
   ...rest
 }: Readonly<CardProps>) => {
-  const classes = getCardClassNames({ className, fullWidth });
+  const classes = getCardClassNames({ bordered, className, fullWidth });
 
   if (!children) {
     console.warn(
