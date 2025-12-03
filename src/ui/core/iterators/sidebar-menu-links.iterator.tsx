@@ -11,12 +11,12 @@ export const sidebarMenuLinks: SidebarMenuLink[] = [
       {
         id: 1,
         label: 'Conversaciones',
-        href: '/chat',
+        href: '/chat/conversations',
       },
       {
         id: 2,
         label: 'Gestión',
-        href: '/chat/admin',
+        href: '/chat/management',
       },
     ],
   },

@@ -6,8 +6,9 @@ TODO: Poder almacenar en el localstorage si el sidebar del usuario estaba collap
 TODO: Si el sidebar esta collapsado al hacer hover debe volver a su tamano normal y al dejar el hover se debe volver a collapsar
 TODO: Consumir la sede
 TODO: Consumir la tasa del dolar
-TODO: Terminar de aplicar las opciones del menu del chat y sus redirecciones
+TODO: Consumir el menu de usuario desde el backend
 TODO: Validar en el sidebar menu que se pinten las opciones en base a su rol y permisos
+TODO: Cuando le de click al logo debe ir a la ruta principal
 
 ## Logout Button
 

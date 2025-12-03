@@ -1,5 +1,3 @@
-// PENDING:
-
 'use server';
 
 import type { LoginViewModel } from '@module-auth/infrastructure/viewmodels/login.viewmodel';
@@ -61,7 +59,7 @@ export async function loginAction(
       // TODO: Debo lanzar una excepcion si esto falla
     }
 
-    redirect('/chat');
+    redirect('/chat/conversations');
   } catch (err) {
     const error = err as BaseError;
 

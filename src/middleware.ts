@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
   );
 
   if (token && pathname === '/login') {
-    return NextResponse.redirect(new URL('/chat', request.url));
+    return NextResponse.redirect(new URL('/chat/conversations', request.url));
   }
 
   if (!token) {
@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (token && pathname === '/') {
-    return NextResponse.redirect(new URL('/chat', request.url));
+    return NextResponse.redirect(new URL('/chat/conversations', request.url));
   }
 
   return NextResponse.next();
