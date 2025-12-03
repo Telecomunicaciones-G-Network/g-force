@@ -8,6 +8,7 @@ import { shortString } from '@stringify/utils/short-string.util';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
+import { Badge } from '@gnetwork-ui/components/molecules/badges/badge';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 import { isoToTime } from '@timer/utils/iso-to-time.util';
@@ -24,6 +25,7 @@ export const ChatCard = ({
   lastMessage = '',
   lastMessageTime = '',
   onClick,
+  unreadMessages = 0,
   username = '',
 }: Readonly<ChatCardProps>) => (
   <button
@@ -96,5 +98,10 @@ export const ChatCard = ({
         )}
       </div>
     </div>
+    {unreadMessages > 0 && (
+      <Badge className="absolute bottom-[31px] right-4" color="red">
+        {unreadMessages}
+      </Badge>
+    )}
   </button>
 );

@@ -8,6 +8,7 @@
   justify-content: center;
   min-height: 96px;
   padding: 8px 48px;
+  position: relative;
   width: 100%;
 }
 
