@@ -1,6 +1,9 @@
 'use client';
 
-import type { EmitSendTextMessageRequest } from '@module-chat/domain/interfaces';
+import type {
+  EmitSendTextMessageRequest,
+  MessageValues,
+} from '@module-chat/domain/interfaces';
 import type {
   EmitSendTextMessageRequestDTO,
   EmitSendTextMessageResponseDTO,
@@ -8,8 +11,14 @@ import type {
 
 import { useCallback } from 'react';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
+
+import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
+import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
+import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
 import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 
@@ -23,17 +32,47 @@ export const useEmitSendTextMessage = () => {
   const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
 
   const emitSendTextMessage = useCallback(
-    async (emission: EmitSendTextMessageRequest) => {
+    async ({ activeContact, data, onSuccess }: EmitSendTextMessageRequest) => {
       try {
         if (
           !emitWithAck ||
           !isConnectedAndStatusConnected ||
-          !emission?.conversationId ||
-          !emission?.message?.text
+          !activeContact?.latestConversation?.id ||
+          !data?.text?.trim()
         )
           return;
 
-        const request = EmitSendTextMessageMapper.mapTo(emission);
+        const newMessage: MessageValues = {
+          id: uuidv4(),
+          caption: null,
+          contacts: [],
+          conversationId: activeContact?.latestConversation?.id,
+          createdAt: new Date().toISOString(),
+          deliveredAt: null,
+          direction: MessageDirections.OUTGOING,
+          failedAt: null,
+          forwarded: false,
+          forwardedManyTimes: false,
+          location: null,
+          media: null,
+          reactions: [],
+          readAt: null,
+          sender: {
+            id: activeContact?.latestConversation?.agent?.id,
+            name: activeContact?.latestConversation?.agent?.name,
+          },
+          sentAt: null,
+          status: MessageStatus.PENDING,
+          text: data?.text?.trim(),
+          type: MessageTypes.TEXT,
+          updatedAt: null,
+        };
+
+        const request = EmitSendTextMessageMapper.mapTo({
+          activeContact,
+          data,
+          onSuccess,
+        });
 
         if (!request) return;
 
@@ -50,12 +89,12 @@ export const useEmitSendTextMessage = () => {
           return;
         }
 
-        if (response?.messageId && emission?.message) {
+        if (response?.messageId && newMessage) {
           const sounder = new Sounder('/sounds/whatsapp_emit_message.mp3');
 
-          addMessage({ ...emission?.message, id: response?.messageId });
+          addMessage({ ...newMessage, id: response?.messageId });
           sounder.playAudio();
-          emission?.onSuccess?.();
+          onSuccess?.();
         }
       } catch (error) {
         console.error('error', error);

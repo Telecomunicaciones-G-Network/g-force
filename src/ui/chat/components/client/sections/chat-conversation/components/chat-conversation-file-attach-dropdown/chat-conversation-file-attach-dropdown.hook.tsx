@@ -21,13 +21,6 @@ export const useChatConversationFileAttachDropdown = () => {
   const setSendMode = useChatStore((state) => state.setSendMode);
 
   const attachFiles = (fileData: FileData[]) => {
-    fileData.forEach((file) => {
-      console.log('File name:', file.name);
-      console.log('File size:', file.formattedSize);
-      console.log('File type:', file.type);
-      console.log('Preview URL:', file.preview);
-    });
-
     setFile(fileData?.[0] ?? null);
     setSendMode(ChatSendModes.IMAGE);
     setIsDropdownOpen(false);

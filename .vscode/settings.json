@@ -418,7 +418,7 @@
       "name": "Usecase Post",
       "base": "powershell",
       "color": "yellow-700",
-      "fileNames": ["login.usecase.ts"]
+      "fileNames": ["login.usecase.ts", "upload-chat-media.usecase.ts"]
     }
   ],
   // Peacok Configuration

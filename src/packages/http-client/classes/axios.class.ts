@@ -1,5 +1,3 @@
-// PENDING:
-
 import type {
   AxiosError,
   AxiosInstance,
@@ -12,11 +10,14 @@ import type {
   HttpClientConfiguration,
   HttpErrorResponse,
   HttpLoggerAdapter,
+  UploadFileBody,
 } from '../interfaces';
 
 import axios from 'axios';
 
 import Cookies from 'js-cookie';
+
+import { X_MEDIA_TYPE_HEADER_DICTIONARY } from '../dictionaries/x-media-type-header.dictionary';
 
 import { LogLevels } from '../enums/log-levels.enum';
 
@@ -64,7 +65,7 @@ export class Axios implements HttpAdapter {
       .get<T>(endpoint, configuration)
       .then((response) => {
         if (!response?.data && response.statusText === 'OK') {
-          throw new Error('Axios data request has failed!');
+          throw new Error('Axios get request has failed!');
         }
 
         return response?.data;
@@ -85,7 +86,38 @@ export class Axios implements HttpAdapter {
       .post<R>(endpoint, body, configuration)
       .then((response) => {
         if (!response?.data && response.statusText === 'OK') {
-          throw new Error('Axios data request has failed!');
+          throw new Error('Axios post request has failed!');
+        }
+
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+
+        throw error;
+      });
+  }
+
+  public async uploadFile<T = unknown>(
+    endpoint: string,
+    body: UploadFileBody,
+    configuration?: HttpClientConfiguration,
+  ): Promise<T> {
+    return this.axiosInstance
+      .post<T>(endpoint, body?.file, {
+        ...configuration,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          ...configuration?.headers,
+          'X-Filename': body?.filename,
+          'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
+        },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
+      })
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios file upload request has failed!');
         }
 
         return response?.data;

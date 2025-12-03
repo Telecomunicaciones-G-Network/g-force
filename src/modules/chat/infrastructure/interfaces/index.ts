@@ -14,3 +14,4 @@ export type {
   GetContactsResultLatestMessage,
   GetContactsResultLatestMessageSender,
 } from './get-contacts-result.interface';
+export type { UploadChatMediaResult } from './upload-chat-media-result.interface';

@@ -1,4 +1,5 @@
 import type { HttpClientConfiguration } from './http-client-configuration.interface';
+import type { UploadFileBody } from './upload-file-body.interface';
 
 export interface HttpAdapter {
   get<T = unknown>(
@@ -11,4 +12,10 @@ export interface HttpAdapter {
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R>;
+
+  uploadFile<T = unknown>(
+    endpoint: string,
+    body: UploadFileBody,
+    configuration?: HttpClientConfiguration,
+  ): Promise<T>;
 }

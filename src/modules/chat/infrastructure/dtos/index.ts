@@ -8,3 +8,4 @@ export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { OnIncommingMessageResponseDTO } from './on-incomming-message-response.dto';
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
 export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
+export type { UploadChatMediaResponseDTO } from './upload-chat-media-response.dto';

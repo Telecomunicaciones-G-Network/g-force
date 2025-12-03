@@ -4,3 +4,4 @@ export type { HttpClientConfiguration } from './http-client-configuration.interf
 export type { HttpErrorResponse } from './http-error-response.interface';
 export type { HttpExceptionConfig } from './http-exception-config.interface';
 export type { HttpLoggerAdapter } from './http-logger-adapter.interface';
+export type { UploadFileBody } from './upload-file-body.interface';

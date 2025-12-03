@@ -1,14 +1,14 @@
-// TODO: Debo implementar la forma de hacer un interceptor de request
-// TODO: Debo implementar la forma de hacer un interceptor de response
-
 import type {
   FetchConfig,
   HttpAdapter,
   HttpClientConfiguration,
   HttpLoggerAdapter,
+  UploadFileBody,
 } from '../interfaces';
 
 import Cookies from 'js-cookie';
+
+import { X_MEDIA_TYPE_HEADER_DICTIONARY } from '../dictionaries/x-media-type-header.dictionary';
 
 import { LogLevels } from '../enums/log-levels.enum';
 
@@ -155,6 +155,46 @@ export class Fetch implements HttpAdapter {
 
         const parsedData = this.configuration?.parseResponseOnCamelCase
           ? snakeToCamelCase<R>(data)
+          : data;
+
+        return parsedData;
+      })
+      .catch((err) => {
+        this.logger?.log(err.message, LogLevels.ERROR);
+
+        const error = err as Error;
+
+        throw error;
+      });
+  }
+
+  public async uploadFile<T = unknown>(
+    endpoint: string,
+    body: UploadFileBody,
+    configuration?: HttpClientConfiguration,
+  ): Promise<T> {
+    const fetchConfig = this.sanitizeConfiguration(configuration || {});
+    const tokenHeaders = await this.injectToken();
+    const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
+
+    return fetch(endpoint, {
+      method: 'POST',
+      ...fetchConfig,
+      headers: {
+        'Content-Type': 'application/octet-stream',
+        ...this.configuration?.headers,
+        ...fetchConfig.headers,
+        ...tokenHeadersObject,
+        'X-Filename': body?.filename,
+        'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
+      },
+      body: body?.file,
+    })
+      .then(async (response) => {
+        const data = await response.json();
+
+        const parsedData = this.configuration?.parseResponseOnCamelCase
+          ? snakeToCamelCase<T>(data)
           : data;
 
         return parsedData;
