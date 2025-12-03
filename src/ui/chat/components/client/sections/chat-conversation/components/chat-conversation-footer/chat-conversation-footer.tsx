@@ -5,8 +5,7 @@ import type { ChatConversationFooterProps } from './chat-conversation-footer.pro
 import { MdSend } from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
-
-import { ChatInputController } from '@ui-core/components/client/inputs/chat-input-controller';
+import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
@@ -20,24 +19,25 @@ import styles from './chat-conversation-footer.module.css';
 export const ChatConversationFooter = ({
   disabledChat = false,
 }: Readonly<ChatConversationFooterProps>) => {
-  const { control, handleSubmit, onSubmit, sendMode } =
+  const { changeMessage, message, onSubmit, sendMode } =
     useChatConversationFooter();
 
   return (
     <div className={styles.base}>
-      <form className={styles.base__input} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.base__input} onSubmit={onSubmit}>
         {sendMode === ChatSendModes.IMAGE && <ChatConversationFileViewer />}
-        <ChatInputController
+        <ChatInput
           className="bg-chromatic"
           customLeftIcon={<ChatConversationFileAttachDropdown />}
-          control={control}
           disabled={disabledChat}
           fullWidth
           id="chat_message_sender"
           name="text"
           noErrorHandler
           noMessageHandler
+          onChange={changeMessage}
           placeholder="Escribir comentario..."
+          value={message}
         />
         <Button
           className="px-2"

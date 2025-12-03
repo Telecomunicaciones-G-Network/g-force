@@ -38,7 +38,7 @@ export const useEmitSendTextMessage = () => {
           !emitWithAck ||
           !isConnectedAndStatusConnected ||
           !activeContact?.latestConversation?.id ||
-          !data?.text?.trim()
+          !data?.trim()
         )
           return;
 
@@ -63,7 +63,7 @@ export const useEmitSendTextMessage = () => {
           },
           sentAt: null,
           status: MessageStatus.PENDING,
-          text: data?.text?.trim(),
+          text: data?.trim(),
           type: MessageTypes.TEXT,
           updatedAt: null,
         };

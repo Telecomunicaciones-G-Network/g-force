@@ -1,48 +1,43 @@
 'use client';
 
-import type { ChatConversationFormData } from './interfaces';
+import type { ChangeEvent, FormEvent } from 'react';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
 import { useEmitSendImageMessage } from '@ui-chat/hooks/emit-send-image-message.hook';
 import { useEmitSendTextMessage } from '@ui-chat/hooks/emit-send-text-message.hook';
 
-import { chatConversationFormSchema } from '@ui-chat/schemas/chat-conversation-form.schema';
-
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversationFooter = () => {
-  const { emitSendImageMessage } = useEmitSendImageMessage();
-  const { emitSendTextMessage } = useEmitSendTextMessage();
+  const [message, setMessage] = useState<string>('');
 
   const sendMode = useChatStore((state) => state.sendMode);
   const activeContact = useContactStore((state) => state.activeContact);
 
-  const { control, handleSubmit, setValue } = useForm<ChatConversationFormData>(
-    {
-      defaultValues: {
-        text: '',
-      },
-      mode: 'onSubmit',
-      resolver: zodResolver(chatConversationFormSchema),
-      reValidateMode: 'onSubmit',
-    },
-  );
+  const { emitSendImageMessage } = useEmitSendImageMessage();
+  const { emitSendTextMessage } = useEmitSendTextMessage();
 
-  const onSubmit = async (data: ChatConversationFormData) => {
+  const changeMessage = (event: ChangeEvent<HTMLInputElement>) =>
+    setMessage(event?.target?.value);
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (!activeContact?.latestConversation?.id) return;
 
     switch (sendMode) {
       case ChatSendModes.TEXT:
+        if (!message?.trim()) return;
+
         emitSendTextMessage({
           activeContact,
-          data,
+          data: message?.trim(),
           onSuccess: () => {
-            setValue('text', '');
+            setMessage('');
           },
         });
         break;
@@ -55,8 +50,8 @@ export const useChatConversationFooter = () => {
   };
 
   return {
-    control,
-    handleSubmit,
+    changeMessage,
+    message,
     onSubmit,
     sendMode,
   };

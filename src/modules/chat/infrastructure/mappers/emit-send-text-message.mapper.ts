@@ -21,13 +21,13 @@ export class EmitSendTextMessageMapper {
   static mapTo(
     output: EmitSendTextMessageRequest,
   ): EmitSendTextMessageRequestDTO | null {
-    if (!output?.data?.text?.trim()) {
+    if (!output?.data?.trim()) {
       return null;
     }
 
     return {
       conversation_id: output?.activeContact?.latestConversation?.id,
-      text: output?.data?.text?.trim(),
+      text: output?.data.trim(),
     };
   }
 }
