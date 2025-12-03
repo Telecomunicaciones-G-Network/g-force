@@ -4,11 +4,15 @@ import type { ChatCardProps } from './chat-card.props';
 
 import Image from 'next/image';
 
+import { shortString } from '@stringify/utils/short-string.util';
+
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 import { isoToTime } from '@timer/utils/iso-to-time.util';
+
+import { CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS } from './constants/chat-card-maximum-last-message-characters.constant';
 
 import styles from './chat-card.module.css';
 
@@ -84,7 +88,10 @@ export const ChatCard = ({
             level="xsmall"
             scheme="label"
           >
-            {lastMessage}
+            {shortString(
+              lastMessage,
+              CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+            )}
           </Text>
         )}
       </div>

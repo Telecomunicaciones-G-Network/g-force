@@ -1,5 +1,9 @@
 # TODO
 
+## General
+
+TODO: Debo ajustar el favicon
+
 ## Sidebar
 
 TODO: Poder almacenar en el localstorage si el sidebar del usuario estaba collapsado o no antes de dejar la app
@@ -9,6 +13,21 @@ TODO: Consumir la tasa del dolar
 TODO: Consumir el menu de usuario desde el backend
 TODO: Validar en el sidebar menu que se pinten las opciones en base a su rol y permisos
 TODO: Cuando le de click al logo debe ir a la ruta principal
+
+## Chat conversation page
+
+### Chat contacts
+
+TODO: Acomodar el componente chat card
+TODO: Validar como se esta obteniendo la lista de contactos
+TODO: Mostrar la cantidad de mensajes sin leer
+TODO: Si llega un nuevo mensaje y el chat no esta activo subir el contador de mensajes no leeidos
+TODO: Si el ultimo mensaje es imagen mostrar un icono de la imagen y el nombre de la misma
+TODO: Aplicar busqueda desde el search input y ajustar un delay
+TODO: Hacer el dropdown de los filtros
+TODO: Aplicar filtros de nivel de endpoint
+TODO: Aplicar scroll infinito en el listado de contactos
+TODO: Si me voy a la pagina de gestion y vuelvo a la pagina de conversaciones la lista de contactos se recarga y muestra nuevamente el fallback
 
 ## Logout Button
 
