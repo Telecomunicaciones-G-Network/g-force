@@ -1,117 +1,13 @@
 # TODO
 
+## Sidebar
 
-## DONE:
-
-/src
-  /app
-    /public
-      /factory~ ✅
-  /modules
-    /core
-      /interface
-        /api-response.interface.ts ✅
-    /chat
-      /application
-        /usecases
-          /get-chat-messages.usecase.ts ✅
-          /get-contacts.usecase.ts ✅
-      /domain
-        /entities
-          /agent.entity.ts ✅
-          /contact.entity.ts ✅
-          /conversation.entity.ts ✅
-          /media.entity.ts ✅
-          /message.entity.ts ✅
-          /team.entity.ts ✅
-        /enums
-          /assignments.enum.ts ✅
-          /contact-platforms.enum.ts ✅
-          /conversation-status.enum.ts ✅
-          /message-directions.enum.ts ✅
-          /message-status.enum.ts ✅
-          /message-types.enum.ts ✅
-          /platforms.enum.ts ✅
-        /exceptions
-          /get-chat-messages.exception.ts ✅
-          /get-contacts.exception.ts ✅
-        /interfaces
-          /agent-values.interfaces.ts ✅
-          /contact-values.interface.ts ✅
-          /conversation-values.interface.ts ✅
-          /get-chat-messages-request.interface.ts ✅
-          /get-chat-messages-response.interface.ts ✅
-          /get-contacts-request.interface.ts ✅
-          /get-contacts-response.interface.ts ✅
-          /media-values.interface.ts ✅
-          /message-values.interface.ts ✅
-          /team-values.interfaces.ts ✅
-        /repositories
-          /chat.repository.ts ✅
-        /types
-          /assignment.type.ts ✅
-          /contact-platform.type.ts ✅
-          /conversation-status.type.ts ✅
-          /media-type.type.ts ✅
-          /message-direction.type.ts ✅
-          /message-status.type.ts ✅
-          /message-type.type.ts ✅
-          /platform.type.ts ✅
-      /infrastructure
-        /dictionaries
-          /chat-resources.dictionary.ts ✅
-          /socket-emissions.dictionary.ts ✅
-          /socket-events.dictionary.ts ✅
-        /dtos
-          /get-chat-messages-request.dto.ts ✅
-          /get-chat-messages-response.dto.ts ✅
-          /get-contacts-response.dto.ts ✅
-          /on-incomming-message.dto.ts ✅
-        /interfaces
-          /get-chat-messages-result.interface.ts ✅
-          /get-contacts-result.interface.ts ✅
-        /mappers
-          /get-chat-messages.mapper.ts ✅
-          /get-contacts.mapper.ts ✅
-        /queries
-          /get-chat-messages.query.ts ✅
-          /get-contacts.query.ts ✅
-        /repositories
-          /http-chat.repository.ts ✅
-        /services
-          /get-chat-messages.service.ts ✅
-          /get-contacts.service.ts ✅
-        /subscriptions
-          /on-incomming-message.subscription.ts ✅
-  /packages
-    /gnetwork-ui
-      /components
-        /atoms
-          /skeletons
-            /skeleton~ ✅ 😄
-        /organisms
-          /buttons
-            /button-group~ ✅ 😄
-    /hookers
-      /use-debounce.hook.tsx ✅ 😄
-    /objecter~ ✅ 😄
-  /ui
-    /core
-      /fetchers
-        /gnetwork-fetch-api-client.fetcher.ts ✅
-    /chat
-      /components
-        /client
-          /sections
-            /chat-conversation~ ⚠️
-      /constants
-        /chat-desktop-viewport.constant.ts ✅ 😄
-      /dictionaries
-        /query-keys.dictionary.ts ✅
-      /schemas
-        /chat-conversation-form.schema.ts ✅
-      /stores
-        /chat-store~ ✅
+TODO: Poder almacenar en el localstorage si el sidebar del usuario estaba collapsado o no antes de dejar la app
+TODO: Si el sidebar esta collapsado al hacer hover debe volver a su tamano normal y al dejar el hover se debe volver a collapsar
+TODO: Consumir la sede
+TODO: Consumir la tasa del dolar
+TODO: Terminar de aplicar las opciones del menu del chat y sus redirecciones
+TODO: Validar en el sidebar menu que se pinten las opciones en base a su rol y permisos
 
 ## Logout Button
 

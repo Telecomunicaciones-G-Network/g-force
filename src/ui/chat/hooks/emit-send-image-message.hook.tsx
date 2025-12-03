@@ -21,6 +21,8 @@ export const useEmitSendImageMessage = () => {
 
   const emitSendImageMessage = useCallback(async () => {
     try {
+      console.log('emitSendImageMessage', file);
+
       if (
         !emitWithAck ||
         !isConnectedAndStatusConnected ||

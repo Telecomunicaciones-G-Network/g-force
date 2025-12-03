@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 
+import { SocketProvider } from '@socketio/providers/socket.provider';
+
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { GetContactsQuery } from '@module-chat/infrastructure/queries/get-contacts.query';
+
+import { socketConfig } from '@ui-core/config/socket.config';
+
+import { getTokenAction } from '@ui-auth/actions/get-token.action';
 
 import { ChatContainer } from '@ui-chat/components/client/templates/chat-container';
 
@@ -14,13 +20,16 @@ export const metadata: Metadata = {
 };
 
 export default async function ChatPage() {
+  const token = await getTokenAction();
   const chatContactsResponsePromise = GetContactsQuery();
 
   return (
-    <div className={cn(styles.base, 'divide-x divide-neutral-200')}>
-      <ChatContainer
-        chatContactsResponsePromise={chatContactsResponsePromise}
-      />
-    </div>
+    <SocketProvider config={socketConfig} token={token}>
+      <div className={cn(styles.base, 'divide-x divide-neutral-200')}>
+        <ChatContainer
+          chatContactsResponsePromise={chatContactsResponsePromise}
+        />
+      </div>
+    </SocketProvider>
   );
 }

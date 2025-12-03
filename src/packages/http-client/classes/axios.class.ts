@@ -103,11 +103,13 @@ export class Axios implements HttpAdapter {
     body: UploadFileBody,
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
+    const fileBuffer = await body?.file.arrayBuffer();
+
     return this.axiosInstance
-      .post<T>(endpoint, body?.file, {
+      .post<T>(endpoint, fileBuffer, {
         ...configuration,
         headers: {
-          'Content-Type': 'application/octet-stream',
+          'Content-Type': body?.file?.type ?? 'application/octet-stream',
           ...configuration?.headers,
           'X-Filename': body?.filename,
           'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],

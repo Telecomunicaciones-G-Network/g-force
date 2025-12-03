@@ -18,6 +18,7 @@ export const Accordion = ({
   className,
   children,
   fullWidth,
+  headerClassName = '',
   hideSeparator = false,
   label = '',
   labelComponent,
@@ -60,10 +61,11 @@ export const Accordion = ({
         <summary
           className={cn(
             styles.base__header,
-            'text-neutral-900',
+            'p-0 text-neutral-900',
             isOpen &&
               !hideSeparator &&
               'border-b border-solid border-neutral-200',
+            headerClassName,
           )}
         >
           <div className={styles.base__header_content}>

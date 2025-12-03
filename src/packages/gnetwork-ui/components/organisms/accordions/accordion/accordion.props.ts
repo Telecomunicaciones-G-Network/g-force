@@ -10,6 +10,7 @@ export interface AccordionVariants
 }
 
 export interface AccordionProps extends ReactDiv, AccordionVariants {
+  headerClassName?: string;
   hideSeparator?: boolean;
   label?: string;
   labelComponent?: ReactChild;
