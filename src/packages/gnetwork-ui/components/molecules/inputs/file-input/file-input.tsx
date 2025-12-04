@@ -15,6 +15,7 @@ export const FileInput = ({
   className = '',
   disabled = false,
   id,
+  fullWidth = false,
   multiple = false,
   name,
   onChange,
@@ -31,7 +32,12 @@ export const FileInput = ({
   return (
     <button
       aria-label={buttonAriaLabel}
-      className={cn(styles.base, 'gap-2 items-center', className)}
+      className={cn(
+        styles.base,
+        'border-none gap-2 items-center',
+        fullWidth && 'w-full',
+        className,
+      )}
       data-disabled={disabled}
       disabled={disabled}
       onClick={handleClick}

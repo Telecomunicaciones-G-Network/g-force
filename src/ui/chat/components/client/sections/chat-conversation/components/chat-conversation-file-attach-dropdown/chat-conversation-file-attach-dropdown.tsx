@@ -45,13 +45,17 @@ export const ChatConversationFileAttachDropdown = () => {
         </button>
       }
     >
-      <DropdownItem>
-        <FileInput disabled={!isSocketConnected} onFileSelect={attachFiles}>
+      <DropdownItem onSelect={(e) => e.preventDefault()}>
+        <FileInput
+          disabled={!isSocketConnected}
+          fullWidth
+          onFileSelect={attachFiles}
+        >
           <MdOutlineImage className="fill-neutral-500 min-h-6 min-w-6 size-6" />
           <span>Fotos</span>
         </FileInput>
       </DropdownItem>
-      <DropdownItem>
+      <DropdownItem onSelect={(e) => e.preventDefault()}>
         <MdOutlineDescription className="fill-neutral-500 min-h-6 min-w-6 size-6" />
         Documentos
       </DropdownItem>

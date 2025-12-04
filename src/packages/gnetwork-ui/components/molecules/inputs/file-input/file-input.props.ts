@@ -4,6 +4,7 @@ import type { FileData } from './interfaces';
 export interface FileInputProps extends Omit<ReactInput, 'onChange'> {
   buttonAriaLabel?: string;
   children?: ReactChild;
+  fullWidth?: boolean;
   multiple?: boolean;
   onChange?: (files: FileList | null) => void;
   onFileSelect?: (fileData: FileData[]) => void;
