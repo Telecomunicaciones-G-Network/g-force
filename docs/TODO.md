@@ -5,16 +5,8 @@
 TODO: Debo ajustar el favicon
 TODO: Debo ignorar el archivo `next-env.d.ts` de la configuracion de biome
 
-## Seguridad
-
-FIXME: Problema de seguridad con `React` debo actualizar su version a la **v19.2.1**
-FIXME: Problema de seguridad con `React` debo actualizar la version de `NextJS` a la **v16.0.7**
-
 ```bash
 @types/react                     19.2.6  →   19.2.7
-next                             16.0.3  →   16.0.7
-react                            19.2.0  →   19.2.1
-react-dom                        19.2.0  →   19.2.1
 ```
 
 ## Sidebar
