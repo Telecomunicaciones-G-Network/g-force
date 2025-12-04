@@ -5,10 +5,6 @@
 TODO: Debo ajustar el favicon
 TODO: Debo ignorar el archivo `next-env.d.ts` de la configuracion de biome
 
-```bash
-@types/react                     19.2.6  →   19.2.7
-```
-
 ## Sidebar
 
 TODO: Poder almacenar en el localstorage si el sidebar del usuario estaba collapsado o no antes de dejar la app
@@ -36,6 +32,7 @@ TODO: Si llega un nuevo mensaje y el chat no esta activo debo aplicar el sonido 
 
 ### Chat Conversation
 
+TODO: Debo verificar la entidad Media y MediaValues
 TODO: Poder mostrar los mensajes tipo imagen entrantes
 TODO: Poder mostrar los mensajes tipo imagen salientes
 TODO: Poder enviar un mensaje del tipo imagen

@@ -57,12 +57,40 @@ export class Axios implements HttpAdapter {
     );
   }
 
+  private parseParams(params?: string[]): string {
+    if (!params || !Array.isArray(params) || params?.length === 0) {
+      return '';
+    }
+
+    const parseParams = params.join('/');
+
+    return `/${parseParams}`;
+  }
+
+  private sanitizeConfiguration(
+    configurations: HttpClientConfiguration,
+  ): AxiosRequestConfig {
+    delete configurations.params;
+    delete configurations.parseResponseOnCamelCase;
+    delete configurations.searchParams;
+
+    return configurations;
+  }
+
   public async get<T = unknown>(
     endpoint: string,
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
+    let parsedParams = '';
+
+    if (configuration?.params) {
+      parsedParams = this.parseParams(configuration?.params);
+    }
+
+    const axiosConfig = this.sanitizeConfiguration(configuration || {});
+
     return this.axiosInstance
-      .get<T>(endpoint, configuration)
+      .get<T>(endpoint + parsedParams, axiosConfig)
       .then((response) => {
         if (!response?.data && response.statusText === 'OK') {
           throw new Error('Axios get request has failed!');

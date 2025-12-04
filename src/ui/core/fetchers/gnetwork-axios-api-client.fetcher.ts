@@ -1,5 +1,3 @@
-// DONE:
-
 import { Axios } from '@http-client/classes/axios.class';
 import { HttpClient } from '@http-client/classes/http-client.class';
 import { Logger } from '@logger/classes/logger.class';
