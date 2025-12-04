@@ -3,6 +3,19 @@
 ## General
 
 TODO: Debo ajustar el favicon
+TODO: Debo ignorar el archivo `next-env.d.ts` de la configuracion de biome
+
+## Seguridad
+
+FIXME: Problema de seguridad con `React` debo actualizar su version a la **v19.2.1**
+FIXME: Problema de seguridad con `React` debo actualizar la version de `NextJS` a la **v16.0.7**
+
+```bash
+ @types/react                     19.2.6  →   19.2.7
+ next                             16.0.3  →   16.0.7
+ react                            19.2.0  →   19.2.1
+ react-dom                        19.2.0  →   19.2.1
+```
 
 ## Sidebar
 
@@ -28,6 +41,16 @@ TODO: Aplicar filtros de nivel de endpoint
 TODO: Aplicar scroll infinito en el listado de contactos
 TODO: Si me voy a la pagina de gestion y vuelvo a la pagina de conversaciones la lista de contactos se recarga y muestra nuevamente el fallback
 TODO: Si llega un nuevo mensaje y el chat no esta activo debo aplicar el sonido de que llego un nuevo mensaje
+
+### Chat Conversation
+
+TODO: Poder mostrar los mensajes tipo imagen entrantes
+TODO: Poder mostrar los mensajes tipo imagen salientes
+TODO: Poder enviar un mensaje del tipo imagen
+TODO: Poder visualizar un mensaje de imagen al dar click en el mismo
+TODO: Crear modal de visualizacion de imagen
+TODO: Crear componente toast
+TODO: Validar las imagenes y su peso al enviar y si no puede enviar lanzar una notificacion
 
 ## Logout Button
 

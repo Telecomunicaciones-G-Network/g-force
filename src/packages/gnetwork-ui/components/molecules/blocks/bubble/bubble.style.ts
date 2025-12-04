@@ -8,7 +8,7 @@ import { bubbleModes } from './variants/bubble-mode.variant';
 
 import styles from './bubble.module.css';
 
-export const bubbleVariants = cva([styles.base], {
+export const bubbleVariants = cva([styles.base, 'w-fit'], {
   variants: {
     mode: bubbleModes,
   },

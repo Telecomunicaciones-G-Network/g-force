@@ -1,6 +1,7 @@
 import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from './chat-conversation-controller.props';
 
+import { ChatImageMessage } from '@gnetwork-ui/components/organisms/blocks/chat-image-message';
 import { ChatTextMessage } from '@gnetwork-ui/components/organisms/blocks/chat-text-message';
 
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
@@ -16,6 +17,19 @@ export const ChatConversationController = ({
   if (!message || !message?.id) return null;
 
   switch (message?.type) {
+    case MessageTypes.IMAGE:
+      return (
+        <ChatImageMessage
+          direction={
+            message?.direction === MessageDirections.INCOMING
+              ? BubbleModes.INCOMING
+              : BubbleModes.OUTGOING
+          }
+          status={message?.status.toLowerCase() as BubbleStatus}
+          time={isoToTime(message?.createdAt ?? '')}
+          username={message?.sender?.name}
+        />
+      );
     case MessageTypes.TEXT:
       return (
         <ChatTextMessage
@@ -35,3 +49,12 @@ export const ChatConversationController = ({
       return null;
   }
 };
+
+/*
+{
+    "id": "1bbd0ff4-01bc-410b-9841-9aeeea7be597",
+    "type": "IMAGE",
+    "mimeType": "image/jpeg",
+    "filename": "637849269415297"
+}
+*/

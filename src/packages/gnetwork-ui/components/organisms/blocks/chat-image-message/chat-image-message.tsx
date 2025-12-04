@@ -1,5 +1,6 @@
-import type { ChatTextMessageProps } from './chat-text-message.props';
+import type { ChatImageMessageProps } from './chat-image-message.props';
 
+import { ResponsiveImage } from '../../../atoms/images/responsive-image';
 import { Text } from '../../../atoms/texts/text';
 import { Bubble } from '../../../molecules/blocks/bubble';
 
@@ -8,10 +9,9 @@ import { BubbleStatus } from '../../../molecules/blocks/bubble/enums/bubble-stat
 
 import { cn } from '../../../../utils/cn.util';
 
-import styles from './chat-text-message.module.css';
+import styles from './chat-image-message.module.css';
 
-export const ChatTextMessage = ({
-  children,
+export const ChatImageMessage = ({
   className = '',
   direction = BubbleModes.UNKNOWN,
   ref,
@@ -19,7 +19,7 @@ export const ChatTextMessage = ({
   time = '',
   username = '',
   ...rest
-}: Readonly<ChatTextMessageProps>) => (
+}: Readonly<ChatImageMessageProps>) => (
   <div
     className={cn(
       styles.base,
@@ -62,10 +62,18 @@ export const ChatTextMessage = ({
       )}
     </div>
     <Bubble
+      className="w-full"
       mode={direction}
       status={direction === 'incoming' ? BubbleStatus.NONE : status}
     >
-      {children}
+      <div className="flex h-[154px] w-full">
+        <ResponsiveImage
+          alt="imagen"
+          className="h-full w-full"
+          objectFit="cover"
+          src="https://picsum.photos/200/300"
+        />
+      </div>
     </Bubble>
   </div>
 );

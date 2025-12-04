@@ -52,6 +52,7 @@
     "chat-conversation-file-viewer": "react-components",
     "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
+    "chat-image-message": "react-components",
     "chat-input-controller": "react-components",
     "chat-list": "react-components",
     "chat-list-body": "react-components",
