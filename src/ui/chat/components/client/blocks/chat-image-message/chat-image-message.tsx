@@ -13,12 +13,21 @@ export const ChatImageMessage = ({
   mediaId = '',
   ...rest
 }: Readonly<ChatImageMessageProps>) => {
-  const { image, isLoading } = useChatImageMessage({ mediaId });
+  const { image, isLoading, error } = useChatImageMessage({ mediaId });
+
+  if (error) {
+    console.error('[ChatImageMessage] Error:', error);
+  }
 
   return (
     <>
       {isLoading && <div>...loading</div>}
-      {!isLoading && image && (
+      {!isLoading && error && (
+        <div className="text-red-500 text-sm p-2">
+          Error al cargar la imagen
+        </div>
+      )}
+      {!isLoading && !error && image && (
         <ChatImageMessageBase
           customImageComponent={
             <Image

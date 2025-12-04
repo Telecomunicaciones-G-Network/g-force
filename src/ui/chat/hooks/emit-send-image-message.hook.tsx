@@ -60,6 +60,7 @@ export const useEmitSendImageMessage = () => {
           filename: file?.name,
           id: file?.name,
           mimeType: file?.type,
+          mediaId: uuidv4(),
           type: 'IMAGE',
         },
         reactions: [],

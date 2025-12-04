@@ -37,6 +37,8 @@ export const useOnIncommingMessage = ({
         activeContact,
       );
 
+      console.log('newMessage', newMessage);
+
       if (!newMessage) return;
 
       if (newMessage) {

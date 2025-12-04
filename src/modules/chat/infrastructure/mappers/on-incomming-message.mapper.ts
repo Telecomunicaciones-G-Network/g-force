@@ -1,5 +1,6 @@
 import type { ContactValues, MessageValues } from '../../domain/interfaces';
 import type { OnIncommingMessageResponseDTO } from '../dtos';
+import type { MediaType } from '../../domain/types';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
 import { MessageStatus } from '../../domain/enums/message-status.enum';
@@ -25,7 +26,15 @@ export class OnIncommingMessageMapper {
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,
       location: input?.location ?? null,
-      media: input?.media ?? null,
+      media: input?.media?.media_id
+        ? {
+            id: input.media.media_id,
+            filename: '',
+            mediaId: input.media.media_id,
+            mimeType: input.media.mime_type ?? '',
+            type: input.media.type ?? ('IMAGE' as MediaType),
+          }
+        : null,
       reactions: [],
       readAt: null,
       sender: {

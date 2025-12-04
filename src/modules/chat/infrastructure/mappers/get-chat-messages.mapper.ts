@@ -35,7 +35,15 @@ export class GetChatMessagesMapper {
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwardedManyTimes,
       location: input?.location ?? null,
-      media: input?.media ?? null,
+      media: input?.media
+        ? {
+            id: input.media.id,
+            filename: input.media.filename,
+            mediaId: input.media.id,
+            mimeType: input.media.mimeType,
+            type: input.media.type,
+          }
+        : null,
       reactions: input?.reactions,
       readAt: input?.readAt,
       sender: input?.sender,

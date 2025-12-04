@@ -17,6 +17,7 @@ export class Media {
   public toValues(): MediaValues {
     return {
       id: this.id,
+      mediaId: this.id,
       filename: this.filename,
       mimeType: this.mimeType,
       type: this.type,
