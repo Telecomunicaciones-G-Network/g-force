@@ -23,7 +23,6 @@ export const useChatConversationFileAttachDropdown = () => {
   const attachFiles = (fileData: FileData[]) => {
     setFile(fileData?.[0] ?? null);
     setSendMode(ChatSendModes.IMAGE);
-    setIsDropdownOpen(false);
   };
 
   return {
@@ -31,6 +30,7 @@ export const useChatConversationFileAttachDropdown = () => {
     isDropdownOpen,
     isSocketConnected: isConnectedAndStatusConnected,
     onOpenChange: setIsDropdownOpen,
+    setIsDropdownOpen,
     sendMode,
   };
 };
