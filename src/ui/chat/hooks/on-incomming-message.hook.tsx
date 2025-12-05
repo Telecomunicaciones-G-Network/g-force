@@ -39,9 +39,9 @@ export const useOnIncommingMessage = ({
 
       console.log('newMessage', newMessage);
 
-      if (!newMessage) return;
+      if (!newMessage || !newMessage?.id) return;
 
-      if (newMessage) {
+      if (newMessage?.id) {
         const sounder = new Sounder('/sounds/whatsapp_on_message.mp3');
 
         sounder.playAudio();

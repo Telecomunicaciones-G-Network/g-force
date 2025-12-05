@@ -1,8 +1,19 @@
-import type {
-  MessageContactValues,
-  MessageLocationValues,
-} from '../../domain/interfaces';
 import type { MediaType, MessageType } from '../../domain/types';
+
+export interface OnIncommingMessageResponseContact {
+  birthday: string;
+  emails: string[];
+  formatted_name: string;
+  phone_numbers: string[];
+  urls: string[];
+}
+
+export interface OnIncommingMessageResponseLocation {
+  address: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+}
 
 export interface OnIncommingMesssageResponseMedia {
   media_id: string;
@@ -14,11 +25,11 @@ export interface OnIncommingMesssageResponseMedia {
 
 export interface OnIncommingMessageResponseDTO {
   caption: string | null;
-  contacts: MessageContactValues[] | null;
+  contacts: OnIncommingMessageResponseContact[] | null;
   conversation_id: string;
   forwarded_many_times: boolean;
   forwarded: boolean;
-  location: MessageLocationValues | null;
+  location: OnIncommingMessageResponseLocation | null;
   media: OnIncommingMesssageResponseMedia | null;
   message_id: string;
   reply_to_message_id: string | null;

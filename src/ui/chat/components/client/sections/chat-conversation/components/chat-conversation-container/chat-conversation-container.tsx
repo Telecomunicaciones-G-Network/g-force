@@ -11,7 +11,6 @@ import styles from './chat-conversation-container.module.css';
 export const ChatConversationContainer = () => {
   const { messagesContainerRef, messages } = useChatConversationContainer();
 
-  console.log('messages', messages);
   return (
     <div
       ref={messagesContainerRef}

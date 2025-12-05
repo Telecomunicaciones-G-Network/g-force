@@ -4,6 +4,7 @@
 
 TODO: Debo ajustar el favicon
 TODO: Debo ignorar el archivo `next-env.d.ts` de la configuracion de biome
+TODO: Crear la pagina de error
 
 ## Sidebar
 
@@ -25,6 +26,7 @@ TODO: Hacer el dropdown de los filtros
 TODO: Aplicar filtros de nivel de endpoint
 TODO: Aplicar scroll infinito en el listado de contactos
 TODO: Si me voy a la pagina de gestion y vuelvo a la pagina de conversaciones la lista de contactos se recarga y muestra nuevamente el fallback
+TODO: Manejar el error boundary de contactos
 
 ### Chat Conversation
 
@@ -36,6 +38,7 @@ TODO: Poder visualizar un mensaje de imagen al dar click en el mismo
 TODO: Crear modal de visualizacion de imagen
 TODO: Crear componente toast
 TODO: Validar las imagenes y su peso al enviar y si no puede enviar lanzar una notificacion
+TODO: Si recibo un mensaje y el mensaje tiene un numero de telefono, saltos de lineas, correo o direccion web debo formatear este texto.
 
 ## Logout Button
 
