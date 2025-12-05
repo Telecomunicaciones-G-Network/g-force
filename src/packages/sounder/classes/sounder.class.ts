@@ -10,6 +10,8 @@ export class Sounder {
     if (!this.audio) return;
 
     this.audio.play().catch((error) => {
+      if (error.name === 'NotAllowedError') return;
+
       console.error('Error playing audio:', error);
     });
   }

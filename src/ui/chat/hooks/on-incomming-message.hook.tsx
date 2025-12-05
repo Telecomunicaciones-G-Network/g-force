@@ -33,14 +33,10 @@ export const useOnIncommingMessage = ({
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      console.log('parseResponse', parseResponse);
-
       const newMessage = OnIncommingMessageMapper.mapFrom(
         parseResponse,
         activeContact,
       );
-
-      console.log('newMessage', newMessage);
 
       if (!newMessage || !newMessage?.id) return;
 

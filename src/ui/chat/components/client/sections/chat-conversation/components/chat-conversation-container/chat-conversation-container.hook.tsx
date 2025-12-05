@@ -8,6 +8,7 @@ import { MessageDirections } from '@module-chat/domain/enums/message-directions.
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 
 import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/emit-mark-message-as-read.hook';
+import { useOnMediaStatusChanged } from '@ui-chat/hooks/on-media-status-changed.hook';
 import { useOnMessageStatusChanged } from '@ui-chat/hooks/on-message-status-changed.hook';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
@@ -17,13 +18,18 @@ export const useChatConversationContainer = () => {
 
   const messages = useChatStore((state) => state.messages);
 
+  const { ref: messagesContainerRef, scrollToBottom } =
+    useScrollToBottom<HTMLDivElement>({
+      autoScroll: true,
+      dependencies: [messages],
+      behavior: 'smooth',
+    });
   useOnMessageStatusChanged();
-  const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
-  const { ref: messagesContainerRef } = useScrollToBottom<HTMLDivElement>({
-    autoScroll: true,
-    dependencies: [messages],
-    behavior: 'smooth',
+  useOnMediaStatusChanged({
+    onSucess: scrollToBottom,
   });
+
+  const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
 
   const lastMessage = useMemo(
     () => messages?.[messages.length - 1],

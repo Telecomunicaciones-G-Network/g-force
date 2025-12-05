@@ -16,8 +16,6 @@ export const ChatConversationBody = ({
     disabledChat,
   });
 
-  console.log('messages', messages);
-
   return (
     <>
       {isLoading && <ChatConversationBodySkeleton />}

@@ -20,6 +20,7 @@ export type {
   MessageSenderValues,
   MessageValues,
 } from './message-values.interface';
+export type { OnMediaStatusChangedResponse } from './on-media-status-changed-response.interface';
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';
 export type { TeamValues } from './team-values.interface';

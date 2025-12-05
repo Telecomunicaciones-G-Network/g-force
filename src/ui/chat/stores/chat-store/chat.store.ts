@@ -2,7 +2,10 @@
 
 import type { FileData } from '@gnetwork-ui/components/molecules/inputs/file-input';
 import type { MessageValues } from '@module-chat/domain/interfaces';
-import type { MessageStatus } from '@module-chat/domain/types';
+import type {
+  MediaStorageStatus,
+  MessageStatus,
+} from '@module-chat/domain/types';
 import type { ChatSendMode } from '@ui-chat/types';
 import type { ChatStoreState } from './chat-store.props';
 
@@ -66,5 +69,27 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
     });
 
     set({ messages: newMessages });
+  },
+  updateStorageStatusOfOneMessageById: (
+    messageId: string,
+    storageStatus: MediaStorageStatus,
+  ) => {
+    const { messages } = get();
+
+    set({
+      messages: messages?.map((message) => {
+        if (messageId === message?.id && message?.media) {
+          return {
+            ...message,
+            media: {
+              ...message.media,
+              storageStatus,
+            },
+          };
+        }
+
+        return message;
+      }),
+    });
   },
 }));
