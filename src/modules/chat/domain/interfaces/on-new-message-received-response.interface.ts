@@ -1,7 +1,9 @@
-import type { ConversationStatus } from '../types';
+import type { MessageType } from '../types';
 
 export interface OnNewMessageReceivedResponse {
   contactId: string;
   conversationId: string;
-  conversationStatus: ConversationStatus;
+  messageId: string;
+  messageTextPreview: string | null;
+  messageType: MessageType;
 }

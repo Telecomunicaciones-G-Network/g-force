@@ -9,8 +9,8 @@ import { ErrorBoundary } from '@gnetwork-ui/components/atoms/logics/error-bounda
 import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
 import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
-import { ChatList } from '@ui-chat/components/client/sections/chat-list';
-import { ChatListSkeleton } from '@ui-chat/components/client/sections/chat-list/components/chat-list-skeleton';
+import { ChatListSkeleton } from '@ui-chat/components/client/sections/contact-list/components/chat-list-skeleton';
+import { ContactList } from '@ui-chat/components/client/sections/contact-list';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -25,7 +25,9 @@ export const ChatContainer = ({
     <>
       <ErrorBoundary>
         <Suspense fallback={<ChatListSkeleton />}>
-          <ChatList chatContactsResponsePromise={chatContactsResponsePromise} />
+          <ContactList
+            chatContactsResponsePromise={chatContactsResponsePromise}
+          />
         </Suspense>
       </ErrorBoundary>
       {(chatMode === ChatModes.CHAT || isDesktop) &&

@@ -1,7 +1,5 @@
-// DONE:
-
 import type { GetContactsResponse } from '@modules/chat/domain/interfaces';
 
-export interface ChatListProps {
+export interface ContactListProps {
   chatContactsResponsePromise: Promise<GetContactsResponse>;
 }

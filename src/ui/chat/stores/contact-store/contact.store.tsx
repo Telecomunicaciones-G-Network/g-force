@@ -3,6 +3,7 @@
 import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
+import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
 import { create } from 'zustand';
 
@@ -16,6 +17,30 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: ContactValues[]) => set({ contacts }),
+  addOneUnreadMessageToContact: ({
+    contactId,
+    lastMessage,
+    activeContact,
+  }: AddOneUnreadMessageToContactParams) => {
+    const { contacts } = get();
+
+    set({
+      contacts: contacts?.map((contact) =>
+        contact?.id === contactId
+          ? {
+              ...contact,
+              latestMessage: {
+                ...contact?.latestMessage,
+                createdAt: new Date().toISOString().replace('Z', '000Z'),
+                text: lastMessage,
+              },
+              unreadCount:
+                activeContact?.id === contactId ? 0 : contact?.unreadCount + 1,
+            }
+          : contact,
+      ),
+    });
+  },
   clearUnreadMessagesFromOneContact: (contactId: string) => {
     const { contacts } = get();
 
@@ -31,5 +56,21 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     return contacts?.some(
       (contact: ContactValues) => contact?.id === contactId,
     );
+  },
+  sortContactsByLatestMessage: () => {
+    const { contacts } = get();
+
+    const sortedContacts = [...contacts].sort((a, b) => {
+      const dateA = a?.latestMessage?.createdAt
+        ? new Date(a.latestMessage.createdAt).getTime()
+        : 0;
+      const dateB = b?.latestMessage?.createdAt
+        ? new Date(b.latestMessage.createdAt).getTime()
+        : 0;
+
+      return dateB - dateA;
+    });
+
+    set({ contacts: sortedContacts });
   },
 }));

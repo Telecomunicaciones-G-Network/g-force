@@ -1,5 +1,3 @@
-// DONE:
-
 'use client';
 
 import type { ContactValues } from '@module-chat/domain/interfaces';
@@ -14,7 +12,7 @@ import { useOnNewMessageReceived } from '@ui-chat/hooks/on-new-message-received.
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-export const useChatList = (contactsResponse: ContactValues[]) => {
+export const useContactList = (contactsResponse: ContactValues[]) => {
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
 

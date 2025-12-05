@@ -1,12 +1,5 @@
 # TODO
 
-## Super importante para manana
-
-FIXME: Resolver el problema del envio de la imagen
-FIXME: Resolver el problema de la recepcion de imagenes
-FIXME: Validar el peso y mimetype antes de enviar una imagen
-FIXME: Cuando llegue un mensaje debo reordenar los chat desde el mensaje mas reciente al mensaje mas viejo
-
 ## General
 
 TODO: Debo ajustar el favicon
@@ -26,16 +19,12 @@ TODO: Cuando le de click al logo debe ir a la ruta principal
 
 ### Chat contacts
 
-TODO: Acomodar el componente chat card
-TODO: Validar como se esta obteniendo la lista de contactos
-TODO: Si llega un nuevo mensaje y el chat no esta activo subir el contador de mensajes no leeidos
 TODO: Si el ultimo mensaje es imagen mostrar un icono de la imagen y el nombre de la misma
 TODO: Aplicar busqueda desde el search input y ajustar un delay
 TODO: Hacer el dropdown de los filtros
 TODO: Aplicar filtros de nivel de endpoint
 TODO: Aplicar scroll infinito en el listado de contactos
 TODO: Si me voy a la pagina de gestion y vuelvo a la pagina de conversaciones la lista de contactos se recarga y muestra nuevamente el fallback
-TODO: Si llega un nuevo mensaje y el chat no esta activo debo aplicar el sonido de que llego un nuevo mensaje
 
 ### Chat Conversation
 

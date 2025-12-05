@@ -1,6 +1,6 @@
 'use client';
 
-import type { ChatListProps } from './chat-list.props';
+import type { ContactListProps } from './contact-list.props';
 
 import { use } from 'react';
 
@@ -11,15 +11,17 @@ import { ChatListHeader } from './components/chat-list-header';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
-import { useChatList } from './chat-list.hook';
+import { useContactList } from './contact-list.hook';
 
-import styles from './chat-list.module.css';
+import styles from './contact-list.module.css';
 
-export const ChatList = ({
+export const ContactList = ({
   chatContactsResponsePromise,
-}: Readonly<ChatListProps>) => {
+}: Readonly<ContactListProps>) => {
   const { contacts: contactsResponse = [] } = use(chatContactsResponsePromise);
-  const { chatMode, contacts, isDesktop } = useChatList(contactsResponse);
+  const { chatMode, contacts, isDesktop } = useContactList(contactsResponse);
+
+  console.log('contacts', contacts);
 
   return (
     <>
