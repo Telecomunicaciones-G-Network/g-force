@@ -8,7 +8,7 @@ import { DEFAULT_LIMIT_PARAM } from '@http-client/constants/default-limit-param.
 
 import { HttpCaches } from '@http-client/enums/http-caches.enum';
 
-import { BaseException } from '@packages/http-client/exceptions/base.exception';
+import { BaseException } from '@http-client/exceptions/base.exception';
 
 import { gnetworkFetchApiClient } from '@ui-core/fetchers/gnetwork-fetch-api-client.fetcher';
 

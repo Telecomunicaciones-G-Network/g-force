@@ -34,7 +34,7 @@ export interface GetContactsResultLatestMessage {
   id: string;
   sender: GetContactsResultLatestMessageSender;
   status: MessageStatus;
-  textPreview: string;
+  textPreview: string | null;
   type: MessageType;
   updatedAt: string | null;
 }
