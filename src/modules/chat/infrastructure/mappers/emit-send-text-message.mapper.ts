@@ -19,15 +19,11 @@ export class EmitSendTextMessageMapper {
   }
 
   static mapTo(
-    output: EmitSendTextMessageRequest,
+    output: Omit<EmitSendTextMessageRequest, 'onSuccess'>,
   ): EmitSendTextMessageRequestDTO | null {
-    if (!output?.data?.trim()) {
-      return null;
-    }
-
     return {
-      conversation_id: output?.activeContact?.latestConversation?.id,
-      text: output?.data.trim(),
+      conversation_id: output?.latestConversationId,
+      text: output?.data?.trim(),
     };
   }
 }

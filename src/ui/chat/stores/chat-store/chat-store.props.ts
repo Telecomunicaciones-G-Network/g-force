@@ -17,6 +17,7 @@ export interface ChatStoreState {
 
   addMessage: (message: MessageValues) => void;
   deleteOneMessageById: (messageId: string) => void;
+  updateOneMessageId: (temporalMessageId: string, messageId: string) => void;
   updateOneMessageStatusById: (
     messageId: string,
     messageStatus: MessageStatus,

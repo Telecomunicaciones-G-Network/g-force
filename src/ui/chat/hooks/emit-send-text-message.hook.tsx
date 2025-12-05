@@ -25,29 +25,37 @@ import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionar
 import { EmitSendTextMessageMapper } from '@module-chat/infrastructure/mappers/emit-send-text-message.mapper';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useEmitSendTextMessage = () => {
   const addMessage = useChatStore((state) => state.addMessage);
+  const activeContact = useContactStore((state) => state.activeContact);
 
   const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
 
+  const updateOneMessageId = useChatStore((state) => state.updateOneMessageId);
+
   const emitSendTextMessage = useCallback(
-    async ({ activeContact, data, onSuccess }: EmitSendTextMessageRequest) => {
+    async ({
+      data,
+      onSuccess,
+    }: Omit<EmitSendTextMessageRequest, 'latestConversationId'>) => {
       try {
         if (
-          !emitWithAck ||
-          !isConnectedAndStatusConnected ||
           !activeContact?.latestConversation?.id ||
-          !data?.trim()
+          !data?.trim() ||
+          !emitWithAck ||
+          !isConnectedAndStatusConnected
         )
           return;
 
+        const temporalMessageId = uuidv4();
         const newMessage: MessageValues = {
-          id: uuidv4(),
+          id: temporalMessageId,
           caption: null,
           contacts: [],
           conversationId: activeContact?.latestConversation?.id,
-          createdAt: new Date().toISOString(),
+          createdAt: new Date().toISOString().replace('Z', '000Z'),
           deliveredAt: null,
           direction: MessageDirections.OUTGOING,
           failedAt: null,
@@ -69,10 +77,11 @@ export const useEmitSendTextMessage = () => {
         };
 
         const request = EmitSendTextMessageMapper.mapTo({
-          activeContact,
           data,
-          onSuccess,
+          latestConversationId: activeContact?.latestConversation?.id,
         });
+
+        addMessage({ ...newMessage });
 
         if (!request) return;
 
@@ -85,22 +94,31 @@ export const useEmitSendTextMessage = () => {
 
         const response = EmitSendTextMessageMapper.mapFrom(parseAck);
 
-        if (!response?.success) {
+        if (!response?.success || !response?.messageId) {
           return;
         }
 
         if (response?.messageId && newMessage) {
+          updateOneMessageId(temporalMessageId, response?.messageId);
+
           const sounder = new Sounder('/sounds/whatsapp_emit_message.mp3');
 
-          addMessage({ ...newMessage, id: response?.messageId });
           sounder.playAudio();
           onSuccess?.();
         }
       } catch (error) {
         console.error('error', error);
+
+        return;
       }
     },
-    [addMessage, emitWithAck, isConnectedAndStatusConnected],
+    [
+      activeContact,
+      addMessage,
+      emitWithAck,
+      isConnectedAndStatusConnected,
+      updateOneMessageId,
+    ],
   );
 
   return {

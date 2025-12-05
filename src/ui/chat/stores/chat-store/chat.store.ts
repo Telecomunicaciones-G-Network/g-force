@@ -47,6 +47,17 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
 
     set({ messages: messages?.filter((message) => message.id !== messageId) });
   },
+  updateOneMessageId: (temporalMessageId: string, messageId: string) => {
+    const { messages } = get();
+
+    set({
+      messages: messages?.map((message) =>
+        message.id === temporalMessageId
+          ? { ...message, id: messageId }
+          : message,
+      ),
+    });
+  },
   updateOneMessageStatusById: (
     messageId: string,
     messageStatus: MessageStatus,

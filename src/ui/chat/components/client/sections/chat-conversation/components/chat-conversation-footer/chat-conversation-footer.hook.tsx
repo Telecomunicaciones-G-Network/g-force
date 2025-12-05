@@ -34,7 +34,6 @@ export const useChatConversationFooter = () => {
         if (!message?.trim()) return;
 
         emitSendTextMessage({
-          activeContact,
           data: message?.trim(),
           onSuccess: () => {
             setMessage('');

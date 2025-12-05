@@ -1,7 +1,5 @@
-import type { ContactValues } from './contact-values.interface';
-
 export interface EmitSendTextMessageRequest {
-  activeContact: ContactValues;
   data: string;
+  latestConversationId: string;
   onSuccess?: () => void;
 }
