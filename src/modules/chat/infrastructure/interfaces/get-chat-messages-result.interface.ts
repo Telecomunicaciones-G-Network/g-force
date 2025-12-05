@@ -10,8 +10,8 @@ import type {
 export interface GetChatMessagesResultContact {
   birthday: string;
   emails: string[];
-  formattedName: string;
-  phoneNumbers: string[];
+  formatted_name: string;
+  phone_numbers: string[];
   urls: string[];
 }
 
@@ -23,17 +23,17 @@ export interface GetChatMessagesResultLocation {
 }
 
 export interface GetChatMessagesResultMedia {
-  id: string;
-  downloadUrl: string;
+  download_url: string;
   filename: string;
-  mimeType: string;
-  storageStatus: MediaStorageStatus;
+  id: string;
+  mime_type: string;
+  storage_status: MediaStorageStatus;
   type: MediaType;
 }
 
 export interface GetChatMessagesResultReaction {
-  agentId: string;
-  contactId: string;
+  agent_id: string;
+  contact_id: string;
   emoji: string;
 }
 
@@ -43,27 +43,27 @@ export interface GetChatMessagesResultSender {
 }
 
 export interface GetChatMessagesResult {
+  id: string;
   caption: string | null;
   contacts: GetChatMessagesResultContact[];
-  conversationId: string;
-  createdAt: string;
-  deliveredAt: string | null;
+  conversation_id: string;
+  created_at: string;
+  delivered_at: string | null;
   direction: MessageDirection;
-  extraMetadata: Record<string, unknown> | null;
-  failedAt: string | null;
+  extra_metadata: Record<string, unknown> | null;
+  failed_at: string | null;
+  forwarded_many_times: boolean;
   forwarded: boolean;
-  forwardedManyTimes: boolean;
-  id: string;
   location: GetChatMessagesResultLocation | null;
   media: GetChatMessagesResultMedia | null;
+  platform_id: string;
   platform: ContactPlatform;
-  platformId: string;
   reactions: GetChatMessagesResultReaction[];
-  readAt: string | null;
+  read_at: string | null;
   sender: GetChatMessagesResultSender;
-  sentAt: string | null;
+  sent_at: string | null;
   status: MessageStatus;
   text: string | null;
   type: MessageType;
-  updatedAt: string | null;
+  updated_at: string | null;
 }

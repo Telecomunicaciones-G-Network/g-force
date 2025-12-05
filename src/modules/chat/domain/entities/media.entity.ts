@@ -1,25 +1,23 @@
 import type { MediaValues } from '../interfaces';
-import type { MediaType } from '../types';
+import type { MediaStorageStatus, MediaType } from '../types';
 
 export class Media {
-  private id: string;
-  private filename: string;
-  private mimeType: string;
-  private type: MediaType;
-
-  constructor(id: string, filename: string, mimeType: string, type: MediaType) {
-    this.id = id;
-    this.filename = filename;
-    this.mimeType = mimeType;
-    this.type = type;
-  }
+  constructor(
+    public id: string,
+    public downloadUrl: string | null,
+    public filename: string,
+    public mimeType: string,
+    public storageStatus: MediaStorageStatus,
+    public type: MediaType,
+  ) {}
 
   public toValues(): MediaValues {
     return {
       id: this.id,
-      mediaId: this.id,
+      downloadUrl: this.downloadUrl,
       filename: this.filename,
       mimeType: this.mimeType,
+      storageStatus: this.storageStatus,
       type: this.type,
     };
   }

@@ -26,32 +26,52 @@ export class GetChatMessagesMapper {
     return {
       id: input?.id,
       caption: input?.caption,
-      contacts: input?.contacts,
-      conversationId: input?.conversationId,
-      createdAt: input?.createdAt,
-      deliveredAt: input?.deliveredAt,
+      conversationId: input?.conversation_id,
+      contacts:
+        input?.contacts?.map((contact) => ({
+          birthday: contact.birthday,
+          emails: contact.emails,
+          formattedName: contact.formatted_name,
+          phoneNumbers: contact.phone_numbers,
+          urls: contact.urls,
+        })) ?? [],
+      createdAt: input?.created_at,
+      deliveredAt: input?.delivered_at,
       direction: input?.direction,
-      failedAt: input?.failedAt,
+      failedAt: input?.failed_at,
       forwarded: input?.forwarded,
-      forwardedManyTimes: input?.forwardedManyTimes,
-      location: input?.location ?? null,
+      forwardedManyTimes: input?.forwarded_many_times,
+      location: input?.location
+        ? {
+            address: input.location.address,
+            latitude: input.location.latitude,
+            longitude: input.location.longitude,
+            name: input.location.name,
+          }
+        : null,
       media: input?.media
         ? {
             id: input.media.id,
+            downloadUrl: input.media.download_url,
             filename: input.media.filename,
-            mediaId: input.media.id,
-            mimeType: input.media.mimeType,
+            mimeType: input.media.mime_type,
+            storageStatus: input.media.storage_status,
             type: input.media.type,
           }
         : null,
-      reactions: input?.reactions,
-      readAt: input?.readAt,
+      reactions:
+        input?.reactions?.map((reaction) => ({
+          agentId: reaction.agent_id,
+          contactId: reaction.contact_id,
+          emoji: reaction.emoji,
+        })) ?? [],
+      readAt: input?.read_at,
       sender: input?.sender,
-      sentAt: input?.sentAt,
+      sentAt: input?.sent_at,
       status: input?.status,
       text: input?.text,
       type: input?.type,
-      updatedAt: input?.updatedAt,
+      updatedAt: input?.updated_at,
     };
   }
 

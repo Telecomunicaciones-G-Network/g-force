@@ -29,9 +29,9 @@ export interface MessageSenderValues {
 
 export interface MessageValues {
   id: string;
-  conversationId: string;
   caption: string | null;
   contacts: MessageContactValues[];
+  conversationId: string;
   createdAt: string;
   deliveredAt: string | null;
   direction: MessageDirection;

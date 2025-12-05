@@ -4,6 +4,7 @@ import type { MediaType } from '../../domain/types';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
 import { MessageStatus } from '../../domain/enums/message-status.enum';
+import { MediaStorageStatus } from '../../domain/enums/media-storage-status.enum';
 
 export class OnIncommingMessageMapper {
   static mapFrom(
@@ -30,7 +31,8 @@ export class OnIncommingMessageMapper {
         ? {
             id: input.media.media_id,
             filename: '',
-            mediaId: input.media.media_id,
+            downloadUrl: null,
+            storageStatus: MediaStorageStatus.PENDING,
             mimeType: input.media.mime_type ?? '',
             type: input.media.type ?? ('IMAGE' as MediaType),
           }

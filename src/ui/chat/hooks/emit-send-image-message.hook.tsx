@@ -20,6 +20,7 @@ import { MessageDirections } from '@/src/modules/chat/domain/enums/message-direc
 import { MessageStatus } from '@/src/modules/chat/domain/enums/message-status.enum';
 import { MessageTypes } from '@/src/modules/chat/domain/enums/message-types.enum';
 import { ChatSendModes } from '../enums/chat-send-mode.enum';
+import { MediaStorageStatus } from '@/src/modules/chat/domain/enums/media-storage-status.enum';
 
 export const useEmitSendImageMessage = () => {
   const file = useChatStore((state) => state.file);
@@ -60,8 +61,9 @@ export const useEmitSendImageMessage = () => {
           filename: file?.name,
           id: file?.name,
           mimeType: file?.type,
-          mediaId: uuidv4(),
+          storageStatus: MediaStorageStatus.PENDING,
           type: 'IMAGE',
+          downloadUrl: null,
         },
         reactions: [],
         readAt: null,

@@ -21,7 +21,7 @@ export const ChatConversationController = ({
     case MessageTypes.IMAGE:
       return (
         <>
-          {(message?.media?.mediaId || message?.media?.id) && (
+          {message?.media?.id && (
             <ChatImageMessage
               direction={
                 message?.direction === MessageDirections.INCOMING
@@ -29,7 +29,7 @@ export const ChatConversationController = ({
                   : BubbleModes.OUTGOING
               }
               imageAlt={message?.media?.filename}
-              mediaId={message?.media?.mediaId || message?.media?.id || ''}
+              mediaId={message?.media?.id}
               status={message?.status.toLowerCase() as BubbleStatus}
               time={isoToTime(message?.createdAt ?? '')}
               username={message?.sender?.name}
