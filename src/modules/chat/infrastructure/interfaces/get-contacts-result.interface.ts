@@ -29,23 +29,23 @@ export interface GetContactsResultLatestMessageSender {
 }
 
 export interface GetContactsResultLatestMessage {
-  createdAt: string;
-  direction: MessageDirection;
   id: string;
+  created_at: string;
+  direction: MessageDirection;
   sender: GetContactsResultLatestMessageSender;
   status: MessageStatus;
-  textPreview: string | null;
+  text_preview: string | null;
   type: MessageType;
-  updatedAt: string | null;
+  updated_at: string | null;
 }
 
 export interface GetContactsResult {
-  contactId: string;
-  displayName: string;
-  latestConversation: GetContactsResultLatestConversation;
-  latestMessage: GetContactsResultLatestMessage;
-  phoneNumber: string;
+  contact_id: string;
+  display_name: string;
+  latest_conversation: GetContactsResultLatestConversation;
+  latest_message: GetContactsResultLatestMessage;
+  phone_number: string;
+  platform_id: string;
   platform: ContactPlatform;
-  platformId: string;
-  unreadCount: number;
+  unread_count: number;
 }

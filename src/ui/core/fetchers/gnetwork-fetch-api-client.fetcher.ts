@@ -11,7 +11,6 @@ const logger = new Logger('GnetworkFetchApiClient');
 const fetcher = new Fetch(
   {
     headers: GNETWORK_HTTP_BASE_HEADERS,
-    parseResponseOnCamelCase: true,
   },
   logger,
 );

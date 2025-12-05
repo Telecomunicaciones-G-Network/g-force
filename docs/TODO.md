@@ -1,5 +1,12 @@
 # TODO
 
+## Super importante para manana
+
+FIXME: Resolver el problema del envio de la imagen
+FIXME: Resolver el problema de la recepcion de imagenes
+FIXME: Validar el peso y mimetype antes de enviar una imagen
+FIXME: Cuando llegue un mensaje debo reordenar los chat desde el mensaje mas reciente al mensaje mas viejo
+
 ## General
 
 TODO: Debo ajustar el favicon

@@ -23,34 +23,34 @@ export class GetContactsMapper {
 
   static mapFromContactArray(input: GetContactsResult): ContactValues {
     return {
-      id: input?.contactId,
+      id: input?.contact_id,
       latestConversation: {
-        id: input?.latestConversation?.id,
-        agent: input?.latestConversation?.agent,
-        status: input?.latestConversation?.status,
-        team: input?.latestConversation?.team
+        id: input?.latest_conversation?.id,
+        agent: input?.latest_conversation?.agent,
+        status: input?.latest_conversation?.status,
+        team: input?.latest_conversation?.team
           ? {
-              id: input?.latestConversation?.team?.codename,
-              name: input?.latestConversation?.team?.name,
+              id: input?.latest_conversation?.team?.codename,
+              name: input?.latest_conversation?.team?.name,
             }
           : null,
       },
       latestMessage: {
-        id: input?.latestMessage?.id,
-        createdAt: input?.latestMessage?.createdAt,
-        direction: input?.latestMessage?.direction,
+        id: input?.latest_message?.id,
+        createdAt: input?.latest_message?.created_at,
+        direction: input?.latest_message?.direction,
         sender: {
-          id: input?.latestMessage?.sender?.id,
-          name: input?.latestMessage?.sender?.name,
+          id: input?.latest_message?.sender?.id,
+          name: input?.latest_message?.sender?.name,
         },
-        status: input?.latestMessage?.status,
-        text: input?.latestMessage?.textPreview,
-        type: input?.latestMessage?.type,
-        updatedAt: input?.latestMessage?.updatedAt,
+        status: input?.latest_message?.status,
+        text: input?.latest_message?.text_preview,
+        type: input?.latest_message?.type,
+        updatedAt: input?.latest_message?.updated_at,
       },
-      name: input?.displayName,
-      phoneNumber: input?.phoneNumber,
-      unreadCount: input?.unreadCount,
+      name: input?.display_name,
+      phoneNumber: input?.phone_number,
+      unreadCount: input?.unread_count,
     };
   }
 }

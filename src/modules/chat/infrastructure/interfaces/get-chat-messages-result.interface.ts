@@ -1,5 +1,6 @@
 import type {
   ContactPlatform,
+  MediaStorageStatus,
   MediaType,
   MessageDirection,
   MessageStatus,
@@ -22,9 +23,11 @@ export interface GetChatMessagesResultLocation {
 }
 
 export interface GetChatMessagesResultMedia {
-  filename: string;
   id: string;
+  downloadUrl: string;
+  filename: string;
   mimeType: string;
+  storageStatus: MediaStorageStatus;
   type: MediaType;
 }
 
@@ -40,7 +43,6 @@ export interface GetChatMessagesResultSender {
 }
 
 export interface GetChatMessagesResult {
-  id: string;
   caption: string | null;
   contacts: GetChatMessagesResultContact[];
   conversationId: string;
@@ -51,6 +53,7 @@ export interface GetChatMessagesResult {
   failedAt: string | null;
   forwarded: boolean;
   forwardedManyTimes: boolean;
+  id: string;
   location: GetChatMessagesResultLocation | null;
   media: GetChatMessagesResultMedia | null;
   platform: ContactPlatform;
