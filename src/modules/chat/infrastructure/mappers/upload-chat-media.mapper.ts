@@ -4,7 +4,10 @@ import type { UploadChatMediaResponseDTO } from '../dtos';
 export class UploadChatMediaMapper {
   static mapFrom(input: UploadChatMediaResponseDTO): UploadChatMediaResponse {
     return {
-      mediaId: input?.results?.id,
+      error: input?.error,
+      mediaId: input?.results?.id ?? '',
+      status: input?.status,
+      success: input?.success,
     };
   }
 }

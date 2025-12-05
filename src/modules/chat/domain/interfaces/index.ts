@@ -6,6 +6,7 @@ export type {
 export type { ConversationValues } from './conversation-values.interface';
 export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
+export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
 export type { EmitSendTextMessageRequest } from './emit-send-text-message-request.interface';
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';

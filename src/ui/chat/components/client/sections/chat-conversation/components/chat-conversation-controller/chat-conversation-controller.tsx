@@ -37,6 +37,10 @@ export const ChatConversationController = ({
                 username={message?.sender?.name}
               />
             )}
+          {message?.media?.id &&
+            message?.media?.storageStatus === MediaStorageStatus.PENDING && (
+              <div>cargando imagen...</div>
+            )}
         </>
       );
     case MessageTypes.TEXT:

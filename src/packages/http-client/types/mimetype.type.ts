@@ -1,6 +1,1 @@
-export type MimeType =
-  | 'image/gif'
-  | 'image/jpeg'
-  | 'image/png'
-  | 'image/svg+xml'
-  | 'image/webp';
+export type MimeType = 'image/jpg' | 'image/jpeg' | 'image/png';
