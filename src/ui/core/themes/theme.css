@@ -50,5 +50,6 @@
   --color-warning-100: var(--warning-100);
   --color-warning-200: var(--warning-200);
   --color-warning-300: var(--warning-300);
+  --color-whatsapp-image-color: var(--whatsapp-image-color);
   --color-white: var(--white);
 }

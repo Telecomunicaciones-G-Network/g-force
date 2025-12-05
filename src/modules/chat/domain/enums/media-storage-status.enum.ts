@@ -3,4 +3,5 @@ export enum MediaStorageStatus {
   FAILED = 'FAILED',
   PENDING = 'PENDING',
   SUCCESS = 'SUCCESS',
+  UNAVAILABLE = 'UNAVAILABLE',
 }

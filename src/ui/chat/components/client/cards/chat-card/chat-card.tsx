@@ -4,14 +4,18 @@ import type { ChatCardProps } from './chat-card.props';
 
 import Image from 'next/image';
 
+import { MdOutlineImage } from 'react-icons/md';
+
 import { shortString } from '@stringify/utils/short-string.util';
+import { isoToTime } from '@timer/utils/iso-to-time.util';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 import { Badge } from '@gnetwork-ui/components/molecules/badges/badge';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
-import { isoToTime } from '@timer/utils/iso-to-time.util';
+
+import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
 import { CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS } from './constants/chat-card-maximum-last-message-characters.constant';
 
@@ -24,6 +28,7 @@ export const ChatCard = ({
   isActive = false,
   lastMessage = '',
   lastMessageTime = '',
+  messageType,
   onClick,
   unreadMessages = 0,
   username = '',
@@ -95,6 +100,23 @@ export const ChatCard = ({
               CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
             )}
           </Text>
+        )}
+        {!lastMessage && (
+          <div className={styles.base__icon}>
+            {messageType === MessageTypes.IMAGE && (
+              <>
+                <MdOutlineImage className="fill-whatsapp-image-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Imagen
+                </Text>
+              </>
+            )}
+          </div>
         )}
       </div>
     </div>

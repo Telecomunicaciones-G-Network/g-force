@@ -8,6 +8,7 @@ TODO: Crear la pagina de error
 
 ## Sidebar
 
+TODO: El sidebar debe desaparecer de igual manera que cuando el viewport cambie el modo del chat a responsive
 TODO: Poder almacenar en el localstorage si el sidebar del usuario estaba collapsado o no antes de dejar la app
 TODO: Si el sidebar esta collapsado al hacer hover debe volver a su tamano normal y al dejar el hover se debe volver a collapsar
 TODO: Consumir la sede

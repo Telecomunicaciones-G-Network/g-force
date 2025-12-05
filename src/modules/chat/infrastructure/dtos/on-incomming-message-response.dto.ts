@@ -1,4 +1,8 @@
-import type { MediaType, MessageType } from '../../domain/types';
+import type {
+  MediaStorageStatus,
+  MediaType,
+  MessageType,
+} from '../../domain/types';
 
 export interface OnIncommingMessageResponseContact {
   birthday: string;
@@ -18,8 +22,7 @@ export interface OnIncommingMessageResponseLocation {
 export interface OnIncommingMesssageResponseMedia {
   media_id: string;
   mime_type: string;
-  storage_bucket: string;
-  storage_path: string;
+  storage_status: MediaStorageStatus;
   type: MediaType;
 }
 

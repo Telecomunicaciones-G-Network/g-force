@@ -39,6 +39,12 @@ export const useOnNewMessageReceived = () => {
 
       if (!response?.conversationId || !response?.contactId) return;
 
+      if (response?.contactId !== activeContact?.id) {
+        const sounder = new Sounder('/sounds/whatsapp_notification.mp3');
+
+        sounder.playAudio();
+      }
+
       if (existContactOnStore(response?.contactId)) {
         addOneUnreadMessageToContact({
           contactId: response?.contactId,
@@ -46,10 +52,6 @@ export const useOnNewMessageReceived = () => {
           activeContact,
         });
         sortContactsByLatestMessage();
-
-        const sounder = new Sounder('/sounds/whatsapp_notification.mp3');
-
-        sounder.playAudio();
 
         return;
       }

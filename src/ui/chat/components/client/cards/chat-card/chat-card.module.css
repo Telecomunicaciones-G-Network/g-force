@@ -27,6 +27,13 @@
   padding: 0;
 }
 
+.base__icon {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+  justify-content: start;
+}
+
 .base__texts {
   align-items: center;
   display: flex;

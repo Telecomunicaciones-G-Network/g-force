@@ -7,6 +7,7 @@ import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enu
 
 import { isoToTime } from '@timer/utils/iso-to-time.util';
 
+import { MediaStorageStatus } from '@module-chat/domain/enums/media-storage-status.enum';
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
@@ -21,20 +22,21 @@ export const ChatConversationController = ({
     case MessageTypes.IMAGE:
       return (
         <>
-          {message?.media?.id && (
-            <ChatImageMessage
-              direction={
-                message?.direction === MessageDirections.INCOMING
-                  ? BubbleModes.INCOMING
-                  : BubbleModes.OUTGOING
-              }
-              imageAlt={message?.media?.filename}
-              mediaId={message?.media?.id}
-              status={message?.status.toLowerCase() as BubbleStatus}
-              time={isoToTime(message?.createdAt ?? '')}
-              username={message?.sender?.name}
-            />
-          )}
+          {message?.media?.id &&
+            message?.media?.storageStatus === MediaStorageStatus.AVAILABLE && (
+              <ChatImageMessage
+                direction={
+                  message?.direction === MessageDirections.INCOMING
+                    ? BubbleModes.INCOMING
+                    : BubbleModes.OUTGOING
+                }
+                imageAlt={message?.media?.filename ?? message?.media?.id}
+                mediaId={message?.media?.id}
+                status={message?.status.toLowerCase() as BubbleStatus}
+                time={isoToTime(message?.createdAt ?? '')}
+                username={message?.sender?.name}
+              />
+            )}
         </>
       );
     case MessageTypes.TEXT:
@@ -56,12 +58,3 @@ export const ChatConversationController = ({
       return null;
   }
 };
-
-/*
-{
-    "id": "1bbd0ff4-01bc-410b-9841-9aeeea7be597",
-    "type": "IMAGE",
-    "mimeType": "image/jpeg",
-    "filename": "637849269415297"
-}
-*/

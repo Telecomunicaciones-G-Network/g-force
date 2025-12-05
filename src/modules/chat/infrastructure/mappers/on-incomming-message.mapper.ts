@@ -3,7 +3,6 @@ import type { OnIncommingMessageResponseDTO } from '../dtos';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
 import { MessageStatus } from '../../domain/enums/message-status.enum';
-import { MediaStorageStatus } from '../../domain/enums/media-storage-status.enum';
 
 export class OnIncommingMessageMapper {
   static mapFrom(
@@ -40,7 +39,7 @@ export class OnIncommingMessageMapper {
             downloadUrl: null,
             filename: '',
             mimeType: input?.media?.mime_type,
-            storageStatus: MediaStorageStatus.PENDING,
+            storageStatus: input?.media?.storage_status,
             type: input?.media?.type,
           }
         : null,

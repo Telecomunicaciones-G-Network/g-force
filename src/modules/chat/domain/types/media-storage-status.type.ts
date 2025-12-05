@@ -1,1 +1,6 @@
-export type MediaStorageStatus = 'AVAILABLE' | 'FAILED' | 'PENDING' | 'SUCCESS';
+export type MediaStorageStatus =
+  | 'AVAILABLE'
+  | 'FAILED'
+  | 'PENDING'
+  | 'SUCCESS'
+  | 'UNAVAILABLE';

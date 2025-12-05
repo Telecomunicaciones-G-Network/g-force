@@ -13,6 +13,7 @@ import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/emit-mark-message-as-re
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+import { MediaStorageStatus } from '@/src/modules/chat/domain/enums/media-storage-status.enum';
 
 interface UseOnIncommingMessageProps {
   disabledChat?: boolean;
@@ -32,6 +33,8 @@ export const useOnIncommingMessage = ({
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
+      console.log('parseResponse', parseResponse);
+
       const newMessage = OnIncommingMessageMapper.mapFrom(
         parseResponse,
         activeContact,
@@ -41,13 +44,16 @@ export const useOnIncommingMessage = ({
 
       if (!newMessage || !newMessage?.id) return;
 
-      if (newMessage?.id) {
+      if (
+        newMessage?.media?.storageStatus === MediaStorageStatus.AVAILABLE ||
+        !newMessage?.media
+      ) {
         const sounder = new Sounder('/sounds/whatsapp_on_message.mp3');
 
         sounder.playAudio();
-
-        addMessage(newMessage);
       }
+
+      if (newMessage?.id) addMessage(newMessage);
 
       if (newMessage && !disabledChat) emitMarkMessageAsRead(newMessage?.id);
     },
