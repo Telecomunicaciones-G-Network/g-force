@@ -57,6 +57,7 @@
     "chat-list-body": "react-components",
     "chat-list-skeleton": "react-components",
     "chat-message": "react-components",
+    "chat-message-skeleton": "react-components",
     "chat-text-message": "react-components",
     "contact-card-skeleton": "react-components",
     "contact-list": "react-components",

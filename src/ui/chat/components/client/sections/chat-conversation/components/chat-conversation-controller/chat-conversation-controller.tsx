@@ -1,9 +1,9 @@
 import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from './chat-conversation-controller.props';
 
-import { ChatTextMessage } from '@gnetwork-ui/components/organisms/blocks/chat-text-message';
-
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
+import { ChatTextMessage } from '@gnetwork-ui/components/organisms/blocks/chat-text-message';
+import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons/chat-message-skeleton';
 
 import { isoToTime } from '@timer/utils/iso-to-time.util';
 
@@ -39,7 +39,15 @@ export const ChatConversationController = ({
             )}
           {message?.media?.id &&
             message?.media?.storageStatus === MediaStorageStatus.PENDING && (
-              <div>cargando imagen...</div>
+              <ChatMessageSkeleton
+                direction={
+                  message?.direction === MessageDirections.INCOMING
+                    ? BubbleModes.INCOMING
+                    : BubbleModes.OUTGOING
+                }
+                time={isoToTime(message?.createdAt ?? '')}
+                username={message?.sender?.name}
+              />
             )}
         </>
       );
