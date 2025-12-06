@@ -131,6 +131,82 @@ export class Fetch implements HttpAdapter {
       });
   }
 
+  public async getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    try {
+      let parsedParams = '';
+      let parsedSearchParams = '';
+
+      if (configuration?.params) {
+        parsedParams = this.parseParams(configuration?.params);
+      }
+
+      if (configuration?.searchParams) {
+        parsedSearchParams = this.parseSearchParams(
+          configuration?.searchParams,
+        );
+      }
+
+      const fetchConfig = this.sanitizeConfiguration(configuration || {});
+      const tokenHeaders = await this.injectToken();
+      const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
+
+      const response = await fetch(
+        endpoint + parsedParams + parsedSearchParams,
+        {
+          method: 'GET',
+          ...fetchConfig,
+          headers: {
+            ...this.configuration?.headers,
+            ...fetchConfig.headers,
+            ...tokenHeadersObject,
+            Accept: '*/*',
+          },
+          cache: 'no-cache',
+        },
+      );
+
+      if (!response.ok) {
+        const errorText = await response
+          .text()
+          .catch(() => response.statusText);
+
+        throw new Error(
+          `Failed to fetch image: ${response.status} ${response.statusText} - ${errorText}`,
+        );
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      const blob = new Blob([arrayBuffer]);
+
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          if (reader.result) {
+            resolve(reader.result as string);
+          } else {
+            reject(new Error('Failed to read image data'));
+          }
+        };
+
+        reader.onerror = () => {
+          reject(new Error('Failed to read image blob'));
+        };
+
+        reader.readAsDataURL(blob);
+      });
+    } catch (err) {
+      this.logger?.log((err as Error).message, LogLevels.ERROR);
+
+      const error = err as Error;
+
+      throw error;
+    }
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

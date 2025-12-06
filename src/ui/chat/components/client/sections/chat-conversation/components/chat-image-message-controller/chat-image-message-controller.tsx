@@ -11,7 +11,7 @@ import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons
 
 import { ChatImageMessage } from '@ui-chat/components/client/blocks/chat-image-message';
 
-export const ChatImageController = ({
+export const ChatImageMessageController = ({
   message,
 }: Readonly<ChatConversationControllerProps>) => (
   <>

@@ -20,6 +20,13 @@ export class HttpClient {
     );
   }
 
+  public async getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return await this.fetcher.getFile(endpoint, configuration);
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

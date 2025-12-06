@@ -2,7 +2,7 @@ import type { ChatConversationControllerProps } from './chat-conversation-contro
 
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
-import { ChatImageController } from '../chat-image-controller';
+import { ChatImageMessageController } from '../chat-image-message-controller';
 import { ChatTextMessageController } from '../chat-text-message-controller';
 
 export const ChatConversationController = ({
@@ -12,7 +12,7 @@ export const ChatConversationController = ({
 
   switch (message?.type) {
     case MessageTypes.IMAGE:
-      return <ChatImageController message={message} />;
+      return <ChatImageMessageController message={message} />;
     case MessageTypes.TEXT:
       return <ChatTextMessageController message={message} />;
     default:

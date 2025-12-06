@@ -1,5 +1,5 @@
 export const CHAT_RESOURCES = {
-  GET_CHAT_MEDIA_BY_ID: '/chat/media',
+  GET_CHAT_MEDIA_BY_ID: (mediaId: string): string => `/chat/media/${mediaId}`,
   GET_CHAT_MESSAGES: (contactId: string): string =>
     `/chat/contacts/${contactId}/messages`,
   GET_CONTACTS: '/chat/contacts',

@@ -7,6 +7,11 @@ export interface HttpAdapter {
     configuration?: HttpClientConfiguration,
   ): Promise<T>;
 
+  getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string>;
+
   post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

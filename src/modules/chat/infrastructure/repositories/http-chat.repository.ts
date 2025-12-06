@@ -8,11 +8,14 @@ import type {
 } from '../../domain/interfaces';
 import type { ChatRepository } from '../../domain/repositories';
 
+import { getChatMediaByIdService } from '../services/get-chat-media-by-id.service';
 import { getChatMessagesService } from '../services/get-chat-messages.service';
 import { getContactsService } from '../services/get-contacts.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
 export const httpChatRepository: ChatRepository = {
+  getChatMediaById: async (mediaId: string): Promise<string> =>
+    getChatMediaByIdService(mediaId),
   getChatMessages: async (
     request: GetChatMessagesRequest,
   ): Promise<GetChatMessagesResponse> => getChatMessagesService(request),

@@ -52,8 +52,8 @@
     "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
     "chat-conversation": "react-components",
-    "chat-image-controller": "react-components",
     "chat-image-message": "react-components",
+    "chat-image-message-controller": "react-components",
     "chat-input-controller": "react-components",
     "chat-list-body": "react-components",
     "chat-list-skeleton": "react-components",
@@ -419,7 +419,11 @@
       "name": "Usecase Get",
       "base": "powershell",
       "color": "green-500",
-      "fileNames": ["get-chat-messages.usecase.ts", "get-contacts.usecase.ts"]
+      "fileNames": [
+        "get-chat-media-by-id.usecase.ts",
+        "get-chat-messages.usecase.ts",
+        "get-contacts.usecase.ts"
+      ]
     },
     {
       "name": "Usecase Post",

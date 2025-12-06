@@ -105,6 +105,52 @@ export class Axios implements HttpAdapter {
       });
   }
 
+  public async getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return this.axiosInstance
+      .get<ArrayBuffer>(endpoint, {
+        ...configuration,
+        responseType: 'arraybuffer',
+        headers: {
+          ...configuration?.headers,
+          Accept: '*/*',
+        },
+      })
+      .then(async (response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios file get request has failed!');
+        }
+
+        const arrayBuffer = response.data;
+        const blob = new Blob([arrayBuffer]);
+
+        return new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onloadend = () => {
+            if (reader.result) {
+              resolve(reader.result as string);
+            } else {
+              reject(new Error('Failed to read image data'));
+            }
+          };
+
+          reader.onerror = () => {
+            reject(new Error('Failed to read image blob'));
+          };
+
+          reader.readAsDataURL(blob);
+        });
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+
+        throw error;
+      });
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,
