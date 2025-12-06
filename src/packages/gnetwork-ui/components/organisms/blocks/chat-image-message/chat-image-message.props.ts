@@ -1,15 +1,8 @@
-import type { ReactChild, ReactDiv } from '../../../../types';
-import type {
-  BubbleStatus,
-  BubbleVariants,
-} from '../../../molecules/blocks/bubble';
+import type { ReactChild } from '../../../../types';
+import type { ChatMessageProps } from '../chat-message';
 
-export interface ChatImageMessageProps extends Omit<ReactDiv, 'children'> {
+export interface ChatImageMessageProps extends ChatMessageProps {
   customImageComponent?: ReactChild;
-  direction: BubbleVariants['mode'];
   imageAlt?: string;
   imageUrl?: string;
-  status?: BubbleStatus;
-  time: string;
-  username: string;
 }
