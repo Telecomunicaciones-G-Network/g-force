@@ -4,3 +4,13 @@
   height: 100dvh;
   width: 100%;
 }
+
+.base__download_button {
+  border-radius: 8px;
+  bottom: 40px;
+  cursor: pointer;
+  padding: 12px;
+  position: absolute;
+  right: 40px;
+  transition: background-color 0.2s ease-in-out;
+}

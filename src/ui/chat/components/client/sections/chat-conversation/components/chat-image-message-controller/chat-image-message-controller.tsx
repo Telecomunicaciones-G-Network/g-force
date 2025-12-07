@@ -23,8 +23,10 @@ export const ChatImageMessageController = ({
               ? BubbleModes.INCOMING
               : BubbleModes.OUTGOING
           }
+          filename={message?.media?.filename}
           imageAlt={message?.media?.filename ?? message?.media?.id}
           mediaId={message?.media?.id}
+          mimeType={message?.media?.mimeType}
           status={message?.status.toLowerCase() as BubbleStatus}
           time={isoToTime(message?.createdAt ?? '')}
           username={message?.sender?.name}

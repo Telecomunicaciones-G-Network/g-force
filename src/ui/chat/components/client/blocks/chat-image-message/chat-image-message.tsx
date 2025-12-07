@@ -15,8 +15,10 @@ import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary
 
 export const ChatImageMessage = ({
   direction,
+  filename = '',
   imageAlt = '',
   mediaId = '',
+  mimeType = '',
   time,
   username,
   ...rest
@@ -60,8 +62,10 @@ export const ChatImageMessage = ({
               sizes="100%"
             />
           }
+          filename={filename}
           imageAlt={imageAlt}
           imageUrl={image}
+          mimeType={mimeType}
           time={time}
           username={username}
           {...rest}

@@ -2,6 +2,11 @@
 
 import type { ChatImageMessageProps } from './chat-image-message.props';
 
+import { MdDownload } from 'react-icons/md';
+
+import { extractExtensionFromMimeType } from '@filer/utils/extract-extension-from-mimetype.util';
+import { downloadFileByUrl } from '@filer/utils/download-file-by-url.util';
+
 import { ResponsiveImage } from '../../../atoms/images/responsive-image';
 import { Modal } from '../../modals/modal';
 import { ChatMessage } from '../chat-message';
@@ -16,15 +21,17 @@ import styles from './chat-image-message.module.css';
 export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
   const {
     customImageComponent,
+    filename = '',
     imageAlt = 'Image',
     imageUrl = '',
+    mimeType = '',
     ...rest
   } = props;
 
   return (
     <ChatMessage bubbleClassName="w-full" {...rest}>
       <Modal
-        className={cn(styles.base__modal, 'p-10 sm:max-w-none')}
+        className={cn(styles.base__modal, 'p-10 relative sm:max-w-none')}
         customModalCloseComponent={<ChatImageMessageModalClose />}
         triggerComponent={
           <div className="flex h-[154px] w-full">
@@ -36,6 +43,19 @@ export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
           </div>
         }
       >
+        <button
+          className={cn(styles.base__download_button, 'bg-black')}
+          onClick={() =>
+            downloadFileByUrl(
+              imageUrl,
+              filename,
+              extractExtensionFromMimeType(mimeType),
+            )
+          }
+          type="button"
+        >
+          <MdDownload className="fill-white h-6 w-6 size-6" />
+        </button>
         <ChatImageMessageModal alt={imageAlt} src={imageUrl} />
       </Modal>
     </ChatMessage>

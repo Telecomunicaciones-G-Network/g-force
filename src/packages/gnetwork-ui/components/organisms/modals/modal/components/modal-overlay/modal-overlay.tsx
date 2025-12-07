@@ -8,7 +8,7 @@ export const ModalOverlay = () => (
   <DialogPrimitive.Overlay
     className={cn(
       styles.base,
-      'bg-black/40 inset-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+      'bg-black/50 inset-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
     )}
   />
 );

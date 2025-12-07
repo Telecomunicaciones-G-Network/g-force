@@ -2,5 +2,7 @@ import type { ChatImageMessageProps as ChatImageMessagePropsBase } from '@gnetwo
 
 export interface ChatImageMessageProps
   extends Omit<ChatImageMessagePropsBase, 'imageUrl'> {
+  filename?: string;
   mediaId: string;
+  mimeType?: string;
 }
