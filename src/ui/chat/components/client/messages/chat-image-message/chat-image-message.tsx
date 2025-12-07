@@ -6,12 +6,12 @@ import Image from 'next/image';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { ChatImageMessage as ChatImageMessageBase } from '@gnetwork-ui/components/organisms/blocks/chat-image-message';
 import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons/chat-message-skeleton';
 
 import { getChatMediaByIdQuery } from '@module-chat/infrastructure/queries/get-chat-media-by-id.query';
 
 import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary';
+import { ChatImageMessageContent } from '../../messages/chat-image-message/components/chat-image-message-content';
 
 export const ChatImageMessage = ({
   direction,
@@ -51,15 +51,15 @@ export const ChatImageMessage = ({
   return (
     <>
       {image && (
-        <ChatImageMessageBase
+        <ChatImageMessageContent
           direction={direction}
           customImageComponent={
             <Image
               alt={imageAlt}
               className="cursor-pointer responsive-image-cover rounded-sm"
               fill
-              src={image}
               sizes="100%"
+              src={image}
             />
           }
           filename={filename}

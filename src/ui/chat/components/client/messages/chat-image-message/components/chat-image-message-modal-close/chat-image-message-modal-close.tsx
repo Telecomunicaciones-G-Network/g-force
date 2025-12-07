@@ -1,7 +1,7 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { MdClose } from 'react-icons/md';
 
-import { cn } from '../../../../../../utils/cn.util';
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './chat-image-message-modal-close.module.css';
 

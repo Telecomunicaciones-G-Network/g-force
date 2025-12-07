@@ -1,24 +1,25 @@
 'use client';
 
-import type { ChatImageMessageProps } from './chat-image-message.props';
+import type { ChatImageMessageContentProps } from './chat-image-message-content.props';
 
 import { MdDownload } from 'react-icons/md';
 
+import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
+import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
+import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
+
 import { extractExtensionFromMimeType } from '@filer/utils/extract-extension-from-mimetype.util';
 import { downloadFileByUrl } from '@filer/utils/download-file-by-url.util';
+import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { ResponsiveImage } from '../../../atoms/images/responsive-image';
-import { Modal } from '../../modals/modal';
-import { ChatMessage } from '../chat-message';
+import { ChatImageMessageModal } from '../chat-image-message-modal';
+import { ChatImageMessageModalClose } from '../chat-image-message-modal-close';
 
-import { ChatImageMessageModal } from './components/chat-image-message-modal';
-import { ChatImageMessageModalClose } from './components/chat-image-message-modal-close';
+import styles from './chat-image-message-content.module.css';
 
-import { cn } from '../../../../utils/cn.util';
-
-import styles from './chat-image-message.module.css';
-
-export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
+export const ChatImageMessageContent = (
+  props: Readonly<ChatImageMessageContentProps>,
+) => {
   const {
     customImageComponent,
     filename = '',
@@ -31,7 +32,7 @@ export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
   return (
     <ChatMessage bubbleClassName="w-full" {...rest}>
       <Modal
-        className={cn(styles.base__modal, 'relative sm:max-w-none')}
+        className={cn(styles.base, 'relative sm:max-w-none')}
         hideModalClose
         modalOverlayChildren={
           <>

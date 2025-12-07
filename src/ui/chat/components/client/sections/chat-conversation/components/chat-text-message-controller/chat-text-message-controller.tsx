@@ -1,13 +1,13 @@
 import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from '../chat-conversation-controller';
 
+import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
+
 import { isoToTime } from '@timer/utils/iso-to-time.util';
 
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 
-import { ChatTextMessage } from '@gnetwork-ui/components/organisms/blocks/chat-text-message';
-
-import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
+import { ChatTextMessage } from '@ui-chat/components/server/messages/chat-text-message';
 
 export const ChatTextMessageController = ({
   message,

@@ -54,6 +54,7 @@
     "chat-conversation-header": "react-components",
     "chat-conversation": "react-components",
     "chat-image-message": "react-components",
+    "chat-image-message-content": "react-components",
     "chat-image-message-controller": "react-components",
     "chat-image-message-modal": "react-components",
     "chat-image-message-modal-close": "react-components",

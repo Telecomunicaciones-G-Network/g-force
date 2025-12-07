@@ -3,13 +3,13 @@ import type { ChatConversationControllerProps } from '@ui-chat/components/client
 
 import { isoToTime } from '@timer/utils/iso-to-time.util';
 
-import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
-import { MediaStorageStatus } from '@module-chat/domain/enums/media-storage-status.enum';
-
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
 import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons/chat-message-skeleton';
 
-import { ChatImageMessage } from '@ui-chat/components/client/blocks/chat-image-message';
+import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
+import { MediaStorageStatus } from '@module-chat/domain/enums/media-storage-status.enum';
+
+import { ChatImageMessage } from '@ui-chat/components/client/messages/chat-image-message';
 
 export const ChatImageMessageController = ({
   message,
