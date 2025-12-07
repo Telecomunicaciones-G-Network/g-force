@@ -1,8 +1,7 @@
 .base__modal {
   background-color: transparent;
   border-radius: 0;
-  height: 100dvh;
-  width: 100%;
+  border: 2px solid limegreen;
 }
 
 .base__download_button {

@@ -15,6 +15,8 @@ export const ModalContent = ({
   className = '',
   children,
   customModalCloseComponent,
+  hideModalClose = false,
+  modalOverlayChildren,
 }: Readonly<ModalContentProps>) => {
   if (!children) {
     console.warn(
@@ -24,16 +26,32 @@ export const ModalContent = ({
 
   return (
     <DialogPortal>
-      <ModalOverlay />
+      <ModalOverlay>{modalOverlayChildren}</ModalOverlay>
       <DialogPrimitive.Content
         className={cn(
           styles.base,
-          'bg-white duration-200 gap-6 p-6 rounded-4xl w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
+          'bg-white duration-200 flex-col gap-6 p-6 rounded-4xl w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
           className,
         )}
+        onPointerDownOutside={(e) => {
+          const target = e.target as HTMLElement;
+
+          if (
+            target.tagName === 'BUTTON' ||
+            target.closest('button') ||
+            target.closest('[data-prevent-close]')
+          ) {
+            e.preventDefault();
+          }
+        }}
       >
         {children}
-        {customModalCloseComponent ? customModalCloseComponent : <ModalClose />}
+        {!hideModalClose &&
+          (customModalCloseComponent ? (
+            customModalCloseComponent
+          ) : (
+            <ModalClose />
+          ))}
       </DialogPrimitive.Content>
     </DialogPortal>
   );

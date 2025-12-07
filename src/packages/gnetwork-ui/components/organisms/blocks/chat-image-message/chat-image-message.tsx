@@ -31,8 +31,28 @@ export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
   return (
     <ChatMessage bubbleClassName="w-full" {...rest}>
       <Modal
-        className={cn(styles.base__modal, 'p-10 relative sm:max-w-none')}
-        customModalCloseComponent={<ChatImageMessageModalClose />}
+        className={cn(styles.base__modal, 'relative w-fit sm:max-w-none')}
+        hideModalClose
+        modalOverlayChildren={
+          <>
+            <ChatImageMessageModalClose />
+            <div data-prevent-close>
+              <button
+                className={cn(styles.base__download_button, 'bg-black')}
+                onClick={() =>
+                  downloadFileByUrl(
+                    imageUrl,
+                    filename,
+                    extractExtensionFromMimeType(mimeType),
+                  )
+                }
+                type="button"
+              >
+                <MdDownload className="fill-white h-6 w-6 size-6" />
+              </button>
+            </div>
+          </>
+        }
         triggerComponent={
           <div className="flex h-[154px] w-full">
             <ResponsiveImage
@@ -43,19 +63,6 @@ export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
           </div>
         }
       >
-        <button
-          className={cn(styles.base__download_button, 'bg-black')}
-          onClick={() =>
-            downloadFileByUrl(
-              imageUrl,
-              filename,
-              extractExtensionFromMimeType(mimeType),
-            )
-          }
-          type="button"
-        >
-          <MdDownload className="fill-white h-6 w-6 size-6" />
-        </button>
         <ChatImageMessageModal alt={imageAlt} src={imageUrl} />
       </Modal>
     </ChatMessage>

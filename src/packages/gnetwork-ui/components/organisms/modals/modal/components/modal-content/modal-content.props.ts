@@ -3,6 +3,9 @@ import type { ModalProps } from '../../modal.props';
 
 export interface ModalContentProps
   extends PropsWithChildren,
-    Pick<ModalProps, 'customModalCloseComponent'> {
+    Pick<
+      ModalProps,
+      'customModalCloseComponent' | 'hideModalClose' | 'modalOverlayChildren'
+    > {
   className?: string;
 }

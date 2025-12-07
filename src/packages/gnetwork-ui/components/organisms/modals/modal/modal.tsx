@@ -11,6 +11,8 @@ export const Modal = ({
   className = '',
   children,
   customModalCloseComponent,
+  hideModalClose = false,
+  modalOverlayChildren,
   triggerComponent,
 }: Readonly<ModalProps>) => {
   if (!triggerComponent) {
@@ -27,6 +29,8 @@ export const Modal = ({
           <ModalContent
             className={cn('sm:max-w-[425px]', className)}
             customModalCloseComponent={customModalCloseComponent}
+            hideModalClose={hideModalClose}
+            modalOverlayChildren={modalOverlayChildren}
           >
             <ModalHeader />
             {children}

@@ -1,6 +1,5 @@
 .base {
   display: flex;
-  flex-direction: column;
   left: 50%;
   position: fixed;
   top: 50%;
