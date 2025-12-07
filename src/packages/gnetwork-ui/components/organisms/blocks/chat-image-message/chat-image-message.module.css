@@ -1,6 +1,9 @@
 .base__modal {
   background-color: transparent;
   border-radius: 0;
+  height: auto;
+  padding: 0;
+  width: auto;
 }
 
 .base__download_button {

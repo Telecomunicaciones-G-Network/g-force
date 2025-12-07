@@ -6,8 +6,6 @@ import Img from 'react-cool-img';
 
 import { cn } from '../../../../utils/cn.util';
 
-import { useResponsiveImage } from './responsive-image.hook';
-
 import styles from './responsive-image.module.css';
 
 export const ResponsiveImage = ({
@@ -16,15 +14,14 @@ export const ResponsiveImage = ({
   className = '',
   customImageComponent,
   imageClassName = '',
+  imageRef,
   lazy = false,
   objectFit,
+  onLoad,
   ref,
   src,
   ...rest
 }: Readonly<ResponsiveImageProps>) => {
-  const { handleImageLoad, imageRef, orientationClassNames } =
-    useResponsiveImage(src);
-
   return (
     <>
       {customImageComponent || src ? (
@@ -41,12 +38,11 @@ export const ResponsiveImage = ({
               cache={cache}
               className={cn(
                 styles.base__image,
-                'h-full w-full',
-                orientationClassNames,
+                'aspect-square h-full object-cover w-full',
                 imageClassName,
               )}
               lazy={lazy}
-              onLoad={handleImageLoad}
+              onLoad={onLoad}
               src={src}
               style={{
                 objectFit,
