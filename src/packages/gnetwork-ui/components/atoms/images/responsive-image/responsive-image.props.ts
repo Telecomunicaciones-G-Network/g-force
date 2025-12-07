@@ -9,6 +9,7 @@ export interface ResponsiveImageProps extends ReactDiv {
   cache?: boolean;
   className?: string;
   customImageComponent?: ReactChild;
+  imageClassName?: string;
   lazy?: boolean;
   objectFit?: CSSObjectFitValue;
   src?: string;

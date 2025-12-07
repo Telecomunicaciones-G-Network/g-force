@@ -1,0 +1,8 @@
+.base {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 24px;
+}

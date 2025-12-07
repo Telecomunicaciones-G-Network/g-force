@@ -60,6 +60,8 @@ export const ChatImageMessage = ({
               sizes="100%"
             />
           }
+          imageAlt={imageAlt}
+          imageUrl={image}
           time={time}
           username={username}
           {...rest}
