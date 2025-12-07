@@ -31,7 +31,7 @@ export const ChatImageMessage = (props: Readonly<ChatImageMessageProps>) => {
   return (
     <ChatMessage bubbleClassName="w-full" {...rest}>
       <Modal
-        className={cn(styles.base__modal, 'relative w-fit sm:max-w-none')}
+        className={cn(styles.base__modal, 'relative sm:max-w-none')}
         hideModalClose
         modalOverlayChildren={
           <>

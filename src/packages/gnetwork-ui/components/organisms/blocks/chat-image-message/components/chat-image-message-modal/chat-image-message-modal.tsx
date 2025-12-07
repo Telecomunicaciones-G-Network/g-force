@@ -12,7 +12,13 @@ export const ChatImageMessageModal = ({
 }: Readonly<ChatImageMessageModalProps>) => (
   <div className="pt-10">
     <div className={styles.base}>
-      <ResponsiveImage alt={alt} cache className="h-fit w-fit" lazy src={src} />
+      <ResponsiveImage
+        alt={alt}
+        cache
+        className="h-auto w-auto"
+        lazy
+        src={src}
+      />
     </div>
   </div>
 );
