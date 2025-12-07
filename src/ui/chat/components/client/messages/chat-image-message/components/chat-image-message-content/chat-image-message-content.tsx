@@ -24,7 +24,7 @@ export const ChatImageMessageContent = (
     customImageComponent,
     filename = '',
     imageAlt = 'Image',
-    imageUrl = '',
+    imageSrc = '',
     mimeType = '',
     ...rest
   } = props;
@@ -42,7 +42,7 @@ export const ChatImageMessageContent = (
                 className={cn(styles.base__download_button, 'bg-black')}
                 onClick={() =>
                   downloadFileByUrl(
-                    imageUrl,
+                    imageSrc,
                     filename,
                     extractExtensionFromMimeType(mimeType),
                   )
@@ -64,7 +64,7 @@ export const ChatImageMessageContent = (
           </div>
         }
       >
-        <ChatImageMessageModal alt={imageAlt} src={imageUrl} />
+        <ChatImageMessageModal imageAlt={imageAlt} imageSrc={imageSrc} />
       </Modal>
     </ChatMessage>
   );

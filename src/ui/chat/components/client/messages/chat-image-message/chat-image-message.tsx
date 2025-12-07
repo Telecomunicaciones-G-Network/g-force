@@ -16,7 +16,7 @@ import { ChatImageMessageContent } from '../../messages/chat-image-message/compo
 export const ChatImageMessage = ({
   direction,
   filename = '',
-  imageAlt = '',
+  imageAlt = 'Image',
   mediaId = '',
   mimeType = '',
   time,
@@ -64,7 +64,7 @@ export const ChatImageMessage = ({
           }
           filename={filename}
           imageAlt={imageAlt}
-          imageUrl={image}
+          imageSrc={image}
           mimeType={mimeType}
           time={time}
           username={username}

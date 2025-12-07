@@ -9,11 +9,11 @@ import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive
 import { useDetectImageOrientation } from '@hook/use-detect-image-orientation.hook';
 
 export const ChatImageMessageModal = ({
-  alt = 'Image',
-  src = '',
+  imageAlt = 'Image',
+  imageSrc = '',
 }: Readonly<ChatImageMessageModalProps>) => {
   const { handleImageLoad, imageOrientation, imageRef } =
-    useDetectImageOrientation(src);
+    useDetectImageOrientation(imageSrc);
 
   return (
     <div
@@ -24,12 +24,12 @@ export const ChatImageMessageModal = ({
       }
     >
       <ResponsiveImage
-        alt={alt}
+        alt={imageAlt}
         className="rounded-lg"
         customImageComponent={
           <Image
             ref={imageRef}
-            alt={alt}
+            alt={imageAlt}
             className={
               imageOrientation === 'landscape'
                 ? 'object-cover'
@@ -38,7 +38,7 @@ export const ChatImageMessageModal = ({
             fill
             onLoad={handleImageLoad}
             sizes="100%"
-            src={src}
+            src={imageSrc}
           />
         }
       />

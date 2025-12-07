@@ -1,6 +1,6 @@
-import type { ResponsiveImageProps } from '@gnetwork-ui/components/atoms/images/responsive-image';
+import type { ChatImageMessageContentProps } from '../chat-image-message-content';
 
 export type ChatImageMessageModalProps = Pick<
-  ResponsiveImageProps,
-  'alt' | 'src'
+  ChatImageMessageContentProps,
+  'imageAlt' | 'imageSrc'
 >;
