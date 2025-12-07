@@ -1,5 +1,3 @@
-// PENDING:
-
 import type { Socket } from 'socket.io-client';
 import type { SocketConfig } from '../interfaces';
 import type {
@@ -24,7 +22,7 @@ import { SocketStatus as SocketStatusValues } from '../enums/socket-status.enum'
 export class SocketClient {
   private config: SocketConfig;
   private eventListeners: Map<string, Set<SocketEventListener>> = new Map();
-  private maxReconnectAttempts = 5;
+  private maxReconnectAttempts: number | typeof Infinity = Infinity;
   private reconnectAttempts = 0;
   private socket: Socket | null = null;
   private status: SocketStatus = SocketStatusValues.DISCONNECTED;
@@ -35,7 +33,11 @@ export class SocketClient {
       ...config,
     };
 
-    this.maxReconnectAttempts = this.config.reconnectionAttempts || 5;
+    // Si no se pasa reconnectionAttempts, usar Infinity para intentos infinitos
+    this.maxReconnectAttempts =
+      this.config.reconnectionAttempts !== undefined
+        ? this.config.reconnectionAttempts
+        : Infinity;
 
     if (this.config.autoConnect) {
       this.connect();
@@ -76,8 +78,12 @@ export class SocketClient {
     this.socket.on('connect_error', (error) => {
       this.status = SocketStatusValues.ERROR;
       this.reconnectAttempts++;
+      const maxAttemptsText =
+        this.maxReconnectAttempts === Infinity
+          ? '∞'
+          : this.maxReconnectAttempts;
       this.log(
-        `Connection error (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts}): ${error.message}`,
+        `Connection error (attempt ${this.reconnectAttempts}/${maxAttemptsText}): ${error.message}`,
         SocketLogLevels.ERROR,
       );
     });
@@ -138,10 +144,17 @@ export class SocketClient {
 
     this.log(`Connecting to ${fullUrl} with path: ${path}...`);
 
-    this.socket = io(fullUrl, {
+    // Si no se especificó reconnectionAttempts, usar Infinity para intentos infinitos
+    const socketOptions = {
       ...options,
       path: path,
-    });
+      reconnectionAttempts:
+        this.config.reconnectionAttempts !== undefined
+          ? this.config.reconnectionAttempts
+          : Infinity,
+    };
+
+    this.socket = io(fullUrl, socketOptions);
 
     this.setupEventHandlers();
   }

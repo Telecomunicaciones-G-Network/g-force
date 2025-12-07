@@ -3,6 +3,7 @@ import type { SocketConfig } from '@socketio/interfaces';
 import { ENVS } from '../envs/envs';
 
 export const socketConfig = {
+  autoConnect: true,
   debug: ENVS.NODE_ENV === 'development',
   namespace: ENVS.GNETWORK_SOCKET_NAMESPACE,
   path: ENVS.GNETWORK_SOCKET_PATH,
