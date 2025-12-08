@@ -7,6 +7,7 @@ import type {
 export interface ChatMessageProps extends ReactDiv {
   bubbleClassName?: string;
   direction: BubbleVariants['mode'];
+  isBot?: boolean;
   status?: BubbleStatus;
   time?: string;
   username: string;

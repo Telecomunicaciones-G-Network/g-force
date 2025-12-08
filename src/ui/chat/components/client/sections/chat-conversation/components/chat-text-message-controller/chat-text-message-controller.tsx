@@ -18,6 +18,7 @@ export const ChatTextMessageController = ({
         ? BubbleModes.INCOMING
         : BubbleModes.OUTGOING
     }
+    isBot={message?.sender?.isBot}
     status={message?.status.toLowerCase() as BubbleStatus}
     time={isoToTime(message?.createdAt ?? '')}
     username={message?.sender?.name ?? ''}

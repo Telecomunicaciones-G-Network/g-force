@@ -41,7 +41,7 @@ export class GetContactsMapper {
         direction: input?.latest_message?.direction,
         sender: {
           id: input?.latest_message?.sender?.id,
-          isBot: input?.latest_message?.sender?.is_bot,
+          isBot: input?.latest_message?.sender?.is_bot ?? false,
           name: input?.latest_message?.sender?.name,
         },
         status: input?.latest_message?.status,

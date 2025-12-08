@@ -1,5 +1,7 @@
 import type { ChatMessageProps } from './chat-message.props';
 
+import { MdOutlineSmartToy } from 'react-icons/md';
+
 import { Text } from '../../../atoms/texts/text';
 import { Bubble } from '../../../molecules/blocks/bubble';
 
@@ -15,6 +17,7 @@ export const ChatMessage = ({
   children,
   className = '',
   direction = BubbleModes.UNKNOWN,
+  isBot = false,
   ref,
   status = BubbleStatus.NONE,
   time = '',
@@ -50,6 +53,9 @@ export const ChatMessage = ({
       {...rest}
     >
       <div className={styles.base__info}>
+        {isBot && (
+          <MdOutlineSmartToy className="min-h-6 min-w-6 text-foreground size-6" />
+        )}
         {username && (
           <Text
             as="span"

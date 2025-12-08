@@ -68,7 +68,7 @@ export class GetChatMessagesMapper {
       readAt: input?.read_at,
       sender: {
         id: input?.sender?.id,
-        isBot: input?.sender?.is_bot,
+        isBot: input?.sender?.is_bot ?? false,
         name: input?.sender?.name,
       },
       sentAt: input?.sent_at,

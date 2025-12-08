@@ -25,6 +25,7 @@ export const ChatImageMessageController = ({
           }
           filename={message?.media?.filename}
           imageAlt={message?.media?.filename ?? message?.media?.id}
+          isBot={message?.sender?.isBot}
           mediaId={message?.media?.id}
           mimeType={message?.media?.mimeType}
           status={message?.status.toLowerCase() as BubbleStatus}
