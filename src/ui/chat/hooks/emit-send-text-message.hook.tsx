@@ -45,7 +45,9 @@ export const useEmitSendTextMessage = () => {
           !activeContact?.latestConversation?.id ||
           !data?.trim() ||
           !emitWithAck ||
-          !isConnectedAndStatusConnected
+          !isConnectedAndStatusConnected ||
+          !activeContact?.latestConversation?.agent?.id ||
+          !activeContact?.latestConversation?.agent?.name
         )
           return;
 
@@ -67,6 +69,7 @@ export const useEmitSendTextMessage = () => {
           readAt: null,
           sender: {
             id: activeContact?.latestConversation?.agent?.id,
+            isBot: false,
             name: activeContact?.latestConversation?.agent?.name,
           },
           sentAt: null,

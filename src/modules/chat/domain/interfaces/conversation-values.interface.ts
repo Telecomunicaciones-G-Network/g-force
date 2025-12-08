@@ -4,7 +4,7 @@ import type { TeamValues } from './team-values.interface';
 
 export interface ConversationValues {
   id: string;
-  agent: AgentValues;
+  agent: AgentValues | null;
   status: ConversationStatus;
   team: TeamValues | null;
 }

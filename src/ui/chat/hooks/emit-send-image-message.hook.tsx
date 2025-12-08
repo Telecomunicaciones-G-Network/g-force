@@ -46,7 +46,9 @@ export const useEmitSendImageMessage = () => {
         !activeContact?.latestConversation?.id ||
         !emitWithAck ||
         !file ||
-        !isConnectedAndStatusConnected
+        !isConnectedAndStatusConnected ||
+        !activeContact?.latestConversation?.agent?.id ||
+        !activeContact?.latestConversation?.agent?.name
       )
         return;
 
@@ -76,6 +78,7 @@ export const useEmitSendImageMessage = () => {
         readAt: null,
         sender: {
           id: activeContact?.latestConversation?.agent?.id,
+          isBot: false,
           name: activeContact?.latestConversation?.agent?.name,
         },
         sentAt: null,

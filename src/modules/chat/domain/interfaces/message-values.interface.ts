@@ -24,6 +24,7 @@ export interface MessageReactionValues {
 
 export interface MessageSenderValues {
   id: string;
+  isBot: boolean;
   name: string;
 }
 

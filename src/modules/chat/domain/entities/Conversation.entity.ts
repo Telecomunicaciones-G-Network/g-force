@@ -8,7 +8,7 @@ import type { ConversationStatus } from '../types';
 export class Conversation {
   constructor(
     public id: string,
-    public agent: AgentValues,
+    public agent: AgentValues | null = null,
     public status: ConversationStatus,
     public team: TeamValues | null = null,
   ) {}

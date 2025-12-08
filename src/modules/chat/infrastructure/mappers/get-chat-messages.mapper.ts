@@ -66,7 +66,11 @@ export class GetChatMessagesMapper {
           emoji: reaction.emoji,
         })) ?? [],
       readAt: input?.read_at,
-      sender: input?.sender,
+      sender: {
+        id: input?.sender?.id,
+        isBot: input?.sender?.is_bot,
+        name: input?.sender?.name,
+      },
       sentAt: input?.sent_at,
       status: input?.status,
       text: input?.text,

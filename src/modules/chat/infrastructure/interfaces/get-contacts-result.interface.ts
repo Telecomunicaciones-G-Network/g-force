@@ -18,13 +18,14 @@ export interface GetContactsResultLatestConversationTeam {
 
 export interface GetContactsResultLatestConversation {
   id: string;
-  agent: GetContactsResultLatestConversationAgent;
+  agent: GetContactsResultLatestConversationAgent | null;
   status: ConversationStatus;
   team: GetContactsResultLatestConversationTeam | null;
 }
 
 export interface GetContactsResultLatestMessageSender {
   id: string;
+  is_bot: boolean;
   name: string;
 }
 

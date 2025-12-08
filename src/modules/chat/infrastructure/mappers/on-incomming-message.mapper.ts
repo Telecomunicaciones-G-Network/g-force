@@ -47,6 +47,7 @@ export class OnIncommingMessageMapper {
       readAt: input?.timestamp,
       sender: {
         id: contact?.id,
+        isBot: false,
         name: contact?.name,
       },
       sentAt: input?.timestamp,

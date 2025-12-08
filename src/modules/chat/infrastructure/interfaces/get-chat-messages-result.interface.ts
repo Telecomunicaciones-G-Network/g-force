@@ -39,6 +39,7 @@ export interface GetChatMessagesResultReaction {
 
 export interface GetChatMessagesResultSender {
   id: string;
+  is_bot: boolean;
   name: string;
 }
 
