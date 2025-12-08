@@ -39,9 +39,10 @@ export const useEmitSendTextMessage = () => {
     async ({
       data,
       onSuccess,
-    }: Omit<EmitSendTextMessageRequest, 'latestConversationId'>) => {
+    }: Omit<EmitSendTextMessageRequest, 'contactId'>) => {
       try {
         if (
+          !activeContact?.id ||
           !activeContact?.latestConversation?.id ||
           !data?.trim() ||
           !emitWithAck ||
@@ -81,7 +82,7 @@ export const useEmitSendTextMessage = () => {
 
         const request = EmitSendTextMessageMapper.mapTo({
           data,
-          latestConversationId: activeContact?.latestConversation?.id,
+          contactId: activeContact?.id,
         });
 
         addMessage({ ...newMessage });

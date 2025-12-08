@@ -1,5 +1,5 @@
 export interface EmitSendTextMessageRequest {
+  contactId: string;
   data: string;
-  latestConversationId: string;
   onSuccess?: () => void;
 }

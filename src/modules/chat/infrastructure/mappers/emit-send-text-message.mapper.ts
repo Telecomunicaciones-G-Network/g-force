@@ -22,7 +22,7 @@ export class EmitSendTextMessageMapper {
     output: Omit<EmitSendTextMessageRequest, 'onSuccess'>,
   ): EmitSendTextMessageRequestDTO | null {
     return {
-      conversation_id: output?.latestConversationId,
+      contact_id: output?.contactId,
       text: output?.data?.trim(),
     };
   }

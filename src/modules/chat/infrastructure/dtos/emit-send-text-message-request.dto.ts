@@ -1,4 +1,4 @@
 export interface EmitSendTextMessageRequestDTO {
-  conversation_id: string;
+  contact_id: string;
   text: string;
 }
