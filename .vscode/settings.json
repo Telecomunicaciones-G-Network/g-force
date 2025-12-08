@@ -53,6 +53,7 @@
     "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
     "chat-conversation": "react-components",
+    "chat-details-contact-close-conversation-button": "react-components",
     "chat-image-message": "react-components",
     "chat-image-message-content": "react-components",
     "chat-image-message-controller": "react-components",
@@ -442,7 +443,11 @@
       "name": "Usecase Post",
       "base": "powershell",
       "color": "yellow-700",
-      "fileNames": ["login.usecase.ts", "upload-chat-media.usecase.ts"]
+      "fileNames": [
+        "finish-chat-conversation.usecase.ts",
+        "login.usecase.ts",
+        "upload-chat-media.usecase.ts"
+      ]
     }
   ],
   // Peacok Configuration

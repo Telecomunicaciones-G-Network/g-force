@@ -5,10 +5,11 @@ import Image from 'next/image';
 import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
-import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
+
+import { ChatDetailsContactCloseConversationButton } from '@ui-chat/components/client/buttons/chat-details-contact-close-conversation-button';
 
 import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-content-layout';
 
@@ -96,8 +97,6 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => (
         </Text>
       </div>
     </div>
-    <Button className="min-h-[48px]" color="gray" fullWidth scheme="outline">
-      Cerrar conversación
-    </Button>
+    <ChatDetailsContactCloseConversationButton />
   </ChatDetailsTabContentLayout>
 );

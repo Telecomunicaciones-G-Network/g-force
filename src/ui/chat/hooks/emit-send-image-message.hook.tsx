@@ -135,7 +135,7 @@ export const useEmitSendImageMessage = () => {
 
       console.log('parseAck', parseAck);
 
-      const sounder = new Sounder('/sounds/whatsapp_emit_message.mp3');
+      const sounder = new Sounder('/sounds/whatsapp-emit-message.mp3');
 
       addMessage({ ...newMessage });
       sounder.playAudio();

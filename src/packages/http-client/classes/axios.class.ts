@@ -14,7 +14,6 @@ import type {
 } from '../interfaces';
 
 import axios from 'axios';
-
 import Cookies from 'js-cookie';
 
 import { X_MEDIA_TYPE_HEADER_DICTIONARY } from '../dictionaries/x-media-type-header.dictionary';
@@ -34,8 +33,17 @@ export class Axios implements HttpAdapter {
 
   private applyRequestInterceptor() {
     this.axiosInstance.interceptors.request.use(
-      (config: InternalAxiosRequestConfig) => {
-        const token = Cookies.get('token');
+      async (config: InternalAxiosRequestConfig) => {
+        let token: string | undefined;
+
+        try {
+          const { cookies } = await import('next/headers');
+          const cookieStore = await cookies();
+
+          token = cookieStore.get('token')?.value;
+        } catch {
+          token = Cookies.get('token');
+        }
 
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
@@ -156,8 +164,14 @@ export class Axios implements HttpAdapter {
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
+    console.log('endpoint', endpoint);
+    console.log('body', body);
+    console.log('configuration', configuration);
+
+    const axiosConfig = this.sanitizeConfiguration(configuration || {});
+
     return this.axiosInstance
-      .post<R>(endpoint, body, configuration)
+      .post<R>(endpoint, body, axiosConfig)
       .then((response) => {
         if (!response?.data && response.statusText === 'OK') {
           throw new Error('Axios post request has failed!');

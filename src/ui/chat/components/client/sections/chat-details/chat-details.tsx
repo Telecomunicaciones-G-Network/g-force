@@ -1,5 +1,3 @@
-// PENDING:
-
 'use client';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';

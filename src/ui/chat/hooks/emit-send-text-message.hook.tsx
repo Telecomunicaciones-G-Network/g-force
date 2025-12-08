@@ -104,7 +104,7 @@ export const useEmitSendTextMessage = () => {
         if (response?.messageId && newMessage) {
           updateOneMessageId(temporalMessageId, response?.messageId);
 
-          const sounder = new Sounder('/sounds/whatsapp_emit_message.mp3');
+          const sounder = new Sounder('/sounds/whatsapp-emit-message.mp3');
 
           sounder.playAudio();
           onSuccess?.();

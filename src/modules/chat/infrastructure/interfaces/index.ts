@@ -1,3 +1,4 @@
+export type { FinishChatConversationResult } from './finish-chat-conversation-result.interface';
 export type {
   GetChatMessagesResult,
   GetChatMessagesResultContact,

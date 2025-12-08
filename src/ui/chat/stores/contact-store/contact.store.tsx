@@ -50,6 +50,13 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
       ),
     });
   },
+  deleteOneContactById: (contactId: string) => {
+    const { contacts } = get();
+
+    set({
+      contacts: contacts?.filter((contact) => contact?.id !== contactId),
+    });
+  },
   existContactOnStore: (contactId: string): boolean => {
     const { contacts } = get();
 

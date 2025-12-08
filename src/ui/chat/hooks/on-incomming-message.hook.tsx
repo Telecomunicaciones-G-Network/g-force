@@ -44,7 +44,7 @@ export const useOnIncommingMessage = ({
         newMessage?.media?.storageStatus === MediaStorageStatus.AVAILABLE ||
         !newMessage?.media
       ) {
-        const sounder = new Sounder('/sounds/whatsapp_on_message.mp3');
+        const sounder = new Sounder('/sounds/whatsapp-on-message.mp3');
 
         sounder.playAudio();
       }

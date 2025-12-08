@@ -3,6 +3,7 @@ export type { EmitMarkMessageAsReadResponseDTO } from './emit-mark-message-as-re
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';
 export type { EmitSendTextMessageRequestDTO } from './emit-send-text-message-request.dto';
 export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-response.dto';
+export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';
 export type { GetChatMessagesRequestDTO } from './get-chat-messages-request.dto';
 export type { GetChatMessagesResponseDTO } from './get-chat-messages-response.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';

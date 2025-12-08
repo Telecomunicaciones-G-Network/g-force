@@ -40,7 +40,7 @@ export const useOnNewMessageReceived = () => {
       if (!response?.conversationId || !response?.contactId) return;
 
       if (response?.contactId !== activeContact?.id) {
-        const sounder = new Sounder('/sounds/whatsapp_notification.mp3');
+        const sounder = new Sounder('/sounds/whatsapp-notification.mp3');
 
         sounder.playAudio();
       }

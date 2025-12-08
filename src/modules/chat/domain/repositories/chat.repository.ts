@@ -8,6 +8,7 @@ import type {
 } from '../interfaces';
 
 export interface ChatRepository {
+  finishChatConversation(contactId: string): Promise<boolean>;
   getChatMediaById(mediaId: string): Promise<string>;
   getChatMessages(
     request: GetChatMessagesRequest,

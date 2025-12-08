@@ -8,12 +8,15 @@ import type {
 } from '../../domain/interfaces';
 import type { ChatRepository } from '../../domain/repositories';
 
+import { finishChatConversationService } from '../services/finish-chat-conversation.service';
 import { getChatMediaByIdService } from '../services/get-chat-media-by-id.service';
 import { getChatMessagesService } from '../services/get-chat-messages.service';
 import { getContactsService } from '../services/get-contacts.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
 export const httpChatRepository: ChatRepository = {
+  finishChatConversation: async (contactId: string): Promise<boolean> =>
+    finishChatConversationService(contactId),
   getChatMediaById: async (mediaId: string): Promise<string> =>
     getChatMediaByIdService(mediaId),
   getChatMessages: async (
