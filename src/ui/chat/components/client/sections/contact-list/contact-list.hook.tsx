@@ -8,6 +8,7 @@ import { useMediaQuery } from '@hook/use-media-query.hook';
 
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 
+import { useOnConversationsAssigned } from '@ui-chat/hooks/on-conversations-assigned.hook';
 import { useOnNewMessageReceived } from '@ui-chat/hooks/on-new-message-received.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
@@ -17,6 +18,7 @@ export const useContactList = (contactsResponse: ContactValues[]) => {
   const contacts = useContactStore((state) => state.contacts);
 
   const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
+  useOnConversationsAssigned();
   useOnNewMessageReceived();
 
   const setContacts = useContactStore((state) => state.setContacts);
