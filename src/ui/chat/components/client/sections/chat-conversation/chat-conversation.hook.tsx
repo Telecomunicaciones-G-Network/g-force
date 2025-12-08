@@ -39,7 +39,8 @@ export const useChatConversation = () => {
       }),
     enabled: !!activeContact?.id,
     gcTime: 0,
-    refetchOnMount: true,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
     staleTime: 0,
   });
 

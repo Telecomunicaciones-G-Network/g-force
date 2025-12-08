@@ -9,6 +9,10 @@ import { Sidebar } from '@ui-core/components/server/sidebars/sidebar';
 
 import { AuthProvider } from '@ui-auth/providers/auth-provider/auth.provider';
 
+import { SocketProvider } from '@socketio/providers/socket.provider';
+
+import { socketConfig } from '@ui-core/config/socket.config';
+
 export default async function PrivateLayout({
   children,
 }: Readonly<PropsWithChildren>) {
@@ -16,12 +20,14 @@ export default async function PrivateLayout({
 
   return (
     <AuthProvider token={authData?.token ?? null} user={authData?.user ?? null}>
-      <DashboardLayout
-        headerContent={<Navbar hideUserActions />}
-        sidebarContent={<Sidebar />}
-      >
-        {children}
-      </DashboardLayout>
+      <SocketProvider config={socketConfig} token={authData?.token ?? null}>
+        <DashboardLayout
+          headerContent={<Navbar hideUserActions />}
+          sidebarContent={<Sidebar />}
+        >
+          {children}
+        </DashboardLayout>
+      </SocketProvider>
     </AuthProvider>
   );
 }
