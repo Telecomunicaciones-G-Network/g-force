@@ -8,15 +8,18 @@ import { alertSchemeVariant } from './variants/alert-scheme.variant';
 
 import styles from './alert.module.css';
 
-export const alertVariants = cva([styles.base, 'border border-solid'], {
-  variants: {
-    scheme: alertSchemeVariant,
+export const alertVariants = cva(
+  [styles.base, 'border border-solid min-w-[min(352px,100%)] max-w-[352px]'],
+  {
+    variants: {
+      scheme: alertSchemeVariant,
+    },
+    compoundVariants: [],
+    defaultVariants: {
+      scheme: 'neutral',
+    },
   },
-  compoundVariants: [],
-  defaultVariants: {
-    scheme: 'neutral',
-  },
-});
+);
 
 export const getAlertClassNames = ({
   className = '',

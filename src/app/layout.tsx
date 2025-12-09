@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 
 import 'reflect-metadata';
 
+import { Toaster } from 'sonner';
+
 import { ReactScanScript } from '@ui-core/components/server/scripts/react-scan-script';
 
 import { inter } from '@ui-core/fonts/inter.font';
@@ -25,7 +27,10 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
       <body
         className={`${inter.variable} antialiased bg-background text-foreground`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

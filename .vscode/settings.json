@@ -109,6 +109,7 @@
     "skeleton": "react-components",
     "socketio": "wakatime",
     "sounder": "audio",
+    "toast": "react-components",
     "tooltip-base": "react-components",
     "tooltip-content": "react-components",
     "tooltip-trigger": "react-components",
