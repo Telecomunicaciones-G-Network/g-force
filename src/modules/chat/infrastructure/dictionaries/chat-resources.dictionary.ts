@@ -4,6 +4,8 @@ export const CHAT_RESOURCES = {
   GET_CHAT_MEDIA_BY_ID: (mediaId: string): string => `/chat/media/${mediaId}`,
   GET_CHAT_MESSAGES: (contactId: string): string =>
     `/chat/contacts/${contactId}/messages`,
+  GET_CONTACT_CONTRACTS: (contactId: string): string =>
+    `/chat/contacts/${contactId}/client/contracts`,
   GET_CONTACT_INFORMATION: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/info`,
   GET_CONTACT_INVOICES: (contactId: string): string =>

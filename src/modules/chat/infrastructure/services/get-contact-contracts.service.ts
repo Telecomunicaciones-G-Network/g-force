@@ -1,8 +1,8 @@
 import type {
-  GetContactInvoicesRequest,
-  GetContactInvoicesResponse,
+  GetContactContractsRequest,
+  GetContactContractsResponse,
 } from '../../domain/interfaces';
-import type { GetContactInvoicesResponseDTO } from '../dtos';
+import type { GetContactContractsResponseDTO } from '../dtos';
 
 import { BaseException } from '@http-client/exceptions/base.exception';
 
@@ -10,14 +10,14 @@ import { gnetworkAxiosApiClient } from '@ui-core/fetchers/gnetwork-axios-api-cli
 
 import { CHAT_RESOURCES } from '../dictionaries/chat-resources.dictionary';
 
-import { GetContactInvoicesMapper } from '../mappers/get-contact-invoices.mapper';
+import { GetContactContractsMapper } from '../mappers/get-contact-contracts.mapper';
 
-export const getContactInvoicesService = async (
-  request: GetContactInvoicesRequest,
-): Promise<GetContactInvoicesResponse> => {
+export const getContactContractsService = async (
+  request: GetContactContractsRequest,
+): Promise<GetContactContractsResponse> => {
   const response =
-    await gnetworkAxiosApiClient.get<GetContactInvoicesResponseDTO>(
-      CHAT_RESOURCES.GET_CONTACT_INVOICES(request?.contactId),
+    await gnetworkAxiosApiClient.get<GetContactContractsResponseDTO>(
+      CHAT_RESOURCES.GET_CONTACT_CONTRACTS(request?.contactId),
       {
         searchParams: {
           page_size: request?.limit?.toString() ?? '20',
@@ -30,10 +30,10 @@ export const getContactInvoicesService = async (
     throw new BaseException({
       message:
         response?.error ??
-        `Error al obtener las facturas del contacto con id: ${request?.contactId}`,
+        `Error al obtener los contratos del contacto con id: ${request?.contactId}`,
       status: response?.status,
     });
   }
 
-  return GetContactInvoicesMapper.mapFrom(response);
+  return GetContactContractsMapper.mapFrom(response);
 };

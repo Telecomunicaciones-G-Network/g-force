@@ -17,7 +17,7 @@ export const useChatInvoices = () => {
     queryKey: [
       CHAT_TAGS.GET_CHAT_CONTACT_INVOICES,
       activeContact?.id,
-      { limit: 20, page: 1 },
+      { page_size: 20, page: 1 },
     ],
     queryFn: () =>
       GetContactInvoicesQuery({

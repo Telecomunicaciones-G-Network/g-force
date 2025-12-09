@@ -12,6 +12,8 @@ export type { EmitSendTextMessageRequest } from './emit-send-text-message-reques
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';
+export type { GetContactContractsRequest } from './get-contact-contracts-request.interface';
+export type { GetContactContractsResponse } from './get-contact-contracts-response.interface';
 export type {
   GetContactInformationResponse,
   GetContactInformationResponseData,

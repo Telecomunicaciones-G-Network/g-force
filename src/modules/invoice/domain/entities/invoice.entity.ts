@@ -1,7 +1,7 @@
 import type { InvoiceValues } from '../interfaces';
 import type { InvoicePaymentMethod, InvoiceStatus } from '../types';
 
-export class InvoiceEntity {
+export class Invoice {
   constructor(
     public amount: number = 0,
     public dateEmission: string = new Date().toISOString().replace('Z', '000Z'),
