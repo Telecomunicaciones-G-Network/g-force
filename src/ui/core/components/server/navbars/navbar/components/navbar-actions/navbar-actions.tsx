@@ -1,0 +1,84 @@
+'use client';
+
+import type { NavbarActionsProps } from './navbar-actions.props';
+
+import {
+  MdKeyboardArrowDown,
+  MdLogout,
+  MdNotificationsNone,
+} from 'react-icons/md';
+
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
+import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
+import { DropdownHeader } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-header';
+import { DropdownItem } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-item';
+import { DropdownSeparator } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-separator';
+import { Dropdown } from '@gnetwork-ui/components/organisms/dropdowns/dropdown';
+
+import { usernameToInitials } from '@stringify/utils/username-to-initials.util';
+
+import { useNavbarActions } from './navbar-actions.hook';
+
+import styles from './navbar-actions.module.css';
+
+export const NavbarActions = ({
+  hideNotificationsButton = false,
+  hideUserActions = false,
+  userFirstName = '',
+  userFullName = '',
+}: NavbarActionsProps) => {
+  const { logout } = useNavbarActions();
+
+  return (
+    <div className={styles.base}>
+      {!hideNotificationsButton && (
+        <MdNotificationsNone className="cursor-pointer min-h-6 min-w-6 size-6" />
+      )}
+      {userFullName && !hideUserActions && (
+        <Dropdown
+          align="start"
+          alignOffset={-82}
+          className="gap-[10px] min-w-[237px]"
+          triggerComponent={
+            <Button
+              className="gap-2 justify-between min-w-[154px] px-1.5 py-1.5 shadow-2xs"
+              isStatic
+            >
+              <div className="flex gap-2 items-center">
+                {userFullName && (
+                  <div className="relative h-[28px] w-[28px]">
+                    <Avatar username={usernameToInitials(userFullName)} />
+                  </div>
+                )}
+                <Text as="span" level="small" scheme="paragraph">
+                  {userFirstName || ''}
+                </Text>
+              </div>
+              <MdKeyboardArrowDown className="size-6" />
+            </Button>
+          }
+          side="bottom"
+          sideOffset={8}
+        >
+          <DropdownHeader>hola</DropdownHeader>
+          <DropdownSeparator />
+          <DropdownItem
+            className="gap-2 min-h-8 p-0 focus:bg-transparent"
+            onClick={logout}
+          >
+            <MdLogout className="fill-neutral-800 min-h-6 min-w-6 size-6" />
+            <Text
+              as="span"
+              className="text-neutral-800"
+              level="small"
+              scheme="paragraph"
+            >
+              Salir
+            </Text>
+          </DropdownItem>
+        </Dropdown>
+      )}
+    </div>
+  );
+};

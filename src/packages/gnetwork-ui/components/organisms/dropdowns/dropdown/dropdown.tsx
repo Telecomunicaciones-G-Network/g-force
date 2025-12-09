@@ -10,7 +10,7 @@ export const Dropdown = ({
   align = 'start',
   alignOffset = 0,
   children,
-  contentClassName = '',
+  className = '',
   side = 'bottom',
   triggerComponent,
   sideOffset = 4,
@@ -30,7 +30,7 @@ export const Dropdown = ({
           <DropdownContainer
             align={align}
             alignOffset={alignOffset}
-            className={contentClassName}
+            className={className}
             side={side}
             sideOffset={sideOffset}
           >

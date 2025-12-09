@@ -10,7 +10,7 @@ export const DropdownSeparator = ({
   ...rest
 }: Readonly<DropdownSeparatorProps>) => (
   <DropdownMenuPrimitive.Separator
-    className={cn('-mx-1 my-1 h-px bg-muted', className)}
+    className={cn('h-px bg-neutral-200', className)}
     ref={ref}
     {...rest}
   />

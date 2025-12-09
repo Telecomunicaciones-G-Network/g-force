@@ -9,6 +9,6 @@ export interface DropdownProps
       DropdownContainerProps,
       'align' | 'alignOffset' | 'side' | 'sideOffset'
     > {
-  contentClassName?: string;
+  className?: string;
   triggerComponent: ReactChild;
 }

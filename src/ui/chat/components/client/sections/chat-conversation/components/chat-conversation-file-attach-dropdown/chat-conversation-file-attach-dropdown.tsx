@@ -34,7 +34,7 @@ export const ChatConversationFileAttachDropdown = () => {
     <Dropdown
       align="start"
       alignOffset={0}
-      contentClassName="dropdown-shadow-none gap-0 min-w-[171px] -translate-x-3"
+      className="dropdown-shadow-none gap-0 min-w-[171px] -translate-x-3"
       onOpenChange={onOpenChange}
       open={sendMode === ChatSendModes.TEXT ? isDropdownOpen : false}
       side="top"
