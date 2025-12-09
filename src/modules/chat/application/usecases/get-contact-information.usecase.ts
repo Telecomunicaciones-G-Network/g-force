@@ -8,7 +8,7 @@ import { BadRequestException } from '@http-client/exceptions/bad-request.excepti
 
 export const getContactInformationUsecase = async (
   chatRepository: ChatRepository,
-  contactId: string,
+  contactId?: string,
 ): Promise<GetContactInformationResponse> => {
   if (!contactId) {
     throw new BadRequestException('Contact ID is required');

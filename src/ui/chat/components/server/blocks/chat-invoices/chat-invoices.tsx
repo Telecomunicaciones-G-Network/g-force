@@ -25,7 +25,7 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
   return (
     <ChatDetailsTabContentLayout title={title}>
       {isLoading && <ChatInvoicesSkeleton />}
-      {isError && (
+      {!isLoading && isError && (
         <div className={styles.base__invoices_empty}>
           <MdMoodBad className="min-h-10 min-w-10 size-10" />
           <Text

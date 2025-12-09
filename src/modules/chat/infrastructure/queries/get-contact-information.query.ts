@@ -5,7 +5,7 @@ import { getContactInformationUsecase } from '../../application/usecases/get-con
 import { httpChatRepository } from '../repositories/http-chat.repository';
 
 export const GetContactInformationQuery = async (
-  contactId: string,
+  contactId?: string,
 ): Promise<GetContactInformationResponse> => {
   return await getContactInformationUsecase(httpChatRepository, contactId);
 };
