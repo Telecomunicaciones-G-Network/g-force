@@ -441,6 +441,7 @@
       "fileNames": [
         "get-chat-media-by-id.usecase.ts",
         "get-chat-messages.usecase.ts",
+        "get-contact-information.usecase.ts",
         "get-contact-invoices.usecase.ts",
         "get-contacts.usecase.ts"
       ]
