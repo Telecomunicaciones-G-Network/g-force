@@ -13,6 +13,8 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
     defaultValue || ChatDetailTabs.CONTACT,
   );
 
+  const activeContact = useContactStore((state) => state.activeContact);
+
   const setChatMode = useContactStore((state) => state.setChatMode);
 
   const changeActiveTab = (tab: string) => setActiveTab(tab as ChatDetailTab);
@@ -22,8 +24,10 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
   const isActiveTab = (tab: ChatDetailTab) => activeTab === tab;
 
   return {
+    activeContact,
     activeTab,
     changeActiveTab,
+    contactAvatarSrc: null,
     goBackChat,
     isActiveTab,
   };

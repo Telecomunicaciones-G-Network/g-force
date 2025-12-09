@@ -19,6 +19,7 @@ import { TabButton } from '@gnetwork-ui/components/organisms/tabs/tab-button/tab
 import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
+import { usernameToInitials } from '@stringify/utils/username-to-initials.util';
 
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
 import { ChatContracts } from '@ui-chat/components/server/blocks/chat-contracts';
@@ -35,8 +36,14 @@ import { useChatDetailTabs } from './chat-detail-tabs.hook';
 import styles from './chat-detail-tabs.module.css';
 
 export const ChatDetailTabs = () => {
-  const { activeTab, changeActiveTab, goBackChat, isActiveTab } =
-    useChatDetailTabs(ChatDetailTabsValues.CONTACT);
+  const {
+    activeContact,
+    activeTab,
+    changeActiveTab,
+    contactAvatarSrc,
+    goBackChat,
+    isActiveTab,
+  } = useChatDetailTabs(ChatDetailTabsValues.CONTACT);
 
   return (
     <Tabs
@@ -60,24 +67,46 @@ export const ChatDetailTabs = () => {
             {chatDetailTabsDictionary?.[activeTab]}
           </Text>
         </div>
-        <div
-          className={cn(
-            styles.base__header_image,
-            'min-h-[138px] tablet:min-h-[172px]',
-          )}
-        >
-          <ResponsiveImage
-            customImageComponent={
-              <Image
-                alt="Contact image"
-                className="responsive-image-cover rounded-lg"
-                fill
-                src="/images/chat_user_avatar_1_contact.png"
-                sizes="100%"
-              />
-            }
-          />
-        </div>
+        {contactAvatarSrc ? (
+          <div
+            className={cn(
+              styles.base__header_image,
+              'min-h-[138px] tablet:min-h-[172px]',
+            )}
+          >
+            <ResponsiveImage
+              customImageComponent={
+                <Image
+                  alt="Contact image"
+                  className="responsive-image-cover rounded-lg"
+                  fill
+                  src="/images/chat_user_avatar_1_contact.png"
+                  sizes="100%"
+                />
+              }
+            />
+          </div>
+        ) : (
+          activeContact?.name && (
+            <div
+              className={styles.base__avatar_container}
+              style={{
+                backgroundColor: activeContact?.id
+                  ? `#${activeContact?.id?.slice(-6)}`
+                  : '#cccccc',
+              }}
+            >
+              <Text
+                as="span"
+                className="text-chromatic"
+                level="xxlarge"
+                scheme="heading"
+              >
+                {usernameToInitials(activeContact?.name ?? '')}
+              </Text>
+            </div>
+          )
+        )}
       </div>
       <TabsTriggers
         className={cn(

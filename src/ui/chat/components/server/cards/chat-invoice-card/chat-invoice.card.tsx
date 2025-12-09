@@ -1,6 +1,6 @@
 import type { ChatInvoiceCardProps } from './chat-invoice-card.props';
 
-import { InvoiceStatus } from '@module-invoice/domain/enums/invoice-status.enum';
+import { invoiceStatusDictionary } from '@module-invoice/infrastructure/dictionaries/invoice-status.dictionary';
 
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
@@ -8,6 +8,8 @@ import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
 import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
+
+import { invoiceStatusTagColorDictionary } from '@ui-chat/dictionaries/invoice-status-tag-color.dictionary';
 
 import styles from './chat-invoice-card.module.css';
 
@@ -113,31 +115,25 @@ export const ChatInvoiceCard = ({
         </>
       )}
       {status && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Estado:
-            </Text>
-            <Tag
-              color={
-                status === InvoiceStatus.PAID
-                  ? TagColors.GREEN
-                  : TagColors.YELLOW
-              }
-            >
-              {status}
-            </Tag>
-          </div>
-          <Separator />
-        </>
+        <div className={styles.base__info}>
+          <Text
+            as="label"
+            className="text-neutral-900"
+            level="small"
+            scheme="label"
+          >
+            Estado:
+          </Text>
+          <Tag
+            color={invoiceStatusTagColorDictionary?.[status] ?? TagColors.GRAY}
+          >
+            {invoiceStatusDictionary?.[status]}
+          </Tag>
+        </div>
       )}
       {datePayment && (
         <>
+          <Separator />
           <div className={styles.base__info}>
             <Text
               as="label"
@@ -157,29 +153,31 @@ export const ChatInvoiceCard = ({
               {datePayment}
             </Text>
           </div>
-          <Separator />
         </>
       )}
       {paymentMethods && paymentMethods.length > 0 && paymentMethods?.[0] && (
-        <div className={styles.base__info}>
-          <Text
-            as="label"
-            className="text-neutral-900"
-            level="small"
-            scheme="label"
-          >
-            Método:
-          </Text>
-          <Text
-            as="span"
-            align="end"
-            className="text-neutral-400"
-            level="small"
-            scheme="label"
-          >
-            {paymentMethods?.[0]}
-          </Text>
-        </div>
+        <>
+          <Separator />
+          <div className={styles.base__info}>
+            <Text
+              as="label"
+              className="text-neutral-900"
+              level="small"
+              scheme="label"
+            >
+              Método:
+            </Text>
+            <Text
+              as="span"
+              align="end"
+              className="text-neutral-400"
+              level="small"
+              scheme="label"
+            >
+              {paymentMethods?.[0]}
+            </Text>
+          </div>
+        </>
       )}
     </div>
   </Accordion>

@@ -1,1 +1,1 @@
-export type InvoiceStatus = 'Pagado' | 'Pendiente';
+export type InvoiceStatus = 'Pagado' | 'Pendiente' | 'Vencido';

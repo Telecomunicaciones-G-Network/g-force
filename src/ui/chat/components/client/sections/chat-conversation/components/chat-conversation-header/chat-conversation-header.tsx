@@ -35,14 +35,16 @@ export const ChatConversationHeader = () => {
                 username={activeContact?.name}
               />
             </button>
-            <Text
-              as="h3"
-              className="font-medium text-sm lg:font-medium lg:text-lg"
-              level="large"
-              scheme="label"
-            >
-              {activeContact?.name}
-            </Text>
+            <button onClick={goToChatDetails} type="button">
+              <Text
+                as="h3"
+                className="font-medium text-sm lg:font-medium lg:text-lg"
+                level="large"
+                scheme="label"
+              >
+                {activeContact?.name}
+              </Text>
+            </button>
           </>
         )}
       </div>
