@@ -42,7 +42,7 @@ export const Navbar = async ({
       />
       <div className={styles.base__actions}>
         {!hideNotificationsButton && (
-          <MdNotificationsNone className="cursor-pointer size-6" />
+          <MdNotificationsNone className="cursor-pointer min-h-6 min-w-6 size-6" />
         )}
         {user && !hideUserActions && (
           <Dropdown
