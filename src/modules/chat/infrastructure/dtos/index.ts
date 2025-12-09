@@ -7,6 +7,7 @@ export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-re
 export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';
 export type { GetChatMessagesRequestDTO } from './get-chat-messages-request.dto';
 export type { GetChatMessagesResponseDTO } from './get-chat-messages-response.dto';
+export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-response.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { OnConversationsAssignedResponseDTO } from './on-conversations-assigned-response.dto';
 export type { OnIncommingMessageResponseDTO } from './on-incomming-message-response.dto';

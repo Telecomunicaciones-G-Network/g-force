@@ -18,6 +18,7 @@
       "@module-core/*": ["./src/modules/core/*"],
       "@module-auth/*": ["./src/modules/auth/*"],
       "@module-chat/*": ["./src/modules/chat/*"],
+      "@module-invoice/*": ["./src/modules/invoice/*"],
       "@module-user/*": ["./src/modules/user/*"],
       "@packages/*": ["./src/packages/*"],
       "@crypto/*": ["./src/packages/crypto/*"],

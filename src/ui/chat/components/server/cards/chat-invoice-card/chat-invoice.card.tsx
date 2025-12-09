@@ -1,26 +1,30 @@
 import type { ChatInvoiceCardProps } from './chat-invoice-card.props';
 
+import { InvoiceStatus } from '@module-invoice/domain/enums/invoice-status.enum';
+
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
+import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
+
 import styles from './chat-invoice-card.module.css';
 
 export const ChatInvoiceCard = ({
-  amount = '',
-  billingCycle = '',
-  number = '',
-  issueDate = '',
+  amount,
+  dateEmission,
+  datePayment,
+  documentNumber,
+  invoicingCycle = '',
   open = false,
-  paymentDate = '',
-  paymentMethod = '',
+  paymentMethods = [],
+  status,
   title = '',
-  status = '',
 }: Readonly<ChatInvoiceCardProps>) => (
   <Accordion fullWidth open={open} label={title}>
     <div className={styles.base}>
-      {number && (
+      {documentNumber && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -38,13 +42,13 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {number}
+              {documentNumber}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {billingCycle && (
+      {invoicingCycle && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -55,12 +59,12 @@ export const ChatInvoiceCard = ({
             >
               Ciclo de facturación:
             </Text>
-            <Tag color="blue">{billingCycle}</Tag>
+            <Tag color="blue">{invoicingCycle}</Tag>
           </div>
           <Separator />
         </>
       )}
-      {issueDate && (
+      {dateEmission && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -78,7 +82,7 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {issueDate}
+              {dateEmission}
             </Text>
           </div>
           <Separator />
@@ -102,7 +106,7 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {amount}
+              ${amount.toFixed(2).replace('.', ',')}
             </Text>
           </div>
           <Separator />
@@ -119,12 +123,20 @@ export const ChatInvoiceCard = ({
             >
               Estado:
             </Text>
-            <Tag color="green">{status}</Tag>
+            <Tag
+              color={
+                status === InvoiceStatus.PAID
+                  ? TagColors.GREEN
+                  : TagColors.YELLOW
+              }
+            >
+              {status}
+            </Tag>
           </div>
           <Separator />
         </>
       )}
-      {paymentDate && (
+      {datePayment && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -142,13 +154,13 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {paymentDate}
+              {datePayment}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {paymentMethod && (
+      {paymentMethods && paymentMethods.length > 0 && paymentMethods?.[0] && (
         <div className={styles.base__info}>
           <Text
             as="label"
@@ -165,7 +177,7 @@ export const ChatInvoiceCard = ({
             level="small"
             scheme="label"
           >
-            {paymentMethod}
+            {paymentMethods?.[0]}
           </Text>
         </div>
       )}

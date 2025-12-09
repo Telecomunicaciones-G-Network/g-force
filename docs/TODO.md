@@ -1,5 +1,7 @@
 # TODO
 
+Todo lo del panel lateral
+
 ## Login action
 
 ```typescript

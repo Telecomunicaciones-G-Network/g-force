@@ -1,6 +1,8 @@
 import type {
   GetChatMessagesRequest,
   GetChatMessagesResponse,
+  GetContactInvoicesRequest,
+  GetContactInvoicesResponse,
   GetContactsRequest,
   GetContactsResponse,
   UploadChatMediaRequest,
@@ -13,6 +15,9 @@ export interface ChatRepository {
   getChatMessages(
     request: GetChatMessagesRequest,
   ): Promise<GetChatMessagesResponse>;
+  getContactInvoices(
+    request: GetContactInvoicesRequest,
+  ): Promise<GetContactInvoicesResponse>;
   getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
   uploadChatMedia(
     request: UploadChatMediaRequest,

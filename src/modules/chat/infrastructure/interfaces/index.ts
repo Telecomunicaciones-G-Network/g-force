@@ -7,6 +7,7 @@ export type {
   GetChatMessagesResultReaction,
   GetChatMessagesResultSender,
 } from './get-chat-messages-result.interface';
+export type { GetContactInvoicesResult } from './get-contact-invoices-result.interface';
 export type {
   GetContactsResult,
   GetContactsResultLatestConversation,

@@ -1,5 +1,3 @@
-// PENDING:
-
 'use client';
 
 import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';

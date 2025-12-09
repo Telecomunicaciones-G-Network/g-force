@@ -12,6 +12,8 @@ export type { EmitSendTextMessageRequest } from './emit-send-text-message-reques
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';
+export type { GetContactInvoicesRequest } from './get-contact-invoices-request.interface';
+export type { GetContactInvoicesResponse } from './get-contact-invoices-response.interface';
 export type { GetContactsRequest } from './get-contacts-request.interface';
 export type { GetContactsResponse } from './get-contacts-response.interface';
 export type { MediaValues } from './media-values.interface';

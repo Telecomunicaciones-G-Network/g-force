@@ -1,7 +1,7 @@
 export interface ApiResponse<T = unknown> {
   cursor?: string | null;
   error?: string;
-  extra?: unknown;
+  extra?: Record<string, string>;
   hasMore?: boolean;
   nextCursor?: string | null;
   results?: T;
