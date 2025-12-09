@@ -13,6 +13,10 @@ export const ChatConversationController = ({
   switch (message?.type) {
     case MessageTypes.IMAGE:
       return <ChatImageMessageController message={message} />;
+    case MessageTypes.INTERACTIVE_LIST_OPTIONS:
+      return <ChatTextMessageController message={message} />;
+    case MessageTypes.INTERACTIVE_LIST_SELECTION:
+      return <ChatTextMessageController message={message} />;
     case MessageTypes.TEXT:
       return <ChatTextMessageController message={message} />;
     default:
