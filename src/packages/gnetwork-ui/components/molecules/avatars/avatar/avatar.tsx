@@ -1,5 +1,3 @@
-// PENDING:
-
 import type { AvatarProps } from './avatar.props';
 
 import { ResponsiveImage } from '../../../atoms/images/responsive-image';

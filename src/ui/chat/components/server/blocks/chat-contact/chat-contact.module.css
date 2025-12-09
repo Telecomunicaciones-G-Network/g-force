@@ -5,13 +5,6 @@
   padding: 0px;
 }
 
-.base__image {
-  height: 138px;
-  min-height: 138px;
-  position: relative;
-  width: 100%;
-}
-
 .base__info {
   align-items: center;
   display: flex;
