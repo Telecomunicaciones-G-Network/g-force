@@ -13,6 +13,7 @@ import { cn } from '../../../../utils/cn.util';
 import styles from './chat-message.module.css';
 
 export const ChatMessage = ({
+  caption = null,
   bubbleClassName = '',
   children,
   className = '',
@@ -93,6 +94,7 @@ export const ChatMessage = ({
         status={direction === 'incoming' ? BubbleStatus.NONE : status}
       >
         {children}
+        {caption && caption}
       </Bubble>
     </div>
   );

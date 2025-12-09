@@ -1,0 +1,1 @@
+export { ChatStickerMessageController } from './chat-sticker-message-controller';

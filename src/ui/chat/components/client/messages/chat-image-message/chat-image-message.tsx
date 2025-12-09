@@ -14,6 +14,7 @@ import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary
 import { ChatImageMessageContent } from '../../messages/chat-image-message/components/chat-image-message-content';
 
 export const ChatImageMessage = ({
+  caption = null,
   direction,
   filename = '',
   imageAlt = 'Image',
@@ -52,6 +53,7 @@ export const ChatImageMessage = ({
     <>
       {image && (
         <ChatImageMessageContent
+          caption={caption}
           direction={direction}
           customImageComponent={
             <Image

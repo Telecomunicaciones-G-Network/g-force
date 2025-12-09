@@ -31,12 +31,12 @@ export const useChatConversation = () => {
     queryKey: [
       queryKeysDictionary.GET_CHAT_MESSAGES,
       activeContact?.id,
-      { limit: 20 },
+      { limit: 30 },
     ],
     queryFn: () =>
       GetChatMessagesQuery({
         contactId: activeContact?.id ?? '',
-        limit: 20,
+        limit: 30,
       }),
     enabled: !!activeContact?.id,
     gcTime: 0,

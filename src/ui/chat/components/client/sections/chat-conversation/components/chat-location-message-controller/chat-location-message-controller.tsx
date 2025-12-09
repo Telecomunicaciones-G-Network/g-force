@@ -1,6 +1,8 @@
 import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from '../chat-conversation-controller';
 
+import { MdOutlineMap } from 'react-icons/md';
+
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
 
 import { isoToTime } from '@timer/utils/iso-to-time.util';
@@ -9,7 +11,7 @@ import { MessageDirections } from '@module-chat/domain/enums/message-directions.
 
 import { ChatTextMessage } from '@ui-chat/components/server/messages/chat-text-message';
 
-export const ChatTextMessageController = ({
+export const ChatLocationMessageController = ({
   message,
 }: Readonly<ChatConversationControllerProps>) => (
   <ChatTextMessage
@@ -24,6 +26,9 @@ export const ChatTextMessageController = ({
     time={isoToTime(message?.createdAt ?? '')}
     username={message?.sender?.name ?? ''}
   >
-    {message?.text}
+    <div className="flex items-center gap-2">
+      <MdOutlineMap className="min-h-6 min-w-6 size-6" />
+      Los mensajes de localización no están disponibles en este momento.
+    </div>
   </ChatTextMessage>
 );

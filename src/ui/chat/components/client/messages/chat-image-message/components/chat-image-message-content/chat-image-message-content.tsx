@@ -21,6 +21,7 @@ export const ChatImageMessageContent = (
   props: Readonly<ChatImageMessageContentProps>,
 ) => {
   const {
+    caption = null,
     customImageComponent,
     filename = '',
     imageAlt = 'Image',
@@ -30,7 +31,7 @@ export const ChatImageMessageContent = (
   } = props;
 
   return (
-    <ChatMessage bubbleClassName="w-full" {...rest}>
+    <ChatMessage caption={caption} bubbleClassName="w-full" {...rest}>
       <Modal
         className={cn(styles.base, 'relative sm:max-w-none')}
         hideModalClose

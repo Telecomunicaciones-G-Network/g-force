@@ -5,6 +5,7 @@ import type {
 } from '../../../molecules/blocks/bubble';
 
 export interface ChatMessageProps extends ReactDiv {
+  caption: string | null;
   bubbleClassName?: string;
   direction: BubbleVariants['mode'];
   isBot?: boolean;
