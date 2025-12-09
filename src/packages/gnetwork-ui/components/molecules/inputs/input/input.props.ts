@@ -10,6 +10,7 @@ export interface InputVariants extends VariantProps<typeof inputVariants> {
 
 export interface InputProps extends ReactInput, InputVariants {
   containerClassName?: string;
+  hideLeftIcon?: boolean;
   label?: string;
   leftIcon?: ReactChild;
   message?: string;

@@ -10,7 +10,10 @@ import { DropdownItem } from '@gnetwork-ui/components/molecules/dropdowns/dropdo
 import { FileInput } from '@gnetwork-ui/components/molecules/inputs/file-input';
 import { Dropdown } from '@gnetwork-ui/components/organisms/dropdowns/dropdown';
 
+import { parseFilesExtensionToFileInputAccept } from '@filer/utils/parse-files-extension-to-file-input-accept.util';
 import { cn } from '@gnetwork-ui/utils/cn.util';
+
+import { IMAGE_MIMETYPES_ALLOWED } from '@module-core/constants/image-mimetypes-allowed.constant';
 
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
@@ -20,7 +23,7 @@ import styles from './chat-conversation-file-attach-dropdown.module.css';
 
 export const ChatConversationFileAttachDropdown = () => {
   const {
-    attachFiles,
+    attachImageFiles,
     isDropdownOpen,
     isSocketConnected,
     onOpenChange,
@@ -47,9 +50,10 @@ export const ChatConversationFileAttachDropdown = () => {
     >
       <DropdownItem onSelect={(e) => e.preventDefault()}>
         <FileInput
+          accept={parseFilesExtensionToFileInputAccept(IMAGE_MIMETYPES_ALLOWED)}
           disabled={!isSocketConnected}
           fullWidth
-          onFileSelect={attachFiles}
+          onFileSelect={attachImageFiles}
         >
           <MdOutlineImage className="fill-neutral-500 min-h-6 min-w-6 size-6" />
           <span>Fotos</span>

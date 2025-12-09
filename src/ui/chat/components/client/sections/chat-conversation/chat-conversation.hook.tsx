@@ -19,6 +19,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversation = () => {
   const activeContact = useContactStore((state) => state.activeContact);
+  const sendMode = useChatStore((state) => state.sendMode);
 
   const setMessages = useChatStore((state) => state.setMessages);
 
@@ -61,5 +62,6 @@ export const useChatConversation = () => {
     disabledChat: !isConnected || isError || !isInRoom || isLoading,
     isError,
     isLoading,
+    sendMode,
   };
 };

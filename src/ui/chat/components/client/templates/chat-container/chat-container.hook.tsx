@@ -1,5 +1,3 @@
-// DONE:
-
 'use client';
 
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';

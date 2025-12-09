@@ -12,6 +12,7 @@ export const Input = ({
   disabled = false,
   error = false,
   fullWidth,
+  hideLeftIcon = false,
   id,
   isStatic = false,
   label = '',
@@ -58,7 +59,7 @@ export const Input = ({
         </label>
       )}
       <div className={cn(classes)}>
-        {leftIcon && leftIcon}
+        {leftIcon && !hideLeftIcon && leftIcon}
         <input
           className={cn(
             styles.base__input,

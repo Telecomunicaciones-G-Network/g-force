@@ -20,13 +20,15 @@ export const useChatConversationFileAttachDropdown = () => {
   const setFile = useChatStore((state) => state.setFile);
   const setSendMode = useChatStore((state) => state.setSendMode);
 
-  const attachFiles = (fileData: FileData[]) => {
+  const attachImageFiles = (fileData: FileData[]) => {
+    console.log(fileData?.[0]);
+    setIsDropdownOpen(false);
     setFile(fileData?.[0] ?? null);
     setSendMode(ChatSendModes.IMAGE);
   };
 
   return {
-    attachFiles,
+    attachImageFiles,
     isDropdownOpen,
     isSocketConnected: isConnectedAndStatusConnected,
     onOpenChange: setIsDropdownOpen,
