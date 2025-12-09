@@ -7,10 +7,7 @@ import { MdSend } from 'react-icons/md';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 
-// import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
-
 import { ChatConversationFileAttachDropdown } from '../chat-conversation-file-attach-dropdown';
-// import { ChatConversationFileViewer } from '../chat-conversation-file-viewer';
 
 import { useChatConversationFooter } from './chat-conversation-footer.hook';
 
@@ -24,7 +21,6 @@ export const ChatConversationFooter = ({
   return (
     <div className={styles.base}>
       <form className={styles.base__input} onSubmit={onSubmit}>
-        {/* sendMode === ChatSendModes.IMAGE && <ChatConversationFileViewer /> */}
         <ChatInput
           className="bg-chromatic"
           customLeftIcon={<ChatConversationFileAttachDropdown />}

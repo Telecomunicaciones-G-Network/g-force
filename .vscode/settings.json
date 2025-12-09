@@ -49,7 +49,6 @@
     "chat-conversation-container": "react-components",
     "chat-conversation-controller": "react-components",
     "chat-conversation-file-attach-dropdown": "react-components",
-    "chat-conversation-file-viewer": "react-components",
     "chat-conversation-footer": "react-components",
     "chat-conversation-header": "react-components",
     "chat-conversation": "react-components",

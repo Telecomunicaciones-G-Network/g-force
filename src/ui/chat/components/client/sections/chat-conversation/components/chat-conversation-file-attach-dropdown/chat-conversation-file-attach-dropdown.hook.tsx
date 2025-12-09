@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { useSocket } from '@socketio/hooks/use-socket.hook';
 
+import { formatFileSize } from '@filer/utils/format-file-size.util';
 import { isFileMimetypeValid } from '@filer/utils/is-file-mimetype-valid.util';
 import { isFileSizeValid } from '@filer/utils/is-file-size-valid.util';
 
@@ -32,17 +33,17 @@ export const useChatConversationFileAttachDropdown = () => {
   const setSendMode = useChatStore((state) => state.setSendMode);
 
   const attachImageFiles = (fileData: FileData[]) => {
-    console.log(fileData?.[0]);
-    console.log(fileData?.[0]?.type);
-
     if (!isFileSizeValid(fileData?.[0]?.size, MAXIMUM_ALLOWED_FILE_SIZE)) {
-      showToast('El archivo no debe exceder los 100MB', {
-        className: 'min-w-[min(380px,100%)]',
-        duration: 3000,
-        id: 'chat-conversation-file-attach-dropdown-toast',
-        position: 'top-right',
-        scheme: AlertSchemes.ERROR,
-      });
+      showToast(
+        `El archivo no debe exceder los ${formatFileSize(MAXIMUM_ALLOWED_FILE_SIZE)}`,
+        {
+          className: 'min-w-[min(380px,100%)]',
+          duration: 3000,
+          id: 'chat-conversation-file-attach-dropdown-toast',
+          position: 'top-right',
+          scheme: AlertSchemes.ERROR,
+        },
+      );
 
       return;
     }

@@ -1,4 +1,4 @@
 export interface EmitSendImageMessageRequestDTO {
-  conversation_id: string;
+  contact_id: string;
   media_id: string;
 }

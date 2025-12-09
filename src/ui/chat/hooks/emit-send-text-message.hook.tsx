@@ -85,9 +85,9 @@ export const useEmitSendTextMessage = () => {
           contactId: activeContact?.id,
         });
 
-        addMessage({ ...newMessage });
-
         if (!request) return;
+
+        addMessage({ ...newMessage });
 
         const ack = await emitWithAck<
           EmitSendTextMessageRequestDTO,

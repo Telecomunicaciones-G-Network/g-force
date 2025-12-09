@@ -1,4 +1,6 @@
 export interface EmitSendImageMessageRequest {
-  conversationId: string;
+  contactId: string;
   mediaId: string;
+  message?: string;
+  onSuccess?: () => void;
 }
