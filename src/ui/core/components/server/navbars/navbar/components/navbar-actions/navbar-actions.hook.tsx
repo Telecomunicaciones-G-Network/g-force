@@ -9,10 +9,15 @@ import { useSystemTheme } from '@hook/use-system-theme.hook';
 import { useSwitch } from '@gnetwork-ui/components/molecules/switches/switch/switch.hook';
 
 import { logoutAction } from '@ui-auth/actions/logout.action';
+import { useContactStore } from '@/src/ui/chat/stores/contact-store/contact.store';
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 export const useNavbarActions = () => {
   const { systemTheme } = useSystemTheme();
   const { theme, setTheme } = useTheme();
+
+  const setActiveContact = useContactStore((state) => state.setActiveContact);
+  const setChatMode = useContactStore((state) => state.setChatMode);
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -25,7 +30,11 @@ export const useNavbarActions = () => {
 
   const logout = async () => {
     try {
-      await logoutAction();
+      setActiveContact(null);
+      setChatMode(ChatModes.LIST);
+      setTimeout(async () => {
+        await logoutAction();
+      }, 1000);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }

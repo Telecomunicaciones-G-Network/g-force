@@ -1,6 +1,9 @@
 'use client';
 
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type {
+  AgentValues,
+  ContactValues,
+} from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
@@ -12,9 +15,11 @@ import { ConversationStatus } from '@module-chat/domain/enums/conversation-statu
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 export const useContactStore = create<ContactStoreState>((set, get) => ({
+  activeAgent: null,
   activeContact: null,
   chatMode: ChatModes.LIST,
   contacts: [],
+  setActiveAgent: (agent: AgentValues | null) => set({ activeAgent: agent }),
   setActiveContact: (contact: ContactValues | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
@@ -54,6 +59,29 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
               latestConversation: {
                 ...contact?.latestConversation,
                 status: ConversationStatus.ASSIGNED,
+              },
+            }
+          : contact,
+      ),
+    });
+  },
+  changeConversationAgent: (contactId: string) => {
+    const { activeAgent, contacts } = get();
+
+    if (!contactId || !activeAgent) return;
+
+    set({
+      contacts: contacts?.map((contact) =>
+        contact?.id === contactId
+          ? {
+              ...contact,
+              latestConversation: {
+                ...contact?.latestConversation,
+                agent: {
+                  ...contact?.latestConversation?.agent,
+                  id: activeAgent?.id,
+                  name: activeAgent?.name,
+                },
               },
             }
           : contact,

@@ -21,6 +21,9 @@ export const useOnConversationsAssigned = () => {
   const changeConversationAssignedToContact = useContactStore(
     (state) => state.changeConversationAssignedToContact,
   );
+  const changeConversationAgent = useContactStore(
+    (state) => state.changeConversationAgent,
+  );
   const existContactOnStore = useContactStore(
     (state) => state.existContactOnStore,
   );
@@ -48,6 +51,7 @@ export const useOnConversationsAssigned = () => {
         !hasContactConversationAssigned(response?.contactIds?.[0])
       ) {
         changeConversationAssignedToContact(response?.contactIds?.[0]);
+        changeConversationAgent(response?.contactIds?.[0]);
 
         const sounder = new Sounder('/sounds/on-conversations-assigned.mp3');
 
