@@ -1,5 +1,9 @@
-import type { ChatTicket } from '@ui-chat/interfaces';
+'use client';
+
+import type { TicketValues } from '@module-ticket/domain/interfaces';
 import type { ChatTicketsProps } from './chat-tickets.props';
+
+import { MdMoodBad } from 'react-icons/md';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -7,21 +11,43 @@ import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-c
 
 import { ChatTicketCard } from '@ui-chat/components/server/cards/chat-ticket-card';
 
-import { ChatTickets as ChatTicketsIterator } from '@ui-chat/iterators/chat-tickets.iterator';
+import { ChatTicketsSkeletons } from './components/chat-tickets-skeletons/chat-tickets-skeletons';
+
+import { useChatTickets } from './chat-tickets.hook';
 
 import styles from './chat-tickets.module.css';
 
-export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => (
-  <ChatDetailsTabContentLayout title={title}>
-    <div className={styles.base}>
-      <Text as="h5" level="medium" scheme="label">
-        Creados / solicitudes
-      </Text>
-      <div className={styles.base__elements}>
-        {ChatTicketsIterator?.map((ticket: ChatTicket) => (
-          <ChatTicketCard key={ticket?.id} {...ticket} />
-        ))}
-      </div>
-    </div>
-  </ChatDetailsTabContentLayout>
-);
+export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
+  const { isError, isLoading, tickets } = useChatTickets();
+
+  return (
+    <ChatDetailsTabContentLayout title={title}>
+      {isLoading && <ChatTicketsSkeletons />}
+      {!isLoading && isError && (
+        <div className={styles.base__error}>
+          <MdMoodBad className="min-h-10 min-w-10 size-10" />
+          <Text
+            as="h5"
+            className="text-center text-neutral-900"
+            level="medium"
+            scheme="label"
+          >
+            Ha ocurrido un error al cargar los tickets
+          </Text>
+        </div>
+      )}
+      {!isLoading && !isError && (
+        <div className={styles.base}>
+          <Text as="h5" level="medium" scheme="label">
+            Creados / solicitudes
+          </Text>
+          <div className={styles.base__elements}>
+            {tickets?.map((ticket: TicketValues) => (
+              <ChatTicketCard key={ticket?.number?.toString()} {...ticket} />
+            ))}
+          </div>
+        </div>
+      )}
+    </ChatDetailsTabContentLayout>
+  );
+};

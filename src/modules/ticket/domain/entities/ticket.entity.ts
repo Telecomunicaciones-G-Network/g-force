@@ -1,4 +1,7 @@
 import type { TicketValues } from '../interfaces';
+import type { TicketStatusName } from '../types';
+
+import { TicketStatus } from '../enums/ticket-status.enum';
 
 export class Ticket {
   constructor(
@@ -7,8 +10,8 @@ export class Ticket {
     public description: string = '',
     public issue: string,
     public number: number,
-    public status: number,
-    public statusName: string,
+    public status: TicketStatus,
+    public statusName: TicketStatusName,
   ) {}
 
   public toValues(): TicketValues {

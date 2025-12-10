@@ -3,17 +3,21 @@ import type { ChatTicketCardProps } from './chat-ticket.props';
 import { Card } from '@gnetwork-ui/components/atoms/cards/card';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
+import { ticketStatusBorderColorDictionary } from '@ui-chat/dictionaries/ticket-status-border-color.dictionary';
+import { ticketStatusColorDictionary } from '@ui-chat/dictionaries/ticket-status-color.dictionary';
+
 import styles from './chat-ticket-card.module.css';
 
 export const ChatTicketCard = ({
-  comment = '',
-  number = '',
-  solvedDate = '',
-  status = '',
+  createdAt = '',
+  description = '',
+  number,
+  status,
+  statusName,
 }: Readonly<ChatTicketCardProps>) => {
-  if (!comment) {
+  if (!description) {
     console.warn(
-      'Prop comment is missing on ChatTicketCard component. This component can not be render appropiately.',
+      'Prop description is missing on ChatTicketCard component. This component can not be render appropiately.',
     );
   }
 
@@ -32,44 +36,41 @@ export const ChatTicketCard = ({
   return (
     <>
       {number && (
-        <Card
-          className="border-l-4 border-solid border-l-success-300"
-          fullWidth
-        >
+        <Card className={ticketStatusBorderColorDictionary?.[status]} fullWidth>
           <div className={styles.base}>
             <Text as="h5" level="small" scheme="label">
               #TCK-${number}:
             </Text>
             <div className={styles.base__body}>
-              {comment && (
+              {description && (
                 <Text
                   as="p"
                   className="text-neutral-400"
                   level="small"
                   scheme="label"
                 >
-                  {comment}
+                  {description}
                 </Text>
               )}
               <div className={styles.base__info}>
-                {solvedDate && (
+                {createdAt && (
                   <Text
                     as="span"
                     className="text-neutral-400"
                     level="small"
                     scheme="label"
                   >
-                    {solvedDate}
+                    {createdAt}
                   </Text>
                 )}
                 {status && (
                   <Text
                     as="span"
-                    className="text-success-300"
+                    className={ticketStatusColorDictionary?.[status]}
                     level="small"
                     scheme="label"
                   >
-                    → {status}.
+                    → {statusName}
                   </Text>
                 )}
               </div>

@@ -1,3 +1,3 @@
-import type { ChatTicket } from '@ui-chat/interfaces';
+import type { TicketValues } from '@module-ticket/domain/interfaces';
 
-export type ChatTicketCardProps = ChatTicket;
+export type ChatTicketCardProps = TicketValues;

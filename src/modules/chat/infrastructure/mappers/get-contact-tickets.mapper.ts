@@ -1,7 +1,7 @@
 import type { TicketValues } from '@module-ticket/domain/interfaces';
 import type { GetContactTicketsResponse } from '../../domain/interfaces';
 import type { GetContactTicketsResponseDTO } from '../dtos';
-import { GetContactTicketsResult } from '../interfaces';
+import type { GetContactTicketsResult } from '../interfaces';
 
 export class GetContactTicketsMapper {
   public static mapFrom(
