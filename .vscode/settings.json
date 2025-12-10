@@ -444,6 +444,7 @@
         "get-contact-contracts.usecase.ts",
         "get-contact-information.usecase.ts",
         "get-contact-invoices.usecase.ts",
+        "get-contact-notes.usecase.ts",
         "get-contact-tickets.usecase.ts",
         "get-contacts.usecase.ts"
       ]

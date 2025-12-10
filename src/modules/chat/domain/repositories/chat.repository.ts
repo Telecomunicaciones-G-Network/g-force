@@ -6,6 +6,8 @@ import type {
   GetContactInformationResponse,
   GetContactInvoicesRequest,
   GetContactInvoicesResponse,
+  GetContactNotesRequest,
+  GetContactNotesResponse,
   GetContactsRequest,
   GetContactsResponse,
   GetContactTicketsRequest,
@@ -29,6 +31,9 @@ export interface ChatRepository {
   getContactInvoices(
     request: GetContactInvoicesRequest,
   ): Promise<GetContactInvoicesResponse>;
+  getContactNotes(
+    request: GetContactNotesRequest,
+  ): Promise<GetContactNotesResponse>;
   getContactTickets(
     request: GetContactTicketsRequest,
   ): Promise<GetContactTicketsResponse>;

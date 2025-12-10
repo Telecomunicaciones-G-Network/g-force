@@ -6,6 +6,8 @@ import type {
   GetContactInformationResponse,
   GetContactInvoicesRequest,
   GetContactInvoicesResponse,
+  GetContactNotesRequest,
+  GetContactNotesResponse,
   GetContactsRequest,
   GetContactsResponse,
   GetContactTicketsRequest,
@@ -21,6 +23,7 @@ import { getChatMessagesService } from '../services/get-chat-messages.service';
 import { getContactContractsService } from '../services/get-contact-contracts.service';
 import { getContactInformationService } from '../services/get-contact-information.service';
 import { getContactInvoicesService } from '../services/get-contact-invoices.service';
+import { getContactNotesService } from '../services/get-contact-notes.service';
 import { getContactsService } from '../services/get-contacts.service';
 import { getContactTicketsService } from '../services/get-contact-tickets.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
@@ -44,6 +47,9 @@ export const httpChatRepository: ChatRepository = {
   getContactInvoices: async (
     request: GetContactInvoicesRequest,
   ): Promise<GetContactInvoicesResponse> => getContactInvoicesService(request),
+  getContactNotes: async (
+    request: GetContactNotesRequest,
+  ): Promise<GetContactNotesResponse> => getContactNotesService(request),
   getContactTickets: async (
     request: GetContactTicketsRequest,
   ): Promise<GetContactTicketsResponse> => getContactTicketsService(request),
