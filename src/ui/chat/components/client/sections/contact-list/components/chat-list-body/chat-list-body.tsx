@@ -3,6 +3,8 @@
 import type { ContactValues } from '@module-chat/domain/interfaces';
 import type { ChatListBodyProps } from './chat-list-body.props';
 
+import { Fragment } from 'react';
+
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
@@ -11,6 +13,7 @@ import { ChatListEmpty } from '../chat-list-empty';
 import { useChatListBody } from './chat-list-body.hook';
 
 import styles from './chat-list-body.module.css';
+import { ConversationStatus } from '@/src/modules/chat/domain/enums/conversation-status.enum';
 
 export const ChatListBody = ({
   contacts = [],
@@ -26,17 +29,22 @@ export const ChatListBody = ({
     >
       {contacts?.length > 0 ? (
         contacts.map((contact: ContactValues) => (
-          <ChatCard
-            contactId={contact?.id}
-            isActive={activeContact?.id === contact?.id}
-            key={contact?.id}
-            lastMessage={contact?.latestMessage?.text ?? ''}
-            lastMessageTime={contact?.latestMessage?.createdAt}
-            messageType={contact?.latestMessage?.type}
-            onClick={() => changeActiveContact(contact)}
-            unreadMessages={contact?.unreadCount}
-            username={contact?.name}
-          />
+          <Fragment key={contact?.id}>
+            {contact?.latestConversation?.status ===
+              ConversationStatus.ASSIGNED && (
+              <ChatCard
+                contactId={contact?.id}
+                isActive={activeContact?.id === contact?.id}
+                key={contact?.id}
+                lastMessage={contact?.latestMessage?.text ?? ''}
+                lastMessageTime={contact?.latestMessage?.createdAt}
+                messageType={contact?.latestMessage?.type}
+                onClick={() => changeActiveContact(contact)}
+                unreadMessages={contact?.unreadCount}
+                username={contact?.name}
+              />
+            )}
+          </Fragment>
         ))
       ) : (
         <ChatListEmpty />

@@ -7,6 +7,8 @@ import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
 import { create } from 'zustand';
 
+import { ConversationStatus } from '@module-chat/domain/enums/conversation-status.enum';
+
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 export const useContactStore = create<ContactStoreState>((set, get) => ({
@@ -41,6 +43,23 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
       ),
     });
   },
+  changeConversationAssignedToContact: (contactId: string) => {
+    const { contacts } = get();
+
+    set({
+      contacts: contacts?.map((contact) =>
+        contact?.id === contactId
+          ? {
+              ...contact,
+              latestConversation: {
+                ...contact?.latestConversation,
+                status: ConversationStatus.ASSIGNED,
+              },
+            }
+          : contact,
+      ),
+    });
+  },
   clearUnreadMessagesFromOneContact: (contactId: string) => {
     const { contacts } = get();
 
@@ -62,6 +81,15 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
 
     return contacts?.some(
       (contact: ContactValues) => contact?.id === contactId,
+    );
+  },
+  hasContactConversationAssigned: (contactId: string): boolean => {
+    const { contacts } = get();
+
+    return contacts?.some(
+      (contact: ContactValues) =>
+        contact?.id === contactId &&
+        contact?.latestConversation?.status === ConversationStatus.ASSIGNED,
     );
   },
   sortContactsByLatestMessage: () => {

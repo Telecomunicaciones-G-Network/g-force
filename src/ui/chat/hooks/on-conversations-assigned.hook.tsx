@@ -18,8 +18,14 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 export const useOnConversationsAssigned = () => {
   const router = useRouter();
 
+  const changeConversationAssignedToContact = useContactStore(
+    (state) => state.changeConversationAssignedToContact,
+  );
   const existContactOnStore = useContactStore(
     (state) => state.existContactOnStore,
+  );
+  const hasContactConversationAssigned = useContactStore(
+    (state) => state.hasContactConversationAssigned,
   );
 
   onSocketEvent<OnConversationsAssignedResponseDTO>(
@@ -31,11 +37,24 @@ export const useOnConversationsAssigned = () => {
 
       if (!response?.contactIds || response?.contactIds?.length === 0) return;
 
-      if (existContactOnStore(response?.contactIds?.[0])) return;
+      if (
+        existContactOnStore(response?.contactIds?.[0]) &&
+        hasContactConversationAssigned(response?.contactIds?.[0])
+      )
+        return;
 
-      const sounder = new Sounder('/sounds/on-conversations-assigned.mp3');
+      if (
+        existContactOnStore(response?.contactIds?.[0]) &&
+        !hasContactConversationAssigned(response?.contactIds?.[0])
+      ) {
+        changeConversationAssignedToContact(response?.contactIds?.[0]);
 
-      sounder.playAudio();
+        const sounder = new Sounder('/sounds/on-conversations-assigned.mp3');
+
+        sounder.playAudio();
+
+        return;
+      }
 
       await revalidateChatContactsAction();
 

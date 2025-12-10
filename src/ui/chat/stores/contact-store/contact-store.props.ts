@@ -14,8 +14,10 @@ export interface ContactStoreState {
   addOneUnreadMessageToContact: (
     params: AddOneUnreadMessageToContactParams,
   ) => void;
+  changeConversationAssignedToContact: (contactId: string) => void;
   clearUnreadMessagesFromOneContact: (contactId: string) => void;
   deleteOneContactById: (contactId: string) => void;
   existContactOnStore: (contactId: string) => boolean;
+  hasContactConversationAssigned: (contactId: string) => boolean;
   sortContactsByLatestMessage: () => void;
 }
