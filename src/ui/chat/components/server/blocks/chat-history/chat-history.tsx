@@ -1,5 +1,9 @@
-import type { ChatComment } from '@ui-chat/interfaces';
+'use client';
+
+import type { NoteValues } from '@module-chat/domain/interfaces';
 import type { ChatHistoryProps } from './chat-history.props';
+
+import { MdMoodBad } from 'react-icons/md';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -7,21 +11,43 @@ import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-c
 
 import { ChatCommentCard } from '@ui-chat/components/server/cards/chat-comment-card';
 
-import { chatComments } from '@ui-chat/iterators/chat-comments.iterator';
+import { ChatHistorySkeleton } from './components/chat-history-skeleton';
+
+import { useChatHistory } from './chat-history.hook';
 
 import styles from './chat-history.module.css';
 
-export const ChatHistory = ({ title = '' }: Readonly<ChatHistoryProps>) => (
-  <ChatDetailsTabContentLayout title={title}>
-    <div className={styles.base}>
-      <Text as="h5" level="medium" scheme="label">
-        Notas de agentes anteriores
-      </Text>
-      <div className={styles.base__elements}>
-        {chatComments?.map((comment: ChatComment) => (
-          <ChatCommentCard key={comment?.id} {...comment} />
-        ))}
-      </div>
-    </div>
-  </ChatDetailsTabContentLayout>
-);
+export const ChatHistory = ({ title = '' }: Readonly<ChatHistoryProps>) => {
+  const { isError, isLoading, notes } = useChatHistory();
+
+  return (
+    <ChatDetailsTabContentLayout title={title}>
+      {isLoading && <ChatHistorySkeleton />}
+      {!isLoading && isError && (
+        <div className={styles.base__error}>
+          <MdMoodBad className="min-h-10 min-w-10 size-10" />
+          <Text
+            as="h5"
+            className="text-center text-neutral-900"
+            level="medium"
+            scheme="label"
+          >
+            Ha ocurrido un error al cargar las notas
+          </Text>
+        </div>
+      )}
+      {!isLoading && (
+        <div className={styles.base}>
+          <Text as="h5" level="medium" scheme="label">
+            Notas de agentes anteriores
+          </Text>
+          <div className={styles.base__elements}>
+            {notes?.map((note: NoteValues) => (
+              <ChatCommentCard key={note?.id} {...note} />
+            ))}
+          </div>
+        </div>
+      )}
+    </ChatDetailsTabContentLayout>
+  );
+};

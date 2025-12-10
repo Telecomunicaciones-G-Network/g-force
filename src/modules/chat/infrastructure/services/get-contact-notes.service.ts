@@ -20,7 +20,7 @@ export const getContactNotesService = async (
     {
       searchParams: {
         cursor: request?.page,
-        limit: request?.limit ?? '20',
+        limit: request?.limit?.toString() ?? '20',
       },
     },
   );

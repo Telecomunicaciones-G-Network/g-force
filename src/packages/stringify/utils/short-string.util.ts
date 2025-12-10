@@ -1,4 +1,8 @@
-export const shortString = (data: string, maxLength: number = 10): string => {
+export const shortString = (
+  data: string,
+  maxLength: number = 10,
+  hideDots?: boolean,
+): string => {
   if (!data || typeof data !== 'string') return '';
 
   if (typeof maxLength !== 'number' || maxLength < 0) return data;
@@ -10,5 +14,5 @@ export const shortString = (data: string, maxLength: number = 10): string => {
 
   if (maxLength <= ellipsisLength) return ellipsis;
 
-  return data.slice(0, maxLength - ellipsisLength) + ellipsis;
+  return data.slice(0, maxLength - ellipsisLength) + (hideDots ? '' : ellipsis);
 };

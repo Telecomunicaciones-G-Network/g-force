@@ -1,5 +1,5 @@
 export interface GetContactNotesRequest {
   contactId: string;
-  limit?: string;
+  limit?: number;
   page?: string;
 }
