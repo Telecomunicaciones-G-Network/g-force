@@ -3,4 +3,5 @@ export type ChatDetailTab =
   | 'contracts'
   | 'historical'
   | 'invoices'
-  | 'status';
+  | 'status'
+  | 'tickets';

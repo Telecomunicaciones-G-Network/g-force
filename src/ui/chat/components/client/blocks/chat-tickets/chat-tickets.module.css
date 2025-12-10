@@ -1,0 +1,13 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0;
+}
+
+.base__elements {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+}

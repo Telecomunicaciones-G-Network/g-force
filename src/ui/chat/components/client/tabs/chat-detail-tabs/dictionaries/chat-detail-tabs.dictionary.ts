@@ -4,4 +4,5 @@ export const chatDetailTabsDictionary = {
   historical: 'Histórico',
   invoices: 'Facturación',
   status: 'Status',
+  tickets: 'Tickets',
 } as const;

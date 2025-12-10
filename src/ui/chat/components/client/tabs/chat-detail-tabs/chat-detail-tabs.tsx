@@ -14,6 +14,7 @@ import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { TabContent } from '@gnetwork-ui/components/molecules/tabs/tab-content';
 import { TabsTriggers } from '@gnetwork-ui/components/molecules/tabs/tabs-triggers';
+import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
 import { BackButton } from '@gnetwork-ui/components/organisms/buttons/back-button';
 import { TabButton } from '@gnetwork-ui/components/organisms/tabs/tab-button/tab-button';
 import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
@@ -21,11 +22,12 @@ import { Tabs } from '@gnetwork-ui/components/organisms/tabs/tabs';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 import { usernameToInitials } from '@stringify/utils/username-to-initials.util';
 
+import { ChatTickets } from '@ui-chat/components/client/blocks/chat-tickets';
+
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
 import { ChatContracts } from '@ui-chat/components/server/blocks/chat-contracts';
 import { ChatHistory } from '@ui-chat/components/server/blocks/chat-history';
 import { ChatInvoices } from '@ui-chat/components/server/blocks/chat-invoices';
-import { ChatStatus } from '@ui-chat/components/server/blocks/chat-status';
 
 import { ChatDetailTabs as ChatDetailTabsValues } from './enums/chat-detail-tabs.enum';
 
@@ -114,40 +116,108 @@ export const ChatDetailTabs = () => {
           'flex-wrap p-6 tablet:pb-8 tablet:pt-8 tablet:px-8 lg:flex-nowrap lg:pb-6',
         )}
       >
-        <TabButton
-          color={isActiveTab(ChatDetailTabsValues.CONTACT) ? 'red' : 'default'}
-          value={ChatDetailTabsValues.CONTACT}
-        >
-          <MdPersonOutline className="min-h-6 min-w-6 size-6" />
-        </TabButton>
-        <TabButton
-          color={isActiveTab(ChatDetailTabsValues.INVOICES) ? 'red' : 'default'}
-          value={ChatDetailTabsValues.INVOICES}
-        >
-          <MdReceiptLong className="min-h-6 min-w-6 size-6" />
-        </TabButton>
-        <TabButton
-          color={
-            isActiveTab(ChatDetailTabsValues.CONTRACTS) ? 'red' : 'default'
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.CONTACT) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.CONTACT}
+            >
+              <MdPersonOutline className="min-h-6 min-w-6 size-6" />
+            </TabButton>
           }
-          value={ChatDetailTabsValues.CONTRACTS}
         >
-          <MdEditNote className="min-h-6 min-w-6 size-6" />
-        </TabButton>
-        <TabButton
-          color={isActiveTab(ChatDetailTabsValues.STATUS) ? 'red' : 'default'}
-          value={ChatDetailTabsValues.STATUS}
-        >
-          <MdSell className="min-h-6 min-w-6 size-6" />
-        </TabButton>
-        <TabButton
-          color={
-            isActiveTab(ChatDetailTabsValues.HISTORICAL) ? 'red' : 'default'
+          Contacto
+        </Tooltip>
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.INVOICES) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.INVOICES}
+            >
+              <MdReceiptLong className="min-h-6 min-w-6 size-6" />
+            </TabButton>
           }
-          value={ChatDetailTabsValues.HISTORICAL}
         >
-          <MdHistory className="min-h-6 min-w-6 size-6" />
-        </TabButton>
+          Facturación
+        </Tooltip>
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.CONTRACTS) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.CONTRACTS}
+            >
+              <MdEditNote className="min-h-6 min-w-6 size-6" />
+            </TabButton>
+          }
+        >
+          Contratos
+        </Tooltip>
+        {/* <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.STATUS) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.STATUS}
+            >
+              <MdSell className="min-h-6 min-w-6 size-6" />
+            </TabButton>
+          }
+        >
+          Status
+        </Tooltip> */}
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.TICKETS) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.TICKETS}
+            >
+              <MdSell className="min-h-6 min-w-6 size-6" />
+            </TabButton>
+          }
+        >
+          Tickets
+        </Tooltip>
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.HISTORICAL) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.HISTORICAL}
+            >
+              <MdHistory className="min-h-6 min-w-6 size-6" />
+            </TabButton>
+          }
+        >
+          Histórico
+        </Tooltip>
       </TabsTriggers>
       <TabContent
         className={styles.base__content}
@@ -167,7 +237,7 @@ export const ChatDetailTabs = () => {
       >
         <ChatContracts title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
-      <TabContent
+      {/*<TabContent
         className={styles.base__content}
         value={ChatDetailTabsValues.STATUS}
       >
@@ -178,6 +248,12 @@ export const ChatDetailTabs = () => {
           status="Activo"
           title={chatDetailTabsDictionary?.[activeTab]}
         />
+      </TabContent> */}
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.TICKETS}
+      >
+        <ChatTickets title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
       <TabContent
         className={styles.base__content}

@@ -4,4 +4,5 @@ export enum ChatDetailTabs {
   HISTORICAL = 'historical',
   INVOICES = 'invoices',
   STATUS = 'status',
+  TICKETS = 'tickets',
 }
