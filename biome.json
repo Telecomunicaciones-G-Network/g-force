@@ -29,6 +29,7 @@
       },
       "suspicious": {
         "noGlobalIsNan": "off",
+        "noShadowRestrictedNames": "off",
         "noUnknownAtRules": "off"
       },
       "style": {
