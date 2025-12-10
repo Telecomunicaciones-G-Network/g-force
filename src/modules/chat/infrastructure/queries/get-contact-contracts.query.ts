@@ -7,7 +7,7 @@ import { getContactContractsUsecase } from '../../application/usecases/get-conta
 
 import { httpChatRepository } from '../repositories/http-chat.repository';
 
-export const getContactContractsQuery = async (
+export const GetContactContractsQuery = async (
   query: GetContactContractsRequest,
 ): Promise<GetContactContractsResponse> => {
   return await getContactContractsUsecase(httpChatRepository, query);

@@ -1,4 +1,7 @@
 import type { ContractValues } from '../interfaces';
+import type { ContractStatusName } from '../types';
+
+import { ContractStatus } from '../enums/contract-status.enum';
 
 export class Contract {
   constructor(
@@ -10,8 +13,8 @@ export class Contract {
     public number: number,
     public plan: string,
     public speedPlan: string,
-    public status: number,
-    public statusName: string,
+    public status: ContractStatus,
+    public statusName: ContractStatusName,
   ) {}
 
   public toValues(): ContractValues {

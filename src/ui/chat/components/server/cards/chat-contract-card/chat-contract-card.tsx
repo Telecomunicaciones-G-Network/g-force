@@ -5,18 +5,23 @@ import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
+import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
+
+import { contractStatusTagColorDictionary } from '@ui-chat/dictionaries/contract-status-tag-color.dictionary';
+
 import styles from './chat-contract-card.module.css';
 
 export const ChatContractCard = ({
+  address = '',
   expirationDate = '',
-  name = '',
-  napbox = '',
-  location = '',
-  number = '',
+  installationDate = '',
+  napBox = '',
+  number,
   open = false,
-  speed = '',
-  startDate = '',
-  status = '',
+  plan = '',
+  speedPlan = '',
+  status,
+  statusName,
   title = '',
 }: Readonly<ChatContractCardProps>) => (
   <Accordion fullWidth open={open} label={title}>
@@ -45,7 +50,7 @@ export const ChatContractCard = ({
           <Separator />
         </>
       )}
-      {status && (
+      {statusName && status && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -56,12 +61,18 @@ export const ChatContractCard = ({
             >
               Estado:
             </Text>
-            <Tag color="green">{status}</Tag>
+            <Tag
+              color={
+                contractStatusTagColorDictionary?.[status] ?? TagColors.GRAY
+              }
+            >
+              {statusName}
+            </Tag>
           </div>
           <Separator />
         </>
       )}
-      {startDate && (
+      {installationDate && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -79,7 +90,7 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {startDate}
+              {installationDate}
             </Text>
           </div>
           <Separator />
@@ -109,7 +120,7 @@ export const ChatContractCard = ({
           <Separator />
         </>
       )}
-      {name && (
+      {plan && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -127,13 +138,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {name}
+              {plan}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {speed && (
+      {speedPlan && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -151,13 +162,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {speed}
+              {speedPlan}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {napbox && (
+      {napBox && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -175,13 +186,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {napbox}
+              {napBox}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {location && (
+      {address && (
         <div className={styles.base__info}>
           <Text
             as="label"
@@ -198,7 +209,7 @@ export const ChatContractCard = ({
             level="small"
             scheme="label"
           >
-            {location}
+            {address}
           </Text>
         </div>
       )}

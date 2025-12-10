@@ -1,3 +1,7 @@
+import type { ContractStatusName } from '@module-contract/domain/types';
+
+import { ContractStatus } from '@module-contract/domain/enums/contract-status.enum';
+
 export interface GetContactContractsResult {
   address: string;
   client_type_name: string;
@@ -7,6 +11,6 @@ export interface GetContactContractsResult {
   nap_box: string;
   plan: string;
   speed_plan: string;
-  status_name: string;
-  status: number;
+  status_name: ContractStatusName;
+  status: ContractStatus;
 }

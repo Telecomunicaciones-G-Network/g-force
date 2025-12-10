@@ -1,3 +1,7 @@
+import type { ContractStatusName } from '../types';
+
+import { ContractStatus } from '../enums/contract-status.enum';
+
 export interface ContractValues {
   address: string;
   installationDate: string;
@@ -5,6 +9,6 @@ export interface ContractValues {
   number: number;
   plan: string;
   speedPlan: string;
-  status: number;
-  statusName: string;
+  status: ContractStatus;
+  statusName: ContractStatusName;
 }
