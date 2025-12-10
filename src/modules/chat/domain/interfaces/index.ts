@@ -20,6 +20,8 @@ export type {
 } from './get-contact-information-response.interface';
 export type { GetContactInvoicesRequest } from './get-contact-invoices-request.interface';
 export type { GetContactInvoicesResponse } from './get-contact-invoices-response.interface';
+export type { GetContactTicketsRequest } from './get-contact-tickets-request.interface';
+export type { GetContactTicketsResponse } from './get-contact-tickets-response.interface';
 export type { GetContactsRequest } from './get-contacts-request.interface';
 export type { GetContactsResponse } from './get-contacts-response.interface';
 export type { MediaValues } from './media-values.interface';

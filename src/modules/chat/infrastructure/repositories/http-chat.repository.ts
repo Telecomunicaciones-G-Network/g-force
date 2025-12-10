@@ -8,6 +8,8 @@ import type {
   GetContactInvoicesResponse,
   GetContactsRequest,
   GetContactsResponse,
+  GetContactTicketsRequest,
+  GetContactTicketsResponse,
   UploadChatMediaRequest,
   UploadChatMediaResponse,
 } from '../../domain/interfaces';
@@ -20,6 +22,7 @@ import { getContactContractsService } from '../services/get-contact-contracts.se
 import { getContactInformationService } from '../services/get-contact-information.service';
 import { getContactInvoicesService } from '../services/get-contact-invoices.service';
 import { getContactsService } from '../services/get-contacts.service';
+import { getContactTicketsService } from '../services/get-contact-tickets.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
 export const httpChatRepository: ChatRepository = {
@@ -41,6 +44,9 @@ export const httpChatRepository: ChatRepository = {
   getContactInvoices: async (
     request: GetContactInvoicesRequest,
   ): Promise<GetContactInvoicesResponse> => getContactInvoicesService(request),
+  getContactTickets: async (
+    request: GetContactTicketsRequest,
+  ): Promise<GetContactTicketsResponse> => getContactTicketsService(request),
   getContacts: async (
     request?: GetContactsRequest,
   ): Promise<GetContactsResponse> => getContactsService(request),
