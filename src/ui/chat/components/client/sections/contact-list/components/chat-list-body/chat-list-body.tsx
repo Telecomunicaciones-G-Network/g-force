@@ -13,7 +13,7 @@ import { ChatListEmpty } from '../chat-list-empty';
 import { useChatListBody } from './chat-list-body.hook';
 
 import styles from './chat-list-body.module.css';
-import { ConversationStatus } from '@/src/modules/chat/domain/enums/conversation-status.enum';
+import { CHAT_CONTACT_CONVERSATION_VISIBLE } from '@/src/ui/chat/constants/chat-contact-conversation-visible.constant';
 
 export const ChatListBody = ({
   contacts = [],
@@ -30,8 +30,9 @@ export const ChatListBody = ({
       {contacts?.length > 0 ? (
         contacts.map((contact: ContactValues) => (
           <Fragment key={contact?.id}>
-            {contact?.latestConversation?.status ===
-              ConversationStatus.ASSIGNED && (
+            {CHAT_CONTACT_CONVERSATION_VISIBLE.includes(
+              contact?.latestConversation?.status,
+            ) && (
               <ChatCard
                 contactId={contact?.id}
                 isActive={activeContact?.id === contact?.id}
