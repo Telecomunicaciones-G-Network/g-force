@@ -26,6 +26,7 @@
     "url": "git+https://github.com/Telecomunicaciones-G-Network/g-force.git"
   },
   "scripts": {
+    "analize:packages": "npx fix-react2shell-next",
     "build": "run-s clean compile",
     "check": "biome check",
     "clean:dependencies": "rimraf ./node_modules",
