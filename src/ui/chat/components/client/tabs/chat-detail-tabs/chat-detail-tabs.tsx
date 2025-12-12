@@ -10,6 +10,7 @@ import {
   MdSell,
 } from 'react-icons/md';
 
+import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
 import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { TabContent } from '@gnetwork-ui/components/molecules/tabs/tab-content';
@@ -45,6 +46,7 @@ export const ChatDetailTabs = () => {
     contactAvatarSrc,
     goBackChat,
     isActiveTab,
+    isDesktop,
   } = useChatDetailTabs(ChatDetailTabsValues.CONTACT);
 
   return (
@@ -64,12 +66,12 @@ export const ChatDetailTabs = () => {
         )}
       >
         <div className={styles.base__header_top}>
-          <BackButton onClick={goBackChat} />
+          <BackButton hide={isDesktop} onClick={goBackChat} />
           <Text as="h3" level="small" scheme="label">
             {chatDetailTabsDictionary?.[activeTab]}
           </Text>
         </div>
-        {contactAvatarSrc ? (
+        {contactAvatarSrc && (
           <div
             className={cn(
               styles.base__header_image,
@@ -88,26 +90,42 @@ export const ChatDetailTabs = () => {
               }
             />
           </div>
-        ) : (
-          activeContact?.name && (
-            <div
-              className={styles.base__avatar_container}
-              style={{
-                backgroundColor: activeContact?.id
-                  ? `#${activeContact?.id?.slice(-6)}`
-                  : '#cccccc',
-              }}
+        )}
+        {!contactAvatarSrc && activeContact?.name && (
+          <div
+            className={styles.base__avatar_container}
+            style={{
+              backgroundColor: activeContact?.id
+                ? `#${activeContact?.id?.slice(-6)}`
+                : '#cccccc',
+            }}
+          >
+            <Text
+              as="span"
+              className="text-chromatic"
+              level="xxlarge"
+              scheme="heading"
             >
-              <Text
-                as="span"
-                className="text-chromatic"
-                level="xxlarge"
-                scheme="heading"
-              >
-                {usernameToInitials(activeContact?.name ?? '')}
-              </Text>
-            </div>
-          )
+              {usernameToInitials(activeContact?.name ?? '')}
+            </Text>
+          </div>
+        )}
+        {!contactAvatarSrc && !activeContact?.name && (
+          <div
+            className={styles.base__avatar_container}
+            style={{
+              backgroundColor: activeContact?.id
+                ? `#${activeContact?.id?.slice(-6)}`
+                : '#cccccc',
+            }}
+          >
+            <Icon
+              className="min-h-16 min-w-16 size-16"
+              color="white"
+              fillColor="white"
+              name="user"
+            />
+          </div>
         )}
       </div>
       <TabsTriggers
@@ -140,23 +158,6 @@ export const ChatDetailTabs = () => {
           triggerComponent={
             <TabButton
               color={
-                isActiveTab(ChatDetailTabsValues.INVOICES) ? 'red' : 'default'
-              }
-              value={ChatDetailTabsValues.INVOICES}
-            >
-              <MdReceiptLong className="min-h-6 min-w-6 size-6" />
-            </TabButton>
-          }
-        >
-          Facturación
-        </Tooltip>
-        <Tooltip
-          side="bottom"
-          sideOffset={16}
-          triggerAsChild={true}
-          triggerComponent={
-            <TabButton
-              color={
                 isActiveTab(ChatDetailTabsValues.CONTRACTS) ? 'red' : 'default'
               }
               value={ChatDetailTabsValues.CONTRACTS}
@@ -166,6 +167,23 @@ export const ChatDetailTabs = () => {
           }
         >
           Contratos
+        </Tooltip>
+        <Tooltip
+          side="bottom"
+          sideOffset={16}
+          triggerAsChild={true}
+          triggerComponent={
+            <TabButton
+              color={
+                isActiveTab(ChatDetailTabsValues.INVOICES) ? 'red' : 'default'
+              }
+              value={ChatDetailTabsValues.INVOICES}
+            >
+              <MdReceiptLong className="min-h-6 min-w-6 size-6" />
+            </TabButton>
+          }
+        >
+          Facturación
         </Tooltip>
         {/* <Tooltip
           side="bottom"
@@ -227,15 +245,15 @@ export const ChatDetailTabs = () => {
       </TabContent>
       <TabContent
         className={styles.base__content}
-        value={ChatDetailTabsValues.INVOICES}
-      >
-        <ChatInvoices title={chatDetailTabsDictionary?.[activeTab]} />
-      </TabContent>
-      <TabContent
-        className={styles.base__content}
         value={ChatDetailTabsValues.CONTRACTS}
       >
         <ChatContracts title={chatDetailTabsDictionary?.[activeTab]} />
+      </TabContent>
+      <TabContent
+        className={styles.base__content}
+        value={ChatDetailTabsValues.INVOICES}
+      >
+        <ChatInvoices title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
       {/*<TabContent
         className={styles.base__content}

@@ -4,7 +4,15 @@ import type { ChatCardProps } from './chat-card.props';
 
 import Image from 'next/image';
 
-import { MdOutlineImage } from 'react-icons/md';
+import {
+  MdEmojiEmotions,
+  MdMic,
+  MdOutlineDescription,
+  MdOutlineImage,
+  MdOutlineMap,
+  MdOutlinePerson,
+  MdOutlineVideoCameraFront,
+} from 'react-icons/md';
 
 import { shortString } from '@stringify/utils/short-string.util';
 import { isoToTime } from '@timer/utils/iso-to-time.util';
@@ -103,6 +111,45 @@ export const ChatCard = ({
         )}
         {!lastMessage && (
           <div className={styles.base__icon}>
+            {messageType === MessageTypes.AUDIO && (
+              <>
+                <MdMic className="fill-whatsapp-audio-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Audio
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.CONTACTS && (
+              <>
+                <MdOutlinePerson className="fill-whatsapp-contact-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Contacto
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.DOCUMENT && (
+              <>
+                <MdOutlineDescription className="fill-whatsapp-document-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Documento
+                </Text>
+              </>
+            )}
             {messageType === MessageTypes.IMAGE && (
               <>
                 <MdOutlineImage className="fill-whatsapp-image-color min-h-5 min-w-5 size-5" />
@@ -113,6 +160,45 @@ export const ChatCard = ({
                   scheme="label"
                 >
                   Imagen
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.LOCATION && (
+              <>
+                <MdOutlineMap className="fill-whatsapp-location-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Localización
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.STICKER && (
+              <>
+                <MdEmojiEmotions className="fill-whatsapp-sticker-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Sticker
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.VIDEO && (
+              <>
+                <MdOutlineVideoCameraFront className="fill-whatsapp-video-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Video
                 </Text>
               </>
             )}

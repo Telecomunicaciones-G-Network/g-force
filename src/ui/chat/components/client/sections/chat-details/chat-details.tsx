@@ -20,6 +20,9 @@ export const ChatDetails = () => {
         activeContact !== undefined && (
           <section
             className={cn(styles.base, 'w-full lg:min-w-[327px] lg:w-[327px]')}
+            style={{
+              width: !isDesktop ? '100%' : undefined,
+            }}
           >
             <ChatDetailTabs />
           </section>

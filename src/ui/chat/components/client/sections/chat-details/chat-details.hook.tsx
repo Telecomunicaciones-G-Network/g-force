@@ -1,5 +1,3 @@
-// DONE:
-
 'use client';
 
 import { useMediaQuery } from '@hook/use-media-query.hook';

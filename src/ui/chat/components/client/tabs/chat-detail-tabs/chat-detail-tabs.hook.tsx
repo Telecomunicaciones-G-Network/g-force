@@ -2,6 +2,10 @@ import type { ChatDetailTab } from './interfaces';
 
 import { useState } from 'react';
 
+import { useMediaQuery } from '@hook/use-media-query.hook';
+
+import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
+
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
@@ -17,6 +21,8 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
 
   const setChatMode = useContactStore((state) => state.setChatMode);
 
+  const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
+
   const changeActiveTab = (tab: string) => setActiveTab(tab as ChatDetailTab);
 
   const goBackChat = () => setChatMode(ChatModes.CHAT);
@@ -30,5 +36,6 @@ export const useChatDetailTabs = (defaultValue: ChatDetailTab) => {
     contactAvatarSrc: null,
     goBackChat,
     isActiveTab,
+    isDesktop,
   };
 };

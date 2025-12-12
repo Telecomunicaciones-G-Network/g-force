@@ -25,9 +25,10 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: ContactValues[]) => set({ contacts }),
   addOneUnreadMessageToContact: ({
+    activeContact,
     contactId,
     lastMessage,
-    activeContact,
+    messageType,
   }: AddOneUnreadMessageToContactParams) => {
     const { contacts } = get();
 
@@ -40,6 +41,7 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
                 ...contact?.latestMessage,
                 createdAt: new Date().toISOString().replace('Z', '000Z'),
                 text: lastMessage,
+                type: messageType,
               },
               unreadCount:
                 activeContact?.id === contactId ? 0 : contact?.unreadCount + 1,

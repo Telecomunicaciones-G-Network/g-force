@@ -8,26 +8,15 @@ import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-export const useChatConversationHeader = () => {
-  const activeContact = useContactStore((state) => state.activeContact);
-
-  const setActiveContact = useContactStore((state) => state.setActiveContact);
+export const useChatDetailsTabContentLayout = () => {
   const setChatMode = useContactStore((state) => state.setChatMode);
 
   const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
 
-  const goBackChatList = () => {
-    setChatMode(ChatModes.LIST);
-    setActiveContact(null);
-  };
-
-  const goToChatDetails = () =>
-    useContactStore.setState({ chatMode: ChatModes.DETAILS });
+  const goBackChat = () => setChatMode(ChatModes.CHAT);
 
   return {
-    activeContact,
-    goBackChatList,
-    goToChatDetails,
+    goBackChat,
     isDesktop,
   };
 };

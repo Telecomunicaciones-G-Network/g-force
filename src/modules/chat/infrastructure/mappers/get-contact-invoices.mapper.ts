@@ -21,12 +21,15 @@ export class GetContactInvoicesMapper {
 
   static mapFromArray(input: GetContactInvoicesResult): InvoiceValues {
     return {
+      id: input?.id,
       amount: input?.amount,
+      contractId: input?.contract_id,
       dateEmission: input?.date_emission,
       datePayment: input?.date_payment,
       documentNumber: input?.document_number,
       paymentMethods: input?.payment_methods,
-      status: input?.status,
+      statusCode: input?.status_code,
+      statusName: input?.status_name,
     };
   }
 }

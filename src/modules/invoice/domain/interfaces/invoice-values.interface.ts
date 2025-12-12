@@ -1,10 +1,13 @@
-import type { InvoicePaymentMethod, InvoiceStatus } from '../types';
+import type { InvoicePaymentMethod } from '../types';
 
 export interface InvoiceValues {
+  id: number;
   amount: number;
+  contractId: number;
   dateEmission: string;
   datePayment: string | null;
-  documentNumber: string;
+  documentNumber: string | null;
   paymentMethods: InvoicePaymentMethod[] | null;
-  status: InvoiceStatus;
+  statusCode: string;
+  statusName: string;
 }

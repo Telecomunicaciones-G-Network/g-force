@@ -5,6 +5,8 @@ import type {
 import type { GetContactsResult } from '../interfaces';
 import type { GetContactsResponseDTO } from '../dtos';
 
+import { sanitizeString } from '@stringify/utils/sanitize-string.util';
+
 export class GetContactsMapper {
   static mapFrom(input: GetContactsResponseDTO): GetContactsResponse {
     return {
@@ -49,7 +51,7 @@ export class GetContactsMapper {
         type: input?.latest_message?.type,
         updatedAt: input?.latest_message?.updated_at,
       },
-      name: input?.display_name,
+      name: sanitizeString(input?.display_name?.trim()),
       phoneNumber: input?.phone_number,
       unreadCount: input?.unread_count,
     };

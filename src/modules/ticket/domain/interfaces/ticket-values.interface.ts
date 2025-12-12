@@ -1,13 +1,10 @@
-import type { TicketStatusName } from '../types';
-
-import { TicketStatus } from '../enums/ticket-status.enum';
-
 export interface TicketValues {
+  contractId: number;
   createdAt: string;
   dateCreatedAt: string;
   description?: string;
   issue: string;
   number: number;
-  status: TicketStatus;
-  statusName: TicketStatusName;
+  statusCode: string;
+  statusName: string;
 }

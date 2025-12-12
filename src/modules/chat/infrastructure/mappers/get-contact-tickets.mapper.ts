@@ -24,12 +24,13 @@ export class GetContactTicketsMapper {
 
   public static mapFromArray(input: GetContactTicketsResult): TicketValues {
     return {
+      contractId: input?.contract_id,
       createdAt: input?.created_at,
       dateCreatedAt: input?.date_created_at,
       description: input?.short_description,
       issue: input?.issue,
       number: input?.ticket_number,
-      status: input?.status,
+      statusCode: input?.status_code,
       statusName: input?.status_name,
     };
   }

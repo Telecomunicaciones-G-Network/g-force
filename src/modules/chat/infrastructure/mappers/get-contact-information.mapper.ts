@@ -9,7 +9,7 @@ export class GetContactInformationMapper {
       data: {
         clientType: input?.results?.client_type,
         email: input?.results?.email,
-        name: input?.results?.name,
+        fullName: input?.results?.full_name,
         phoneNumber: input?.results?.phone_number,
       },
       status: input?.status,

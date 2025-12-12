@@ -12,6 +12,7 @@ export const Icon = ({
   className = 'size-6',
   height,
   color = 'currentColor',
+  fillColor,
   name,
   onClick,
   rotate,
@@ -39,7 +40,7 @@ export const Icon = ({
       strokeLinecap={svgData.strokeLinecap as 'round' | 'butt' | 'square'}
       strokeLinejoin={svgData.strokeLinejoin as 'round' | 'miter' | 'bevel'}
       strokeWidth={svgData.strokeWidth}
-      style={{ color }}
+      style={{ color, fill: fillColor }}
       viewBox={svgData.viewBox}
       width={size}
     >

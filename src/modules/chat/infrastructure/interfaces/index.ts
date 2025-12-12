@@ -7,7 +7,11 @@ export type {
   GetChatMessagesResultReaction,
   GetChatMessagesResultSender,
 } from './get-chat-messages-result.interface';
-export type { GetContactContractsResult } from './get-contact-contracts-result.interface';
+export type {
+  GetContactContractsResult,
+  GetContactContractsResultBalance,
+  GetContactContractsResultBankAssociatedData,
+} from './get-contact-contracts-result.interface';
 export type { GetContactInformationResult } from './get-contact-information-result.interface';
 export type { GetContactInvoicesResult } from './get-contact-invoices-result.interface';
 export type { GetContactNotesResult } from './get-contact-notes-result.interface';

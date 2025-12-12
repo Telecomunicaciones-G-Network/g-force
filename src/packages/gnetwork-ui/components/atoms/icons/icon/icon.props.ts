@@ -3,6 +3,7 @@ import { iconDictionary } from './dictionaries/icon.dictionary';
 export interface IconProps {
   className?: string;
   color?: string;
+  fillColor?: string;
   height?: number | string;
   name: keyof typeof iconDictionary;
   onClick?: () => void;

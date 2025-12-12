@@ -4,6 +4,7 @@ import type { ChatContactAvatarProps } from './chat-contact-avatar.props';
 
 import Image from 'next/image';
 
+import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
 import { ResponsiveImage } from '@gnetwork-ui/components/atoms/images/responsive-image';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -22,7 +23,7 @@ export const ChatContactAvatar = ({
 
   return (
     <div className={cn(styles.base, 'hidden lg:flex')}>
-      {imageSrc ? (
+      {imageSrc && (
         <ResponsiveImage
           customImageComponent={
             <Image
@@ -34,26 +35,42 @@ export const ChatContactAvatar = ({
             />
           }
         />
-      ) : (
-        activeContact?.name && (
-          <div
-            className={styles.base__container}
-            style={{
-              backgroundColor: activeContact?.id
-                ? `#${activeContact?.id?.slice(-6)}`
-                : '#cccccc',
-            }}
+      )}
+      {!imageSrc && activeContact?.name && (
+        <div
+          className={styles.base__container}
+          style={{
+            backgroundColor: activeContact?.id
+              ? `#${activeContact?.id?.slice(-6)}`
+              : '#cccccc',
+          }}
+        >
+          <Text
+            as="span"
+            className="text-chromatic"
+            level="xxlarge"
+            scheme="heading"
           >
-            <Text
-              as="span"
-              className="text-chromatic"
-              level="xxlarge"
-              scheme="heading"
-            >
-              {usernameToInitials(activeContact?.name ?? '')}
-            </Text>
-          </div>
-        )
+            {usernameToInitials(activeContact?.name ?? '')}
+          </Text>
+        </div>
+      )}
+      {!imageSrc && !activeContact?.name && (
+        <div
+          className={styles.base__container}
+          style={{
+            backgroundColor: activeContact?.id
+              ? `#${activeContact?.id?.slice(-6)}`
+              : '#cccccc',
+          }}
+        >
+          <Icon
+            className="min-h-16 min-w-16 size-16"
+            color="white"
+            fillColor="white"
+            name="user"
+          />
+        </div>
       )}
     </div>
   );

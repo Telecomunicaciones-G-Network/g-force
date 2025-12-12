@@ -50,6 +50,7 @@ export const useOnNewMessageReceived = () => {
           contactId: response?.contactId,
           lastMessage: response?.messageTextPreview,
           activeContact,
+          messageType: response?.messageType,
         });
         sortContactsByLatestMessage();
 

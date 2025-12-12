@@ -64,7 +64,7 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
                     level="small"
                     scheme="label"
                   >
-                    {contactName ?? contactInformation?.name}
+                    {contactName ?? contactInformation?.fullName}
                   </Text>
                 </div>
                 <Separator />
