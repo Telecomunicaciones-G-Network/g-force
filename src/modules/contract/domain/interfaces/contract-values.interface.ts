@@ -1,6 +1,4 @@
-import type { ContractStatusName } from '../types';
-
-import { ContractStatus } from '../enums/contract-status.enum';
+import type { ContractStatusCode, ContractStatusName } from '../types';
 
 export interface ContractValues {
   address: string;
@@ -9,6 +7,6 @@ export interface ContractValues {
   number: number;
   plan: string;
   speedPlan: string;
-  status: ContractStatus;
+  statusCode: ContractStatusCode;
   statusName: ContractStatusName;
 }

@@ -9,8 +9,6 @@ export class GetContactTicketsMapper {
   ): GetContactTicketsResponse {
     return {
       count: input?.count,
-      error: input?.error,
-      extra: input?.extra,
       next: input?.next,
       previous: input?.previous,
       status: input?.status,

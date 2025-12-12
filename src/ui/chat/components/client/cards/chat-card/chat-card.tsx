@@ -38,6 +38,7 @@ export const ChatCard = ({
   lastMessageTime = '',
   messageType,
   onClick,
+  phoneNumber = '',
   unreadMessages = 0,
   username = '',
 }: Readonly<ChatCardProps>) => (
@@ -75,16 +76,17 @@ export const ChatCard = ({
       />
       <div className={styles.base__content}>
         <div className={styles.base__texts}>
-          {username && (
-            <Text
-              as="span"
-              className="text-chromatic-inverted"
-              level="small"
-              scheme="label"
-            >
-              {username}
-            </Text>
-          )}
+          {username ||
+            (phoneNumber && (
+              <Text
+                as="span"
+                className="text-chromatic-inverted"
+                level="small"
+                scheme="label"
+              >
+                {username || phoneNumber}
+              </Text>
+            ))}
           {lastMessageTime && (
             <Text
               as="span"

@@ -9,6 +9,7 @@ export interface ChatCardProps {
   lastMessageTime?: string;
   messageType: MessageType;
   onClick?: VoidFunction;
+  phoneNumber?: string;
   unreadMessages?: number;
   username?: string;
 }

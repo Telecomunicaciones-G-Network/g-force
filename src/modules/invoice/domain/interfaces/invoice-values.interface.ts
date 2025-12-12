@@ -1,4 +1,8 @@
-import type { InvoicePaymentMethod } from '../types';
+import type {
+  InvoicePaymentMethod,
+  InvoiceStatusCode,
+  InvoiceStatusName,
+} from '../types';
 
 export interface InvoiceValues {
   id: number;
@@ -8,6 +12,6 @@ export interface InvoiceValues {
   datePayment: string | null;
   documentNumber: string | null;
   paymentMethods: InvoicePaymentMethod[] | null;
-  statusCode: string;
-  statusName: string;
+  statusCode: InvoiceStatusCode;
+  statusName: InvoiceStatusName;
 }

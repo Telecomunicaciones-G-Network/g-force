@@ -1,1 +1,2 @@
-export type { TicketStatusName } from './status-name.type';
+export type { TicketStatusCode } from './ticket-status-code.type';
+export type { TicketStatusName } from './ticket-status-name.type';

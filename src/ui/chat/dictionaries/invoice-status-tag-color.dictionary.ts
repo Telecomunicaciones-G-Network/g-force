@@ -1,12 +1,14 @@
 import type { TagColor } from '@gnetwork-ui/components/molecules/tags/tag/types';
-
-import { InvoiceStatus } from '@module-invoice/domain/enums/invoice-status.enum';
+import type { InvoiceStatusName } from '@module-invoice/domain/types';
 
 import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
+import { InvoiceStatusNames } from '@module-invoice/domain/enums/invoice-status-names.enum';
 
-export const invoiceStatusTagColorDictionary: Record<InvoiceStatus, TagColor> =
-  {
-    [InvoiceStatus.PAID]: TagColors.GREEN,
-    [InvoiceStatus.PENDING]: TagColors.YELLOW,
-    [InvoiceStatus.EXPIRED]: TagColors.RED,
-  };
+export const invoiceStatusTagColorDictionary: Record<
+  InvoiceStatusName,
+  TagColor
+> = {
+  [InvoiceStatusNames.EXPIRED]: TagColors.RED,
+  [InvoiceStatusNames.PAID]: TagColors.GREEN,
+  [InvoiceStatusNames.PENDING]: TagColors.YELLOW,
+};

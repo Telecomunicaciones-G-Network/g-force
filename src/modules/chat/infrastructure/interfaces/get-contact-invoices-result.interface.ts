@@ -1,4 +1,8 @@
-import type { InvoicePaymentMethod } from '@module-invoice/domain/types';
+import type {
+  InvoicePaymentMethod,
+  InvoiceStatusCode,
+  InvoiceStatusName,
+} from '@module-invoice/domain/types';
 
 export interface GetContactInvoicesResultAmountToPayBS {
   amount: number;
@@ -19,16 +23,16 @@ export interface GetContactInvoicesResultInvoicesItemsGsoft {
 }
 
 export interface GetContactInvoicesResult {
+  amount: number;
   id: number;
   amount_to_pay_bs: GetContactInvoicesResultAmountToPayBS;
   amount_to_pay_usd: GetContactInvoicesResultAmountToPayUSD;
-  amount: number;
   contract_id: number;
   date_emission: string;
   date_payment: string | null;
   document_number: string | null;
   invoices_items_gsoft: GetContactInvoicesResultInvoicesItemsGsoft[];
-  payment_methods: InvoicePaymentMethod[];
-  status_code: string;
-  status_name: string;
+  payment_methods: InvoicePaymentMethod[] | null;
+  status_code: InvoiceStatusCode;
+  status_name: InvoiceStatusName;
 }

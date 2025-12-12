@@ -1,7 +1,5 @@
 import type { ChatInvoiceCardProps } from './chat-invoice-card.props';
 
-import { invoiceStatusDictionary } from '@module-invoice/infrastructure/dictionaries/invoice-status.dictionary';
-
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
@@ -9,6 +7,7 @@ import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordio
 
 import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
 
+import { invoiceStatusNameDictionary } from '@ui-chat/dictionaries/invoice-status-name.dictionary';
 import { invoiceStatusTagColorDictionary } from '@ui-chat/dictionaries/invoice-status-tag-color.dictionary';
 
 import styles from './chat-invoice-card.module.css';
@@ -21,7 +20,7 @@ export const ChatInvoiceCard = ({
   invoicingCycle = '',
   open = false,
   paymentMethods = [],
-  status,
+  statusName,
   title = '',
 }: Readonly<ChatInvoiceCardProps>) => (
   <Accordion fullWidth open={open} label={title}>
@@ -114,7 +113,7 @@ export const ChatInvoiceCard = ({
           <Separator />
         </>
       )}
-      {status && (
+      {statusName && (
         <div className={styles.base__info}>
           <Text
             as="label"
@@ -125,9 +124,11 @@ export const ChatInvoiceCard = ({
             Estado:
           </Text>
           <Tag
-            color={invoiceStatusTagColorDictionary?.[status] ?? TagColors.GRAY}
+            color={
+              invoiceStatusTagColorDictionary?.[statusName] ?? TagColors.GRAY
+            }
           >
-            {invoiceStatusDictionary?.[status]}
+            {invoiceStatusNameDictionary?.[statusName]}
           </Tag>
         </div>
       )}

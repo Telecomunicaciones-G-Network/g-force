@@ -1,3 +1,5 @@
+import type { TicketStatusCode, TicketStatusName } from '../types';
+
 export interface TicketValues {
   contractId: number;
   createdAt: string;
@@ -5,6 +7,6 @@ export interface TicketValues {
   description?: string;
   issue: string;
   number: number;
-  statusCode: string;
-  statusName: string;
+  statusCode: TicketStatusCode;
+  statusName: TicketStatusName;
 }

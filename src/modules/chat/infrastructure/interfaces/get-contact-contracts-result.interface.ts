@@ -1,6 +1,7 @@
-import type { ContractStatusName } from '@module-contract/domain/types';
-
-import { ContractStatus } from '@module-contract/domain/enums/contract-status.enum';
+import type {
+  ContractStatusCode,
+  ContractStatusName,
+} from '@module-contract/domain/types';
 
 export interface GetContactContractsResultBankAssociatedData {
   bank_account_number: string;
@@ -31,6 +32,6 @@ export interface GetContactContractsResult {
   nap_box: string;
   plan: string;
   speed_plan: string;
+  status_code: ContractStatusCode;
   status_name: ContractStatusName;
-  status: ContractStatus;
 }

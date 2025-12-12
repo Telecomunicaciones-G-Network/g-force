@@ -6,6 +6,7 @@ import type { ChatListBodyProps } from './chat-list-body.props';
 import { Fragment } from 'react';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
+import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
 import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
 import { ChatListEmpty } from '../chat-list-empty';
@@ -41,6 +42,7 @@ export const ChatListBody = ({
                 lastMessageTime={contact?.latestMessage?.createdAt}
                 messageType={contact?.latestMessage?.type}
                 onClick={() => changeActiveContact(contact)}
+                phoneNumber={formatPhoneNumber(contact?.phoneNumber)}
                 unreadMessages={contact?.unreadCount}
                 username={contact?.name}
               />

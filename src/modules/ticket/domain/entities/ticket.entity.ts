@@ -1,4 +1,5 @@
 import type { TicketValues } from '../interfaces';
+import type { TicketStatusCode, TicketStatusName } from '../types';
 
 export class Ticket {
   constructor(
@@ -8,8 +9,8 @@ export class Ticket {
     public description: string = '',
     public issue: string,
     public number: number,
-    public statusCode: string,
-    public statusName: string,
+    public statusCode: TicketStatusCode,
+    public statusName: TicketStatusName,
   ) {}
 
   public toValues(): TicketValues {

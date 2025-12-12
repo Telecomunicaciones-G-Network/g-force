@@ -1,4 +1,4 @@
-export enum InvoiceStatus {
+export enum InvoiceStatusNames {
   PAID = 'Pagado',
   PENDING = 'Pendiente',
   EXPIRED = 'Vencido',

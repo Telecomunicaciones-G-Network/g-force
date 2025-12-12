@@ -10,8 +10,6 @@ export class GetContactContractsMapper {
     return {
       contracts: response?.results?.map(GetContactContractsMapper.mapFromArray),
       count: response?.count,
-      error: response?.error,
-      extra: response?.extra,
       next: response?.next,
       previous: response?.previous,
       status: response?.status,
@@ -27,7 +25,7 @@ export class GetContactContractsMapper {
       number: input?.contract_number,
       plan: input?.plan,
       speedPlan: input?.speed_plan,
-      status: input?.status,
+      statusCode: input?.status_code,
       statusName: input?.status_name,
     };
   }

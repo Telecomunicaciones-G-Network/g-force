@@ -24,10 +24,10 @@ export const useChatContact = () => {
 
   return {
     contactInformation: data?.data,
-    contactName: activeContact?.name,
+    contactName: data?.data?.fullName ?? activeContact?.name,
     isContactActive: false,
     isError: isError || !data?.success,
     isLoading,
-    phoneNumber: activeContact?.phoneNumber,
+    phoneNumber: data?.data?.phoneNumber ?? activeContact?.phoneNumber,
   };
 };

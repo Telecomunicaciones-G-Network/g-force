@@ -26,11 +26,9 @@ export const getContactContractsService = async (
       },
     );
 
-  if (response?.error || !response?.results || !response?.success) {
+  if (!response?.results || !response?.success) {
     throw new BaseException({
-      message:
-        response?.error ??
-        `Error al obtener los contratos del contacto con id: ${request?.contactId}`,
+      message: `Error al obtener los contratos del contacto con id: ${request?.contactId}`,
       status: response?.status,
     });
   }

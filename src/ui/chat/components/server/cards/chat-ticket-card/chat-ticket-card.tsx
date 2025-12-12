@@ -1,4 +1,4 @@
-import type { ChatTicketCardProps } from './chat-ticket.props';
+import type { TicketValues } from '@module-ticket/domain/interfaces';
 
 import { Card } from '@gnetwork-ui/components/atoms/cards/card';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
@@ -12,9 +12,8 @@ export const ChatTicketCard = ({
   createdAt = '',
   description = '',
   number,
-  status,
   statusName,
-}: Readonly<ChatTicketCardProps>) => {
+}: Readonly<TicketValues>) => {
   if (!description) {
     console.warn(
       'Prop description is missing on ChatTicketCard component. This component can not be render appropiately.',
@@ -27,16 +26,19 @@ export const ChatTicketCard = ({
     );
   }
 
-  if (!status) {
+  if (!statusName) {
     console.warn(
-      'Prop status is missing on ChatTicketCard component. This component can not be render appropiately.',
+      'Prop statusName is missing on ChatTicketCard component. This component can not be render appropiately.',
     );
   }
 
   return (
     <>
       {number && (
-        <Card className={ticketStatusBorderColorDictionary?.[status]} fullWidth>
+        <Card
+          className={ticketStatusBorderColorDictionary?.[statusName]}
+          fullWidth
+        >
           <div className={styles.base}>
             <Text as="h5" level="small" scheme="label">
               #TCK-${number}:
@@ -63,10 +65,10 @@ export const ChatTicketCard = ({
                     {createdAt}
                   </Text>
                 )}
-                {status && (
+                {statusName && (
                   <Text
                     as="span"
-                    className={ticketStatusColorDictionary?.[status]}
+                    className={ticketStatusColorDictionary?.[statusName]}
                     level="small"
                     scheme="label"
                   >

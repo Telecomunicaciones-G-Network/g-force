@@ -1,5 +1,9 @@
 import type { InvoiceValues } from '../interfaces';
-import type { InvoicePaymentMethod, InvoiceStatus } from '../types';
+import type {
+  InvoicePaymentMethod,
+  InvoiceStatusCode,
+  InvoiceStatusName,
+} from '../types';
 
 export class Invoice {
   constructor(
@@ -10,8 +14,8 @@ export class Invoice {
     public datePayment: string | null = null,
     public documentNumber: string,
     public paymentMethods: InvoicePaymentMethod[] | null = [],
-    public statusName: InvoiceStatus,
-    public statusCode: string,
+    public statusCode: InvoiceStatusCode,
+    public statusName: InvoiceStatusName,
   ) {}
 
   public toValues(): InvoiceValues {
@@ -23,8 +27,8 @@ export class Invoice {
       datePayment: this.datePayment,
       documentNumber: this.documentNumber,
       paymentMethods: this.paymentMethods,
-      statusName: this.statusName,
       statusCode: this.statusCode,
+      statusName: this.statusName,
     };
   }
 }

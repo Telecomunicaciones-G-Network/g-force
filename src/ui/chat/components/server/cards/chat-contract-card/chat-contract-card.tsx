@@ -20,7 +20,7 @@ export const ChatContractCard = ({
   open = false,
   plan = '',
   speedPlan = '',
-  status,
+  statusCode,
   statusName,
   title = '',
 }: Readonly<ChatContractCardProps>) => (
@@ -50,7 +50,7 @@ export const ChatContractCard = ({
           <Separator />
         </>
       )}
-      {statusName && status && (
+      {statusCode && statusName && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -63,7 +63,7 @@ export const ChatContractCard = ({
             </Text>
             <Tag
               color={
-                contractStatusTagColorDictionary?.[status] ?? TagColors.GRAY
+                contractStatusTagColorDictionary?.[statusCode] ?? TagColors.GRAY
               }
             >
               {statusName}

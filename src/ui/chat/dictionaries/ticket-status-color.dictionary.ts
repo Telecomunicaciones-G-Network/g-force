@@ -1,7 +1,9 @@
-import { TicketStatus } from '@module-ticket/domain/enums/ticket-status.enum';
+import { TicketStatusName } from '@module-ticket/domain/types';
 
-export const ticketStatusColorDictionary: Record<TicketStatus, string> = {
-  [TicketStatus.CLOSED]: 'text-success-300',
-  [TicketStatus.IN_PROGRESS]: 'text-tag-blue-foreground',
-  [TicketStatus.OPEN]: 'text-warning-200',
+import { TicketStatusNames } from '@module-ticket/domain/enums/ticket-status-names.enum';
+
+export const ticketStatusColorDictionary: Record<TicketStatusName, string> = {
+  [TicketStatusNames.CLOSED]: 'text-success-300',
+  [TicketStatusNames.IN_PROGRESS]: 'text-warning-200',
+  [TicketStatusNames.OPENED]: 'text-tag-blue-foreground',
 };
