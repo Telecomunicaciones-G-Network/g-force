@@ -39,9 +39,6 @@ export const ChatHistory = ({ title = '' }: Readonly<ChatHistoryProps>) => {
       )}
       {!isLoading && (
         <div className={styles.base}>
-          <Text as="h5" level="medium" scheme="label">
-            Notas de agentes anteriores
-          </Text>
           {notes?.length === 0 && (
             <div className={styles.base__empty}>
               <Icon name="message_info" size={40} />
@@ -56,11 +53,16 @@ export const ChatHistory = ({ title = '' }: Readonly<ChatHistoryProps>) => {
             </div>
           )}
           {notes?.length > 0 && (
-            <div className={styles.base__elements}>
-              {notes?.map((note: NoteValues) => (
-                <ChatCommentCard key={note?.id} {...note} />
-              ))}
-            </div>
+            <>
+              <Text as="h5" level="medium" scheme="label">
+                Notas de agentes anteriores
+              </Text>
+              <div className={styles.base__elements}>
+                {notes?.map((note: NoteValues) => (
+                  <ChatCommentCard key={note?.id} {...note} />
+                ))}
+              </div>
+            </>
           )}
         </div>
       )}

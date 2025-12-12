@@ -18,6 +18,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversation = () => {
+  const activeAgent = useContactStore((state) => state.activeAgent);
   const activeContact = useContactStore((state) => state.activeContact);
   const sendMode = useChatStore((state) => state.sendMode);
 
@@ -59,7 +60,12 @@ export const useChatConversation = () => {
   }, [chatMessagesResponse?.messages, setMessages]);
 
   return {
-    disabledChat: !isConnected || isError || !isInRoom || isLoading,
+    disabledChat:
+      !isConnected ||
+      isError ||
+      !isInRoom ||
+      isLoading ||
+      activeAgent?.id !== activeContact?.latestConversation?.agent?.id,
     isError,
     isLoading,
     sendMode,

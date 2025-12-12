@@ -3,6 +3,16 @@
   flex-direction: column;
   gap: 24px;
   padding: 0;
+  flex: 1;
+}
+
+.base__empty {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  justify-content: center;
 }
 
 .base__error {

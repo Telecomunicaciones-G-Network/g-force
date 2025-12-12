@@ -1,5 +1,7 @@
 'use client';
 
+import type { ChatFileViewerProps } from './chat-file-viewer.props';
+
 import { MdClose } from 'react-icons/md';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
@@ -11,7 +13,9 @@ import { useChatFileViewer } from './chat-file-viewer.hook';
 
 import styles from './chat-file-viewer.module.css';
 
-export const ChatFileViewer = () => {
+export const ChatFileViewer = ({
+  disabledChat = false,
+}: Readonly<ChatFileViewerProps>) => {
   const { closeFileViewer } = useChatFileViewer();
 
   return (
@@ -22,7 +26,7 @@ export const ChatFileViewer = () => {
         />
       </button>
       <ChatFileViewerBody />
-      <ChatFileViewerFooter />
+      <ChatFileViewerFooter disabledChat={disabledChat} />
     </div>
   );
 };

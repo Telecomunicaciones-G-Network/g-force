@@ -1,5 +1,7 @@
 'use client';
 
+import type { ChatFileViewerFooterProps } from './chat-file-viewer-footer.props';
+
 import { MdDelete, MdDownload, MdSend } from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
@@ -11,7 +13,9 @@ import { useChatFileViewerFooter } from './chat-file-viewer-footer.hook';
 
 import styles from './chat-file-viewer-footer.module.css';
 
-export const ChatFileViewerFooter = () => {
+export const ChatFileViewerFooter = ({
+  disabledChat = false,
+}: Readonly<ChatFileViewerFooterProps>) => {
   const {
     changeMessage,
     downloadFile,
@@ -39,7 +43,7 @@ export const ChatFileViewerFooter = () => {
       </div>
       <form className={styles.base__input} onSubmit={onSubmit}>
         <ChatInput
-          disabled={!isSocketConnected}
+          disabled={!isSocketConnected || disabledChat}
           fullWidth
           hideLeftIcon
           id="chat_message_file_sender"
@@ -53,7 +57,7 @@ export const ChatFileViewerFooter = () => {
         <Button
           className="px-2"
           color="red"
-          disabled={!isSocketConnected}
+          disabled={!isSocketConnected || disabledChat}
           type="submit"
         >
           <MdSend className="min-h-[16.99px] h-[16.99px] min-w-[19.73px] w-[19.73px]" />

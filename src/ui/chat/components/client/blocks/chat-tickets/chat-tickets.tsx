@@ -5,6 +5,7 @@ import type { ChatTicketsProps } from './chat-tickets.props';
 
 import { MdMoodBad } from 'react-icons/md';
 
+import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
 import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-content-layout';
@@ -38,14 +39,34 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
       )}
       {!isLoading && !isError && (
         <div className={styles.base}>
-          <Text as="h5" level="medium" scheme="label">
-            Creados / solicitudes
-          </Text>
-          <div className={styles.base__elements}>
-            {tickets?.map((ticket: TicketValues) => (
-              <ChatTicketCard key={ticket?.number?.toString()} {...ticket} />
-            ))}
-          </div>
+          {tickets?.length === 0 && (
+            <div className={styles.base__empty}>
+              <Icon name="message_info" size={40} />
+              <Text
+                as="h5"
+                className="text-center text-neutral-900"
+                level="medium"
+                scheme="label"
+              >
+                No hay tickets que mostrar por el momento
+              </Text>
+            </div>
+          )}
+          {tickets?.length > 0 && (
+            <>
+              <Text as="h5" level="medium" scheme="label">
+                Creados / solicitudes
+              </Text>
+              <div className={styles.base__elements}>
+                {tickets?.map((ticket: TicketValues) => (
+                  <ChatTicketCard
+                    key={ticket?.number?.toString()}
+                    {...ticket}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       )}
     </ChatDetailsTabContentLayout>

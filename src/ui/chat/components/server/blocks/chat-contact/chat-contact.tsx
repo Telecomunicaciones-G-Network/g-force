@@ -45,7 +45,7 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
               level="medium"
               scheme="label"
             >
-              Ha ocurrido un error al cargar las facturas
+              Ha ocurrido un error al cargar la información del contacto
             </Text>
           </div>
         )}

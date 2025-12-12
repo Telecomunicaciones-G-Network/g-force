@@ -20,7 +20,7 @@ export const ChatConversationFooter = ({
 
   return (
     <div className={styles.base}>
-      <form className={styles.base__input} onSubmit={onSubmit}>
+      <form className={styles.base__form} onSubmit={onSubmit}>
         <ChatInput
           className="bg-chromatic"
           customLeftIcon={<ChatConversationFileAttachDropdown />}
