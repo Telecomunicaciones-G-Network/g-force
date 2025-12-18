@@ -1,4 +1,6 @@
+import type { TeamCodename } from '../types';
+
 export interface TeamValues {
-  id: string;
+  id: TeamCodename;
   name: string;
 }

@@ -4,6 +4,7 @@ import type {
   MessageDirection,
   MessageStatus,
   MessageType,
+  TeamCodename,
 } from '../../domain/types';
 
 export interface GetContactsResultLatestConversationAgent {
@@ -12,7 +13,7 @@ export interface GetContactsResultLatestConversationAgent {
 }
 
 export interface GetContactsResultLatestConversationTeam {
-  codename: string;
+  codename: TeamCodename;
   name: string;
 }
 

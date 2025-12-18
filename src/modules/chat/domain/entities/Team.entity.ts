@@ -1,8 +1,9 @@
 import type { TeamValues } from '../interfaces';
+import type { TeamCodename } from '../types';
 
 export class Team {
   constructor(
-    public id: string,
+    public id: TeamCodename,
     public name: string,
   ) {}
 

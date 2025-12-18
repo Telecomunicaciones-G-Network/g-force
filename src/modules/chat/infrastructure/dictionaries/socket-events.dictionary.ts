@@ -1,5 +1,6 @@
 export const socketEventsDictionary = {
   CONNECTED: 'connected',
+  CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',
   CONVERSATION_ASSIGNED: 'conversation_assigned',
   CONVERSATION_FINISHED: 'conversation_finished',
   INCOMING_MESSAGE: 'incoming_message',

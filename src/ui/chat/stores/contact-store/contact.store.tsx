@@ -3,6 +3,7 @@
 import type {
   AgentValues,
   ContactValues,
+  ConversationValues,
 } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
@@ -45,46 +46,6 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
               },
               unreadCount:
                 activeContact?.id === contactId ? 0 : contact?.unreadCount + 1,
-            }
-          : contact,
-      ),
-    });
-  },
-  changeConversationAssignedToContact: (contactId: string) => {
-    const { contacts } = get();
-
-    set({
-      contacts: contacts?.map((contact) =>
-        contact?.id === contactId
-          ? {
-              ...contact,
-              latestConversation: {
-                ...contact?.latestConversation,
-                status: ConversationStatus.ASSIGNED,
-              },
-            }
-          : contact,
-      ),
-    });
-  },
-  changeConversationAgent: (contactId: string) => {
-    const { activeAgent, contacts } = get();
-
-    if (!contactId || !activeAgent) return;
-
-    set({
-      contacts: contacts?.map((contact) =>
-        contact?.id === contactId
-          ? {
-              ...contact,
-              latestConversation: {
-                ...contact?.latestConversation,
-                agent: {
-                  ...contact?.latestConversation?.agent,
-                  id: activeAgent?.id,
-                  name: activeAgent?.name,
-                },
-              },
             }
           : contact,
       ),
@@ -137,5 +98,25 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     });
 
     set({ contacts: sortedContacts });
+  },
+  updateContactLatestConversation: (
+    contactId: string,
+    conversation: Partial<ConversationValues>,
+  ) => {
+    const { contacts } = get();
+
+    set({
+      contacts: contacts?.map((contact) =>
+        contact?.id === contactId
+          ? {
+              ...contact,
+              latestConversation: {
+                ...contact?.latestConversation,
+                ...conversation,
+              },
+            }
+          : contact,
+      ),
+    });
   },
 }));

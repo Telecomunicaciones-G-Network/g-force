@@ -40,6 +40,9 @@
       },
       "correctness": {
         "noUnusedPrivateClassMembers": "off"
+      },
+      "a11y": {
+        "noStaticElementInteractions": "off"
       }
     },
     "domains": {
