@@ -1,4 +1,6 @@
+import type { AgentValues } from './agent-values.interface';
+
 export interface OnConnectedResponse {
-  agentId: string;
+  agent: AgentValues;
   success: boolean;
 }

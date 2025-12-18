@@ -42,7 +42,6 @@ export const useOnContactAssignmentUpdated = () => {
     socketEventsDictionary.CONTACT_ASSIGNMENT_UPDATED,
     async (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
-
       const response = OnContactAssignmentUpdatedMapper.mapFrom(parseResponse);
 
       if (!response?.agentId || !response?.agentName || !response?.contactId)
