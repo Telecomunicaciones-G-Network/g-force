@@ -13,6 +13,8 @@ import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-c
 
 import { ChatInvoiceCard } from '@ui-chat/components/server/cards/chat-invoice-card';
 
+import { FloatingModalPaymentReport } from '@ui-payment/components/client/modals/floating-modal-payment-report';
+
 import { ChatInvoicesSkeleton } from './components/chat-invoices-skeleton';
 
 import { useChatInvoices } from './chat-invoices.hook';
@@ -20,58 +22,45 @@ import { useChatInvoices } from './chat-invoices.hook';
 import styles from './chat-invoices.module.css';
 
 export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
-  const { cycle, invoices, isError, isLoading } = useChatInvoices();
+  const {
+    closeFloatingModal,
+    cycle,
+    invoices,
+    isError,
+    isFloatingModalOpen,
+    isLoading,
+    openFloatingModal,
+  } = useChatInvoices();
 
   return (
-    <ChatDetailsTabContentLayout title={title}>
-      {isLoading && <ChatInvoicesSkeleton />}
-      {!isLoading && isError && (
-        <div className={styles.base__invoices_empty}>
-          <MdMoodBad className="min-h-10 min-w-10 size-10" />
-          <Text
-            as="h5"
-            className="text-center text-neutral-900"
-            level="medium"
-            scheme="label"
-          >
-            Ha ocurrido un error al cargar las facturas
-          </Text>
-        </div>
-      )}
-      {!isLoading && !isError && (
-        <>
-          <div className={styles.base__header}>
-            {cycle && (
-              <div className={styles.base__info}>
-                <Text
-                  as="span"
-                  className="text-neutral-900"
-                  level="small"
-                  scheme="label"
-                >
-                  Ciclo de facturación:
-                </Text>
-                <Text
-                  as="span"
-                  className="text-end text-neutral-500"
-                  level="small"
-                  scheme="label"
-                >
-                  {cycle}
-                </Text>
-              </div>
-            )}
-            {false && (
-              <>
-                <Separator />
-                <div className={styles.base__payment}>
+    <>
+      <ChatDetailsTabContentLayout title={title}>
+        {isLoading && <ChatInvoicesSkeleton />}
+        {!isLoading && isError && (
+          <div className={styles.base__invoices_empty}>
+            <MdMoodBad className="min-h-10 min-w-10 size-10" />
+            <Text
+              as="h5"
+              className="text-center text-neutral-900"
+              level="medium"
+              scheme="label"
+            >
+              Ha ocurrido un error al cargar las facturas
+            </Text>
+          </div>
+        )}
+        {!isLoading && !isError && (
+          <>
+            <div className={styles.base__header}>
+              {cycle && (
+                <div className={styles.base__info}>
                   <Text
                     as="span"
                     className="text-neutral-900"
                     level="small"
                     scheme="label"
                   >
-                    Método de pago principal:
+                    Ciclo de facturación:
                   </Text>
                   <Text
                     as="span"
@@ -79,45 +68,72 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
                     level="small"
                     scheme="label"
                   >
-                    Tarjeta de débito (Banco Mercantil)
+                    {cycle}
                   </Text>
                 </div>
-              </>
-            )}
-            <Separator />
-          </div>
-          <div className={styles.base__body}>
-            <Text as="h5" level="medium" scheme="label">
-              Últimas facturas
-            </Text>
-            {invoices?.length === 0 && (
-              <div className={styles.base__invoices_empty}>
-                <Icon name="message_info" size={40} />
-                <Text
-                  as="h5"
-                  className="text-center text-neutral-900"
-                  level="medium"
-                  scheme="label"
-                >
-                  No hay facturas que mostrar
-                </Text>
-              </div>
-            )}
-            {invoices?.length > 0 && (
-              <div className={styles.base__invoices}>
-                {invoices?.map((invoice: InvoiceValues, index: number) => (
-                  <ChatInvoiceCard
-                    key={invoice?.documentNumber}
-                    title={`Factura #${index + 1}`}
-                    open={true}
-                    {...invoice}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        </>
+              )}
+              {false && (
+                <>
+                  <Separator />
+                  <div className={styles.base__payment}>
+                    <Text
+                      as="span"
+                      className="text-neutral-900"
+                      level="small"
+                      scheme="label"
+                    >
+                      Método de pago principal:
+                    </Text>
+                    <Text
+                      as="span"
+                      className="text-end text-neutral-500"
+                      level="small"
+                      scheme="label"
+                    >
+                      Tarjeta de débito (Banco Mercantil)
+                    </Text>
+                  </div>
+                </>
+              )}
+              <Separator />
+            </div>
+            <div className={styles.base__body}>
+              <Text as="h5" level="medium" scheme="label">
+                Últimas facturas
+              </Text>
+              {invoices?.length === 0 && (
+                <div className={styles.base__invoices_empty}>
+                  <Icon name="message_info" size={40} />
+                  <Text
+                    as="h5"
+                    className="text-center text-neutral-900"
+                    level="medium"
+                    scheme="label"
+                  >
+                    No hay facturas que mostrar
+                  </Text>
+                </div>
+              )}
+              {invoices?.length > 0 && (
+                <div className={styles.base__invoices}>
+                  {invoices?.map((invoice: InvoiceValues, index: number) => (
+                    <ChatInvoiceCard
+                      key={invoice?.documentNumber}
+                      onPayment={openFloatingModal}
+                      title={`Factura #${index + 1}`}
+                      open={true}
+                      {...invoice}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </ChatDetailsTabContentLayout>
+      {isFloatingModalOpen && (
+        <FloatingModalPaymentReport onClose={closeFloatingModal} />
       )}
-    </ChatDetailsTabContentLayout>
+    </>
   );
 };

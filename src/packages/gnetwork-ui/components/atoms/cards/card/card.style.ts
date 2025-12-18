@@ -10,7 +10,7 @@ import { cardFullWidth } from './variants/card-fullwidth.variant';
 import styles from './card.module.css';
 
 export const cardVariants = cva(
-  [styles.base, 'bg-chromatic border-none gap-4 p-4'],
+  [styles.base, 'bg-chromatic border-none gap-4 p-4 rounded-lg'],
   {
     variants: {
       bordered: cardBordered,

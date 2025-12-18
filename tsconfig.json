@@ -38,7 +38,8 @@
       "@ui/*": ["./src/ui/*"],
       "@ui-core/*": ["./src/ui/core/*"],
       "@ui-auth/*": ["./src/ui/auth/*"],
-      "@ui-chat/*": ["./src/ui/chat/*"]
+      "@ui-chat/*": ["./src/ui/chat/*"],
+      "@ui-payment/*": ["./src/ui/payment/*"]
     },
     "plugins": [
       {

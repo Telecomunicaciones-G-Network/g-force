@@ -2,6 +2,7 @@ export type MessageType =
   | 'AUDIO'
   | 'CONTACTS'
   | 'DOCUMENT'
+  | 'FLOW_BUTTON'
   | 'IMAGE'
   | 'INTERACTIVE_BUTTON_REPLY'
   | 'INTERACTIVE_BUTTONS'

@@ -1,3 +1,5 @@
+'use client';
+
 import type { ChatInvoiceCardProps } from './chat-invoice-card.props';
 
 import dayjs from 'dayjs';
@@ -24,6 +26,7 @@ export const ChatInvoiceCard = ({
   dateEmission,
   datePayment,
   documentNumber,
+  onPayment,
   open = false,
   paymentMethods = [],
   statusName,
@@ -195,7 +198,7 @@ export const ChatInvoiceCard = ({
         </>
       )}
       {CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) && (
-        <Button color="red" fullWidth>
+        <Button color="red" fullWidth onClick={onPayment}>
           Pagar
         </Button>
       )}

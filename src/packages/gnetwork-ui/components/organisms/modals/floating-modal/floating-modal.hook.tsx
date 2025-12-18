@@ -15,9 +15,10 @@ export const useFloatingModal = () => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const [position, setPosition] = useState<FloatingModalPosition>({
-    x: 20,
-    y: 20,
+    x: 0,
+    y: 0,
   });
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -28,6 +29,20 @@ export const useFloatingModal = () => {
       startY: e.clientY - position.y,
     };
   };
+
+  useEffect(() => {
+    if (elementRef.current && !isReady) {
+      const rect = elementRef.current.getBoundingClientRect();
+      const centerX = (window.innerWidth - rect.width) / 2;
+      const centerY = (window.innerHeight - rect.height) / 2;
+
+      setPosition({
+        x: Math.max(0, centerX),
+        y: Math.max(0, centerY),
+      });
+      setIsReady(true);
+    }
+  }, [isReady]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,6 +80,7 @@ export const useFloatingModal = () => {
     elementRef,
     handleMouseDown,
     isDragging,
+    isReady,
     position,
   };
 };

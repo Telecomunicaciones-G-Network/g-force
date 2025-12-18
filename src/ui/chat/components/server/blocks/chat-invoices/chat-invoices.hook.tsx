@@ -4,6 +4,8 @@ import type { GetContactInvoicesResponse } from '@module-chat/domain/interfaces'
 
 import { useQuery } from '@tanstack/react-query';
 
+import { useFloatingModalAction } from '@gnetwork-ui/components/organisms/modals/floating-modal/floating-modal-action.hook';
+
 import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
 
 import { GetContactInvoicesQuery } from '@module-chat/infrastructure/queries/get-contact-invoices.query';
@@ -31,10 +33,16 @@ export const useChatInvoices = () => {
     refetchOnWindowFocus: false,
   });
 
+  const { closeFloatingModal, isFloatingModalOpen, openFloatingModal } =
+    useFloatingModalAction();
+
   return {
+    closeFloatingModal,
     cycle: data?.cycle ?? '',
     invoices: data?.invoices ?? [],
     isError,
+    isFloatingModalOpen,
     isLoading,
+    openFloatingModal,
   };
 };

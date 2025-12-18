@@ -1,37 +1,48 @@
 'use client';
 
+import type { ReactDiv } from '../../../../types/react-div.type';
+
 import { createPortal } from 'react-dom';
+
+import { cn } from '../../../../utils/cn.util';
 
 import { useFloatingModal } from './floating-modal.hook';
 
-export const FloatingModal = () => {
-  const { elementRef, handleMouseDown, isDragging, position } =
+import styles from './floating-modal.module.css';
+
+export const FloatingModal = ({
+  className = '',
+  children,
+  ref,
+  ...rest
+}: Readonly<ReactDiv>) => {
+  const { elementRef, handleMouseDown, isDragging, isReady, position } =
     useFloatingModal();
+
+  if (!children) {
+    console.warn(
+      'Prop children is missing on FloatingModal component. This component can not be render appropiately.',
+    );
+  }
 
   return (
     <>
       {typeof document !== 'undefined' &&
         createPortal(
           <div
-            ref={elementRef}
+            className={cn(styles.base, className)}
+            ref={ref ? ref : elementRef}
             onMouseDown={handleMouseDown}
             style={{
-              position: 'fixed',
-              top: `${position.y}px`,
-              left: `${position.x}px`,
-              color: 'white',
-              background: 'black',
-              padding: '16px',
-              borderRadius: '8px',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              zIndex: 9999,
               cursor: isDragging ? 'grabbing' : 'grab',
-              userSelect: 'none',
-              border: 'none',
-              outline: 'none',
+              left: `${position.x}px`,
+              opacity: isReady ? 1 : 0,
+              pointerEvents: isReady ? 'auto' : 'none',
+              top: `${position.y}px`,
             }}
+            {...rest}
           >
-            Floating element
+            {children}
           </div>,
           document.body,
         )}

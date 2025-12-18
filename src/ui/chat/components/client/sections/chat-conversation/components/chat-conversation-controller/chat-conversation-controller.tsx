@@ -24,6 +24,8 @@ export const ChatConversationController = ({
       return <ChatContactsMessageController message={message} />;
     case MessageTypes.DOCUMENT:
       return <ChatDocumentMessageController message={message} />;
+    case MessageTypes.FLOW_BUTTON:
+      return <ChatTextMessageController message={message} />;
     case MessageTypes.IMAGE:
       return <ChatImageMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_OPTIONS:
