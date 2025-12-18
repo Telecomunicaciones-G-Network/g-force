@@ -9,6 +9,7 @@ import { ChatImageMessageController } from '../chat-image-message-controller';
 import { ChatLocationMessageController } from '../chat-location-message-controller';
 import { ChatStickerMessageController } from '../chat-sticker-message-controller';
 import { ChatTextMessageController } from '../chat-text-message-controller';
+import { ChatUnknownMessageController } from '../chat-unknown-message-controller';
 import { ChatVideoMessageController } from '../chat-video-message-controller';
 
 export const ChatConversationController = ({
@@ -38,6 +39,6 @@ export const ChatConversationController = ({
     case MessageTypes.VIDEO:
       return <ChatVideoMessageController message={message} />;
     default:
-      return null;
+      return <ChatUnknownMessageController message={message} />;
   }
 };
