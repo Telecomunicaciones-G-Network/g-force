@@ -1,1 +1,5 @@
-export type InvoiceStatusName = 'Pagado' | 'Pendiente' | 'Vencido';
+export type InvoiceStatusName =
+  | 'No pagada'
+  | 'Pagada'
+  | 'Pendiente'
+  | 'Vencido';

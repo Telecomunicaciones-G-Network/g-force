@@ -20,7 +20,7 @@ import { useChatInvoices } from './chat-invoices.hook';
 import styles from './chat-invoices.module.css';
 
 export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
-  const { invoices, invoicingCycle, isError, isLoading } = useChatInvoices();
+  const { cycle, invoices, isError, isLoading } = useChatInvoices();
 
   return (
     <ChatDetailsTabContentLayout title={title}>
@@ -41,7 +41,7 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
       {!isLoading && !isError && (
         <>
           <div className={styles.base__header}>
-            {invoicingCycle && (
+            {cycle && (
               <div className={styles.base__info}>
                 <Text
                   as="span"
@@ -57,7 +57,7 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
                   level="small"
                   scheme="label"
                 >
-                  {invoicingCycle}
+                  {cycle}
                 </Text>
               </div>
             )}
@@ -108,7 +108,6 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
                 {invoices?.map((invoice: InvoiceValues, index: number) => (
                   <ChatInvoiceCard
                     key={invoice?.documentNumber}
-                    invoicingCycle={invoicingCycle}
                     title={`Factura #${index + 1}`}
                     open={true}
                     {...invoice}

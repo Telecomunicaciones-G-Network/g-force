@@ -32,8 +32,8 @@ export const useChatInvoices = () => {
   });
 
   return {
+    cycle: data?.cycle ?? '',
     invoices: data?.invoices ?? [],
-    invoicingCycle: data?.extra?.cycle,
     isError,
     isLoading,
   };

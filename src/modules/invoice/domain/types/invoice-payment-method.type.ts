@@ -1,1 +1,1 @@
-export type InvoicePaymentMethod = 'Pago Móvil' | 'Transferencia Bancaria';
+export type InvoicePaymentMethod = 'PAGO MOVIL' | 'Transferencia Bancaria';

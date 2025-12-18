@@ -226,15 +226,15 @@ export const ChatDetailTabs = () => {
           triggerComponent={
             <TabButton
               color={
-                isActiveTab(ChatDetailTabsValues.HISTORICAL) ? 'red' : 'default'
+                isActiveTab(ChatDetailTabsValues.NOTES) ? 'red' : 'default'
               }
-              value={ChatDetailTabsValues.HISTORICAL}
+              value={ChatDetailTabsValues.NOTES}
             >
               <MdHistory className="min-h-6 min-w-6 size-6" />
             </TabButton>
           }
         >
-          Histórico
+          Notas
         </Tooltip>
       </TabsTriggers>
       <TabContent
@@ -275,7 +275,7 @@ export const ChatDetailTabs = () => {
       </TabContent>
       <TabContent
         className={styles.base__content}
-        value={ChatDetailTabsValues.HISTORICAL}
+        value={ChatDetailTabsValues.NOTES}
       >
         <ChatHistory title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>

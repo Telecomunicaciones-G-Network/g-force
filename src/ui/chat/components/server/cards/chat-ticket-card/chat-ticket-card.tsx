@@ -1,5 +1,7 @@
 import type { TicketValues } from '@module-ticket/domain/interfaces';
 
+import dayjs from 'dayjs';
+
 import { Card } from '@gnetwork-ui/components/atoms/cards/card';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -40,9 +42,11 @@ export const ChatTicketCard = ({
           fullWidth
         >
           <div className={styles.base}>
-            <Text as="h5" level="small" scheme="label">
-              #TCK-${number}:
-            </Text>
+            {number && (
+              <Text as="h5" level="small" scheme="label">
+                #TCK-{number}:
+              </Text>
+            )}
             <div className={styles.base__body}>
               {description && (
                 <Text
@@ -62,7 +66,7 @@ export const ChatTicketCard = ({
                     level="small"
                     scheme="label"
                   >
-                    {createdAt}
+                    {dayjs(createdAt).format('DD/MM/YYYY')}
                   </Text>
                 )}
                 {statusName && (

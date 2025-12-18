@@ -1,29 +1,43 @@
 import type { ChatInvoiceCardProps } from './chat-invoice-card.props';
 
+import dayjs from 'dayjs';
+
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
 import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
 
-import { invoiceStatusNameDictionary } from '@ui-chat/dictionaries/invoice-status-name.dictionary';
+import { cn } from '@gnetwork-ui/utils/cn.util';
+
 import { invoiceStatusTagColorDictionary } from '@ui-chat/dictionaries/invoice-status-tag-color.dictionary';
+
+import { CHAT_INVOICE_CARD_STATUS_FOR_PAY } from './constants/chat-invoice-card-status-for-pay.constant';
 
 import styles from './chat-invoice-card.module.css';
 
 export const ChatInvoiceCard = ({
   amount,
+  cycle = '',
   dateEmission,
   datePayment,
   documentNumber,
-  invoicingCycle = '',
   open = false,
   paymentMethods = [],
   statusName,
   title = '',
 }: Readonly<ChatInvoiceCardProps>) => (
-  <Accordion fullWidth open={open} label={title}>
+  <Accordion
+    className={cn(
+      CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) &&
+        'border-t-4 border-solid border-t-red-600',
+    )}
+    fullWidth
+    open={open}
+    label={title}
+  >
     <div className={styles.base}>
       {documentNumber && (
         <>
@@ -49,7 +63,7 @@ export const ChatInvoiceCard = ({
           <Separator />
         </>
       )}
-      {invoicingCycle && (
+      {cycle && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -60,7 +74,7 @@ export const ChatInvoiceCard = ({
             >
               Ciclo de facturación:
             </Text>
-            <Tag color="blue">{invoicingCycle}</Tag>
+            <Tag color="blue">{cycle}</Tag>
           </div>
           <Separator />
         </>
@@ -83,7 +97,7 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {dateEmission}
+              {dayjs(dateEmission).format('DD/MM/YYYY')}
             </Text>
           </div>
           <Separator />
@@ -128,7 +142,7 @@ export const ChatInvoiceCard = ({
               invoiceStatusTagColorDictionary?.[statusName] ?? TagColors.GRAY
             }
           >
-            {invoiceStatusNameDictionary?.[statusName]}
+            {statusName}
           </Tag>
         </div>
       )}
@@ -151,7 +165,7 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              {datePayment}
+              {dayjs(datePayment).format('DD/MM/YYYY')}
             </Text>
           </div>
         </>
@@ -179,6 +193,11 @@ export const ChatInvoiceCard = ({
             </Text>
           </div>
         </>
+      )}
+      {CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) && (
+        <Button color="red" fullWidth>
+          Pagar
+        </Button>
       )}
     </div>
   </Accordion>

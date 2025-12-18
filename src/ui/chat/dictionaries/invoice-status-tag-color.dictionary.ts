@@ -8,6 +8,7 @@ export const invoiceStatusTagColorDictionary: Record<
   InvoiceStatusName,
   TagColor
 > = {
+  [InvoiceStatusNames.UNPAID]: TagColors.RED,
   [InvoiceStatusNames.EXPIRED]: TagColors.RED,
   [InvoiceStatusNames.PAID]: TagColors.GREEN,
   [InvoiceStatusNames.PENDING]: TagColors.YELLOW,

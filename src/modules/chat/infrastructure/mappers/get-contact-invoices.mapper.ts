@@ -9,8 +9,7 @@ export class GetContactInvoicesMapper {
   ): GetContactInvoicesResponse {
     return {
       count: input?.count,
-      error: input?.error,
-      extra: input?.extra,
+      cycle: input?.extra?.cycle,
       invoices: input?.results?.map(GetContactInvoicesMapper.mapFromArray),
       next: input?.next,
       previous: input?.previous,

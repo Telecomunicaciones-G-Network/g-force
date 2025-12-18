@@ -1,6 +1,6 @@
 'use client';
 
-import type { OnConversationsAssignedResponseDTO } from '@module-chat/infrastructure/dtos';
+import type { OnConversationAssignedResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { useRouter } from 'next/navigation';
 
@@ -9,13 +9,13 @@ import { Sounder } from '@sounder/classes/sounder.class';
 
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
-import { OnConversationsAssignedMapper } from '@module-chat/infrastructure/mappers/on-conversations-assigned.mapper';
+import { OnConversationAssignedMapper } from '@module-chat/infrastructure/mappers/on-conversation-assigned.mapper';
 
 import { revalidateChatContactsAction } from '@ui-chat/actions/revalidate-chat-contacts.action';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-export const useOnConversationsAssigned = () => {
+export const useOnConversationAssigned = () => {
   const router = useRouter();
 
   const changeConversationAssignedToContact = useContactStore(
@@ -31,12 +31,14 @@ export const useOnConversationsAssigned = () => {
     (state) => state.hasContactConversationAssigned,
   );
 
-  onSocketEvent<OnConversationsAssignedResponseDTO>(
-    socketEventsDictionary.CONVERSATIONS_ASSIGNED,
+  onSocketEvent<OnConversationAssignedResponseDTO>(
+    socketEventsDictionary.CONVERSATION_ASSIGNED,
     async (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      const response = OnConversationsAssignedMapper.mapFrom(parseResponse);
+      console.log('parseResponse', parseResponse);
+
+      const response = OnConversationAssignedMapper.mapFrom(parseResponse);
 
       if (!response?.contactIds || response?.contactIds?.length === 0) return;
 

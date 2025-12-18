@@ -1,8 +1,8 @@
 export const chatDetailTabsDictionary = {
   contact: 'Contacto',
   contracts: 'Contratos',
-  historical: 'Histórico',
   invoices: 'Facturación',
+  notes: 'Notas',
   status: 'Status',
   tickets: 'Tickets',
 } as const;

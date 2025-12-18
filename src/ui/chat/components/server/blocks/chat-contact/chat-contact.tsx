@@ -8,6 +8,7 @@ import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
+import { capitalizeWords } from '@stringify/utils/capitalize-words.util';
 import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
 import { ChatDetailsContactCloseConversationButton } from '@ui-chat/components/client/buttons/chat-details-contact-close-conversation-button';
@@ -64,7 +65,8 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
                     level="small"
                     scheme="label"
                   >
-                    {contactName ?? contactInformation?.fullName}
+                    {capitalizeWords(contactName) ??
+                      capitalizeWords(contactInformation?.fullName)}
                   </Text>
                 </div>
                 <Separator />

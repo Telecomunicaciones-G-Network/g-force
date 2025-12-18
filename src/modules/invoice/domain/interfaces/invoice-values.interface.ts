@@ -8,6 +8,7 @@ export interface InvoiceValues {
   id: number;
   amount: number;
   contractId: number;
+  cycle?: string;
   dateEmission: string;
   datePayment: string | null;
   documentNumber: string | null;

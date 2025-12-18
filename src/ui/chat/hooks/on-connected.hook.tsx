@@ -12,6 +12,12 @@ import { useAuth } from '@ui-auth/hooks/auth.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
+/**
+ * On connected hook
+ *
+ * This hook listens to the `connected` socket event and updates the active agent
+ * information in the contact store when a successful connection is established.
+ */
 export const useOnConnected = () => {
   const { user } = useAuth();
 
@@ -21,9 +27,7 @@ export const useOnConnected = () => {
     socketEventsDictionary.CONNECTED,
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
-
       const userData = JSON.parse(user as string);
-
       const response = OnConnectedMapper.mapFrom(parseResponse);
 
       if (!response?.success || !response?.agentId || !userData) return;

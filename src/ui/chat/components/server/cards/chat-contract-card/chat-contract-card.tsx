@@ -1,5 +1,7 @@
 import type { ChatContractCardProps } from './chat-contract-card.props';
 
+import dayjs from 'dayjs';
+
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
@@ -90,7 +92,7 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {installationDate}
+              {dayjs(installationDate).format('DD/MM/YYYY')}
             </Text>
           </div>
           <Separator />

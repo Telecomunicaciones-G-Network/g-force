@@ -1,9 +1,9 @@
 import type { OnConversationsAssignedResponse } from '../../domain/interfaces/on-conversations-assigned-response.interface';
-import type { OnConversationsAssignedResponseDTO } from '../dtos';
+import type { OnConversationAssignedResponseDTO } from '../dtos';
 
-export class OnConversationsAssignedMapper {
+export class OnConversationAssignedMapper {
   static mapFrom(
-    input: OnConversationsAssignedResponseDTO,
+    input: OnConversationAssignedResponseDTO,
   ): OnConversationsAssignedResponse {
     return {
       contactIds: input?.contact_ids ?? [],

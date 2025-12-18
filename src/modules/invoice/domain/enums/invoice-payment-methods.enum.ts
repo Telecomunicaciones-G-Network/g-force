@@ -1,4 +1,4 @@
 export enum InvoicePaymentMethods {
-  MOBILE_PAYMENT = 'Pago Móvil',
+  MOBILE_PAYMENT = 'PAGO MOVIL',
   BANK_TRANSFER = 'Transferencia Bancaria',
 }

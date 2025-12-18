@@ -1,7 +1,7 @@
 export type ChatDetailTab =
   | 'contact'
   | 'contracts'
-  | 'historical'
   | 'invoices'
+  | 'notes'
   | 'status'
   | 'tickets';
