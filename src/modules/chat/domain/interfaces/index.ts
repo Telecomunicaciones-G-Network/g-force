@@ -35,6 +35,7 @@ export type {
   MessageValues,
 } from './message-values.interface';
 export type { NoteValues } from './note-values.interface';
+export type { OnConnectedResponse } from './on-connected-response.interface';
 export type { OnMediaStatusChangedResponse } from './on-media-status-changed-response.interface';
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';

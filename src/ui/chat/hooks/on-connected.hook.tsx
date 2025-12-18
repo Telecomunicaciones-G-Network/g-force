@@ -1,19 +1,16 @@
 'use client';
 
+import type { OnConnectedResponseDTO } from '@module-chat/infrastructure/dtos';
+
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
+import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connected.mapper';
+
 import { useAuth } from '@ui-auth/hooks/auth.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-
-interface OnConnectedResponseDTO {
-  agent_id: string;
-  contact_ids: string[];
-  success: boolean;
-  user_id: string;
-}
 
 export const useOnConnected = () => {
   const { user } = useAuth();
@@ -27,11 +24,12 @@ export const useOnConnected = () => {
 
       const userData = JSON.parse(user as string);
 
-      if (!parseResponse?.success || !parseResponse?.agent_id || !userData)
-        return;
+      const response = OnConnectedMapper.mapFrom(parseResponse);
+
+      if (!response?.success || !response?.agentId || !userData) return;
 
       setActiveAgent({
-        id: parseResponse?.agent_id,
+        id: response?.agentId,
         name: `${userData?.firstname ? userData?.firstname : ''} ${userData?.lastname ? userData?.lastname : ''}`,
       });
     },

@@ -13,6 +13,7 @@ export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-respo
 export type { GetContactNotesResponseDTO } from './get-contact-notes-response.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { GetContactTicketsResponseDTO } from './get-contact-tickets-response.dto';
+export type { OnConnectedResponseDTO } from './on-connected-response.dto';
 export type { OnConversationsAssignedResponseDTO } from './on-conversations-assigned-response.dto';
 export type { OnIncommingMessageResponseDTO } from './on-incomming-message-response.dto';
 export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.dto';
