@@ -1,6 +1,9 @@
 'use client';
 
 import type { GetContactInvoicesResponse } from '@module-chat/domain/interfaces';
+import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+
+import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -13,6 +16,10 @@ import { GetContactInvoicesQuery } from '@module-chat/infrastructure/queries/get
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatInvoices = () => {
+  const [selectedInvoice, setSelectedInvoice] = useState<InvoiceValues | null>(
+    null,
+  );
+
   const activeContact = useContactStore((state) => state.activeContact);
 
   const { data, isError, isLoading } = useQuery<GetContactInvoicesResponse>({
@@ -33,16 +40,27 @@ export const useChatInvoices = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { closeFloatingModal, isFloatingModalOpen, openFloatingModal } =
-    useFloatingModalAction();
+  const { closeFloatingModal, isFloatingModalOpen } = useFloatingModalAction();
+
+  const closePaymentFloatingModal = () => {
+    setSelectedInvoice(null);
+    closeFloatingModal();
+  };
+
+  const openPaymentFloatingModal = () => {
+    return;
+    // setSelectedInvoice(invoice);
+    // openFloatingModal();
+  };
 
   return {
-    closeFloatingModal,
+    closePaymentFloatingModal,
     cycle: data?.cycle ?? '',
     invoices: data?.invoices ?? [],
     isError,
     isFloatingModalOpen,
     isLoading,
-    openFloatingModal,
+    openPaymentFloatingModal,
+    selectedInvoice,
   };
 };

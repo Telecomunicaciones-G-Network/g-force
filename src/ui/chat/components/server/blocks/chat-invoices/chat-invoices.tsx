@@ -23,13 +23,14 @@ import styles from './chat-invoices.module.css';
 
 export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
   const {
-    closeFloatingModal,
+    closePaymentFloatingModal,
     cycle,
     invoices,
     isError,
     isFloatingModalOpen,
     isLoading,
-    openFloatingModal,
+    openPaymentFloatingModal,
+    selectedInvoice,
   } = useChatInvoices();
 
   return (
@@ -119,10 +120,10 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
                   {invoices?.map((invoice: InvoiceValues, index: number) => (
                     <ChatInvoiceCard
                       key={invoice?.documentNumber}
-                      onPayment={openFloatingModal}
-                      title={`Factura #${index + 1}`}
+                      invoice={invoice}
+                      onPayment={openPaymentFloatingModal}
                       open={true}
-                      {...invoice}
+                      title={`Factura #${index + 1}`}
                     />
                   ))}
                 </div>
@@ -131,8 +132,11 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
           </>
         )}
       </ChatDetailsTabContentLayout>
-      {isFloatingModalOpen && (
-        <FloatingModalPaymentReport onClose={closeFloatingModal} />
+      {isFloatingModalOpen && selectedInvoice && (
+        <FloatingModalPaymentReport
+          onClose={closePaymentFloatingModal}
+          invoice={selectedInvoice}
+        />
       )}
     </>
   );

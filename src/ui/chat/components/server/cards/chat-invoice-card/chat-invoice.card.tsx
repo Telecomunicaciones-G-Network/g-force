@@ -21,29 +21,121 @@ import { CHAT_INVOICE_CARD_STATUS_FOR_PAY } from './constants/chat-invoice-card-
 import styles from './chat-invoice-card.module.css';
 
 export const ChatInvoiceCard = ({
-  amount,
-  cycle = '',
-  dateEmission,
-  datePayment,
-  documentNumber,
+  invoice,
   onPayment,
   open = false,
-  paymentMethods = [],
-  statusName,
   title = '',
-}: Readonly<ChatInvoiceCardProps>) => (
-  <Accordion
-    className={cn(
-      CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) &&
-        'border-t-4 border-solid border-t-red-600',
-    )}
-    fullWidth
-    open={open}
-    label={title}
-  >
-    <div className={styles.base}>
-      {documentNumber && (
-        <>
+}: Readonly<ChatInvoiceCardProps>) => {
+  const {
+    amount,
+    cycle = '',
+    dateEmission,
+    datePayment,
+    documentNumber,
+    paymentMethods = [],
+    statusName,
+  } = invoice;
+
+  return (
+    <Accordion
+      className={cn(
+        CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) &&
+          'border-t-4 border-solid border-t-red-600',
+      )}
+      fullWidth
+      open={open}
+      label={title}
+    >
+      <div className={styles.base}>
+        {documentNumber && (
+          <>
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Factura N.º:
+              </Text>
+              <Text
+                as="span"
+                align="end"
+                className="text-neutral-400"
+                level="small"
+                scheme="label"
+              >
+                {documentNumber}
+              </Text>
+            </div>
+            <Separator />
+          </>
+        )}
+        {cycle && (
+          <>
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Ciclo de facturación:
+              </Text>
+              <Tag color="blue">{cycle}</Tag>
+            </div>
+            <Separator />
+          </>
+        )}
+        {dateEmission && (
+          <>
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Fecha de emisión:
+              </Text>
+              <Text
+                as="span"
+                align="end"
+                className="text-neutral-400"
+                level="small"
+                scheme="label"
+              >
+                {dayjs(dateEmission).format('DD/MM/YYYY')}
+              </Text>
+            </div>
+            <Separator />
+          </>
+        )}
+        {amount && (
+          <>
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Monto:
+              </Text>
+              <Text
+                as="span"
+                align="end"
+                className="text-neutral-400"
+                level="small"
+                scheme="label"
+              >
+                ${amount.toFixed(2).replace('.', ',')}
+              </Text>
+            </div>
+            <Separator />
+          </>
+        )}
+        {statusName && (
           <div className={styles.base__info}>
             <Text
               as="label"
@@ -51,157 +143,71 @@ export const ChatInvoiceCard = ({
               level="small"
               scheme="label"
             >
-              Factura N.º:
+              Estado:
             </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
+            <Tag
+              color={
+                invoiceStatusTagColorDictionary?.[statusName] ?? TagColors.GRAY
+              }
             >
-              {documentNumber}
-            </Text>
+              {statusName}
+            </Tag>
           </div>
-          <Separator />
-        </>
-      )}
-      {cycle && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Ciclo de facturación:
-            </Text>
-            <Tag color="blue">{cycle}</Tag>
-          </div>
-          <Separator />
-        </>
-      )}
-      {dateEmission && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Fecha de emisión:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              {dayjs(dateEmission).format('DD/MM/YYYY')}
-            </Text>
-          </div>
-          <Separator />
-        </>
-      )}
-      {amount && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Monto:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              ${amount.toFixed(2).replace('.', ',')}
-            </Text>
-          </div>
-          <Separator />
-        </>
-      )}
-      {statusName && (
-        <div className={styles.base__info}>
-          <Text
-            as="label"
-            className="text-neutral-900"
-            level="small"
-            scheme="label"
-          >
-            Estado:
-          </Text>
-          <Tag
-            color={
-              invoiceStatusTagColorDictionary?.[statusName] ?? TagColors.GRAY
-            }
-          >
-            {statusName}
-          </Tag>
-        </div>
-      )}
-      {datePayment && (
-        <>
-          <Separator />
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Fecha de pago:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              {dayjs(datePayment).format('DD/MM/YYYY')}
-            </Text>
-          </div>
-        </>
-      )}
-      {paymentMethods && paymentMethods.length > 0 && paymentMethods?.[0] && (
-        <>
-          <Separator />
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Método:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              {paymentMethods?.[0]}
-            </Text>
-          </div>
-        </>
-      )}
-      {CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) && (
-        <Button color="red" fullWidth onClick={onPayment}>
-          Pagar
-        </Button>
-      )}
-    </div>
-  </Accordion>
-);
+        )}
+        {datePayment && (
+          <>
+            <Separator />
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Fecha de pago:
+              </Text>
+              <Text
+                as="span"
+                align="end"
+                className="text-neutral-400"
+                level="small"
+                scheme="label"
+              >
+                {dayjs(datePayment).format('DD/MM/YYYY')}
+              </Text>
+            </div>
+          </>
+        )}
+        {paymentMethods && paymentMethods.length > 0 && paymentMethods?.[0] && (
+          <>
+            <Separator />
+            <div className={styles.base__info}>
+              <Text
+                as="label"
+                className="text-neutral-900"
+                level="small"
+                scheme="label"
+              >
+                Método:
+              </Text>
+              <Text
+                as="span"
+                align="end"
+                className="text-neutral-400"
+                level="small"
+                scheme="label"
+              >
+                {paymentMethods?.[0]}
+              </Text>
+            </div>
+          </>
+        )}
+        {CHAT_INVOICE_CARD_STATUS_FOR_PAY.includes(statusName) && (
+          <Button color="red" fullWidth onClick={() => onPayment?.(invoice)}>
+            Pagar
+          </Button>
+        )}
+      </div>
+    </Accordion>
+  );
+};

@@ -1,9 +1,8 @@
 import type { FloatingModalPaymentReportProps } from '../../floating-modal-payment-report.props';
 
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdOutlinePayments } from 'react-icons/md';
 
-import { MdOutlinePayments } from 'react-icons/md';
-
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { IconBadge } from '@gnetwork-ui/components/molecules/badges/icon-badge';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
@@ -11,6 +10,7 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './floating-modal-payment-report-header.module.css';
 
 export const FloatingModalPaymentReportHeader = ({
+  invoice,
   onClose,
 }: Readonly<FloatingModalPaymentReportProps>) => (
   <div className={styles.base}>
@@ -35,6 +35,20 @@ export const FloatingModalPaymentReportHeader = ({
             <MdOutlinePayments className="fill-red-600 min-h-6 min-w-6 rotate-y-180 size-6" />
           }
         />
+      </div>
+      <div className={styles.base__header_content}>
+        <Text
+          className="text-chromatic-inverted"
+          level="xsmall"
+          scheme="heading"
+        >
+          Pagar
+        </Text>
+        {invoice?.documentNumber && (
+          <Text className="text-neutral-700" level="small" scheme="paragraph">
+            Factura {invoice?.documentNumber}
+          </Text>
+        )}
       </div>
     </div>
     <button

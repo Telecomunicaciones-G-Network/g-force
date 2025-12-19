@@ -2,12 +2,14 @@ import { FloatingModalPaymentReportProps } from './floating-modal-payment-report
 
 import { FloatingCardModal } from '@gnetwork-ui/components/organisms/modals/floating-card-modal';
 
+import { FloatingModalPaymentReportBody } from './components/floating-modal-payment-report-body';
 import { FloatingModalPaymentReportHeader } from './components/floating-modal-payment-report-header';
 
-export const FloatingModalPaymentReport = ({
-  onClose,
-}: Readonly<FloatingModalPaymentReportProps>) => (
+export const FloatingModalPaymentReport = (
+  props: Readonly<FloatingModalPaymentReportProps>,
+) => (
   <FloatingCardModal>
-    <FloatingModalPaymentReportHeader onClose={onClose} />
+    <FloatingModalPaymentReportHeader {...props} />
+    <FloatingModalPaymentReportBody />
   </FloatingCardModal>
 );
