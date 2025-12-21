@@ -4,3 +4,8 @@
   gap: 24px;
   padding: 16px;
 }
+
+.base__input {
+  display: flex;
+  width: 100%;
+}

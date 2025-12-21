@@ -40,17 +40,17 @@ export const useChatInvoices = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { closeFloatingModal, isFloatingModalOpen } = useFloatingModalAction();
+  const { closeFloatingModal, isFloatingModalOpen, openFloatingModal } =
+    useFloatingModalAction();
 
   const closePaymentFloatingModal = () => {
     setSelectedInvoice(null);
     closeFloatingModal();
   };
 
-  const openPaymentFloatingModal = () => {
-    return;
-    // setSelectedInvoice(invoice);
-    // openFloatingModal();
+  const openPaymentFloatingModal = (invoice: InvoiceValues) => {
+    setSelectedInvoice(invoice);
+    openFloatingModal();
   };
 
   return {

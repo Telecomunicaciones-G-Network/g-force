@@ -1,0 +1,10 @@
+.base {
+  border: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  z-index: 999999;
+}
