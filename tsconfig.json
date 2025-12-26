@@ -20,6 +20,7 @@
       "@module-chat/*": ["./src/modules/chat/*"],
       "@module-contract/*": ["./src/modules/contract/*"],
       "@module-invoice/*": ["./src/modules/invoice/*"],
+      "@module-payment/*": ["./src/modules/payment/*"],
       "@module-ticket/*": ["./src/modules/ticket/*"],
       "@module-user/*": ["./src/modules/user/*"],
       "@packages/*": ["./src/packages/*"],

@@ -84,6 +84,8 @@
     "dropdowns": "content",
     "entities": "svg",
     "factory": "mjml",
+    "floating-modal-payment-report-mobile-payment": "react-components",
+    "floating-modal-payment-report-controller": "react-components",
     "file-input": "react-components",
     "mappers": "mappings",
     "modal": "react-components",

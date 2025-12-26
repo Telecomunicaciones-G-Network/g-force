@@ -15,7 +15,9 @@ export const SelectInput = ({
   label = 'Seleccione una opción',
   fullWidth = false,
   indicator = '',
+  onValueChange,
   options = [],
+  value,
   ...rest
 }: Readonly<SelectInputProps>) => {
   if (!options || !Array.isArray(options) || options?.length === 0) {
@@ -25,7 +27,13 @@ export const SelectInput = ({
   }
 
   return (
-    <Select defaultValue={defaultValue} disabled={disabled} {...rest}>
+    <Select
+      defaultValue={defaultValue}
+      disabled={disabled}
+      onValueChange={onValueChange}
+      value={value}
+      {...rest}
+    >
       <SelectInputTrigger fullWidth={fullWidth} label={label} />
       <SelectInputBody indicator={indicator} options={options} {...rest} />
     </Select>
