@@ -27,7 +27,7 @@ export const Modal = ({
         <ModalContainer>
           <ModalTrigger>{triggerComponent}</ModalTrigger>
           <ModalContent
-            className={cn('sm:max-w-[425px]', className)}
+            className={cn('sm:max-w-[518px]', className)}
             customModalCloseComponent={customModalCloseComponent}
             hideModalClose={hideModalClose}
             modalOverlayChildren={modalOverlayChildren}

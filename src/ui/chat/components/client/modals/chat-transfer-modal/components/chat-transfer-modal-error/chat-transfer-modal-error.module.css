@@ -1,9 +1,7 @@
 .base {
   align-items: center;
-  cursor: pointer;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
   justify-content: center;
-  position: absolute;
-  right: 12px;
-  top: 12px;
 }
