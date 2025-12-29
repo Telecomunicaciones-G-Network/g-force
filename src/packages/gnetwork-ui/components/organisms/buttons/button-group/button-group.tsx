@@ -5,23 +5,12 @@ import type { ButtonGroupButton, ButtonGroupProps } from './button-group.props';
 import { Fragment } from 'react';
 
 import { Button } from '../../../molecules/buttons/button';
+import { Dropdown } from '../../dropdowns/dropdown';
 
 import { cn } from '../../../../utils/cn.util';
 
 import styles from './button-group.module.css';
 
-/**
- * ButtonGroup component
- *
- * Renders a flexible group of buttons in a horizontal layout.
- * Each button can be conditionally rendered using the `isActive` flag.
- *
- * @param {ButtonGroupProps} props - The props for the ButtonGroup component
- * @param {ButtonGroupButton[]} props.buttons - Array of button configuration objects (required)
- * @param {string} [props.className] - Additional class names for the group container
- * @param {React.Ref<HTMLDivElement>} [props.ref] - Reference to the group container element
- * @param {object} [props.rest] - Additional props spread to the container div
- */
 export const ButtonGroup = ({
   className = '',
   buttons,
@@ -40,9 +29,27 @@ export const ButtonGroup = ({
       ref={ref}
       {...rest}
     >
-      {buttons?.map(({ id, isActive = true, ...rest }: ButtonGroupButton) => (
-        <Fragment key={id}>{isActive && <Button {...rest} />}</Fragment>
-      ))}
+      {buttons?.map(
+        ({
+          id,
+          dropdownProps,
+          isActive = true,
+          isDropdown = false,
+          ...rest
+        }: ButtonGroupButton) => (
+          <Fragment key={id}>
+            {isActive &&
+              (isDropdown ? (
+                <Dropdown
+                  triggerComponent={<Button {...rest} />}
+                  {...dropdownProps}
+                />
+              ) : (
+                <Button {...rest} />
+              ))}
+          </Fragment>
+        ),
+      )}
     </div>
   );
 };

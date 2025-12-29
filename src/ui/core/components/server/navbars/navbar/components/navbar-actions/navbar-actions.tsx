@@ -3,10 +3,10 @@
 import type { NavbarActionsProps } from './navbar-actions.props';
 
 import {
-  MdOutlineDesktopWindows,
   MdKeyboardArrowDown,
   MdLogout,
   MdNotificationsNone,
+  MdOutlineDesktopWindows,
 } from 'react-icons/md';
 
 import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
