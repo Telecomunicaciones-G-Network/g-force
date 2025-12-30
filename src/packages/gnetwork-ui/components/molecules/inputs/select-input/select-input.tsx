@@ -7,16 +7,26 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import { SelectInputBody } from './components/select-input-body';
 import { SelectInputTrigger } from './components/select-input-trigger';
 
+import { cn } from '../../../../utils/cn.util';
+
+import styles from './select-input.module.css';
+
 const Select = SelectPrimitive.Root;
 
 export const SelectInput = ({
+  customMessageClassName = '',
   defaultValue,
   disabled = false,
-  label = 'Seleccione una opción',
+  error = false,
   fullWidth = false,
+  id,
   indicator = '',
+  label = 'Seleccione una opción',
+  message = '',
+  name,
   onValueChange,
   options = [],
+  required = false,
   value,
   ...rest
 }: Readonly<SelectInputProps>) => {
@@ -27,15 +37,43 @@ export const SelectInput = ({
   }
 
   return (
-    <Select
-      defaultValue={defaultValue}
-      disabled={disabled}
-      onValueChange={onValueChange}
-      value={value}
-      {...rest}
+    <div
+      className={cn(
+        styles.base,
+        fullWidth && 'w-full',
+        disabled ? 'opacity-50 cursor-not-allowed' : '',
+      )}
     >
-      <SelectInputTrigger fullWidth={fullWidth} label={label} />
-      <SelectInputBody indicator={indicator} options={options} {...rest} />
-    </Select>
+      {label && (
+        <label
+          className={cn(styles.base__label, 'text-chromatic-inverted')}
+          htmlFor={id || name}
+        >
+          {label} {required ? ' *' : ''}
+        </label>
+      )}
+      <Select
+        defaultValue={defaultValue}
+        disabled={disabled}
+        onValueChange={onValueChange}
+        value={value}
+        {...rest}
+      >
+        <SelectInputTrigger fullWidth={fullWidth} label={label} />
+        <SelectInputBody indicator={indicator} options={options} {...rest} />
+      </Select>
+      {message && (
+        <span
+          className={cn(
+            styles.base__message,
+            'text-chromatic-inverted',
+            error && 'text-warning-200',
+            customMessageClassName,
+          )}
+        >
+          {message}
+        </span>
+      )}
+    </div>
   );
 };

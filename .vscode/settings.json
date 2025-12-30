@@ -110,6 +110,7 @@
     "schemas": "scala",
     "select-input": "react-components",
     "select-input-body": "react-components",
+    "select-input-controller": "react-components",
     "select-input-item": "react-components",
     "select-input-label": "react-components",
     "select-input-options": "react-components",
