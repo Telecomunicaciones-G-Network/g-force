@@ -473,6 +473,7 @@
       "fileNames": [
         "finish-chat-conversation.usecase.ts",
         "login.usecase.ts",
+        "transfer-chat-conversation.usecase.ts",
         "upload-chat-media.usecase.ts"
       ]
     }

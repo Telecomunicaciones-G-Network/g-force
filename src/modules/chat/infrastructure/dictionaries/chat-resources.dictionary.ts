@@ -17,5 +17,7 @@ export const CHAT_RESOURCES = {
   GET_CONTACT_TICKETS: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/tickets`,
   GET_CONTACTS: '/chat/contacts',
+  TRANSFER_CHAT_CONVERSATION: (contactId: string): string =>
+    `/chat/contacts/${contactId}/conversation/transfer`,
   UPLOAD_CHAT_MEDIA: '/chat/media',
 } as const satisfies Record<string, string | ((...args: string[]) => string)>;

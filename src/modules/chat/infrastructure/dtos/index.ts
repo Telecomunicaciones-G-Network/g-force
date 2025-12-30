@@ -28,4 +28,5 @@ export type { OnIncommingMessageResponseDTO } from './on-incomming-message-respo
 export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.dto';
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
 export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
+export type { TransferChatConversationRequestDTO } from './transfer-chat-conversation-request.dto';
 export type { UploadChatMediaResponseDTO } from './upload-chat-media-response.dto';

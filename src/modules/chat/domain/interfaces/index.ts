@@ -44,5 +44,6 @@ export type { OnMediaStatusChangedResponse } from './on-media-status-changed-res
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';
 export type { TeamValues } from './team-values.interface';
+export type { TransferChatConversationRequest } from './transfer-chat-conversation-request.interface';
 export type { UploadChatMediaRequest } from './upload-chat-media-request.interface';
 export type { UploadChatMediaResponse } from './upload-chat-media-response.interface';

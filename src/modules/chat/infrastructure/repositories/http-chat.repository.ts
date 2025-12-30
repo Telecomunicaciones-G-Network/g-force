@@ -15,6 +15,7 @@ import type {
   GetContactsResponse,
   GetContactTicketsRequest,
   GetContactTicketsResponse,
+  TransferChatConversationRequest,
   UploadChatMediaRequest,
   UploadChatMediaResponse,
 } from '../../domain/interfaces';
@@ -31,6 +32,7 @@ import { getContactInvoicesService } from '../services/get-contact-invoices.serv
 import { getContactNotesService } from '../services/get-contact-notes.service';
 import { getContactsService } from '../services/get-contacts.service';
 import { getContactTicketsService } from '../services/get-contact-tickets.service';
+import { transferChatConversationService } from '../services/transfer-chat-conversation.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
 export const httpChatRepository: ChatRepository = {
@@ -67,6 +69,9 @@ export const httpChatRepository: ChatRepository = {
   getContacts: async (
     request?: GetContactsRequest,
   ): Promise<GetContactsResponse> => getContactsService(request),
+  transferChatConversation: async (
+    request: TransferChatConversationRequest,
+  ): Promise<void> => transferChatConversationService(request),
   uploadChatMedia: async (
     request: UploadChatMediaRequest,
   ): Promise<UploadChatMediaResponse> => uploadChatMediaService(request),
