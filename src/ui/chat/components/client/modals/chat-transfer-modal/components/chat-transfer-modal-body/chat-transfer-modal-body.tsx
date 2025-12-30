@@ -1,5 +1,6 @@
 'use client';
 
+import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 
 import { SelectInputController } from '@ui-core/components/client/inputs/select-input-controller';
@@ -9,27 +10,30 @@ import { ChatTransferModalSkeleton } from '../chat-transfer-modal-skeleton';
 
 import { useChatTransferModalBody } from './chat-transfer-modal-body.hook';
 
+import { parseAgentsToSelectItem } from './utils/parse-agents-to-select-item.util';
 import { parseTeamsToSelectItem } from './utils/parse-teams-to-select-item.util';
 
 import styles from './chat-transfer-modal-body.module.css';
 
 export const ChatTransferModalBody = () => {
   const {
+    agents,
     clearErrors,
     control,
     handleSubmit,
     isError,
-    isLoading,
+    isAgentsLoading,
+    isTeamsLoading,
     onSubmit,
-    teams,
     teamInput,
+    teams,
   } = useChatTransferModalBody();
 
   return (
     <>
-      {isLoading && <ChatTransferModalSkeleton />}
-      {!isLoading && isError && <ChatTransferModalError />}
-      {!isLoading && !isError && (
+      {isTeamsLoading && <ChatTransferModalSkeleton />}
+      {!isTeamsLoading && isError && <ChatTransferModalError />}
+      {!isTeamsLoading && !isError && (
         <form className={styles.base} onSubmit={handleSubmit(onSubmit)}>
           <SelectInputController
             control={control}
@@ -42,7 +46,8 @@ export const ChatTransferModalBody = () => {
             options={parseTeamsToSelectItem(teams)}
             required
           />
-          {teamInput && (
+          {isAgentsLoading && <Skeleton className="h-[58px] w-full" />}
+          {teamInput && agents?.length > 0 && !isAgentsLoading && (
             <SelectInputController
               control={control}
               fullWidth
@@ -50,10 +55,10 @@ export const ChatTransferModalBody = () => {
               label="Seleccione un agente"
               name="agent"
               onClear={() => clearErrors()}
-              options={[]}
+              options={parseAgentsToSelectItem(agents)}
             />
           )}
-          <Button color="red" disabled={isLoading} fullWidth type="submit">
+          <Button color="red" disabled={isTeamsLoading} fullWidth type="submit">
             Transferir
           </Button>
         </form>

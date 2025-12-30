@@ -6,4 +6,5 @@ export const CHAT_TAGS = {
   GET_CHAT_CONTACT_TICKETS: 'get-chat-contact-tickets',
   GET_CHAT_CONTACTS: 'get-chat-contacts',
   GET_CHAT_TEAMS: 'get-chat-teams',
+  GET_CHAT_TRANSFER_AGENTS: 'get-chat-transfer-agents',
 } as const;

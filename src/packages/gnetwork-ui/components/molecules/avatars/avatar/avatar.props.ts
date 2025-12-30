@@ -7,4 +7,5 @@ export interface AvatarProps extends ReactDiv {
   customBackgroundColor?: string;
   image?: ResponsiveImageProps;
   username?: string;
+  usernameClassName?: string;
 }

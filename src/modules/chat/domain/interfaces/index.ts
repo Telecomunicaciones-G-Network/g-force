@@ -13,6 +13,8 @@ export type { EmitSendTextMessageResponse } from './emit-send-text-message-respo
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';
 export type { GetChatTeamsResponse } from './get-chat-teams-response.interface';
+export type { GetChatTransferAgentsRequest } from './get-chat-transfer-agents-request.interface';
+export type { GetChatTransferAgentsResponse } from './get-chat-transfer-agents-response.interface';
 export type { GetContactContractsRequest } from './get-contact-contracts-request.interface';
 export type { GetContactContractsResponse } from './get-contact-contracts-response.interface';
 export type {

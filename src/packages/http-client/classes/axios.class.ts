@@ -75,6 +75,30 @@ export class Axios implements HttpAdapter {
     return `/${parseParams}`;
   }
 
+  private parseSearchParams(
+    searchParams?: Record<string, string | undefined>,
+  ): string {
+    if (!searchParams || typeof searchParams !== 'object') {
+      return '';
+    }
+
+    const filteredParams: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(searchParams)) {
+      if (value !== undefined) {
+        filteredParams[key] = value;
+      }
+    }
+
+    if (Object.keys(filteredParams).length === 0) {
+      return '';
+    }
+
+    const formattedSearchParams = new URLSearchParams(filteredParams);
+
+    return `?${formattedSearchParams}`;
+  }
+
   private sanitizeConfiguration(
     configurations: HttpClientConfiguration,
   ): AxiosRequestConfig {
@@ -90,15 +114,20 @@ export class Axios implements HttpAdapter {
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
     let parsedParams = '';
+    let parsedSearchParams = '';
 
     if (configuration?.params) {
       parsedParams = this.parseParams(configuration?.params);
     }
 
+    if (configuration?.searchParams) {
+      parsedSearchParams = this.parseSearchParams(configuration?.searchParams);
+    }
+
     const axiosConfig = this.sanitizeConfiguration(configuration || {});
 
     return this.axiosInstance
-      .get<T>(endpoint + parsedParams, axiosConfig)
+      .get<T>(endpoint + parsedParams + parsedSearchParams, axiosConfig)
       .then((response) => {
         if (!response?.data && response.statusText === 'OK') {
           throw new Error('Axios get request has failed!');

@@ -11,6 +11,11 @@ export type {
   GetChatTeamsResponseDTO,
   GetChatTeamsResult,
 } from './get-chat-teams-response.dto';
+export type { GetChatTransferAgentsRequestDTO } from './get-chat-transfer-agents-request.dto';
+export type {
+  GetChatTransferAgentsResponseDTO,
+  GetChatTransferAgentsResult,
+} from './get-chat-transfer-agents-response.dto';
 export type { GetContactContractsResponseDTO } from './get-contact-contracts-response.dto';
 export type { GetContactInformationResponseDTO } from './get-contact-information-response.dto';
 export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-response.dto';

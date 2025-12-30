@@ -457,6 +457,7 @@
         "get-chat-media-by-id.usecase.ts",
         "get-chat-messages.usecase.ts",
         "get-chat-teams.usecase.ts",
+        "get-chat-transfer-agents.usecase.ts",
         "get-contact-contracts.usecase.ts",
         "get-contact-information.usecase.ts",
         "get-contact-invoices.usecase.ts",

@@ -12,6 +12,7 @@ import styles from './select-item.module.css';
 export const SelectInputItem = ({
   className,
   children,
+  leftIcon,
   ref,
   ...rest
 }: Readonly<SelectInputItemProps>) => (
@@ -24,6 +25,10 @@ export const SelectInputItem = ({
     ref={ref}
     {...rest}
   >
+    <div className={styles.base__content}>
+      {leftIcon && leftIcon}
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+    </div>
     <span
       className={cn(
         styles.base__indicator,
@@ -34,7 +39,5 @@ export const SelectInputItem = ({
         <MdCheck className="fill-red-500 min-h-5 min-w-5 size-5" />
       </SelectPrimitive.ItemIndicator>
     </span>
-
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 );

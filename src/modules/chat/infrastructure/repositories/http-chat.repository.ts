@@ -2,6 +2,8 @@ import type {
   GetChatMessagesRequest,
   GetChatMessagesResponse,
   GetChatTeamsResponse,
+  GetChatTransferAgentsRequest,
+  GetChatTransferAgentsResponse,
   GetContactContractsRequest,
   GetContactContractsResponse,
   GetContactInformationResponse,
@@ -22,6 +24,7 @@ import { finishChatConversationService } from '../services/finish-chat-conversat
 import { getChatMediaByIdService } from '../services/get-chat-media-by-id.service';
 import { getChatMessagesService } from '../services/get-chat-messages.service';
 import { getChatTeamsService } from '../services/get-chat-teams.service';
+import { getChatTransferAgentsService } from '../services/get-chat-transfer-agents.service';
 import { getContactContractsService } from '../services/get-contact-contracts.service';
 import { getContactInformationService } from '../services/get-contact-information.service';
 import { getContactInvoicesService } from '../services/get-contact-invoices.service';
@@ -40,6 +43,10 @@ export const httpChatRepository: ChatRepository = {
   ): Promise<GetChatMessagesResponse> => getChatMessagesService(request),
   getChatTeams: async (): Promise<GetChatTeamsResponse> =>
     getChatTeamsService(),
+  getChatTransferAgents: async (
+    request?: GetChatTransferAgentsRequest,
+  ): Promise<GetChatTransferAgentsResponse> =>
+    getChatTransferAgentsService(request),
   getContactContracts: async (
     request: GetContactContractsRequest,
   ): Promise<GetContactContractsResponse> =>

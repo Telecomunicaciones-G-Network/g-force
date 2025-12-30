@@ -5,6 +5,7 @@ export const CHAT_RESOURCES = {
   GET_CHAT_MESSAGES: (contactId: string): string =>
     `/chat/contacts/${contactId}/messages`,
   GET_CHAT_TEAMS: '/chat/teams',
+  GET_CHAT_TRANSFER_AGENTS: '/chat/agents/minimal',
   GET_CONTACT_CONTRACTS: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/contracts`,
   GET_CONTACT_INFORMATION: (contactId: string): string =>

@@ -20,6 +20,7 @@ export const SelectInputOptions = ({
       <SelectInputItem
         key={option?.value}
         disabled={option?.disabled}
+        leftIcon={option?.leftIcon}
         value={option?.value}
       >
         {option?.label}

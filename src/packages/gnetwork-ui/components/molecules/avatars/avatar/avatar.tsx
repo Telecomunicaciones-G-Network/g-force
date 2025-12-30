@@ -16,6 +16,7 @@ export const Avatar = ({
   image,
   ref,
   username = '',
+  usernameClassName = '',
   ...rest
 }: Readonly<AvatarProps>) => (
   <div
@@ -38,8 +39,13 @@ export const Avatar = ({
         )}
         style={{ backgroundColor: customBackgroundColor }}
       >
-        <span className={styles.base__username_container_text}>
-          {usernameToInitials(username)}
+        <span
+          className={cn(
+            styles.base__username_container_text,
+            usernameClassName,
+          )}
+        >
+          {usernameToInitials(username)?.slice(0, 2)}
         </span>
       </div>
     )}
