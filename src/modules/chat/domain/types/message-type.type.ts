@@ -1,6 +1,7 @@
 export type MessageType =
   | 'AUDIO'
   | 'CONTACTS'
+  | 'CONVERSATION_EVENT'
   | 'DOCUMENT'
   | 'FLOW_BUTTON'
   | 'IMAGE'

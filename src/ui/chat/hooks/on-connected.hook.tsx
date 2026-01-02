@@ -21,7 +21,7 @@ export const useOnConnected = () => {
 
   onSocketEvent<OnConnectedResponseDTO>(
     socketEventsDictionary.CONNECTED,
-    (data) => {
+    (data: OnConnectedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
       const response = OnConnectedMapper.mapFrom(parseResponse);
 

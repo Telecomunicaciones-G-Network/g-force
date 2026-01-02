@@ -4,7 +4,7 @@ import type { TeamValues } from './team-values.interface';
 
 export interface ConversationValues {
   id: string;
-  agent: AgentValues | null;
+  agent: Omit<AgentValues, 'teams'> | null;
   status: ConversationStatus;
   team: TeamValues | null;
 }
