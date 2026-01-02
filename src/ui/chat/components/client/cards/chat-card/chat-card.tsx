@@ -20,10 +20,13 @@ import { isoToTime } from '@timer/utils/iso-to-time.util';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 import { Badge } from '@gnetwork-ui/components/molecules/badges/badge';
+import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
+
+import { teamTagColorDictionary } from '@ui-chat/dictionaries/team-tag-color.dictionary';
 
 import { CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS } from './constants/chat-card-maximum-last-message-characters.constant';
 
@@ -39,6 +42,7 @@ export const ChatCard = ({
   messageType,
   onClick,
   phoneNumber = '',
+  team,
   unreadMessages = 0,
   username = '',
 }: Readonly<ChatCardProps>) => (
@@ -55,6 +59,7 @@ export const ChatCard = ({
   >
     <div className={styles.base__container}>
       <Avatar
+        className="self-start max-h-[48px] max-w-[48px] size-12"
         customBackgroundColor={contactId && `#${contactId?.slice(-6)}`}
         image={
           avatarSrc
@@ -206,10 +211,18 @@ export const ChatCard = ({
             )}
           </div>
         )}
+        {team?.name && (
+          <Tag
+            className="min-h-5 px-2 text-xs"
+            color={teamTagColorDictionary[team?.id]}
+          >
+            {team?.name}
+          </Tag>
+        )}
       </div>
     </div>
     {unreadMessages > 0 && (
-      <Badge className="absolute bottom-[31px] right-4" color="red">
+      <Badge className="absolute bottom-[36px] right-4" color="red">
         {unreadMessages}
       </Badge>
     )}

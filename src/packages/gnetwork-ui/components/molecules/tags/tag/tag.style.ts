@@ -8,7 +8,7 @@ import { tagColors } from './variants/tag-color.variant';
 
 import styles from './tag.module.css';
 
-export const tagVariants = cva([styles.base], {
+export const tagVariants = cva([styles.base, 'min-h-6 py-0 px-4 text-sm'], {
   variants: {
     color: tagColors,
   },

@@ -43,6 +43,7 @@ export const ChatListBody = ({
                 messageType={contact?.latestMessage?.type}
                 onClick={() => changeActiveContact(contact)}
                 phoneNumber={formatPhoneNumber(contact?.phoneNumber)}
+                team={contact?.latestConversation?.team}
                 unreadMessages={contact?.unreadCount}
                 username={contact?.name}
               />
