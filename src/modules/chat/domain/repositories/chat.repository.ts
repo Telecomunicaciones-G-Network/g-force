@@ -16,6 +16,7 @@ import type {
   GetContactTicketsRequest,
   GetContactTicketsResponse,
   TransferChatConversationRequest,
+  TransferChatConversationResponse,
   UploadChatMediaRequest,
   UploadChatMediaResponse,
 } from '../interfaces';
@@ -48,7 +49,7 @@ export interface ChatRepository {
   getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
   transferChatConversation(
     request: TransferChatConversationRequest,
-  ): Promise<void>;
+  ): Promise<TransferChatConversationResponse>;
   uploadChatMedia(
     request: UploadChatMediaRequest,
   ): Promise<UploadChatMediaResponse>;

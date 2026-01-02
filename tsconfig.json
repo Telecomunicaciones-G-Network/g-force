@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "GNetwork Communication App",
+  "display": "GNetwork GForce App",
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": true,

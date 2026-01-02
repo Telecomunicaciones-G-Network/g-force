@@ -1,5 +1,13 @@
-import type { TransferChatConversationRequest } from '../../domain/interfaces';
-import type { TransferChatConversationRequestDTO } from '../dtos';
+import type {
+  TransferChatConversationRequest,
+  TransferChatConversationResponse,
+} from '../../domain/interfaces';
+import type {
+  TransferChatConversationRequestDTO,
+  TransferChatConversationResponseDTO,
+} from '../dtos';
+
+import { BaseException } from '@http-client/exceptions/base.exception';
 
 import { gnetworkAxiosApiClient } from '@ui-core/fetchers/gnetwork-axios-api-client.fetcher';
 
@@ -9,16 +17,23 @@ import { TransferChatConversationMapper } from '../mappers/transfer-chat-convers
 
 export const transferChatConversationService = async (
   request: TransferChatConversationRequest,
-): Promise<void> => {
+): Promise<TransferChatConversationResponse> => {
   const parsedRequest = TransferChatConversationMapper.mapTo(request);
 
   const response = await gnetworkAxiosApiClient.post<
     TransferChatConversationRequestDTO,
-    void
+    TransferChatConversationResponseDTO
   >(
     CHAT_RESOURCES.TRANSFER_CHAT_CONVERSATION(request?.contactId),
     parsedRequest,
   );
 
-  console.log('response', response);
+  if (response?.error || !response?.success || !response?.results) {
+    throw new BaseException({
+      message: response?.error,
+      status: response?.status,
+    });
+  }
+
+  return TransferChatConversationMapper.mapFrom(response);
 };

@@ -1,3 +1,5 @@
+'use client';
+
 import type { ModalProps } from './modal.props';
 
 import { ModalContainer } from './components/modal-container';
@@ -8,11 +10,13 @@ import { ModalTrigger } from './components/modal-trigger';
 import { cn } from '../../../../utils/cn.util';
 
 export const Modal = ({
-  className = '',
   children,
+  className = '',
   customModalCloseComponent,
   hideModalClose = false,
+  isOpen = false,
   modalOverlayChildren,
+  onOpenChange,
   triggerComponent,
 }: Readonly<ModalProps>) => {
   if (!triggerComponent) {
@@ -24,7 +28,7 @@ export const Modal = ({
   return (
     <>
       {triggerComponent && (
-        <ModalContainer>
+        <ModalContainer onOpenChange={onOpenChange} open={isOpen}>
           <ModalTrigger>{triggerComponent}</ModalTrigger>
           <ModalContent
             className={cn('sm:max-w-[518px]', className)}

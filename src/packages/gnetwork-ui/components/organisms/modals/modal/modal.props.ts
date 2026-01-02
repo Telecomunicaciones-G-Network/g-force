@@ -5,6 +5,8 @@ export interface ModalProps extends PropsWithChildren {
   className?: string;
   customModalCloseComponent?: ReactChild;
   hideModalClose?: boolean;
+  isOpen?: boolean;
   modalOverlayChildren?: ReactChild;
+  onOpenChange?: (open: boolean) => void;
   triggerComponent: ReactChild;
 }

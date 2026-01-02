@@ -8,30 +8,38 @@ import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
 
 import { ChatTransferModalBody, ChatTransferModalHeader } from './components';
 
-export const ChatTransferModal = () => (
-  <Modal
-    className="sm:max-w-[400px]"
-    triggerComponent={
-      <DropdownItem
-        onSelect={(event) => {
-          event.preventDefault();
-        }}
-      >
-        <MdCompareArrows className="fill-neutral-800 min-h-6 min-w-6 size-6" />
-        <Text
-          as="span"
-          className="text-neutral-600"
-          level="small"
-          scheme="label"
+import { useChatTransferModal } from './chat-transfer-modal.hook';
+
+export const ChatTransferModal = () => {
+  const { isModalOpen, onOpenChange } = useChatTransferModal();
+
+  return (
+    <Modal
+      className="sm:max-w-[400px]"
+      isOpen={isModalOpen}
+      onOpenChange={onOpenChange}
+      triggerComponent={
+        <DropdownItem
+          onSelect={(event) => {
+            event.preventDefault();
+          }}
         >
-          Transferir chat
-        </Text>
-      </DropdownItem>
-    }
-  >
-    <div className="divide-y divide-neutral-200">
-      <ChatTransferModalHeader />
-      <ChatTransferModalBody />
-    </div>
-  </Modal>
-);
+          <MdCompareArrows className="fill-neutral-800 min-h-6 min-w-6 size-6" />
+          <Text
+            as="span"
+            className="text-neutral-600"
+            level="small"
+            scheme="label"
+          >
+            Transferir chat
+          </Text>
+        </DropdownItem>
+      }
+    >
+      <div className="divide-y divide-neutral-200">
+        <ChatTransferModalHeader />
+        <ChatTransferModalBody onClose={() => onOpenChange(false)} />
+      </div>
+    </Modal>
+  );
+};

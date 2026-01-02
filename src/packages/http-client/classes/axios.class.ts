@@ -193,10 +193,6 @@ export class Axios implements HttpAdapter {
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
-    console.log('endpoint', endpoint);
-    console.log('body', body);
-    console.log('configuration', configuration);
-
     const axiosConfig = this.sanitizeConfiguration(configuration || {});
 
     return this.axiosInstance

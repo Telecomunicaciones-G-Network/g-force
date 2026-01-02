@@ -1,6 +1,6 @@
 # TODO
 
-Todo lo del panel lateral
+TODO: Doc all about this project
 
 ## Login action
 

@@ -1,5 +1,7 @@
 'use client';
 
+import type { ChatTransferModalBodyProps } from './chat-transfer-modal-body.props';
+
 import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 
@@ -15,7 +17,9 @@ import { parseTeamsToSelectItem } from './utils/parse-teams-to-select-item.util'
 
 import styles from './chat-transfer-modal-body.module.css';
 
-export const ChatTransferModalBody = () => {
+export const ChatTransferModalBody = ({
+  onClose,
+}: Readonly<ChatTransferModalBodyProps>) => {
   const {
     agents,
     clearErrors,
@@ -23,11 +27,12 @@ export const ChatTransferModalBody = () => {
     handleSubmit,
     isError,
     isAgentsLoading,
+    isChatTransferConversationPending,
     isTeamsLoading,
     onSubmit,
     teamInput,
     teams,
-  } = useChatTransferModalBody();
+  } = useChatTransferModalBody({ onClose });
 
   return (
     <>
@@ -58,8 +63,16 @@ export const ChatTransferModalBody = () => {
               options={parseAgentsToSelectItem(agents)}
             />
           )}
-          <Button color="red" disabled={isTeamsLoading} fullWidth type="submit">
-            Transferir
+          <Button
+            color="red"
+            disabled={isTeamsLoading || isChatTransferConversationPending}
+            fullWidth
+            loading={isChatTransferConversationPending}
+            type="submit"
+          >
+            {isChatTransferConversationPending
+              ? 'Transfiriendo...'
+              : 'Transferir'}
           </Button>
         </form>
       )}

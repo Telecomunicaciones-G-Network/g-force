@@ -51,6 +51,9 @@ bun.lock
 /build/
 /coverage/
 
+# Database
+data
+
 # Environment variables
 .*env
 .env*.local
