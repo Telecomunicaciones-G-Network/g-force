@@ -1,8 +1,14 @@
 import type { PropsWithChildren } from 'react';
-import type { AlertProps } from '../../../molecules/alerts/alert/alert.props';
+import type { VariantProps } from 'class-variance-authority';
+import type { ToastScheme } from './types';
 
-export interface ToastProps
-  extends PropsWithChildren,
-    Pick<AlertProps, 'className' | 'scheme'> {
+import { toastVariants } from './toast.style';
+
+export interface ToastVariants extends VariantProps<typeof toastVariants> {
+  className?: string;
+  scheme?: ToastScheme;
+}
+
+export interface ToastProps extends PropsWithChildren, ToastVariants {
   id: string;
 }

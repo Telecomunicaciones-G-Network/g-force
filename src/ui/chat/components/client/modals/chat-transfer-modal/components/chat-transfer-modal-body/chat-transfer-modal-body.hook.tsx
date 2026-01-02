@@ -14,6 +14,8 @@ import { useForm } from 'react-hook-form';
 
 import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
 
+import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
+
 import { transferChatConversationCommand } from '@module-chat/infrastructure/commands/transfer-chat-conversation.command';
 import { GetChatTeamsQuery } from '@module-chat/infrastructure/queries/get-chat-teams.query';
 import { GetChatTransferAgentsQuery } from '@module-chat/infrastructure/queries/get-chat-transfer-agents.query';
@@ -41,6 +43,8 @@ export const useChatTransferModalBody = ({
 
   const setActiveContact = useContactStore((state) => state.setActiveContact);
   const setChatMode = useContactStore((state) => state.setChatMode);
+
+  const { showToast } = useToast();
 
   const {
     clearErrors: clearErrorsForm,
@@ -109,6 +113,10 @@ export const useChatTransferModalBody = ({
       },
       onError: (error) => {
         console.log('error', error);
+        showToast(error?.message ?? 'Error al transferir la conversación', {
+          id: 'chat-transfer-modal-toast',
+          position: 'top-right',
+        });
       },
     });
 

@@ -1,18 +1,34 @@
 import type { ToastProps } from './toast.props';
 
-import { Alert } from '../../../molecules/alerts/alert';
+import { MdCancel, MdCheckCircle, MdOutlineTimer } from 'react-icons/md';
 
-import { AlertSchemes } from '../../../molecules/alerts/alert/enums/alert-scheme.enum';
+import { ToastSchemes } from './enums/toast-schemes.enum';
+
+import { getToastClassNames } from './toast.style';
 
 export const Toast = ({
   className = '',
   children,
   id,
-  scheme = AlertSchemes.NEUTRAL,
+  scheme = ToastSchemes.NEUTRAL,
 }: Readonly<ToastProps>) => {
+  const classes = getToastClassNames({ className, scheme });
+
   return (
-    <Alert className={className} id={id} scheme={scheme}>
+    <div className={classes} id={id}>
+      {scheme === ToastSchemes.ERROR && (
+        <MdCancel className="min-h-6 min-w-6 text-red-100" size={24} />
+      )}
+      {scheme === ToastSchemes.NEUTRAL && (
+        <MdCancel className="min-h-6 min-w-6 text-chromatic" size={24} />
+      )}
+      {scheme === ToastSchemes.SUCCESS && (
+        <MdCheckCircle className="min-h-6 min-w-6 text-success-300" size={24} />
+      )}
+      {scheme === ToastSchemes.WAIT && (
+        <MdOutlineTimer className="min-h-6 min-w-6 text-wait-300" size={24} />
+      )}
       {children}
-    </Alert>
+    </div>
   );
 };
