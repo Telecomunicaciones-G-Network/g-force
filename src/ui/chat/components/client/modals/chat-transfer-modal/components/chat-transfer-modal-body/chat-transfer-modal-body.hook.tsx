@@ -6,8 +6,6 @@ import type { TransferChatFormData } from './types';
 
 import { useEffect } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
@@ -19,8 +17,6 @@ import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.h
 import { transferChatConversationCommand } from '@module-chat/infrastructure/commands/transfer-chat-conversation.command';
 import { GetChatTeamsQuery } from '@module-chat/infrastructure/queries/get-chat-teams.query';
 import { GetChatTransferAgentsQuery } from '@module-chat/infrastructure/queries/get-chat-transfer-agents.query';
-
-import { revalidateChatContactsAction } from '@ui-chat/actions/revalidate-chat-contacts.action';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -37,12 +33,14 @@ interface UseChatTransferModalBodyProps {
 export const useChatTransferModalBody = ({
   onClose,
 }: Readonly<UseChatTransferModalBodyProps>) => {
-  const router = useRouter();
-
   const activeContact = useContactStore((state) => state.activeContact);
 
   const setActiveContact = useContactStore((state) => state.setActiveContact);
   const setChatMode = useContactStore((state) => state.setChatMode);
+
+  const deleteOneContactById = useContactStore(
+    (state) => state.deleteOneContactById,
+  );
 
   const { showToast } = useToast();
 
@@ -103,16 +101,14 @@ export const useChatTransferModalBody = ({
     useMutation({
       mutationFn: transferChatConversationCommand,
       onSuccess: async () => {
+        if (!activeContact?.id) return;
+
         onClose();
+        deleteOneContactById(activeContact?.id);
         setActiveContact(null);
         setChatMode(ChatModes.LIST);
-
-        await revalidateChatContactsAction();
-
-        router.refresh();
       },
       onError: (error) => {
-        console.log('error', error);
         showToast(error?.message ?? 'Error al transferir la conversación', {
           id: 'chat-transfer-modal-toast',
           position: 'top-right',

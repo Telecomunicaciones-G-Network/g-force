@@ -23,7 +23,11 @@ export type { GetContactNotesResponseDTO } from './get-contact-notes-response.dt
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { GetContactTicketsResponseDTO } from './get-contact-tickets-response.dto';
 export type { OnConnectedResponseDTO } from './on-connected-response.dto';
-export type { OnContactAssignmentUpdatedResponseDTO } from './on-contact-assignment-updated-response.dto';
+export type {
+  OnContactAssignmentUpdatedResponseAgentDTO,
+  OnContactAssignmentUpdatedResponseDTO,
+  OnContactAssignmentUpdatedResponseTeamDTO,
+} from './on-contact-assignment-updated-response.dto';
 export type { OnIncommingMessageResponseDTO } from './on-incomming-message-response.dto';
 export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.dto';
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';

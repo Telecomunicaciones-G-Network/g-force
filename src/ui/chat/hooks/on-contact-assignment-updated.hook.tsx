@@ -44,7 +44,13 @@ export const useOnContactAssignmentUpdated = () => {
       const parseResponse = JSON.parse(data as unknown as string);
       const response = OnContactAssignmentUpdatedMapper.mapFrom(parseResponse);
 
-      if (!response?.agentId || !response?.agentName || !response?.contactId)
+      if (
+        !response?.agent?.id ||
+        !response?.agent?.name ||
+        !response?.contactId ||
+        !response?.team?.id ||
+        !response?.team?.name
+      )
         return;
 
       const existContactOnStoreValidation = existContactOnStore(
@@ -65,13 +71,13 @@ export const useOnContactAssignmentUpdated = () => {
       ) {
         updateContactLatestConversation(response?.contactId, {
           agent: {
-            id: response?.agentId,
-            name: response?.agentName,
+            id: response?.agent?.id,
+            name: response?.agent?.name,
           },
           status: ConversationStatus.ASSIGNED,
           team: {
-            id: response?.teamId,
-            name: response?.teamName,
+            id: response?.team?.id,
+            name: response?.team?.name,
           },
         });
 

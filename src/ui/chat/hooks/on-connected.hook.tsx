@@ -7,12 +7,11 @@ import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connected.mapper';
-
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store'; /**
  * On connected hook
  *
  * This hook listens to the `connected` socket event and updates the active agent (id, name and teams)
- * information in the contact store when a successful connection is established.
+ * information in the contact store when a successful connection is established. [Base event]
  */
 export const useOnConnected = () => {
   const setActiveAgent = useContactStore((state) => state.setActiveAgent);
