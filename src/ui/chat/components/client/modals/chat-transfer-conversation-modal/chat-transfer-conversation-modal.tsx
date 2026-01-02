@@ -6,12 +6,15 @@ import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { DropdownItem } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-item';
 import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
 
-import { ChatTransferModalBody, ChatTransferModalHeader } from './components';
+import {
+  ChatTransferConversationModalBody,
+  ChatTransferConversationModalHeader,
+} from './components';
 
-import { useChatTransferModal } from './chat-transfer-modal.hook';
+import { useChatTransferConversationModal } from './chat-transfer-conversation-modal.hook';
 
-export const ChatTransferModal = () => {
-  const { isModalOpen, onOpenChange } = useChatTransferModal();
+export const ChatTransferConversationModal = () => {
+  const { isModalOpen, onOpenChange } = useChatTransferConversationModal();
 
   return (
     <Modal
@@ -20,7 +23,7 @@ export const ChatTransferModal = () => {
       onOpenChange={onOpenChange}
       triggerComponent={
         <DropdownItem
-          className="hover:[&_svg]:fill-chromatic! focus:[&_svg]:fill-chromatic! hover:**:text-chromatic! focus:**:text-chromatic!"
+          className="focus:[&_svg]:fill-chromatic! focus:**:text-chromatic! hover:[&_svg]:fill-chromatic! hover:**:text-chromatic!"
           onSelect={(event) => {
             event.preventDefault();
           }}
@@ -38,8 +41,10 @@ export const ChatTransferModal = () => {
       }
     >
       <div className="divide-y divide-neutral-200">
-        <ChatTransferModalHeader />
-        <ChatTransferModalBody onClose={() => onOpenChange(false)} />
+        <ChatTransferConversationModalHeader />
+        <ChatTransferConversationModalBody
+          onClose={() => onOpenChange(false)}
+        />
       </div>
     </Modal>
   );

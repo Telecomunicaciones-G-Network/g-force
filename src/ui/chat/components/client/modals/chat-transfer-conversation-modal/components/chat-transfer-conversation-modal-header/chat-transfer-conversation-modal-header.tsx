@@ -1,13 +1,11 @@
-'use client';
-
 import { MdCompareArrows } from 'react-icons/md';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { IconBadge } from '@gnetwork-ui/components/molecules/badges/icon-badge';
 
-import styles from './chat-transfer-modal-header.module.css';
+import styles from './chat-transfer-conversation-modal-header.module.css';
 
-export const ChatTransferModalHeader = () => (
+export const ChatTransferConversationModalHeader = () => (
   <div className={styles.base}>
     <IconBadge
       icon={

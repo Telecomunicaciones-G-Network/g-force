@@ -1,25 +1,25 @@
 'use client';
 
-import type { ChatTransferModalBodyProps } from './chat-transfer-modal-body.props';
+import type { ChatTransferConversationModalBodyProps } from './chat-transfer-conversation-modal-body.props';
 
 import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 
 import { SelectInputController } from '@ui-core/components/client/inputs/select-input-controller';
 
-import { ChatTransferModalError } from '../chat-transfer-modal-error';
-import { ChatTransferModalSkeleton } from '../chat-transfer-modal-skeleton';
+import { ChatTransferConversationModalError } from '../chat-transfer-conversation-modal-error';
+import { ChatTransferConversationModalSkeleton } from '../chat-transfer-conversation-modal-skeleton';
 
-import { useChatTransferModalBody } from './chat-transfer-modal-body.hook';
+import { useChatTransferConversationModalBody } from './chat-transfer-conversation-modal-body.hook';
 
 import { parseAgentsToSelectItem } from './utils/parse-agents-to-select-item.util';
 import { parseTeamsToSelectItem } from './utils/parse-teams-to-select-item.util';
 
-import styles from './chat-transfer-modal-body.module.css';
+import styles from './chat-transfer-conversation-modal-body.module.css';
 
-export const ChatTransferModalBody = ({
+export const ChatTransferConversationModalBody = ({
   onClose,
-}: Readonly<ChatTransferModalBodyProps>) => {
+}: Readonly<ChatTransferConversationModalBodyProps>) => {
   const {
     agents,
     clearErrors,
@@ -32,12 +32,12 @@ export const ChatTransferModalBody = ({
     onSubmit,
     teamInput,
     teams,
-  } = useChatTransferModalBody({ onClose });
+  } = useChatTransferConversationModalBody({ onClose });
 
   return (
     <>
-      {isTeamsLoading && <ChatTransferModalSkeleton />}
-      {!isTeamsLoading && isError && <ChatTransferModalError />}
+      {isTeamsLoading && <ChatTransferConversationModalSkeleton />}
+      {!isTeamsLoading && isError && <ChatTransferConversationModalError />}
       {!isTeamsLoading && !isError && (
         <form className={styles.base} onSubmit={handleSubmit(onSubmit)}>
           <SelectInputController

@@ -2,7 +2,7 @@
 
 import type { GetChatTeamsResponse } from '@module-chat/domain/interfaces';
 import type { TeamCodename } from '@module-chat/domain/types';
-import type { TransferChatFormData } from './types';
+import type { ChatTransferConversationFormData } from './types';
 
 import { useEffect } from 'react';
 
@@ -22,17 +22,17 @@ import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-import { CHAT_TRANSFER_FORM_DEFAULT_VALUES } from './constants/chat-transfer-form.constant';
+import { CHAT_TRANSFER_CONVERSATION_FORM_DEFAULT_VALUES } from './constants/chat-transfer-conversation-form-default-values.constant';
 
-import { transferChatFormSchema } from './schemas/chat-transfer-modal-form.schema';
+import { transferChatConversationFormSchema } from './schemas/chat-transfer-conversation-modal-form.schema';
 
-interface UseChatTransferModalBodyProps {
+interface UseChatTransferConversationModalBodyProps {
   onClose: () => void;
 }
 
-export const useChatTransferModalBody = ({
+export const useChatTransferConversationModalBody = ({
   onClose,
-}: Readonly<UseChatTransferModalBodyProps>) => {
+}: Readonly<UseChatTransferConversationModalBodyProps>) => {
   const activeContact = useContactStore((state) => state.activeContact);
 
   const setActiveContact = useContactStore((state) => state.setActiveContact);
@@ -50,10 +50,10 @@ export const useChatTransferModalBody = ({
     handleSubmit,
     setValue,
     watch,
-  } = useForm<TransferChatFormData>({
-    defaultValues: CHAT_TRANSFER_FORM_DEFAULT_VALUES,
+  } = useForm<ChatTransferConversationFormData>({
+    defaultValues: CHAT_TRANSFER_CONVERSATION_FORM_DEFAULT_VALUES,
     mode: 'onSubmit',
-    resolver: zodResolver(transferChatFormSchema),
+    resolver: zodResolver(transferChatConversationFormSchema),
     reValidateMode: 'onSubmit',
   });
 
@@ -117,12 +117,14 @@ export const useChatTransferModalBody = ({
     });
 
   const clearErrors = (
-    fieldName?: keyof TransferChatFormData | (keyof TransferChatFormData)[],
+    fieldName?:
+      | keyof ChatTransferConversationFormData
+      | (keyof ChatTransferConversationFormData)[],
   ) => {
     clearErrorsForm(fieldName);
   };
 
-  const onSubmit = (data: TransferChatFormData) => {
+  const onSubmit = (data: ChatTransferConversationFormData) => {
     if (!activeContact?.id) return;
 
     transferChat({

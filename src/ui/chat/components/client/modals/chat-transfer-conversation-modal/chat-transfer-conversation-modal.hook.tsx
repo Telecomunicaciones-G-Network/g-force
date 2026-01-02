@@ -2,7 +2,7 @@
 
 import { useModal } from '@gnetwork-ui/components/organisms/modals/modal/modal.hook';
 
-export const useChatTransferModal = () => {
+export const useChatTransferConversationModal = () => {
   const { isModalOpen, onOpenChange } = useModal();
 
   return {
