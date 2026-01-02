@@ -8,12 +8,10 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
 
 import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connected.mapper';
 
-import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-
-/**
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store'; /**
  * On connected hook
  *
- * This hook listens to the `connected` socket event and updates the active agent
+ * This hook listens to the `connected` socket event and updates the active agent (id, name and teams)
  * information in the contact store when a successful connection is established.
  */
 export const useOnConnected = () => {

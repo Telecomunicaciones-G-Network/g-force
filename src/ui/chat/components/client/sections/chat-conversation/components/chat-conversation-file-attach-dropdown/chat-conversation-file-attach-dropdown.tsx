@@ -48,7 +48,10 @@ export const ChatConversationFileAttachDropdown = () => {
         </button>
       }
     >
-      <DropdownItem onSelect={(e) => e.preventDefault()}>
+      <DropdownItem
+        className="hover:[&_svg]:fill-chromatic! focus:[&_svg]:fill-chromatic! hover:**:text-chromatic! focus:**:text-chromatic!"
+        onSelect={(e) => e.preventDefault()}
+      >
         <FileInput
           accept={parseMimetypesToFileInputAccept(IMAGE_MIMETYPES_ALLOWED)}
           disabled={!isSocketConnected}
@@ -59,7 +62,10 @@ export const ChatConversationFileAttachDropdown = () => {
           <span>Fotos</span>
         </FileInput>
       </DropdownItem>
-      <DropdownItem onSelect={(e) => e.preventDefault()}>
+      <DropdownItem
+        className="hover:[&_svg]:fill-chromatic! focus:[&_svg]:fill-chromatic! hover:**:text-chromatic! focus:**:text-chromatic!"
+        onSelect={(e) => e.preventDefault()}
+      >
         <MdOutlineDescription className="fill-neutral-500 min-h-6 min-w-6 size-6" />
         Documentos
       </DropdownItem>

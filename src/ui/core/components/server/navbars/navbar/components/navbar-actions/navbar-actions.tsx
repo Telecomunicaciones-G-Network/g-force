@@ -83,7 +83,7 @@ export const NavbarActions = ({
           </div>
           <DropdownSeparator />
           <DropdownItem
-            className="gap-2 min-h-8 p-0 focus:bg-transparent"
+            className="gap-2 min-h-8 p-0 focus:bg-transparent focus:text-chromatic-inverted"
             onClick={logout}
           >
             <MdLogout className="fill-neutral-800 min-h-6 min-w-6 size-6" />

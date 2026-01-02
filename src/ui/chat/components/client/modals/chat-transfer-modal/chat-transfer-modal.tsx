@@ -20,6 +20,7 @@ export const ChatTransferModal = () => {
       onOpenChange={onOpenChange}
       triggerComponent={
         <DropdownItem
+          className="hover:[&_svg]:fill-chromatic! focus:[&_svg]:fill-chromatic! hover:**:text-chromatic! focus:**:text-chromatic!"
           onSelect={(event) => {
             event.preventDefault();
           }}
