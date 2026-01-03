@@ -17,6 +17,7 @@ export interface ContactStoreState {
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: ContactValues[]) => void;
 
+  addContacts: (contacts: ContactValues[]) => void;
   addOneUnreadMessageToContact: (
     params: AddOneUnreadMessageToContactParams,
   ) => void;

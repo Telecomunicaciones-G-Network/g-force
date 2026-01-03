@@ -2,8 +2,6 @@
 
 import type { OnContactAssignmentUpdatedResponseDTO } from '@module-chat/infrastructure/dtos';
 
-import { useRouter } from 'next/navigation';
-
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
 
@@ -19,15 +17,7 @@ import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionar
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-/**
- * On contact assignment updated hook
- *
- * This hook listens to the `contact_assignment_updated` socket event and updates the latest conversation
- * information in the contact store, conversation status, agent and team.
- */
 export const useOnContactAssignmentUpdated = () => {
-  const router = useRouter();
-
   const existContactOnStore = useContactStore(
     (state) => state.existContactOnStore,
   );
@@ -89,8 +79,6 @@ export const useOnContactAssignmentUpdated = () => {
       }
 
       await revalidateChatContactsAction();
-
-      router.refresh();
     },
   );
 };

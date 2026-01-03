@@ -25,6 +25,18 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: ContactValues[]) => set({ contacts }),
+  addContacts: (contacts: ContactValues[]) => {
+    const { contacts: currentContacts } = get();
+
+    const newContacts = contacts?.filter(
+      (contact) =>
+        !currentContacts?.some(
+          (currentContact) => currentContact?.id === contact?.id,
+        ),
+    );
+
+    set({ contacts: [...currentContacts, ...newContacts] });
+  },
   addOneUnreadMessageToContact: ({
     activeContact,
     contactId,

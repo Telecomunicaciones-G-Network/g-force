@@ -2,8 +2,6 @@
 
 import type { OnNewMessageReceivedResponseDTO } from '@module-chat/infrastructure/dtos';
 
-import { useRouter } from 'next/navigation';
-
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
 
@@ -16,8 +14,6 @@ import { revalidateChatContactsAction } from '@ui-chat/actions/revalidate-chat-c
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useOnNewMessageReceived = () => {
-  const router = useRouter();
-
   const activeContact = useContactStore((state) => state.activeContact);
 
   const addOneUnreadMessageToContact = useContactStore(
@@ -58,8 +54,6 @@ export const useOnNewMessageReceived = () => {
       }
 
       await revalidateChatContactsAction();
-
-      router.refresh();
     },
   );
 };

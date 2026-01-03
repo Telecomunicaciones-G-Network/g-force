@@ -2,7 +2,7 @@
 
 import type { SocketProviderProps } from './socket-provider.props';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { SocketClient } from '../classes/socket-client.class';
 
@@ -14,27 +14,38 @@ export function SocketProvider({
   token,
 }: SocketProviderProps) {
   const [socket, setSocket] = useState<SocketClient | null>(null);
+  const socketRef = useRef<SocketClient | null>(null);
+
+  const configString = JSON.stringify(config);
+  const tokenString = token ?? '';
 
   const mergedConfig = useMemo(
     () => ({
-      ...config,
-      ...(token && {
+      ...JSON.parse(configString),
+      ...(tokenString && {
         auth: {
-          token,
+          token: tokenString,
         },
       }),
     }),
-    [config, token],
+    [configString, tokenString],
   );
 
   useEffect(() => {
-    const socketClient = new SocketClient(mergedConfig);
+    if (socketRef.current) {
+      return;
+    }
 
+    const socketClient = new SocketClient(mergedConfig);
+    socketRef.current = socketClient;
     setSocket(socketClient);
 
     return () => {
-      socketClient.destroy();
-      setSocket(null);
+      if (socketRef.current) {
+        socketRef.current.destroy();
+        socketRef.current = null;
+        setSocket(null);
+      }
     };
   }, [mergedConfig]);
 
