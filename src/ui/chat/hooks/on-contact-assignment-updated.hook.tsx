@@ -20,8 +20,9 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 /**
  * On contact assignment updated hook
  *
- * This hook listens to the `contact_assignment_updated` socket event and updates the contact list if contact does not exists on store.
+ * This hook listens tp the on `contact_assignment_updated` socket event and updates the contact list if contact does not exists on store.
  * Also, it updates the contact conversation status to Assigned if contact exists but conversation sttus is different from aSSIGNED STATUS.
+ * [Agent event]
  */
 export const useOnContactAssignmentUpdated = () => {
   const existContactOnStore = useContactStore(
@@ -36,7 +37,7 @@ export const useOnContactAssignmentUpdated = () => {
 
   onSocketEvent<OnContactAssignmentUpdatedResponseDTO>(
     socketEventsDictionary.CONTACT_ASSIGNMENT_UPDATED,
-    async (data) => {
+    async (data: OnContactAssignmentUpdatedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
       const response = OnContactAssignmentUpdatedMapper.mapFrom(parseResponse);
 

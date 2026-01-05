@@ -28,6 +28,10 @@ export type {
   OnContactAssignmentUpdatedResponseDTO,
   OnContactAssignmentUpdatedResponseTeamDTO,
 } from './on-contact-assignment-updated-response.dto';
+export type {
+  OnConversationFinishedResponseDTO,
+  OnConversationFinishedResponseFinishedByAgentDTO,
+} from './on-conversation-finished-response.dto';
 export type { OnIncommingMessageResponseDTO } from './on-incomming-message-response.dto';
 export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.dto';
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
