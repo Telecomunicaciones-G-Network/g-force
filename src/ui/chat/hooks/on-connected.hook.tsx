@@ -25,6 +25,15 @@ export const useOnConnected = () => {
     socketEventsDictionary.CONNECTED,
     (data: OnConnectedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
+
+      if (
+        !parseResponse?.agent_id ||
+        !parseResponse?.agent_full_name ||
+        !parseResponse?.agent_teams ||
+        !parseResponse?.success
+      )
+        return;
+
       const response = OnConnectedMapper.mapFrom(parseResponse);
 
       if (!response?.success || !response?.agent?.id || !response?.agent?.name)

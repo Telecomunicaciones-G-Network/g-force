@@ -28,6 +28,7 @@ export type {
   OnContactAssignmentUpdatedResponseDTO,
   OnContactAssignmentUpdatedResponseTeamDTO,
 } from './on-contact-assignment-updated-response.dto';
+export type { OnContactFinishedResponseDTO } from './on-contact-finished-response.dto';
 export type {
   OnConversationFinishedResponseDTO,
   OnConversationFinishedResponseFinishedByAgentDTO,

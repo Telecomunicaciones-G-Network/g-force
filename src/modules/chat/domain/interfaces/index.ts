@@ -39,6 +39,7 @@ export type {
 } from './message-values.interface';
 export type { NoteValues } from './note-values.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
+export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
 export type {
   OnConversationAssignmentUpdatedAgentResponse,
   OnConversationAssignmentUpdatedResponse,

@@ -14,6 +14,8 @@ import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-ch
 
 import { queryKeysDictionary } from '@/src/ui/chat/dictionaries/query-keys.dictionary';
 
+import { useOnConversationFinished } from '@ui-chat/hooks/on-conversation-finished.hook';
+
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -52,6 +54,8 @@ export const useChatConversation = () => {
     joinRoomEventName: socketEmissionsDictionary.JOIN_CONTACT_ROOM,
     leaveRoomEventName: socketEmissionsDictionary.LEAVE_CONTACT_ROOM,
   });
+
+  useOnConversationFinished();
 
   useEffect(() => {
     if (chatMessagesResponse?.messages) {

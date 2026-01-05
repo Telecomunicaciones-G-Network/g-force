@@ -39,6 +39,17 @@ export const useOnContactAssignmentUpdated = () => {
     socketEventsDictionary.CONTACT_ASSIGNMENT_UPDATED,
     async (data: OnContactAssignmentUpdatedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
+
+      if (
+        !parseResponse?.agent?.id ||
+        !parseResponse?.agent?.full_name ||
+        !parseResponse?.contact_id ||
+        !parseResponse?.conversation_id ||
+        !parseResponse?.team?.codename ||
+        !parseResponse?.team?.name
+      )
+        return;
+
       const response = OnContactAssignmentUpdatedMapper.mapFrom(parseResponse);
 
       if (
