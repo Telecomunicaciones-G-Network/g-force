@@ -1,3 +1,8 @@
+/**
+ * Socket events dictionary
+ *
+ * This dictionary contains the names of the socket events.
+ */
 export const socketEventsDictionary = {
   CONNECTED: 'connected',
   CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',

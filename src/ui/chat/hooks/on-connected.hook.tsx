@@ -7,7 +7,10 @@ import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connected.mapper';
-import { useContactStore } from '@ui-chat/stores/contact-store/contact.store'; /**
+
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+
+/**
  * On connected hook
  *
  * This hook listens to the `connected` socket event and updates the active agent (id, name and teams)
