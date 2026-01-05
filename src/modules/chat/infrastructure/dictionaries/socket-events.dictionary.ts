@@ -4,6 +4,7 @@
  * This dictionary contains the names of the socket events.
  */
 export const socketEventsDictionary = {
+  AGENT_STATUS_CHANGED: 'agent_status_changed',
   CONNECTED: 'connected',
   CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',
   CONTACT_FINISHED: 'contact_finished',
