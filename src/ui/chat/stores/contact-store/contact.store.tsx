@@ -38,12 +38,11 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     set({ contacts: [...currentContacts, ...newContacts] });
   },
   addOneUnreadMessageToContact: ({
-    activeContact,
     contactId,
     lastMessage,
     messageType,
   }: AddOneUnreadMessageToContactParams) => {
-    const { contacts } = get();
+    const { activeContact, contacts } = get();
 
     set({
       contacts: contacts?.map((contact) =>
