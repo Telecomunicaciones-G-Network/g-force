@@ -11,6 +11,7 @@ import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.
 import { useOnContactAssignmentUpdated } from '@ui-chat/hooks/on-contact-assignment-updated.hook';
 import { useOnContactFinished } from '@ui-chat/hooks/on-contact-finished.hook';
 import { useOnNewMessageReceived } from '@ui-chat/hooks/on-new-message-received.hook';
+import { useOnNewMessageSent } from '@ui-chat/hooks/on-new-message-sent.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -22,6 +23,7 @@ export const useContactList = (contactsResponse: ContactValues[]) => {
   useOnContactAssignmentUpdated();
   useOnContactFinished();
   useOnNewMessageReceived();
+  useOnNewMessageSent();
 
   const setContacts = useContactStore((state) => state.setContacts);
 

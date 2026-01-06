@@ -27,6 +27,9 @@ export const useOnNewMessageReceived = () => {
   const addOneUnreadMessageToContact = useContactStore(
     (state) => state.addOneUnreadMessageToContact,
   );
+  const sortContactsByLatestMessage = useContactStore(
+    (state) => state.sortContactsByLatestMessage,
+  );
 
   onSocketEvent<OnNewMessageReceivedResponseDTO>(
     socketEventsDictionary.NEW_MESSAGE_RECEIVED,
@@ -51,6 +54,7 @@ export const useOnNewMessageReceived = () => {
           lastMessage: response?.messageTextPreview,
           messageType: response?.messageType,
         });
+        sortContactsByLatestMessage();
 
         return;
       }
@@ -61,6 +65,7 @@ export const useOnNewMessageReceived = () => {
           lastMessage: response?.messageTextPreview,
           messageType: response?.messageType,
         });
+        sortContactsByLatestMessage();
 
         const sounder = new Sounder('/sounds/whatsapp-notification.mp3');
 

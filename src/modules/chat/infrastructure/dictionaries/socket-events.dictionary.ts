@@ -14,4 +14,5 @@ export const socketEventsDictionary = {
   MEDIA_STATUS_CHANGED: 'media_status_changed',
   MESSAGE_STATUS_CHANGED: 'message_status_changed',
   NEW_MESSAGE_RECEIVED: 'new_message_received',
+  NEW_MESSAGE_SENT: 'new_message_sent',
 } as const satisfies Record<string, string>;

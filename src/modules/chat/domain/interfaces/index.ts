@@ -49,6 +49,7 @@ export type { OnConversationFinishedResponse } from './on-conversation-finished-
 export type { OnMediaStatusChangedResponse } from './on-media-status-changed-response.interface';
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';
+export type { OnNewMessageSentResponse } from './on-new-message-sent-response.interface';
 export type { TeamValues } from './team-values.interface';
 export type { TransferChatConversationRequest } from './transfer-chat-conversation-request.interface';
 export type { TransferChatConversationResponse } from './transfer-chat-conversation-response.interface';
