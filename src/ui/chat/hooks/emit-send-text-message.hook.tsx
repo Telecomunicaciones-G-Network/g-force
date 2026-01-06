@@ -13,27 +13,36 @@ import { useCallback } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
+import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
+import { ToastSchemes } from '@gnetwork-ui/components/organisms/toasts/toast/enums/toast-schemes.enum';
 import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
+
+import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
-
-import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 
 import { EmitSendTextMessageMapper } from '@module-chat/infrastructure/mappers/emit-send-text-message.mapper';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
+/**
+ * On send text message hook
+ *
+ * This hook emits a text message to the socket server and updates the message id in the store
+ * [Emission event]
+ */
 export const useEmitSendTextMessage = () => {
-  const addMessage = useChatStore((state) => state.addMessage);
   const activeContact = useContactStore((state) => state.activeContact);
 
-  const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
-
+  const addMessage = useChatStore((state) => state.addMessage);
   const updateOneMessageId = useChatStore((state) => state.updateOneMessageId);
+
+  const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
+  const { showToast } = useToast();
 
   const emitSendTextMessage = useCallback(
     async ({
@@ -98,9 +107,7 @@ export const useEmitSendTextMessage = () => {
 
         const response = EmitSendTextMessageMapper.mapFrom(parseAck);
 
-        if (!response?.success || !response?.messageId) {
-          return;
-        }
+        if (!response?.success || !response?.messageId) return;
 
         if (response?.messageId && newMessage) {
           updateOneMessageId(temporalMessageId, response?.messageId);
@@ -110,8 +117,11 @@ export const useEmitSendTextMessage = () => {
           sounder.playAudio();
           onSuccess?.();
         }
-      } catch (error) {
-        console.error('error', error);
+      } catch (_error) {
+        showToast('Error al enviar el mensaje', {
+          id: 'emit-send-text-message-error',
+          scheme: ToastSchemes.ERROR,
+        });
 
         return;
       }
@@ -121,6 +131,7 @@ export const useEmitSendTextMessage = () => {
       addMessage,
       emitWithAck,
       isConnectedAndStatusConnected,
+      showToast,
       updateOneMessageId,
     ],
   );
