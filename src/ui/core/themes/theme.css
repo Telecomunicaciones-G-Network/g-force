@@ -50,6 +50,9 @@
   --color-warning-300: var(--warning-300);
   --color-whatsapp-audio-color: var(--whatsapp-audio-color);
   --color-whatsapp-contact-color: var(--whatsapp-contact-color);
+  --color-whatsapp-conversation-event-color: var(
+    --whatsapp-conversation-event-color
+  );
   --color-whatsapp-document-color: var(--whatsapp-document-color);
   --color-whatsapp-image-color: var(--whatsapp-image-color);
   --color-whatsapp-location-color: var(--whatsapp-location-color);

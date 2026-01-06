@@ -11,6 +11,7 @@ import {
   MdOutlineImage,
   MdOutlineMap,
   MdOutlinePerson,
+  MdOutlineTimelapse,
   MdOutlineVideoCameraFront,
 } from 'react-icons/md';
 
@@ -141,6 +142,19 @@ export const ChatCard = ({
                   scheme="label"
                 >
                   Contacto
+                </Text>
+              </>
+            )}
+            {messageType === MessageTypes.CONVERSATION_EVENT && (
+              <>
+                <MdOutlineTimelapse className="fill-whatsapp-conversation-event-color min-h-5 min-w-5 size-5" />
+                <Text
+                  as="span"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  Evento
                 </Text>
               </>
             )}

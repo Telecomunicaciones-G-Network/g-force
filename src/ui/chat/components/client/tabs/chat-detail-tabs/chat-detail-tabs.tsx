@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 import {
   MdEditNote,
-  MdHistory,
   MdPersonOutline,
   MdReceiptLong,
   MdSell,
@@ -27,7 +26,6 @@ import { ChatTickets } from '@ui-chat/components/client/blocks/chat-tickets';
 
 import { ChatContact } from '@ui-chat/components/server/blocks/chat-contact';
 import { ChatContracts } from '@ui-chat/components/server/blocks/chat-contracts';
-import { ChatHistory } from '@ui-chat/components/server/blocks/chat-history';
 import { ChatInvoices } from '@ui-chat/components/server/blocks/chat-invoices';
 
 import { ChatDetailTabs as ChatDetailTabsValues } from './enums/chat-detail-tabs.enum';
@@ -185,23 +183,6 @@ export const ChatDetailTabs = () => {
         >
           Facturación
         </Tooltip>
-        {/* <Tooltip
-          side="bottom"
-          sideOffset={16}
-          triggerAsChild={true}
-          triggerComponent={
-            <TabButton
-              color={
-                isActiveTab(ChatDetailTabsValues.STATUS) ? 'red' : 'default'
-              }
-              value={ChatDetailTabsValues.STATUS}
-            >
-              <MdSell className="min-h-6 min-w-6 size-6" />
-            </TabButton>
-          }
-        >
-          Status
-        </Tooltip> */}
         <Tooltip
           side="bottom"
           sideOffset={16}
@@ -218,23 +199,6 @@ export const ChatDetailTabs = () => {
           }
         >
           Tickets
-        </Tooltip>
-        <Tooltip
-          side="bottom"
-          sideOffset={16}
-          triggerAsChild={true}
-          triggerComponent={
-            <TabButton
-              color={
-                isActiveTab(ChatDetailTabsValues.NOTES) ? 'red' : 'default'
-              }
-              value={ChatDetailTabsValues.NOTES}
-            >
-              <MdHistory className="min-h-6 min-w-6 size-6" />
-            </TabButton>
-          }
-        >
-          Notas
         </Tooltip>
       </TabsTriggers>
       <TabContent
@@ -255,29 +219,11 @@ export const ChatDetailTabs = () => {
       >
         <ChatInvoices title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
-      {/*<TabContent
-        className={styles.base__content}
-        value={ChatDetailTabsValues.STATUS}
-      >
-        <ChatStatus
-          category="Residencial"
-          contractCondition="Vigente y sin deudas"
-          lastUpdate="16/08/2025 – Servicio en funcionamiento normal"
-          status="Activo"
-          title={chatDetailTabsDictionary?.[activeTab]}
-        />
-      </TabContent> */}
       <TabContent
         className={styles.base__content}
         value={ChatDetailTabsValues.TICKETS}
       >
         <ChatTickets title={chatDetailTabsDictionary?.[activeTab]} />
-      </TabContent>
-      <TabContent
-        className={styles.base__content}
-        value={ChatDetailTabsValues.NOTES}
-      >
-        <ChatHistory title={chatDetailTabsDictionary?.[activeTab]} />
       </TabContent>
     </Tabs>
   );

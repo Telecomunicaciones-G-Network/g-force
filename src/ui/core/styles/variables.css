@@ -49,6 +49,7 @@
   --warning-300: #8b621d;
   --whatsapp-audio-color: #fb6533;
   --whatsapp-contact-color: #009de2;
+  --whatsapp-conversation-event-color: #aaaaaa;
   --whatsapp-document-color: #7f66ff;
   --whatsapp-image-color: #007bff;
   --whatsapp-location-color: #ffb938;
@@ -96,7 +97,14 @@
     --warning-100: #f7edcf;
     --warning-200: #e09f32;
     --warning-300: #8b621d;
+    --whatsapp-audio-color: #fb6533;
+    --whatsapp-contact-color: #009de2;
+    --whatsapp-conversation-event-color: #aaaaaa;
+    --whatsapp-document-color: #7f66ff;
     --whatsapp-image-color: #007bff;
+    --whatsapp-location-color: #ffb938;
+    --whatsapp-sticker-color: #04cf9c;
+    --whatsapp-video-color: #ff1f4b;
     --white: #ffffff;
   }
 }
