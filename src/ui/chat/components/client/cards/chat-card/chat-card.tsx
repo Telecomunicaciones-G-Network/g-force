@@ -104,127 +104,125 @@ export const ChatCard = ({
             </Text>
           )}
         </div>
-        {lastMessage && (
-          <Text
-            as="p"
-            className="text-neutral-500"
-            level="xsmall"
-            scheme="label"
-          >
-            {shortString(
-              lastMessage,
-              CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
-            )}
-          </Text>
-        )}
-        {!lastMessage && (
-          <div className={styles.base__icon}>
-            {messageType === MessageTypes.AUDIO && (
-              <>
-                <MdMic className="fill-whatsapp-audio-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Audio
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.CONTACTS && (
-              <>
-                <MdOutlinePerson className="fill-whatsapp-contact-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Contacto
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.CONVERSATION_EVENT && (
-              <>
-                <MdOutlineTimelapse className="fill-whatsapp-conversation-event-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Evento
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.DOCUMENT && (
-              <>
-                <MdOutlineDescription className="fill-whatsapp-document-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Documento
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.IMAGE && (
-              <>
-                <MdOutlineImage className="fill-whatsapp-image-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Imagen
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.LOCATION && (
-              <>
-                <MdOutlineMap className="fill-whatsapp-location-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Localización
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.STICKER && (
-              <>
-                <MdEmojiEmotions className="fill-whatsapp-sticker-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Sticker
-                </Text>
-              </>
-            )}
-            {messageType === MessageTypes.VIDEO && (
-              <>
-                <MdOutlineVideoCameraFront className="fill-whatsapp-video-color min-h-5 min-w-5 size-5" />
-                <Text
-                  as="span"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  Video
-                </Text>
-              </>
-            )}
-          </div>
-        )}
+        <div className={styles.base__icon}>
+          {lastMessage && messageType === MessageTypes.TEXT && (
+            <Text
+              as="p"
+              className="text-neutral-500"
+              level="xsmall"
+              scheme="label"
+            >
+              {shortString(
+                lastMessage,
+                CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+              )}
+            </Text>
+          )}
+          {messageType === MessageTypes.AUDIO && (
+            <>
+              <MdMic className="fill-whatsapp-audio-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Audio'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.CONTACTS && (
+            <>
+              <MdOutlinePerson className="fill-whatsapp-contact-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Contacto'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.CONVERSATION_EVENT && (
+            <>
+              <MdOutlineTimelapse className="fill-whatsapp-conversation-event-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Evento'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.DOCUMENT && (
+            <>
+              <MdOutlineDescription className="fill-whatsapp-document-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Documento'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.IMAGE && (
+            <>
+              <MdOutlineImage className="fill-whatsapp-image-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Imagen'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.LOCATION && (
+            <>
+              <MdOutlineMap className="fill-whatsapp-location-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Localización'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.STICKER && (
+            <>
+              <MdEmojiEmotions className="fill-whatsapp-sticker-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Sticker'}
+              </Text>
+            </>
+          )}
+          {messageType === MessageTypes.VIDEO && (
+            <>
+              <MdOutlineVideoCameraFront className="fill-whatsapp-video-color min-h-5 min-w-5 size-5" />
+              <Text
+                as="span"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {lastMessage ? lastMessage : 'Video'}
+              </Text>
+            </>
+          )}
+        </div>
         {team?.name && (
           <Tag
             className="min-h-5 px-2 text-xs"

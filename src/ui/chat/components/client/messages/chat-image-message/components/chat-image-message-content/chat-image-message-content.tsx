@@ -15,6 +15,8 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import { ChatImageMessageModal } from '../chat-image-message-modal';
 import { ChatImageMessageModalClose } from '../chat-image-message-modal-close';
 
+import { useChatImageMessageContent } from './chat-image-message-content.hook';
+
 import styles from './chat-image-message-content.module.css';
 
 export const ChatImageMessageContent = (
@@ -30,11 +32,15 @@ export const ChatImageMessageContent = (
     ...rest
   } = props;
 
+  const { isModalOpen, onOpenChange } = useChatImageMessageContent();
+
   return (
     <ChatMessage caption={caption} bubbleClassName="w-full" {...rest}>
       <Modal
         className={cn(styles.base, 'relative sm:max-w-none')}
         hideModalClose
+        isOpen={isModalOpen}
+        onOpenChange={onOpenChange}
         modalOverlayChildren={
           <>
             <ChatImageMessageModalClose />
@@ -56,13 +62,16 @@ export const ChatImageMessageContent = (
           </>
         }
         triggerComponent={
-          <div className="flex h-[154px] w-full">
+          <button
+            className="flex h-[154px] w-full cursor-pointer border-0 bg-transparent p-0"
+            type="button"
+          >
             <ResponsiveImage
               className="h-full w-full"
               customImageComponent={customImageComponent}
               objectFit="cover"
             />
-          </div>
+          </button>
         }
       >
         <ChatImageMessageModal imageAlt={imageAlt} imageSrc={imageSrc} />
