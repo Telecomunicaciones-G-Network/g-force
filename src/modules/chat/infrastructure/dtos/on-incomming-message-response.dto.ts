@@ -27,7 +27,6 @@ export interface OnIncommingMesssageResponseMedia {
 }
 
 export interface OnIncommingMessageResponseDTO {
-  caption: string | null;
   contacts: OnIncommingMessageResponseContact[] | null;
   conversation_id: string;
   forwarded_many_times: boolean;

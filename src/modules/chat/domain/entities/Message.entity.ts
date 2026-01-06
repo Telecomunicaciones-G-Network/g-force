@@ -1,6 +1,7 @@
 import type {
   MediaValues,
   MessageContactValues,
+  MessageEventDataValues,
   MessageLocationValues,
   MessageReactionValues,
   MessageSenderValues,
@@ -11,12 +12,12 @@ import type { MessageDirection, MessageStatus, MessageType } from '../types';
 export class Message {
   constructor(
     public id: string,
-    public caption: string | null = null,
     public contacts: MessageContactValues[] = [],
     public conversationId: string,
     public createdAt: string = new Date().toISOString(),
     public deliveredAt: string | null = null,
     public direction: MessageDirection,
+    public eventData: MessageEventDataValues | null = null,
     public failedAt: string | null = null,
     public forwarded: boolean = false,
     public forwardedManyTimes: boolean = false,
@@ -39,12 +40,12 @@ export class Message {
   public toValues(): MessageValues {
     return {
       id: this.id,
-      caption: this.caption,
       contacts: this.contacts,
       conversationId: this.conversationId,
       createdAt: this.createdAt,
       deliveredAt: this.deliveredAt,
       direction: this.direction,
+      eventData: this.eventData,
       failedAt: this.failedAt,
       forwarded: this.forwarded,
       forwardedManyTimes: this.forwardedManyTimes,

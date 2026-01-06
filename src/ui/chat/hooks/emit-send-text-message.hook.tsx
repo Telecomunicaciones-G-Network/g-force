@@ -55,12 +55,12 @@ export const useEmitSendTextMessage = () => {
         const temporalMessageId = uuidv4();
         const newMessage: MessageValues = {
           id: temporalMessageId,
-          caption: null,
           contacts: [],
           conversationId: activeContact?.latestConversation?.id,
           createdAt: new Date().toISOString().replace('Z', '000Z'),
           deliveredAt: null,
           direction: MessageDirections.OUTGOING,
+          eventData: null,
           failedAt: null,
           forwarded: false,
           forwardedManyTimes: false,

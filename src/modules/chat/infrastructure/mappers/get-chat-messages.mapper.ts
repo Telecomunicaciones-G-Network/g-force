@@ -25,7 +25,6 @@ export class GetChatMessagesMapper {
   static mapFromArray(input: GetChatMessagesResult): MessageValues {
     return {
       id: input?.id,
-      caption: input?.caption,
       conversationId: input?.conversation_id,
       contacts:
         input?.contacts?.map((contact) => ({
@@ -38,6 +37,34 @@ export class GetChatMessagesMapper {
       createdAt: input?.created_at,
       deliveredAt: input?.delivered_at,
       direction: input?.direction,
+      eventData: {
+        agent: {
+          id: input?.event_data?.agent?.id,
+          name: input?.event_data?.agent?.full_name,
+        },
+        assignedByAgent: input?.event_data?.assigned_by_agent
+          ? {
+              id: input?.event_data?.assigned_by_agent?.id,
+              name: input?.event_data?.assigned_by_agent?.full_name,
+            }
+          : null,
+        eventType: input?.event_data?.event_type,
+        previousAgent: input?.event_data?.previous_agent
+          ? {
+              id: input?.event_data?.previous_agent?.id,
+              name: input?.event_data?.previous_agent?.full_name,
+            }
+          : null,
+        previousTeam: {
+          id: input?.event_data?.previous_team?.codename,
+          name: input?.event_data?.previous_team?.name,
+        },
+        team: {
+          id: input?.event_data?.team?.codename,
+          name: input?.event_data?.team?.name,
+        },
+        timestamp: input?.event_data?.timestamp,
+      },
       failedAt: input?.failed_at,
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,

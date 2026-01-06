@@ -1,10 +1,11 @@
 import type {
-  ContactPlatform,
+  EventType,
   MediaStorageStatus,
   MediaType,
   MessageDirection,
   MessageStatus,
   MessageType,
+  TeamCodename,
 } from '../../domain/types';
 
 export interface GetChatMessagesResultContact {
@@ -13,6 +14,26 @@ export interface GetChatMessagesResultContact {
   formatted_name: string;
   phone_numbers: string[];
   urls: string[];
+}
+
+export interface GetChatMessagesResultEventDataAgent {
+  id: string;
+  full_name: string;
+}
+
+export interface GetChatMessagesResultEventDataTeam {
+  codename: TeamCodename;
+  name: string;
+}
+
+export interface GetChatMessagesResultEventData {
+  agent: GetChatMessagesResultEventDataAgent;
+  assigned_by_agent: GetChatMessagesResultEventDataAgent | null;
+  event_type: EventType;
+  previous_agent: GetChatMessagesResultEventDataAgent | null;
+  previous_team: GetChatMessagesResultEventDataTeam;
+  team: GetChatMessagesResultEventDataTeam;
+  timestamp: string;
 }
 
 export interface GetChatMessagesResultLocation {
@@ -45,12 +66,12 @@ export interface GetChatMessagesResultSender {
 
 export interface GetChatMessagesResult {
   id: string;
-  caption: string | null;
   contacts: GetChatMessagesResultContact[];
   conversation_id: string;
   created_at: string;
   delivered_at: string | null;
   direction: MessageDirection;
+  event_data: GetChatMessagesResultEventData;
   extra_metadata: Record<string, unknown> | null;
   failed_at: string | null;
   forwarded_many_times: boolean;
@@ -58,7 +79,6 @@ export interface GetChatMessagesResult {
   location: GetChatMessagesResultLocation | null;
   media: GetChatMessagesResultMedia | null;
   platform_id: string;
-  platform: ContactPlatform;
   reactions: GetChatMessagesResultReaction[];
   read_at: string | null;
   sender: GetChatMessagesResultSender;

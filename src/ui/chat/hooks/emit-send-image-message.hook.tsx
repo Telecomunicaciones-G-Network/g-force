@@ -71,12 +71,12 @@ export const useEmitSendImageMessage = () => {
 
         const newMessage: MessageValues = {
           id: temporalMessageId,
-          caption: message ?? null,
           contacts: [],
           conversationId: activeContact?.latestConversation?.id,
           createdAt: new Date().toISOString().replace('Z', '000Z'),
           deliveredAt: null,
           direction: MessageDirections.OUTGOING,
+          eventData: null,
           failedAt: null,
           forwarded: false,
           forwardedManyTimes: false,
@@ -98,7 +98,7 @@ export const useEmitSendImageMessage = () => {
           },
           sentAt: null,
           status: MessageStatus.PENDING,
-          text: null,
+          text: message ?? null,
           type: MessageTypes.IMAGE,
           updatedAt: null,
         };

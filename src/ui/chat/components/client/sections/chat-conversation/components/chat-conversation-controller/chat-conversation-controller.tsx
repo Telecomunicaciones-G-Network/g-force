@@ -2,6 +2,8 @@ import type { ChatConversationControllerProps } from './chat-conversation-contro
 
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
+import { ChatConversationEventMessage } from '@ui-chat/components/server/messages/chat-conversation-event-message';
+
 import { ChatAudioMessageController } from '../chat-audio-message-controller';
 import { ChatContactsMessageController } from '../chat-contacts-message-controller';
 import { ChatDocumentMessageController } from '../chat-document-message-controller';
@@ -22,6 +24,8 @@ export const ChatConversationController = ({
       return <ChatAudioMessageController message={message} />;
     case MessageTypes.CONTACTS:
       return <ChatContactsMessageController message={message} />;
+    case MessageTypes.CONVERSATION_EVENT:
+      return <ChatConversationEventMessage eventData={message?.eventData} />;
     case MessageTypes.DOCUMENT:
       return <ChatDocumentMessageController message={message} />;
     case MessageTypes.FLOW_BUTTON:

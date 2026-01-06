@@ -1,5 +1,12 @@
-import type { MessageDirection, MessageStatus, MessageType } from '../types';
+import type {
+  EventType,
+  MessageDirection,
+  MessageStatus,
+  MessageType,
+} from '../types';
+import type { AgentValues } from './agent-values.interface';
 import type { MediaValues } from './media-values.interface';
+import type { TeamValues } from './team-values.interface';
 
 export interface MessageContactValues {
   birthday: string;
@@ -7,6 +14,16 @@ export interface MessageContactValues {
   formattedName: string;
   phoneNumbers: string[];
   urls: string[];
+}
+
+export interface MessageEventDataValues {
+  agent: Omit<AgentValues, 'teams'>;
+  assignedByAgent: Omit<AgentValues, 'teams'> | null;
+  eventType: EventType;
+  previousAgent: Omit<AgentValues, 'teams'> | null;
+  previousTeam: TeamValues;
+  team: TeamValues;
+  timestamp: string;
 }
 
 export interface MessageLocationValues {
@@ -30,12 +47,12 @@ export interface MessageSenderValues {
 
 export interface MessageValues {
   id: string;
-  caption: string | null;
   contacts: MessageContactValues[];
   conversationId: string;
   createdAt: string;
   deliveredAt: string | null;
   direction: MessageDirection;
+  eventData: MessageEventDataValues | null;
   failedAt: string | null;
   forwarded: boolean;
   forwardedManyTimes: boolean;

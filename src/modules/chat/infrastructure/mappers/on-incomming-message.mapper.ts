@@ -15,7 +15,6 @@ export class OnIncommingMessageMapper {
 
     return {
       id: input?.message_id,
-      caption: input?.caption,
       contacts: input?.contacts
         ? input?.contacts.map((contact) => ({
             birthday: contact.birthday,
@@ -29,6 +28,7 @@ export class OnIncommingMessageMapper {
       createdAt: input?.timestamp,
       deliveredAt: input?.timestamp,
       direction: MessageDirections.INCOMING,
+      eventData: null,
       failedAt: null,
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,

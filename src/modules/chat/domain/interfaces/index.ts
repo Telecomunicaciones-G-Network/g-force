@@ -32,6 +32,7 @@ export type { GetContactsResponse } from './get-contacts-response.interface';
 export type { MediaValues } from './media-values.interface';
 export type {
   MessageContactValues,
+  MessageEventDataValues,
   MessageLocationValues,
   MessageReactionValues,
   MessageSenderValues,
