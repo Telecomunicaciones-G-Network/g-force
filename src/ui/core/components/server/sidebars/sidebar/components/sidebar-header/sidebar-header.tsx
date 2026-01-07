@@ -20,7 +20,7 @@ export const SidebarHeader = () => {
         collapsed ? 'flex-col gap-4' : 'flex-row gap-2',
       )}
     >
-      <Brand className="size-[74px]" skeletonClassName="size-[74px]" />
+      <Brand className="size-[120px]" skeletonClassName="size-[120px]" />
       <button
         className="cursor-pointer"
         onClick={toggleCollapsed}
