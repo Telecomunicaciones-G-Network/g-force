@@ -5,6 +5,10 @@ export type { EmitSendImageMessageResponseDTO } from './emit-send-image-message-
 export type { EmitSendTextMessageRequestDTO } from './emit-send-text-message-request.dto';
 export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-response.dto';
 export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';
+export type {
+  GetAvailableReportPaymentMethodsResponseDTO,
+  GetAvailableReportPaymentMethodsResponseResultDTO,
+} from './get-available-report-payment-methods-response.dto';
 export type { GetChatMessagesRequestDTO } from './get-chat-messages-request.dto';
 export type { GetChatMessagesResponseDTO } from './get-chat-messages-response.dto';
 export type {

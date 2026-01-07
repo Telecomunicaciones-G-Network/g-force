@@ -1,4 +1,5 @@
 export const CHAT_TAGS = {
+  GET_AVAILABLE_REPORT_PAYMENT_METHODS: 'get-available-report-payment-methods',
   GET_CHAT_CONTACT_CONTRACTS: 'get-chat-contact-contracts',
   GET_CHAT_CONTACT_INFORMATION: 'get-chat-contact-information',
   GET_CHAT_CONTACT_INVOICES: 'get-chat-contact-invoices',

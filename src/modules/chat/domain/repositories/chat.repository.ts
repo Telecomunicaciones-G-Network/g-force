@@ -1,4 +1,5 @@
 import type {
+  GetAvailableReportPaymentMethodsResponse,
   GetChatMessagesRequest,
   GetChatMessagesResponse,
   GetChatTeamsResponse,
@@ -23,6 +24,7 @@ import type {
 
 export interface ChatRepository {
   finishChatConversation(contactId: string): Promise<boolean>;
+  getAvailableReportPaymentMethods(): Promise<GetAvailableReportPaymentMethodsResponse>;
   getChatMediaById(mediaId: string): Promise<string>;
   getChatMessages(
     request: GetChatMessagesRequest,
