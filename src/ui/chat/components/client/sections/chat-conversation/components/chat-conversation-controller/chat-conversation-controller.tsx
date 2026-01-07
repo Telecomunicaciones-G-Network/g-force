@@ -25,7 +25,7 @@ export const ChatConversationController = ({
     case MessageTypes.CONTACTS:
       return <ChatContactsMessageController message={message} />;
     case MessageTypes.CONVERSATION_EVENT:
-      return <ChatConversationEventMessage eventData={message?.eventData} />;
+      return <ChatConversationEventMessage message={message} />;
     case MessageTypes.DOCUMENT:
       return <ChatDocumentMessageController message={message} />;
     case MessageTypes.FLOW_BUTTON:

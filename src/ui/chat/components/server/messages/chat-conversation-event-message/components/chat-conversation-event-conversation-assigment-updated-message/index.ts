@@ -1,1 +1,1 @@
-export { ChatConversationEventConversationAssigmentUpdatedMessage } from './chat-conversation-event-conversation-assigment-updated-message';
+export { ChatConversationEventConversationAssignmentUpdatedMessage } from './chat-conversation-event-conversation-assignment-updated-message';

@@ -2,8 +2,6 @@ import type { ChatConversationEventMessageProps } from './chat-conversation-even
 
 import { ChatConversationEventMessageController } from './components/chat-conversation-event-message-controller';
 
-export const ChatConversationEventMessage = ({
-  eventData,
-}: Readonly<ChatConversationEventMessageProps>) => (
-  <ChatConversationEventMessageController eventData={eventData} />
-);
+export const ChatConversationEventMessage = (
+  props: Readonly<ChatConversationEventMessageProps>,
+) => <ChatConversationEventMessageController {...props} />;
