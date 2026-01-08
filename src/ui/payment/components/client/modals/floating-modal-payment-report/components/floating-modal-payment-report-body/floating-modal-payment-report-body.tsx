@@ -3,16 +3,17 @@
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { SelectInput } from '@gnetwork-ui/components/molecules/inputs/select-input';
 
-import { paymentOptions } from '@ui-payment/iterators/payment-options.iterator';
-
 import { useFloatingModalPaymentReportBody } from './floating-modal-payment-report-body.hook';
 import { FloatingModalPaymentReportController } from '../floating-modal-payment-report-controller';
 
 import styles from './floating-modal-payment-report-body.module.css';
 
 export const FloatingModalPaymentReportBody = () => {
-  const { onPaymentTypeSelectChange, paymentTypeSelected } =
-    useFloatingModalPaymentReportBody();
+  const {
+    onPaymentTypeSelectChange,
+    paymentMethodOptions,
+    paymentTypeSelected,
+  } = useFloatingModalPaymentReportBody();
 
   return (
     <form className={styles.base}>
@@ -20,7 +21,7 @@ export const FloatingModalPaymentReportBody = () => {
         <SelectInput
           fullWidth
           onValueChange={onPaymentTypeSelectChange}
-          options={paymentOptions}
+          options={paymentMethodOptions}
           value={paymentTypeSelected}
         />
       </div>

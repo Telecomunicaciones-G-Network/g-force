@@ -11,10 +11,12 @@ import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.di
 
 import { getAvailableReportPaymentMethodsQuery } from '@module-chat/infrastructure/queries/get-available-report-payment-methods.query';
 
+import { parseGetAvailableReportPaymentMethodsToSelectOptions } from './utils/parse-get-available-report-payment-methods-to-select-options.util';
+
 export const useFloatingModalPaymentReportBody = () => {
   const [paymentTypeSelected, setPaymentTypeSelected] = useState<PaymentType>();
 
-  useQuery<GetAvailableReportPaymentMethodsResponse>({
+  const { data } = useQuery<GetAvailableReportPaymentMethodsResponse>({
     queryKey: [CHAT_TAGS.GET_AVAILABLE_REPORT_PAYMENT_METHODS],
     queryFn: () => getAvailableReportPaymentMethodsQuery(),
     refetchOnMount: true,
@@ -27,6 +29,9 @@ export const useFloatingModalPaymentReportBody = () => {
 
   return {
     onPaymentTypeSelectChange,
+    paymentMethodOptions: parseGetAvailableReportPaymentMethodsToSelectOptions(
+      data?.paymentMethods,
+    ),
     paymentTypeSelected,
   };
 };
