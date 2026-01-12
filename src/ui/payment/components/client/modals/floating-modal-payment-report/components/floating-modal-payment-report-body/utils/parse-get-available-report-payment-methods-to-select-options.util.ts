@@ -13,9 +13,11 @@ export const parseGetAvailableReportPaymentMethodsToSelectOptions = (
   )
     return [];
 
-  return Object.entries(paymentMethods).map(([key, value]) => ({
-    disabled: !value,
-    label: paymentMethodsHumanizedDictionary[key as PaymentType],
-    value: key,
-  }));
+  return Object.entries(paymentMethods)
+    .map(([key, value]) => ({
+      disabled: !value,
+      label: paymentMethodsHumanizedDictionary[key as PaymentType],
+      value: key,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 };

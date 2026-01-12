@@ -16,13 +16,20 @@ import styles from './select-input-trigger.module.css';
 const SelectValue = SelectPrimitive.Value;
 
 export const SelectInputTrigger = ({
-  className = '',
+  className,
+  bordered = false,
   label = 'Seleccione una opción',
+  leftIcon,
   fullWidth = false,
   ref,
+  triggerWrapperClassName = '',
   ...rest
 }: Readonly<SelectInputTriggerProps>) => {
-  const classes = getSelectInputTriggerClassNames({ className, fullWidth });
+  const classes = getSelectInputTriggerClassNames({
+    className,
+    bordered,
+    fullWidth,
+  });
   const { isOpen, triggerRef } = useSelectInputTrigger();
 
   return (
@@ -42,10 +49,13 @@ export const SelectInputTrigger = ({
         className={cn(
           styles.base__container,
           'bg-neutral-100 py-2 px-4 rounded-sm',
+          !bordered && 'min-h-[38px] py-0',
+          triggerWrapperClassName,
         )}
       >
+        {leftIcon && leftIcon}
         <SelectValue
-          className="font-medium text-chromatic-inverted text-sm tracking-0"
+          className="select-value font-medium text-chromatic-inverted text-xs tracking-0 [data-placeholder]:text-input-placeholder!"
           placeholder={label}
         />
         <SelectPrimitive.Icon asChild>

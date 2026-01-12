@@ -119,7 +119,7 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
                 <div className={styles.base__invoices}>
                   {invoices?.map((invoice: InvoiceValues, index: number) => (
                     <ChatInvoiceCard
-                      key={invoice?.documentNumber}
+                      key={invoice?.id}
                       invoice={invoice}
                       onPayment={openPaymentFloatingModal}
                       open={true}

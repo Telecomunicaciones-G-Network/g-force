@@ -14,6 +14,8 @@ import styles from './select-input.module.css';
 const Select = SelectPrimitive.Root;
 
 export const SelectInput = ({
+  bordered = false,
+  className = '',
   customMessageClassName = '',
   defaultValue,
   disabled = false,
@@ -21,12 +23,16 @@ export const SelectInput = ({
   fullWidth = false,
   id,
   indicator = '',
-  label = 'Seleccione una opción',
+  label = '',
+  leftIcon,
   message = '',
   name,
   onValueChange,
   options = [],
   required = false,
+  triggerClassName,
+  triggerLabel = '',
+  triggerWrapperClassName = '',
   value,
   ...rest
 }: Readonly<SelectInputProps>) => {
@@ -42,6 +48,7 @@ export const SelectInput = ({
         styles.base,
         fullWidth && 'w-full',
         disabled ? 'opacity-50 cursor-not-allowed' : '',
+        className,
       )}
     >
       {label && (
@@ -59,7 +66,14 @@ export const SelectInput = ({
         value={value}
         {...rest}
       >
-        <SelectInputTrigger fullWidth={fullWidth} label={label} />
+        <SelectInputTrigger
+          className={triggerClassName}
+          bordered={bordered}
+          fullWidth={fullWidth}
+          label={triggerLabel}
+          leftIcon={leftIcon}
+          triggerWrapperClassName={triggerWrapperClassName}
+        />
         <SelectInputBody indicator={indicator} options={options} {...rest} />
       </Select>
       {message && (

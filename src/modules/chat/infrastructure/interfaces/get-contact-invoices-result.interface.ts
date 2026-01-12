@@ -27,6 +27,14 @@ export interface GetContactInvoicesResult {
   id: number;
   amount_to_pay_bs: GetContactInvoicesResultAmountToPayBS;
   amount_to_pay_usd: GetContactInvoicesResultAmountToPayUSD;
+  bank_associated_data: {
+    bank_account_number: string;
+    bank_acronym: string;
+    bank_code: string;
+    bank_identification: string;
+    bank_name: string;
+    bank_phone: string;
+  };
   contract_id: number;
   date_emission: string;
   date_payment: string | null;

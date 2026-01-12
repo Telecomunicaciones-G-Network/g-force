@@ -5,6 +5,14 @@ import type {
 } from '../types';
 
 export interface InvoiceValues {
+  bankAssociatedData: {
+    bankAccountNumber: string;
+    bankAcronym: string;
+    bankCode: string;
+    bankIdentification: string;
+    bankName: string;
+    bankPhone: string;
+  };
   id: number;
   amount: number;
   contractId: number;

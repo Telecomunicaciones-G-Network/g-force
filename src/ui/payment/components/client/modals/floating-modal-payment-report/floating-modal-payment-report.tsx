@@ -10,6 +10,6 @@ export const FloatingModalPaymentReport = (
 ) => (
   <FloatingCardModal>
     <FloatingModalPaymentReportHeader {...props} />
-    <FloatingModalPaymentReportBody />
+    <FloatingModalPaymentReportBody {...props} />
   </FloatingCardModal>
 );

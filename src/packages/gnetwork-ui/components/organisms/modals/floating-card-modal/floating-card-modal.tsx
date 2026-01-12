@@ -10,7 +10,10 @@ export const FloatingCardModal = ({
 }: Readonly<FloatingCardModalProps>) => {
   return (
     <FloatingModal className="max-w-[min(349px,100%)] w-full" {...rest}>
-      <Card className="gap-0 p-0 rounded-sm shadow-lg w-full" {...cardProps}>
+      <Card
+        className="divide-y divide-neutral-200 gap-0 p-0 rounded-sm shadow-lg w-full"
+        {...cardProps}
+      >
         {children}
       </Card>
     </FloatingModal>

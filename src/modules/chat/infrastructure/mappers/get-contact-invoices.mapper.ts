@@ -20,6 +20,14 @@ export class GetContactInvoicesMapper {
 
   static mapFromArray(input: GetContactInvoicesResult): InvoiceValues {
     return {
+      bankAssociatedData: {
+        bankAccountNumber: input?.bank_associated_data?.bank_account_number,
+        bankAcronym: input?.bank_associated_data?.bank_acronym,
+        bankCode: input?.bank_associated_data?.bank_code,
+        bankIdentification: input?.bank_associated_data?.bank_identification,
+        bankName: input?.bank_associated_data?.bank_name,
+        bankPhone: input?.bank_associated_data?.bank_phone,
+      },
       id: input?.id,
       amount: input?.amount,
       contractId: input?.contract_id,

@@ -12,6 +12,21 @@ export class Invoice {
   constructor(
     public id: number,
     public amount: number = 0,
+    public bankAssociatedData: {
+      bankAccountNumber: string;
+      bankAcronym: string;
+      bankCode: string;
+      bankIdentification: string;
+      bankName: string;
+      bankPhone: string;
+    } = {
+      bankAccountNumber: '',
+      bankAcronym: '',
+      bankCode: '',
+      bankIdentification: '',
+      bankName: '',
+      bankPhone: '',
+    },
     public contractId: number,
     public cycle?: string,
     public dateEmission: string = new Date().toISOString().replace('Z', '000Z'),
@@ -26,6 +41,7 @@ export class Invoice {
     return {
       id: this.id,
       amount: this.amount,
+      bankAssociatedData: this.bankAssociatedData,
       contractId: this.contractId,
       cycle: this.cycle,
       dateEmission: this.dateEmission,
