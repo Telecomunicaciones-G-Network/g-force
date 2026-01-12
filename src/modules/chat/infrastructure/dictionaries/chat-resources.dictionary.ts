@@ -22,4 +22,6 @@ export const CHAT_RESOURCES = {
     `/chat/contacts/${contactId}/conversation/transfer`,
   UPLOAD_CHAT_MEDIA: '/chat/media',
   VALIDATE_MOBILE_PAYMENT: '/chat/payment/validate-pago-movil',
+  VALIDATE_MOBILE_PAYMENT_WITH_IMAGE:
+    '/chat/payment/validate-pago-movil-with-image',
 } as const satisfies Record<string, string | ((...args: string[]) => string)>;

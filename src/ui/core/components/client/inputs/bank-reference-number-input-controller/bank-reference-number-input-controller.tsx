@@ -34,15 +34,19 @@ export const BankReferenceNumberInputController = <
         error={!!fieldState.error}
         id={id || name}
         isAllowed={(values) => {
-          const { value } = values;
-          return value === '' || (value.length <= 6 && /^\d+$/.test(value));
+          const { formattedValue } = values;
+          return (
+            formattedValue === '' ||
+            (formattedValue.length <= 6 && /^\d+$/.test(formattedValue))
+          );
         }}
         message={fieldState.error?.message}
         onValueChange={(values) => {
-          onChange(values.value);
+          onChange(values.formattedValue);
           onClear?.();
         }}
         value={value ?? ''}
+        valueIsNumericString
       />
     )}
     rules={rules}

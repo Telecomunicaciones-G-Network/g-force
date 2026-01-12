@@ -10,6 +10,7 @@ import { RadioGroup } from '@gnetwork-ui/components/organisms/inputs/radio-group
 import { FloatingModalPaymentReportFormLayout } from '../../layouts/floating-modal-payment-report-form-layout';
 
 import { FloatingModalPaymentReportMobilePaymentManual } from '../floating-modal-payment-report-mobile-payment-manual';
+import { FloatingModalPaymentReportMobilePaymentAutomatic } from '../floating-modal-payment-report-mobile-payment-automatic';
 
 import { FloatingModalPaymentReportMobilePaymentModalities } from './enums/floating-modal-payment-report-mobile-payment-modalities.enum';
 
@@ -68,7 +69,10 @@ export const FloatingModalPaymentReportMobilePayment = ({
       )}
       {radioGroupValue ===
         FloatingModalPaymentReportMobilePaymentModalities.SCREENSHOT && (
-        <div>screenshot</div>
+        <FloatingModalPaymentReportMobilePaymentAutomatic
+          invoice={invoice}
+          onClose={onClose}
+        />
       )}
     </FloatingModalPaymentReportFormLayout>
   );
