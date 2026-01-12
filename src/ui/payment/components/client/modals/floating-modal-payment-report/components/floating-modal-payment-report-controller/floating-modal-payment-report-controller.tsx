@@ -7,6 +7,7 @@ import { FloatingModalPaymentReportMobilePayment } from '../floating-modal-payme
 export const FloatingModalPaymentReportController = ({
   invoice,
   onClose,
+  onSuccessPayment,
   paymentType,
 }: Readonly<FloatingModalPaymentReportControllerProps>) => {
   switch (paymentType) {
@@ -17,6 +18,7 @@ export const FloatingModalPaymentReportController = ({
         <FloatingModalPaymentReportMobilePayment
           invoice={invoice}
           onClose={onClose}
+          onSuccessPayment={onSuccessPayment}
         />
       );
     case PaymentTypes.ZELLE:

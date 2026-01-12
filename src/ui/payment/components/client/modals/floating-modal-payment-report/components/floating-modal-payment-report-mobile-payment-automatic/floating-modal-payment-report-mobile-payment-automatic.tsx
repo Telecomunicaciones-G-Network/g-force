@@ -22,11 +22,13 @@ import { useFloatingModalPaymentReportMobilePaymentAutomatic } from './floating-
 export const FloatingModalPaymentReportMobilePaymentAutomatic = ({
   invoice,
   onClose = () => null,
+  onSuccessPayment,
 }: Readonly<FloatingModalPaymentReportMobilePaymentAutomaticProps>) => {
   const { attachImageFiles, file, validateMobilePaymentWithImage, isPending } =
     useFloatingModalPaymentReportMobilePaymentAutomatic({
       invoice,
       onClose,
+      onSuccessPayment,
     });
 
   return (

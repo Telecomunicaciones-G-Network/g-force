@@ -23,11 +23,12 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 interface UseFloatingModalPaymentReportMobilePaymentManualProps {
   invoice: InvoiceValues;
   onClose?: () => void;
+  onSuccessPayment?: () => void;
 }
 
 export const useFloatingModalPaymentReportMobilePaymentManual = ({
   invoice,
-  onClose,
+  onSuccessPayment,
 }: Readonly<UseFloatingModalPaymentReportMobilePaymentManualProps>) => {
   const activeContact = useContactStore((state) => state.activeContact);
   const queryClient = useQueryClient();
@@ -56,11 +57,10 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
           { page_size: 20, page: 1 },
         ],
       });
-      console.log('success');
-      onClose?.();
+      onSuccessPayment?.();
     },
-    onError: (error) => {
-      showToast(error?.message ?? 'Error al validar el pago móvil', {
+    onError: (_error: Error) => {
+      showToast('Error al validar el pago móvil', {
         id: 'validate-mobile-payment-error',
         position: 'top-right',
       });

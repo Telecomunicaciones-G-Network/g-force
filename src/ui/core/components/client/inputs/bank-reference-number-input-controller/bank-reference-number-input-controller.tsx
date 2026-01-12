@@ -26,6 +26,7 @@ export const BankReferenceNumberInputController = <
       <NumericFormat
         {...fieldProps}
         {...rest}
+        allowLeadingZeros
         allowNegative={false}
         customInput={
           BankReferenceNumberInput as React.ComponentType<InputProps>
@@ -34,15 +35,12 @@ export const BankReferenceNumberInputController = <
         error={!!fieldState.error}
         id={id || name}
         isAllowed={(values) => {
-          const { formattedValue } = values;
-          return (
-            formattedValue === '' ||
-            (formattedValue.length <= 6 && /^\d+$/.test(formattedValue))
-          );
+          const { value } = values;
+          return value === '' || (value.length <= 6 && /^\d+$/.test(value));
         }}
         message={fieldState.error?.message}
         onValueChange={(values) => {
-          onChange(values.formattedValue);
+          onChange(values.value);
           onClear?.();
         }}
         value={value ?? ''}

@@ -28,11 +28,12 @@ import { validateMobilePaymentWithImageService } from '@module-chat/infrastructu
 interface UseFloatingModalPaymentReportMobilePaymentAutomaticProps {
   invoice: InvoiceValues;
   onClose?: () => void;
+  onSuccessPayment?: () => void;
 }
 
 export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
   invoice,
-  onClose,
+  onSuccessPayment,
 }: Readonly<UseFloatingModalPaymentReportMobilePaymentAutomaticProps>) => {
   const activeContact = useContactStore((state) => state.activeContact);
   const queryClient = useQueryClient();
@@ -49,11 +50,10 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
           { page_size: 20, page: 1 },
         ],
       });
-      console.log('success');
-      onClose?.();
+      onSuccessPayment?.();
     },
-    onError: (error) => {
-      showToast(error?.message ?? 'Error al validar el pago móvil', {
+    onError: (_error: Error) => {
+      showToast('Error al validar el pago móvil', {
         id: 'validate-mobile-payment-error',
         position: 'top-right',
       });
@@ -106,8 +106,6 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
       image: file?.file,
     });
   };
-
-  console.log(file);
 
   return {
     attachImageFiles,

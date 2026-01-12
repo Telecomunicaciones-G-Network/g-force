@@ -1,6 +1,6 @@
 'use client';
 
-import type { FloatingModalPaymentReportProps } from '../../floating-modal-payment-report.props';
+import type { FloatingModalPaymentReportBodyProps } from './floating-modal-payment-report-body.props';
 
 import { SelectInput } from '@gnetwork-ui/components/molecules/inputs/select-input';
 
@@ -11,8 +11,9 @@ import styles from './floating-modal-payment-report-body.module.css';
 
 export const FloatingModalPaymentReportBody = ({
   invoice,
+  onSuccessPayment,
   onClose,
-}: Readonly<FloatingModalPaymentReportProps>) => {
+}: Readonly<FloatingModalPaymentReportBodyProps>) => {
   const {
     onPaymentTypeSelectChange,
     paymentMethodOptions,
@@ -36,6 +37,7 @@ export const FloatingModalPaymentReportBody = ({
         invoice={invoice}
         onClose={onClose}
         paymentType={paymentTypeSelected}
+        onSuccessPayment={onSuccessPayment}
       />
     </div>
   );

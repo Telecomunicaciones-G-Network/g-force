@@ -22,10 +22,15 @@ import styles from './floating-modal-payment-report-mobile-payment-manual.module
 
 export const FloatingModalPaymentReportMobilePaymentManual = ({
   invoice,
+  onSuccessPayment,
   onClose,
 }: Readonly<FloatingModalPaymentReportMobilePaymentManualProps>) => {
   const { clearErrors, control, handleSubmit, isPending, onSubmit } =
-    useFloatingModalPaymentReportMobilePaymentManual({ invoice, onClose });
+    useFloatingModalPaymentReportMobilePaymentManual({
+      invoice,
+      onClose,
+      onSuccessPayment,
+    });
 
   return (
     <form className={styles.base} onSubmit={handleSubmit(onSubmit)}>
@@ -42,7 +47,7 @@ export const FloatingModalPaymentReportMobilePaymentManual = ({
             id="floating_modal_payment_report_mobile_payment_manual_amount"
             name="amount"
             onClear={clearErrors}
-            placeholder="Monto"
+            placeholder="Monto Bs."
             required
           />
         </div>

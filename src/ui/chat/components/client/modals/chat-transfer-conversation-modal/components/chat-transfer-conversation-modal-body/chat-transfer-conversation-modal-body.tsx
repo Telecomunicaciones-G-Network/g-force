@@ -50,6 +50,7 @@ export const ChatTransferConversationModalBody = ({
             onClear={() => clearErrors()}
             options={parseTeamsToSelectItem(teams)}
             required
+            triggerLabel="Equipos"
           />
           {isAgentsLoading && <Skeleton className="h-[58px] w-full" />}
           {teamInput && agents?.length > 0 && !isAgentsLoading && (
@@ -61,6 +62,7 @@ export const ChatTransferConversationModalBody = ({
               name="agent"
               onClear={() => clearErrors()}
               options={parseAgentsToSelectItem(agents)}
+              triggerLabel="Agentes"
             />
           )}
           <Button

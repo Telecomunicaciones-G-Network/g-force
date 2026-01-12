@@ -17,8 +17,12 @@ interface ValidateMobilePaymentRequest {
 }
 
 interface ValidateMobilePaymentResponse
-  extends Pick<ApiResponse, 'success' | 'status'> {
+  extends Omit<ApiResponse, 'results' | 'extra'> {
   results: {
+    message: string;
+  };
+  extra?: {
+    code: number;
     message: string;
   };
 }
@@ -32,9 +36,12 @@ export const validateMobilePaymentService = async (
       ValidateMobilePaymentResponse
     >(CHAT_RESOURCES.VALIDATE_MOBILE_PAYMENT, data);
 
-    if (!response?.success || !response?.results) {
+    if (response?.error || !response?.success || !response?.results) {
       throw new BaseException({
-        message: 'Error al validar el pago móvil',
+        message:
+          response?.extra?.message ??
+          response?.error ??
+          'Error al validar el pago móvil',
         status: response?.status,
       });
     }
@@ -42,5 +49,6 @@ export const validateMobilePaymentService = async (
     return response;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };

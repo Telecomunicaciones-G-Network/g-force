@@ -20,6 +20,7 @@ import styles from './floating-modal-payment-report-mobile-payment.module.css';
 
 export const FloatingModalPaymentReportMobilePayment = ({
   invoice,
+  onSuccessPayment,
   onClose,
 }: Readonly<FloatingModalPaymentReportMobilePaymentProps>) => {
   const { changeRadioGroupValue, radioGroupValue } =
@@ -65,6 +66,7 @@ export const FloatingModalPaymentReportMobilePayment = ({
         <FloatingModalPaymentReportMobilePaymentManual
           invoice={invoice}
           onClose={onClose}
+          onSuccessPayment={onSuccessPayment}
         />
       )}
       {radioGroupValue ===
@@ -72,6 +74,7 @@ export const FloatingModalPaymentReportMobilePayment = ({
         <FloatingModalPaymentReportMobilePaymentAutomatic
           invoice={invoice}
           onClose={onClose}
+          onSuccessPayment={onSuccessPayment}
         />
       )}
     </FloatingModalPaymentReportFormLayout>
