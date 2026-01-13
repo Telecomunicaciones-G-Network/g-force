@@ -8,4 +8,5 @@ export const CHAT_TAGS = {
   GET_CHAT_CONTACTS: 'get-chat-contacts',
   GET_CHAT_TEAMS: 'get-chat-teams',
   GET_CHAT_TRANSFER_AGENTS: 'get-chat-transfer-agents',
+  GET_FAST_DEBIT_BANKS: 'get-fast-debit-banks',
 } as const;

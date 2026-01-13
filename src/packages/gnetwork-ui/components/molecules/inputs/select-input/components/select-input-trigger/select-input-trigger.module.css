@@ -21,3 +21,13 @@
   outline: none;
   width: 100%;
 }
+
+.base__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  span {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

@@ -16,6 +16,11 @@ import type {
   GetContactsResponse,
   GetContactTicketsRequest,
   GetContactTicketsResponse,
+  GetFastDebitBanksResponse,
+  ProcessFastDebitPaymentRequest,
+  ProcessFastDebitPaymentResponse,
+  RequestFastDebitOTPRequest,
+  RequestFastDebitOTPResponse,
   TransferChatConversationRequest,
   TransferChatConversationResponse,
   UploadChatMediaRequest,
@@ -35,6 +40,9 @@ import { getContactInvoicesService } from '../services/get-contact-invoices.serv
 import { getContactNotesService } from '../services/get-contact-notes.service';
 import { getContactsService } from '../services/get-contacts.service';
 import { getContactTicketsService } from '../services/get-contact-tickets.service';
+import { getFastDebitBanksService } from '../services/get-fast-debit-banks.service';
+import { processFastDebitPaymentService } from '../services/process-fast-debit-payment.service';
+import { requestFastDebitOTPService } from '../services/request-fast-debit-otp.service';
 import { transferChatConversationService } from '../services/transfer-chat-conversation.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
@@ -75,6 +83,16 @@ export const httpChatRepository: ChatRepository = {
   getContacts: async (
     request?: GetContactsRequest,
   ): Promise<GetContactsResponse> => getContactsService(request),
+  getFastDebitBanks: async (): Promise<GetFastDebitBanksResponse> =>
+    getFastDebitBanksService(),
+  processFastDebitPayment: async (
+    request: ProcessFastDebitPaymentRequest,
+  ): Promise<ProcessFastDebitPaymentResponse> =>
+    processFastDebitPaymentService(request),
+  requestFastDebitOTP: async (
+    request: RequestFastDebitOTPRequest,
+  ): Promise<RequestFastDebitOTPResponse> =>
+    requestFastDebitOTPService(request),
   transferChatConversation: async (
     request: TransferChatConversationRequest,
   ): Promise<TransferChatConversationResponse> =>

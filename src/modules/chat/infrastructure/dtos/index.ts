@@ -26,6 +26,11 @@ export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-respo
 export type { GetContactNotesResponseDTO } from './get-contact-notes-response.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { GetContactTicketsResponseDTO } from './get-contact-tickets-response.dto';
+export type {
+  GetFastDebitBanksResponseDTO,
+  GetFastDebitBanksResultDTO,
+  GetFastDebitBanksResultBankDTO,
+} from './get-fast-debit-banks-response.dto';
 export type { OnConnectedResponseDTO } from './on-connected-response.dto';
 export type {
   OnContactAssignmentUpdatedResponseAgentDTO,
@@ -42,6 +47,13 @@ export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
 export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
 export type { OnNewMessageSentResponseDTO } from './on-new-message-sent-response.dto';
+export type { ProcessFastDebitPaymentRequestDTO } from './process-fast-debit-payment-request.dto';
+export type {
+  ProcessFastDebitPaymentResponseDTO,
+  ProcessFastDebitPaymentResponseResultDTO,
+} from './process-fast-debit-payment-response.dto';
+export type { RequestFastDebitOTPRequestDTO } from './request-fast-debit-otp-request.dto';
+export type { RequestFastDebitOTPResponseDTO } from './request-fast-debit-otp-response.dto';
 export type { TransferChatConversationRequestDTO } from './transfer-chat-conversation-request.dto';
 export type { TransferChatConversationResponseDTO } from './transfer-chat-conversation-response.dto';
 export type { UploadChatMediaResponseDTO } from './upload-chat-media-response.dto';

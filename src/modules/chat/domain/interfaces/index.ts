@@ -30,6 +30,10 @@ export type { GetContactTicketsRequest } from './get-contact-tickets-request.int
 export type { GetContactTicketsResponse } from './get-contact-tickets-response.interface';
 export type { GetContactsRequest } from './get-contacts-request.interface';
 export type { GetContactsResponse } from './get-contacts-response.interface';
+export type {
+  GetFastDebitBanksResponse,
+  GetFastDebitBanksResponseBank,
+} from './get-fast-debit-banks-response.interface';
 export type { MediaValues } from './media-values.interface';
 export type {
   MessageContactValues,
@@ -52,6 +56,10 @@ export type { OnMediaStatusChangedResponse } from './on-media-status-changed-res
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
 export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';
 export type { OnNewMessageSentResponse } from './on-new-message-sent-response.interface';
+export type { ProcessFastDebitPaymentRequest } from './process-fast-debit-payment-request.interface';
+export type { ProcessFastDebitPaymentResponse } from './process-fast-debit-payment-response.interface';
+export type { RequestFastDebitOTPRequest } from './request-fast-debit-otp-request.interface';
+export type { RequestFastDebitOTPResponse } from './request-fast-debit-otp-response.interface';
 export type { TeamValues } from './team-values.interface';
 export type { TransferChatConversationRequest } from './transfer-chat-conversation-request.interface';
 export type { TransferChatConversationResponse } from './transfer-chat-conversation-response.interface';

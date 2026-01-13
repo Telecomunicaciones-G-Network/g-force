@@ -16,6 +16,11 @@ import type {
   GetContactsResponse,
   GetContactTicketsRequest,
   GetContactTicketsResponse,
+  GetFastDebitBanksResponse,
+  ProcessFastDebitPaymentRequest,
+  ProcessFastDebitPaymentResponse,
+  RequestFastDebitOTPRequest,
+  RequestFastDebitOTPResponse,
   TransferChatConversationRequest,
   TransferChatConversationResponse,
   UploadChatMediaRequest,
@@ -49,6 +54,13 @@ export interface ChatRepository {
     request: GetContactTicketsRequest,
   ): Promise<GetContactTicketsResponse>;
   getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
+  getFastDebitBanks(): Promise<GetFastDebitBanksResponse>;
+  processFastDebitPayment(
+    request: ProcessFastDebitPaymentRequest,
+  ): Promise<ProcessFastDebitPaymentResponse>;
+  requestFastDebitOTP(
+    request: RequestFastDebitOTPRequest,
+  ): Promise<RequestFastDebitOTPResponse>;
   transferChatConversation(
     request: TransferChatConversationRequest,
   ): Promise<TransferChatConversationResponse>;

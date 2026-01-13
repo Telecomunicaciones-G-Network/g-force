@@ -13,6 +13,8 @@ import { useSelectInputTrigger } from './select-input-trigger.hook';
 
 import styles from './select-input-trigger.module.css';
 
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+
 const SelectValue = SelectPrimitive.Value;
 
 export const SelectInputTrigger = ({
@@ -53,11 +55,22 @@ export const SelectInputTrigger = ({
           triggerWrapperClassName,
         )}
       >
-        {leftIcon && leftIcon}
-        <SelectValue
-          className="select-value font-medium text-chromatic-inverted text-xs tracking-0 [data-placeholder]:text-input-placeholder!"
-          placeholder={label}
-        />
+        <div className={styles.base__wrapper}>
+          {leftIcon && leftIcon}
+          <SelectValue
+            className="select-value font-medium text-chromatic-inverted text-xs tracking-0"
+            placeholder={
+              <Text
+                className="text-input-placeholder"
+                as="label"
+                scheme="paragraph"
+                level="small"
+              >
+                Seleccione un banco
+              </Text>
+            }
+          />
+        </div>
         <SelectPrimitive.Icon asChild>
           {isOpen ? (
             <MdKeyboardArrowUp className="fill-neutral-500 min-h-6 min-w-6 size-6" />
