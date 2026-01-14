@@ -72,7 +72,7 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
                 <Separator />
               </>
             )}
-            {contactInformation?.clientType && (
+            {/* contactInformation?.clientType && (
               <>
                 <div className={styles.base__info}>
                   <Text as="span" level="small" scheme="label">
@@ -90,7 +90,7 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
                 </div>
                 <Separator />
               </>
-            )}
+            )} */}
             {isContactActive && (
               <>
                 <div className={styles.base__info}>
