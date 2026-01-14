@@ -20,7 +20,7 @@ const SelectValue = SelectPrimitive.Value;
 export const SelectInputTrigger = ({
   className,
   bordered = false,
-  label = 'Seleccione una opción',
+  label,
   leftIcon,
   fullWidth = false,
   ref,
@@ -66,7 +66,7 @@ export const SelectInputTrigger = ({
                 scheme="paragraph"
                 level="small"
               >
-                Seleccione un banco
+                {label}
               </Text>
             }
           />
