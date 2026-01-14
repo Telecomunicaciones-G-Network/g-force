@@ -5,7 +5,11 @@ export interface ModalContentProps
   extends PropsWithChildren,
     Pick<
       ModalProps,
-      'customModalCloseComponent' | 'hideModalClose' | 'modalOverlayChildren'
+      | 'customModalCloseComponent'
+      | 'hideModalClose'
+      | 'modalOverlayChildren'
+      | 'preventCloseOnEscape'
+      | 'preventCloseOnOutsideClick'
     > {
   className?: string;
 }

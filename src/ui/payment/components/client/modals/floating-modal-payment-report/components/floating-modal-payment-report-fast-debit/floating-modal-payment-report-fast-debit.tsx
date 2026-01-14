@@ -63,9 +63,9 @@ export const FloatingModalPaymentReportFastDebit = ({
         <form className={styles.base} onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center">
             <Text as="p" align="left" scheme="paragraph" level="xsmall">
-              Ingrese el monto a pagar y los datos de su cuenta bancaria.
-              Recibirá un SMS o correo con el código temporal (OTP) para
-              autorizarnos a debitar los fondos automáticamente.
+              Ingrese el monto a pagar y los datos de su cuenta bancaria. El
+              banco le enviará un código temporal (OTP) para autorizar que
+              debitemos dicho monto de sus fondos automáticamente.
             </Text>
           </div>
           <div className={styles.base__inputs}>
@@ -200,9 +200,10 @@ export const FloatingModalPaymentReportFastDebit = ({
         <div className={styles.base}>
           <div className="flex items-center">
             <Text as="p" align="left" scheme="paragraph" level="xsmall">
-              Le llegará el código temporal de autorización (OTP) por SMS o
-              correo en breve. Una vez lo reciba, ingrese el OTP en el
-              formulario para ejecutar el pago.
+              El banco le enviará el código temporal de autorización (OTP) en
+              breve. Dependiendo del banco, dicho código puede llegar por SMS,
+              correo electrónico, o a través de la aplicación móvil. Una vez lo
+              reciba, ingrese el OTP en el formulario para ejecutar el pago.
             </Text>
           </div>
 

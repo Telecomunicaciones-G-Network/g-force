@@ -35,6 +35,8 @@ export const Modal = ({
             customModalCloseComponent={customModalCloseComponent}
             hideModalClose={hideModalClose}
             modalOverlayChildren={modalOverlayChildren}
+            preventCloseOnEscape
+            preventCloseOnOutsideClick
           >
             <ModalHeader />
             {children}
