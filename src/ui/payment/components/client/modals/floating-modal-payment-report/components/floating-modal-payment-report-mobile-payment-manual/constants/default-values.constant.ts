@@ -3,7 +3,7 @@ import type { FloatingModalPaymentReportMobilePaymentManualFormData } from '../t
 export const FLOATING_MODAL_PAYMENT_REPORT_MOBILE_PAYMENT_MANUAL_FORM_DEFAULT_VALUES: FloatingModalPaymentReportMobilePaymentManualFormData =
   {
     amount: '',
-    phoneNumber: '',
     bankReferenceNumber: '',
     date: undefined,
-  } as const;
+    phoneNumber: '',
+  };
