@@ -3,8 +3,14 @@
 import type { TicketValues } from '@module-ticket/domain/interfaces';
 import type { ChatTicketsProps } from './chat-tickets.props';
 
-import { MdMoodBad } from 'react-icons/md';
+import { MdMoodBad, MdFilterList } from 'react-icons/md';
+import { IoChevronUp } from 'react-icons/io5';
 
+import { TicketStatusNames } from '@module-ticket/domain/enums/ticket-status-names.enum';
+
+import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
+import { Dropdown } from '@gnetwork-ui/components/organisms/dropdowns/dropdown';
+import { DropdownItem } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-item';
 import { Icon } from '@gnetwork-ui/components/atoms/icons/icon';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -12,17 +18,51 @@ import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-c
 
 import { ChatTicketCard } from '@ui-chat/components/server/cards/chat-ticket-card';
 
+import { ChatCreateTicketModal } from './components/chat-create-ticket-modal';
 import { ChatTicketsSkeletons } from './components/chat-tickets-skeletons/chat-tickets-skeletons';
 
-import { useChatTickets } from './chat-tickets.hook';
+import { useChatTickets, type TicketFilterStatus } from './chat-tickets.hook';
 
 import styles from './chat-tickets.module.css';
 
+const FILTER_OPTIONS: { label: string; value: TicketFilterStatus }[] = [
+  { label: 'Todos', value: 'Todos' },
+  { label: 'Abierto', value: TicketStatusNames.OPENED },
+  { label: 'Cerrado', value: TicketStatusNames.CLOSED },
+];
+
 export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
-  const { isError, isLoading, tickets } = useChatTickets();
+  const {
+    filterStatus,
+    handleCloseCreateModal,
+    handleFilterChange,
+    handleOpenCreateModal,
+    isCreateModalOpen,
+    isError,
+    isLoading,
+    tickets,
+  } = useChatTickets();
 
   return (
-    <ChatDetailsTabContentLayout title={title}>
+    <ChatDetailsTabContentLayout title={title}> {/* title={title} */}
+      <div className={styles.base__header}>
+        <Text as="h2" level="large" scheme="label" className="font-bold">
+          Tickets
+        </Text>
+        <Button
+          color="red"
+          onClick={handleOpenCreateModal}
+          className={styles.base__create_button}
+        >
+          Crear Ticket
+        </Button>
+      </div>
+
+      <ChatCreateTicketModal
+        isOpen={isCreateModalOpen}
+        onClose={handleCloseCreateModal}
+      />
+
       {isLoading && <ChatTicketsSkeletons />}
       {!isLoading && isError && (
         <div className={styles.base__error}>
@@ -39,6 +79,44 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
       )}
       {!isLoading && !isError && (
         <div className={styles.base}>
+          <Text as="h5" level="medium" scheme="label" className="mt-4">
+            Creados / Solicitudes
+          </Text>
+
+          <div className={styles.dropdown_container}>
+            <Dropdown
+              triggerComponent={
+                <button
+                  className={styles.base__filter_trigger}
+                  type="button"
+                >
+                  <MdFilterList className="size-4" />
+                  <Text as="span" level="small" scheme="label" className="flex-1 text-left">
+                    Filtrar por: <b>{filterStatus}</b>
+                  </Text>
+                  <IoChevronUp className="size-4 text-neutral-400" />
+                </button>
+              }
+            >
+              {FILTER_OPTIONS.map((option) => (
+                <DropdownItem
+                  key={option.value}
+                  onClick={() => handleFilterChange(option.value)}
+                  className={styles.base__dropdown_item}
+                >
+                <Text
+                    as="span"
+                    className={filterStatus === option.value ? 'text-primary-500 font-bold' : ''}
+                    level="small"
+                    scheme="label"
+                  >
+                    {option.label}
+                  </Text>
+                </DropdownItem>
+              ))}
+            </Dropdown>
+            </div>|
+
           {tickets?.length === 0 && (
             <div className={styles.base__empty}>
               <Icon name="message_info" size={40} />
@@ -53,19 +131,14 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
             </div>
           )}
           {tickets?.length > 0 && (
-            <>
-              <Text as="h5" level="medium" scheme="label">
-                Creados / solicitudes
-              </Text>
-              <div className={styles.base__elements}>
-                {tickets?.map((ticket: TicketValues) => (
-                  <ChatTicketCard
-                    key={ticket?.number?.toString()}
-                    {...ticket}
-                  />
-                ))}
-              </div>
-            </>
+            <div className={styles.base__elements}>
+              {tickets?.map((ticket: TicketValues) => (
+                <ChatTicketCard
+                  key={ticket?.number?.toString()}
+                  {...ticket}
+                />
+              ))}
+            </div>
           )}
         </div>
       )}
