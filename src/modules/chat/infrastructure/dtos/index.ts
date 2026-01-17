@@ -23,7 +23,6 @@ export type {
 export type { GetContactContractsResponseDTO } from './get-contact-contracts-response.dto';
 export type { GetContactInformationResponseDTO } from './get-contact-information-response.dto';
 export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-response.dto';
-export type { GetContactNotesResponseDTO } from './get-contact-notes-response.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { GetContactTicketsResponseDTO } from './get-contact-tickets-response.dto';
 export type {

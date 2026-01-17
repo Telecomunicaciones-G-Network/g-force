@@ -1,5 +1,5 @@
 import type {
-  MediaValues,
+  Media,
   MessageContactValues,
   MessageEventDataValues,
   MessageLocationValues,
@@ -22,7 +22,7 @@ export class Message {
     public forwarded: boolean = false,
     public forwardedManyTimes: boolean = false,
     public location: MessageLocationValues | null = null,
-    public media: MediaValues | null = null,
+    public media: Media | null = null,
     public reactions: MessageReactionValues[] = [],
     public readAt: string | null = null,
     public sender: MessageSenderValues,

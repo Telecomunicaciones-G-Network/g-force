@@ -13,8 +13,6 @@ export const CHAT_RESOURCES = {
     `/chat/contacts/${contactId}/client/info`,
   GET_CONTACT_INVOICES: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/invoices`,
-  GET_CONTACT_NOTES: (contactId: string): string =>
-    `/chat/contacts/${contactId}/notes`,
   GET_CONTACT_TICKETS: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/tickets`,
   GET_CONTACTS: '/chat/contacts',

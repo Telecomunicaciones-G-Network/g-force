@@ -5,7 +5,7 @@ import type {
   MessageType,
 } from '../types';
 import type { Agent } from './agent.interface';
-import type { MediaValues } from './media-values.interface';
+import type { Media } from './media.interface';
 import type { Team } from './team.interface';
 
 export interface MessageContactValues {
@@ -57,7 +57,7 @@ export interface MessageValues {
   forwarded: boolean;
   forwardedManyTimes: boolean;
   location: MessageLocationValues | null;
-  media: MediaValues | null;
+  media: Media | null;
   reactions: MessageReactionValues[];
   readAt: string | null;
   sender: MessageSenderValues;

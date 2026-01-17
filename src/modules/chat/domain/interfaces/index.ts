@@ -24,8 +24,6 @@ export type {
 } from './get-contact-information-response.interface';
 export type { GetContactInvoicesRequest } from './get-contact-invoices-request.interface';
 export type { GetContactInvoicesResponse } from './get-contact-invoices-response.interface';
-export type { GetContactNotesRequest } from './get-contact-notes-request.interface';
-export type { GetContactNotesResponse } from './get-contact-notes-response.interface';
 export type { GetContactTicketsRequest } from './get-contact-tickets-request.interface';
 export type { GetContactTicketsResponse } from './get-contact-tickets-response.interface';
 export type { GetContactsRequest } from './get-contacts-request.interface';
@@ -34,7 +32,7 @@ export type {
   GetFastDebitBanksResponse,
   GetFastDebitBanksResponseBank,
 } from './get-fast-debit-banks-response.interface';
-export type { MediaValues } from './media-values.interface';
+export type { Media } from './media.interface';
 export type {
   MessageContactValues,
   MessageEventDataValues,
@@ -43,7 +41,6 @@ export type {
   MessageSenderValues,
   MessageValues,
 } from './message-values.interface';
-export type { NoteValues } from './note-values.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
 export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
 export type {

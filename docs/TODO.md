@@ -4,11 +4,17 @@ TODO: Doc all about this project
 
 ## Reviews
 
+- src/modules/chat/domain/enums/media-storage-status.enum.ts ✔️
+- src/modules/chat/domain/enums/media-types.enum.ts ✔️
 - src/modules/chat/domain/enums/team-codenames.enum.ts ✔️
 - src/modules/chat/domain/entities/agent.entity.ts ✔️
+- src/modules/chat/domain/entities/media.entity.ts ✔️
 - src/modules/chat/domain/entities/team.entity.ts ✔️
 - src/modules/chat/domain/interfaces/agent.interface.ts ✔️
+- src/modules/chat/domain/interfaces/media.interface.ts ✔️
 - src/modules/chat/domain/interfaces/team.interface.ts ✔️
+- src/modules/chat/domain/types/media-storage-status.type.ts ✔️
+- src/modules/chat/domain/types/media-type.type.ts ✔️
 - src/modules/chat/domain/types/team-codename.type.ts ✔️
 
 ## Login action

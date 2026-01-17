@@ -14,7 +14,6 @@ export type {
 } from './get-contact-contracts-result.interface';
 export type { GetContactInformationResult } from './get-contact-information-result.interface';
 export type { GetContactInvoicesResult } from './get-contact-invoices-result.interface';
-export type { GetContactNotesResult } from './get-contact-notes-result.interface';
 export type { GetContactTicketsResult } from './get-contact-tickets-result.interface';
 export type {
   GetContactsResult,
