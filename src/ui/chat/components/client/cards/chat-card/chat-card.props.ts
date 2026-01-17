@@ -1,4 +1,4 @@
-import type { TeamValues } from '@module-chat/domain/interfaces';
+import type { Team } from '@module-chat/domain/interfaces';
 import type { MessageType } from '@module-chat/domain/types';
 
 export interface ChatCardProps {
@@ -11,7 +11,7 @@ export interface ChatCardProps {
   messageType: MessageType;
   onClick?: VoidFunction;
   phoneNumber?: string;
-  team?: TeamValues | null;
+  team?: Team | null;
   unreadMessages?: number;
   username?: string;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import type {
-  AgentValues,
+  Agent,
   ContactValues,
   ConversationValues,
 } from '@module-chat/domain/interfaces';
@@ -20,7 +20,7 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   activeContact: null,
   chatMode: ChatModes.LIST,
   contacts: [],
-  setActiveAgent: (agent: AgentValues | null) => set({ activeAgent: agent }),
+  setActiveAgent: (agent: Agent | null) => set({ activeAgent: agent }),
   setActiveContact: (contact: ContactValues | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),

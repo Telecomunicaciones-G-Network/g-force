@@ -1,8 +1,8 @@
-import type { AgentValues } from '@module-chat/domain/interfaces';
+import type { Agent } from '@module-chat/domain/interfaces';
 
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
 
-export const parseAgentsToSelectItem = (agents: AgentValues[]) => {
+export const parseAgentsToSelectItem = (agents: Agent[]) => {
   if (!agents || !Array.isArray(agents)) return [];
 
   return agents?.map((agent) => ({

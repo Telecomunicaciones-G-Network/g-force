@@ -1,10 +1,10 @@
 import type { ConversationStatus } from '../types';
-import type { AgentValues } from './agent-values.interface';
-import type { TeamValues } from './team-values.interface';
+import type { Agent } from './agent.interface';
+import type { Team } from './team.interface';
 
 export interface ConversationValues {
   id: string;
-  agent: Omit<AgentValues, 'teams'> | null;
+  agent: Omit<Agent, 'teams'> | null;
   status: ConversationStatus;
-  team: TeamValues | null;
+  team: Team | null;
 }

@@ -1,4 +1,4 @@
-import type { AgentValues } from '../interfaces';
+import type { Agent as AgentValues } from '../interfaces';
 import type { TeamCodename } from '../types';
 
 /**

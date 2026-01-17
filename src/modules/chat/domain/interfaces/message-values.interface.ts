@@ -4,9 +4,9 @@ import type {
   MessageStatus,
   MessageType,
 } from '../types';
-import type { AgentValues } from './agent-values.interface';
+import type { Agent } from './agent.interface';
 import type { MediaValues } from './media-values.interface';
-import type { TeamValues } from './team-values.interface';
+import type { Team } from './team.interface';
 
 export interface MessageContactValues {
   birthday: string;
@@ -17,12 +17,12 @@ export interface MessageContactValues {
 }
 
 export interface MessageEventDataValues {
-  agent: Omit<AgentValues, 'teams'>;
-  assignedByAgent: Omit<AgentValues, 'teams'> | null;
+  agent: Omit<Agent, 'teams'>;
+  assignedByAgent: Omit<Agent, 'teams'> | null;
   eventType: EventType;
-  previousAgent: Omit<AgentValues, 'teams'> | null;
-  previousTeam: TeamValues;
-  team: TeamValues;
+  previousAgent: Omit<Agent, 'teams'> | null;
+  previousTeam: Team;
+  team: Team;
   timestamp: string;
 }
 

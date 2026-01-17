@@ -2,6 +2,15 @@
 
 TODO: Doc all about this project
 
+## Reviews
+
+- src/modules/chat/domain/enums/team-codenames.enum.ts ✔️
+- src/modules/chat/domain/entities/agent.entity.ts ✔️
+- src/modules/chat/domain/entities/team.entity.ts ✔️
+- src/modules/chat/domain/interfaces/agent.interface.ts ✔️
+- src/modules/chat/domain/interfaces/team.interface.ts ✔️
+- src/modules/chat/domain/types/team-codename.type.ts ✔️
+
 ## Login action
 
 ```typescript

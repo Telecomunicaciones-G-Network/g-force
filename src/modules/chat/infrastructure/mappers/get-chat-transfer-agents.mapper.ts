@@ -1,5 +1,5 @@
 import type {
-  AgentValues,
+  Agent,
   GetChatTransferAgentsRequest,
   GetChatTransferAgentsResponse,
 } from '../../domain/interfaces';
@@ -25,7 +25,7 @@ export class GetChatTransferAgentsMapper {
     };
   }
 
-  static mapFromAgentArray(input: GetChatTransferAgentsResult): AgentValues {
+  static mapFromAgentArray(input: GetChatTransferAgentsResult): Agent {
     return {
       id: input?.id,
       name: input?.full_name,

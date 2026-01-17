@@ -1,4 +1,4 @@
-import type { GetChatTeamsResponse, TeamValues } from '../../domain/interfaces';
+import type { GetChatTeamsResponse, Team } from '../../domain/interfaces';
 import type { GetChatTeamsResponseDTO, GetChatTeamsResult } from '../dtos';
 
 export class GetChatTeamsMapper {
@@ -14,7 +14,7 @@ export class GetChatTeamsMapper {
     };
   }
 
-  static mapFromTeamArray(input: GetChatTeamsResult): TeamValues {
+  static mapFromTeamArray(input: GetChatTeamsResult): Team {
     return {
       id: input?.codename,
       name: input?.name,

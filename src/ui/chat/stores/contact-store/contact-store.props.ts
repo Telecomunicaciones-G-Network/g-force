@@ -1,5 +1,5 @@
 import type {
-  AgentValues,
+  Agent,
   ContactValues,
   ConversationValues,
 } from '@module-chat/domain/interfaces';
@@ -7,12 +7,12 @@ import type { ChatMode } from '@ui-chat/types';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
 export interface ContactStoreState {
-  activeAgent: AgentValues | null;
+  activeAgent: Agent | null;
   activeContact: ContactValues | null;
   chatMode: ChatMode;
   contacts: ContactValues[];
 
-  setActiveAgent: (agent: AgentValues | null) => void;
+  setActiveAgent: (agent: Agent | null) => void;
   setActiveContact: (contact: ContactValues | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: ContactValues[]) => void;

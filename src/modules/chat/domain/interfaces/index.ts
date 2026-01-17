@@ -1,4 +1,4 @@
-export type { AgentValues } from './agent-values.interface';
+export type { Agent } from './agent.interface';
 export type {
   ContactLatestMessageValues,
   ContactValues,
@@ -60,7 +60,7 @@ export type { ProcessFastDebitPaymentRequest } from './process-fast-debit-paymen
 export type { ProcessFastDebitPaymentResponse } from './process-fast-debit-payment-response.interface';
 export type { RequestFastDebitOTPRequest } from './request-fast-debit-otp-request.interface';
 export type { RequestFastDebitOTPResponse } from './request-fast-debit-otp-response.interface';
-export type { TeamValues } from './team-values.interface';
+export type { Team } from './team.interface';
 export type { TransferChatConversationRequest } from './transfer-chat-conversation-request.interface';
 export type { TransferChatConversationResponse } from './transfer-chat-conversation-response.interface';
 export type { UploadChatMediaRequest } from './upload-chat-media-request.interface';

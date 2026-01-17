@@ -1,16 +1,12 @@
-import type {
-  AgentValues,
-  ConversationValues,
-  TeamValues,
-} from '../interfaces';
+import type { Agent, ConversationValues, Team } from '../interfaces';
 import type { ConversationStatus } from '../types';
 
 export class Conversation {
   constructor(
     public id: string,
-    public agent: AgentValues | null = null,
+    public agent: Agent | null = null,
     public status: ConversationStatus,
-    public team: TeamValues | null = null,
+    public team: Team | null = null,
   ) {}
 
   public toValues(): ConversationValues {
