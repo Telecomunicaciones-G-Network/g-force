@@ -1,8 +1,8 @@
 import type { Conversation } from './conversation.interface';
-import type { MessageValues } from './message-values.interface';
+import type { Message } from './message.interface';
 
 export type ContactLatestMessageValues = Pick<
-  MessageValues,
+  Message,
   | 'id'
   | 'createdAt'
   | 'direction'

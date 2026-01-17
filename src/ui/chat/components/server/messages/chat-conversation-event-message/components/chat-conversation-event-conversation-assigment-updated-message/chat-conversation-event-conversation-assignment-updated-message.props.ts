@@ -1,6 +1,6 @@
-import type { MessageEventDataValues } from '@module-chat/domain/interfaces';
+import type { MessageEventData } from '@module-chat/domain/interfaces';
 
 export interface ChatConversationEventConversationAssignmentUpdatedMessageProps {
   createdAt?: string;
-  eventData: MessageEventDataValues | null;
+  eventData: MessageEventData | null;
 }

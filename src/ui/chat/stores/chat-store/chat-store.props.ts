@@ -1,5 +1,5 @@
 import type { FileData } from '@gnetwork-ui/components/molecules/inputs/file-input';
-import type { MessageValues } from '@module-chat/domain/interfaces';
+import type { Message } from '@module-chat/domain/interfaces';
 import type {
   MediaStorageStatus,
   MessageStatus,
@@ -8,14 +8,14 @@ import type { ChatSendMode } from '../../types';
 
 export interface ChatStoreState {
   file: FileData | null;
-  messages: MessageValues[];
+  messages: Message[];
   sendMode: ChatSendMode;
 
   setFile: (file: FileData | null) => void;
-  setMessages: (messages: MessageValues[]) => void;
+  setMessages: (messages: Message[]) => void;
   setSendMode: (sendMode: ChatSendMode) => void;
 
-  addMessage: (message: MessageValues) => void;
+  addMessage: (message: Message) => void;
   deleteOneMessageById: (messageId: string) => void;
   updateOneMessageId: (temporalMessageId: string, messageId: string) => void;
   updateOneMessageStatusById: (

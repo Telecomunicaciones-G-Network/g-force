@@ -1,4 +1,4 @@
-import type { ContactValues, MessageValues } from '../../domain/interfaces';
+import type { ContactValues, Message } from '../../domain/interfaces';
 import type { OnIncommingMessageResponseDTO } from '../dtos';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
@@ -8,7 +8,7 @@ export class OnIncommingMessageMapper {
   static mapFrom(
     input: OnIncommingMessageResponseDTO,
     contact: ContactValues | null,
-  ): MessageValues | null {
+  ): Message | null {
     if (!contact) {
       return null;
     }
@@ -32,6 +32,7 @@ export class OnIncommingMessageMapper {
       failedAt: null,
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,
+      interactiveOptions: null,
       location: input?.location,
       media: input?.media
         ? {
@@ -45,6 +46,7 @@ export class OnIncommingMessageMapper {
         : null,
       reactions: [],
       readAt: input?.timestamp,
+      replyToMessage: null,
       sender: {
         id: contact?.id,
         isBot: false,

@@ -2,7 +2,7 @@
 
 import type {
   EmitSendImageMessageRequest,
-  MessageValues,
+  Message,
 } from '@module-chat/domain/interfaces';
 import type {
   EmitSendImageMessageRequestDTO,
@@ -69,7 +69,7 @@ export const useEmitSendImageMessage = () => {
           return;
         }
 
-        const newMessage: MessageValues = {
+        const newMessage: Message = {
           id: temporalMessageId,
           contacts: [],
           conversationId: activeContact?.latestConversation?.id,
@@ -80,6 +80,7 @@ export const useEmitSendImageMessage = () => {
           failedAt: null,
           forwarded: false,
           forwardedManyTimes: false,
+          interactiveOptions: null,
           location: null,
           media: {
             id: mediaResponse?.mediaId,
@@ -91,6 +92,7 @@ export const useEmitSendImageMessage = () => {
           },
           reactions: [],
           readAt: null,
+          replyToMessage: null,
           sender: {
             id: activeContact?.latestConversation?.agent?.id,
             isBot: false,

@@ -1,5 +1,5 @@
 import type {
-  EventType,
+  MessageEventType,
   MediaStorageStatus,
   MediaType,
   MessageDirection,
@@ -29,7 +29,7 @@ export interface GetChatMessagesResultEventDataTeam {
 export interface GetChatMessagesResultEventData {
   agent: GetChatMessagesResultEventDataAgent;
   assigned_by_agent: GetChatMessagesResultEventDataAgent | null;
-  event_type: EventType;
+  event_type: MessageEventType;
   previous_agent: GetChatMessagesResultEventDataAgent | null;
   previous_team: GetChatMessagesResultEventDataTeam;
   team: GetChatMessagesResultEventDataTeam;

@@ -33,14 +33,12 @@ export type {
   GetFastDebitBanksResponseBank,
 } from './get-fast-debit-banks-response.interface';
 export type { Media } from './media.interface';
-export type {
-  MessageContactValues,
-  MessageEventDataValues,
-  MessageLocationValues,
-  MessageReactionValues,
-  MessageSenderValues,
-  MessageValues,
-} from './message-values.interface';
+export type { Message } from './message.interface';
+export type { MessageContact } from './message-contact.interface';
+export type { MessageEventData } from './message-event-data.interface';
+export type { MessageLocation } from './message-location.interface';
+export type { MessageReaction } from './message-reaction.interface';
+export type { MessageSender } from './message-sender.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
 export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
 export type {

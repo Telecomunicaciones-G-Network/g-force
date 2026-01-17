@@ -1,6 +1,6 @@
 import type { ChatConversationEventMessageProps } from '../../chat-conversation-event-message.props';
 
-import { EventTypes } from '@module-chat/domain/enums/event-types.enum';
+import { MessageEventTypes } from '@module-chat/domain/enums/message-event-types.enum';
 
 import { ChatConversationEventConversationAssignmentUpdatedMessage } from '../chat-conversation-event-conversation-assigment-updated-message';
 
@@ -12,7 +12,7 @@ export const ChatConversationEventMessageController = ({
   if (!eventData) return null;
 
   switch (eventData?.eventType) {
-    case EventTypes.CONVERSATION_ASSIGNMENT_UPDATED:
+    case MessageEventTypes.CONVERSATION_ASSIGNMENT_UPDATED:
       return (
         <ChatConversationEventConversationAssignmentUpdatedMessage
           createdAt={createdAt}

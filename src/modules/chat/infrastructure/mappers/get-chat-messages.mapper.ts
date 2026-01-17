@@ -1,7 +1,7 @@
 import type {
   GetChatMessagesRequest,
   GetChatMessagesResponse,
-  MessageValues,
+  Message,
 } from '../../domain/interfaces';
 import type {
   GetChatMessagesRequestDTO,
@@ -22,7 +22,7 @@ export class GetChatMessagesMapper {
     };
   }
 
-  static mapFromArray(input: GetChatMessagesResult): MessageValues {
+  static mapFromArray(input: GetChatMessagesResult): Message {
     return {
       id: input?.id,
       conversationId: input?.conversation_id,
@@ -68,6 +68,7 @@ export class GetChatMessagesMapper {
       failedAt: input?.failed_at,
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,
+      interactiveOptions: null,
       location: input?.location
         ? {
             address: input.location.address,
@@ -93,6 +94,7 @@ export class GetChatMessagesMapper {
           emoji: reaction.emoji,
         })) ?? [],
       readAt: input?.read_at,
+      replyToMessage: null,
       sender: {
         id: input?.sender?.id,
         isBot: input?.sender?.is_bot ?? false,

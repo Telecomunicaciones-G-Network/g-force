@@ -1,7 +1,7 @@
 'use client';
 
 import type { FileData } from '@gnetwork-ui/components/molecules/inputs/file-input';
-import type { MessageValues } from '@module-chat/domain/interfaces';
+import type { Message } from '@module-chat/domain/interfaces';
 import type {
   MediaStorageStatus,
   MessageStatus,
@@ -20,17 +20,17 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
   messages: [],
   sendMode: ChatSendModes.TEXT,
   setFile: (file: FileData | null) => set({ file }),
-  setMessages: (messages: MessageValues[]) => {
+  setMessages: (messages: Message[]) => {
     const sortedMessages = sortArrayByObjectProperty({
-      data: messages as (MessageValues & Record<string, unknown>)[],
+      data: messages as (Message & Record<string, unknown>)[],
       order: 'asc',
       property: 'createdAt',
     });
 
-    set({ messages: sortedMessages as MessageValues[] });
+    set({ messages: sortedMessages as Message[] });
   },
   setSendMode: (sendMode: ChatSendMode) => set({ sendMode }),
-  addMessage: (message: MessageValues) => {
+  addMessage: (message: Message) => {
     if (!message) {
       return;
     }

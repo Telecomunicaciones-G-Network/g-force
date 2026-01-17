@@ -2,7 +2,7 @@
 
 import type {
   EmitSendTextMessageRequest,
-  MessageValues,
+  Message,
 } from '@module-chat/domain/interfaces';
 import type {
   EmitSendTextMessageRequestDTO,
@@ -62,7 +62,7 @@ export const useEmitSendTextMessage = () => {
           return;
 
         const temporalMessageId = uuidv4();
-        const newMessage: MessageValues = {
+        const newMessage: Message = {
           id: temporalMessageId,
           contacts: [],
           conversationId: activeContact?.latestConversation?.id,
@@ -73,10 +73,12 @@ export const useEmitSendTextMessage = () => {
           failedAt: null,
           forwarded: false,
           forwardedManyTimes: false,
+          interactiveOptions: null,
           location: null,
           media: null,
           reactions: [],
           readAt: null,
+          replyToMessage: null,
           sender: {
             id: activeContact?.latestConversation?.agent?.id,
             isBot: false,
