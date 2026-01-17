@@ -1,6 +1,6 @@
 'use client';
 
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { Contact } from '@module-chat/domain/interfaces';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -16,7 +16,7 @@ export const useChatListBody = () => {
     (state) => state.clearUnreadMessagesFromOneContact,
   );
 
-  const changeActiveContact = (contact: ContactValues) => {
+  const changeActiveContact = (contact: Contact) => {
     setActiveContact(contact);
     setChatMode(ChatModes.CHAT);
     clearUnreadMessagesFromOneContact(contact?.id);

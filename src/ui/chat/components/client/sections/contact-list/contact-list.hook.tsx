@@ -1,6 +1,6 @@
 'use client';
 
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { Contact } from '@module-chat/domain/interfaces';
 
 import { useEffect } from 'react';
 
@@ -15,7 +15,7 @@ import { useOnNewMessageSent } from '@ui-chat/hooks/on-new-message-sent.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-export const useContactList = (contactsResponse: ContactValues[]) => {
+export const useContactList = (contactsResponse: Contact[]) => {
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
 

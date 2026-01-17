@@ -13,11 +13,13 @@ TODO: Doc all about this project
 - src/modules/chat/domain/enums/message-types.enum.ts ✔️
 - src/modules/chat/domain/enums/team-codenames.enum.ts ✔️
 - src/modules/chat/domain/entities/agent.entity.ts ✔️
+- src/modules/chat/domain/entities/contact.entity.ts ✔️
 - src/modules/chat/domain/entities/conversation.entity.ts ✔️
 - src/modules/chat/domain/entities/media.entity.ts ✔️
 - src/modules/chat/domain/entities/message.entity.ts ✔️
 - src/modules/chat/domain/entities/team.entity.ts ✔️
 - src/modules/chat/domain/interfaces/agent.interface.ts ✔️
+- src/modules/chat/domain/interfaces/contact.interface.ts ✔️
 - src/modules/chat/domain/interfaces/conversation.interface.ts ✔️
 - src/modules/chat/domain/interfaces/media.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message.interface.ts ✔️
@@ -26,6 +28,7 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/message-reaction.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message-sender.interface.ts ✔️
 - src/modules/chat/domain/interfaces/team.interface.ts ✔️
+- src/modules/chat/domain/types/contact-latest-message.type.ts ✔️
 - src/modules/chat/domain/types/conversation-status.type.ts ✔️
 - src/modules/chat/domain/types/media-storage-status.type.ts ✔️
 - src/modules/chat/domain/types/media-type.type.ts ✔️

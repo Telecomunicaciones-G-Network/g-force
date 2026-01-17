@@ -2,7 +2,7 @@
 
 import type {
   Agent,
-  ContactValues,
+  Contact,
   Conversation,
 } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
@@ -21,11 +21,11 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   chatMode: ChatModes.LIST,
   contacts: [],
   setActiveAgent: (agent: Agent | null) => set({ activeAgent: agent }),
-  setActiveContact: (contact: ContactValues | null) =>
+  setActiveContact: (contact: Contact | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
-  setContacts: (contacts: ContactValues[]) => set({ contacts }),
-  addContacts: (contacts: ContactValues[]) => {
+  setContacts: (contacts: Contact[]) => set({ contacts }),
+  addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 
     const newContacts = contacts?.filter(
@@ -81,15 +81,13 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   existContactOnStore: (contactId: string): boolean => {
     const { contacts } = get();
 
-    return contacts?.some(
-      (contact: ContactValues) => contact?.id === contactId,
-    );
+    return contacts?.some((contact: Contact) => contact?.id === contactId);
   },
   hasContactConversationAssigned: (contactId: string): boolean => {
     const { contacts } = get();
 
     return contacts?.some(
-      (contact: ContactValues) =>
+      (contact: Contact) =>
         contact?.id === contactId &&
         contact?.latestConversation?.status === ConversationStatus.ASSIGNED,
     );

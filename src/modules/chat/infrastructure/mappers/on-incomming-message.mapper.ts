@@ -1,4 +1,4 @@
-import type { ContactValues, Message } from '../../domain/interfaces';
+import type { Contact, Message } from '../../domain/interfaces';
 import type { OnIncommingMessageResponseDTO } from '../dtos';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
@@ -7,7 +7,7 @@ import { MessageStatus } from '../../domain/enums/message-status.enum';
 export class OnIncommingMessageMapper {
   static mapFrom(
     input: OnIncommingMessageResponseDTO,
-    contact: ContactValues | null,
+    contact: Contact | null,
   ): Message | null {
     if (!contact) {
       return null;

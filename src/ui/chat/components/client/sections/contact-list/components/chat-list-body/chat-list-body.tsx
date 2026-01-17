@@ -1,6 +1,6 @@
 'use client';
 
-import type { ContactValues } from '@module-chat/domain/interfaces';
+import type { Contact } from '@module-chat/domain/interfaces';
 import type { TeamCodename } from '@module-chat/domain/types';
 import type { ChatListBodyProps } from './chat-list-body.props';
 
@@ -36,7 +36,7 @@ export const ChatListBody = ({
       )}
     >
       {contacts?.length > 0 ? (
-        contacts.map((contact: ContactValues) => (
+        contacts.map((contact: Contact) => (
           <Fragment key={contact?.id}>
             {CHAT_CONTACT_CONVERSATION_VISIBLE.includes(
               contact?.latestConversation?.status,

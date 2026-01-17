@@ -1,8 +1,5 @@
 export type { Agent } from './agent.interface';
-export type {
-  ContactLatestMessageValues,
-  ContactValues,
-} from './contact-values.interface';
+export type { Contact } from './contact.interface';
 export type { Conversation } from './conversation.interface';
 export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
