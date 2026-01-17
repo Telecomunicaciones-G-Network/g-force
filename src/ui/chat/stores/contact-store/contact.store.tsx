@@ -3,7 +3,7 @@
 import type {
   Agent,
   ContactValues,
-  ConversationValues,
+  Conversation,
 } from '@module-chat/domain/interfaces';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
@@ -112,7 +112,7 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   },
   updateContactLatestConversation: (
     contactId: string,
-    conversation: Partial<ConversationValues>,
+    conversation: Partial<Conversation>,
   ) => {
     const { contacts } = get();
 

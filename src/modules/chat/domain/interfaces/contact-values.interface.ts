@@ -1,4 +1,4 @@
-import type { ConversationValues } from './conversation-values.interface';
+import type { Conversation } from './conversation.interface';
 import type { MessageValues } from './message-values.interface';
 
 export type ContactLatestMessageValues = Pick<
@@ -15,7 +15,7 @@ export type ContactLatestMessageValues = Pick<
 
 export interface ContactValues {
   id: string;
-  latestConversation: ConversationValues;
+  latestConversation: Conversation;
   latestMessage: ContactLatestMessageValues;
   name: string;
   phoneNumber: string;

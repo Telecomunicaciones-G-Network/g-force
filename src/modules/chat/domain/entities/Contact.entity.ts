@@ -1,13 +1,13 @@
 import type {
   ContactLatestMessageValues,
   ContactValues,
-  ConversationValues,
+  Conversation,
 } from '../interfaces';
 
 export class Contact {
   constructor(
     public id: string,
-    public latestConversation: ConversationValues,
+    public latestConversation: Conversation,
     public latestMessage: ContactLatestMessageValues,
     public name: string,
     public phoneNumber: string,

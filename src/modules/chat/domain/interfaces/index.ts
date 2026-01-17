@@ -3,7 +3,7 @@ export type {
   ContactLatestMessageValues,
   ContactValues,
 } from './contact-values.interface';
-export type { ConversationValues } from './conversation-values.interface';
+export type { Conversation } from './conversation.interface';
 export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
