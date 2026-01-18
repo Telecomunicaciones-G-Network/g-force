@@ -1,3 +1,8 @@
+/**
+ * Chat tags dictionary
+ *
+ * This dictionary contains the names of the chat tags.
+ */
 export const CHAT_TAGS = {
   GET_AVAILABLE_REPORT_PAYMENT_METHODS: 'get-available-report-payment-methods',
   GET_CHAT_CONTACT_CONTRACTS: 'get-chat-contact-contracts',
@@ -8,4 +13,4 @@ export const CHAT_TAGS = {
   GET_CHAT_TEAMS: 'get-chat-teams',
   GET_CHAT_TRANSFER_AGENTS: 'get-chat-transfer-agents',
   GET_FAST_DEBIT_BANKS: 'get-fast-debit-banks',
-} as const;
+} as const satisfies Record<string, string>;

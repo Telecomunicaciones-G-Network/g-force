@@ -3,12 +3,12 @@ import type { MediaStorageStatus, MediaType } from '../types';
 /**
  * Media interface
  *
- * @property {string} id - The ID of the media
- * @property {string | null} downloadUrl - The download URL of the media
- * @property {string} filename - The filename of the media
- * @property {string} mimeType - The MIME type of the media
- * @property {MediaStorageStatus} storageStatus - The storage status of the media
- * @property {MediaType} type - The type of the media
+ * @property  id - The ID of the media
+ * @property downloadUrl - The download URL of the media
+ * @property filename - The filename of the media
+ * @property mimeType - The MIME type of the media
+ * @property storageStatus - The storage status of the media
+ * @property type - The type of the media
  */
 export interface Media {
   id: string;

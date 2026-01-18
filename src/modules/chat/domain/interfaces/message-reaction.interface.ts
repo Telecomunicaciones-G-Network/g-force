@@ -1,9 +1,9 @@
 /**
  * Message reaction interface
  *
- * @property {string} agentId - The ID of the agent
- * @property {string} contactId - The ID of the contact
- * @property {string} emoji - The emoji of the reaction
+ * @property agentId - The ID of the agent
+ * @property contactId - The ID of the contact
+ * @property emoji - The emoji of the reaction
  */
 export interface MessageReaction {
   agentId: string;

@@ -39,8 +39,8 @@ export type { MessageSender } from './message-sender.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
 export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
 export type {
-  OnConversationAssignmentUpdatedAgentResponse,
   OnConversationAssignmentUpdatedResponse,
+  OnConversationAssignmentUpdatedAgentResponse,
   OnConversationAssignmentUpdatedTeamResponse,
 } from './on-conversation-assignment-updated-response.interface';
 export type { OnConversationFinishedResponse } from './on-conversation-finished-response.interface';

@@ -20,8 +20,10 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 /**
  * On contact assignment updated hook
  *
- * This hook listens tp the on `contact_assignment_updated` socket event and updates the contact list if contact does not exists on store.
- * Also, it updates the contact conversation status to Assigned if contact exists but conversation sttus is different from aSSIGNED STATUS.
+ * This hook listens to the `contact_assignment_updated` socket event
+ * When the team and/or agent assigned to a contact changes. Emitted to all involved and dis-involved agents. Contains the data of the assigned team and agent and the IDs of the contact and their current conversation.
+ * - Updates the contact list if contact does not exists on store.
+ * - Updates the contact conversation status to Assigned if contact exists but conversation sttus is different from ASSIGNED STATUS.
  * [Agent event]
  */
 export const useOnContactAssignmentUpdated = () => {
@@ -48,6 +50,8 @@ export const useOnContactAssignmentUpdated = () => {
         !parseResponse?.team?.codename ||
         !parseResponse?.team?.name
       )
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
 
       const response = OnContactAssignmentUpdatedMapper.mapFrom(parseResponse);
@@ -59,6 +63,8 @@ export const useOnContactAssignmentUpdated = () => {
         !response?.team?.id ||
         !response?.team?.name
       )
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
 
       const existContactOnStoreValidation = existContactOnStore(

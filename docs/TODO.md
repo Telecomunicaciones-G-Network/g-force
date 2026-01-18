@@ -23,10 +23,13 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/conversation.interface.ts ✔️
 - src/modules/chat/domain/interfaces/media.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message.interface.ts ✔️
+- src/modules/chat/domain/interfaces/message-contact.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message-event-data.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message-location.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message-reaction.interface.ts ✔️
 - src/modules/chat/domain/interfaces/message-sender.interface.ts ✔️
+- src/modules/chat/domain/interfaces/on-connected-response.interface.ts ✔️
+- src/modules/chat/domain/interfaces/on-conversation-assignment-updated-response.interface.ts ✔️
 - src/modules/chat/domain/interfaces/team.interface.ts ✔️
 - src/modules/chat/domain/types/contact-latest-message.type.ts ✔️
 - src/modules/chat/domain/types/conversation-status.type.ts ✔️
@@ -37,6 +40,20 @@ TODO: Doc all about this project
 - src/modules/chat/domain/types/message-status.type.ts ✔️
 - src/modules/chat/domain/types/message-type.type.ts ✔️
 - src/modules/chat/domain/types/team-codename.type.ts ✔️
+- src/modules/chat/infrastructure/dictionaries/chat-tags.dictionary.ts ✔️
+- src/modules/chat/infrastructure/dictionaries/socket-events.dictionary.ts ✔️
+- src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✔️
+- src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✔️
+- src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✔️
+- src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✔️
+
+- src/packages/sounder/classes/sounder.class.ts ✔️
+
+- src/ui/chat/actions/revalidate-chat-contacts.action.ts ✔️
+- src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✔️
+- src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
+- src/ui/chat/hooks/on-connected.hook.tsx ⚠️
+- src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
 
 ## Login action
 

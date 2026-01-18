@@ -32,8 +32,8 @@ export type {
 } from './get-fast-debit-banks-response.dto';
 export type { OnConnectedResponseDTO } from './on-connected-response.dto';
 export type {
-  OnContactAssignmentUpdatedResponseAgentDTO,
   OnContactAssignmentUpdatedResponseDTO,
+  OnContactAssignmentUpdatedResponseAgentDTO,
   OnContactAssignmentUpdatedResponseTeamDTO,
 } from './on-contact-assignment-updated-response.dto';
 export type { OnContactFinishedResponseDTO } from './on-contact-finished-response.dto';

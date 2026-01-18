@@ -18,28 +18,28 @@ export class Message {
   /**
    * Constructor
    *
-   * @param {string} id - The ID of the message
-   * @param {MessageContact[]} contacts - The contacts of the message
-   * @param {string} conversationId - The ID of the conversation
-   * @param {string} createdAt - The creation date of the message
-   * @param {string | null} deliveredAt - The delivery date of the message
-   * @param {MessageDirection} direction - The direction of the message
-   * @param {MessageEventData | null} eventData - The event data of the message
-   * @param {string | null} failedAt - The failure date of the message
-   * @param {boolean} forwarded - Whether the message is forwarded
-   * @param {boolean} forwardedManyTimes - Whether the message is forwarded many times
-   * @param {null} interactiveOptions - The interactive options of the message
-   * @param {MessageLocation | null} location - The location of the message
-   * @param {Media | null} media - The media of the message
-   * @param {MessageReaction[]} reactions - The reactions of the message
-   * @param {string | null} readAt - The read date of the message
-   * @param {null} replyToMessage - The reply to message of the message
-   * @param {MessageSender} sender - The sender of the message
-   * @param {string | null} sentAt - The sent date of the message
-   * @param {MessageStatus} status - The status of the message
-   * @param {string | null} text - The text of the message
-   * @param {MessageType} type - The type of the message
-   * @param {string | null} updatedAt - The update date of the message
+   * @param id - The ID of the message
+   * @param contacts - The contacts of the message
+   * @param conversationId - The ID of the conversation
+   * @param createdAt - The creation date of the message
+   * @param deliveredAt - The delivery date of the message
+   * @param direction - The direction of the message
+   * @param eventData - The event data of the message
+   * @param failedAt - The failure date of the message
+   * @param forwarded - Whether the message is forwarded
+   * @param forwardedManyTimes - Whether the message is forwarded many times
+   * @param interactiveOptions - The interactive options of the message
+   * @param location - The location of the message
+   * @param media - The media of the message
+   * @param reactions - The reactions of the message
+   * @param readAt - The read date of the message
+   * @param replyToMessage - The reply to message of the message
+   * @param sender - The sender of the message
+   * @param sentAt - The sent date of the message
+   * @param status - The status of the message
+   * @param text - The text of the message
+   * @param type - The type of the message
+   * @param updatedAt - The update date of the message
    */
   constructor(
     public id: string,

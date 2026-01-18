@@ -14,6 +14,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  * On connected hook
  *
  * This hook listens to the on `connected` socket event:
+ * Emitted to the agent that connects. Contains the authenticated agent's data, their teams, and assigned contacts.
  * - updates the active agent information in the contact store when a successful connection is established.
  * (agent id, name and teams)
  * [Base event]
@@ -32,11 +33,15 @@ export const useOnConnected = () => {
         !parseResponse?.agent_teams ||
         !parseResponse?.success
       )
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
 
       const response = OnConnectedMapper.mapFrom(parseResponse);
 
       if (!response?.success || !response?.agent?.id || !response?.agent?.name)
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
 
       setActiveAgent(response?.agent);
