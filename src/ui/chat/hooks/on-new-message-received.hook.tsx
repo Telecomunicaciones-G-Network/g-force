@@ -11,12 +11,15 @@ import { OnNewMessageReceivedMapper } from '@module-chat/infrastructure/mappers/
 
 import { revalidateChatContactsAction } from '@ui-chat/actions/revalidate-chat-contacts.action';
 
+import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionary';
+
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
  * On new message received hook
  *
  * This hook listens to the on `new_message_received` socket event:
+ * When a new message is received from a contact. Emitted to all agents of the team assigned to that contact. Contains the minimum data of the message to establish the preview in the contact panel.
  * - Adds a new unread message to the contact in the store and update lastest message when a new message is received if contact is not ab active conversation
  * - Add a new unread message to the contact and play a notification sound if contact is not the active conversation and update lastest conversation.
  * [Agent event]
@@ -42,11 +45,15 @@ export const useOnNewMessageReceived = () => {
         !parseResponse?.message_id ||
         !parseResponse?.message_type
       )
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
 
       const response = OnNewMessageReceivedMapper.mapFrom(parseResponse);
 
       if (!response?.conversationId || !response?.contactId) return;
+      // TODO: Set alert for error
+      // TODO: Register error
 
       if (response?.contactId === activeContact?.id) {
         addOneUnreadMessageToContact({
@@ -67,7 +74,7 @@ export const useOnNewMessageReceived = () => {
         });
         sortContactsByLatestMessage();
 
-        const sounder = new Sounder('/sounds/whatsapp-notification.mp3');
+        const sounder = new Sounder(chatSoundDictionary.whatsappNotification);
 
         sounder.playAudio();
 

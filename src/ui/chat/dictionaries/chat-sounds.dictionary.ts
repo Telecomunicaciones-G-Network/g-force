@@ -5,4 +5,5 @@
  */
 export const chatSoundDictionary = {
   contactAssignment: '/sounds/on-conversations-assigned.mp3',
+  whatsappNotification: '/sounds/whatsapp-notification.mp3',
 } as const satisfies Record<string, string>;

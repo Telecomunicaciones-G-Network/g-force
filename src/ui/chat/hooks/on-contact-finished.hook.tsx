@@ -8,12 +8,13 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
 
 import { OnContactFinishedMapper } from '@module-chat/infrastructure/mappers/on-contact-finished.mapper';
 
-import { useContactStore } from '../stores/contact-store/contact.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
  * On contact finished hook
  *
  * This hook listens to the on `contact_finished` socket event:
+ * When a contact conversation is finished. Emitted to the agent that finished the conversation. Contains the ID of the contact and their current conversation.
  * - Deletes the contact from the store when a contact conversation is finished.
  * [Agent event]
  */
@@ -28,10 +29,14 @@ export const useOnContactFinished = () => {
       const parseResponse = JSON.parse(data as unknown as string);
 
       if (!parseResponse?.contact_id || !parseResponse?.conversation_id) return;
+      // TODO: Set alert for error
+      // TODO: Register error
 
       const response = OnContactFinishedMapper.mapFrom(parseResponse);
 
       if (!response?.contactId || !response?.conversationId) return;
+      // TODO: Set alert for error
+      // TODO: Register error
 
       deleteOneContactById(response?.contactId);
     },
