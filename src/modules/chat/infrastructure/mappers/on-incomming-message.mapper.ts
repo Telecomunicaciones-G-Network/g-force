@@ -4,7 +4,19 @@ import type { OnIncommingMessageResponseDTO } from '../dtos';
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
 import { MessageStatus } from '../../domain/enums/message-status.enum';
 
+/**
+ * On incoming message mapper
+ *
+ * This mapper converts the on incoming message response DTO to the message domain.
+ */
 export class OnIncommingMessageMapper {
+  /**
+   * Map from on incoming message response DTO to message domain
+   *
+   * @param input - The on incoming message response DTO
+   * @param contact - The contact
+   * @returns The message domain
+   */
   static mapFrom(
     input: OnIncommingMessageResponseDTO,
     contact: Contact | null,

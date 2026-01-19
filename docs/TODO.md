@@ -48,11 +48,13 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-incomming-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 
@@ -68,6 +70,7 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
 - src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx 👎
 - src/ui/chat/hooks/on_conversation_created.hook.tsx ⚠️
+- src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-received.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
 
