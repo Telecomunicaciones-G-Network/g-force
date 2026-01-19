@@ -5,41 +5,126 @@
   width: 100%;
 }
 
+.base__body {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 20px;
+}
+
 .base__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
-  border-bottom: 1px solid var(--neutral-600);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--neutral-100);
 }
 
 .base__header_title {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
-.base__body {
+.base__search_container {
+  width: 100%;
+  background-color: transparent;
+}
+
+.base__contracts_container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
+  gap: 12px;
+  width: 100%;
+}
+
+.base__contracts_scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-300) transparent;
+}
+
+.base__contracts_scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.base__contracts_scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.base__contracts_scroll::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-300);
+  border-radius: 3px;
+}
+
+.base__contracts_scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--neutral-400);
+}
+
+.base__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: var(--neutral-500);
 }
 
 .base__row {
   display: flex;
   gap: 16px;
+  
 }
 
 .base__row > * {
   flex: 1;
 }
 
+.base__row :global([role="combobox"]) {
+  border: 1px solid var(--neutral-200) !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  min-height: 44px !important;
+}
+
+.base__row :global([role="combobox"]) > div {
+  background-color: transparent !important;
+  padding: 1px 12px !important;
+}
+
+.base__row :global([role="combobox"]) .select-value,
+.base__row :global([role="combobox"]) span {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
+}
+
+.base__row :global([role="option"]) span {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  display: block !important;
+}
+
+.base__row :global([role="combobox"]:focus) {
+  border-color: var(--primary-500) !important;
+  outline: none !important;
+}
+
 .base__footer {
   display: flex;
   justify-content: flex-end;
   padding: 16px;
-  border-top: 1px solid var(--neutral-600);
+}
+
+:global(.gnetwork-select-trigger) {
+  border: 1px solid #E5E7EB !important; /* Gris muy claro de Figma */
+  border-radius: 8px !important;
+  height: 44px !important;
+  box-shadow: none !important; /* Quitar sombras pesadas */
 }
 
 .base__textarea_container {
@@ -48,17 +133,45 @@
   gap: 8px;
 }
 
+.base__textarea_wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .base__textarea {
   width: 100%;
   min-height: 100px;
+  max-height: 320px;
   padding: 12px;
+  padding-right: 48px;
   border-radius: 8px;
-  border: 1px solid var(--neutral-600);
+  border: 1px solid var(--neutral-200);
   background-color: transparent;
   color: var(--chromatic-inverted);
   font-size: 14px;
-  resize: vertical;
+  resize: none;
   transition: border-color 0.2s ease;
+}
+
+.base__attach_button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  color: var(--neutral-400);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+}
+
+.base__attach_button:hover {
+  color: var(--primary-500);
+  /* background-color: var(--neutral-00); */
 }
 
 .base__textarea::placeholder {
@@ -77,4 +190,22 @@
   justify-content: center;
   gap: 16px;
   padding: 32px 16px;
+}
+
+.base__icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 42px;
+  color: var(--red-700);
+  background-color: var(--red-100); 
+  border-radius: 8px; /* O 50% para circular, Figma parece usar esquinas suaves */
+}
+
+.base__alert_content{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
 }
