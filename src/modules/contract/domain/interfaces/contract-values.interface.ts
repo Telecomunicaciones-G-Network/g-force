@@ -7,6 +7,7 @@ export interface ContractValues {
   number: number;
   plan: string;
   speedPlan: string;
+  contractType: string;
   statusCode: ContractStatusCode;
   statusName: ContractStatusName;
 }
