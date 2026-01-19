@@ -12,6 +12,8 @@ import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionar
 
 import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-chat-messages.query';
 
+import { CHAT_CONTACT_CONVERSATION_DISABLED } from '@ui-chat/constants/chat-contact-conversation-disabled.constant';
+
 import { queryKeysDictionary } from '@/src/ui/chat/dictionaries/query-keys.dictionary';
 
 import { useOnConversationFinished } from '@ui-chat/hooks/on-conversation-finished.hook';
@@ -69,7 +71,11 @@ export const useChatConversation = () => {
       isError ||
       !isInRoom ||
       isLoading ||
-      activeAgent?.id !== activeContact?.latestConversation?.agent?.id,
+      activeAgent?.id !== activeContact?.latestConversation?.agent?.id ||
+      !activeContact?.latestConversation?.status ||
+      CHAT_CONTACT_CONVERSATION_DISABLED.includes(
+        activeContact.latestConversation.status,
+      ),
     isError,
     isLoading,
     sendMode,
