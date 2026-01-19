@@ -8,7 +8,8 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
  * On conversation assignment updated hook
  *
  * This hook listens to the on `conversation_assignment_updated` socket event:
- * When the assigned team and/or agent for a contact changes. Contains the data of the newly assigned team and agent, the data of the unassigned team and agent, and the IDs of the contact and their current conversation.
+ * When the assigned team and/or agent for a contact changes. Contains the data of the newly assigned team and agent,
+ * the data of the unassigned team and agent, and the IDs of the contact and their current conversation.
  * [Contact event]
  */
 export const useOnConversationAssignmentUpdated = () => {

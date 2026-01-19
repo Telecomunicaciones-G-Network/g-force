@@ -15,12 +15,15 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
  * [Contact event]
  */
 export const useOnConversationCreated = () => {
+  // TODO: Type the event
   onSocketEvent<unknown>(
     socketEventsDictionary.CONVERSATION_CREATED,
+    // TODO: Type the data
     (data: unknown) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
       console.log(parseResponse);
+      // TODO: Implement the logic to update the conversation created
     },
   );
 };

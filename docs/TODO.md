@@ -64,6 +64,8 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
+- src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx 👎
+- src/ui/chat/hooks/on_conversation_created.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-received.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
 
