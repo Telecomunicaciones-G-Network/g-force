@@ -5,8 +5,8 @@ import type { TeamCodename } from '../types';
  *
  * This interface represents the agent information from the on conversation assignment updated socket event.
  *
- * @param id - The agent ID
- * @param name - The agent name
+ * @property id - The agent ID
+ * @property name - The agent name
  */
 export interface OnConversationAssignmentUpdatedAgentResponse {
   id: string;
@@ -18,8 +18,8 @@ export interface OnConversationAssignmentUpdatedAgentResponse {
  *
  * This interface represents the team information from the on conversation assignment updated socket event.
  *
- * @param id - The team ID
- * @param name - The team name
+ * @property id - The team ID
+ * @property name - The team name
  */
 export interface OnConversationAssignmentUpdatedTeamResponse {
   id: TeamCodename;
@@ -31,10 +31,10 @@ export interface OnConversationAssignmentUpdatedTeamResponse {
  *
  * This interface represents the response from the on conversation assignment updated socket event.
  *
- * @param agent - The agent information
- * @param contactId - The contact ID
- * @param conversationId - The conversation ID
- * @param team - The team information
+ * @property agent - The agent information
+ * @property contactId - The contact ID
+ * @property conversationId - The conversation ID
+ * @property team - The team information
  */
 export interface OnConversationAssignmentUpdatedResponse {
   agent: OnConversationAssignmentUpdatedAgentResponse;

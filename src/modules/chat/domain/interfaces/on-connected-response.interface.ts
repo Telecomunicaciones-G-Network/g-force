@@ -5,8 +5,8 @@ import type { Agent } from './agent.interface';
  *
  * This interface represents the response from the on connected socket event.
  *
- * @param agent - The agent information.
- * @param success - Whether the request was successful.
+ * @property agent - The agent information.
+ * @property success - Whether the request was successful.
  */
 export interface OnConnectedResponse {
   agent: Agent;

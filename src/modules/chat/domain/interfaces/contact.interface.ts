@@ -6,12 +6,12 @@ import type { ContactLatestMessage } from '../types';
  *
  * This interface represents the values of a contact.
  *
- * @param id - The ID of the contact
- * @param latestConversation - The latest conversation of the contact
- * @param latestMessage - The latest message of the contact
- * @param name - The name of the contact
- * @param phoneNumber - The phone number of the contact
- * @param unreadCount - The unread count of the contact
+ * @property id - The ID of the contact
+ * @property latestConversation - The latest conversation of the contact
+ * @property latestMessage - The latest message of the contact
+ * @property name - The name of the contact
+ * @property phoneNumber - The phone number of the contact
+ * @property unreadCount - The unread count of the contact
  */
 export interface Contact {
   id: string;

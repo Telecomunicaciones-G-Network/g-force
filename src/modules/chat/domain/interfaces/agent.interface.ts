@@ -5,9 +5,9 @@ import type { TeamCodename } from '../types';
  *
  * This interface represents the values of an agent.
  *
- * @param id - The id of the agent.
- * @param name - The name of the agent.
- * @param teams - The teams of the agent.
+ * @property id - The id of the agent.
+ * @property name - The name of the agent.
+ * @property teams - The teams of the agent.
  */
 export interface Agent {
   id: string;

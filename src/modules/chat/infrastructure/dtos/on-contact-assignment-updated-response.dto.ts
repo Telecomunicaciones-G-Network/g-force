@@ -5,8 +5,8 @@ import type { TeamCodename } from '../../domain/types';
  *
  * This DTO represents the agent information from the on contact assignment updated socket event.
  *
- * @param id - The agent ID
- * @param full_name - The agent full name
+ * @property id - The agent ID
+ * @property full_name - The agent full name
  */
 export interface OnContactAssignmentUpdatedResponseAgentDTO {
   id: string;
@@ -18,8 +18,8 @@ export interface OnContactAssignmentUpdatedResponseAgentDTO {
  *
  * This DTO represents the team information from the on contact assignment updated socket event.
  *
- * @param codename - The team codename
- * @param name - The team name
+ * @property codename - The team codename
+ * @property name - The team name
  */
 export interface OnContactAssignmentUpdatedResponseTeamDTO {
   codename: TeamCodename;
@@ -31,10 +31,10 @@ export interface OnContactAssignmentUpdatedResponseTeamDTO {
  *
  * This DTO represents the response from the on contact assignment updated socket event.
  *
- * @param agent - The agent information
- * @param contact_id - The contact ID
- * @param conversation_id - The conversation ID
- * @param team - The team information
+ * @property agent - The agent information
+ * @property contact_id - The contact ID
+ * @property conversation_id - The conversation ID
+ * @property team - The team information
  */
 export interface OnContactAssignmentUpdatedResponseDTO {
   agent: OnContactAssignmentUpdatedResponseAgentDTO;
