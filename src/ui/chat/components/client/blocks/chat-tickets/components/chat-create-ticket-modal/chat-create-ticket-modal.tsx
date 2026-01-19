@@ -122,7 +122,7 @@ export const ChatCreateTicketModal = ({
     <Modal
       isOpen={isOpen}
       onOpenChange={(open) => !open && handleClose()}
-      triggerComponent={<></>}
+      triggerComponent={<div />}
       hideModalClose
     >
       {!isSuccess && (
