@@ -13,7 +13,7 @@ export class RequestFastDebitOTPMapper {
   ): RequestFastDebitOTPResponse {
     return {
       error: input?.error,
-      message: input?.results?.message ?? '',
+      otpExpirationTime: input?.results?.otp_expiration_timestamp ?? '',
       status: input?.status,
       success: input?.success,
     };

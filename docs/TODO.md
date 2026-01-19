@@ -57,6 +57,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 
 - src/packages/sounder/classes/sounder.class.ts ✅
+- src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅

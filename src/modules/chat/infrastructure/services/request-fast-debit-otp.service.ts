@@ -25,7 +25,12 @@ export const requestFastDebitOTPService = async (
     RequestFastDebitOTPResponseDTO
   >(CHAT_RESOURCES.REQUEST_FAST_DEBIT_OTP, requestDTO);
 
-  if (response?.error || !response?.success || !response?.results) {
+  if (
+    response?.error ||
+    !response?.success ||
+    !response?.results ||
+    !response?.results?.otp_expiration_timestamp
+  ) {
     throw new BaseException({
       message: response?.error ?? 'Error al solicitar el OTP',
       status: response?.status,

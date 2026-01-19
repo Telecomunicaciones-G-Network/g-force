@@ -3,6 +3,7 @@
 import type { GetFastDebitBanksResponse } from '@module-chat/domain/interfaces';
 import type { FloatingModalPaymentReportFastDebitFormData } from './types';
 import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { RequestFastDebitOTPResponse } from '@module-chat/domain/interfaces';
 
 import { useState, useEffect } from 'react';
 
@@ -21,6 +22,8 @@ import { floatingModalPaymentReportFastDebitFormDataSchema } from './schemas/flo
 
 import { RequestFastDebitOTPCommand } from '@module-chat/infrastructure/commands/request-fast-debit-otp.command';
 import { ProcessFastDebitPaymentCommand } from '@module-chat/infrastructure/commands/process-fast-debit-payment.command';
+
+import { isoDateToSeconds } from '@packages/timer/utils/iso-date-to-seconds.util';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -70,21 +73,12 @@ export const useFloatingModalPaymentReportFastDebit = ({
       setMode('form');
       setOtp('');
       setStoreFormData(null);
-      setCountdown(90);
       showToast('El tiempo para ingresar el OTP ha expirado', {
         id: 'otp-timeout',
         position: 'top-right',
       });
     }
   }, [mode, countdown, otp.length, showToast]);
-
-  // Reset countdown when entering OTP mode
-  useEffect(() => {
-    if (mode === 'otp') {
-      setCountdown(90);
-      setOtp('');
-    }
-  }, [mode]);
 
   const { data } = useQuery<GetFastDebitBanksResponse>({
     queryKey: [CHAT_TAGS.GET_FAST_DEBIT_BANKS],
@@ -97,7 +91,13 @@ export const useFloatingModalPaymentReportFastDebit = ({
 
   const { mutate: requestFastDebitOTP, isPending } = useMutation({
     mutationFn: RequestFastDebitOTPCommand,
-    onSuccess: () => {
+    onSuccess: (data: RequestFastDebitOTPResponse) => {
+      if (data?.otpExpirationTime) {
+        const otpExpirationTime = isoDateToSeconds(data.otpExpirationTime);
+
+        setCountdown(otpExpirationTime > 0 ? otpExpirationTime : 90);
+      }
+
       setMode('otp');
     },
     onError: (_error: Error) => {
