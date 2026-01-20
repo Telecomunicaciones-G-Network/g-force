@@ -19,11 +19,12 @@ export class EmitSendImageMessageMapper {
   }
 
   static mapTo(
-    output: Omit<EmitSendImageMessageRequest, 'message' | 'onSuccess'>,
+    output: Omit<EmitSendImageMessageRequest, 'onSuccess'>,
   ): EmitSendImageMessageRequestDTO {
     return {
       contact_id: output?.contactId,
       media_id: output?.mediaId,
+      text: output?.message,
     };
   }
 }

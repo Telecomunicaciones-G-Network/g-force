@@ -108,6 +108,7 @@ export const useEmitSendImageMessage = () => {
         const request = EmitSendImageMessageMapper.mapTo({
           contactId: activeContact?.id,
           mediaId: mediaResponse?.mediaId,
+          message: message ?? null,
         });
 
         if (!request) return;
