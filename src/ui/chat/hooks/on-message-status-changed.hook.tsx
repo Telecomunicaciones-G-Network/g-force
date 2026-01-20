@@ -10,6 +10,13 @@ import { OnMessageStatusChangedMapper } from '@module-chat/infrastructure/mapper
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
+/**
+ * On message status changed hook
+ *
+ * This hook listens to the `MESSAGE_STATUS_CHANGED` socket event:
+ * When the status of a message changes. Contains the ID of the message and the new status.
+ * [Contact event]
+ */
 export const useOnMessageStatusChanged = () => {
   const { updateOneMessageStatusById } = useChatStore();
 
@@ -17,11 +24,18 @@ export const useOnMessageStatusChanged = () => {
     socketEventsDictionary.MESSAGE_STATUS_CHANGED,
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
+
+      if (!parseResponse?.message_id || !parseResponse?.status)
+        // TODO: Set alert for error
+        // TODO: Register error
+        return;
+
       const response = OnMessageStatusChangedMapper.mapFrom(parseResponse);
 
-      if (!response?.messageId || !response?.status) {
+      if (!response?.messageId || !response?.status)
+        // TODO: Set alert for error
+        // TODO: Register error
         return;
-      }
 
       updateOneMessageStatusById(response?.messageId, response?.status);
     },

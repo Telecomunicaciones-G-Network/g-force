@@ -33,6 +33,7 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/on-connected-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-contact-finished-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-conversation-assignment-updated-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-message-status-changed-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-new-message-received-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-new-message-sent-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/team.interface.ts ✅
@@ -51,6 +52,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-incomming-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-message-status-changed-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
@@ -58,6 +60,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-message-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
@@ -73,9 +76,10 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
-- src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx 👎
+- src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx ⚠️
 - src/ui/chat/hooks/on_conversation_created.hook.tsx ⚠️
 - src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
+- src/ui/chat/hooks/on-message-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-received.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
 - src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️

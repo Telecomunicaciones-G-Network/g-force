@@ -3,6 +3,7 @@
 import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on_conversation_assignment_updated.hook';
 import { useOnConversationCreated } from '@ui-chat/hooks/on_conversation_created.hook';
 import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
+import { useOnMessageStatusChanged } from '@ui-chat/hooks/on-message-status-changed.hook';
 import { useOnOutgoingMessage } from '@ui-chat/hooks/on-outgoing-message.hook';
 import { useOnReactionAdded } from '@ui-chat/hooks/on-reaction-added.hook';
 import { useOnReactionRemoved } from '@ui-chat/hooks/on-reaction-removed.hook';
@@ -34,6 +35,7 @@ export const useContactSocketEvents = ({
   useOnIncommingMessage({
     disabledChat,
   });
+  useOnMessageStatusChanged();
   useOnOutgoingMessage();
   useOnReactionAdded();
   useOnReactionRemoved();
