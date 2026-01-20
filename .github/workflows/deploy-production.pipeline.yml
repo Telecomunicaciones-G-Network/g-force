@@ -1,12 +1,12 @@
-name: Deploy GForce Pipeline Staging
+name: Deploy GForce Pipeline Production
 
 on:
   push:
     branches:
-      - staging
+      - main
   pull_request:
     branches:
-      - staging
+      - main
   workflow_dispatch:
 
 permissions:
@@ -50,22 +50,21 @@ jobs:
       - name: Create environment file
         run: |
           echo "Creating environment file..."
-          echo "${{ secrets.STG_ENV_VARS }}" > .env
-          echo "${{ secrets.STG_ENV_VARS }}" > .env.staging
-          echo "${{ secrets.STG_ENV_VARS }}" > .env.production
+          echo "${{ secrets.PROD_ENV_VARS }}" > .env
+          echo "${{ secrets.PROD_ENV_VARS }}" > .env.production
 
       - name: Generate docker image tag
         id: tag
         run: |
           REPO_LOWERCASE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           VERSION=$(jq -r '.version' package.json)
-          echo "tag=ghcr.io/${REPO_LOWERCASE}:stg-v${VERSION}" >> $GITHUB_OUTPUT
+          echo "tag=ghcr.io/${REPO_LOWERCASE}:v${VERSION}" >> $GITHUB_OUTPUT
 
-      - name: Build and push staging Docker image
+      - name: Build and push production Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./docker/Dockerfile.staging
+          file: ./docker/Dockerfile.production
           push: true
           tags: ${{ steps.tag.outputs.tag }}
           cache-from: type=gha

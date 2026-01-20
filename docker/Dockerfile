@@ -1,0 +1,72 @@
+# Dockerfile
+
+## Arguments
+
+ARG NODE_IMAGE_VERSION=24.13.0-alpine3.23
+
+# Base
+FROM node:${NODE_IMAGE_VERSION} AS base
+
+# Installer
+FROM base AS installer
+
+RUN apk add --no-cache libc6-compat curl bash \
+  && curl -fsSL https://bun.sh/install | bash
+
+ENV PATH="/root/.bun/bin:${PATH}"
+
+WORKDIR /app
+
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* bun.lockb* bun.lock* .npmrc* ./
+
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i; \
+  elif [ -f bun.lock ]; then bun install --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Builder
+FROM base AS builder
+
+WORKDIR /app
+
+COPY --from=installer /app/node_modules ./node_modules
+
+COPY . .
+
+COPY .env .env.production
+
+COPY .env .env
+
+ENV NEXT_PRIVATE_STANDALONE=true
+RUN npm run build
+
+# Runner
+FROM base AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+RUN addgroup -g 1001 -S nodejs
+
+RUN adduser -S nextjs -u 1001
+
+COPY --from=builder /app/public ./public
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT=3000
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+CMD HOSTNAME="0.0.0.0" node server.js

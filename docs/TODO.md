@@ -5,10 +5,16 @@ TODO: Doc all about this project
 ## Reviews
 
 - .github/workflows/build-develop.pipeline.yml ✅
+- .github/workflows/build-production.pipeline.yml ✅
 - .github/workflows/build-staging.pipeline.yml ✅
 - .github/workflows/check.pipeline.yml ✅
 - .github/workflows/deploy-develop.pipeline.yml ✅
+- .github/workflows/deploy-production.pipeline.yml ✅
 - .github/workflows/deploy-staging.pipeline.yml ✅
+- docker/Dockerfile ✅
+- docker/Dockerfile.development ✅
+- docker/Dockerfile.production ✅
+- docker/Dockerfile.staging ✅
 - .dockerignore ✅
 - .env ✅
 - .env.development ✅
@@ -16,6 +22,7 @@ TODO: Doc all about this project
 - .env.production ✅
 - .env.staging ✅
 - CONTRIBUTING.md ✅
+- Makefile ✅
 
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅

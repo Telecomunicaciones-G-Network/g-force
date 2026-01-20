@@ -332,6 +332,12 @@
       "fileNames": ["dockerfile.development"]
     },
     {
+      "name": "Dockerfile production",
+      "base": "docker",
+      "color": "green-400",
+      "fileNames": ["dockerfile.production"]
+    },
+    {
       "name": "Dockerfile staging",
       "base": "docker",
       "color": "red-400",
@@ -366,6 +372,12 @@
       "base": "tune",
       "color": "red-400",
       "fileNames": [".env.staging"]
+    },
+    {
+      "name": "Makefile",
+      "base": "makefile",
+      "color": "orange-800",
+      "fileNames": ["makefile"]
     },
     {
       "name": "Presenters",
