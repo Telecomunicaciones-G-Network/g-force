@@ -3,4 +3,5 @@ export interface CreateTicketRequest {
   contractId: number;
   description: string;
   issue: string;
+  images?: File[];
 }

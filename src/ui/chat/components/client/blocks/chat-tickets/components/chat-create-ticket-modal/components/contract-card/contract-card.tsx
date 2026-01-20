@@ -10,7 +10,7 @@ import styles from './contract-card.module.css';
 
 export const ContractCard = ({
   address,
-  contractType,
+  client_type_name,
   isSelected = false,
   number,
   onClick,
@@ -29,7 +29,7 @@ export const ContractCard = ({
           <Text as="span" level="small" scheme="label" className="font-semibold">
             Contrato
           </Text>
-          <span className={styles.base__badge}>{contractType}</span>
+          <span className={styles.base__badge}>{client_type_name}</span>
         </div>
         <Text as="p" level="small" scheme="label" className="font-medium">
           Número: {number}

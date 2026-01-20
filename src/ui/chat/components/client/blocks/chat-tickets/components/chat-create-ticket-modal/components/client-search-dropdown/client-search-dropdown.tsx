@@ -12,8 +12,7 @@ export const ClientSearchDropdown = ({
   selectedClientName,
 }: Readonly<ClientSearchDropdownProps>) => {
   const [isOpen, setIsOpen] = useState(false);
-  // Eliminamos isSearching para simplificar y usamos solo searchTerm
-  const { clients, handleSearch, isLoading, searchTerm, setSearchTerm } =
+  const { clients, isLoading, searchTerm, setSearchTerm } =
     useClientSearchDropdown();
 
   // Sincronizar el searchTerm con el nombre seleccionado inicialmente
@@ -32,7 +31,6 @@ export const ClientSearchDropdown = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    handleSearch(value);
     setIsOpen(true);
     
     // Si el usuario borra el texto, limpiar la selección
