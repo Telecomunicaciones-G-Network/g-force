@@ -1,6 +1,6 @@
 export interface ContractCardProps {
   address: string;
-  contractType: string;
+  client_type_name?: string;
   isSelected?: boolean;
   number: number;
   onClick: () => void;

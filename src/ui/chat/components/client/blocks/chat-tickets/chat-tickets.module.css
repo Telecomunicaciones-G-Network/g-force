@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Alinea título a la izquierda y botón a la derecha */
-  gap: 16px;
-  margin-bottom: 8px;
+  gap: 60px;
+  width: 100%;
 }
 
 .base__create_button {
@@ -31,7 +31,7 @@
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid var(--neutral-300); /* Un gris más suave según la imagen */
-  background-color: white;
+  background-color: var(--neutral-50);
   cursor: pointer;
   transition: border-color 0.2s ease;
   width: 100%; /* Para que ocupe el ancho del contenedor */
@@ -39,7 +39,7 @@
 
 /* Quitamos el hover oscuro y solo le damos un leve cambio de borde si deseas */
 .base__filter_trigger:hover {
-  background-color: rgb(255, 255, 255); 
+  background-color: var(--neutral-50);
   border-color: var(--neutral-400);
 }
 
@@ -50,18 +50,27 @@
 }
 .base__dropdown_item:hover {
   /* Usamos !important si la librería @gnetwork-ui está forzando el gris */
-  background-color: #FEE2E2 !important; /* Un rojo muy claro (red-100) */
+  background-color: var(--red-100) !important; /* Un rojo muy claro (red-100) */
 }
 
 /* Si quieres que el texto cambie a rojo oscuro en hover también: */
 .base__dropdown_item:hover span {
-  color: #B91C1C !important; /* Un rojo oscuro (red-700) */
+  color: var(--red-700) !important; /* Un rojo oscuro (red-700) */
 }
 
 .base__elements {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   padding: 0;
 }
-
+.base__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 16px;
+  flex: 1;
+  text-align: center;
+}
