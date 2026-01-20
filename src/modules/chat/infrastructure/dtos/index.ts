@@ -51,6 +51,11 @@ export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
 export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
 export type { OnNewMessageSentResponseDTO } from './on-new-message-sent-response.dto';
+export type {
+  OnOutgoingMessageResponseDTO,
+  OnOutgoingMessageResponseMediaDTO,
+  OnOutgoingMessageResponseSenderDTO,
+} from './on-outgoing-message-response.dto';
 export type { ProcessFastDebitPaymentRequestDTO } from './process-fast-debit-payment-request.dto';
 export type {
   ProcessFastDebitPaymentResponseDTO,

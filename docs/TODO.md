@@ -51,12 +51,14 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-incomming-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
 
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
