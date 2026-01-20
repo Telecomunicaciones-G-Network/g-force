@@ -5,6 +5,7 @@ import type { ChatConversationFooterProps } from './chat-conversation-footer.pro
 import { MdSend } from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
+import { CollapsibleButton } from '@gnetwork-ui/components/molecules/buttons/collapsible-button';
 import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 
 import { ChatConversationFileAttachDropdown } from '../chat-conversation-file-attach-dropdown';
@@ -43,6 +44,7 @@ export const ChatConversationFooter = ({
           <MdSend className="min-h-[16.99px] h-[16.99px] min-w-[19.73px] w-[19.73px]" />
         </Button>
       </form>
+      <CollapsibleButton className="absolute-bottom-center" />
     </div>
   );
 };

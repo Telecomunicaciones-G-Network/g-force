@@ -55,6 +55,7 @@
     "components": "react-components",
     "contact-card-skeleton": "react-components",
     "contact-list": "react-components",
+    "collapsible-button": "react-components",
     "dictionaries": "resource",
     "dropdown-base": "react-components",
     "dropdown-container": "react-components",

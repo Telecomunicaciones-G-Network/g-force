@@ -89,6 +89,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
 
+- src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
@@ -97,6 +98,7 @@ TODO: Doc all about this project
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
+- src/ui/chat/enums/chat-send-mode.enum.ts ✅
 - src/ui/chat/hooks/agent-socket-events.hooks.tsx ✅
 - src/ui/chat/hooks/base-socket-events.hook.tsx ✅
 - src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
@@ -115,6 +117,7 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
+- src/ui/chat/types/chat-send-mode.type.ts ✅
 
 - src/env.d.ts ✅
 

@@ -2,7 +2,8 @@
   align-items: flex-end;
   display: flex;
   min-height: 86px;
-  padding: 0 24px 24px 24px;
+  padding: 0 24px 29px 24px;
+  position: relative;
 }
 
 .base__form {

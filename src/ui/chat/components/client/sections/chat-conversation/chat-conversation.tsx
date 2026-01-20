@@ -19,7 +19,7 @@ export const ChatConversation = () => {
 
   return (
     <section className={cn(styles.base, 'divide-y divide-neutral-200')}>
-      {sendMode !== ChatSendModes.TEXT && (
+      {sendMode === ChatSendModes.IMAGE && (
         <ChatFileViewer disabledChat={disabledChat} />
       )}
       <ChatConversationHeader />
