@@ -15,6 +15,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
  *
  * This hook listens to the `MESSAGE_STATUS_CHANGED` socket event:
  * When the status of a message changes. Contains the ID of the message and the new status.
+ * - Updates the status of the message in the chat store
  * [Contact event]
  */
 export const useOnMessageStatusChanged = () => {

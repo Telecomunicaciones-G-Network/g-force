@@ -31,7 +31,6 @@ interface UseOnIncommingMessageProps {
  * On incoming message hook
  *
  * This hook listens to the on `incoming_message` socket event:
- * Emitted to the agent when a new message is received. Contains the message data.
  * When a new message is received from a contact. Contains all the message data to display in the opened chat panel.
  * - adds the message to the chat store
  * - plays the whatsapp on message sound

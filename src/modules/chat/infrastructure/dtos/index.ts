@@ -47,7 +47,7 @@ export type {
   OnIncommingMessageResponseLocation,
   OnIncommingMesssageResponseMedia,
 } from './on-incomming-message-response.dto';
-export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed.dto';
+export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed-response.dto';
 export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
 export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
 export type { OnNewMessageSentResponseDTO } from './on-new-message-sent-response.dto';
