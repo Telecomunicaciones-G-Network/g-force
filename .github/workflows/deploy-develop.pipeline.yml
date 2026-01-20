@@ -2,10 +2,10 @@ name: Deploy GForce Pipeline Development
 
 on:
   push:
-    branches: 
+    branches:
       - develop
   pull_request:
-    branches: 
+    branches:
       - develop
   workflow_dispatch:
 
@@ -23,7 +23,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22.21.1
+          node-version: 24.13.0
           registry-url: "https://npm.pkg.github.com/"
           scope: "@Telecomunicaciones-G-Network"
 

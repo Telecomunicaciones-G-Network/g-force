@@ -4,6 +4,9 @@ TODO: Doc all about this project
 
 ## Reviews
 
+- .github/workflows/build-develop.pipeline.yml ✅
+- .github/workflows/check.pipeline.yml ✅
+- .github/workflows/deploy-develop.pipeline.yml ✅
 - .dockerignore ✅
 
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
