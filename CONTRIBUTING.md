@@ -1,3 +1,4 @@
 # Developers
 
-- Jeykher Pernia Yendes
+- **Jeykher Pernia Yendes**
+- **Aisaac Hung**

@@ -1,4 +1,4 @@
-# Dockerfile.development
+# Dockerfile.staging
 
 ## Arguments
 
@@ -36,9 +36,9 @@ COPY --from=installer /app/node_modules ./node_modules
 
 COPY . .
 
-COPY .env.development .env.production
+COPY .env.staging .env.production
 
-COPY .env.development .env
+COPY .env.staging .env
 
 ENV NEXT_PRIVATE_STANDALONE=true
 RUN npm run build

@@ -5,9 +5,17 @@ TODO: Doc all about this project
 ## Reviews
 
 - .github/workflows/build-develop.pipeline.yml ✅
+- .github/workflows/build-staging.pipeline.yml ✅
 - .github/workflows/check.pipeline.yml ✅
 - .github/workflows/deploy-develop.pipeline.yml ✅
+- .github/workflows/deploy-staging.pipeline.yml ✅
 - .dockerignore ✅
+- .env ✅
+- .env.development ✅
+- .env.example ✅
+- .env.production ✅
+- .env.staging ✅
+- CONTRIBUTING.md ✅
 
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
@@ -77,6 +85,8 @@ TODO: Doc all about this project
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
+- src/ui/core/enums/env-modes.enum.ts ✅
+
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
@@ -98,6 +108,8 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
+
+- src/env.d.ts ✅
 
 ## Login action
 

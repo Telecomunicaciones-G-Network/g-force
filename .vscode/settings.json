@@ -332,16 +332,40 @@
       "fileNames": ["dockerfile.development"]
     },
     {
+      "name": "Dockerfile staging",
+      "base": "docker",
+      "color": "red-400",
+      "fileNames": ["dockerfile.staging"]
+    },
+    {
       "name": "Enums",
       "base": "ember",
       "color": "teal-400",
       "fileExtensions": ["enum.ts"]
     },
     {
+      "name": "Env Development",
+      "base": "tune",
+      "color": "orange-600",
+      "fileNames": [".env.development"]
+    },
+    {
       "name": "Env Example",
       "base": "tune",
       "color": "blue-400",
       "fileNames": [".env.example"]
+    },
+    {
+      "name": "Env Production",
+      "base": "tune",
+      "color": "green-400",
+      "fileNames": [".env.production"]
+    },
+    {
+      "name": "Env Staging",
+      "base": "tune",
+      "color": "red-400",
+      "fileNames": [".env.staging"]
     },
     {
       "name": "Presenters",
