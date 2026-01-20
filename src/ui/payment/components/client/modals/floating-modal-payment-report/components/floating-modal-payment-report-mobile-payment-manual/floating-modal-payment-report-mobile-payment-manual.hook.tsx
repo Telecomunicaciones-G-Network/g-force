@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import dayjs from 'dayjs';
 
-import { FLOATING_MODAL_PAYMENT_REPORT_MOBILE_PAYMENT_MANUAL_FORM_DEFAULT_VALUES } from './constants/default-values.constant';
+import { FLOATING_MODAL_PAYMENT_REPORT_MOBILE_PAYMENT_MANUAL_FORM_DEFAULT_VALUES } from './constants/floating-modal-payment-report-mobile-payment-manual-form-default-values.constant';
 
 import { floatingModalPaymentReportMobilePaymentManualFormDataSchema } from './schemas/floating-modal-payment-report-mobile-payment-manual-form-data.schema';
 
