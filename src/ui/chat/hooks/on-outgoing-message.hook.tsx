@@ -22,6 +22,7 @@ import { useChatStore } from '@ui/chat/stores/chat-store/chat.store';
  * as well as internal messages and event messages. Contains all message data to be displayed in the open chat panel.
  * - Add the message if assigned agent is not equal than conversation agent
  * Emitted to the agent when a message is sent. Contains the message data.
+ *[Contact event]
  */
 export const useOnOutgoingMessage = () => {
   const activeAgent = useContactStore((state) => state.activeAgent);

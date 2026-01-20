@@ -4,6 +4,8 @@ TODO: Doc all about this project
 
 ## Reviews
 
+- .dockerignore ✅
+
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-types.enum.ts ✅
@@ -75,6 +77,8 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-received.hook.tsx ⚠️
 - src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
+- src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
+- src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
 
 ## Login action
 

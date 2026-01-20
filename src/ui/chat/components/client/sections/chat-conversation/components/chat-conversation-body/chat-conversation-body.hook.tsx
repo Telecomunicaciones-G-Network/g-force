@@ -6,6 +6,7 @@ import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on_conversati
 import { useOnConversationCreated } from '@ui-chat/hooks/on_conversation_created.hook';
 import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
 import { useOnOutgoingMessage } from '@ui-chat/hooks/on-outgoing-message.hook';
+import { useOnReactionAdded } from '@ui-chat/hooks/on-reaction-added.hook';
 
 interface UseChatConversationBodyProps {
   disabledChat?: boolean;
@@ -22,6 +23,7 @@ export const useChatConversationBody = ({
     disabledChat,
   });
   useOnOutgoingMessage();
+  useOnReactionAdded();
 
   return {
     messages,
