@@ -7,29 +7,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  // Hightlight Extension
-  "todohighlight.isEnable": true,
-  "todohighlight.isCaseSensitive": true,
-  "todohighlight.keywords": [
-    {
-      "text": "DONE:",
-      "color": "#ffffff",
-      "backgroundColor": "#499167",
-      "overviewRulerColor": "grey"
-    },
-    {
-      "text": "IMPROVE:",
-      "color": "#ffffff",
-      "backgroundColor": "#2081c3",
-      "overviewRulerColor": "grey"
-    },
-    {
-      "text": "PENDING:",
-      "color": "#ffffff",
-      "backgroundColor": "#f58549",
-      "overviewRulerColor": "grey"
-    }
-  ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
     "(private)": "secure",
@@ -516,7 +493,7 @@
   },
   "editor.fontFamily": "'Monaspace Radon', 'Victor Mono', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.fontWeight": "600",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
