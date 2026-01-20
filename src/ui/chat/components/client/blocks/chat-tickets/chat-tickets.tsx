@@ -44,19 +44,22 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
   } = useChatTickets();
 
   return (
-    <ChatDetailsTabContentLayout title={title}> {/* title={title} */}
-      <div className={styles.base__header}>
-        <Text as="h2" level="large" scheme="label" className="font-bold">
-          Tickets
-        </Text>
-        <Button
-          color="red"
-          onClick={handleOpenCreateModal}
-          className={styles.base__create_button}
-        >
-          Crear Ticket
-        </Button>
-      </div>
+    <ChatDetailsTabContentLayout
+      title={
+        <div className={styles.base__header}>
+          <Text as="h2" level="large" scheme="label" className="font-bold">
+            {title}
+          </Text>
+          <Button
+            color="red"
+            onClick={handleOpenCreateModal}
+            className={styles.base__create_button}
+          >
+            Crear Ticket
+          </Button>
+        </div>
+      }
+    >
 
       <ChatCreateTicketModal
         isOpen={isCreateModalOpen}
@@ -79,7 +82,7 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
       )}
       {!isLoading && !isError && (
         <div className={styles.base}>
-          <Text as="h5" level="medium" scheme="label" className="mt-4">
+          <Text as="h5" level="medium" scheme="label" className="-mt-10">
             Creados / Solicitudes
           </Text>
 
@@ -115,7 +118,7 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
                 </DropdownItem>
               ))}
             </Dropdown>
-            </div>|
+            </div>
 
           {tickets?.length === 0 && (
             <div className={styles.base__empty}>

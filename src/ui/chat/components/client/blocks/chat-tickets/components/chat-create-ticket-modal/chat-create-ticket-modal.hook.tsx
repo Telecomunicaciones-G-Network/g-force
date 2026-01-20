@@ -17,57 +17,12 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
-// import { getContactContractsService } from '@module-chat/infrastructure/services/get-contact-contracts.service';
-import type { ContractValues } from '@module-contract/domain/interfaces';
+import { getContactContractsService } from '@module-chat/infrastructure/services/get-contact-contracts.service';
+import { getTicketsDepartmentsService } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
+import { getTicketsIssuesService } from '@module-ticket/infrastructure/services/get-tickets-issues.service';
 
-// Mock data para pruebas de diseño
-// Extendemos ContractValues con contractType para el mock
-const MOCK_CONTRACTS: Array<ContractValues & { contractType: string }> = [
-  {
-    address: 'Calle Principal, Edificio Torre A, Piso 5, Apto 501, Maiquetia',
-    installationDate: '2023-01-15',
-    napBox: 'NAP-001',
-    number: 60892,
-    plan: 'Plan Premium 100MB',
-    speedPlan: '100 Mbps',
-    statusCode: 'ACTIVE',
-    statusName: 'Activo',
-    contractType: 'Residencial',
-  },
-  {
-    address: 'Avenida Libertador, Residencias El Parque, Torre B, Piso 3, Apto 302',
-    installationDate: '2023-03-20',
-    napBox: 'NAP-002',
-    number: 60893,
-    plan: 'Plan Empresarial 200MB',
-    speedPlan: '200 Mbps',
-    statusCode: 'ACTIVE',
-    statusName: 'Activo',
-    contractType: 'Empresarial',
-  },
-  {
-    address: 'Urbanización Los Pinos, Casa 45, Sector Norte',
-    installationDate: '2023-05-10',
-    napBox: 'NAP-003',
-    number: 60894,
-    plan: 'Plan Básico 50MB',
-    speedPlan: '50 Mbps',
-    statusCode: 'SUSPENDED',
-    statusName: 'Suspendido',
-    contractType: 'Residencial',
-  },
-  {
-    address: 'Calle Comercio, Local 12, Centro Comercial Plaza Mayor',
-    installationDate: '2023-07-01',
-    napBox: 'NAP-004',
-    number: 60895,
-    plan: 'Plan Ultra 500MB',
-    speedPlan: '500 Mbps',
-    statusCode: 'ACTIVE',
-    statusName: 'Activo',
-    contractType: 'Comercial',
-  },
-];
+import type { Department } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
+import type { Issue } from '@module-ticket/infrastructure/services/get-tickets-issues.service';
 
 const createTicketFormSchema = z.object({
   contractId: z.string().min(1, 'El contrato es requerido'),
@@ -99,6 +54,8 @@ export const useChatCreateTicketModal = ({
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
   const [selectedClientName, setSelectedClientName] = useState<string>('');
   const [selectedContractId, setSelectedContractId] = useState<number | null>(null);
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('');
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
 
   const {
     control,
@@ -113,23 +70,34 @@ export const useChatCreateTicketModal = ({
     reValidateMode: 'onSubmit',
   });
 
-  // TODO: Descomentar cuando se defina la integración con el endpoint
-  // Fetch contracts when a client is selected
-  // const { data: contractsData, isLoading: isLoadingContracts } = useQuery({
-  //   queryKey: ['client-contracts', selectedClientId],
-  //   queryFn: async () => {
-  //     if (!selectedClientId) return { contracts: [] };
-  //     return await getContactContractsService({
-  //       contactId: selectedClientId,
-  //       limit: 20,
-  //     });
-  //   },
-  //   enabled: !!selectedClientId,
-  // });
+  // Fetch departments
+  const { data: departmentsData, isLoading: isLoadingDepartments } = useQuery({
+    queryKey: ['tickets-departments'],
+    queryFn: getTicketsDepartmentsService,
+  });
 
-  // Mock: Simular carga de contratos
-  const contractsData = selectedClientId ? { contracts: MOCK_CONTRACTS } : { contracts: [] };
-  const isLoadingContracts = false;
+  // Fetch issues based on selected department
+  const { data: issuesData, isLoading: isLoadingIssues } = useQuery({
+    queryKey: ['tickets-issues', selectedDepartment],
+    queryFn: async () => {
+      if (!selectedDepartment) return [];
+      return await getTicketsIssuesService({ department: selectedDepartment });
+    },
+    enabled: !!selectedDepartment,
+  });
+
+  // Fetch contracts when a client is selected
+  const { data: contractsData, isLoading: isLoadingContracts } = useQuery({
+    queryKey: ['client-contracts', selectedClientId],
+    queryFn: async () => {
+      if (!selectedClientId) return { contracts: [] };
+      return await getContactContractsService({
+        contactId: selectedClientId,
+        limit: 20,
+      });
+    },
+    enabled: !!selectedClientId,
+  });
 
   const handleClientSelect = (clientId: string, clientName: string) => {
     setSelectedClientId(clientId || null);
@@ -141,30 +109,42 @@ export const useChatCreateTicketModal = ({
     setSelectedContractId(contractId);
   };
 
-   const { mutate: createTicket, isPending } = useMutation({
-  //     mutationFn: async (data: CreateTicketFormData) => {
-  //     const request: CreateTicketRequest = {
-  //       contactId: activeContact?.id ?? '',
-  //       contractId: Number(data.contractId),
-  //       description: data.description,
-  //       issue: data.issue,
-  //     };
-  //     return await CreateTicketCommand(request);
-    mutationFn: (data: CreateTicketFormData) => {
-      // Simulación de POST request para pruebas
+  const handleDepartmentChange = (departmentId: string) => {
+    setSelectedDepartment(departmentId);
+    setValue('issue', '');
+  };
+
+  const handleImageSelect = (files: FileList | null) => {
+    if (!files) return;
+    const newImages = Array.from(files).filter(file => file.type.startsWith('image/'));
+    setSelectedImages(prev => [...prev, ...newImages]);
+  };
+
+  const handleRemoveImage = (index: number) => {
+    setSelectedImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const { mutate: createTicket, isPending } = useMutation({
+    mutationFn: async (data: CreateTicketFormData) => {
+      const request: CreateTicketRequest = {
+        contactId: activeContact?.id ?? '',
+        contractId: Number(data.contractId),
+        description: data.description,
+        issue: data.issue,
+        images: selectedImages.length > 0 ? selectedImages : undefined,
+      };
+      
       console.log('Creating ticket with data:', {
         ...data,
+        request,
         clientId: selectedClientId,
         clientName: selectedClientName,
         contractId: selectedContractId,
+        images: selectedImages,
+        imageCount: selectedImages.length,
       });
-
-      // Simular delay de red (1.5 segundos)
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ success: true, ticketId: Math.floor(Math.random() * 10000) });
-        }, 1500);
-      });
+      
+      return await CreateTicketCommand(request);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -195,22 +175,34 @@ export const useChatCreateTicketModal = ({
     setSelectedClientId(null);
     setSelectedClientName('');
     setSelectedContractId(null);
+    setSelectedDepartment('');
+    setSelectedImages([]);
     onClose();
   };
 
   return {
     contracts: contractsData?.contracts ?? [],
     control,
+    departments: departmentsData ?? [],
     errors,
     handleClientSelect,
     handleClose,
     handleContractSelect,
+    handleDepartmentChange,
+    handleImageSelect,
+    handleRemoveImage,
     isPending,
     isLoadingContracts,
+    isLoadingDepartments,
+    isLoadingIssues,
     isSuccess,
+    issues: issuesData ?? [],
     onSubmit,
     selectedClientName,
     selectedContractId,
+    selectedDepartment,
+    selectedImages,
     setValue,
   };
 };
+

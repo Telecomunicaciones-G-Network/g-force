@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 export interface ChatDetailsTabContentLayoutProps extends PropsWithChildren {
-  title?: string;
+  title?: string | ReactNode;
 }

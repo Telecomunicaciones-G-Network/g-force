@@ -17,7 +17,7 @@ export class GetContactContractsMapper {
     };
   }
 
-  public static mapFromArray(input: GetContactContractsResult): ContractValues {
+  public static mapFromArray(input: GetContactContractsResult): ContractValues & { client_type_name: string } {
     return {
       address: input?.address,
       installationDate: input?.installation_date,
@@ -27,6 +27,7 @@ export class GetContactContractsMapper {
       speedPlan: input?.speed_plan,
       statusCode: input?.status_code,
       statusName: input?.status_name,
+      client_type_name: input?.client_type_name,
     };
   }
 }
