@@ -19,4 +19,5 @@ export const socketEventsDictionary = {
   NEW_MESSAGE_SENT: 'new_message_sent',
   OUTGOING_MESSAGE: 'outgoing_message',
   REACTION_ADDED: 'reaction_added',
+  REACTION_REMOVED: 'reaction_removed',
 } as const satisfies Record<string, string>;

@@ -68,6 +68,7 @@ TODO: Doc all about this project
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
+- src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
 - src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
@@ -79,6 +80,7 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
 - src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
+- src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
 
 ## Login action
 
