@@ -3,8 +3,7 @@
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 import { useMediaQuery } from '@hook/use-media-query.hook';
 
-import { useOnAgentStatusChanged } from '@ui-chat/hooks/on-agent-status-changed.hook';
-import { useOnConnected } from '@ui-chat/hooks/on-connected.hook';
+import { useBaseSocketEvents } from '@ui-chat/hooks/base-socket-events.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -17,8 +16,7 @@ export const useChatContainer = () => {
     initializeWithValue: false,
   });
 
-  useOnConnected();
-  useOnAgentStatusChanged();
+  useBaseSocketEvents();
 
   return {
     activeContact,

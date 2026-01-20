@@ -8,14 +8,15 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
 
 import { OnConversationFinishedMapper } from '@module-chat/infrastructure/mappers/on-conversation-finished.mapper';
 
-import { ChatModes } from '../enums/chat-modes.enum';
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
-import { useContactStore } from '../stores/contact-store/contact.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
  * On conversation finished hook
  *
  * This hook listens to the on `conversation_finished` socket event:
+ * When the current conversation with a contact is finished. Contains the ID of the contact and its current conversation, and the data of the agent that marked the conversation as finished.
  * - Leave conversation if active contact is equal to contact on socket event when a conversation is finished.
  * - Change chat mode to list if active contact is the same that contact on socket event
  * [Contact event]
@@ -31,11 +32,17 @@ export const useOnConversationFinished = () => {
     (data: OnConversationFinishedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      if (!parseResponse?.contact_id || !parseResponse?.conversation_id) return;
+      if (!parseResponse?.contact_id || !parseResponse?.conversation_id)
+        // TODO: Set alert for error
+        // TODO: Register error
+        return;
 
       const response = OnConversationFinishedMapper.mapFrom(parseResponse);
 
-      if (!response?.contactId || !response?.conversationId) return;
+      if (!response?.contactId || !response?.conversationId)
+        // TODO: Set alert for error
+        // TODO: Register error
+        return;
 
       if (activeContact?.id === response?.contactId) {
         setActiveContact(null);

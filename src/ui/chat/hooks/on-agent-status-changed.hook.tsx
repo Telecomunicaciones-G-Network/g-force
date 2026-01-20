@@ -8,8 +8,9 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
  * On agent status changed hook
  *
  * This hook listens to the on `agent_status_changed` socket event:
- * When the agent changes status from any session. Emitted only to the agent that changed status to update its status indicator. Contains only the new status.
- * [Agent event]
+ * When the agent changes status from any session. Emitted only to the agent that changed status to update its status indicator.
+ * Contains only the new status.
+ * [Base event]
  */
 export const useOnAgentStatusChanged = () => {
   // TODO: Type the event

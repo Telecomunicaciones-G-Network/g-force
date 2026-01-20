@@ -14,7 +14,8 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  * On contact finished hook
  *
  * This hook listens to the on `contact_finished` socket event:
- * When a contact conversation is finished. Emitted to the agent that finished the conversation. Contains the ID of the contact and their current conversation.
+ * When a contact conversation is finished. Emitted to the agent that finished the conversation.
+ * Contains the ID of the contact and their current conversation.
  * - Deletes the contact from the store when a contact conversation is finished.
  * [Agent event]
  */

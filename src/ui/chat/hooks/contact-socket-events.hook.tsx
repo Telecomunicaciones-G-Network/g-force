@@ -2,6 +2,7 @@
 
 import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on_conversation_assignment_updated.hook';
 import { useOnConversationCreated } from '@ui-chat/hooks/on_conversation_created.hook';
+import { useOnConversationFinished } from '@ui-chat/hooks/on-conversation-finished.hook';
 import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
 import { useOnMessageStatusChanged } from '@ui-chat/hooks/on-message-status-changed.hook';
 import { useOnOutgoingMessage } from '@ui-chat/hooks/on-outgoing-message.hook';
@@ -32,6 +33,7 @@ export const useContactSocketEvents = ({
   // TODO: Find out the way to handle disabled chat without passing by props
   useOnConversationCreated();
   useOnConversationAssignmentUpdated();
+  useOnConversationFinished();
   useOnIncommingMessage({
     disabledChat,
   });

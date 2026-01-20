@@ -33,6 +33,7 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/on-connected-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-contact-finished-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-conversation-assignment-updated-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-conversation-finished-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-media-status-changed-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-message-status-changed-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-new-message-received-response.interface.ts ✅
@@ -52,6 +53,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-conversation-finished-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-incomming-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-media-status-changed-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-message-status-changed-response.dto.ts ✅
@@ -61,6 +63,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-conversation-finished.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-media-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-message-status-changed.mapper.ts ✅
@@ -74,6 +77,8 @@ TODO: Doc all about this project
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
+- src/ui/chat/hooks/agent-socket-events.hooks.tsx ✅
+- src/ui/chat/hooks/base-socket-events.hook.tsx ✅
 - src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
 - src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
@@ -81,6 +86,7 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
 - src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx ⚠️
 - src/ui/chat/hooks/on_conversation_created.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-finished.hook.tsx ⚠️
 - src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-media-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-message-status-changed.hook.tsx ⚠️
