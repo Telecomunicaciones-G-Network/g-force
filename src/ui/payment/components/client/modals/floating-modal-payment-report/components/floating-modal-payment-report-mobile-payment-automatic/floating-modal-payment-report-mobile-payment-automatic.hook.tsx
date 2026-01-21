@@ -91,13 +91,18 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
   };
 
   const validateMobilePaymentWithImage = () => {
-    if (
+    /*if (
       !file ||
       !invoice?.bankAssociatedData?.bankCode ||
       !invoice?.contractId ||
       !invoice?.id
     )
-      return;
+      // TODO: Show alert on error
+      // TODO: Register error
+      return;*/
+
+    // TODO: Delete this line after recovery the before block
+    if (!file) return;
 
     validateMobilePayment({
       bank_destination_code: invoice?.bankAssociatedData?.bankCode,

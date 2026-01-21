@@ -80,7 +80,7 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
   const onSubmit = (
     data: FloatingModalPaymentReportMobilePaymentManualFormData,
   ) => {
-    if (
+    /*if (
       !data?.amount ||
       !data?.phoneNumber ||
       !data?.bankReferenceNumber ||
@@ -89,7 +89,9 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
       !invoice?.contractId ||
       !invoice?.id
     )
-      return;
+      // TODO: Show alert on error
+      // TODO: Register error
+      return;*/
 
     validateMobilePayment({
       amount: +data?.amount,

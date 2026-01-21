@@ -143,7 +143,7 @@ export const useFloatingModalPaymentReportFastDebit = ({
   };
 
   const onSubmit = (data: FloatingModalPaymentReportFastDebitFormData) => {
-    if (
+    /* if (
       !data?.amount ||
       !data?.bankCode ||
       !data?.phoneNumber ||
@@ -152,7 +152,9 @@ export const useFloatingModalPaymentReportFastDebit = ({
       !data?.clientName ||
       !invoice?.id
     )
-      return;
+      // TODO: Show alert on error
+      // TODO: Register error
+      return; */
 
     setStoreFormData(data);
     requestFastDebitOTP({
@@ -166,7 +168,7 @@ export const useFloatingModalPaymentReportFastDebit = ({
   };
 
   const validatePayment = () => {
-    if (
+    /*if (
       !storeFormData?.amount ||
       !storeFormData?.bankCode ||
       !storeFormData?.phoneNumber ||
@@ -176,16 +178,21 @@ export const useFloatingModalPaymentReportFastDebit = ({
       !invoice?.id ||
       !otp
     )
-      return;
+      // TODO: Show alert on error
+      // TODO: Register error
+      return;*/
+
+    // TODO: Delete this line when fix the if before block
+    if (!storeFormData?.amount) return;
 
     processFastDebitPayment({
       otpCode: otp,
       invoiceId: invoice?.id,
       amount: +storeFormData?.amount,
-      bankCode: storeFormData?.bankCode,
-      phoneNumber: storeFormData?.phoneNumber,
+      bankCode: storeFormData?.bankCode ?? '',
+      phoneNumber: storeFormData?.phoneNumber ?? '',
       customerDocument: `${storeFormData?.documentType}${storeFormData?.documentNumber}`,
-      customerName: storeFormData?.clientName,
+      customerName: storeFormData?.clientName ?? '',
     });
   };
 
