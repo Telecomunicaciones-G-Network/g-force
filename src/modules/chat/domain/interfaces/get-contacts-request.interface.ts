@@ -5,6 +5,7 @@ export interface GetContactsRequest {
   cursor?: string;
   limit?: string;
   platform?: ContactPlatform;
+  query?: string;
   search?: string;
   status?: ConversationStatus;
 }

@@ -19,9 +19,6 @@ import { ClientSearchDropdown } from './components/client-search-dropdown';
 import { ContractCard } from './components/contract-card';
 
 import styles from './chat-create-ticket-modal.module.css';
-import { useToast } from '@/src/packages/gnetwork-ui/components/organisms/toasts/toast/toast.hook';
-import { toast } from 'sonner';
-
 export const ChatCreateTicketModal = ({
   isOpen,
   onClose,
@@ -29,9 +26,7 @@ export const ChatCreateTicketModal = ({
   const [showValidationError, setShowValidationError] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const toastIdRef = useRef<string | number | null>(null);
   
-  const { showToast } = useToast();
   
   const {
     contracts,
@@ -45,7 +40,6 @@ export const ChatCreateTicketModal = ({
     handleImageSelect,
     handleRemoveImage,
     isPending,
-    isLoadingContracts,
     isLoadingDepartments,
     isLoadingIssues,
     isSuccess,
@@ -55,7 +49,6 @@ export const ChatCreateTicketModal = ({
     selectedContractId,
     selectedDepartment,
     selectedImages,
-    setValue,
   } = useChatCreateTicketModal({ onClose });
 
   // Ocultar alerta de validación cuando se selecciona cliente o contrato
@@ -122,27 +115,20 @@ export const ChatCreateTicketModal = ({
                   Selecciona un contrato
                 </Text>
                 <div className={styles.base__contracts_scroll}>
-                  {contracts.map((contract: any) => (
+                  {contracts.map((contract) => (
                     <ContractCard
-                      key={contract.number}
+                      key={contract.contract_number}
                       address={contract.address}
                       client_type_name={contract.client_type_name || 'Residencial'}
-                      isSelected={selectedContractId === contract.number}
-                      number={contract.number}
-                      onClick={() => handleContractSelect(contract.number)}
+                      isSelected={selectedContractId === contract.contract_number}
+                      number={contract.contract_number}
+                      onClick={() => handleContractSelect(contract.contract_number)}
                     />
                   ))}
                 </div>
               </div>
             )}
 
-            {isLoadingContracts && (
-              <div className={styles.base__loading}>
-                <Text as="span" level="small" scheme="label">
-                  Cargando contratos...
-                </Text>
-              </div>
-            )}
             {/* alerta de validacion  */}
             {showValidationError && (
               <div className="w-full bg-red-50 rounded-xl p-5 flex gap-4 items-start">
