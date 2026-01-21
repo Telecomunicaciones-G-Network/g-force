@@ -50,7 +50,9 @@ export const useFloatingModalPaymentReportFastDebit = ({
     control,
     handleSubmit,
   } = useForm<FloatingModalPaymentReportFastDebitFormData>({
-    defaultValues: FLOATING_MODAL_PAYMENT_REPORT_FAST_DEBIT_FORM_DEFAULT_VALUES,
+    defaultValues: FLOATING_MODAL_PAYMENT_REPORT_FAST_DEBIT_FORM_DEFAULT_VALUES(
+      invoice?.amountToPayBs?.amount.toFixed(2).replace('.', ','),
+    ),
     mode: 'onSubmit',
     resolver: zodResolver(floatingModalPaymentReportFastDebitFormDataSchema),
     reValidateMode: 'onSubmit',

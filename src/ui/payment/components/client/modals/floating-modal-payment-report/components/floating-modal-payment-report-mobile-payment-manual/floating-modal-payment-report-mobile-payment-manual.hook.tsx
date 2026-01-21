@@ -39,7 +39,9 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
     handleSubmit,
   } = useForm<FloatingModalPaymentReportMobilePaymentManualFormData>({
     defaultValues:
-      FLOATING_MODAL_PAYMENT_REPORT_MOBILE_PAYMENT_MANUAL_FORM_DEFAULT_VALUES,
+      FLOATING_MODAL_PAYMENT_REPORT_MOBILE_PAYMENT_MANUAL_FORM_DEFAULT_VALUES(
+        invoice?.amountToPayBs?.amount.toFixed(2).replace('.', ','),
+      ),
     mode: 'onSubmit',
     resolver: zodResolver(
       floatingModalPaymentReportMobilePaymentManualFormDataSchema,
