@@ -18,9 +18,7 @@ export const useOnAgentStatusChanged = () => {
     socketEventsDictionary.AGENT_STATUS_CHANGED,
     // TODO: Type the data
     (data: unknown) => {
-      const parseResponse = JSON.parse(data as unknown as string);
-
-      console.log(parseResponse);
+      const _parseResponse = JSON.parse(data as unknown as string);
 
       // TODO: Implement the logic to update the agent status
     },

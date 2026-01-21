@@ -56,6 +56,7 @@ export const useOnNewMessageReceived = () => {
       // TODO: Set alert for error
       // TODO: Register error
 
+      // TODO: Simplify this logic both if blocks. Use only one
       if (response?.contactId === activeContact?.id) {
         addOneUnreadMessageToContact({
           contactId: response?.contactId,

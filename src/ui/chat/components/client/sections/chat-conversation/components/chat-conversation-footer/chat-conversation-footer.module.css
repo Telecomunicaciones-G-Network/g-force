@@ -1,14 +1,28 @@
 .base {
-  align-items: flex-end;
   display: flex;
-  min-height: 86px;
-  padding: 0 24px 29px 24px;
+  flex-direction: column;
+  padding: 8px 24px 0 24px;
   position: relative;
+  width: 100%;
+}
+
+.base__collapsible {
+  align-items: center;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  min-height: 24px;
+  padding-top: 5px;
+}
+
+.base__container {
+  display: flex;
+  width: 100%;
 }
 
 .base__form {
   display: flex;
   gap: 8px;
-  width: 100%;
   position: relative;
+  width: 100%;
 }

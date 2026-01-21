@@ -20,10 +20,10 @@ export const useOnConversationCreated = () => {
     socketEventsDictionary.CONVERSATION_CREATED,
     // TODO: Type the data
     (data: unknown) => {
-      const parseResponse = JSON.parse(data as unknown as string);
+      const _parseResponse = JSON.parse(data as unknown as string);
 
-      console.log(parseResponse);
       // TODO: Implement the logic to update the conversation created
+      // TODO: If a new conversation is created add a new message event on chat conversation store
     },
   );
 };

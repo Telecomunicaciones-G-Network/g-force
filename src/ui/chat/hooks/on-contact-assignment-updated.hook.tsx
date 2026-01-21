@@ -24,15 +24,12 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  * When the team and/or agent assigned to a contact changes. Emitted to all involved and dis-involved agents.
  * Contains the data of the assigned team and agent and the IDs of the contact and their current conversation.
  * - Updates the contact list if contact does not exists on store.
- * - Updates the contact conversation status to Assigned if contact exists but conversation sttus is different from ASSIGNED STATUS.
+ * - Updates the contact conversation information, status, agent and team.
  * [Agent event]
  */
 export const useOnContactAssignmentUpdated = () => {
   const existContactOnStore = useContactStore(
     (state) => state.existContactOnStore,
-  );
-  const hasContactConversationAssigned = useContactStore(
-    (state) => state.hasContactConversationAssigned,
   );
   const updateContactLatestConversation = useContactStore(
     (state) => state.updateContactLatestConversation,
@@ -71,37 +68,32 @@ export const useOnContactAssignmentUpdated = () => {
       const existContactOnStoreValidation = existContactOnStore(
         response?.contactId,
       );
-      const hasContactConversationAssignedValidation =
-        hasContactConversationAssigned(response?.contactId);
 
-      if (
-        existContactOnStoreValidation &&
-        hasContactConversationAssignedValidation
-      )
-        return;
-
-      if (
-        existContactOnStoreValidation &&
-        !hasContactConversationAssignedValidation
-      ) {
+      if (existContactOnStoreValidation) {
         updateContactLatestConversation(response?.contactId, {
-          agent: {
-            id: response?.agent?.id,
-            name: response?.agent?.name,
-          },
-          status: ConversationStatus.ASSIGNED,
-          team: {
-            id: response?.team?.id,
-            name: response?.team?.name,
-          },
+          agent: response?.agent
+            ? {
+                id: response?.agent?.id,
+                name: response?.agent?.name,
+              }
+            : null,
+          status: response?.agent
+            ? ConversationStatus.ASSIGNED
+            : ConversationStatus.WAITING,
+          team: response?.team
+            ? {
+                id: response?.team?.id,
+                name: response?.team?.name,
+              }
+            : null,
         });
-
-        const sounder = new Sounder(chatSoundDictionary.contactAssignment);
-
-        sounder.playAudio();
 
         return;
       }
+
+      const sounder = new Sounder(chatSoundDictionary.contactAssignment);
+
+      sounder.playAudio();
 
       await revalidateChatContactsAction();
     },

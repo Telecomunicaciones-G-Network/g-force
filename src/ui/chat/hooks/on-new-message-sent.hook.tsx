@@ -1,12 +1,15 @@
 'use client';
 
-import type { OnNewMessageSentResponseDTO } from '@/src/modules/chat/infrastructure/dtos';
+import type { OnNewMessageSentResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
+import { Sounder } from '@sounder/classes/sounder.class';
 
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 import { OnNewMessageSentMapper } from '@module-chat/infrastructure/mappers/on-new-message-sent.mapper';
+
+import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionary';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -55,11 +58,17 @@ export const useOnNewMessageSent = () => {
         // TODO: Register error
         return;
 
+      // TODO: Validate if we need to apply this or not and sound
       addOneUnreadMessageToContact({
         contactId: response?.contactId,
         lastMessage: response?.messageTextPreview,
         messageType: response?.messageType,
       });
+
+      const sounder = new Sounder(chatSoundDictionary.whatsappNotification);
+
+      sounder.playAudio();
+
       sortContactsByLatestMessage();
     },
   );
