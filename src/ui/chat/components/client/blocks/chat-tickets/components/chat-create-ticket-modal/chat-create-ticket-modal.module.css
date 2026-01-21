@@ -83,35 +83,35 @@
 }
 
 .base__row :global([role="combobox"]) {
-  border: 1px solid var(--neutral-200) !important;
-  border-radius: 8px !important;
-  background-color: transparent !important;
-  min-height: 44px !important;
+  border: 1px solid var(--neutral-200);
+  border-radius: 8px;
+  background-color: transparent;
+  min-height: 44px;
 }
 
 .base__row :global([role="combobox"]) > div {
-  background-color: transparent !important;
-  padding: 1px 12px !important;
+  background-color: transparent;
+  padding: 1px 12px;
 }
 
 .base__row :global([role="combobox"]) .select-value,
 .base__row :global([role="combobox"]) span {
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  max-width: 100% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .base__row :global([role="option"]) span {
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  display: block !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
 .base__row :global([role="combobox"]:focus) {
-  border-color: var(--primary-500) !important;
-  outline: none !important;
+  border-color: var(--primary-500);
+  outline: none;
 }
 
 .base__footer {
@@ -121,10 +121,10 @@
 }
 
 :global(.gnetwork-select-trigger) {
-  border: 1px solid var(--neutral-200) !important;
-  border-radius: 8px !important;
-  height: 44px !important;
-  box-shadow: none !important;
+  border: 1px solid var(--neutral-200) ;
+  border-radius: 8px ;
+  height: 44px ;
+  box-shadow: none ;
 }
 
 .base__textarea_container {
