@@ -19,5 +19,6 @@ export const parseGetAvailableReportPaymentMethodsToSelectOptions = (
       label: paymentMethodsHumanizedDictionary[key as PaymentType],
       value: key,
     }))
+    .filter((item) => !item.disabled)
     .sort((a, b) => a.label.localeCompare(b.label));
 };
