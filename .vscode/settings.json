@@ -71,6 +71,8 @@
     "file-input": "react-components",
     "floating-modal-payment-report-controller": "react-components",
     "floating-modal-payment-report-mobile-payment": "react-components",
+    "forms": "custom",
+    "internal-message-form": "react-components",
     "mappers": "mappings",
     "modal-close": "react-components",
     "modal-container": "react-components",

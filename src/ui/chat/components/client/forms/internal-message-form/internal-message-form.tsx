@@ -11,6 +11,11 @@ import { useInternalMessageForm } from './internal-message-form.hook';
 
 import styles from './internal-message-form.module.css';
 
+/**
+ * Internal Message Form component.
+ *
+ * @property {boolean} [disabledForm] - Whether the form is disabled.
+ */
 export const InternalMessageForm = ({
   // TODO: I found out the way to get rid of disabledForm props transfer
   disabledForm = false,
@@ -38,6 +43,7 @@ export const InternalMessageForm = ({
         className="px-2"
         color="black"
         disabled={disabledForm}
+        // TODO: Apply loading state while form is submitting
         type="submit"
       >
         {/* TODO: Icon must be the same as design */}

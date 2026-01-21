@@ -102,6 +102,7 @@ TODO: Doc all about this project
 - src/ui/core/enums/env-modes.enum.ts ✅
 
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
+- src/ui/chat/components/client/forms/internal-message-form~ ⚠️
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
@@ -109,6 +110,7 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/agent-socket-events.hooks.tsx ✅
 - src/ui/chat/hooks/base-socket-events.hook.tsx ✅
 - src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
+- src/ui/chat/hooks/emit-send-internal-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
