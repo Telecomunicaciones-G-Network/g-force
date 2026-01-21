@@ -121,10 +121,10 @@
 }
 
 :global(.gnetwork-select-trigger) {
-  border: 1px solid #E5E7EB !important; /* Gris muy claro de Figma */
+  border: 1px solid var(--neutral-200) !important;
   border-radius: 8px !important;
   height: 44px !important;
-  box-shadow: none !important; /* Quitar sombras pesadas */
+  box-shadow: none !important;
 }
 
 .base__textarea_container {

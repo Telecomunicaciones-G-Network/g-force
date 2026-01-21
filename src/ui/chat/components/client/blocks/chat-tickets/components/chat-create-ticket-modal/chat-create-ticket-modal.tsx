@@ -19,6 +19,8 @@ import { ClientSearchDropdown } from './components/client-search-dropdown';
 import { ContractCard } from './components/contract-card';
 
 import styles from './chat-create-ticket-modal.module.css';
+import { useToast } from '@/src/packages/gnetwork-ui/components/organisms/toasts/toast/toast.hook';
+import { toast } from 'sonner';
 
 export const ChatCreateTicketModal = ({
   isOpen,
@@ -26,6 +28,10 @@ export const ChatCreateTicketModal = ({
 }: Readonly<ChatCreateTicketModalProps>) => {
   const [showValidationError, setShowValidationError] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const toastIdRef = useRef<string | number | null>(null);
+  
+  const { showToast } = useToast();
   
   const {
     contracts,
@@ -214,7 +220,7 @@ export const ChatCreateTicketModal = ({
             </div>
 
             <div className={styles.base__textarea_container}>
-              <Text as="label" className="text-black" level="small" scheme="label">
+              <Text as="label" className="text-neutral" level="small" scheme="label">
                 Descripción del asunto
               </Text>
               <div className={styles.base__textarea_wrapper}>
@@ -247,7 +253,7 @@ export const ChatCreateTicketModal = ({
                   className={styles.base__attach_button}
                   onClick={() => fileInputRef.current?.click()}
                 >
-                  <IoAttach className="size-5" />
+                  <IoAttach className="size-6" />
                 </button>
               </div>
               {errors.description?.message && (

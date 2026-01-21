@@ -20,14 +20,25 @@
 
 .base__icon {
   position: absolute;
-  left: 12px;
-  color: var(--neutral-400);
-  pointer-events: none;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--neutral-700);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.base__icon:hover {
+  color: var(--neutral-950);
 }
 
 .base__input {
   width: 100%;
-  padding: 10px 12px 10px 40px;
+  padding: 10px 40px 10px 12px;
   border: none;
   border-radius: 8px;
   background-color: transparent;
