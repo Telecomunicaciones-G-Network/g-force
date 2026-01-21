@@ -91,18 +91,20 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
   };
 
   const validateMobilePaymentWithImage = () => {
-    /*if (
+    if (
       !file ||
       !invoice?.bankAssociatedData?.bankCode ||
       !invoice?.contractId ||
       !invoice?.id
-    )
-      // TODO: Show alert on error
+    ) {
       // TODO: Register error
-      return;*/
+      showToast('Error al validar el pago móvil', {
+        id: 'validate-mobile-payment-with-image-error',
+        position: 'top-right',
+      });
 
-    // TODO: Delete this line after recovery the before block
-    if (!file) return;
+      return;
+    }
 
     validateMobilePayment({
       bank_destination_code: invoice?.bankAssociatedData?.bankCode,

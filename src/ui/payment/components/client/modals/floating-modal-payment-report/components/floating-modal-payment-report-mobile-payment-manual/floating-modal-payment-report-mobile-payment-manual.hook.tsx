@@ -80,7 +80,7 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
   const onSubmit = (
     data: FloatingModalPaymentReportMobilePaymentManualFormData,
   ) => {
-    /*if (
+    if (
       !data?.amount ||
       !data?.phoneNumber ||
       !data?.bankReferenceNumber ||
@@ -88,10 +88,15 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
       !invoice?.bankAssociatedData?.bankCode ||
       !invoice?.contractId ||
       !invoice?.id
-    )
-      // TODO: Show alert on error
+    ) {
+      showToast('Error al procesar el pago', {
+        id: 'process-mobile-payment-manual-error',
+        position: 'top-right',
+      });
+
       // TODO: Register error
-      return;*/
+      return;
+    }
 
     validateMobilePayment({
       amount: +data?.amount,
