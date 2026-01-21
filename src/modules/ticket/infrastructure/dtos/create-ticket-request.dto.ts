@@ -1,6 +1,7 @@
 export interface CreateTicketRequestDTO {
-  contact_id: string;
+  client_id: number;
+  assigned_department_id: number;
   contract_id: number;
+  issue_id: number;
   description: string;
-  issue: string;
 }

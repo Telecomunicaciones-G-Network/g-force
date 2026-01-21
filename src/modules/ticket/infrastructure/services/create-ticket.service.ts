@@ -22,7 +22,7 @@ export const createTicketService = async (
     CreateTicketResponseDTO
   >(TICKET_RESOURCES.CREATE_TICKET, requestDto);
 
-  if (!response?.result || !response?.success) {
+  if (!response?.results || !response?.success) {
     throw new BaseException({
       message: 'Error al crear el ticket',
       status: response?.status,
