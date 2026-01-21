@@ -2,7 +2,7 @@
 
 import type { ChangeEvent, FormEvent } from 'react';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useCollapsibleButton } from '@gnetwork-ui/components/molecules/buttons/collapsible-button/collapsible-button.hook';
 
@@ -24,6 +24,15 @@ export const useChatConversationFooter = () => {
 
   const setSendMode = useChatStore((state) => state.setSendMode);
 
+  const toggleInternalMessageMode = useCallback(() => {
+    toggleCollapse();
+    setSendMode(
+      sendMode === ChatSendModes.INTERNAL
+        ? ChatSendModes.TEXT
+        : ChatSendModes.INTERNAL,
+    );
+  }, [sendMode, toggleCollapse, setSendMode]);
+
   const changeMessage = (event: ChangeEvent<HTMLInputElement>) =>
     setMessage(event?.target?.value);
 
@@ -40,14 +49,27 @@ export const useChatConversationFooter = () => {
     });
   };
 
-  const toggleInternalMessageMode = () => {
-    toggleCollapse();
-    setSendMode(
-      sendMode === ChatSendModes.INTERNAL
-        ? ChatSendModes.TEXT
-        : ChatSendModes.INTERNAL,
-    );
-  };
+  // TODO: I must to create a custom package or hook to handle keyboard shortcuts.
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const isShortcut =
+        (event.metaKey || event.ctrlKey) &&
+        event.key === 'i' &&
+        !event.shiftKey &&
+        !event.altKey;
+
+      if (isShortcut) {
+        event.preventDefault();
+        toggleInternalMessageMode();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [toggleInternalMessageMode]);
 
   return {
     changeMessage,

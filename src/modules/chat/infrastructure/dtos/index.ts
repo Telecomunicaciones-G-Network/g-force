@@ -2,6 +2,8 @@ export type { EmitMarkMessageAsReadRequestDTO } from './emit-mark-message-as-rea
 export type { EmitMarkMessageAsReadResponseDTO } from './emit-mark-message-as-read-response.dto';
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';
 export type { EmitSendImageMessageResponseDTO } from './emit-send-image-message-response.dto';
+export type { EmitSendInternalMessageRequestDTO } from './emit-send-internal-message-request.dto';
+export type { EmitSendInternalMessageResponseDTO } from './emit-send-internal-message-response.dto';
 export type { EmitSendTextMessageRequestDTO } from './emit-send-text-message-request.dto';
 export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-response.dto';
 export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';

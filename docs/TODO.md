@@ -41,6 +41,8 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/agent.interface.ts ✅
 - src/modules/chat/domain/interfaces/contact.interface.ts ✅
 - src/modules/chat/domain/interfaces/conversation.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-send-internal-message-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-send-internal-message-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/media.interface.ts ✅
 - src/modules/chat/domain/interfaces/message.interface.ts ✅
 - src/modules/chat/domain/interfaces/message-contact.interface.ts ✅
@@ -67,7 +69,10 @@ TODO: Doc all about this project
 - src/modules/chat/domain/types/message-type.type.ts ✅
 - src/modules/chat/domain/types/team-codename.type.ts ✅
 - src/modules/chat/infrastructure/dictionaries/chat-tags.dictionary.ts ✅
+- src/modules/chat/infrastructure/dictionaries/socket-emissions.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/socket-events.dictionary.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-send-internal-message-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-send-internal-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
@@ -78,6 +83,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/mappers/emit-send-internal-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
@@ -96,6 +102,7 @@ TODO: Doc all about this project
 - src/ui/core/enums/env-modes.enum.ts ✅
 
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
+- src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
 - src/ui/chat/enums/chat-send-mode.enum.ts ✅

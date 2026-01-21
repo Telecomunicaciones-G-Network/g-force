@@ -7,6 +7,7 @@ import { getBubbleClassNames } from './bubble.style';
 export const Bubble = ({
   className = '',
   children,
+  customIconClassName = '',
   mode = 'unknown',
   status = 'none',
   ref,
@@ -17,7 +18,10 @@ export const Bubble = ({
   return (
     <div className={classes} ref={ref} {...rest}>
       {children}
-      <BubbleIconController status={status} />
+      <BubbleIconController
+        customIconClassName={customIconClassName}
+        status={status}
+      />
     </div>
   );
 };

@@ -8,15 +8,18 @@ import { bubbleModes } from './variants/bubble-mode.variant';
 
 import styles from './bubble.module.css';
 
-export const bubbleVariants = cva([styles.base, 'w-fit'], {
-  variants: {
-    mode: bubbleModes,
+export const bubbleVariants = cva(
+  [styles.base, 'font-normal leading-[120%] tracking-0 text-sm w-fit'],
+  {
+    variants: {
+      mode: bubbleModes,
+    },
+    compoundVariants: [],
+    defaultVariants: {
+      mode: 'unknown',
+    },
   },
-  compoundVariants: [],
-  defaultVariants: {
-    mode: 'unknown',
-  },
-});
+);
 
 export const getBubbleClassNames = ({
   className = '',

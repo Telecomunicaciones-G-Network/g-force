@@ -11,7 +11,6 @@ import styles from './collapsible-button.module.css';
 /**
  * Collapsible Button component.
  *
- * @property {Object} props - Props for CollapsibleButton.
  * @property {string} [props.className] - Additional class names to apply to the button.
  * @property {boolean} [props.isCollapsed] - Whether the button is collapsed.
  * @property {React.Ref<HTMLButtonElement>} [props.ref] - Ref to access the button element.

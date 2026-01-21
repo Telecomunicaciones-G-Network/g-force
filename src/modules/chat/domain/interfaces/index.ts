@@ -5,6 +5,8 @@ export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
 export type { EmitSendImageMessageResponse } from './emit-send-image-message-response.interface';
+export type { EmitSendInternalMessageRequest } from './emit-send-internal-message-request.interface';
+export type { EmitSendInternalMessageResponse } from './emit-send-internal-message-response.interface';
 export type { EmitSendTextMessageRequest } from './emit-send-text-message-request.interface';
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { GetAvailableReportPaymentMethodsResponse } from './get-available-report-payment-methods-response.interface';

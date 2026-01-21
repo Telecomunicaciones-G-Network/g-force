@@ -1,6 +1,7 @@
 export const buttonColors = {
   default:
     'bg-button-background text-button-text border border-solid border-button-border',
+  black: 'bg-chromatic-inverted text-chromatic border-none',
   gray: 'bg-gray text-chromatic-inverted border-none',
   red: 'bg-red-700 text-white border-none',
   transparent: 'bg-transparent text-chromatic-inverted border-none',

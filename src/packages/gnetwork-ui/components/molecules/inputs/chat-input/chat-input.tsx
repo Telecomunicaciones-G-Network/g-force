@@ -6,11 +6,12 @@ import { Input } from '../input';
 
 export const ChatInput = ({
   customLeftIcon,
+  hideLeftIcon = false,
   ...rest
 }: Readonly<ChatInputProps>) => (
   <Input
     leftIcon={
-      customLeftIcon ? (
+      hideLeftIcon ? undefined : customLeftIcon ? (
         customLeftIcon
       ) : (
         <MdAttachFile className="text-neutral-500 size-6" />

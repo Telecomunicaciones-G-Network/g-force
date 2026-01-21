@@ -41,6 +41,7 @@
     "chat-image-message": "react-components",
     "chat-image-viewer-modal": "react-components",
     "chat-input-controller": "react-components",
+    "chat-internal-message": "react-components",
     "chat-list-body": "react-components",
     "chat-list-skeleton": "react-components",
     "chat-message-skeleton": "react-components",

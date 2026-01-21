@@ -4,9 +4,11 @@ import { MdOutlineSmartToy } from 'react-icons/md';
 
 import { Text } from '../../../atoms/texts/text';
 import { Bubble } from '../../../molecules/blocks/bubble';
+import { Tag } from '../../../molecules/tags/tag';
 
 import { BubbleModes } from '../../../molecules/blocks/bubble/enums/bubble-modes.enum';
 import { BubbleStatus } from '../../../molecules/blocks/bubble/enums/bubble-status.enum';
+import { TagColors } from '../../../molecules/tags/tag/enums/tag-colors.enum';
 
 import { cn } from '../../../../utils/cn.util';
 
@@ -17,10 +19,13 @@ export const ChatMessage = ({
   bubbleClassName = '',
   children,
   className = '',
+  customIconClassName = '',
   direction = BubbleModes.UNKNOWN,
   isBot = false,
   ref,
   status = BubbleStatus.NONE,
+  tagColor = TagColors.GRAY,
+  tagLabel = '',
   time = '',
   username = '',
   ...rest
@@ -54,6 +59,14 @@ export const ChatMessage = ({
       {...rest}
     >
       <div className={styles.base__info}>
+        {tagLabel && (
+          <Tag
+            className="font-medium min-h-4 px-2 py-0.5 rounded-[3px] text-xs"
+            color={tagColor}
+          >
+            {tagLabel}
+          </Tag>
+        )}
         {isBot && (
           <MdOutlineSmartToy className="min-h-6 min-w-6 text-foreground size-6" />
         )}
@@ -90,6 +103,7 @@ export const ChatMessage = ({
       </div>
       <Bubble
         className={bubbleClassName}
+        customIconClassName={customIconClassName}
         mode={direction}
         status={direction === 'incoming' ? BubbleStatus.NONE : status}
       >

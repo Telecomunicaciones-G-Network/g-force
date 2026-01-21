@@ -1,6 +1,7 @@
 .base {
   display: flex;
   flex-direction: column;
+  gap: 2px;
   padding: 8px 24px 0 24px;
   position: relative;
   width: 100%;

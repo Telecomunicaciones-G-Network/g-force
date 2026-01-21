@@ -10,4 +10,6 @@ export interface BubbleVariants extends VariantProps<typeof bubbleVariants> {
   status?: BubbleStatus;
 }
 
-export type BubbleProps = ReactDiv & BubbleVariants;
+export interface BubbleProps extends ReactDiv, BubbleVariants {
+  customIconClassName?: string;
+}

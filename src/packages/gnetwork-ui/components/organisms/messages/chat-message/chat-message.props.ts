@@ -3,13 +3,17 @@ import type {
   BubbleStatus,
   BubbleVariants,
 } from '../../../molecules/blocks/bubble';
+import type { TagColor } from '../../../molecules/tags/tag/types';
 
 export interface ChatMessageProps extends ReactDiv {
-  caption: string | null;
   bubbleClassName?: string;
+  caption?: string | null;
+  customIconClassName?: string;
   direction: BubbleVariants['mode'];
   isBot?: boolean;
   status?: BubbleStatus;
+  tagColor?: TagColor;
+  tagLabel?: string;
   time?: string;
   username: string;
 }

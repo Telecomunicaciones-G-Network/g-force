@@ -10,6 +10,8 @@ import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
+import { InternalMessageForm } from '@ui-chat/components/client/forms/internal-message-form';
+
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
 import { ChatConversationFileAttachDropdown } from '../chat-conversation-file-attach-dropdown';
@@ -52,6 +54,7 @@ export const ChatConversationFooter = ({
             disabled={disabledChat || sendMode === ChatSendModes.INTERNAL}
             fullWidth
             id="chat_message_sender"
+            isStatic
             name="text"
             noErrorHandler
             noMessageHandler
@@ -76,7 +79,9 @@ export const ChatConversationFooter = ({
         />
       </div>
       {sendMode === ChatSendModes.INTERNAL && (
-        <div>input de internal message</div>
+        <InternalMessageForm
+          disabledForm={disabledChat || sendMode !== ChatSendModes.INTERNAL}
+        />
       )}
     </div>
   );

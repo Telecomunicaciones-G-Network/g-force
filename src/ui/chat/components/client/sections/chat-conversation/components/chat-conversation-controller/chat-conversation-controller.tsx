@@ -3,6 +3,7 @@ import type { ChatConversationControllerProps } from './chat-conversation-contro
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
 import { ChatConversationEventMessage } from '@ui-chat/components/server/messages/chat-conversation-event-message';
+import { ChatInternalMessage } from '@ui-chat/components/server/messages/chat-internal-message';
 
 import { ChatAudioMessageController } from '../chat-audio-message-controller';
 import { ChatContactsMessageController } from '../chat-contacts-message-controller';
@@ -32,6 +33,8 @@ export const ChatConversationController = ({
       return <ChatTextMessageController message={message} />;
     case MessageTypes.IMAGE:
       return <ChatImageMessageController message={message} />;
+    case MessageTypes.INTERNAL:
+      return <ChatInternalMessage message={message} />;
     case MessageTypes.INTERACTIVE_LIST_OPTIONS:
       return <ChatTextMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_SELECTION:
