@@ -15,8 +15,8 @@
 }
 
 .base__create_button {
-  border-radius: 8px !important;
-  padding: 10px 20px !important;
+  border-radius: 8px ;
+  padding: 10px 20px ;
 }
 
 .dropdown_container {
@@ -45,17 +45,17 @@
 
 .base__dropdown_item {
   width: 100%; /* Asegura que el item ocupe todo el ancho */
-  padding: 12px !important; /* Más grande como pediste */
+  padding: 12px; /* Más grande como pediste */
   min-width: 250px; /* Ajustar para que coincida con el trigger del dropdown */
 }
 .base__dropdown_item:hover {
   /* Usamos !important si la librería @gnetwork-ui está forzando el gris */
-  background-color: var(--red-100) !important; /* Un rojo muy claro (red-100) */
+  background-color: var(--red-100); /* Un rojo muy claro (red-100) */
 }
 
 /* Si quieres que el texto cambie a rojo oscuro en hover también: */
 .base__dropdown_item:hover span {
-  color: var(--red-700) !important; /* Un rojo oscuro (red-700) */
+  color: var(--red-700); /* Un rojo oscuro (red-700) */
 }
 
 .base__elements {

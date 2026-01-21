@@ -21,9 +21,6 @@ import { getContactContractsService } from '@module-chat/infrastructure/services
 import { getTicketsDepartmentsService } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
 import { getTicketsIssuesService } from '@module-ticket/infrastructure/services/get-tickets-issues.service';
 
-import type { Department } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
-import type { Issue } from '@module-ticket/infrastructure/services/get-tickets-issues.service';
-
 const createTicketFormSchema = z.object({
   contractId: z.string().min(1, 'El contrato es requerido'),
   department: z.string().min(1, 'El departamento es requerido'),
