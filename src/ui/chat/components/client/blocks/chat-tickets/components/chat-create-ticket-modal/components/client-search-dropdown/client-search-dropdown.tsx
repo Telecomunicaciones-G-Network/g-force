@@ -31,18 +31,23 @@ export const ClientSearchDropdown = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    setIsOpen(true);
     
     // Si el usuario borra el texto, limpiar la selección
     if (value === '') {
       onClientSelect('', '');
+      setIsOpen(false);
+    }
+  };
+
+  const handleSearchClick = () => {
+    if (searchTerm.length >= 2) {
+      setIsOpen(true);
     }
   };
 
   return (
     <div className={styles.base}>
       <div className={styles.base__input_wrapper}>
-        <MdSearch className={styles.base__icon} size={20} />
         <input
           className={styles.base__input}
           onBlur={() => {
@@ -50,13 +55,22 @@ export const ClientSearchDropdown = ({
             setTimeout(() => setIsOpen(false), 200);
           }}
           onChange={handleChange}
-          onFocus={() => {
-            if (searchTerm.length > 0) setIsOpen(true);
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSearchClick();
+            }
           }}
           placeholder="Buscar Cliente"
           type="text"
-          value={searchTerm} // Ahora el input siempre muestra el searchTerm
+          value={searchTerm}
         />
+        <button
+          type="button"
+          className={styles.base__icon}
+          onClick={handleSearchClick}
+        >
+          <MdSearch size={20} />
+        </button>
       </div>
 
       {isOpen && searchTerm && (
