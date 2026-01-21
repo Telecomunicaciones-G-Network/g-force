@@ -16,9 +16,9 @@ export const useOnConversationAssignmentUpdated = () => {
   onSocketEvent<unknown>(
     socketEventsDictionary.CONVERSATION_ASSIGNMENT_UPDATED,
     (data: unknown) => {
-      const parseResponse = JSON.parse(data as unknown as string);
+      const _parseResponse = JSON.parse(data as unknown as string);
 
-      console.log(parseResponse);
+      // TODO: If a conversation assignment is updated add a new message event on chat conversation store
     },
   );
 };

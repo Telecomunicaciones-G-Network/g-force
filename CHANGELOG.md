@@ -1,5 +1,11 @@
 # @gnetwork/gforce
 
+## 0.0.23
+
+### Patch Changes
+
+- Release v0.0.23
+
 ## 0.0.22
 
 ### Patch Changes
