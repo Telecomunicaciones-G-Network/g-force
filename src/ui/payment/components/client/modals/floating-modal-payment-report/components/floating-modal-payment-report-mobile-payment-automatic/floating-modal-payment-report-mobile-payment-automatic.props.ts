@@ -1,7 +1,7 @@
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 
 export interface FloatingModalPaymentReportMobilePaymentAutomaticProps {
-  invoice: InvoiceValues;
+  invoice: Invoice;
   onClose?: () => void;
   onSuccessPayment?: () => void;
 }

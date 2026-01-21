@@ -1,7 +1,7 @@
 'use client';
 
 import type { GetContactInvoicesResponse } from '@module-chat/domain/interfaces';
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 
 import { useState } from 'react';
 
@@ -16,9 +16,7 @@ import { GetContactInvoicesQuery } from '@module-chat/infrastructure/queries/get
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatInvoices = () => {
-  const [selectedInvoice, setSelectedInvoice] = useState<InvoiceValues | null>(
-    null,
-  );
+  const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
 
   const activeContact = useContactStore((state) => state.activeContact);
 
@@ -48,7 +46,7 @@ export const useChatInvoices = () => {
     closeFloatingModal();
   };
 
-  const openPaymentFloatingModal = (invoice: InvoiceValues) => {
+  const openPaymentFloatingModal = (invoice: Invoice) => {
     setSelectedInvoice(invoice);
     openFloatingModal();
   };

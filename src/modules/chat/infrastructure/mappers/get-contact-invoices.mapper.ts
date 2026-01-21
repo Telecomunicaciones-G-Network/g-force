@@ -1,4 +1,4 @@
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 import type { GetContactInvoicesResponse } from '../../domain/interfaces';
 import type { GetContactInvoicesResult } from '../interfaces';
 import type { GetContactInvoicesResponseDTO } from '../dtos';
@@ -18,8 +18,18 @@ export class GetContactInvoicesMapper {
     };
   }
 
-  static mapFromArray(input: GetContactInvoicesResult): InvoiceValues {
+  static mapFromArray(input: GetContactInvoicesResult): Invoice {
     return {
+      amountToPayBs: {
+        amount: input?.amount_to_pay_bs?.amount,
+        ivaAmount: input?.amount_to_pay_bs?.iva_amount,
+        subTotal: input?.amount_to_pay_bs?.sub_total,
+      },
+      amountToPayUsd: {
+        amount: input?.amount_to_pay_usd?.amount,
+        ivaAmount: input?.amount_to_pay_usd?.iva_amount,
+        subTotal: input?.amount_to_pay_usd?.sub_total,
+      },
       bankAssociatedData: {
         bankAccountNumber: input?.bank_associated_data?.bank_account_number,
         bankAcronym: input?.bank_associated_data?.bank_acronym,
@@ -29,7 +39,6 @@ export class GetContactInvoicesMapper {
         bankPhone: input?.bank_associated_data?.bank_phone,
       },
       id: input?.id,
-      amount: input?.amount,
       contractId: input?.contract_id,
       dateEmission: input?.date_emission,
       datePayment: input?.date_payment,

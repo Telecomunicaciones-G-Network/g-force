@@ -1,6 +1,6 @@
 'use client';
 
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 import type { ChatInvoicesProps } from './chat-invoices.props';
 
 import { MdMoodBad } from 'react-icons/md';
@@ -117,7 +117,7 @@ export const ChatInvoices = ({ title = '' }: Readonly<ChatInvoicesProps>) => {
               )}
               {invoices?.length > 0 && (
                 <div className={styles.base__invoices}>
-                  {invoices?.map((invoice: InvoiceValues, index: number) => (
+                  {invoices?.map((invoice: Invoice, index: number) => (
                     <ChatInvoiceCard
                       key={invoice?.id}
                       invoice={invoice}

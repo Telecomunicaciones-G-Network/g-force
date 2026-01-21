@@ -1,8 +1,8 @@
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 import type { PaymentType } from '@module-payment/domain/types';
 
 export interface FloatingModalPaymentReportControllerProps {
-  invoice: InvoiceValues;
+  invoice: Invoice;
   onClose?: () => void;
   onSuccessPayment?: () => void;
   paymentType?: PaymentType;

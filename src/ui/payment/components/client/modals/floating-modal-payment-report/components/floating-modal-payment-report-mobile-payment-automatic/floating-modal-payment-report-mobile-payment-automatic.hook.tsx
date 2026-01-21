@@ -1,6 +1,6 @@
 'use client';
 
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 
 import type { FileData } from '@gnetwork-ui/components/molecules/inputs/file-input';
 
@@ -26,7 +26,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 import { validateMobilePaymentWithImageService } from '@module-chat/infrastructure/services/validate-mobile-payment-with-image.service';
 
 interface UseFloatingModalPaymentReportMobilePaymentAutomaticProps {
-  invoice: InvoiceValues;
+  invoice: Invoice;
   onClose?: () => void;
   onSuccessPayment?: () => void;
 }

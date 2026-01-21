@@ -1,6 +1,6 @@
 'use client';
 
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 import type { FloatingModalPaymentReportMobilePaymentManualFormData } from './types';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -21,7 +21,7 @@ import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.h
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 interface UseFloatingModalPaymentReportMobilePaymentManualProps {
-  invoice: InvoiceValues;
+  invoice: Invoice;
   onClose?: () => void;
   onSuccessPayment?: () => void;
 }

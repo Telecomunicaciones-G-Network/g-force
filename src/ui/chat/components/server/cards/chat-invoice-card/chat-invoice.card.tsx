@@ -27,7 +27,8 @@ export const ChatInvoiceCard = ({
   title = '',
 }: Readonly<ChatInvoiceCardProps>) => {
   const {
-    amount,
+    amountToPayBs,
+    amountToPayUsd,
     cycle = '',
     dateEmission,
     datePayment,
@@ -111,7 +112,7 @@ export const ChatInvoiceCard = ({
             <Separator />
           </>
         )}
-        {amount && (
+        {(amountToPayBs?.amount || amountToPayUsd?.amount) && (
           <>
             <div className={styles.base__info}>
               <Text
@@ -129,7 +130,11 @@ export const ChatInvoiceCard = ({
                 level="small"
                 scheme="label"
               >
-                ${amount.toFixed(2).replace('.', ',')}
+                {amountToPayBs?.amount &&
+                  `${amountToPayBs?.amount.toFixed(2).replace('.', ',')} Bs`}{' '}
+                {(amountToPayBs?.amount || amountToPayUsd?.amount) && '≈ '}
+                {amountToPayUsd?.amount &&
+                  `${amountToPayUsd?.amount.toFixed(2).replace('.', ',')}$`}
               </Text>
             </div>
             <Separator />

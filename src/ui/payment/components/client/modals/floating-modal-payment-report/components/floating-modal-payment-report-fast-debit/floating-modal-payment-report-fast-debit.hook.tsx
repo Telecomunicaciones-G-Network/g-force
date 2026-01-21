@@ -2,7 +2,7 @@
 
 import type { GetFastDebitBanksResponse } from '@module-chat/domain/interfaces';
 import type { FloatingModalPaymentReportFastDebitFormData } from './types';
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 import type { RequestFastDebitOTPResponse } from '@module-chat/domain/interfaces';
 
 import { useState, useEffect } from 'react';
@@ -28,7 +28,7 @@ import { isoDateToSeconds } from '@packages/timer/utils/iso-date-to-seconds.util
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 interface UseFloatingModalPaymentReportFastDebitProps {
-  invoice: InvoiceValues;
+  invoice: Invoice;
   onSuccessPayment?: () => void;
 }
 

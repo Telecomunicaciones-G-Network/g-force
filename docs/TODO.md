@@ -94,6 +94,16 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
+- src/modules/invoice/domain/entities/invoice.entity.ts ✅
+- src/modules/invoice/domain/enums/invoice-payment-methods.enum.ts ✅
+- src/modules/invoice/domain/enums/invoice-status-codes.enum.ts ✅
+- src/modules/invoice/domain/enums/invoice-status-names.enum.ts ✅
+- src/modules/invoice/domain/interfaces/invoice.interface.ts ✅
+- src/modules/invoice/domain/interfaces/invoice-amount-to-pay.interface.ts ✅
+- src/modules/invoice/domain/interfaces/invoice-bank-associated-data.interface.ts ✅
+- src/modules/invoice/domain/types/invoice-payment-method.type.ts ✅
+- src/modules/invoice/domain/types/invoice-status-code.type.ts ✅
+- src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
 
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
 - src/packages/sounder/classes/sounder.class.ts ✅

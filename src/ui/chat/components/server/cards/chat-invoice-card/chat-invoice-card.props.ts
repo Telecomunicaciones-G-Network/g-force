@@ -1,8 +1,8 @@
-import type { InvoiceValues } from '@module-invoice/domain/interfaces';
+import type { Invoice } from '@module-invoice/domain/interfaces';
 
 export interface ChatInvoiceCardProps {
-  invoice: InvoiceValues;
-  onPayment?: (invoice: InvoiceValues) => void;
+  invoice: Invoice;
+  onPayment?: (invoice: Invoice) => void;
   open?: boolean;
   title?: string;
 }

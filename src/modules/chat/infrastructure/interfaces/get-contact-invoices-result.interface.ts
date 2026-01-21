@@ -23,7 +23,6 @@ export interface GetContactInvoicesResultInvoicesItemsGsoft {
 }
 
 export interface GetContactInvoicesResult {
-  amount: number;
   id: number;
   amount_to_pay_bs: GetContactInvoicesResultAmountToPayBS;
   amount_to_pay_usd: GetContactInvoicesResultAmountToPayUSD;
