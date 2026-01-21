@@ -161,7 +161,7 @@ export const useChatCreateTicketModal = ({
       }, 1000);
     },
     onError: () => {
-      showToast('No se pudo crear el ticket. Intente nuevamente.');
+      showToast('No se pudo crear el ticket. Intente nuevamente.', { scheme: 'error' });
     },
   });
 

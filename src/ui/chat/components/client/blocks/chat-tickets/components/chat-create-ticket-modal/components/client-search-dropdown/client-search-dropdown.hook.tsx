@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { searchClientService } from '@module-chat/infrastructure/services/search-client.service';
-import { getContactsService } from '@module-chat/infrastructure/services/get-contacts.service';
+// import { getContactsService } from '@module-chat/infrastructure/services/get-contacts.service';
 interface Client {
   fullName: string;
   id: string;
@@ -28,8 +28,8 @@ export const useClientSearchDropdown = () => {
       if (!debouncedSearch || debouncedSearch.length < 2) {
         return { contacts: [] };
       }
-      // return await searchClientService({ search: debouncedSearch, limit: '10' });
-      return await getContactsService({ search: debouncedSearch, limit: '10' });
+      return await searchClientService({ search: debouncedSearch, limit: '10' });
+      // return await getContactsService({ search: debouncedSearch, limit: '10' });
     },
     enabled: debouncedSearch.length >= 2,
   });

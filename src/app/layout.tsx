@@ -29,7 +29,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
       >
         <Providers>
           {children}
-          <Toaster />
+          <Toaster position="bottom-center" />
         </Providers>
       </body>
     </html>
