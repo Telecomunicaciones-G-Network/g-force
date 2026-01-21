@@ -22,9 +22,9 @@ export const ClientSearchDropdown = ({
     }
   }, [selectedClientName, setSearchTerm]);
 
-  const handleClientClick = (clientId: string, clientName: string) => {
-    onClientSelect(clientId, clientName);
-    setSearchTerm(clientName); // Dejamos el nombre seleccionado en el input
+  const handleClientClick = (client: typeof clients[0]) => {
+    onClientSelect(client.id, client.fullName, client.contracts);
+    setSearchTerm(client.fullName); // Dejamos el nombre seleccionado en el input
     setIsOpen(false);
   };
 
@@ -34,7 +34,7 @@ export const ClientSearchDropdown = ({
     
     // Si el usuario borra el texto, limpiar la selección
     if (value === '') {
-      onClientSelect('', '');
+      onClientSelect('', '', []);
       setIsOpen(false);
     }
   };
@@ -88,11 +88,11 @@ export const ClientSearchDropdown = ({
           )}
 
           {!isLoading && clients.length > 0 &&
-            clients.map((client: any) => (
+            clients.map((client) => (
               <button
                 key={client.id}
                 className={styles.base__item}
-                onClick={() => handleClientClick(client.id, client.fullName)}
+                onClick={() => handleClientClick(client)}
                 type="button"
               >
                 <Text as="span" level="small" scheme="label">

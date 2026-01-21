@@ -11,18 +11,17 @@ export class CreateTicketMapper {
     return {
       status: input?.status,
       success: input?.success,
-      ticket: input?.result
-        ? GetTicketsMapper.mapFromArray(input.result)
-        : null,
+      ticket: input?.results || null,
     };
   }
 
   public static mapTo(output: CreateTicketRequest): CreateTicketRequestDTO {
     return {
-      contact_id: output?.contactId,
+      client_id: Number(output?.clientId),
+      assigned_department_id: output?.assignedDepartmentId,
       contract_id: output?.contractId,
+      issue_id: output?.issueId,
       description: output?.description,
-      issue: output?.issue,
     };
   }
 }

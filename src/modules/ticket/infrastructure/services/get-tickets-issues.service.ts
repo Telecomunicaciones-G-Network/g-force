@@ -7,7 +7,7 @@ import { gnetworkFetchApiClient } from '@ui-core/fetchers/gnetwork-fetch-api-cli
 import { TICKET_RESOURCES } from '../dictionaries/ticket-resources.dictionary';
 
 interface IssueDTO {
-  id: string;
+  id: number;
   name: string;
 }
 
@@ -31,14 +31,11 @@ export const getTicketsIssuesService = async (
   request: GetTicketsIssuesRequest,
 ): Promise<Issue[]> => {
   const response = await gnetworkFetchApiClient.get<IssuesResponseDTO>(
-    TICKET_RESOURCES.GET_TICKETS_ISSUES,
+    TICKET_RESOURCES.GET_TICKETS_ISSUES(request.department),
     {
       cache: HttpCaches.NO_STORE,
       next: {
         revalidate: 0,
-      },
-      searchParams: {
-        department: request.department,
       },
     },
   );
@@ -53,6 +50,6 @@ export const getTicketsIssuesService = async (
   // Map backend response to SelectInput format
   return response.results.map((issue) => ({
     label: issue.name,
-    value: issue.id,
+    value: String(issue.id),
   }));
 };

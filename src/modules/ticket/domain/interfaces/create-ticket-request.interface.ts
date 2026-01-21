@@ -1,7 +1,8 @@
 export interface CreateTicketRequest {
-  contactId: string;
+  clientId: string;
+  assignedDepartmentId: number;
   contractId: number;
+  issueId: number;
   description: string;
-  issue: string;
   images?: File[];
 }

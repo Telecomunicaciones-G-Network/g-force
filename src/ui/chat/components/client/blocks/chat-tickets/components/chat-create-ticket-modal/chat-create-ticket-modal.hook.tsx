@@ -1,6 +1,7 @@
 'use client';
 
 import type { CreateTicketRequest } from '@module-ticket/domain/interfaces';
+import type { ClientContract } from './components/client-search-dropdown/client-search-dropdown.hook';
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -17,12 +18,10 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
-import { getContactContractsService } from '@module-chat/infrastructure/services/get-contact-contracts.service';
 import { getTicketsDepartmentsService } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
 import { getTicketsIssuesService } from '@module-ticket/infrastructure/services/get-tickets-issues.service';
 
 const createTicketFormSchema = z.object({
-  contractId: z.string().min(1, 'El contrato es requerido'),
   department: z.string().min(1, 'El departamento es requerido'),
   issue: z.string().min(1, 'El asunto es requerido'),
   description: z.string().min(1, 'La descripción es requerida'),
@@ -31,7 +30,6 @@ const createTicketFormSchema = z.object({
 export type CreateTicketFormData = z.infer<typeof createTicketFormSchema>;
 
 const DEFAULT_VALUES: CreateTicketFormData = {
-  contractId: '',
   department: '',
   issue: '',
   description: '',
@@ -53,6 +51,7 @@ export const useChatCreateTicketModal = ({
   const [selectedContractId, setSelectedContractId] = useState<number | null>(null);
   const [selectedDepartment, setSelectedDepartment] = useState<string>('');
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [clientContracts, setClientContracts] = useState<ClientContract[]>([]);
 
   const {
     control,
@@ -83,22 +82,10 @@ export const useChatCreateTicketModal = ({
     enabled: !!selectedDepartment,
   });
 
-  // Fetch contracts when a client is selected
-  const { data: contractsData, isLoading: isLoadingContracts } = useQuery({
-    queryKey: ['client-contracts', selectedClientId],
-    queryFn: async () => {
-      if (!selectedClientId) return { contracts: [] };
-      return await getContactContractsService({
-        contactId: selectedClientId,
-        limit: 20,
-      });
-    },
-    enabled: !!selectedClientId,
-  });
-
-  const handleClientSelect = (clientId: string, clientName: string) => {
+  const handleClientSelect = (clientId: string, clientName: string, contracts: ClientContract[]) => {
     setSelectedClientId(clientId || null);
     setSelectedClientName(clientName);
+    setClientContracts(contracts);
     setSelectedContractId(null);
   };
 
@@ -124,10 +111,11 @@ export const useChatCreateTicketModal = ({
   const { mutate: createTicket, isPending } = useMutation({
     mutationFn: async (data: CreateTicketFormData) => {
       const request: CreateTicketRequest = {
-        contactId: activeContact?.id ?? '',
-        contractId: Number(data.contractId),
+        clientId: selectedClientId ?? '',
+        assignedDepartmentId: Number(data.department),
+        contractId: selectedContractId ?? 0,
+        issueId: Number(data.issue),
         description: data.description,
-        issue: data.issue,
         images: selectedImages.length > 0 ? selectedImages : undefined,
       };
       
@@ -137,6 +125,8 @@ export const useChatCreateTicketModal = ({
         clientId: selectedClientId,
         clientName: selectedClientName,
         contractId: selectedContractId,
+        departmentId: data.department,
+        issueId: data.issue,
         images: selectedImages,
         imageCount: selectedImages.length,
       });
@@ -174,11 +164,12 @@ export const useChatCreateTicketModal = ({
     setSelectedContractId(null);
     setSelectedDepartment('');
     setSelectedImages([]);
+    setClientContracts([]);
     onClose();
   };
 
   return {
-    contracts: contractsData?.contracts ?? [],
+    contracts: clientContracts,
     control,
     departments: departmentsData ?? [],
     errors,
@@ -189,7 +180,6 @@ export const useChatCreateTicketModal = ({
     handleImageSelect,
     handleRemoveImage,
     isPending,
-    isLoadingContracts,
     isLoadingDepartments,
     isLoadingIssues,
     isSuccess,
