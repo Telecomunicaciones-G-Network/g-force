@@ -61,6 +61,7 @@ export const useChatConversation = () => {
     }
   }, [chatMessagesResponse?.messages, setMessages]);
 
+  // TODO: I must to get better the disabled chat logic
   return {
     disabledChat:
       !isConnected ||

@@ -1,7 +1,5 @@
 'use client';
 
-import type { InternalMessageFormProps } from './internal-message-form.props';
-
 import { MdSend } from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
@@ -13,13 +11,8 @@ import styles from './internal-message-form.module.css';
 
 /**
  * Internal Message Form component.
- *
- * @property {boolean} [disabledForm] - Whether the form is disabled.
  */
-export const InternalMessageForm = ({
-  // TODO: I found out the way to get rid of disabledForm props transfer
-  disabledForm = false,
-}: Readonly<InternalMessageFormProps>) => {
+export const InternalMessageForm = () => {
   const { changeInternalMessage, internalMessage, onSubmit } =
     useInternalMessageForm();
 
@@ -27,7 +20,6 @@ export const InternalMessageForm = ({
     <form className={styles.base} onSubmit={onSubmit}>
       <ChatInput
         className="bg-chromatic"
-        disabled={disabledForm}
         fullWidth
         hideLeftIcon
         id="internal_message_input"
@@ -42,7 +34,6 @@ export const InternalMessageForm = ({
       <Button
         className="px-2"
         color="black"
-        disabled={disabledForm}
         // TODO: Apply loading state while form is submitting
         type="submit"
       >

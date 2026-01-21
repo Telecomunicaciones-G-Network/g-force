@@ -78,11 +78,7 @@ export const ChatConversationFooter = ({
           onClick={toggleInternalMessageMode}
         />
       </div>
-      {sendMode === ChatSendModes.INTERNAL && (
-        <InternalMessageForm
-          disabledForm={disabledChat || sendMode !== ChatSendModes.INTERNAL}
-        />
-      )}
+      {sendMode === ChatSendModes.INTERNAL && <InternalMessageForm />}
     </div>
   );
 };

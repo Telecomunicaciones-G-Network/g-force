@@ -30,9 +30,9 @@ export const ChatContainer = ({
           />
         </Suspense>
       </ErrorBoundary>
-      {(chatMode === ChatModes.CHAT || isDesktop) &&
-        activeContact !== null &&
-        activeContact !== undefined && <ChatConversation />}
+      {activeContact && (chatMode === ChatModes.CHAT || isDesktop) && (
+        <ChatConversation />
+      )}
       <ChatDetails />
       <ChatEmpty />
     </>

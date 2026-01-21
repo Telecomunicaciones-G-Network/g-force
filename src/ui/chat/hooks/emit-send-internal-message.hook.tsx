@@ -44,6 +44,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  */
 export const useEmitSendInternalMessage = () => {
   // TODO: Use useOptimistic hook to update the message id in the store if failed or if is successfully.
+  const activeAgent = useContactStore((state) => state.activeAgent);
   const activeContact = useContactStore((state) => state.activeContact);
 
   const addMessage = useChatStore((state) => state.addMessage);
@@ -60,8 +61,8 @@ export const useEmitSendInternalMessage = () => {
       try {
         if (
           !activeContact?.id ||
-          !activeContact?.latestConversation?.agent?.id ||
-          !activeContact?.latestConversation?.agent?.name ||
+          !activeAgent?.id ||
+          !activeAgent?.name ||
           !emitWithAck ||
           !isConnectedAndStatusConnected
         )
@@ -88,9 +89,9 @@ export const useEmitSendInternalMessage = () => {
           readAt: null,
           replyToMessage: null,
           sender: {
-            id: activeContact?.latestConversation?.agent?.id,
+            id: activeAgent?.id,
             isBot: false,
-            name: activeContact?.latestConversation?.agent?.name,
+            name: activeAgent?.name,
           },
           sentAt: null,
           status: MessageStatus.READ,
@@ -143,6 +144,7 @@ export const useEmitSendInternalMessage = () => {
       }
     },
     [
+      activeAgent,
       activeContact,
       addMessage,
       emitWithAck,
