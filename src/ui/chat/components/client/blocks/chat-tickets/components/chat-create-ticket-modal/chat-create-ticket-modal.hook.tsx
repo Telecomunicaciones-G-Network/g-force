@@ -119,18 +119,6 @@ export const useChatCreateTicketModal = ({
         images: selectedImages.length > 0 ? selectedImages : undefined,
       };
       
-      console.log('Creating ticket with data:', {
-        ...data,
-        request,
-        clientId: selectedClientId,
-        clientName: selectedClientName,
-        contractId: selectedContractId,
-        departmentId: data.department,
-        issueId: data.issue,
-        images: selectedImages,
-        imageCount: selectedImages.length,
-      });
-      
       return await CreateTicketCommand(request);
     },
     onSuccess: () => {
