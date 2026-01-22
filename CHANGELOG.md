@@ -1,5 +1,11 @@
 # @gnetwork/gforce
 
+## 0.0.30
+
+### Patch Changes
+
+- Release v0.0.30
+
 ## 0.0.29
 
 ### Patch Changes
