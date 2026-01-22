@@ -197,7 +197,7 @@ export const useFloatingModalPaymentReportFastDebit = ({
     processFastDebitPayment({
       otpCode: otp,
       invoiceId: invoice?.id,
-      amount: +storeFormData?.amount,
+      amount: +storeFormData?.amount?.replace(',', '.'),
       bankCode: storeFormData?.bankCode,
       phoneNumber: storeFormData?.phoneNumber,
       customerDocument: `${storeFormData?.documentType}${storeFormData?.documentNumber}`,
