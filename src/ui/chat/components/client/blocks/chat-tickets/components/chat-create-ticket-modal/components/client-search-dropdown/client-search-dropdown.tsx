@@ -57,6 +57,7 @@ export const ClientSearchDropdown = ({
           onChange={handleChange}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
+              e.preventDefault(); // Prevenir submit del formulario padre
               handleSearchClick();
             }
           }}
@@ -67,7 +68,10 @@ export const ClientSearchDropdown = ({
         <button
           type="button"
           className={styles.base__icon}
-          onClick={handleSearchClick}
+          onMouseDown={(e) => {
+            e.preventDefault(); // Prevenir que se dispare el onBlur del input
+            handleSearchClick();
+          }}
         >
           <MdSearch size={20} />
         </button>
