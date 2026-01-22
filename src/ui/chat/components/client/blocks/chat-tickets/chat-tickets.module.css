@@ -1,27 +1,61 @@
 .base {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   padding: 0;
   flex: 1;
 }
 
-.base__empty {
-  align-items: center;
+.base__header {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 0;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between; /* Alinea título a la izquierda y botón a la derecha */
+  gap: 60px;
+  width: 100%;
 }
 
-.base__error {
-  align-items: center;
+.base__create_button {
+  border-radius: 8px ;
+  padding: 10px 20px ;
+}
+
+.dropdown_container {
+  width: 100%;
+  max-width: 300px; /* Ajusta según el ancho que desees para el filtro */
+}
+
+.base__filter_trigger {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 0;
-  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--neutral-300); /* Un gris más suave según la imagen */
+  background-color: var(--neutral-50);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  width: 100%; /* Para que ocupe el ancho del contenedor */
+}
+
+/* Quitamos el hover oscuro y solo le damos un leve cambio de borde si deseas */
+.base__filter_trigger:hover {
+  background-color: var(--neutral-50);
+  border-color: var(--neutral-400);
+}
+
+.base__dropdown_item {
+  width: 100%; /* Asegura que el item ocupe todo el ancho */
+  padding: 12px; /* Más grande como pediste */
+  min-width: 250px; /* Ajustar para que coincida con el trigger del dropdown */
+}
+.base__dropdown_item:hover {
+  /* Usamos !important si la librería @gnetwork-ui está forzando el gris */
+  background-color: var(--red-100); /* Un rojo muy claro (red-100) */
+}
+
+/* Si quieres que el texto cambie a rojo oscuro en hover también: */
+.base__dropdown_item:hover span {
+  color: var(--red-700); /* Un rojo oscuro (red-700) */
 }
 
 .base__elements {
@@ -29,4 +63,14 @@
   flex-direction: column;
   gap: 16px;
   padding: 0;
+}
+.base__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 16px;
+  flex: 1;
+  text-align: center;
 }
