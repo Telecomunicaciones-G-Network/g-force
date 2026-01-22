@@ -99,7 +99,7 @@ export const useFloatingModalPaymentReportMobilePaymentManual = ({
     }
 
     validateMobilePayment({
-      amount: +data?.amount,
+      amount: +data?.amount?.replace(',', '.'),
       bank_destination_code: invoice?.bankAssociatedData?.bankCode,
       contract_id: invoice?.contractId,
       date: dayjs(data?.date).format('YYYY-MM-DD'),

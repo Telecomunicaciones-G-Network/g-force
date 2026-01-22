@@ -102,8 +102,10 @@ export const useFloatingModalPaymentReportFastDebit = ({
 
       setMode('otp');
     },
-    onError: (_error: Error) => {
-      showToast('Error al solicitar el OTP', {
+    onError: (error: Error) => {
+      console.log(error);
+
+      showToast('Error al solicitar el OTP 23', {
         id: 'request-fast-debit-otp-error',
         position: 'top-right',
       });
@@ -163,7 +165,7 @@ export const useFloatingModalPaymentReportFastDebit = ({
 
     setStoreFormData(data);
     requestFastDebitOTP({
-      amount: +data?.amount,
+      amount: +data?.amount?.replace(',', '.'),
       bankCode: data?.bankCode,
       customerDocument: `${data?.documentType}${data?.documentNumber}`,
       customerName: data?.clientName,
