@@ -15,8 +15,8 @@
 }
 
 .base__create_button {
-  border-radius: 8px ;
-  padding: 10px 20px ;
+  border-radius: 8px;
+  padding: 10px 20px;
 }
 
 .dropdown_container {
@@ -67,7 +67,7 @@
 .base__empty {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 32px 16px;

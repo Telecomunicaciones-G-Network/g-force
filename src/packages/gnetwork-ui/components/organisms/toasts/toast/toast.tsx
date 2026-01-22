@@ -23,7 +23,10 @@ export const Toast = ({
         <MdCancel className="min-h-6 min-w-6 text-chromatic" size={24} />
       )}
       {scheme === ToastSchemes.SUCCESS && (
-        <MdCheckCircle className="min-h-6 min-w-6 text-tag-green-foreground" size={24} />
+        <MdCheckCircle
+          className="min-h-6 min-w-6 text-tag-green-foreground"
+          size={24}
+        />
       )}
       {scheme === ToastSchemes.WAIT && (
         <MdOutlineTimer className="min-h-6 min-w-6 text-wait-300" size={24} />

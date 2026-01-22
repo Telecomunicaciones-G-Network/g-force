@@ -48,7 +48,9 @@ export const useChatCreateTicketModal = ({
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
   const [selectedClientName, setSelectedClientName] = useState<string>('');
-  const [selectedContractId, setSelectedContractId] = useState<number | null>(null);
+  const [selectedContractId, setSelectedContractId] = useState<number | null>(
+    null,
+  );
   const [selectedDepartment, setSelectedDepartment] = useState<string>('');
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const [clientContracts, setClientContracts] = useState<ClientContract[]>([]);
@@ -82,7 +84,11 @@ export const useChatCreateTicketModal = ({
     enabled: !!selectedDepartment,
   });
 
-  const handleClientSelect = (clientId: string, clientName: string, contracts: ClientContract[]) => {
+  const handleClientSelect = (
+    clientId: string,
+    clientName: string,
+    contracts: ClientContract[],
+  ) => {
     setSelectedClientId(clientId || null);
     setSelectedClientName(clientName);
     setClientContracts(contracts);
@@ -100,12 +106,14 @@ export const useChatCreateTicketModal = ({
 
   const handleImageSelect = (files: FileList | null) => {
     if (!files) return;
-    const newImages = Array.from(files).filter(file => file.type.startsWith('image/'));
-    setSelectedImages(prev => [...prev, ...newImages]);
+    const newImages = Array.from(files).filter((file) =>
+      file.type.startsWith('image/'),
+    );
+    setSelectedImages((prev) => [...prev, ...newImages]);
   };
 
   const handleRemoveImage = (index: number) => {
-    setSelectedImages(prev => prev.filter((_, i) => i !== index));
+    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   const { mutate: createTicket, isPending } = useMutation({
@@ -118,7 +126,7 @@ export const useChatCreateTicketModal = ({
         description: data.description,
         images: selectedImages.length > 0 ? selectedImages : undefined,
       };
-      
+
       return await CreateTicketCommand(request);
     },
     onSuccess: () => {
@@ -136,7 +144,9 @@ export const useChatCreateTicketModal = ({
       }, 1000);
     },
     onError: () => {
-      showToast('No se pudo crear el ticket. Intente nuevamente.', { scheme: 'error' });
+      showToast('No se pudo crear el ticket. Intente nuevamente.', {
+        scheme: 'error',
+      });
     },
   });
 
@@ -180,4 +190,3 @@ export const useChatCreateTicketModal = ({
     setValue,
   };
 };
-

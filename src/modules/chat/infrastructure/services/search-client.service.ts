@@ -1,4 +1,7 @@
-import type { GetContactsRequest, GetContactsResponse } from '../../domain/interfaces';
+import type {
+  GetContactsRequest,
+  GetContactsResponse,
+} from '../../domain/interfaces';
 import type { GetContactsResponseDTO } from '../dtos';
 
 import { DEFAULT_LIMIT_PARAM } from '@http-client/constants/default-limit-param.constant';

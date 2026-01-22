@@ -3,7 +3,7 @@
   gap: 12px;
   padding: 16px;
   /* Borde gris muy claro como en la imagen */
-  border: 1px solid var(--neutral-200); 
+  border: 1px solid var(--neutral-200);
   border-radius: 12px;
   background-color: var(--background);
   cursor: pointer;
@@ -13,11 +13,11 @@
 }
 
 .base:hover {
-  border-color: var(--red-600); 
+  border-color: var(--red-600);
 }
 
 .base__selected {
-  border-color: var(--red-600); 
+  border-color: var(--red-600);
 }
 
 .base__icon {
@@ -27,7 +27,7 @@
   width: 54px;
   height: 54px;
   /* Fondo rosado muy suave del diseño */
-  background-color: var(--red-100); 
+  background-color: var(--red-100);
   color: var(--red-600);
   border-radius: 10px;
   flex-shrink: 0;
@@ -51,7 +51,7 @@
 .base__badge {
   padding: 2px 8px;
   /* Verde bosque de la imagen */
-  background-color: var(--green-500); 
+  background-color: var(--green-500);
   color: var(--neutral-100);
   border-radius: 6px;
   font-size: 11px;
@@ -66,7 +66,7 @@
 
 .base__label {
   /* El prefijo "Número:" y "Dirección:" en gris medio */
-  color: var(--neutral-400); 
+  color: var(--neutral-400);
   font-weight: 600;
   margin-right: 4px;
 }
@@ -75,5 +75,4 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
 }

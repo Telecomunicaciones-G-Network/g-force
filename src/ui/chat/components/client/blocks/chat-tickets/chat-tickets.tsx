@@ -60,7 +60,6 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
         </div>
       }
     >
-
       <ChatCreateTicketModal
         isOpen={isCreateModalOpen}
         onClose={handleCloseCreateModal}
@@ -89,12 +88,14 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
           <div className={styles.dropdown_container}>
             <Dropdown
               triggerComponent={
-                <button
-                  className={styles.base__filter_trigger}
-                  type="button"
-                >
+                <button className={styles.base__filter_trigger} type="button">
                   <MdFilterList className="size-4" />
-                  <Text as="span" level="small" scheme="label" className="flex-1 text-left">
+                  <Text
+                    as="span"
+                    level="small"
+                    scheme="label"
+                    className="flex-1 text-left"
+                  >
                     Filtrar por: <b>{filterStatus}</b>
                   </Text>
                   <IoChevronUp className="size-4 text-neutral-400" />
@@ -107,9 +108,13 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
                   onClick={() => handleFilterChange(option.value)}
                   className={styles.base__dropdown_item}
                 >
-                <Text
+                  <Text
                     as="span"
-                    className={filterStatus === option.value ? 'text-primary-500 font-bold' : ''}
+                    className={
+                      filterStatus === option.value
+                        ? 'text-primary-500 font-bold'
+                        : ''
+                    }
                     level="small"
                     scheme="label"
                   >
@@ -118,7 +123,7 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
                 </DropdownItem>
               ))}
             </Dropdown>
-            </div>
+          </div>
 
           {tickets?.length === 0 && (
             <div className={styles.base__empty}>
@@ -136,10 +141,7 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
           {tickets?.length > 0 && (
             <div className={styles.base__elements}>
               {tickets?.map((ticket: TicketValues) => (
-                <ChatTicketCard
-                  key={ticket?.number?.toString()}
-                  {...ticket}
-                />
+                <ChatTicketCard key={ticket?.number?.toString()} {...ticket} />
               ))}
             </div>
           )}

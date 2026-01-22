@@ -67,7 +67,7 @@ export const useClientSearchDropdown = () => {
       if (!debouncedSearch || debouncedSearch.length < 2) {
         return { results: [], success: true, status: 200, count: 0 };
       }
-      
+
       const response = await gnetworkFetchApiClient.get<SearchClientResponse>(
         '/chat/search_client',
         {
@@ -79,7 +79,7 @@ export const useClientSearchDropdown = () => {
           },
         },
       );
-      
+
       return response;
     },
     enabled: debouncedSearch.length >= 2,

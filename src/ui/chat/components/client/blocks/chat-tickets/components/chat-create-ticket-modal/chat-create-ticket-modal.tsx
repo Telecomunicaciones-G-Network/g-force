@@ -6,7 +6,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Controller } from 'react-hook-form';
 import { IoClose, IoAttach, IoCloseCircle } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
-import { MdOutlineAccountTree, MdOutlineArticle, MdAppRegistration,MdOutlineCancel } from 'react-icons/md';
+import {
+  MdOutlineAccountTree,
+  MdOutlineArticle,
+  MdAppRegistration,
+  MdOutlineCancel,
+} from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
@@ -23,11 +28,10 @@ export const ChatCreateTicketModal = ({
   isOpen,
   onClose,
 }: Readonly<ChatCreateTicketModalProps>) => {
-  const [showValidationError, setShowValidationError] = useState<boolean>(false);
+  const [showValidationError, setShowValidationError] =
+    useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  
-  
   const {
     contracts,
     control,
@@ -67,13 +71,13 @@ export const ChatCreateTicketModal = ({
   // Validar cliente y contrato antes de enviar
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validar que haya cliente y contrato seleccionado
     if (!selectedClientName || !selectedContractId) {
       setShowValidationError(true);
       return;
     }
-    
+
     setShowValidationError(false);
     onSubmit(e);
   };
@@ -88,17 +92,21 @@ export const ChatCreateTicketModal = ({
       {!isSuccess && (
         <form onSubmit={handleFormSubmit}>
           <div className={styles.base__header}>
-          <div className={styles.base__header_title}>
-            <div className={styles.base__icon_wrapper}>
-              <MdAppRegistration className="text-red-600" size={20} />
+            <div className={styles.base__header_title}>
+              <div className={styles.base__icon_wrapper}>
+                <MdAppRegistration className="text-red-600" size={20} />
+              </div>
+              <Text as="h2" level="large" scheme="label" className="font-bold">
+                Ticket
+              </Text>
             </div>
-            <Text as="h2" level="large" scheme="label" className="font-bold">
-              Ticket
-            </Text>
-          </div>
-          <button onClick={handleClose} type="button" className={styles.base__close_button}>
-            <IoClose className="size-5 text-neutral-500" />
-          </button>
+            <button
+              onClick={handleClose}
+              type="button"
+              className={styles.base__close_button}
+            >
+              <IoClose className="size-5 text-neutral-500" />
+            </button>
           </div>
 
           <div className={styles.base__body}>
@@ -111,7 +119,12 @@ export const ChatCreateTicketModal = ({
 
             {contracts.length > 0 && (
               <div className={styles.base__contracts_container}>
-                <Text as="label" className="text-black" level="small" scheme="label">
+                <Text
+                  as="label"
+                  className="text-black"
+                  level="small"
+                  scheme="label"
+                >
                   Selecciona un contrato
                 </Text>
                 <div className={styles.base__contracts_scroll}>
@@ -119,10 +132,16 @@ export const ChatCreateTicketModal = ({
                     <ContractCard
                       key={contract.contract_number}
                       address={contract.address}
-                      client_type_name={contract.client_type_name || 'Residencial'}
-                      isSelected={selectedContractId === contract.contract_number}
+                      client_type_name={
+                        contract.client_type_name || 'Residencial'
+                      }
+                      isSelected={
+                        selectedContractId === contract.contract_number
+                      }
                       number={contract.contract_number}
-                      onClick={() => handleContractSelect(contract.contract_number)}
+                      onClick={() =>
+                        handleContractSelect(contract.contract_number)
+                      }
                     />
                   ))}
                 </div>
@@ -132,32 +151,33 @@ export const ChatCreateTicketModal = ({
             {/* alerta de validacion  */}
             {showValidationError && (
               <div className="w-full bg-red-50 rounded-xl p-5 flex gap-4 items-start">
-                <MdOutlineCancel 
-                  className="text-red-700 shrink-0 mt-0.5" 
-                  size={24} 
+                <MdOutlineCancel
+                  className="text-red-700 shrink-0 mt-0.5"
+                  size={24}
                 />
                 <div className="flex flex-col gap-2 flex-1">
-                  <Text 
-                    as="span" 
-                    level="medium" 
-                    scheme="label" 
+                  <Text
+                    as="span"
+                    level="medium"
+                    scheme="label"
                     className="font-bold text-red-700 text-base"
                   >
                     Sin contrato seleccionado.
                   </Text>
                   <div className="flex flex-col gap-1">
-                    <Text 
-                      as="p" 
-                      level="small" 
-                      scheme="label" 
+                    <Text
+                      as="p"
+                      level="small"
+                      scheme="label"
                       className="text-red-400 font-medium leading-snug"
                     >
-                      Por favor, ingresar el nombre del cliente en el buscador, presionar Enter o dar click en el ícono.
+                      Por favor, ingresar el nombre del cliente en el buscador,
+                      presionar Enter o dar click en el ícono.
                     </Text>
-                    <Text 
-                      as="p" 
-                      level="small" 
-                      scheme="label" 
+                    <Text
+                      as="p"
+                      level="small"
+                      scheme="label"
                       className="text-red-400 font-medium"
                     >
                       Luego deberá seleccionar el contrato del mismo
@@ -180,7 +200,12 @@ export const ChatCreateTicketModal = ({
                     }}
                     triggerLabel="Departamento"
                     options={departments}
-                    leftIcon={<MdOutlineAccountTree className="text-neutral-500" size={20} />}
+                    leftIcon={
+                      <MdOutlineAccountTree
+                        className="text-neutral-500"
+                        size={20}
+                      />
+                    }
                     bordered
                     fullWidth
                     disabled={isLoadingDepartments}
@@ -196,7 +221,12 @@ export const ChatCreateTicketModal = ({
                     onValueChange={field.onChange}
                     triggerLabel="Asunto"
                     options={issues}
-                    leftIcon={<MdOutlineArticle className="text-neutral-500" size={20} />}
+                    leftIcon={
+                      <MdOutlineArticle
+                        className="text-neutral-500"
+                        size={20}
+                      />
+                    }
                     bordered
                     fullWidth
                     disabled={!selectedDepartment || isLoadingIssues}
@@ -206,7 +236,12 @@ export const ChatCreateTicketModal = ({
             </div>
 
             <div className={styles.base__textarea_container}>
-              <Text as="label" className="text-neutral" level="small" scheme="label">
+              <Text
+                as="label"
+                className="text-neutral"
+                level="small"
+                scheme="label"
+              >
                 Descripción del asunto
               </Text>
               <div className={styles.base__textarea_wrapper}>
@@ -243,7 +278,12 @@ export const ChatCreateTicketModal = ({
                 </button>
               </div>
               {errors.description?.message && (
-                <Text as="span" className="text-red-500" level="small" scheme="label">
+                <Text
+                  as="span"
+                  className="text-red-500"
+                  level="small"
+                  scheme="label"
+                >
                   {errors.description.message}
                 </Text>
               )}
@@ -264,7 +304,12 @@ export const ChatCreateTicketModal = ({
                       >
                         <IoCloseCircle size={20} />
                       </button>
-                      <Text as="span" level="small" scheme="label" className={styles.base__image_name}>
+                      <Text
+                        as="span"
+                        level="small"
+                        scheme="label"
+                        className={styles.base__image_name}
+                      >
                         {image.name}
                       </Text>
                     </div>
@@ -290,10 +335,20 @@ export const ChatCreateTicketModal = ({
       {isSuccess && (
         <div className={styles.base__success}>
           <MdCheckCircle className="text-success-300" size={64} />
-          <Text as="h4" className="text-chromatic-inverted" level="medium" scheme="label">
+          <Text
+            as="h4"
+            className="text-chromatic-inverted"
+            level="medium"
+            scheme="label"
+          >
             ¡Ticket creado exitosamente!
           </Text>
-          <Text as="p" className="text-neutral-400 text-center" level="small" scheme="label">
+          <Text
+            as="p"
+            className="text-neutral-400 text-center"
+            level="small"
+            scheme="label"
+          >
             Tu ticket ha sido registrado y será atendido a la brevedad.
           </Text>
           <Button color="red" onClick={handleClose} scheme="default">

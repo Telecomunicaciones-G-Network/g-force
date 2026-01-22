@@ -22,7 +22,7 @@ export const ClientSearchDropdown = ({
     }
   }, [selectedClientName, setSearchTerm]);
 
-  const handleClientClick = (client: typeof clients[0]) => {
+  const handleClientClick = (client: (typeof clients)[0]) => {
     onClientSelect(client.id, client.fullName, client.contracts);
     setSearchTerm(client.fullName); // Dejamos el nombre seleccionado en el input
     setIsOpen(false);
@@ -31,7 +31,7 @@ export const ClientSearchDropdown = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    
+
     // Si el usuario borra el texto, limpiar la selección
     if (value === '') {
       onClientSelect('', '', []);
@@ -81,17 +81,22 @@ export const ClientSearchDropdown = ({
         <div className={styles.base__dropdown}>
           {isLoading && (
             <div className={styles.base__loading}>
-              <Text as="span" level="small" scheme="label">Buscando...</Text>
+              <Text as="span" level="small" scheme="label">
+                Buscando...
+              </Text>
             </div>
           )}
 
           {!isLoading && clients.length === 0 && (
             <div className={styles.base__empty}>
-              <Text as="span" level="small" scheme="label">No se encontraron clientes</Text>
+              <Text as="span" level="small" scheme="label">
+                No se encontraron clientes
+              </Text>
             </div>
           )}
 
-          {!isLoading && clients.length > 0 &&
+          {!isLoading &&
+            clients.length > 0 &&
             clients.map((client) => (
               <button
                 key={client.id}

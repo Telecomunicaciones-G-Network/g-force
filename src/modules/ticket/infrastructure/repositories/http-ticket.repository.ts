@@ -19,7 +19,6 @@ export const httpTicketRepository: TicketRepository = {
   getTicketById: async (
     request: GetTicketByIdRequest,
   ): Promise<GetTicketByIdResponse> => getTicketByIdService(request),
-  getTickets: async (
-    request: GetTicketsRequest,
-  ): Promise<GetTicketsResponse> => getTicketsService(request),
+  getTickets: async (request: GetTicketsRequest): Promise<GetTicketsResponse> =>
+    getTicketsService(request),
 };

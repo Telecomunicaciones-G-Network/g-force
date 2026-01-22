@@ -9,7 +9,11 @@ import { toastSchemeVariant } from './variants/toast-scheme.variant';
 import styles from './toast.module.css';
 
 export const toastVariants = cva(
-  [styles.base, 'init-box', 'bg-tag-green-background w-[min(352px,100%)] max-w-[352px]'],
+  [
+    styles.base,
+    'init-box',
+    'bg-tag-green-background w-[min(352px,100%)] max-w-[352px]',
+  ],
   {
     variants: {
       scheme: toastSchemeVariant,
