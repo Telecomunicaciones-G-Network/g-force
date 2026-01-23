@@ -5,8 +5,13 @@
  *
  * @property CUSTOMER - The customer team
  * @property FAULTS - The faults team
- * @property SUPPORT - The support team
- * @property SALES - The sales team
  * @property MANAGEMENT - The management team
+ * @property SALES - The sales team
+ * @property SUPPORT - The support team
  */
-export type TeamCodename = 'CUSTOMER' | 'FAULTS' | 'SUPPORT' | 'SALES' | 'MANAGEMENT';
+export type TeamCodename =
+  | 'CUSTOMER'
+  | 'FAULTS'
+  | 'MANAGEMENT'
+  | 'SALES'
+  | 'SUPPORT';

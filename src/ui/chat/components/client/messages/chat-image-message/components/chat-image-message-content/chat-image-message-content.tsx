@@ -35,7 +35,7 @@ export const ChatImageMessageContent = (
   const { isModalOpen, onOpenChange } = useChatImageMessageContent();
 
   return (
-  <ChatMessage caption={caption} bubbleClassName="w-full" {...rest}>
+    <ChatMessage caption={caption} bubbleClassName="w-full" {...rest}>
       <Modal
         className={cn(styles.base, 'relative sm:max-w-none')}
         hideModalClose
