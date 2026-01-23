@@ -35,47 +35,56 @@ export const ChatImageMessageContent = (
   const { isModalOpen, onOpenChange } = useChatImageMessageContent();
 
   return (
-    <ChatMessage caption={caption} bubbleClassName="w-full" {...rest}>
-      <Modal
-        className={cn(styles.base, 'relative sm:max-w-none')}
-        hideModalClose
-        isOpen={isModalOpen}
-        onOpenChange={onOpenChange}
-        modalOverlayChildren={
-          <>
-            <ChatImageMessageModalClose />
-            <div data-prevent-close>
-              <button
-                className={cn(styles.base__download_button, 'bg-black')}
-                onClick={() =>
-                  downloadFileByUrl(
-                    imageSrc,
-                    filename,
-                    extractExtensionFromMimeType(mimeType),
-                  )
-                }
-                type="button"
-              >
-                <MdDownload className="fill-white h-6 w-6 size-6" />
-              </button>
-            </div>
-          </>
-        }
-        triggerComponent={
-          <button
-            className="flex h-[154px] w-full cursor-pointer border-0 bg-transparent p-0"
-            type="button"
-          >
-            <ResponsiveImage
-              className="h-full w-full"
-              customImageComponent={customImageComponent}
-              objectFit="cover"
-            />
-          </button>
-        }
-      >
-        <ChatImageMessageModal imageAlt={imageAlt} imageSrc={imageSrc} />
-      </Modal>
+    <ChatMessage bubbleClassName="w-fit" {...rest}>
+      <div className="flex flex-col gap-2">
+        <Modal
+          className={cn(styles.base, 'relative sm:max-w-none')}
+          hideModalClose
+          isOpen={isModalOpen}
+          onOpenChange={onOpenChange}
+          modalOverlayChildren={
+            <>
+              <ChatImageMessageModalClose />
+              <div data-prevent-close>
+                <button
+                  className={cn(styles.base__download_button, 'bg-black')}
+                  onClick={() =>
+                    downloadFileByUrl(
+                      imageSrc,
+                      filename,
+                      extractExtensionFromMimeType(mimeType),
+                    )
+                  }
+                  type="button"
+                >
+                  <MdDownload className="fill-white h-6 w-6 size-6" />
+                </button>
+              </div>
+            </>
+          }
+          triggerComponent={
+            <button
+              className="flex h-[154px] w-[154px] cursor-pointer border-0 bg-transparent p-0"
+              type="button"
+            >
+              <ResponsiveImage
+                className="h-full w-full"
+                customImageComponent={customImageComponent}
+                objectFit="cover"
+              />
+            </button>
+          }
+        >
+          <ChatImageMessageModal imageAlt={imageAlt} imageSrc={imageSrc} />
+        </Modal>
+        {caption && (
+          <div className="w-[154px] px-2 pb-2">
+            <p className="text-[13.5px] leading-relaxed whitespace-pre-wrap font-normal wrap-break-word">
+              {caption}
+            </p>
+          </div>
+        )}
+      </div>
     </ChatMessage>
   );
 };

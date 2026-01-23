@@ -25,16 +25,12 @@ export const ChatImageMessageModal = ({
     >
       <ResponsiveImage
         alt={imageAlt}
-        className="rounded-lg"
+        className="rounded-lg h-full w-full"
         customImageComponent={
           <Image
             ref={imageRef}
             alt={imageAlt}
-            className={
-              imageOrientation === 'landscape'
-                ? 'object-cover'
-                : 'object-contain'
-            }
+            className="object-contain"
             fill
             onLoad={handleImageLoad}
             sizes="100%"
