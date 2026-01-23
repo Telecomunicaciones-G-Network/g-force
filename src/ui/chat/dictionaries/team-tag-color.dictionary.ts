@@ -9,4 +9,6 @@ export const teamTagColorDictionary: Record<TeamCodename, TagColor> = {
   [TeamCodenames.CUSTOMER]: TagColors.GREEN,
   [TeamCodenames.FAULTS]: TagColors.YELLOW,
   [TeamCodenames.SUPPORT]: TagColors.BLUE,
+  [TeamCodenames.SALES]: TagColors.PURPLE,
+  [TeamCodenames.MANAGEMENT]: TagColors.GRAY,
 };
