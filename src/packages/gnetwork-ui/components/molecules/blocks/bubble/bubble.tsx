@@ -4,6 +4,8 @@ import { BubbleIconController } from './components/bubble-icon-controller';
 
 import { getBubbleClassNames } from './bubble.style';
 
+import styles from './bubble.module.css';
+
 export const Bubble = ({
   className = '',
   children,
@@ -18,10 +20,12 @@ export const Bubble = ({
   return (
     <div className={classes} ref={ref} {...rest}>
       {children}
-      <BubbleIconController
-        customIconClassName={customIconClassName}
-        status={status}
-      />
+      <div className={styles.base__icon}>
+        <BubbleIconController
+          customIconClassName={customIconClassName}
+          status={status}
+        />
+      </div>
     </div>
   );
 };
