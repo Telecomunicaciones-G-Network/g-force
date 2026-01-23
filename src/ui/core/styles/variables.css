@@ -45,6 +45,8 @@
   --tag-blue-foreground: #0000cc;
   --tag-green-background: #daf7d5;
   --tag-green-foreground: #0c5031;
+  --tag-purple-background: #ebe5ff;
+  --tag-purple-foreground: #7f66ff;
   --warning-100: #f7edcf;
   --warning-200: #e09f32;
   --warning-300: #8b621d;
@@ -96,6 +98,8 @@
     --tag-blue-foreground: #0000cc;
     --tag-green-background: #daf7d5;
     --tag-green-foreground: #0c5031;
+    --tag-purple-background: #ebe5ff;
+    --tag-purple-foreground: #7f66ff;
     --warning-100: #f7edcf;
     --warning-200: #e09f32;
     --warning-300: #8b621d;

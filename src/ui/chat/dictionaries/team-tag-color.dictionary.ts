@@ -8,7 +8,7 @@ import { TeamCodenames } from '@module-chat/domain/enums/team-codenames.enum';
 export const teamTagColorDictionary: Record<TeamCodename, TagColor> = {
   [TeamCodenames.CUSTOMER]: TagColors.GREEN,
   [TeamCodenames.FAULTS]: TagColors.YELLOW,
-  [TeamCodenames.SUPPORT]: TagColors.BLUE,
+  [TeamCodenames.MANAGEMENT]: TagColors.RED,
   [TeamCodenames.SALES]: TagColors.PURPLE,
-  [TeamCodenames.MANAGEMENT]: TagColors.GRAY,
+  [TeamCodenames.SUPPORT]: TagColors.BLUE,
 };

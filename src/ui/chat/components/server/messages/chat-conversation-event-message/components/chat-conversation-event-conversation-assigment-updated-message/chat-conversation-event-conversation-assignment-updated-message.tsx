@@ -45,8 +45,7 @@ export const ChatConversationEventConversationAssignmentUpdatedMessage = ({
               <div className="text-xs text-neutral-100">
                 {eventData?.team?.name || 'Sin equipo asignado'}
               </div>
-            </Tooltip>
-            {' '}
+            </Tooltip>{' '}
             <span className="text-neutral-400 text-xs whitespace-nowrap">
               {timeString}
             </span>
@@ -62,7 +61,7 @@ export const ChatConversationEventConversationAssignmentUpdatedMessage = ({
                 color={teamTagColorDictionary?.[eventData?.team?.id]}
               >
                 {eventData?.team?.name}
-            </Tag>
+              </Tag>
               <span className="text-neutral-400 text-xs whitespace-nowrap">
                 {timeString}
               </span>

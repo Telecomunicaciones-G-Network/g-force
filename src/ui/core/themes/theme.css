@@ -45,6 +45,8 @@
   --color-tag-blue-foreground: var(--tag-blue-foreground);
   --color-tag-green-background: var(--tag-green-background);
   --color-tag-green-foreground: var(--tag-green-foreground);
+  --color-tag-purple-background: var(--tag-purple-background);
+  --color-tag-purple-foreground: var(--tag-purple-foreground);
   --color-warning-100: var(--warning-100);
   --color-warning-200: var(--warning-200);
   --color-warning-300: var(--warning-300);
