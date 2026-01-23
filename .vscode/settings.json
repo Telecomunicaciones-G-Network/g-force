@@ -519,7 +519,7 @@
   // TailwindCSS
   "css.customData": [".vscode/css-data.json"],
   // Terminal integrated
-  "terminal.integrated.fontFamily": "'Monaspace Radon', 'Victor Mono', Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'Monaspace Radon', 'Dank Mono', 'Victor Mono', Consolas, 'Courier New', monospace",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontWeight": "600",
   // TypeScript
@@ -531,7 +531,7 @@
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
-  "editor.fontFamily": "'Monaspace Radon', 'Victor Mono', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Monaspace Radon', 'Dank Mono', 'Victor Mono', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.fontWeight": "600",

@@ -3,9 +3,9 @@
 # Android
 !debug.keystore
 .cxx
-.DS_Store
 .externalNativeBuild
 .gradle
+.kotlin/
 *.hprof
 *.iml
 *.keystore
@@ -54,6 +54,11 @@ bun.lock
 # Database
 data
 
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
 # Environment variables
 .*env
 .env
@@ -70,6 +75,8 @@ data
 *.orig.*
 *.p12
 *.p8
+dist/
+expo-env.d.ts
 web-build/
 
 # Fastlane
@@ -105,6 +112,10 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# MacOS
+.DS_Store
+*.pem
+
 # Metro
 .metro-health-check*
 
@@ -116,6 +127,10 @@ yarn-error.log*
 /libpeerconnection.log
 testem.log
 /typings
+
+# Mobile
+/ios
+/android
 
 # Node
 node_modules
