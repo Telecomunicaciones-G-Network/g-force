@@ -37,6 +37,7 @@ interface SearchClientResult {
   last_name: string;
   identification: string;
   contracts: ClientContract[];
+  // biome-ignore lint/suspicious/noExplicitAny: <fix this>
   tickets: any[];
 }
 

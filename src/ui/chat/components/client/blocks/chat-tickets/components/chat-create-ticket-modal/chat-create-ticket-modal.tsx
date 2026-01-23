@@ -291,7 +291,9 @@ export const ChatCreateTicketModal = ({
               {selectedImages.length > 0 && (
                 <div className={styles.base__images_preview}>
                   {selectedImages.map((image, index) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: <fix this>
                     <div key={index} className={styles.base__image_item}>
+                      {/** biome-ignore lint/performance/noImgElement: <fix this> */}
                       <img
                         src={URL.createObjectURL(image)}
                         alt={`Preview ${index + 1}`}

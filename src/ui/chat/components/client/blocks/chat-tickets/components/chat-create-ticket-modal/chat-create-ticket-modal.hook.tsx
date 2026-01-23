@@ -14,8 +14,6 @@ import { CreateTicketCommand } from '@module-ticket/infrastructure/commands/crea
 
 import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
 
-import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
 import { getTicketsDepartmentsService } from '@module-ticket/infrastructure/services/get-tickets-departments.service';
@@ -42,7 +40,6 @@ interface UseChatCreateTicketModalProps {
 export const useChatCreateTicketModal = ({
   onClose,
 }: UseChatCreateTicketModalProps) => {
-  const activeContact = useContactStore((state) => state.activeContact);
   const queryClient = useQueryClient();
   const { showToast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);

@@ -39,7 +39,8 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "correctness": {
-        "noUnusedPrivateClassMembers": "off"
+        "noUnusedPrivateClassMembers": "off",
+        "noUnknownPseudoClass": "off"
       },
       "a11y": {
         "noStaticElementInteractions": "off"
@@ -59,7 +60,8 @@
   },
   "css": {
     "parser": {
-      "tailwindDirectives": true
+      "tailwindDirectives": true,
+      "cssModules": true
     }
   }
 }

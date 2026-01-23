@@ -4,8 +4,6 @@ import type {
 } from '../../domain/interfaces';
 import type { CreateTicketRequestDTO, CreateTicketResponseDTO } from '../dtos';
 
-import { GetTicketsMapper } from './get-tickets.mapper';
-
 export class CreateTicketMapper {
   public static mapFrom(input: CreateTicketResponseDTO): CreateTicketResponse {
     return {
