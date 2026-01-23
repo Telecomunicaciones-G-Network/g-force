@@ -96,7 +96,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-conversation-finished.mapper.ts ✅
-- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ⚠️
 - src/modules/chat/infrastructure/mappers/on-media-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-message-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
@@ -113,6 +113,8 @@ TODO: Doc all about this project
 - src/modules/invoice/domain/types/invoice-status-code.type.ts ✅
 - src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
 
+- src/packages/filer/utils/download-file-by-url.util.ts ✅
+- src/packages/filer/utils/remove-extension-from-filename.util.ts ✅
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
 - src/packages/hooks/use-click-outside.hook.tsx ✅
 - src/packages/sounder/classes/sounder.class.ts ✅

@@ -19,9 +19,12 @@ export class OnIncommingMessageMapper {
    */
   static mapFrom(
     input: OnIncommingMessageResponseDTO,
+    // TODO: I must to get rid of this parameter making that Backend send me always the contact_id
     contact: Contact | null,
   ): Message | null {
     if (!contact) {
+      // TODO: Show alert for error
+      // TODO: Register error
       return null;
     }
 
@@ -50,7 +53,7 @@ export class OnIncommingMessageMapper {
         ? {
             id: input?.media?.media_id,
             downloadUrl: null,
-            filename: '',
+            filename: input?.media?.filename,
             mimeType: input?.media?.mime_type,
             storageStatus: input?.media?.storage_status,
             type: input?.media?.type,
@@ -60,7 +63,7 @@ export class OnIncommingMessageMapper {
       readAt: input?.timestamp,
       replyToMessage: null,
       sender: {
-        id: contact?.id,
+        id: input?.contact_id ?? contact?.id,
         isBot: false,
         name: contact?.name,
       },
