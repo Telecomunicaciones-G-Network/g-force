@@ -13,8 +13,11 @@ import { useCallback } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
+
+import { useSocket } from '@socketio/hooks/use-socket.hook';
+
+import { removeExtensionFromFilename } from '@filer/utils/remove-extension-from-filename.util';
 
 import { MediaStorageStatus } from '@module-chat/domain/enums/media-storage-status.enum';
 import { MediaTypes } from '@module-chat/domain/enums/media-types.enum';
@@ -59,9 +62,17 @@ export const useEmitSendImageMessage = () => {
 
         const temporalMessageId = uuidv4();
 
+        const parsedFilename = removeExtensionFromFilename(file?.name);
+
+        if (!parsedFilename) {
+          // TODO: Show alert for error
+          // TODO: Register error
+          return;
+        }
+
         const mediaResponse = await uploadChatMediaCommand({
           file: file?.file,
-          filename: file.name,
+          filename: parsedFilename,
           mediaType: file.type,
         });
 
@@ -85,7 +96,7 @@ export const useEmitSendImageMessage = () => {
           media: {
             id: mediaResponse?.mediaId,
             downloadUrl: file?.preview ?? null,
-            filename: file?.name,
+            filename: parsedFilename,
             mimeType: file?.type,
             storageStatus: MediaStorageStatus.AVAILABLE,
             type: MediaTypes.IMAGE,

@@ -40,12 +40,14 @@ export interface OnIncommingMessageResponseLocation {
  * The media information of the message.
  *
  * @property media_id - The ID of the media.
+ * @property filename - The filename of the media.
  * @property mime_type - The MIME type of the media.
  * @property storage_status - The storage status of the media.
  * @property type - The type of the media.
  */
 export interface OnIncommingMesssageResponseMedia {
   media_id: string;
+  filename: string;
   mime_type: string;
   storage_status: MediaStorageStatus;
   type: MediaType;
@@ -54,6 +56,7 @@ export interface OnIncommingMesssageResponseMedia {
 /**
  * The response data for the incoming message.
  *
+ * @property contact_id - The ID of the contact.
  * @property contacts - The contact information of the message sender.
  * @property conversation_id - The ID of the conversation.
  * @property forwarded - Whether the message has been forwarded.
@@ -67,6 +70,7 @@ export interface OnIncommingMesssageResponseMedia {
  * @property type - The type of the message.
  */
 export interface OnIncommingMessageResponseDTO {
+  contact_id: string;
   contacts: OnIncommingMessageResponseContact[] | null;
   conversation_id: string;
   forwarded_many_times: boolean;
