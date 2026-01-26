@@ -2,6 +2,8 @@ import type { TicketValues } from '@module-ticket/domain/interfaces';
 
 import dayjs from 'dayjs';
 
+import { MdOutlineArrowOutward } from 'react-icons/md';
+
 import { Card } from '@gnetwork-ui/components/atoms/cards/card';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 
@@ -10,12 +12,19 @@ import { ticketStatusColorDictionary } from '@ui-chat/dictionaries/ticket-status
 
 import styles from './chat-ticket-card.module.css';
 
-export const ChatTicketCard = ({
-  createdAt = '',
-  description = '',
-  number,
-  statusName,
-}: Readonly<TicketValues>) => {
+interface ChatTicketCardProps extends TicketValues {
+  onViewDetails?: (ticketId: number, ticketData: TicketValues) => void;
+}
+
+export const ChatTicketCard = (props: Readonly<ChatTicketCardProps>) => {
+  const {
+    createdAt = '',
+    description = '',
+    number,
+    statusName,
+    id,
+    onViewDetails,
+  } = props;
   if (!description) {
     console.warn(
       'Prop description is missing on ChatTicketCard component. This component can not be render appropiately.',
@@ -42,6 +51,14 @@ export const ChatTicketCard = ({
           fullWidth
         >
           <div className={styles.base}>
+            <button
+              className={styles.base__arrow_button}
+              onClick={() => onViewDetails?.(id || number, props)}
+              type="button"
+              aria-label="Ver detalles del ticket"
+            >
+              <MdOutlineArrowOutward className="w-5 h-5" />
+            </button>
             {number && (
               <Text as="h5" level="small" scheme="label">
                 #TCK-{number}:

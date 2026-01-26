@@ -1,7 +1,6 @@
 import type { GetTicketByIdResponse } from '../../domain/interfaces';
-import type { GetTicketByIdResponseDTO } from '../dtos';
 
-import { GetTicketsMapper } from './get-tickets.mapper';
+import type { GetTicketByIdResponseDTO } from '../dtos';
 
 export class GetTicketByIdMapper {
   public static mapFrom(
@@ -10,9 +9,7 @@ export class GetTicketByIdMapper {
     return {
       status: input?.status,
       success: input?.success,
-      ticket: input?.result
-        ? GetTicketsMapper.mapFromArray(input.result)
-        : null,
+      results: input?.results || null,
     };
   }
 }

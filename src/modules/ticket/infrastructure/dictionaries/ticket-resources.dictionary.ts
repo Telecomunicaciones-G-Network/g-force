@@ -1,6 +1,6 @@
 export const TICKET_RESOURCES = {
   CREATE_TICKET: '/chat/tickets',
-  GET_TICKET_BY_ID: (ticketId: string): string => `/tickets/${ticketId}`,
+  GET_TICKET_BY_ID: (ticketId: string): string => `/chat/tickets/${ticketId}`,
   GET_TICKETS: (contactId: string): string =>
     `/contacts/${contactId}/client/tickets`,
 

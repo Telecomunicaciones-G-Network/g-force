@@ -4,4 +4,9 @@ export type { GetTicketByIdRequest } from './get-ticket-by-id-request.interface'
 export type { GetTicketByIdResponse } from './get-ticket-by-id-response.interface';
 export type { GetTicketsRequest } from './get-tickets-request.interface';
 export type { GetTicketsResponse } from './get-tickets-response.interface';
+export type {
+  TicketDetail,
+  TicketDetailClient,
+  TicketDetailContract,
+} from './ticket-detail.interface';
 export type { TicketValues } from './ticket-values.interface';

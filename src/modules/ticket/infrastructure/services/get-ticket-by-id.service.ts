@@ -19,7 +19,7 @@ export const getTicketByIdService = async (
     TICKET_RESOURCES.GET_TICKET_BY_ID(request?.ticketId),
   );
 
-  if (!response?.result || !response?.success) {
+  if (!response?.results || !response?.success) {
     throw new BaseException({
       message: `Error al obtener el ticket con id: ${request?.ticketId}`,
       status: response?.status,
