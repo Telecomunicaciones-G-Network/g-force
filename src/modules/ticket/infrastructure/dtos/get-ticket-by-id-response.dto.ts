@@ -1,7 +1,7 @@
-import type { GetTicketsResultDTO } from '../interfaces';
+import type { TicketDetailDTO } from './ticket-detail.dto';
 
 export interface GetTicketByIdResponseDTO {
-  result?: GetTicketsResultDTO;
+  results?: TicketDetailDTO;
   status: number;
   success: boolean;
 }

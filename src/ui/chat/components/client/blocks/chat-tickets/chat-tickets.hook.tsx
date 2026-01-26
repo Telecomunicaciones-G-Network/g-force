@@ -1,6 +1,7 @@
 'use client';
 
 import type { GetContactTicketsResponse } from '@module-chat/domain/interfaces';
+import type { TicketValues } from '@module-ticket/domain/interfaces';
 import type { TicketStatusName } from '@module-ticket/domain/types';
 
 import { useMemo, useState } from 'react';
@@ -18,6 +19,10 @@ export const useChatTickets = () => {
   const activeContact = useContactStore((state) => state.activeContact);
   const [filterStatus, setFilterStatus] = useState<TicketFilterStatus>('Todos');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null);
+  const [selectedTicketData, setSelectedTicketData] =
+    useState<TicketValues | null>(null);
 
   const { data, isError, isLoading } = useQuery<GetContactTicketsResponse>({
     queryKey: [
@@ -55,14 +60,34 @@ export const useChatTickets = () => {
     setIsCreateModalOpen(false);
   };
 
+  const handleOpenDetailModal = (
+    ticketId: number,
+    ticketData: TicketValues,
+  ) => {
+    setSelectedTicketId(ticketId);
+    setSelectedTicketData(ticketData);
+    setIsDetailModalOpen(true);
+  };
+
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false);
+    setSelectedTicketId(null);
+    setSelectedTicketData(null);
+  };
+
   return {
     filterStatus,
     handleCloseCreateModal,
+    handleCloseDetailModal,
     handleFilterChange,
     handleOpenCreateModal,
+    handleOpenDetailModal,
     isCreateModalOpen,
+    isDetailModalOpen,
     isError: isError || !data?.success,
     isLoading,
+    selectedTicketId,
+    selectedTicketData,
     tickets: filteredTickets,
   };
 };

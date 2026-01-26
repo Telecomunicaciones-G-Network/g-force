@@ -19,6 +19,7 @@ import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-c
 import { ChatTicketCard } from '@ui-chat/components/server/cards/chat-ticket-card';
 
 import { ChatCreateTicketModal } from './components/chat-create-ticket-modal';
+import { ChatTicketDetailModal } from './components/chat-ticket-detail-modal';
 import { ChatTicketsSkeletons } from './components/chat-tickets-skeletons/chat-tickets-skeletons';
 
 import { useChatTickets, type TicketFilterStatus } from './chat-tickets.hook';
@@ -35,11 +36,16 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
   const {
     filterStatus,
     handleCloseCreateModal,
+    handleCloseDetailModal,
     handleFilterChange,
     handleOpenCreateModal,
+    handleOpenDetailModal,
     isCreateModalOpen,
+    isDetailModalOpen,
     isError,
     isLoading,
+    selectedTicketId,
+    selectedTicketData,
     tickets,
   } = useChatTickets();
 
@@ -64,6 +70,15 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
         isOpen={isCreateModalOpen}
         onClose={handleCloseCreateModal}
       />
+
+      {selectedTicketId && (
+        <ChatTicketDetailModal
+          isOpen={isDetailModalOpen}
+          onClose={handleCloseDetailModal}
+          ticketId={selectedTicketId}
+          initialTicketData={selectedTicketData || undefined}
+        />
+      )}
 
       {isLoading && <ChatTicketsSkeletons />}
       {!isLoading && isError && (
@@ -141,7 +156,11 @@ export const ChatTickets = ({ title = '' }: Readonly<ChatTicketsProps>) => {
           {tickets?.length > 0 && (
             <div className={styles.base__elements}>
               {tickets?.map((ticket: TicketValues) => (
-                <ChatTicketCard key={ticket?.number?.toString()} {...ticket} />
+                <ChatTicketCard
+                  key={ticket?.number?.toString()}
+                  {...ticket}
+                  onViewDetails={handleOpenDetailModal}
+                />
               ))}
             </div>
           )}
