@@ -25,6 +25,12 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
+  updateActiveAgentStatus: (status) => {
+    const { activeAgent } = get();
+    if (activeAgent) {
+      set({ activeAgent: { ...activeAgent, status } });
+    }
+  },
   addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 
