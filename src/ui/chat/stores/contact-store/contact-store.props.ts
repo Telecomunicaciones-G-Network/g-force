@@ -3,6 +3,7 @@ import type {
   Contact,
   Conversation,
 } from '@module-chat/domain/interfaces';
+import type { AgentStatus } from '@module-chat/domain/enums/agent-status.enum';
 import type { ChatMode } from '@ui-chat/types';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
@@ -16,6 +17,7 @@ export interface ContactStoreState {
   setActiveContact: (contact: Contact | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: Contact[]) => void;
+  updateActiveAgentStatus: (status: AgentStatus) => void;
 
   addContacts: (contacts: Contact[]) => void;
   addOneUnreadMessageToContact: (

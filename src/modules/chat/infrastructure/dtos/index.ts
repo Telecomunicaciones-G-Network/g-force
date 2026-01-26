@@ -1,3 +1,5 @@
+export type { EmitChangeAgentStatusRequestDTO } from './emit-change-agent-status-request.dto';
+export type { EmitChangeAgentStatusResponseDTO } from './emit-change-agent-status-response.dto';
 export type { EmitMarkMessageAsReadRequestDTO } from './emit-mark-message-as-read-request.dto';
 export type { EmitMarkMessageAsReadResponseDTO } from './emit-mark-message-as-read-response.dto';
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';

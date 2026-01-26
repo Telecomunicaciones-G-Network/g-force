@@ -1,6 +1,6 @@
 export enum AgentStatus {
   AWAY = 'AWAY',
-  DO_NOT_DISTURB = 'DO_NOT_DISTURB',
+  BUSY = 'BUSY',
   OFFLINE = 'OFFLINE',
   ONLINE = 'ONLINE',
 }

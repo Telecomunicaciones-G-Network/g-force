@@ -1,6 +1,8 @@
 export type { Agent } from './agent.interface';
 export type { Contact } from './contact.interface';
 export type { Conversation } from './conversation.interface';
+export type { EmitChangeAgentStatusRequest } from './emit-change-agent-status-request.interface';
+export type { EmitChangeAgentStatusResponse } from './emit-change-agent-status-response.interface';
 export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';

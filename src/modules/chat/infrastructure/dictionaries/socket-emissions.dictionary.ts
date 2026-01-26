@@ -10,4 +10,5 @@ export const socketEmissionsDictionary = {
   SEND_IMAGE_MESSAGE: 'send_image_message',
   SEND_INTERNAL_MESSAGE: 'send_internal_message',
   SEND_TEXT_MESSAGE: 'send_text_message',
+  SET_AGENT_STATUS: 'set_agent_status',
 } as const satisfies Record<string, string>;

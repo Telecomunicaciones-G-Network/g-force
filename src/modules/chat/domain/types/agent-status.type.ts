@@ -1,1 +1,1 @@
-export type AgentStatus = 'AWAY' | 'DO_NOT_DISTURB' | 'OFFLINE' | 'ONLINE';
+export type AgentStatus = 'AWAY' | 'BUSY' | 'OFFLINE' | 'ONLINE';
