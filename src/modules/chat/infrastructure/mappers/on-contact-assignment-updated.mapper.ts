@@ -11,6 +11,7 @@ export class OnContactAssignmentUpdatedMapper {
    * Map from on contact assignment updated response DTO to on conversation assignment updated response domain
    *
    * @param input - The on contact assignment updated response DTO
+   *
    * @returns The on conversation assignment updated response domain
    */
   static mapFrom(

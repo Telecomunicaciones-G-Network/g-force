@@ -57,6 +57,7 @@ export interface OnIncommingMesssageResponseMedia {
  * The response data for the incoming message.
  *
  * @property contact_id - The ID of the contact.
+ * @property contact_name - The name of the contact.
  * @property contacts - The contact information of the message sender.
  * @property conversation_id - The ID of the conversation.
  * @property forwarded - Whether the message has been forwarded.
@@ -71,6 +72,7 @@ export interface OnIncommingMesssageResponseMedia {
  */
 export interface OnIncommingMessageResponseDTO {
   contact_id: string;
+  contact_name: string;
   contacts: OnIncommingMessageResponseContact[] | null;
   conversation_id: string;
   forwarded_many_times: boolean;

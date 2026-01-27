@@ -11,6 +11,7 @@ export class OnConversationFinishedMapper {
    * Map from on conversation finished response DTO to on conversation finished response domain
    *
    * @param input - The on conversation finished response DTO
+   *
    * @returns The on conversation finished response domain
    */
   static mapFrom(

@@ -17,6 +17,7 @@ export class EmitSetAgentStatusMapper {
    * Map the response from the DTO to the domain interface.
    *
    * @param input - The response from the DTO.
+   *
    * @returns The response in domain interface format.
    */
   static mapFrom(
@@ -31,6 +32,7 @@ export class EmitSetAgentStatusMapper {
    * Map the request from the domain interface to the DTO.
    *
    * @param output - The request from the domain interface.
+   *
    * @returns The request in DTO format.
    */
   static mapTo(

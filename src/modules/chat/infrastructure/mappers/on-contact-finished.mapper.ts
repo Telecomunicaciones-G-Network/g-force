@@ -11,6 +11,7 @@ export class OnContactFinishedMapper {
    * Map from on contact finished response DTO to on contact finished response domain
    *
    * @param input - The on contact finished response DTO
+   *
    * @returns The on contact finished response domain
    */
   static mapFrom(
