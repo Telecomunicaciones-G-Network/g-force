@@ -22,7 +22,9 @@ export default async function PrivateLayout({
     <AuthProvider token={authData?.token ?? null} user={authData?.user ?? null}>
       <SocketProvider config={socketConfig} token={authData?.token ?? null}>
         <DashboardLayout
-          headerContent={<Navbar />}
+          headerContent={
+            <Navbar hideNotificationsButton hideSearchGlobalInput />
+          }
           sidebarContent={<Sidebar />}
         >
           {children}
