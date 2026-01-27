@@ -26,9 +26,9 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 20px 24px;
 }
 
@@ -37,7 +37,9 @@
   align-items: center;
   gap: 16px;
   padding-bottom: 16px;
+  padding-right: 48px;
   border-bottom: 1px solid var(--neutral-100);
+  flex: 1;
 }
 
 /* El círculo rojo del icono principal */
@@ -53,6 +55,9 @@
 }
 
 .header__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -77,18 +82,25 @@
   gap: 16px;
 }
 
-/* --- CLASES NUEVAS PARA EL DISEÑO DE CAJAS --- */
+.grid_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
 
-/* Estilo para las cajas que parecen inputs */
 .field_box {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 8px 12px;
   border: 1px solid var(--neutral-200);
   border-radius: 12px;
   background-color: var(--white);
-  min-height: 50px;
+  height: 40px;
+  /* IMPORTANTE PARA EL CORTE DE TEXTO */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .field_icon {
@@ -100,13 +112,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
+  /* IMPORTANTE PARA EL CORTE DE TEXTO */
+  min-width: 0;
+  overflow: hidden;
 }
 
-/* Layout de grilla para poner 2 items por fila */
-.grid_row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+/* Esto aplica a cualquier Texto o span dentro de field_text */
+.field_text
+> * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
 }
 
 /* Sección de descripción específica */
@@ -122,7 +141,7 @@
   border: 1px solid var(--neutral-200);
   border-radius: 12px;
   background-color: var(--white);
-  min-height: 100px;
+  min-height: 150px;
   color: var(--neutral-600);
   font-size: 0.875rem;
   line-height: 1.5;
@@ -136,14 +155,4 @@
   justify-content: center;
   padding: 40px;
   text-align: center;
-}
-
-@media (max-width: 640px) {
-  .grid_row {
-    grid-template-columns: 1fr; /* En móvil se ponen uno debajo del otro */
-  }
-
-  .content {
-    padding: 16px;
-  }
 }

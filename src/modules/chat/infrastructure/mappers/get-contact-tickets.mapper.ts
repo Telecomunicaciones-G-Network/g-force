@@ -22,6 +22,7 @@ export class GetContactTicketsMapper {
 
   public static mapFromArray(input: GetContactTicketsResult): TicketValues {
     return {
+      id: input?.id,
       contractId: input?.contract_id,
       createdAt: input?.created_at,
       dateCreatedAt: input?.date_created_at,

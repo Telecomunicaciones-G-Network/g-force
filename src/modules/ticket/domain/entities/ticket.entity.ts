@@ -2,6 +2,7 @@ import type { TicketValues } from '../interfaces';
 import type { TicketStatusCode, TicketStatusName } from '../types';
 
 export class Ticket {
+  id: number;
   constructor(
     public contractId: number,
     public createdAt: string,
@@ -15,6 +16,7 @@ export class Ticket {
 
   public toValues(): TicketValues {
     return {
+      id: this.id,
       contractId: this.contractId,
       createdAt: this.createdAt,
       dateCreatedAt: this.dateCreatedAt,
