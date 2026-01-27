@@ -5,7 +5,7 @@ import type { ChatCreateTicketModalProps } from './chat-create-ticket-modal.prop
 import { useState, useEffect, useRef } from 'react';
 import { Controller } from 'react-hook-form';
 import { IoClose, IoAttach, IoCloseCircle } from 'react-icons/io5';
-import { MdCheckCircle } from 'react-icons/md';
+import { MdCheckCircle, MdSearch } from 'react-icons/md';
 import {
   MdOutlineAccountTree,
   MdOutlineArticle,
@@ -24,6 +24,7 @@ import { ClientSearchDropdown } from './components/client-search-dropdown';
 import { ContractCard } from './components/contract-card';
 
 import styles from './chat-create-ticket-modal.module.css';
+import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
 export const ChatCreateTicketModal = ({
   isOpen,
   onClose,
@@ -43,9 +44,12 @@ export const ChatCreateTicketModal = ({
     handleDepartmentChange,
     handleImageSelect,
     handleRemoveImage,
+    handleToggleSearchMode,
     isPending,
+    isLoadingContactData,
     isLoadingDepartments,
     isLoadingIssues,
+    isSearchMode,
     isSuccess,
     issues,
     onSubmit,
@@ -53,7 +57,7 @@ export const ChatCreateTicketModal = ({
     selectedContractId,
     selectedDepartment,
     selectedImages,
-  } = useChatCreateTicketModal({ onClose });
+  } = useChatCreateTicketModal({ onClose, isOpen });
 
   // Ocultar alerta de validación cuando se selecciona cliente o contrato
   useEffect(() => {
@@ -110,18 +114,107 @@ export const ChatCreateTicketModal = ({
           </div>
 
           <div className={styles.base__body}>
-            <div className={styles.base__search_container}>
-              <ClientSearchDropdown
-                onClientSelect={handleClientSelect}
-                selectedClientName={selectedClientName}
-              />
-            </div>
+            {/* Mostrar información del cliente del chat o búsqueda alternativa */}
+            {!isSearchMode && selectedClientName && (
+              <div className={styles.base__client_info}>
+                <div className="flex-1">
+                  <Text
+                    as="span"
+                    level="small"
+                    scheme="label"
+                    className="text-neutral-500 block mb-1"
+                  >
+                    Cliente del chat
+                  </Text>
+                  <Text
+                    as="span"
+                    level="medium"
+                    scheme="label"
+                    className="font-bold text-black"
+                  >
+                    {selectedClientName}
+                  </Text>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Tooltip
+                    side="bottom"
+                    triggerAsChild
+                    triggerComponent={
+                      <button
+                        type="button"
+                        onClick={handleToggleSearchMode}
+                        className="flex items-center gap-2 px-2 py-1 bg-white border border-neutral-300 rounded-lg transition-colors hover:bg-neutral-100"
+                      >
+                        <MdSearch
+                          size={18}
+                          className="text-neutral-600 cursor-pointer"
+                        />
+                      </button>
+                    }
+                  >
+                    {/* Aquí va el contenido del Tooltip */}
+                    <Text
+                      as="span"
+                      level="small"
+                      scheme="label"
+                      className="text-white"
+                    >
+                      Buscar cliente
+                    </Text>
+                  </Tooltip>
+                </div>
+              </div>
+            )}
+
+            {/* Modo búsqueda alternativa */}
+            {isSearchMode && (
+              <div className="w-full space-y-3">
+                <div className="flex items-center justify-between">
+                  <Text
+                    as="span"
+                    level="small"
+                    scheme="label"
+                    className="text-neutral-600"
+                  >
+                    Buscando cliente alternativo
+                  </Text>
+                  <button
+                    type="button"
+                    onClick={handleToggleSearchMode}
+                    className="text-sm text-primary-500 hover:text-primary-600 font-medium cursor-pointer border border-neutral-300 rounded-lg px-2 py-1 hover:bg-neutral-100"
+                  >
+                    Cancelar búsqueda
+                  </button>
+                </div>
+                <div className={styles.base__search_container}>
+                  <ClientSearchDropdown
+                    onClientSelect={handleClientSelect}
+                    selectedClientName={selectedClientName}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Loading state */}
+            {isLoadingContactData && (
+              <div className="w-full bg-neutral-50 rounded-xl p-4 flex items-center justify-center gap-3">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-500" />
+                <Text
+                  as="span"
+                  level="small"
+                  scheme="label"
+                  className="text-neutral-600"
+                >
+                  Cargando datos del cliente...
+                </Text>
+              </div>
+            )}
 
             {contracts.length > 0 && (
               <div className={styles.base__contracts_container}>
                 <Text
                   as="label"
-                  className="text-black"
+                  className="text-neutral"
                   level="small"
                   scheme="label"
                 >
@@ -164,25 +257,15 @@ export const ChatCreateTicketModal = ({
                   >
                     Sin contrato seleccionado.
                   </Text>
-                  <div className="flex flex-col gap-1">
-                    <Text
-                      as="p"
-                      level="small"
-                      scheme="label"
-                      className="text-red-400 font-medium leading-snug"
-                    >
-                      Por favor, ingresar el nombre del cliente en el buscador,
-                      presionar Enter o dar click en el ícono.
-                    </Text>
-                    <Text
-                      as="p"
-                      level="small"
-                      scheme="label"
-                      className="text-red-400 font-medium"
-                    >
-                      Luego deberá seleccionar el contrato del mismo
-                    </Text>
-                  </div>
+                  <Text
+                    as="p"
+                    level="small"
+                    scheme="label"
+                    className="text-red-400 font-medium leading-snug"
+                  >
+                    Por favor, seleccione un contrato de la lista para continuar
+                    con la creación del ticket.
+                  </Text>
                 </div>
               </div>
             )}

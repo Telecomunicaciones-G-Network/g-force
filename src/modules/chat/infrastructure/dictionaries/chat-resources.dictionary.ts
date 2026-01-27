@@ -20,7 +20,7 @@ export const CHAT_RESOURCES = {
   PROCESS_FAST_DEBIT_PAYMENT: '/chat/payment/fast-debit/process-payment',
   REQUEST_FAST_DEBIT_OTP: '/chat/payment/fast-debit/request-otp',
   // Tickets
-  SEARCH_CLIENT: '/chat/search_client',
+  SEARCH_CLIENT: '/chat/clients',
   TRANSFER_CHAT_CONVERSATION: (contactId: string): string =>
     `/chat/contacts/${contactId}/conversation/transfer`,
   UPLOAD_CHAT_MEDIA: '/chat/media',

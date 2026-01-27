@@ -34,7 +34,9 @@ export interface Client {
 interface SearchClientResult {
   client_id: number;
   first_name: string;
+  name: string;
   last_name: string;
+  email: string;
   identification: string;
   contracts: ClientContract[];
   // biome-ignore lint/suspicious/noExplicitAny: <fix this>
@@ -70,13 +72,13 @@ export const useClientSearchDropdown = () => {
       }
 
       const response = await gnetworkFetchApiClient.get<SearchClientResponse>(
-        '/chat/search_client',
+        '/chat/clients',
         {
           cache: HttpCaches.NO_STORE,
           next: { revalidate: 0 },
           searchParams: {
             query: debouncedSearch,
-            page_size: '10',
+            page_size: '20',
           },
         },
       );
@@ -89,7 +91,7 @@ export const useClientSearchDropdown = () => {
   // Map results from API response (search_client returns 'results' not 'contacts')
   const clients: Client[] =
     data?.results?.map((client) => ({
-      fullName: `${client.first_name} ${client.last_name}`.trim(),
+      fullName: `${client.name} ${client.last_name}`.trim(),
       id: String(client.client_id),
       contracts: client.contracts ?? [],
     })) ?? [];
