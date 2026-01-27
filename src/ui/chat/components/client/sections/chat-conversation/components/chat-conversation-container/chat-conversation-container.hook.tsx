@@ -29,18 +29,22 @@ export const useChatConversationContainer = () => {
 
   const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
 
-  const lastMessage = useMemo(
-    () => messages?.[messages.length - 1],
-    [messages],
-  );
+  const lastMessage = useMemo(() => {
+    console.log('messages', messages);
+    const incomingMessages = messages?.filter(
+      (message) => message?.direction === MessageDirections.INCOMING,
+    );
+
+    return incomingMessages?.[incomingMessages.length - 1];
+  }, [messages]);
 
   useEffect(() => {
     if (
       !lastMessage ||
       lastMessage.status === MessageStatus.READ ||
-      lastMessage.direction === MessageDirections.OUTGOING ||
       lastProcessedMessageIdRef.current === lastMessage?.id
     ) {
+      // TODO: Register event
       return;
     }
 
