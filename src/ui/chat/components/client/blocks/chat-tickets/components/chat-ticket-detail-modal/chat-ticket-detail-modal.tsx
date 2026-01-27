@@ -16,6 +16,7 @@ import dayjs from 'dayjs';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { ContractCard } from '../chat-create-ticket-modal/components/contract-card/contract-card';
+import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
 import { useChatTicketDetailModal } from './chat-ticket-detail-modal.hook';
 
 import styles from './chat-ticket-detail-modal.module.css';
@@ -31,7 +32,12 @@ export const ChatTicketDetailModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay}>
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={(open) => !open && onClose()}
+      triggerComponent={<div />}
+      hideModalClose
+    >
       <div className={styles.modal}>
         {/* Header */}
         <div className={styles.header}>
@@ -48,7 +54,7 @@ export const ChatTicketDetailModal = ({
             onClick={onClose}
             type="button"
           >
-            <MdClose size={24} />
+            <MdClose className="size-5 text-neutral-500" />
           </button>
         </div>
 
@@ -89,25 +95,36 @@ export const ChatTicketDetailModal = ({
                     size={22}
                     className={styles.field_icon}
                   />
-                  <Text as="span" level="small" scheme="label">
-                    {ticket.assigned_department_name || 'Sistemas'}
-                  </Text>
+                  <div className={styles.field_text}>
+                    <Text as="span" level="small" scheme="label">
+                      {ticket.assigned_department_name || 'Sistemas'}
+                    </Text>
+                  </div>
                 </div>
 
                 <div className={styles.field_box}>
                   <MdOutlineArticle size={22} className={styles.field_icon} />
-                  <Text as="span" level="small" scheme="label">
-                    Datos de Servicio
-                  </Text>
+                  <div className={styles.field_text}>
+                    <Text
+                      as="span"
+                      level="small"
+                      scheme="label"
+                      title={ticket.issue_name}
+                    >
+                      {ticket.issue_name}
+                    </Text>
+                  </div>
                 </div>
               </div>
 
               <div className={styles.grid_row}>
                 <div className={styles.field_box}>
                   <MdOutlineSell size={22} className={styles.field_icon} />
-                  <Text as="span" level="small" scheme="label">
-                    {ticket.status_name}
-                  </Text>
+                  <div className={styles.field_text}>
+                    <Text as="span" level="small" scheme="label">
+                      {ticket.status_name}
+                    </Text>
+                  </div>
                 </div>
 
                 <div className={styles.field_box}>
@@ -115,11 +132,15 @@ export const ChatTicketDetailModal = ({
                     size={22}
                     className={styles.field_icon}
                   />
-                  <Text as="span" level="small" scheme="label">
-                    {initialTicketData?.createdAt
-                      ? dayjs(initialTicketData.createdAt).format('DD/MM/YYYY')
-                      : ticket.visit_date || 'No disponible'}
-                  </Text>
+                  <div className={styles.field_text}>
+                    <Text as="span" level="small" scheme="label">
+                      {initialTicketData?.createdAt
+                        ? dayjs(initialTicketData.createdAt).format(
+                            'DD/MM/YYYY',
+                          )
+                        : ticket.visit_date || 'No disponible'}
+                    </Text>
+                  </div>
                 </div>
               </div>
 
@@ -152,6 +173,6 @@ export const ChatTicketDetailModal = ({
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };

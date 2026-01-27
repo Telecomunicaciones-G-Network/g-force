@@ -4,6 +4,7 @@ import type {
 } from '@module-ticket/domain/types';
 
 export interface GetContactTicketsResult {
+  id: number;
   contract_id: number;
   created_at: string;
   date_created_at: string;
