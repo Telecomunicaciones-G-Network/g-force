@@ -36,6 +36,14 @@ check:
 	bun lint
 	bun security:scan
 
+# make finishFeature COMMIT_TYPE=feature COMMIT_MESSAGE="add new feature"
+finishFeature:
+	bun format
+	bun check
+	git add .
+	git commit -m "${COMMIT_TYPE}: ${COMMIT_MESSAGE}"
+	git pull origin develop --rebase
+
 # make format
 format:
 	bun format

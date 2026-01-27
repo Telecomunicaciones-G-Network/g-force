@@ -132,12 +132,13 @@ testem.log
 /ios
 /android
 
-# Node
-node_modules
-
 # Next
 .next
 .swc
+next-env.d.ts
+
+# Node
+node_modules
 
 # Node package managers
 package-lock.json
