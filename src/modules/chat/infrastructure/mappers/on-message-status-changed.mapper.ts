@@ -11,6 +11,7 @@ export class OnMessageStatusChangedMapper {
    * Map from on message status changed response DTO to on message status changed response domain
    *
    * @param input - The on message status changed response DTO
+   *
    * @returns The on message status changed response domain
    */
   static mapFrom(

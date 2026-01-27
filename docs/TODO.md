@@ -96,7 +96,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-conversation-finished.mapper.ts ✅
-- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ⚠️
+- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-media-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-message-status-changed.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅

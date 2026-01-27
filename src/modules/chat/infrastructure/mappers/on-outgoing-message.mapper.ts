@@ -13,6 +13,7 @@ export class OnOutgoingMessageMapper {
    * Map from on outgoing message response DTO to message domain
    *
    * @param data - The on outgoing message response DTO
+   *
    * @returns The message domain
    */
   static mapFrom(data: OnOutgoingMessageResponseDTO): Message {

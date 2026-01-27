@@ -58,7 +58,6 @@ export const useOnNewMessageSent = () => {
         // TODO: Register error
         return;
 
-      // TODO: Validate if we need to apply this or not and sound
       addOneUnreadMessageToContact({
         contactId: response?.contactId,
         lastMessage: response?.messageTextPreview,

@@ -50,18 +50,19 @@ export const useOnIncommingMessage = ({
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      // TODO: Validate the response
-      // TODO: Set alert for error
-      // TODO: Register error
+      const newMessage = OnIncommingMessageMapper.mapFrom(parseResponse);
 
-      const newMessage = OnIncommingMessageMapper.mapFrom(
-        parseResponse,
-        activeContact,
-      );
-
-      if (!newMessage || !newMessage?.id) return;
-      // TODO: Show alert for error
-      // TODO: Register error
+      if (
+        !newMessage?.conversationId ||
+        !newMessage?.id ||
+        !newMessage?.sender?.id ||
+        !newMessage?.sender?.name ||
+        !newMessage?.status ||
+        !newMessage?.type
+      )
+        // TODO: Show alert for error
+        // TODO: Register error
+        return;
 
       if (
         newMessage?.media?.storageStatus === MediaStorageStatus.AVAILABLE ||
@@ -72,7 +73,7 @@ export const useOnIncommingMessage = ({
         sounder.playAudio();
       }
 
-      if (newMessage?.id) addMessage(newMessage);
+      addMessage(newMessage);
 
       if (newMessage && !disabledChat) emitMarkMessageAsRead(newMessage?.id);
     },

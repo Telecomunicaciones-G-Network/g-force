@@ -11,6 +11,7 @@ export class OnConnectedMapper {
    * Map from on connected response DTO to on connected response domain
    *
    * @param input - The on connected response DTO
+   *
    * @returns The on connected response domain
    */
   static mapFrom(input: OnConnectedResponseDTO): OnConnectedResponse {

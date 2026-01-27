@@ -11,6 +11,7 @@ export class OnNewMessageSentMapper {
    * Map from on new message sent response DTO to on new message sent response domain
    *
    * @param input - The on new message sent response DTO
+   *
    * @returns The on new message sent response domain
    */
   static mapFrom(input: OnNewMessageSentResponseDTO): OnNewMessageSentResponse {

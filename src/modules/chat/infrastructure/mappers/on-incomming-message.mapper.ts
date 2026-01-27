@@ -1,4 +1,4 @@
-import type { Contact, Message } from '../../domain/interfaces';
+import type { Message } from '../../domain/interfaces';
 import type { OnIncommingMessageResponseDTO } from '../dtos';
 
 import { MessageDirections } from '../../domain/enums/message-directions.enum';
@@ -14,20 +14,10 @@ export class OnIncommingMessageMapper {
    * Map from on incoming message response DTO to message domain
    *
    * @param input - The on incoming message response DTO
-   * @param contact - The contact
+   *
    * @returns The message domain
    */
-  static mapFrom(
-    input: OnIncommingMessageResponseDTO,
-    // TODO: I must to get rid of this parameter making that Backend send me always the contact_id
-    contact: Contact | null,
-  ): Message | null {
-    if (!contact) {
-      // TODO: Show alert for error
-      // TODO: Register error
-      return null;
-    }
-
+  static mapFrom(input: OnIncommingMessageResponseDTO): Message | null {
     return {
       id: input?.message_id,
       contacts: input?.contacts
@@ -63,9 +53,9 @@ export class OnIncommingMessageMapper {
       readAt: input?.timestamp,
       replyToMessage: null,
       sender: {
-        id: input?.contact_id ?? contact?.id,
+        id: input?.contact_id,
         isBot: false,
-        name: contact?.name,
+        name: input?.contact_name,
       },
       sentAt: input?.timestamp,
       status: MessageStatus.DELIVERED,

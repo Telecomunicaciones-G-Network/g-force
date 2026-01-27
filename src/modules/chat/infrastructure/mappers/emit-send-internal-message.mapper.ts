@@ -10,9 +10,16 @@ import type {
 /**
  * Emit send internal message mapper
  *
- * This mapper transforms the request from the domain interface to the DTO.
+ * This mapper converts the emit send internal message response DTO to the emit send internal message response domain.
  */
 export class EmitSendInternalMessageMapper {
+  /**
+   * Map from emit send internal message response DTO to emit send internal message response domain
+   *
+   * @param input - The emit send internal message response DTO.
+   *
+   * @returns The emit send internal message response domain.
+   */
   static mapFrom(
     input: EmitSendInternalMessageResponseDTO,
   ): EmitSendInternalMessageResponse {
@@ -24,9 +31,10 @@ export class EmitSendInternalMessageMapper {
   }
 
   /**
-   * Map the request from the domain interface to the DTO.
+   * Map to emit send internal message request DTO
    *
    * @param output - The request from the domain interface.
+   *
    * @returns The request in DTO format.
    */
   static mapTo(
