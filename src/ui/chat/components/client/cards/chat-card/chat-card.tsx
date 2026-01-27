@@ -127,7 +127,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Audio'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Audio'}
               </Text>
             </>
           )}
@@ -140,7 +145,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Contacto'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Contacto'}
               </Text>
             </>
           )}
@@ -153,7 +163,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Evento'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Evento'}
               </Text>
             </>
           )}
@@ -166,7 +181,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Documento'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Documento'}
               </Text>
             </>
           )}
@@ -179,7 +199,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Imagen'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Imagen'}
               </Text>
             </>
           )}
@@ -215,7 +240,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Mensaje interno'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Mensaje interno'}
               </Text>
             </>
           )}
@@ -228,7 +258,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Localización'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Localización'}
               </Text>
             </>
           )}
@@ -241,7 +276,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Sticker'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Sticker'}
               </Text>
             </>
           )}
@@ -254,7 +294,12 @@ export const ChatCard = ({
                 level="xsmall"
                 scheme="label"
               >
-                {lastMessage ? lastMessage : 'Video'}
+                {lastMessage
+                  ? shortString(
+                      lastMessage,
+                      CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                    )
+                  : 'Video'}
               </Text>
             </>
           )}
