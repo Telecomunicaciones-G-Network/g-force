@@ -1,6 +1,7 @@
 import type { ApiResponse } from '@module-core/interfaces';
 
 export interface GetContactInformationResponseData {
+  clientId: number;
   clientType: string;
   email: string;
   fullName: string;

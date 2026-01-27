@@ -1,6 +1,8 @@
 import type { ContractStatusCode, ContractStatusName } from '../types';
 
 export interface ContractValues {
+  client_type_name: string;
+  planName: string;
   address: string;
   installationDate: string;
   napBox: string;

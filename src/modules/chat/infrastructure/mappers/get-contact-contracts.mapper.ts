@@ -21,6 +21,7 @@ export class GetContactContractsMapper {
     input: GetContactContractsResult,
   ): ContractValues & { client_type_name: string } {
     return {
+      planName: input?.planName,
       address: input?.address,
       installationDate: input?.installation_date,
       napBox: input?.nap_box,

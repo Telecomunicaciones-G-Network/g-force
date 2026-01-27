@@ -17,6 +17,8 @@ export class Contract {
 
   public toValues(): ContractValues {
     return {
+      client_type_name: '',
+      planName: '',
       address: this.address,
       installationDate: this.installationDate,
       napBox: this.napBox,

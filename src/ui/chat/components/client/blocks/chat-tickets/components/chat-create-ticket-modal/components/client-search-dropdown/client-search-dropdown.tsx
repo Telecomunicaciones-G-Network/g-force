@@ -97,9 +97,9 @@ export const ClientSearchDropdown = ({
 
           {!isLoading &&
             clients.length > 0 &&
-            clients.map((client) => (
+            clients.map((client, index) => (
               <button
-                key={client.id}
+                key={`${client.id}-${index}`}
                 className={styles.base__item}
                 onClick={() => handleClientClick(client)}
                 type="button"

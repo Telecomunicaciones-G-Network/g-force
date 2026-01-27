@@ -22,6 +22,7 @@ export interface GetContactContractsResultBalance {
 }
 
 export interface GetContactContractsResult {
+  planName: string;
   address: string;
   balance: GetContactContractsResultBalance;
   bank_associated_data: GetContactContractsResultBankAssociatedData;

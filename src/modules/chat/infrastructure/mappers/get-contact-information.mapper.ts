@@ -7,6 +7,7 @@ export class GetContactInformationMapper {
   ): GetContactInformationResponse {
     return {
       data: {
+        clientId: input?.results?.id,
         clientType: input?.results?.client_type,
         email: input?.results?.email,
         fullName: input?.results?.full_name,
