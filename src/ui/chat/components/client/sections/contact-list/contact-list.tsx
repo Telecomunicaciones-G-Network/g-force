@@ -6,12 +6,12 @@ import { use } from 'react';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { AgentStatusSelector } from '@ui-chat/components/client/buttons/agent-status-selector';
+import { AgentStatusSelector } from '@ui-chat/components/client/selects/agent-status-selector';
+
+import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { ChatListBody } from './components/chat-list-body';
 import { ChatListHeader } from './components/chat-list-header';
-
-import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useContactList } from './contact-list.hook';
 
@@ -21,9 +21,8 @@ export const ContactList = ({
   chatContactsResponsePromise,
 }: Readonly<ContactListProps>) => {
   const { contacts: contactsResponse = [] } = use(chatContactsResponsePromise);
-  const { chatMode, contacts, isDesktop } = useContactList(contactsResponse);
 
-  console.log('contacts', contacts);
+  const { chatMode, contacts, isDesktop } = useContactList(contactsResponse);
 
   return (
     <>
@@ -31,12 +30,12 @@ export const ContactList = ({
         <section
           className={cn(
             styles.base,
-            'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:w-[385px] relative',
+            'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:pb-[80px] lg:w-[385px]',
           )}
         >
           {contacts?.length > 0 && <ChatListHeader />}
           <ChatListBody contacts={contacts} />
-          <AgentStatusSelector className={styles.base__status_selector} />
+          <AgentStatusSelector />
         </section>
       )}
     </>

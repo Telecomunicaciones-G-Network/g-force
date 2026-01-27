@@ -1,8 +1,6 @@
 export type { Agent } from './agent.interface';
 export type { Contact } from './contact.interface';
 export type { Conversation } from './conversation.interface';
-export type { EmitChangeAgentStatusRequest } from './emit-change-agent-status-request.interface';
-export type { EmitChangeAgentStatusResponse } from './emit-change-agent-status-response.interface';
 export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
 export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
@@ -11,6 +9,8 @@ export type { EmitSendInternalMessageRequest } from './emit-send-internal-messag
 export type { EmitSendInternalMessageResponse } from './emit-send-internal-message-response.interface';
 export type { EmitSendTextMessageRequest } from './emit-send-text-message-request.interface';
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
+export type { EmitSetAgentStatusRequest } from './emit-set-agent-status-request.interface';
+export type { EmitSetAgentStatusResponse } from './emit-set-agent-status-response.interface';
 export type { GetAvailableReportPaymentMethodsResponse } from './get-available-report-payment-methods-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';

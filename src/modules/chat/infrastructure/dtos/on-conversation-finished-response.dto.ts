@@ -1,8 +1,6 @@
 /**
  * On conversation finished response finished by agent DTO
  *
- * This DTO represents the agent information from the on conversation finished socket event.
- *
  * @property id - The ID of the agent
  * @property full_name - The full name of the agent
  */
@@ -13,8 +11,6 @@ export interface OnConversationFinishedResponseFinishedByAgentDTO {
 
 /**
  * On conversation finished response DTO
- *
- * This DTO represents the response from the on conversation finished socket event.
  *
  * @property contact_id - The ID of the contact
  * @property conversation_id - The ID of the conversation

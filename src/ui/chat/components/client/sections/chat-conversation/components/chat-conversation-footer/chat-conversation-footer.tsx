@@ -72,7 +72,12 @@ export const ChatConversationFooter = ({
           </Button>
         </form>
       </div>
-      <div className={styles.base__collapsible}>
+      <div
+        className={cn(
+          styles.base__collapsible,
+          isInternalMessageMode ? 'h-4 min-h-4 pt-[5px]' : 'h-5 min-h-5 pt-px',
+        )}
+      >
         <CollapsibleButton
           isCollapsed={isInternalMessageMode}
           onClick={toggleInternalMessageMode}

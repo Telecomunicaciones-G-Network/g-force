@@ -5,6 +5,7 @@ import type {
   Contact,
   Conversation,
 } from '@module-chat/domain/interfaces';
+import type { AgentStatus } from '@module-chat/domain/types';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
@@ -25,12 +26,6 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
-  updateActiveAgentStatus: (status) => {
-    const { activeAgent } = get();
-    if (activeAgent) {
-      set({ activeAgent: { ...activeAgent, status } });
-    }
-  },
   addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 
@@ -113,6 +108,13 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     });
 
     set({ contacts: sortedContacts });
+  },
+  updateActiveAgentStatus: (status: AgentStatus) => {
+    const { activeAgent } = get();
+
+    if (activeAgent) {
+      set({ activeAgent: { ...activeAgent, status } });
+    }
   },
   updateContactLatestConversation: (
     contactId: string,

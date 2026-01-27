@@ -1,17 +1,12 @@
 'use client';
 
-import type { AgentStatus } from '@module-chat/domain/enums/agent-status.enum';
+import type { OnAgentStatusChangedResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
-import { useAgentStatusStore } from '@ui-chat/stores/agent-status-store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-
-interface AgentStatusChangedResponse {
-  status: AgentStatus;
-}
 
 /**
  * On agent status changed hook
@@ -25,19 +20,18 @@ export const useOnAgentStatusChanged = () => {
   const updateActiveAgentStatus = useContactStore(
     (state) => state.updateActiveAgentStatus,
   );
-  const clearPendingStatus = useAgentStatusStore(
-    (state) => state.clearPendingStatus,
-  );
 
-  onSocketEvent<AgentStatusChangedResponse>(
+  onSocketEvent<OnAgentStatusChangedResponseDTO>(
     socketEventsDictionary.AGENT_STATUS_CHANGED,
-    (data: AgentStatusChangedResponse) => {
+    (data: OnAgentStatusChangedResponseDTO) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      if (parseResponse?.status) {
-        updateActiveAgentStatus(parseResponse.status);
-        clearPendingStatus();
-      }
+      if (!parseResponse?.status)
+        // TODO: Set alert for error
+        // TODO: Register error
+        return;
+
+      updateActiveAgentStatus(parseResponse.status);
     },
   );
 };

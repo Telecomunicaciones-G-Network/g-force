@@ -29,6 +29,7 @@ export class GetChatTransferAgentsMapper {
     return {
       id: input?.id,
       name: input?.full_name,
+      status: input?.status,
       teams: input?.teams ?? [],
     };
   }

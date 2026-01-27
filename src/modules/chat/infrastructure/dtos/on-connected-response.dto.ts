@@ -3,8 +3,6 @@ import type { TeamCodename } from '../../domain/types';
 /**
  * On connected response DTO
  *
- * This DTO represents the response from the on connected socket event.
- *
  * @property agent_full_name - The full name of the agent.
  * @property agent_id - The id of the agent.
  * @property agent_teams - The teams of the agent.

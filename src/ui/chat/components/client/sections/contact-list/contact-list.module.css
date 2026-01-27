@@ -1,25 +1,5 @@
 .base {
   display: flex;
   flex-direction: column;
-}
-
-.base__status_selector {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1rem;
-  right: 1rem;
-}
-
-@media (min-width: 768px) {
-  .base__status_selector {
-    left: 2rem;
-    right: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .base__status_selector {
-    left: 1rem;
-    right: 1rem;
-  }
+  position: relative;
 }
