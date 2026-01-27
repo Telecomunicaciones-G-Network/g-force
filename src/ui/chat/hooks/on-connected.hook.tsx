@@ -4,6 +4,8 @@ import type { OnConnectedResponseDTO } from '@module-chat/infrastructure/dtos';
 
 import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 
+import { AgentStatus } from '@module-chat/domain/enums/agent-status.enum';
+
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connected.mapper';
@@ -44,7 +46,10 @@ export const useOnConnected = () => {
         // TODO: Register error
         return;
 
-      setActiveAgent(response?.agent);
+      setActiveAgent({
+        ...response?.agent,
+        status: AgentStatus.OFFLINE,
+      });
     },
   );
 };

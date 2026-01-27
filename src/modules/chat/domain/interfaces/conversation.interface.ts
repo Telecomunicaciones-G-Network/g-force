@@ -14,7 +14,7 @@ import type { Team } from './team.interface';
  */
 export interface Conversation {
   id: string;
-  agent: Omit<Agent, 'teams'> | null;
+  agent: Omit<Agent, 'status' | 'teams'> | null;
   status: ConversationStatus;
   team: Team | null;
 }

@@ -9,6 +9,6 @@ import type { Agent } from './agent.interface';
  * @property success - Whether the request was successful.
  */
 export interface OnConnectedResponse {
-  agent: Agent;
+  agent: Omit<Agent, 'status'>;
   success: boolean;
 }

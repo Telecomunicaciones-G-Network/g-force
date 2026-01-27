@@ -1,5 +1,5 @@
 import type { Agent as AgentValues } from '../interfaces';
-import type { TeamCodename } from '../types';
+import type { AgentStatus, TeamCodename } from '../types';
 
 /**
  * Agent entity
@@ -12,11 +12,13 @@ export class Agent {
    *
    * @param id - The ID of the agent
    * @param name - The name of the agent
+   * @param status - The status of the agent
    * @param teams - The teams of the agent
    */
   constructor(
     public id: string,
     public name: string,
+    public status: AgentStatus,
     public teams: TeamCodename[],
   ) {}
 
@@ -29,6 +31,7 @@ export class Agent {
     return {
       id: this.id,
       name: this.name,
+      status: this.status,
       teams: this.teams,
     };
   }

@@ -12,6 +12,11 @@
     "(private)": "secure",
     "(public)": "public",
     "actions": "cue",
+    "agent-status-selector": "react-components",
+    "agent-status-selector-body": "react-components",
+    "agent-status-selector-icon": "react-components",
+    "agent-status-selector-loader": "react-components",
+    "agent-status-selector-trigger": "react-components",
     "back-button": "react-components",
     "blocks": "mjml",
     "brand": "react-components",
@@ -278,6 +283,12 @@
       "base": "mjml",
       "color": "green-500",
       "folderNames": ["sections"]
+    },
+    {
+      "name": "Selects",
+      "base": "content",
+      "color": "light-green-500",
+      "folderNames": ["selects"]
     },
     {
       "name": "Services",

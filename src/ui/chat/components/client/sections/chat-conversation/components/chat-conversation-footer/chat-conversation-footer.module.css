@@ -10,10 +10,7 @@
 .base__collapsible {
   align-items: center;
   display: flex;
-  height: 24px;
   justify-content: center;
-  min-height: 24px;
-  padding-top: 5px;
 }
 
 .base__container {

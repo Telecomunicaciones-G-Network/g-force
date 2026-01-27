@@ -24,6 +24,7 @@ TODO: Doc all about this project
 - CONTRIBUTING.md ✅
 - Makefile ✅
 
+- src/modules/chat/domain/enums/agent-status.enum.ts ✅
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-types.enum.ts ✅
@@ -43,6 +44,8 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/conversation.interface.ts ✅
 - src/modules/chat/domain/interfaces/emit-send-internal-message-request.interface.ts ✅
 - src/modules/chat/domain/interfaces/emit-send-internal-message-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-set-agent-status-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-set-agent-status-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/media.interface.ts ✅
 - src/modules/chat/domain/interfaces/message.interface.ts ✅
 - src/modules/chat/domain/interfaces/message-contact.interface.ts ✅
@@ -59,6 +62,7 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/on-new-message-received-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-new-message-sent-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/team.interface.ts ✅
+- src/modules/chat/domain/types/agent-status.type.ts ✅
 - src/modules/chat/domain/types/contact-latest-message.type.ts ✅
 - src/modules/chat/domain/types/conversation-status.type.ts ✅
 - src/modules/chat/domain/types/media-storage-status.type.ts ✅
@@ -73,6 +77,9 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dictionaries/socket-events.dictionary.ts ✅
 - src/modules/chat/infrastructure/dtos/emit-send-internal-message-request.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/emit-send-internal-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-set-agent-status-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-set-agent-status-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-agent-status-change-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
@@ -84,6 +91,7 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/mappers/emit-send-internal-message.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/emit-set-agent-status.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
@@ -106,6 +114,7 @@ TODO: Doc all about this project
 - src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
 
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
+- src/packages/hooks/use-click-outside.hook.tsx ✅
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
@@ -113,14 +122,18 @@ TODO: Doc all about this project
 
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/components/client/forms/internal-message-form~ ⚠️
+- src/ui/chat/components/client/selects/agent-status-selector~ ⚠️
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
+- src/ui/chat/dictionaries/agent-status-color.dictionary.ts ✅
+- src/ui/chat/dictionaries/agent-status-label.dictionary.ts ✅
 - src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
 - src/ui/chat/enums/chat-send-mode.enum.ts ✅
 - src/ui/chat/hooks/agent-socket-events.hooks.tsx ✅
 - src/ui/chat/hooks/base-socket-events.hook.tsx ✅
 - src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
 - src/ui/chat/hooks/emit-send-internal-message.hook.tsx ⚠️
+- src/ui/chat/hooks/emit-set-agent-status.hook.tsx ⚠️
 - src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
@@ -136,6 +149,8 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
 - src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
+- src/ui/chat/interfaces/agent-status-selector-option.interface.ts ✅
+- src/ui/chat/iterators/agent-status-selector-options.iterator.tsx ✅
 - src/ui/chat/types/chat-send-mode.type.ts ✅
 
 - src/env.d.ts ✅

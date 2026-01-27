@@ -1,5 +1,3 @@
-export type { EmitChangeAgentStatusRequestDTO } from './emit-change-agent-status-request.dto';
-export type { EmitChangeAgentStatusResponseDTO } from './emit-change-agent-status-response.dto';
 export type { EmitMarkMessageAsReadRequestDTO } from './emit-mark-message-as-read-request.dto';
 export type { EmitMarkMessageAsReadResponseDTO } from './emit-mark-message-as-read-response.dto';
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';
@@ -8,6 +6,8 @@ export type { EmitSendInternalMessageRequestDTO } from './emit-send-internal-mes
 export type { EmitSendInternalMessageResponseDTO } from './emit-send-internal-message-response.dto';
 export type { EmitSendTextMessageRequestDTO } from './emit-send-text-message-request.dto';
 export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-response.dto';
+export type { EmitSetAgentStatusRequestDTO } from './emit-set-agent-status-request.dto';
+export type { EmitSetAgentStatusResponseDTO } from './emit-set-agent-status-response.dto';
 export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';
 export type {
   GetAvailableReportPaymentMethodsResponseDTO,
@@ -34,6 +34,7 @@ export type {
   GetFastDebitBanksResultDTO,
   GetFastDebitBanksResultBankDTO,
 } from './get-fast-debit-banks-response.dto';
+export type { OnAgentStatusChangedResponseDTO } from './on-agent-status-change-response.dto';
 export type { OnConnectedResponseDTO } from './on-connected-response.dto';
 export type {
   OnContactAssignmentUpdatedResponseDTO,

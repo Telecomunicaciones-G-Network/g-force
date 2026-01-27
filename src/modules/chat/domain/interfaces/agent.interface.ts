@@ -1,5 +1,4 @@
-import type { AgentStatus } from '../enums/agent-status.enum';
-import type { TeamCodename } from '../types';
+import type { AgentStatus, TeamCodename } from '../types';
 
 /**
  * Agent values interface
@@ -14,6 +13,6 @@ import type { TeamCodename } from '../types';
 export interface Agent {
   id: string;
   name: string;
-  status?: AgentStatus;
+  status: AgentStatus;
   teams: TeamCodename[];
 }

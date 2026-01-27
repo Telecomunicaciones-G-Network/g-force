@@ -14,10 +14,10 @@ import type { Team } from './team.interface';
  * @property timestamp - The timestamp of the message event
  */
 export interface MessageEventData {
-  agent: Omit<Agent, 'teams'> | null;
-  assignedByAgent: Omit<Agent, 'teams'> | null;
+  agent: Omit<Agent, 'status' | 'teams'> | null;
+  assignedByAgent: Omit<Agent, 'status' | 'teams'> | null;
   eventType: MessageEventType;
-  previousAgent: Omit<Agent, 'teams'> | null;
+  previousAgent: Omit<Agent, 'status' | 'teams'> | null;
   previousTeam: Team;
   team: Team;
   timestamp: string;

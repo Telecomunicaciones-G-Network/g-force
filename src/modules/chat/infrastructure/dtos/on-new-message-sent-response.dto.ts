@@ -3,8 +3,6 @@ import type { MessageType } from '../../domain/types';
 /**
  * On new message sent response DTO
  *
- * This DTO represents the response from the on new message sent socket event.
- *
  * @property contact_id - The ID of the contact
  * @property conversation_id - The ID of the conversation
  * @property message_id - The ID of the message
