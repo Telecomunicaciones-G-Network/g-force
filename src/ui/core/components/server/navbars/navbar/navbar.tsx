@@ -16,6 +16,7 @@ import styles from './navbar.module.css';
 
 export const Navbar = async ({
   hideNotificationsButton = false,
+  hideSearchGlobalInput = false,
   hideUserActions = false,
 }: Readonly<NavbarProps>) => {
   const userCookie = await getUserAction();
@@ -28,13 +29,15 @@ export const Navbar = async ({
         'bg-chromatic border-b border-solid border-b-neutral-200',
       )}
     >
-      <SearchInput
-        containerClassName="w-[618px]"
-        fullWidth
-        id="global_search"
-        name="global-search"
-        placeholder="Busqueda global..."
-      />
+      {!hideSearchGlobalInput && (
+        <SearchInput
+          containerClassName="w-[618px]"
+          fullWidth
+          id="global_search"
+          name="global-search"
+          placeholder="Busqueda global..."
+        />
+      )}
       <NavbarActions
         hideNotificationsButton={hideNotificationsButton}
         hideUserActions={hideUserActions}
