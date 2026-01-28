@@ -26,8 +26,27 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
   span {
     font-weight: 400;
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
   }
+}
+
+/* Estilos para el valor seleccionado */
+.base__wrapper :global(.select-value) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
 }

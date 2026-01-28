@@ -21,7 +21,7 @@ import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { useChatCreateTicketModal } from './chat-create-ticket-modal.hook';
 
 import { ClientSearchDropdown } from './components/client-search-dropdown';
-import { ContractCard } from './components/contract-card';
+import { ContractsCarousel } from './components/contract-card/contracts-carousel';
 
 import styles from './chat-create-ticket-modal.module.css';
 import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
@@ -220,24 +220,11 @@ export const ChatCreateTicketModal = ({
                 >
                   Selecciona un contrato
                 </Text>
-                <div className={styles.base__contracts_scroll}>
-                  {contracts.map((contract) => (
-                    <ContractCard
-                      key={contract.contract_number}
-                      address={contract.address}
-                      client_type_name={
-                        contract.client_type_name || 'Residencial'
-                      }
-                      isSelected={
-                        selectedContractId === contract.contract_number
-                      }
-                      number={contract.contract_number}
-                      onClick={() =>
-                        handleContractSelect(contract.contract_number)
-                      }
-                    />
-                  ))}
-                </div>
+                <ContractsCarousel
+                  contracts={contracts}
+                  selectedContractId={selectedContractId}
+                  onContractSelect={handleContractSelect}
+                />
               </div>
             )}
 
