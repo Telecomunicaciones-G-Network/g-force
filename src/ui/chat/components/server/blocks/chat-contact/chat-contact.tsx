@@ -11,7 +11,7 @@ import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { capitalizeWords } from '@stringify/utils/capitalize-words.util';
 import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
-import { ChatDetailsContactCloseConversationButton } from '@ui-chat/components/client/buttons/chat-details-contact-close-conversation-button';
+// import { ChatDetailsContactCloseConversationButton } from '@ui-chat/components/client/buttons/chat-details-contact-close-conversation-button';
 
 import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-content-layout';
 
