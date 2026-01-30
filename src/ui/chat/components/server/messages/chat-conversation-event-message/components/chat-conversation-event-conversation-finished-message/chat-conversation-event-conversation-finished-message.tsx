@@ -5,8 +5,6 @@ import { isoToTime } from '@timer/utils/iso-to-time.util';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
-import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
-
 import { teamTagColorDictionary } from '@ui-chat/dictionaries/team-tag-color.dictionary';
 
 import styles from '../../chat-conversation-event-message.module.css';
