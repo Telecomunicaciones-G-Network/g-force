@@ -1,6 +1,6 @@
 import type { ToastProps } from './toast.props';
 
-import { MdCancel, MdCheckCircle, MdOutlineTimer } from 'react-icons/md';
+import { MdCancel, MdCheckCircle, MdOutlineTimer, MdWarning } from 'react-icons/md';
 
 import { ToastSchemes } from './enums/toast-schemes.enum';
 
@@ -30,6 +30,9 @@ export const Toast = ({
       )}
       {scheme === ToastSchemes.WAIT && (
         <MdOutlineTimer className="min-h-6 min-w-6 text-wait-300" size={24} />
+      )}
+      {scheme === ToastSchemes.WARNING && (
+        <MdWarning className="min-h-6 min-w-6 text-amber-600" size={24} />
       )}
       {children}
     </div>

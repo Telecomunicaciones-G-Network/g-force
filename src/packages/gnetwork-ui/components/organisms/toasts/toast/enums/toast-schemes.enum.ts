@@ -3,4 +3,5 @@ export enum ToastSchemes {
   NEUTRAL = 'neutral',
   SUCCESS = 'success',
   WAIT = 'wait',
+  WARNING = 'warning',
 }

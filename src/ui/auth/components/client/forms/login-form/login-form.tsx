@@ -1,6 +1,5 @@
 'use client';
 
-import { Alert } from '@gnetwork-ui/components/molecules/alerts/alert';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
@@ -9,6 +8,7 @@ import { EmailInputController } from '@ui-core/components/server/inputs/email-in
 import { PasswordInputController } from '@ui-core/components/server/inputs/password-input-controller';
 
 import { LoginBrand } from './components/login-brand/login-brand';
+import { LoginErrorAlert } from './components/login-error-alert';
 
 import { useLoginForm } from './login-form.hook';
 
@@ -33,13 +33,7 @@ export const LoginForm = () => {
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      {serverError && (
-        <div className={styles.base__alert}>
-          <Alert className="animated-fade-in" scheme="error">
-            {serverError}
-          </Alert>
-        </div>
-      )}
+      {serverError && <LoginErrorAlert message={serverError} />}
       <LoginBrand />
       <div className={styles.base__form}>
         <div className={styles.base__input}>
