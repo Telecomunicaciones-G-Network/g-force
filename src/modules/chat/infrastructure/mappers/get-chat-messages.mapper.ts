@@ -38,22 +38,29 @@ export class GetChatMessagesMapper {
       deliveredAt: input?.delivered_at,
       direction: input?.direction,
       eventData: {
-        agent: {
-          id: input?.event_data?.agent?.id,
-          name: input?.event_data?.agent?.full_name,
-        },
+        agent: input?.event_data?.finished_by_agent
+          ? {
+            id: input?.event_data?.finished_by_agent?.id,
+            name: input?.event_data?.finished_by_agent?.full_name,
+          }
+          : input?.event_data?.agent
+            ? {
+              id: input?.event_data?.agent?.id,
+              name: input?.event_data?.agent?.full_name,
+            }
+            : null,
         assignedByAgent: input?.event_data?.assigned_by_agent
           ? {
-              id: input?.event_data?.assigned_by_agent?.id,
-              name: input?.event_data?.assigned_by_agent?.full_name,
-            }
+            id: input?.event_data?.assigned_by_agent?.id,
+            name: input?.event_data?.assigned_by_agent?.full_name,
+          }
           : null,
         eventType: input?.event_data?.event_type,
         previousAgent: input?.event_data?.previous_agent
           ? {
-              id: input?.event_data?.previous_agent?.id,
-              name: input?.event_data?.previous_agent?.full_name,
-            }
+            id: input?.event_data?.previous_agent?.id,
+            name: input?.event_data?.previous_agent?.full_name,
+          }
           : null,
         previousTeam: {
           id: input?.event_data?.previous_team?.codename,
@@ -64,6 +71,7 @@ export class GetChatMessagesMapper {
           name: input?.event_data?.team?.name,
         },
         timestamp: input?.event_data?.timestamp,
+        finishedByAgent: null
       },
       failedAt: input?.failed_at,
       forwarded: input?.forwarded,

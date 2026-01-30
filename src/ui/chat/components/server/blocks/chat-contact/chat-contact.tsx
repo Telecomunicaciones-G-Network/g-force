@@ -140,7 +140,7 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
           </>
         )}
       </div>
-      <ChatDetailsContactCloseConversationButton />
+      {/* <ChatDetailsContactCloseConversationButton /> */}
     </ChatDetailsTabContentLayout>
   );
 };

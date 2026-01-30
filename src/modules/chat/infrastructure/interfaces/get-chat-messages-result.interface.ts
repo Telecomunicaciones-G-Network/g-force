@@ -27,9 +27,10 @@ export interface GetChatMessagesResultEventDataTeam {
 }
 
 export interface GetChatMessagesResultEventData {
-  agent: GetChatMessagesResultEventDataAgent;
+  agent: GetChatMessagesResultEventDataAgent | null;
   assigned_by_agent: GetChatMessagesResultEventDataAgent | null;
   event_type: MessageEventType;
+  finished_by_agent: GetChatMessagesResultEventDataAgent | null;
   previous_agent: GetChatMessagesResultEventDataAgent | null;
   previous_team: GetChatMessagesResultEventDataTeam;
   team: GetChatMessagesResultEventDataTeam;

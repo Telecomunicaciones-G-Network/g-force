@@ -2,6 +2,7 @@ import type { ButtonGroupButton } from '@gnetwork-ui/components/organisms/button
 
 import { MdCall, MdMailOutline, MdMoreVert } from 'react-icons/md';
 
+import { ChatCloseConversationModal } from '@ui-chat/components/client/modals/chat-close-conversation-modal';
 import { ChatTransferConversationModal } from '@ui-chat/components/client/modals/chat-transfer-conversation-modal';
 
 export const ChatConversationHeaderButtonIterator: ButtonGroupButton[] = [
@@ -26,7 +27,12 @@ export const ChatConversationHeaderButtonIterator: ButtonGroupButton[] = [
     dropdownProps: {
       align: 'start',
       alignOffset: -214,
-      children: <ChatTransferConversationModal />,
+      children: (
+        <>
+          <ChatTransferConversationModal />
+          <ChatCloseConversationModal />
+        </>
+      ),
       className: 'gap-0 min-w-[257px]',
       side: 'bottom',
       sideOffset: 8,

@@ -24,5 +24,6 @@ export const ChatTransferConversationModalHeader = () => (
         Puedes transferir el chat a un equipo o agente diferente.
       </Text>
     </div>
+    
   </div>
 );
