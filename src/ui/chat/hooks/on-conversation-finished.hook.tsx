@@ -29,6 +29,9 @@ export const useOnConversationFinished = () => {
 
   const setActiveContact = useContactStore((state) => state.setActiveContact);
   const setChatMode = useContactStore((state) => state.setChatMode);
+  const deleteOneContactById = useContactStore(
+    (state) => state.deleteOneContactById,
+  );
 
   onSocketEvent<OnConversationFinishedResponseDTO>(
     socketEventsDictionary.CONVERSATION_FINISHED,
@@ -50,9 +53,9 @@ export const useOnConversationFinished = () => {
       if (activeContact?.id === response?.contactId) {
         setActiveContact(null);
         setChatMode(ChatModes.LIST);
-
-        return;
       }
+
+      deleteOneContactById(response?.contactId);
     },
   );
 };

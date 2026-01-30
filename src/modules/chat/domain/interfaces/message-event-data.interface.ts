@@ -14,10 +14,12 @@ import type { Team } from './team.interface';
  * @property {Team} previousTeam - The previous team related to the event.
  * @property {Team} team - The current team of the message event.
  * @property {string} timestamp - The timestamp of the message event.
+ * @property {Omit<Agent, 'status' | 'teams'> | null} finishedByAgent - The agent who finished this event.
  */
 export interface MessageEventData {
   agent: Omit<Agent, 'status' | 'teams'> | null;
   assignedByAgent: Omit<Agent, 'status' | 'teams'> | null;
+  finishedByAgent: Omit<Agent, 'status' | 'teams'> | null;
   eventType: MessageEventType;
   previousAgent: Omit<Agent, 'status' | 'teams'> | null;
   previousTeam: Team;
