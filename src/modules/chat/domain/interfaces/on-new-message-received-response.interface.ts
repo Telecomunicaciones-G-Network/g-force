@@ -1,15 +1,15 @@
 import type { MessageType } from '../types';
 
 /**
- * On new message received response interface
+ * @name OnNewMessageReceivedResponse
  *
- * This interface represents the response from the on new message received socket event.
+ * @description This interface represents the values of an on new message received response.
  *
- * @property contactId - The ID of the contact
- * @property conversationId - The ID of the conversation
- * @property messageId - The ID of the message
- * @property messageTextPreview - The text preview of the message
- * @property messageType - The type of the message
+ * @property {string} contactId - The ID of the contact.
+ * @property {string} conversationId - The ID of the conversation.
+ * @property {string} messageId - The ID of the message.
+ * @property {string | null} messageTextPreview - The text preview of the message.
+ * @property {MessageType} messageType - The type of the message.
  */
 export interface OnNewMessageReceivedResponse {
   contactId: string;

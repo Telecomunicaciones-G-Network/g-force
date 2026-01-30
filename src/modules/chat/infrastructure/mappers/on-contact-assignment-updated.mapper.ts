@@ -2,17 +2,19 @@ import type { OnConversationAssignmentUpdatedResponse } from '../../domain/inter
 import type { OnContactAssignmentUpdatedResponseDTO } from '../dtos';
 
 /**
- * On contact assignment updated mapper
+ * @name OnContactAssignmentUpdatedMapper
  *
- * This mapper converts the on contact assignment updated response DTO to the on conversation assignment updated response domain.
+ * @description This mapper converts the on contact assignment updated response DTO to the on conversation assignment updated response domain.
  */
 export class OnContactAssignmentUpdatedMapper {
   /**
-   * Map from on contact assignment updated response DTO to on conversation assignment updated response domain
+   * @name mapFrom
    *
-   * @param input - The on contact assignment updated response DTO
+   * @description This method converts the on contact assignment updated response DTO to the on conversation assignment updated response domain.
    *
-   * @returns The on conversation assignment updated response domain
+   * @param {OnContactAssignmentUpdatedResponseDTO} input - The on contact assignment updated response DTO.
+   *
+   * @returns {OnConversationAssignmentUpdatedResponse} The on conversation assignment updated response domain.
    */
   static mapFrom(
     input: OnContactAssignmentUpdatedResponseDTO,

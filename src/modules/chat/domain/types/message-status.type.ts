@@ -1,5 +1,7 @@
 /**
- * Message status type
+ * @name MessageStatus
+ *
+ * @description This type represents the possible statuses of a message within the system.
  *
  * @property DELIVERED - The message is delivered
  * @property FAILED - The message failed

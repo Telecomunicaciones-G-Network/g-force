@@ -1,11 +1,13 @@
 /**
- * Message contact interface
+ * @name MessageContact
  *
- * @property birthday - The birthday of the contact
- * @property emails - The emails of the contact
- * @property formattedName - The formatted name of the contact
- * @property phoneNumbers - The phone numbers of the contact
- * @property urls - The urls of the contact
+ * @description This interface represents the values of a message contact.
+ *
+ * @property {string} birthday - The birthday of the contact.
+ * @property {string[]} emails - The emails of the contact.
+ * @property {string} formattedName - The formatted name of the contact.
+ * @property {string[]} phoneNumbers - The phone numbers of the contact.
+ * @property {string[]} urls - The urls of the contact.
  */
 export interface MessageContact {
   birthday: string;

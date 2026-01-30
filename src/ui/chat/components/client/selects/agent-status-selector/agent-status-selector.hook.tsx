@@ -11,9 +11,16 @@ import { useEmitSetAgentStatus } from '@ui-chat/hooks/emit-set-agent-status.hook
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * useAgentStatusSelector
+ * @name useAgentStatusSelector
  *
- * This hook is used to manage the agent status selector.
+ * @description This hook is used to manage the agent status selector.
+ *
+ * @returns agentStatus - The agent status.
+ * @returns handleStatusChange - Function to handle the status change.
+ * @returns isChangingStatus - Whether the status is changing.
+ * @returns isSelectorOpen - Whether the selector is open.
+ * @returns selectorRef - Ref to the selector.
+ * @returns toggleSelector - Function to toggle the selector.
  *
  * TODO: Apply useOptimistic hook to update the agent status efficiently.
  */

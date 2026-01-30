@@ -2,17 +2,19 @@ import type { OnContactFinishedResponse } from '../../domain/interfaces';
 import type { OnContactFinishedResponseDTO } from '../dtos';
 
 /**
- * On contact finished mapper
+ * @name OnContactFinishedMapper
  *
- * This mapper converts the on contact finished response DTO to the on contact finished response domain.
+ * @description This mapper converts the on contact finished response DTO to the on contact finished response domain.
  */
 export class OnContactFinishedMapper {
   /**
-   * Map from on contact finished response DTO to on contact finished response domain
+   * @name mapFrom
    *
-   * @param input - The on contact finished response DTO
+   * @description This method converts the on contact finished response DTO to the on contact finished response domain.
    *
-   * @returns The on contact finished response domain
+   * @param {OnContactFinishedResponseDTO} input - The on contact finished response DTO.
+   *
+   * @returns {OnContactFinishedResponse} The on contact finished response domain.
    */
   static mapFrom(
     input: OnContactFinishedResponseDTO,

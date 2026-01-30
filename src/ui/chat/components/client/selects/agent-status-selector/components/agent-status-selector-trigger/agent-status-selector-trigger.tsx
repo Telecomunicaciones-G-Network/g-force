@@ -13,15 +13,15 @@ import { AgentStatusSelectorIcon } from '../agent-status-selector-icon';
 import styles from './agent-status-selector-trigger.module.css';
 
 /**
- * Agent Status Selector Trigger component.
+ * @name AgentStatusSelectorTrigger
  *
- * This component renders the trigger button for the agent status selector.
+ * @description This component renders the trigger button for the agent status selector.
  *
- * @property agentStatus - The agent status.
- * @property disabled - Whether the button is disabled.
- * @property isLoading - Whether the button is loading.
- * @property isOpen - Whether the button is open.
- * @property onClick - The function to call when the button is clicked.
+ * @property {AgentStatus} [agentStatus] - The agent status.
+ * @property {boolean} [disabled] - Whether the button is disabled.
+ * @property {boolean} [isLoading] - Whether the button is loading.
+ * @property {boolean} [isOpen] - Whether the button is open.
+ * @property {function} [onClick] - The function to call when the button is clicked.
  */
 export const AgentStatusSelectorTrigger = ({
   agentStatus,

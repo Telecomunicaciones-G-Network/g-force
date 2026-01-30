@@ -1,12 +1,12 @@
 import type { TeamCodename } from '../types';
 
 /**
- * On conversation assignment updated agent response interface
+ * @name OnConversationAssignmentUpdatedAgentResponse
  *
- * This interface represents the agent information from the on conversation assignment updated socket event.
+ * @description This interface represents the values of an agent assigned/updated in a conversation.
  *
- * @property id - The agent ID
- * @property name - The agent name
+ * @property {string} id - The id of the agent.
+ * @property {string} name - The name of the agent.
  */
 export interface OnConversationAssignmentUpdatedAgentResponse {
   id: string;
@@ -14,12 +14,12 @@ export interface OnConversationAssignmentUpdatedAgentResponse {
 }
 
 /**
- * On conversation assignment updated team response interface
+ * @name OnConversationAssignmentUpdatedTeamResponse
  *
- * This interface represents the team information from the on conversation assignment updated socket event.
+ * @description This interface represents the values of a team in the context of a conversation assignment update.
  *
- * @property id - The team ID
- * @property name - The team name
+ * @property {TeamCodename} id - The team ID.
+ * @property {string} name - The team name.
  */
 export interface OnConversationAssignmentUpdatedTeamResponse {
   id: TeamCodename;
@@ -27,14 +27,14 @@ export interface OnConversationAssignmentUpdatedTeamResponse {
 }
 
 /**
- * On conversation assignment updated response interface
+ * @name OnConversationAssignmentUpdatedResponse
  *
- * This interface represents the response from the on conversation assignment updated socket event.
+ * @description This interface represents the values of an on conversation assignment updated response.
  *
- * @property agent - The agent information
- * @property contactId - The contact ID
- * @property conversationId - The conversation ID
- * @property team - The team information
+ * @property {OnConversationAssignmentUpdatedAgentResponse} agent - The agent information.
+ * @property {string} contactId - The contact ID.
+ * @property {string} conversationId - The conversation ID.
+ * @property {OnConversationAssignmentUpdatedTeamResponse} team - The team information.
  */
 export interface OnConversationAssignmentUpdatedResponse {
   agent: OnConversationAssignmentUpdatedAgentResponse;

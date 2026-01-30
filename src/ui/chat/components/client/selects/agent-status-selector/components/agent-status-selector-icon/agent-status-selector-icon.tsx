@@ -5,11 +5,11 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 import styles from './agent-status-selector-icon.module.css';
 
 /**
- * Agent Status Selector Icon component.
+ * @name AgentStatusSelectorIcon
  *
- * This component renders a chevron SVG, typically used to indicate the open/closed state of the dropdown.
+ * @description This component renders a chevron SVG, typically used to indicate the open/closed state of the dropdown.
  *
- * @property isOpen - Whether the dropdown is open (affects icon rotation).
+ * @property {boolean} [isOpen] - Whether the dropdown is open (affects icon rotation).
  */
 export const AgentStatusSelectorIcon = ({
   isOpen = false,

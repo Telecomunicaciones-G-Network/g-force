@@ -2,20 +2,20 @@ import type { Contact as ContactValues, Conversation } from '../interfaces';
 import type { ContactLatestMessage } from '../types';
 
 /**
- * Contact entity
+ * @name Contact
  *
- * This entity represents a contact in the chat system.
+ * @description This entity represents a contact in the chat system.
+ *
+ * @property {string} id - The ID of the contact.
+ * @property {Conversation} latestConversation - The latest conversation of the contact.
+ * @property {ContactLatestMessage} latestMessage - The latest message of the contact.
+ * @property {string} name - The name of the contact.
+ * @property {string} phoneNumber - The phone number of the contact.
+ * @property {number} unreadCount - The unread count of the contact.
  */
 export class Contact {
   /**
    * Constructor
-   *
-   * @param id - The id of the contact.
-   * @param latestConversation - The latest conversation of the contact.
-   * @param latestMessage - The latest message of the contact.
-   * @param name - The name of the contact.
-   * @param phoneNumber - The phone number of the contact.
-   * @param unreadCount - The unread count of the contact.
    */
   constructor(
     public id: string,
@@ -27,9 +27,11 @@ export class Contact {
   ) {}
 
   /**
-   * Convert the contact to values
+   * @name getValues
    *
-   * @returns The contact values
+   * @description Convert the contact to values
+   *
+   * @returns {ContactValues} The contact values
    */
   public getValues(): ContactValues {
     return {

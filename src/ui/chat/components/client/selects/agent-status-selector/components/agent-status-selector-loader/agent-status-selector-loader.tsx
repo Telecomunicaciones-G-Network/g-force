@@ -3,10 +3,9 @@ import styles from './agent-status-selector-loader.module.css';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 /**
- * Agent Status Selector Loader component.
+ * @name AgentStatusSelectorLoader
  *
- * This component renders a spinner SVG, typically used to indicate loading state
- * inside the agent status selector trigger button.
+ * @description This component renders a spinner SVG, typically used to indicate loading state inside the agent status selector trigger button.
  */
 export const AgentStatusSelectorLoader = () => (
   <svg

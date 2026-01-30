@@ -2,16 +2,16 @@ import type { Conversation } from './conversation.interface';
 import type { ContactLatestMessage } from '../types';
 
 /**
- * Contact values interface
+ * @name Contact
  *
- * This interface represents the values of a contact.
+ * @description This interface represents the values of a contact.
  *
- * @property id - The ID of the contact
- * @property latestConversation - The latest conversation of the contact
- * @property latestMessage - The latest message of the contact
- * @property name - The name of the contact
- * @property phoneNumber - The phone number of the contact
- * @property unreadCount - The unread count of the contact
+ * @property {string} id - The ID of the contact.
+ * @property {Conversation} latestConversation - The latest conversation of the contact.
+ * @property {ContactLatestMessage} latestMessage - The latest message of the contact.
+ * @property {string} name - The name of the contact.
+ * @property {string} phoneNumber - The phone number of the contact.
+ * @property {number} unreadCount - The unread count of the contact.
  */
 export interface Contact {
   id: string;

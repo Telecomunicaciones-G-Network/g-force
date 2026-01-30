@@ -7,9 +7,13 @@ import { useCallback, useState } from 'react';
 import { useEmitSendInternalMessage } from '@ui-chat/hooks/emit-send-internal-message.hook';
 
 /**
- * Internal message form hook
+ * @name useInternalMessageForm
  *
- * This hook manages the internal message form state and submission.
+ * @description This hook manages the internal message form state and submission.
+ *
+ * @returns changeInternalMessage - Function to change the internal message.
+ * @returns internalMessage - The internal message.
+ * @returns onSubmit - Function to submit the internal message.
  */
 export const useInternalMessageForm = () => {
   const [internalMessage, setInternalMessage] = useState<string>('');

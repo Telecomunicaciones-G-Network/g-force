@@ -1,15 +1,15 @@
 /**
- * Sounder class
+ * @name Sounder
  *
- * This class is used to play audio files.
+ * @description This class is used to play audio files.
+ *
+ * @property {HTMLAudioElement | null} audio - The audio element.
  */
 export class Sounder {
   private readonly audio: HTMLAudioElement | null;
 
   /**
    * Constructor
-   *
-   * @param audioUrl - The URL of the audio file to play
    */
   constructor(audioUrl: string) {
     if (!audioUrl) {
@@ -22,9 +22,11 @@ export class Sounder {
   }
 
   /**
-   * Play audio
+   * @name playAudio
    *
-   * This method plays the audio file.
+   * @description This method plays the audio file.
+   *
+   * @returns void
    */
   public playAudio() {
     if (!this.audio) {

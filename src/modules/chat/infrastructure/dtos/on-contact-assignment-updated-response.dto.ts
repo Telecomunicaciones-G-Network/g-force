@@ -1,10 +1,12 @@
 import type { TeamCodename } from '../../domain/types';
 
 /**
- * On contact assignment updated response agent DTO
+ * @name OnContactAssignmentUpdatedResponseAgentDTO
  *
- * @property id - The agent ID
- * @property full_name - The agent full name
+ * @description This interface represents the agent information from the on contact assignment updated response.
+ *
+ * @property {string} id - The agent ID
+ * @property {string} full_name - The agent full name
  */
 export interface OnContactAssignmentUpdatedResponseAgentDTO {
   id: string;
@@ -12,10 +14,12 @@ export interface OnContactAssignmentUpdatedResponseAgentDTO {
 }
 
 /**
- * On contact assignment updated response team DTO
+ * @name OnContactAssignmentUpdatedResponseTeamDTO
  *
- * @property codename - The team codename
- * @property name - The team name
+ * @description This interface represents the team information from the on contact assignment updated response.
+ *
+ * @property {TeamCodename} codename - The team codename
+ * @property {string} name - The team name
  */
 export interface OnContactAssignmentUpdatedResponseTeamDTO {
   codename: TeamCodename;
@@ -23,12 +27,14 @@ export interface OnContactAssignmentUpdatedResponseTeamDTO {
 }
 
 /**
- * On contact assignment updated response DTO
+ * @name OnContactAssignmentUpdatedResponseDTO
  *
- * @property agent - The agent information
- * @property contact_id - The contact ID
- * @property conversation_id - The conversation ID
- * @property team - The team information
+ * @description This interface represents the response for on contact assignment updated event.
+ *
+ * @property {OnContactAssignmentUpdatedResponseAgentDTO} agent - The agent information
+ * @property {string} contact_id - The contact ID
+ * @property {string} conversation_id - The conversation ID
+ * @property {OnContactAssignmentUpdatedResponseTeamDTO} team - The team information
  */
 export interface OnContactAssignmentUpdatedResponseDTO {
   agent: OnContactAssignmentUpdatedResponseAgentDTO;

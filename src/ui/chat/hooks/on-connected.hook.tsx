@@ -13,13 +13,16 @@ import { OnConnectedMapper } from '@module-chat/infrastructure/mappers/on-connec
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * On connected hook
+ * @name useOnConnected
  *
- * This hook listens to the on `connected` socket event:
+ * @description This hook listens to the on `connected` socket event:
  * Emitted to the agent that connects. Contains the authenticated agent's data, their teams, and assigned contacts.
  * - updates the active agent information in the contact store when a successful connection is established.
  * (agent id, name and teams)
+ *
  * [Base event]
+ *
+ * @returns void
  */
 export const useOnConnected = () => {
   const setActiveAgent = useContactStore((state) => state.setActiveAgent);

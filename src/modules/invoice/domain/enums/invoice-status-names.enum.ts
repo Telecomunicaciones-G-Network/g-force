@@ -1,5 +1,7 @@
 /**
- * InvoiceStatusNames enum
+ * @name InvoiceStatusNames
+ *
+ * @description This enum represents the status names for an invoice.
  *
  * @property EXPIRED - Expired
  * @property PAID - Paid

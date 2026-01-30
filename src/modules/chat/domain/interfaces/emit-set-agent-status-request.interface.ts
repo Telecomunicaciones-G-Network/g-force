@@ -1,10 +1,13 @@
 import type { AgentStatus } from '@module-chat/domain/types';
 
 /**
- * Emit Set Agent Status Request interface
+ * @name EmitSetAgentStatusRequest
  *
- * @property status - The status to set.
- * @property onSuccess - The function to call on success.
+ * @description This interface represents the request for emitting an agent status event.
+ *
+ * @property {AgentStatus} status - The status to set for the agent.
+ * @property {() => void} [onSuccess] - Optional callback when status change succeeds.
+ * @property {() => void} [onFinally] - Optional callback when status change process completes.
  */
 export interface EmitSetAgentStatusRequest {
   onFinally?: () => void;

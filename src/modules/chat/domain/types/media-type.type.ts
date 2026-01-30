@@ -1,5 +1,7 @@
 /**
- * Media type type
+ * @name MediaType
+ *
+ * @description This type represents the possible types of media within the system.
  *
  * @property AUDIO - The media is an audio
  * @property DOCUMENT - The media is a document

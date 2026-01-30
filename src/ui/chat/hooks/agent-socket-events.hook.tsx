@@ -6,9 +6,11 @@ import { useOnNewMessageReceived } from '@ui-chat/hooks/on-new-message-received.
 import { useOnNewMessageSent } from '@ui-chat/hooks/on-new-message-sent.hook';
 
 /**
- * Use agent socket events hook
+ * @name useAgentSocketEvents
  *
- * This hook listens and groups the agent socket events.
+ * @description This hook listens and groups the agent socket events.
+ *
+ * @returns void
  */
 export const useAgentSocketEvents = () => {
   useOnContactAssignmentUpdated();

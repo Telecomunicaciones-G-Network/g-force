@@ -1,7 +1,9 @@
 /**
- * Chat sounds dictionary
+ * @name CHAT_SOUNDS_DICTIONARY
  *
- * This dictionary contains the names of the chat sounds.
+ * @description This dictionary contains the names of the chat sounds.
+ *
+ * @returns {Record<string, string>} The chat sounds dictionary
  */
 export const chatSoundDictionary: Record<string, string> = {
   contactAssignment: '/sounds/on-conversations-assigned.mp3',

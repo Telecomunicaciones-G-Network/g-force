@@ -1,7 +1,9 @@
 /**
- * Emit Set Agent Status Response
+ * @name EmitSetAgentStatusResponse
  *
- * @property success - Indica si la actualización del estado del agente fue exitosa.
+ * @description This interface represents the response for emitting an agent status event.
+ *
+ * @property {boolean} success - Indicates whether the agent status update was successful.
  */
 export interface EmitSetAgentStatusResponse {
   success: boolean;

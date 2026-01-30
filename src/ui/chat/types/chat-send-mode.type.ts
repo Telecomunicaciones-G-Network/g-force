@@ -1,7 +1,7 @@
 /**
- * Chat send mode type
+ * @name ChatSendMode
  *
- * This type represents the mode in which the chat is being sent.
+ * @description This type represents the mode in which the chat is being sent.
  *
  * @property image - The mode in which the chat is being sent as an image
  * @property internal - The mode in which the chat is being sent as an internal message

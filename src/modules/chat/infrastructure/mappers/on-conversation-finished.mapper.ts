@@ -2,17 +2,19 @@ import type { OnConversationFinishedResponse } from '../../domain/interfaces';
 import type { OnConversationFinishedResponseDTO } from '../dtos';
 
 /**
- * On conversation finished mapper
+ * @name OnConversationFinishedMapper
  *
- * This mapper converts the on conversation finished response DTO to the on conversation finished response domain.
+ * @description This mapper converts the on conversation finished response DTO to the on conversation finished response domain.
  */
 export class OnConversationFinishedMapper {
   /**
-   * Map from on conversation finished response DTO to on conversation finished response domain
+   * @name mapFrom
    *
-   * @param input - The on conversation finished response DTO
+   * @description This method converts the on conversation finished response DTO to the on conversation finished response domain.
    *
-   * @returns The on conversation finished response domain
+   * @param {OnConversationFinishedResponseDTO} input - The on conversation finished response DTO.
+   *
+   * @returns {OnConversationFinishedResponse} The on conversation finished response domain.
    */
   static mapFrom(
     input: OnConversationFinishedResponseDTO,

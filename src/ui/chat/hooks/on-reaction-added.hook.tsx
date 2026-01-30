@@ -5,11 +5,14 @@ import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 /**
- * On reaction added hook
+ * @name useOnReactionAdded
  *
- * This hook listens to the `REACTION_ADDED` socket event:
+ * @description This hook listens to the `REACTION_ADDED` socket event:
  * When a reaction emoji is added to a message (incoming or outgoing). Contains the message ID and the emoji.
+ *
  * [Contact event]
+ *
+ * @returns void
  */
 export const useOnReactionAdded = () => {
   onSocketEvent<unknown>(

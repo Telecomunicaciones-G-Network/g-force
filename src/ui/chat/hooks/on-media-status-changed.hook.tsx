@@ -14,7 +14,7 @@ import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionar
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
 /**
- * Use on media status changed hook props
+ * @name UseOnMediaStatusChangedProps
  *
  * @property onSucess - The callback function to be called when the media status changes successfully
  */
@@ -23,13 +23,16 @@ interface UseOnMediaStatusChangedProps {
 }
 
 /**
- * On media status changed hook
+ * @name useOnMediaStatusChanged
  *
- * This hook listens to the `MEDIA_STATUS_CHANGED` socket event:
+ * @description This hook listens to the `MEDIA_STATUS_CHANGED` socket event:
  * Triggered when the storage status of an attached file (media) of a message changes. Contains the message ID, the media ID,
  * and the new status.
  * - Updates the status of the media in the chat store
+ *
  * [Contact event]
+ *
+ * @returns void
  */
 export const useOnMediaStatusChanged = ({
   onSucess,

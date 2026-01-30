@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
- * useClickOutside
+ * @name useClickOutside
  *
- * This hook is used to handle clicks outside of an element.
+ * @description This hook is used to manage the open state of an element and to detect clicks outside of the referenced element, allowing you to close it when a click occurs outside.
  *
- * @property elementRef - The ref to the element.
- * @property isOpen - Whether the element is open.
- * @property toggleOpen - Toggle the open state.
+ * @returns closeElement - Function to close the element.
+ * @returns elementRef - Ref to attach to the element.
+ * @returns isOpen - State indicating whether the element is open.
+ * @returns toggleOpen - Function to toggle the open state.
  */
 export const useClickOutside = <T extends HTMLElement = HTMLElement>() => {
   const elementRef = useRef<T>(null);

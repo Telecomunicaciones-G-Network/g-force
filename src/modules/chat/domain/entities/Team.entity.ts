@@ -2,16 +2,16 @@ import type { Team as TeamValues } from '../interfaces';
 import type { TeamCodename } from '../types';
 
 /**
- * Team entity
+ * @name Team
  *
- * This entity represents a team in the chat system.
+ * @description This entity represents a team in the chat system.
+ *
+ * @property {TeamCodename} id - The ID of the team.
+ * @property {string} name - The name of the team.
  */
 export class Team {
   /**
    * Constructor
-   *
-   * @param id - The id of the team.
-   * @param name - The name of the team.
    */
   constructor(
     public id: TeamCodename,
@@ -19,9 +19,11 @@ export class Team {
   ) {}
 
   /**
-   * Convert the team to a plain object.
+   * @name toValues
    *
-   * @returns The plain object.
+   * @description Convert the team to values
+   *
+   * @returns {TeamValues} The team values
    */
   public toValues(): TeamValues {
     return {

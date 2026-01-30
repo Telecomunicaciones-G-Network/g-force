@@ -9,7 +9,9 @@ import { cn } from '../../../../utils/cn.util';
 import styles from './collapsible-button.module.css';
 
 /**
- * Collapsible Button component.
+ * @name CollapsibleButton
+ *
+ * @description This component is a collapsible button.
  *
  * @property {string} [props.className] - Additional class names to apply to the button.
  * @property {boolean} [props.isCollapsed] - Whether the button is collapsed.

@@ -1,5 +1,7 @@
 /**
- * Agent status enum
+ * @name AgentStatus
+ *
+ * @description Represents the possible statuses of an agent within the system.
  *
  * @property AWAY - The agent is away
  * @property BUSY - The agent is busy

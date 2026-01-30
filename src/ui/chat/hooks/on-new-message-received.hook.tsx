@@ -16,14 +16,17 @@ import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionar
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * On new message received hook
+ * @name useOnNewMessageReceived
  *
- * This hook listens to the on `new_message_received` socket event:
+ * @description This hook listens to the on `new_message_received` socket event:
  * When a new message is received from a contact. Emitted to all agents of the team assigned to that contact.
  * Contains the minimum data of the message to establish the preview in the contact panel.
  * - Adds a new unread message to the contact in the store and update lastest message when a new message is received if contact is not ab active conversation
  * - Add a new unread message to the contact and play a notification sound if contact is not the active conversation and update lastest conversation.
+ *
  * [Agent event]
+ *
+ * @returns void
  */
 export const useOnNewMessageReceived = () => {
   const activeContact = useContactStore((state) => state.activeContact);

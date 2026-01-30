@@ -1,5 +1,7 @@
 /**
- * InvoicePaymentMethod type
+ * @name InvoicePaymentMethod
+ *
+ * @description This type represents the payment method for an invoice.
  *
  * @property DEBITO_INMEDIATO - Débito inmediato
  * @property PAGO_MOVIL - Pago móvil

@@ -1,5 +1,7 @@
 /**
- * Env modes enum
+ * @name EnvModes
+ *
+ * @description Represents the possible modes of the environment.
  *
  * @property DEVELOPMENT - Development mode
  * @property PRODUCTION - Production mode

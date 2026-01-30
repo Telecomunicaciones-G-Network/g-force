@@ -1,11 +1,11 @@
 /**
- * Emit send internal message request interface
+ * @name EmitSendInternalMessageRequest
  *
- * This interface represents the request for emitting an internal message event.
+ * @description This interface represents the request for emitting an internal message event.
  *
- * @property contactId - The contact id.
- * @property internalMessage - The internal message to send.
- * @property onSuccess - Optional callback when message sending succeeds.
+ * @property {string} contactId - The contact id.
+ * @property {string} internalMessage - The internal message to send.
+ * @property {() => void} [onSuccess] - Optional callback when message sending succeeds.
  */
 export interface EmitSendInternalMessageRequest {
   contactId: string;

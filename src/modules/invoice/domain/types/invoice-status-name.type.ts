@@ -1,5 +1,7 @@
 /**
- * InvoiceStatusName type
+ * @name InvoiceStatusName
+ *
+ * @description This type represents the status name for an invoice.
  *
  * @property NO_PAID - No paid
  * @property PAID - Paid

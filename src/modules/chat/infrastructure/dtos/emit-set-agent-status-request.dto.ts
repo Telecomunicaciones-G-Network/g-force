@@ -1,9 +1,11 @@
 import type { AgentStatus } from '@module-chat/domain/types';
 
 /**
- * Emit Set Agent Status Request DTO
+ * @name EmitSetAgentStatusRequestDTO
  *
- * @property status - The status to set.
+ * @description This interface represents the request for emitting an agent status event.
+ *
+ * @property {AgentStatus} status - The status to set.
  */
 export interface EmitSetAgentStatusRequestDTO {
   status: AgentStatus;

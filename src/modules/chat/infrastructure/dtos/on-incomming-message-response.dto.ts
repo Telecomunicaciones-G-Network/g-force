@@ -5,13 +5,15 @@ import type {
 } from '../../domain/types';
 
 /**
- * The contact information of the message sender.
+ * @name OnIncommingMessageResponseContact
  *
- * @property birthday - The birthday of the message sender.
- * @property emails - The emails of the message sender.
- * @property formatted_name - The formatted name of the message sender.
- * @property phone_numbers - The phone numbers of the message sender.
- * @property urls - The URLs of the message sender.
+ * @description This interface represents the contact information of the message sender.
+ *
+ * @property {string} birthday - The birthday of the message sender.
+ * @property {string[]} emails - The emails of the message sender.
+ * @property {string} formatted_name - The formatted name of the message sender.
+ * @property {string[]} phone_numbers - The phone numbers of the message sender.
+ * @property {string[]} urls - The URLs of the message sender.
  */
 export interface OnIncommingMessageResponseContact {
   birthday: string;
@@ -22,12 +24,14 @@ export interface OnIncommingMessageResponseContact {
 }
 
 /**
- * The location information of the message.
+ * @name OnIncommingMessageResponseLocation
  *
- * @property address - The address of the message location.
- * @property latitude - The latitude of the message location.
- * @property longitude - The longitude of the message location.
- * @property name - The name of the message location.
+ * @description This interface represents the location information of the message.
+ *
+ * @property {string} address - The address of the message location.
+ * @property {number} latitude - The latitude of the message location.
+ * @property {number} longitude - The longitude of the message location.
+ * @property {string} name - The name of the message location.
  */
 export interface OnIncommingMessageResponseLocation {
   address: string;
@@ -37,13 +41,15 @@ export interface OnIncommingMessageResponseLocation {
 }
 
 /**
- * The media information of the message.
+ * @name OnIncommingMesssageResponseMedia
  *
- * @property media_id - The ID of the media.
- * @property filename - The filename of the media.
- * @property mime_type - The MIME type of the media.
- * @property storage_status - The storage status of the media.
- * @property type - The type of the media.
+ * @description This interface represents the media information of the message.
+ *
+ * @property {string} media_id - The ID of the media.
+ * @property {string} filename - The filename of the media.
+ * @property {string} mime_type - The MIME type of the media.
+ * @property {MediaStorageStatus} storage_status - The storage status of the media.
+ * @property {MediaType} type - The type of the media.
  */
 export interface OnIncommingMesssageResponseMedia {
   media_id: string;
@@ -54,21 +60,23 @@ export interface OnIncommingMesssageResponseMedia {
 }
 
 /**
- * The response data for the incoming message.
+ * @name OnIncommingMessageResponseDTO
  *
- * @property contact_id - The ID of the contact.
- * @property contact_name - The name of the contact.
- * @property contacts - The contact information of the message sender.
- * @property conversation_id - The ID of the conversation.
- * @property forwarded - Whether the message has been forwarded.
- * @property forwarded_many_times - Whether the message has been forwarded many times.
- * @property location - The location information of the message.
- * @property media - The media information of the message.
- * @property message_id - The ID of the message.
- * @property reply_to_message_id - The ID of the message being replied to.
- * @property text - The text of the message.
- * @property timestamp - The timestamp of the message.
- * @property type - The type of the message.
+ * @description This interface represents the response for the incoming message.
+ *
+ * @property {string} contact_id - The ID of the contact.
+ * @property {string} contact_name - The name of the contact.
+ * @property {OnIncommingMessageResponseContact[] | null} contacts - The contact information of the message sender.
+ * @property {string} conversation_id - The ID of the conversation.
+ * @property {boolean} forwarded - Whether the message has been forwarded.
+ * @property {boolean} forwarded_many_times - Whether the message has been forwarded many times.
+ * @property {OnIncommingMessageResponseLocation | null} location - The location information of the message.
+ * @property {OnIncommingMesssageResponseMedia | null} media - The media information of the message.
+ * @property {string} message_id - The ID of the message.
+ * @property {string | null} reply_to_message_id - The ID of the message being replied to.
+ * @property {string | null} text - The text of the message.
+ * @property {string} timestamp - The timestamp of the message.
+ * @property {MessageType} type - The type of the message.
  */
 export interface OnIncommingMessageResponseDTO {
   contact_id: string;

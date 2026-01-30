@@ -1,5 +1,7 @@
 /**
- * Media storage status type
+ * @name MediaStorageStatus
+ *
+ * @description This type represents the possible statuses of media storage within the system.
  *
  * @property AVAILABLE - The media is available
  * @property FAILED - The media failed to upload

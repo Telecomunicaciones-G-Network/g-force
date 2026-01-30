@@ -10,22 +10,24 @@ import { useOnReactionAdded } from '@ui-chat/hooks/on-reaction-added.hook';
 import { useOnReactionRemoved } from '@ui-chat/hooks/on-reaction-removed.hook';
 
 /**
- * Use contact socket events hook
+ * @name UseContactSocketEventsProps
  *
- * This hook listens to the contact socket events.
+ * @description This hook listens to the contact socket events.
  *
- * @param disabledChat - If true, the chat will be disabled.
+ * @param {boolean} [disabledChat] - If true, the chat will be disabled.
  */
 interface UseContactSocketEventsProps {
   disabledChat?: boolean;
 }
 
 /**
- * Use contact socket events hook
+ * @name useContactSocketEvents
  *
- * This hook listens and groups the contact socket events.
+ * @description This hook listens and groups the contact socket events.
  *
- * @param disabledChat - If true, the chat will be disabled.
+ * @param {boolean} [disabledChat] - If true, the chat will be disabled.
+ *
+ * @returns void
  */
 export const useContactSocketEvents = ({
   disabledChat = false,

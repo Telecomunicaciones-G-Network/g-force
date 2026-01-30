@@ -1,5 +1,7 @@
 /**
- * Agent status type
+ * @name AgentStatus
+ *
+ * @description This type represents the possible statuses of an agent within the system.
  *
  * @property AWAY - The agent is away
  * @property BUSY - The agent is busy

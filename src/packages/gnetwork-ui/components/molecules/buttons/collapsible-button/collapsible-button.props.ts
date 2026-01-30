@@ -1,9 +1,11 @@
-import type { ReactButton } from '../../../../types'; /**
- * CollapsibleButtonProps
+import type { ReactButton } from '../../../../types';
+
+/**
+ * @name CollapsibleButtonProps
  *
- * @property [className] - Additional class names to apply to the button.
- * @property [ref] - Ref to access the button element.
- * @property [isCollapsed] - Whether the button is collapsed.
+ * @property {string} [className] - Additional class names to apply to the button.
+ * @property {React.Ref<HTMLButtonElement>} [ref] - Ref to access the button element.
+ * @property {boolean} [isCollapsed] - Whether the button is collapsed.
  */
 export interface CollapsibleButtonProps
   extends Omit<ReactButton, 'defaultValue'> {

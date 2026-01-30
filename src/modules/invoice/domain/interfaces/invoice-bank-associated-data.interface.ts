@@ -1,12 +1,14 @@
 /**
- * InvoiceBankAssociatedData interface
+ * @name InvoiceBankAssociatedData
  *
- * @property bankAccountNumber - The bank account number
- * @property bankAcronym - The bank acronym
- * @property bankCode - The bank code
- * @property bankIdentification - The bank identification
- * @property bankName - The bank name
- * @property bankPhone - The bank phone
+ * @description This interface represents the bank associated data for an invoice.
+ *
+ * @property {string} bankAccountNumber - The bank account number
+ * @property {string} bankAcronym - The bank acronym
+ * @property {string} bankCode - The bank code
+ * @property {string} bankIdentification - The bank identification
+ * @property {string} bankName - The bank name
+ * @property {string} bankPhone - The bank phone
  */
 export interface InvoiceBankAssociatedData {
   bankAccountNumber: string;

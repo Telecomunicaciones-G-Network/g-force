@@ -19,7 +19,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * Use on incoming message props
+ * @name UseOnIncommingMessageProps
  *
  * @property disabledChat - Whether the chat is disabled
  */
@@ -28,13 +28,17 @@ interface UseOnIncommingMessageProps {
 }
 
 /**
- * On incoming message hook
+ * @name useOnIncommingMessage
  *
- * This hook listens to the on `incoming_message` socket event:
+ * @description This hook listens to the on `incoming_message` socket event:
  * When a new message is received from a contact. Contains all the message data to display in the opened chat panel.
  * - adds the message to the chat store
  * - plays the whatsapp on message sound
  * - marks the message as read if chat is not disabled
+ *
+ * [Contact event]
+ *
+ * @returns void
  */
 export const useOnIncommingMessage = ({
   disabledChat = false,

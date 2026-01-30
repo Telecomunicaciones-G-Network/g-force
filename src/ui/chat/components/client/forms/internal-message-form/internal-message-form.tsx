@@ -10,7 +10,9 @@ import { useInternalMessageForm } from './internal-message-form.hook';
 import styles from './internal-message-form.module.css';
 
 /**
- * Internal Message Form component.
+ * @name InternalMessageForm
+ *
+ * @description This component is the internal message form.
  */
 export const InternalMessageForm = () => {
   const { changeInternalMessage, internalMessage, onSubmit } =

@@ -1,10 +1,10 @@
 /**
- * On contact finished response interface
+ * @name OnContactFinishedResponse
  *
- * This interface represents the response from the on contact finished socket event.
+ * @description This interface represents the values of an on contact finished response.
  *
- * @property contactId - The ID of the contact
- * @property conversationId - The ID of the conversation
+ * @property {string} contactId - The ID of the contact.
+ * @property {string} conversationId - The ID of the conversation.
  */
 export interface OnContactFinishedResponse {
   contactId: string;

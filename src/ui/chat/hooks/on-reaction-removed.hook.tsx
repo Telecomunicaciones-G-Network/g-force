@@ -5,11 +5,14 @@ import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
 import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
 
 /**
- * On reaction removed hook
+ * @name useOnReactionRemoved
  *
- * This hook listens to the `REACTION_REMOVED` socket event:
+ * @description This hook listens to the `REACTION_REMOVED` socket event:
  * When a reaction emoji is removed from a message (incoming or outgoing). Contains the message ID.
+ *
  * [Contact event]
+ *
+ * @returns void
  */
 export const useOnReactionRemoved = () => {
   onSocketEvent<unknown>(

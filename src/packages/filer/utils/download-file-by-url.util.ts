@@ -1,13 +1,13 @@
 import { v4 as uuid } from 'uuid';
 
 /**
- * Download file by URL
+ * @name downloadFileByUrl
  *
- * This utility downloads a file from a given URL.
+ * @description This utility downloads a file from a given URL.
  *
- * @param src - The source URL of the file
- * @param filename - The filename of the file
- * @param fileExtension - The file extension of the file
+ * @param {string} src - The source URL of the file
+ * @param {string} [filename] - The optional filename of the file
+ * @param {string} [fileExtension] - The optional file extension of the file
  *
  * @returns void
  */

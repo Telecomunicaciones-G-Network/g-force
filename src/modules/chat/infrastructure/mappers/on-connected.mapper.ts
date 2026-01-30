@@ -2,17 +2,19 @@ import type { OnConnectedResponse } from '../../domain/interfaces';
 import type { OnConnectedResponseDTO } from '../dtos';
 
 /**
- * On connected mapper
+ * @name OnConnectedMapper
  *
- * This mapper converts the on connected response DTO to the on connected response domain.
+ * @description This mapper converts the on connected response DTO to the on connected response domain.
  */
 export class OnConnectedMapper {
   /**
-   * Map from on connected response DTO to on connected response domain
+   * @name mapFrom
    *
-   * @param input - The on connected response DTO
+   * @description This method converts the on connected response DTO to the on connected response domain.
    *
-   * @returns The on connected response domain
+   * @param {OnConnectedResponseDTO} input - The on connected response DTO.
+   *
+   * @returns {OnConnectedResponse} The on connected response domain.
    */
   static mapFrom(input: OnConnectedResponseDTO): OnConnectedResponse {
     return {

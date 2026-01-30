@@ -15,14 +15,17 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 import { useChatStore } from '@ui/chat/stores/chat-store/chat.store';
 
 /**
- * On outgoing message hook
+ * @name useOnOutgoingMessage
  *
- * This hook listens to the on `outgoing_message` socket event:
+ * @description This hook listens to the on `outgoing_message` socket event:
  * When an agent sends a new message in a contact's chat. This includes both regular messages sent to the contact,
  * as well as internal messages and event messages. Contains all message data to be displayed in the open chat panel.
  * - Add the message if assigned agent is not equal than conversation agent
  * Emitted to the agent when a message is sent. Contains the message data.
+ *
  *[Contact event]
+ *
+ * @returns void
  */
 export const useOnOutgoingMessage = () => {
   const activeAgent = useContactStore((state) => state.activeAgent);

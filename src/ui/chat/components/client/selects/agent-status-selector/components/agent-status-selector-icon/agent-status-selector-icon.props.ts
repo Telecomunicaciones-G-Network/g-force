@@ -1,7 +1,7 @@
 /**
- * Agent Status Selector Icon props.
+ * @name AgentStatusSelectorIconProps
  *
- * @property isOpen - Whether the icon is open.
+ * @property {boolean} [isOpen] - Whether the icon is open.
  */
 export interface AgentStatusSelectorIconProps {
   isOpen?: boolean;

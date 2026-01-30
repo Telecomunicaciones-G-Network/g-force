@@ -1,7 +1,7 @@
 /**
- * Team codename type
+ * @name TeamCodename
  *
- * This type represents the codename of a team.
+ * @description This type represents the codename of a team.
  *
  * @property CUSTOMER - The customer team
  * @property FAULTS - The faults team

@@ -1,5 +1,7 @@
 /**
- * Message types enum
+ * @name MessageTypes
+ *
+ * @description Represents the possible types of messages within the system.
  *
  * @property AUDIO - The message is an audio
  * @property CONTACTS - The message is a contacts

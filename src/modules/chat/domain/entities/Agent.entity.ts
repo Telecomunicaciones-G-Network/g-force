@@ -2,18 +2,18 @@ import type { Agent as AgentValues } from '../interfaces';
 import type { AgentStatus, TeamCodename } from '../types';
 
 /**
- * Agent entity
+ * @name Agent
  *
- * This entity represents an agent in the chat system.
+ * @description This entity represents an agent in the chat system.
+ *
+ * @property {string} id - The ID of the agent.
+ * @property {string} name - The name of the agent.
+ * @property {AgentStatus} status - The status of the agent.
+ * @property {TeamCodename[]} teams - The teams of the agent.
  */
 export class Agent {
   /**
    * Constructor
-   *
-   * @param id - The ID of the agent
-   * @param name - The name of the agent
-   * @param status - The status of the agent
-   * @param teams - The teams of the agent
    */
   constructor(
     public id: string,
@@ -23,9 +23,11 @@ export class Agent {
   ) {}
 
   /**
-   * Convert the agent to values
+   * @name toValues
    *
-   * @returns The agent values
+   * @description Convert the agent to values
+   *
+   * @returns {AgentValues} The agent values
    */
   public toValues(): AgentValues {
     return {

@@ -1,11 +1,11 @@
 /**
- * Remove extension from filename
+ * @name removeExtensionFromFilename
  *
- * This utility removes the extension from a given filename.
+ * @description This utility removes the extension from a given filename.
  *
- * @param filename - The filename to remove the extension from
+ * @param {string} filename - The filename to remove the extension from
  *
- * @returns The filename without the extension
+ * @returns {string} The filename without the extension
  */
 export const removeExtensionFromFilename = (filename: string): string => {
   if (!filename || typeof filename !== 'string') return '';

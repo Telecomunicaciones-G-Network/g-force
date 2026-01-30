@@ -18,14 +18,18 @@ import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionar
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * On contact assignment updated hook
+ * @name useOnContactAssignmentUpdated
  *
- * This hook listens to the `contact_assignment_updated` socket event
+ * @description This hook listens to the `contact_assignment_updated` socket event
+ *
  * When the team and/or agent assigned to a contact changes. Emitted to all involved and dis-involved agents.
  * Contains the data of the assigned team and agent and the IDs of the contact and their current conversation.
  * - Updates the contact list if contact does not exists on store.
  * - Updates the contact conversation information, status, agent and team.
+ *
  * [Agent event]
+ *
+ * @returns void
  */
 export const useOnContactAssignmentUpdated = () => {
   const existContactOnStore = useContactStore(

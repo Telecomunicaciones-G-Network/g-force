@@ -10,36 +10,36 @@ import type {
 import type { MessageDirection, MessageStatus, MessageType } from '../types';
 
 /**
- * Message entity
+ * @name Message
  *
- * This entity represents a message in the chat system.
+ * @description This entity represents a message in the chat system.
+ *
+ * @property {string} id - The ID of the message.
+ * @property {MessageContact[]} contacts - The contacts associated with the message.
+ * @property {string} conversationId - The ID of the conversation.
+ * @property {string} createdAt - The creation date of the message.
+ * @property {string | null} deliveredAt - The delivery date of the message.
+ * @property {MessageDirection} direction - The direction of the message.
+ * @property {MessageEventData | null} eventData - The event data of the message.
+ * @property {string | null} failedAt - The failure date of the message.
+ * @property {boolean} forwarded - Whether the message was forwarded.
+ * @property {boolean} forwardedManyTimes - Whether the message was forwarded many times.
+ * @property {null} interactiveOptions - The interactive options of the message.
+ * @property {MessageLocation | null} location - The location of the message.
+ * @property {Media | null} media - The media associated with the message.
+ * @property {MessageReaction[]} reactions - The reactions to the message.
+ * @property {string | null} readAt - The read date of the message.
+ * @property {null} replyToMessage - The message that this message is replying to.
+ * @property {MessageSender} sender - The sender of the message.
+ * @property {string | null} sentAt - The sent date of the message.
+ * @property {MessageStatus} status - The status of the message.
+ * @property {string | null} text - The text content of the message.
+ * @property {MessageType} type - The type of the message.
+ * @property {string | null} updatedAt - The update date of the message.
  */
 export class Message {
   /**
    * Constructor
-   *
-   * @param id - The ID of the message
-   * @param contacts - The contacts of the message
-   * @param conversationId - The ID of the conversation
-   * @param createdAt - The creation date of the message
-   * @param deliveredAt - The delivery date of the message
-   * @param direction - The direction of the message
-   * @param eventData - The event data of the message
-   * @param failedAt - The failure date of the message
-   * @param forwarded - Whether the message is forwarded
-   * @param forwardedManyTimes - Whether the message is forwarded many times
-   * @param interactiveOptions - The interactive options of the message
-   * @param location - The location of the message
-   * @param media - The media of the message
-   * @param reactions - The reactions of the message
-   * @param readAt - The read date of the message
-   * @param replyToMessage - The reply to message of the message
-   * @param sender - The sender of the message
-   * @param sentAt - The sent date of the message
-   * @param status - The status of the message
-   * @param text - The text of the message
-   * @param type - The type of the message
-   * @param updatedAt - The update date of the message
    */
   constructor(
     public id: string,
@@ -67,18 +67,11 @@ export class Message {
   ) {}
 
   /**
-   * Get the ID of the message
+   * @name toValues
    *
-   * @returns {string} The ID of the message
-   */
-  public getId(): string {
-    return this.id;
-  }
-
-  /**
-   * Convert the message to values
+   * @description Convert the message to values.
    *
-   * @returns {MessageValues} The message values
+   * @returns {MessageValues} The message values.
    */
   public toValues(): MessageValues {
     return {

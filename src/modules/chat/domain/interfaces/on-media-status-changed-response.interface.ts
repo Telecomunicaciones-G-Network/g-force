@@ -1,13 +1,13 @@
 import type { MediaStorageStatus } from '../types';
 
 /**
- * On media status changed response interface
+ * @name OnMediaStatusChangedResponse
  *
- * This interface represents the response from the on media status changed socket event.
+ * @description This interface represents the values of an on media status changed response.
  *
- * @property mediaId - The ID of the media
- * @property messageId - The ID of the message
- * @property storageStatus - The status of the media storage
+ * @property {string} mediaId - The ID of the media.
+ * @property {string} messageId - The ID of the message.
+ * @property {MediaStorageStatus} storageStatus - The status of the media storage.
  */
 export interface OnMediaStatusChangedResponse {
   mediaId: string;

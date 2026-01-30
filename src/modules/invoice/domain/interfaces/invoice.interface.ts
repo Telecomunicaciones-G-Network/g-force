@@ -9,20 +9,22 @@ import type {
 } from '../types';
 
 /**
- * Invoice interface
+ * @name Invoice
  *
- * @property id - The invoice ID
- * @property amountToPayBs - The amount to pay in Bs
- * @property amountToPayUsd - The amount to pay in USD
- * @property bankAssociatedData - The bank associated data
- * @property contractId - The contract ID
- * @property cycle - The cycle
- * @property dateEmission - The date of emission
- * @property datePayment - The date of payment
- * @property documentNumber - The document number
- * @property paymentMethods - The payment methods
- * @property statusCode - The status code
- * @property statusName - The status name
+ * @description This interface represents an invoice in the system.
+ *
+ * @property {number} id - The invoice ID
+ * @property {InvoiceAmountToPay} amountToPayBs - The amount to pay in Bs
+ * @property {InvoiceAmountToPay} amountToPayUsd - The amount to pay in USD
+ * @property {InvoiceBankAssociatedData} bankAssociatedData - The bank associated data
+ * @property {number} contractId - The contract ID
+ * @property {string} [cycle] - The cycle
+ * @property {string} dateEmission - The date of emission
+ * @property {string | null} datePayment - The date of payment
+ * @property {string | null} documentNumber - The document number
+ * @property {InvoicePaymentMethod[] | null} paymentMethods - The payment methods
+ * @property {InvoiceStatusCode} statusCode - The status code
+ * @property {InvoiceStatusName} statusName - The status name
  */
 export interface Invoice {
   id: number;

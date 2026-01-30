@@ -5,17 +5,19 @@ import { MessageDirections } from '../../domain/enums/message-directions.enum';
 import { MessageStatus } from '../../domain/enums/message-status.enum';
 
 /**
- * On incoming message mapper
+ * @name OnIncommingMessageMapper
  *
- * This mapper converts the on incoming message response DTO to the message domain.
+ * @description This mapper converts the on incomming message response DTO to the message domain.
  */
 export class OnIncommingMessageMapper {
   /**
-   * Map from on incoming message response DTO to message domain
+   * @name mapFrom
    *
-   * @param input - The on incoming message response DTO
+   * @description This method converts the on incomming message response DTO to the message domain.
    *
-   * @returns The message domain
+   * @param {OnIncommingMessageResponseDTO} input - The on incomming message response DTO.
+   *
+   * @returns {Message | null} The message domain.
    */
   static mapFrom(input: OnIncommingMessageResponseDTO): Message | null {
     return {

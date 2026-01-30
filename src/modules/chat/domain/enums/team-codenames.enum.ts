@@ -1,7 +1,7 @@
 /**
- * Team codenames enum
+ * @name TeamCodenames
  *
- * This enum represents the codenames values of the teams.
+ * @description Represents the possible codenames of teams within the system.
  *
  * @property CUSTOMER - The customer team
  * @property FAULTS - The faults team

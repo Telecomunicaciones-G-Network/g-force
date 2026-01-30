@@ -3,14 +3,14 @@ import type { Agent } from './agent.interface';
 import type { Team } from './team.interface';
 
 /**
- * Conversation interface
+ * @name Conversation
  *
- * This interface represents a conversation in the chat system.
+ * @description This interface represents the values of a conversation.
  *
- * @property id - The id of the conversation.
- * @property agent - The agent of the conversation.
- * @property status - The status of the conversation.
- * @property team - The team of the conversation.
+ * @property {string} id - The id of the conversation.
+ * @property {Omit<Agent, 'status' | 'teams'> | null} agent - The agent of the conversation.
+ * @property {ConversationStatus} status - The status of the conversation.
+ * @property {Team | null} team - The team of the conversation.
  */
 export interface Conversation {
   id: string;

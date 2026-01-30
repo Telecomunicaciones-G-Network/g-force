@@ -11,9 +11,11 @@ import { isoToTime } from '@timer/utils/iso-to-time.util';
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 
 /**
- * ChatInternalMessage component.
+ * @name ChatInternalMessage
  *
- * @property {Message} props.message - The message to display.
+ * @description This component renders a chat internal message.
+ *
+ * @property {Message} [message] - The message to display.
  */
 export const ChatInternalMessage = ({
   message,

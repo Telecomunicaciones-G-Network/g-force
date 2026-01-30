@@ -3,9 +3,11 @@ import type { AgentStatusSelectorOption } from '@ui-chat/interfaces';
 import { AgentStatus } from '@module-chat/domain/enums/agent-status.enum';
 
 /**
- * Agent Status Selector Options Iterator
+ * @name AgentStatusSelectorOptions
  *
- * This iterator returns the options for the agent status selector.
+ * @description This iterator returns the options for the agent status selector.
+ *
+ * @returns {AgentStatusSelectorOption[]} The agent status selector options.
  */
 export const AgentStatusSelectorOptions: AgentStatusSelectorOption[] = [
   {

@@ -4,9 +4,11 @@ import { useOnAgentStatusChanged } from '@ui-chat/hooks/on-agent-status-changed.
 import { useOnConnected } from '@ui-chat/hooks/on-connected.hook';
 
 /**
- * Use base socket events hook
+ * @name useBaseSocketEvents
  *
- * This hook listens and groups the base socket events.
+ * @description This hook listens and groups the base socket events.
+ *
+ * @returns void
  */
 export const useBaseSocketEvents = () => {
   useOnConnected();

@@ -12,11 +12,11 @@
     "(private)": "secure",
     "(public)": "public",
     "actions": "cue",
-    "agent-status-selector": "react-components",
     "agent-status-selector-body": "react-components",
     "agent-status-selector-icon": "react-components",
     "agent-status-selector-loader": "react-components",
     "agent-status-selector-trigger": "react-components",
+    "agent-status-selector": "react-components",
     "back-button": "react-components",
     "blocks": "mjml",
     "brand": "react-components",
@@ -58,10 +58,10 @@
     "chat-transfer-conversation-modal-header": "react-components",
     "chat-transfer-conversation-modal-skeleton": "react-components",
     "chat-transfer-conversation-modal": "react-components",
+    "collapsible-button": "react-components",
     "components": "react-components",
     "contact-card-skeleton": "react-components",
     "contact-list": "react-components",
-    "collapsible-button": "react-components",
     "dictionaries": "resource",
     "dropdown-base": "react-components",
     "dropdown-container": "react-components",
@@ -73,8 +73,8 @@
     "dropdowns": "content",
     "entities": "svg",
     "factory": "mjml",
-    "filer": "archive",
     "file-input": "react-components",
+    "filer": "archive",
     "floating-modal-payment-report-controller": "react-components",
     "floating-modal-payment-report-mobile-payment": "react-components",
     "forms": "custom",
@@ -92,6 +92,7 @@
     "navbar": "react-components",
     "navbars": "serverless",
     "objecter": "json",
+    "payment": "database",
     "presenters": "delta",
     "react-query-devtools": "react-components",
     "schemas": "scala",
@@ -215,6 +216,12 @@
       "folderNames": ["infrastructure"]
     },
     {
+      "name": "Invoice",
+      "base": "docs",
+      "color": "red-500",
+      "folderNames": ["invoice"]
+    },
+    {
       "name": "Modules",
       "base": "plugin",
       "color": "red-500",
@@ -320,6 +327,12 @@
       "base": "template",
       "color": "red-400",
       "folderNames": ["templates"]
+    },
+    {
+      "name": "Ticket",
+      "base": "stack",
+      "color": "orange-700",
+      "folderNames": ["ticket"]
     },
     {
       "name": "User",

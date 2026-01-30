@@ -4,9 +4,13 @@
 const DEFAULT_SECONDS = 90;
 
 /**
- * Converts an ISO date string to seconds.
- * @param date - The ISO date string to convert.
- * @returns The number of seconds remaining until the date.
+ * @name isoDateToSeconds
+ *
+ * @description Converts an ISO date string to seconds.
+ *
+ * @param {string} date - The ISO date string to convert.
+ *
+ * @returns {number} The number of seconds remaining until the date.
  */
 export const isoDateToSeconds = (date: string): number => {
   if (!date || typeof date !== 'string') return 0;

@@ -1,13 +1,15 @@
 import type { MessageType } from '../../domain/types';
 
 /**
- * On new message sent response DTO
+ * @name OnNewMessageSentResponseDTO
  *
- * @property contact_id - The ID of the contact
- * @property conversation_id - The ID of the conversation
- * @property message_id - The ID of the message
- * @property message_text_preview - The text preview of the message
- * @property message_type - The type of the message
+ * @description This interface represents the response for on new message sent event.
+ *
+ * @property {string} contact_id - The ID of the contact
+ * @property {string} conversation_id - The ID of the conversation
+ * @property {string} message_id - The ID of the message
+ * @property {string | null} message_text_preview - The text preview of the message
+ * @property {MessageType} message_type - The type of the message
  */
 export interface OnNewMessageSentResponseDTO {
   contact_id: string;

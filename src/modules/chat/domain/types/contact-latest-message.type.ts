@@ -1,9 +1,9 @@
 import type { Message } from '../interfaces/message.interface';
 
 /**
- * Contact latest message type
+ * @name ContactLatestMessage
  *
- * This type represents the latest message of a contact.
+ * @description This type represents the latest message of a contact.
  *
  * @property id - The ID of the message
  * @property createdAt - The creation date of the message

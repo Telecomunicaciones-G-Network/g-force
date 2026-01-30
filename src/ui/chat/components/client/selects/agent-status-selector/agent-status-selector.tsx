@@ -8,9 +8,9 @@ import { useAgentStatusSelector } from './agent-status-selector.hook';
 import styles from './agent-status-selector.module.css';
 
 /**
- * Agent Status Selector component.
+ * @name AgentStatusSelector
  *
- * This component renders the agent status selector.
+ * @description This component renders the agent status selector.
  */
 export const AgentStatusSelector = () => {
   const {

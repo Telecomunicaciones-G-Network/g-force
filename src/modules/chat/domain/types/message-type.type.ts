@@ -1,5 +1,7 @@
 /**
- * Message type type
+ * @name MessageType
+ *
+ * @description This type represents the possible types of messages within the system.
  *
  * @property AUDIO - The message is an audio
  * @property CONTACTS - The message is a contacts

@@ -6,18 +6,18 @@ import type {
 import type { ConversationStatus } from '../types';
 
 /**
- * Conversation entity
+ * @name Conversation
  *
- * This entity represents a conversation in the chat system.
+ * @description This entity represents a conversation in the chat system.
+ *
+ * @property {string} id - The ID of the conversation.
+ * @property {Agent | null} agent - The agent assigned to the conversation.
+ * @property {ConversationStatus} status - The current status of the conversation.
+ * @property {Team | null} team - The team associated with the conversation.
  */
 export class Conversation {
   /**
    * Constructor
-   *
-   * @param id - The id of the conversation.
-   * @param agent - The agent of the conversation.
-   * @param status - The status of the conversation.
-   * @param team - The team of the conversation.
    */
   constructor(
     public id: string,
@@ -27,9 +27,11 @@ export class Conversation {
   ) {}
 
   /**
-   * Convert the conversation to values
+   * @name toValues
    *
-   * @returns The conversation values
+   * @description Convert the conversation to values
+   *
+   * @returns {ConversationValues} The conversation values
    */
   public toValues(): ConversationValues {
     return {

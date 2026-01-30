@@ -119,8 +119,7 @@
 }
 
 /* Esto aplica a cualquier Texto o span dentro de field_text */
-.field_text
-> * {
+.field_text > * {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

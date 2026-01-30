@@ -13,26 +13,27 @@ import { InvoiceStatusCodes } from '../enums/invoice-status-codes.enum';
 import { InvoiceStatusNames } from '../enums/invoice-status-names.enum';
 
 /**
- * Invoice entity
+ * @name Invoice
  *
- * This entity represents an invoice in the system.
+ * @description This entity represents an invoice in the system.
+ *
+ * @property {number} id - The ID of the invoice.
+ * @property {InvoiceAmountToPay} amountToPayBs - The amount to pay in Bs.
+ * @property {InvoiceAmountToPay} amountToPayUsd - The amount to pay in USD.
+ * @property {number} amount - The invoice amount.
+ * @property {InvoiceBankAssociatedData} bankAssociatedData - The bank associated data.
+ * @property {number} contractId - The contract ID.
+ * @property {string} [cycle] - The cycle.
+ * @property {string} dateEmission - The emission date.
+ * @property {string | null} datePayment - The payment date.
+ * @property {string | null} documentNumber - The document number.
+ * @property {InvoicePaymentMethod[] | null} paymentMethods - The payment methods.
+ * @property {InvoiceStatusCode} statusCode - The status code.
+ * @property {InvoiceStatusName} statusName - The status name.
  */
 export class Invoice {
   /**
    * Constructor
-   *
-   * @param id - The ID of the invoice
-   * @param amountToPayBs - The amount to pay in Bs
-   * @param amountToPayUsd - The amount to pay in USD
-   * @param bankAssociatedData - The bank associated data
-   * @param contractId - The contract ID
-   * @param cycle - The cycle
-   * @param dateEmission - The date of emission
-   * @param datePayment - The date of payment
-   * @param documentNumber - The document number
-   * @param paymentMethods - The payment methods
-   * @param statusCode - The status code
-   * @param statusName - The status name
    */
   constructor(
     public id: number,
@@ -51,9 +52,11 @@ export class Invoice {
   ) {}
 
   /**
-   * Convert the invoice entity to a values object
+   * @name toValues
    *
-   * @returns The values object
+   * @description Convert the invoice to values
+   *
+   * @returns {InvoiceValues} The invoice values
    */
   public toValues(): InvoiceValues {
     return {

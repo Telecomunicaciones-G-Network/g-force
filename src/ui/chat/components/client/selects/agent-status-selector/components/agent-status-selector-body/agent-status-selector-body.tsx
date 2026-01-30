@@ -10,12 +10,12 @@ import { AgentStatusSelectorOptions } from '@ui-chat/iterators/agent-status-sele
 import styles from './agent-status-selector-body.module.css';
 
 /**
- * Agent Status Selector Body component.
+ * @name AgentStatusSelectorBody
  *
- * This component renders the body of the agent status selector.
+ * @description This component renders the body of the agent status selector.
  *
- * @property agentStatus - The agent status.
- * @property onChange - The function to call when the status is changed.
+ * @property {AgentStatus} [agentStatus] - The agent status.
+ * @property {function} [onChange] - The function to call when the status is changed.
  */
 export const AgentStatusSelectorBody = ({
   agentStatus,

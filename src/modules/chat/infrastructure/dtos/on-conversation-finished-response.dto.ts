@@ -1,8 +1,10 @@
 /**
- * On conversation finished response finished by agent DTO
+ * @name OnConversationFinishedResponseFinishedByAgentDTO
  *
- * @property id - The ID of the agent
- * @property full_name - The full name of the agent
+ * @description This interface represents the agent information from the on conversation finished response.
+ *
+ * @property {string} id - The ID of the agent
+ * @property {string} full_name - The full name of the agent
  */
 export interface OnConversationFinishedResponseFinishedByAgentDTO {
   id: string;
@@ -10,11 +12,13 @@ export interface OnConversationFinishedResponseFinishedByAgentDTO {
 }
 
 /**
- * On conversation finished response DTO
+ * @name OnConversationFinishedResponseDTO
  *
- * @property contact_id - The ID of the contact
- * @property conversation_id - The ID of the conversation
- * @property finished_by_agent - The agent information from the on conversation finished socket event
+ * @description This interface represents the response for on conversation finished event.
+ *
+ * @property {string} contact_id - The ID of the contact
+ * @property {string} conversation_id - The ID of the conversation
+ * @property {OnConversationFinishedResponseFinishedByAgentDTO} finished_by_agent - The agent information from the on conversation finished socket event
  */
 export interface OnConversationFinishedResponseDTO {
   contact_id: string;

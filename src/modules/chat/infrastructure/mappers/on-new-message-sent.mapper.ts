@@ -2,17 +2,19 @@ import type { OnNewMessageSentResponse } from '../../domain/interfaces';
 import type { OnNewMessageSentResponseDTO } from '../dtos';
 
 /**
- * On new message sent mapper
+ * @name OnNewMessageSentMapper
  *
- * This mapper converts the on new message sent response DTO to the on new message sent response domain.
+ * @description This mapper converts the on new message sent response DTO to the on new message sent response domain.
  */
 export class OnNewMessageSentMapper {
   /**
-   * Map from on new message sent response DTO to on new message sent response domain
+   * @name mapFrom
    *
-   * @param input - The on new message sent response DTO
+   * @description This method converts the on new message sent response DTO to the on new message sent response domain.
    *
-   * @returns The on new message sent response domain
+   * @param {OnNewMessageSentResponseDTO} input - The on new message sent response DTO.
+   *
+   * @returns {OnNewMessageSentResponse} The on new message sent response domain.
    */
   static mapFrom(input: OnNewMessageSentResponseDTO): OnNewMessageSentResponse {
     return {

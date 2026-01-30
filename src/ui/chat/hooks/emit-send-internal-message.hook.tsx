@@ -34,13 +34,16 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 /**
- * On send internal message hook
+ * @name useEmitSendInternalMessage
  *
- * This hook emits a internal message to the socket server and updates the message id in the store
+ * @description This hook emits a internal message to the socket server and updates the message id in the store
  * - Send the internal message to the socket server
  * - Adds the internal message to the chat store
  * - Update the internal message after processing the response from the socket server
+ *
  * [Emission event]
+ *
+ * @returns emitSendInternalMessage - Function to emit a internal message to the socket server
  */
 export const useEmitSendInternalMessage = () => {
   // TODO: Use useOptimistic hook to update the message id in the store if failed or if is successfully.

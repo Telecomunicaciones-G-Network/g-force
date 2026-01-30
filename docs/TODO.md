@@ -22,7 +22,7 @@ TODO: Doc all about this project
 - .env.production ✅
 - .env.staging ✅
 - CONTRIBUTING.md ✅
-- Makefile ✅
+- Makefile ⚠️ (Add new commands for books)
 
 - src/modules/chat/domain/enums/agent-status.enum.ts ✅
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
@@ -112,6 +112,10 @@ TODO: Doc all about this project
 - src/modules/invoice/domain/types/invoice-payment-method.type.ts ✅
 - src/modules/invoice/domain/types/invoice-status-code.type.ts ✅
 - src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
+- src/modules/ticket/domain/enum/ticket-status-codes.enum.ts ✅
+- src/modules/tickets/domain/enum/ticket-status-names.enum.ts ✅
+- src/modules/ticket/domain/types/ticket-status-code.type.ts ✅
+- src/modules/ticket/domain/types/ticket-status-name.type.ts ✅
 
 - src/packages/filer/utils/download-file-by-url.util.ts ✅
 - src/packages/filer/utils/remove-extension-from-filename.util.ts ✅

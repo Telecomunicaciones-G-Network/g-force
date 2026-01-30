@@ -17,6 +17,13 @@ import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionar
 
 import { EmitSetAgentStatusMapper } from '@module-chat/infrastructure/mappers/emit-set-agent-status.mapper';
 
+/**
+ * @name useEmitSetAgentStatus
+ *
+ * @description This hook emits a set agent status event to the socket server.
+ *
+ * @returns emitSetAgentStatus - Function to emit a set agent status event to the socket server
+ */
 export const useEmitSetAgentStatus = () => {
   const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
   const { showToast } = useToast();

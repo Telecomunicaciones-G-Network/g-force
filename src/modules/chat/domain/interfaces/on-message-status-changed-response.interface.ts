@@ -1,12 +1,12 @@
 import type { MessageStatus } from '../types';
 
 /**
- * On message status changed response interface
+ * @name OnMessageStatusChangedResponse
  *
- * This interface represents the response from the on message status changed socket event.
+ * @description This interface represents the values of an on message status changed response.
  *
- * @property messageId - The ID of the message
- * @property status - The status of the message
+ * @property {string} messageId - The ID of the message.
+ * @property {MessageStatus} status - The status of the message.
  */
 export interface OnMessageStatusChangedResponse {
   messageId: string;

@@ -1,5 +1,7 @@
 /**
- * Message event type type
+ * @name MessageEventType
+ *
+ * @description This type represents the possible types of message events within the system.
  *
  * @property CONVERSATION_ASSIGNMENT_UPDATED - The event is a conversation assignment updated
  * @property CONVERSATION_CREATED - The event is a conversation created

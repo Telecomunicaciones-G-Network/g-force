@@ -8,17 +8,19 @@ import type {
 } from '@module-chat/infrastructure/dtos';
 
 /**
- * Emit Set Agent Status Mapper
+ * @name EmitSetAgentStatusMapper
  *
- * This mapper converts the emit set agent status response DTO to the emit set agent status response domain.
+ * @description This mapper converts the emit set agent status response DTO to the emit set agent status response domain.
  */
 export class EmitSetAgentStatusMapper {
   /**
-   * Map the response from the DTO to the domain interface.
+   * @name mapFrom
    *
-   * @param input - The response from the DTO.
+   * @description This method converts the emit set agent status response DTO to the emit set agent status response domain.
    *
-   * @returns The response in domain interface format.
+   * @param {EmitSetAgentStatusResponseDTO} input - The emit set agent status response DTO.
+   *
+   * @returns {EmitSetAgentStatusResponse} The emit set agent status response domain.
    */
   static mapFrom(
     input: EmitSetAgentStatusResponseDTO,
@@ -29,11 +31,13 @@ export class EmitSetAgentStatusMapper {
   }
 
   /**
-   * Map the request from the domain interface to the DTO.
+   * @name mapTo
    *
-   * @param output - The request from the domain interface.
+   * @description This method converts the emit set agent status request domain to the emit set agent status request DTO.
    *
-   * @returns The request in DTO format.
+   * @param {Pick<EmitSetAgentStatusRequest, 'status'>} output - The emit set agent status request domain object.
+   *
+   * @returns {EmitSetAgentStatusRequestDTO} The emit set agent status request DTO.
    */
   static mapTo(
     output: Pick<EmitSetAgentStatusRequest, 'status'>,
