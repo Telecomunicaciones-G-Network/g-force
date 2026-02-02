@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
-
+import { Text } from '@gnetwork-ui/components/atoms/texts/text'; // Importa Text si lo tienes
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { LoginErrorAlert } from '@ui-auth/components/client/alerts/login-error-alert/login-error-alert';
@@ -10,10 +10,10 @@ import { EmailInputController } from '@ui-core/components/server/inputs/email-in
 import { PasswordInputController } from '@ui-core/components/server/inputs/password-input-controller';
 
 import { LoginBrand } from './components/login-brand/login-brand';
-
 import { useLoginForm } from './login-form.hook';
 
 import styles from './login-form.module.css';
+import { MdLockOutline, MdPersonOutline } from 'react-icons/md';
 
 /**
  * @name LoginForm
@@ -34,39 +34,42 @@ export const LoginForm = () => {
 
   return (
     <form
-      className={cn(
-        styles.base,
-        'gap-6 items-center justify-start pb-4 pt-0 px-4 tablet:gap-8 tablet:items-start tablet:justify-center tablet:pb-8 tablet:px-[204px]',
-      )}
+      className={cn(styles.base, 'gap-6')}
       onSubmit={handleSubmit(onSubmit)}
     >
       {serverError && (
         <LoginErrorAlert message={serverError} onClose={closeErrorAlert} />
       )}
+
+      {/* 1. Logo y Subtítulo */}
       <LoginBrand />
+      <Text as="p" className={styles.base__subtitle}>
+        Más que Internet
+      </Text>
+
       <div className={styles.base__form}>
         <div className={styles.base__row}>
           <EmailInputController
+            containerClassName={styles.input__container}
             control={control}
             fullWidth
             id="login_email"
-            label="Email"
+            leftIcon={<MdPersonOutline className="text-neutral-400" size={20} />}
             name="email"
             onClear={() => clearErrors()}
-            placeholder="Introduce tu email"
-            required
+            placeholder="Email"
           />
         </div>
         <div className={styles.base__row}>
           <PasswordInputController
+            containerClassName={styles.input__container}
             control={control}
             fullWidth
             id="login_password"
-            label="Contraseña"
+            leftIcon={<MdLockOutline className="text-neutral-400" size={20} />}
             name="password"
             onClear={() => clearErrors()}
-            placeholder="Introduce tu contraseña"
-            required
+            placeholder="Contraseña"
           />
         </div>
       </div>
@@ -78,7 +81,7 @@ export const LoginForm = () => {
           loading={isSubmitting}
           type="submit"
         >
-          Iniciar sesión
+          Iniciar Sesión
         </Button>
       </div>
     </form>

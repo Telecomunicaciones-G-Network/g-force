@@ -17,9 +17,9 @@ export const PasswordInput = (props: Readonly<Omit<InputProps, 'type'>>) => {
       rightIcon={
         <button onClick={togglePassword} type="button">
           {showPassword ? (
-            <MdOutlineVisibility className="min-h-6 min-w-6" size={24} />
+            <MdOutlineVisibility className="min-h-6 min-w-6 text-neutral-500" size={24} />
           ) : (
-            <MdOutlineVisibilityOff className="min-h-6 min-w-6" size={24} />
+            <MdOutlineVisibilityOff className="min-h-6 min-w-6 text-neutral-500" size={24} />
           )}
         </button>
       }
