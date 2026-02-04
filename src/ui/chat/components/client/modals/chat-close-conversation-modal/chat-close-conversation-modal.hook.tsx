@@ -16,7 +16,6 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  *
  * @description This hook manages the state and behavior for the modal that closes a chat conversation.
  *
- * @returns activeContact - The currently active contact in the chat.
  * @returns closeModal: Function to close the modal.
  * @returns disabledSocketActions: Whether socket-related actions are disabled.
  * @returns isLoading: Indicates if the close conversation action is being processed.
@@ -65,7 +64,6 @@ export const useChatCloseConversationModal = () => {
   };
 
   return {
-    activeContact,
     closeModal,
     disabledSocketActions,
     isLoading,
