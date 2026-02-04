@@ -6,14 +6,12 @@
   font-family: inherit;
   gap: 8px;
   justify-content: center;
-  min-height: 96px;
   padding: 8px 48px;
   position: relative;
   width: 100%;
 }
 
 .base__container {
-  /*align-items: center; */
   display: flex;
   gap: 8px;
   padding: 0;
