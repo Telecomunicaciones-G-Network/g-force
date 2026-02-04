@@ -1,0 +1,28 @@
+.base {
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  text-align: left;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.base__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+}
+
+.base__icon {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-shrink: 0;
+  height: 54px;
+  justify-content: center;
+  width: min(54px, 100%);
+}

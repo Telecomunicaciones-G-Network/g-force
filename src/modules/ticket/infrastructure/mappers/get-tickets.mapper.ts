@@ -1,7 +1,7 @@
 import type {
   GetTicketsRequest,
   GetTicketsResponse,
-  TicketValues,
+  Ticket,
 } from '../../domain/interfaces';
 import type { GetTicketsRequestDTO, GetTicketsResponseDTO } from '../dtos';
 import type { GetTicketsResultDTO } from '../interfaces';
@@ -20,15 +20,13 @@ export class GetTicketsMapper {
     };
   }
 
-  public static mapFromArray(input: GetTicketsResultDTO): TicketValues {
+  public static mapFromArray(input: GetTicketsResultDTO): Ticket {
     return {
       id: input?.id,
       contractId: input?.contract_id,
       createdAt: input?.created_at,
       dateCreatedAt: input?.date_created_at,
       description: input?.short_description,
-      issue: input?.issue,
-      number: input?.ticket_number,
       statusCode: input?.status_code,
       statusName: input?.status_name,
     };

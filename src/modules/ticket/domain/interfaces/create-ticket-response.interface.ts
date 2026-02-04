@@ -1,7 +1,7 @@
-import type { TicketValues } from './ticket-values.interface';
+import type { Ticket } from './ticket.interface';
 
 export interface CreateTicketResponse {
   status: number;
   success: boolean;
-  ticket: TicketValues | null;
+  ticket: Ticket | null;
 }

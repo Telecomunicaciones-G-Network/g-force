@@ -1,11 +1,11 @@
 /**
- * Capitalize words utility
+ * @name capitalizeWords
  *
- * Capitalizes the first letter of each word in a string
+ * @description Capitalizes the first letter of each word in a string.
  *
- * @param data - The string to capitalize
+ * @param data - The string to capitalize.
  *
- * @returns The string with each word capitalized
+ * @returns {string} The string with each word capitalized.
  */
 export const capitalizeWords = (data?: string): string => {
   if (!data || typeof data !== 'string') return '';

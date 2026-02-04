@@ -42,7 +42,6 @@ export const ChatTransferConversationModalBody = ({
         <form className={styles.base} onSubmit={handleSubmit(onSubmit)}>
           <SelectInputController
             control={control}
-            customMessageClassName="text-red-600"
             fullWidth
             indicator="Equipos"
             label="Seleccione un equipo"

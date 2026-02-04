@@ -11,7 +11,17 @@ import { useChatDetailsTabContentLayout } from './chat-details-tab-content-layou
 
 import styles from './chat-details-tab-content-layout.module.css';
 
+/**
+ * @name ChatDetailsTabContentLayout
+ *
+ * @description Layout for the chat details tab content.
+ *
+ * @property {ReactChild} [actionComponent] - The action component to render (e.g., a button).
+ * @property {string} [title] - The title to display in the layout header.
+ * @property {ReactNode} children - The children to render in the layout.
+ */
 export const ChatDetailsTabContentLayout = ({
+  actionComponent,
   children,
   title = '',
 }: Readonly<ChatDetailsTabContentLayoutProps>) => {
@@ -21,13 +31,24 @@ export const ChatDetailsTabContentLayout = ({
     <section
       className={cn(styles.base, 'py-6 px-4 tablet:p-8 lg:py-6 lg:px-8')}
     >
-      <div className="flex items-center gap-2">
-        <BackButton hide={isDesktop} onClick={goBackChat} />
-        {title && (
-          <Text as="h5" level="large" scheme="label">
-            {title}
-          </Text>
+      <div
+        className={cn(
+          styles.base__container,
+          'flex',
+          actionComponent
+            ? 'justify-end lg:justify-between'
+            : 'hidden lg:justify-start',
         )}
+      >
+        <div className={cn(styles.base__title, 'hidden lg:flex')}>
+          <BackButton hide={isDesktop} onClick={goBackChat} />
+          {title && (
+            <Text as="h5" level="large" scheme="label">
+              {title}
+            </Text>
+          )}
+        </div>
+        <div className="flex">{actionComponent && actionComponent}</div>
       </div>
       {children}
     </section>

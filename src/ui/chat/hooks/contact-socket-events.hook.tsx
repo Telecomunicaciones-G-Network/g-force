@@ -1,7 +1,7 @@
 'use client';
 
-import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on_conversation_assignment_updated.hook';
-import { useOnConversationCreated } from '@ui-chat/hooks/on_conversation_created.hook';
+import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on-conversation-assignment-updated.hook';
+import { useOnConversationCreated } from '@ui-chat/hooks/on-conversation-created.hook';
 import { useOnConversationFinished } from '@ui-chat/hooks/on-conversation-finished.hook';
 import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
 import { useOnMessageStatusChanged } from '@ui-chat/hooks/on-message-status-changed.hook';

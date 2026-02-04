@@ -72,7 +72,10 @@ export const SelectInput = ({
           fullWidth={fullWidth}
           label={triggerLabel}
           leftIcon={leftIcon}
-          triggerWrapperClassName={triggerWrapperClassName}
+          triggerWrapperClassName={cn(
+            triggerWrapperClassName,
+            error && 'border-2 border-solid border-warning-200',
+          )}
         />
         <SelectInputBody indicator={indicator} options={options} {...rest} />
       </Select>

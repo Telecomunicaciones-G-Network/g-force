@@ -8,6 +8,14 @@ import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
+/**
+ * @name useChatDetailsTabContentLayout
+ *
+ * @description Hook to handle the chat details tab content layout.
+ *
+ * @returns goBackChat: A function to go back to the chat mode.
+ * @returns isDesktop: A boolean indicating if the screen is desktop.
+ */
 export const useChatDetailsTabContentLayout = () => {
   const setChatMode = useContactStore((state) => state.setChatMode);
 

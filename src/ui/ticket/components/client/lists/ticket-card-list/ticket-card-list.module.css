@@ -1,0 +1,11 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.base__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

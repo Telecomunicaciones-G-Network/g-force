@@ -1,3 +1,10 @@
+/**
+ * @name CHAT_RESOURCES
+ *
+ * @description This dictionary contains the resources of the chat API.
+ *
+ * @returns {Record<string, string | ((...args: string[]) => string)>} The chat resources dictionary
+ */
 export const CHAT_RESOURCES = {
   FINISH_CHAT_CONVERSATION: (contactId: string): string =>
     `/chat/contacts/${contactId}/conversation/finish`,
@@ -7,6 +14,7 @@ export const CHAT_RESOURCES = {
     `/chat/contacts/${contactId}/messages`,
   GET_CHAT_TEAMS: '/chat/teams',
   GET_CHAT_TRANSFER_AGENTS: '/chat/agents/minimal',
+  GET_CONTACTS: '/chat/contacts',
   GET_CONTACT_CONTRACTS: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/contracts`,
   GET_CONTACT_INFORMATION: (contactId: string): string =>
@@ -15,11 +23,9 @@ export const CHAT_RESOURCES = {
     `/chat/contacts/${contactId}/client/invoices`,
   GET_CONTACT_TICKETS: (contactId: string): string =>
     `/chat/contacts/${contactId}/client/tickets`,
-  GET_CONTACTS: '/chat/contacts',
   GET_FAST_DEBIT_BANKS: '/chat/payment/fast-debit/banks',
   PROCESS_FAST_DEBIT_PAYMENT: '/chat/payment/fast-debit/process-payment',
   REQUEST_FAST_DEBIT_OTP: '/chat/payment/fast-debit/request-otp',
-  // Tickets
   SEARCH_CLIENT: '/chat/clients',
   TRANSFER_CHAT_CONVERSATION: (contactId: string): string =>
     `/chat/contacts/${contactId}/conversation/transfer`,

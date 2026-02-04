@@ -6,7 +6,7 @@ export type { ConversationStatus } from './conversation-status.type';
 export type { MediaStorageStatus } from './media-storage-status.type';
 export type { MediaType } from './media-type.type';
 export type { MessageDirection } from './message-direction.type';
-export type { MessageEventType } from './message-event_type.type';
+export type { MessageEventType } from './message-event-type.type';
 export type { MessageStatus } from './message-status.type';
 export type { MessageType } from './message-type.type';
 export type { Platform } from './platform.type';

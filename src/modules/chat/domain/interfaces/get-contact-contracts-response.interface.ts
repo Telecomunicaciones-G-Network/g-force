@@ -1,4 +1,4 @@
-import type { ContractValues } from '@module-contract/domain/interfaces';
+import type { Contract } from '@module-contract/domain/interfaces';
 
 export interface GetContactContractsResponse {
   count?: number;
@@ -6,7 +6,7 @@ export interface GetContactContractsResponse {
   extra?: Record<string, string>;
   next: string | null;
   previous: string | null;
-  contracts?: ContractValues[];
+  contracts?: Contract[];
   status: number;
   success: boolean;
 }

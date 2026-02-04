@@ -14,21 +14,13 @@ import { contractStatusTagColorDictionary } from '@ui-chat/dictionaries/contract
 import styles from './chat-contract-card.module.css';
 
 export const ChatContractCard = ({
-  address = '',
-  expirationDate = '',
-  installationDate = '',
-  napBox = '',
-  number,
+  contract,
   open = false,
-  plan = '',
-  speedPlan = '',
-  statusCode,
-  statusName,
   title = '',
 }: Readonly<ChatContractCardProps>) => (
   <Accordion fullWidth open={open} label={title}>
     <div className={styles.base}>
-      {number && (
+      {contract?.number && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -46,13 +38,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {number}
+              {contract?.number}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {statusCode && statusName && (
+      {contract?.statusCode && contract?.statusName && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -65,16 +57,17 @@ export const ChatContractCard = ({
             </Text>
             <Tag
               color={
-                contractStatusTagColorDictionary?.[statusCode] ?? TagColors.GRAY
+                contractStatusTagColorDictionary?.[contract?.statusCode] ??
+                TagColors.GRAY
               }
             >
-              {statusName}
+              {contract?.statusName}
             </Tag>
           </div>
           <Separator />
         </>
       )}
-      {installationDate && (
+      {contract?.installationDate && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -92,37 +85,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {dayjs(installationDate).format('DD/MM/YYYY')}
+              {dayjs(contract?.installationDate).format('DD/MM/YYYY') ?? ''}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {expirationDate && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Fecha de vencimiento:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              {expirationDate}
-            </Text>
-          </div>
-          <Separator />
-        </>
-      )}
-      {plan && (
+      {contract?.planName && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -140,13 +109,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {plan}
+              {contract?.planName}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {speedPlan && (
+      {contract?.speedPlan && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -164,13 +133,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {speedPlan}
+              {contract?.speedPlan}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {napBox && (
+      {contract?.napBox && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -188,13 +157,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {napBox}
+              {contract?.napBox}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {address && (
+      {contract?.address && (
         <div className={styles.base__info}>
           <Text
             as="label"
@@ -211,7 +180,7 @@ export const ChatContractCard = ({
             level="small"
             scheme="label"
           >
-            {address}
+            {contract?.address}
           </Text>
         </div>
       )}

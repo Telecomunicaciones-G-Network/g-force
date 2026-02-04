@@ -12,16 +12,33 @@ import { CHAT_RESOURCES } from '../dictionaries/chat-resources.dictionary';
 
 import { GetContactContractsMapper } from '../mappers/get-contact-contracts.mapper';
 
+/**
+ * @name getContactContractsService
+ *
+ * @description This service gets the contracts for a contact.
+ *
+ * @param {GetContactContractsRequest} request - The request object
+ *
+ * @returns {Promise<GetContactContractsResponse>} The response object
+ */
 export const getContactContractsService = async (
   request: GetContactContractsRequest,
 ): Promise<GetContactContractsResponse> => {
+  if (!request?.contactId) {
+    throw new BaseException({
+      message: 'El contactId es requerido',
+      status: 400,
+    });
+  }
+
+  const requestDto = GetContactContractsMapper.mapTo(request);
+
   const response =
     await gnetworkAxiosApiClient.get<GetContactContractsResponseDTO>(
       CHAT_RESOURCES.GET_CONTACT_CONTRACTS(request?.contactId),
       {
         searchParams: {
-          page_size: request?.limit?.toString() ?? '20',
-          page: request?.page?.toString() ?? '1',
+          ...requestDto,
         },
       },
     );

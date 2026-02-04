@@ -15,7 +15,7 @@ import { useDatePicker } from './datepicker.hook';
 
 import styles from './datepicker.module.css';
 
-import { Calendar } from '@ui/packages/gnetwork-ui/components/calendar';
+import { Calendar } from '@ui-packages/gnetwork-ui/components/calendar';
 
 export const DatePicker = ({
   containerClassName = '',

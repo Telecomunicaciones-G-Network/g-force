@@ -2,7 +2,7 @@ import type { ButtonGroupButton } from '@gnetwork-ui/components/organisms/button
 
 import { MdCall, MdMailOutline, MdMoreVert } from 'react-icons/md';
 
-import { ChatTransferConversationModal } from '@ui/chat/components/client/modals/chat-transfer-conversation-modal';
+import { ChatTransferConversationModal } from '@ui-chat/components/client/modals/chat-transfer-conversation-modal';
 
 export const ChatConversationHeaderButtonIterator: ButtonGroupButton[] = [
   {

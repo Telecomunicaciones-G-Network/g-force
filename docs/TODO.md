@@ -1,7 +1,5 @@
 # TODO
 
-TODO: Doc all about this project
-
 ## Reviews
 
 - .github/workflows/build-develop.pipeline.yml ✅
@@ -23,7 +21,14 @@ TODO: Doc all about this project
 - .env.staging ✅
 - CONTRIBUTING.md ✅
 - Makefile ⚠️ (Add new commands for books)
+- tsconfig.json ✅
 
+- src/modules/chat/domain/entities/agent.entity.ts ✅
+- src/modules/chat/domain/entities/contact.entity.ts ✅
+- src/modules/chat/domain/entities/conversation.entity.ts ✅
+- src/modules/chat/domain/entities/media.entity.ts ✅
+- src/modules/chat/domain/entities/message.entity.ts ✅
+- src/modules/chat/domain/entities/team.entity.ts ✅
 - src/modules/chat/domain/enums/agent-status.enum.ts ✅
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
@@ -32,13 +37,9 @@ TODO: Doc all about this project
 - src/modules/chat/domain/enums/message-event-types.enum.ts ✅
 - src/modules/chat/domain/enums/message-status.enum.ts ✅
 - src/modules/chat/domain/enums/message-types.enum.ts ✅
+- src/modules/chat/domain/exceptions/get-contact-contracts.exception.ts ✅
+- src/modules/chat/domain/exceptions/get-contact-tickets.exception.ts ✅
 - src/modules/chat/domain/enums/team-codenames.enum.ts ✅
-- src/modules/chat/domain/entities/agent.entity.ts ✅
-- src/modules/chat/domain/entities/contact.entity.ts ✅
-- src/modules/chat/domain/entities/conversation.entity.ts ✅
-- src/modules/chat/domain/entities/media.entity.ts ✅
-- src/modules/chat/domain/entities/message.entity.ts ✅
-- src/modules/chat/domain/entities/team.entity.ts ✅
 - src/modules/chat/domain/interfaces/agent.interface.ts ✅
 - src/modules/chat/domain/interfaces/contact.interface.ts ✅
 - src/modules/chat/domain/interfaces/conversation.interface.ts ✅
@@ -46,6 +47,9 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/emit-send-internal-message-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/emit-set-agent-status-request.interface.ts ✅
 - src/modules/chat/domain/interfaces/emit-set-agent-status-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-contracts-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-tickets-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-tickets-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/media.interface.ts ✅
 - src/modules/chat/domain/interfaces/message.interface.ts ✅
 - src/modules/chat/domain/interfaces/message-contact.interface.ts ✅
@@ -62,16 +66,20 @@ TODO: Doc all about this project
 - src/modules/chat/domain/interfaces/on-new-message-received-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/on-new-message-sent-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/team.interface.ts ✅
+- src/modules/chat/domain/repositories/chat.repository.ts ✅
 - src/modules/chat/domain/types/agent-status.type.ts ✅
 - src/modules/chat/domain/types/contact-latest-message.type.ts ✅
 - src/modules/chat/domain/types/conversation-status.type.ts ✅
 - src/modules/chat/domain/types/media-storage-status.type.ts ✅
 - src/modules/chat/domain/types/media-type.type.ts ✅
 - src/modules/chat/domain/types/message-direction.type.ts ✅
-- src/modules/chat/domain/types/message-event_type.type.ts ✅
+- src/modules/chat/domain/types/message-event-type.type.ts ✅
 - src/modules/chat/domain/types/message-status.type.ts ✅
 - src/modules/chat/domain/types/message-type.type.ts ✅
 - src/modules/chat/domain/types/team-codename.type.ts ✅
+- src/modules/chat/application/usecases/get-contact-contracts.usecase.ts ⚠️
+- src/modules/chat/application/usecases/get-contact-tickets.usecase.ts ✅
+= src/modules/chat/infrastructure/dictionaries/chat-resources.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/chat-tags.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/socket-emissions.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/socket-events.dictionary.ts ✅
@@ -79,6 +87,10 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/emit-send-internal-message-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/emit-set-agent-status-request.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/emit-set-agent-status-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-contracts-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-contracts-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-tickets-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-tickets-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-agent-status-change-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
@@ -90,8 +102,12 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/interfaces/get-contact-contracts-result.interface.ts ✅
+- src/modules/chat/infrastructure/interfaces/get-contact-tickets-result.interface.ts ✅
 - src/modules/chat/infrastructure/mappers/emit-send-internal-message.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/emit-set-agent-status.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-contact-contracts.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-contact-tickets.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
@@ -102,6 +118,19 @@ TODO: Doc all about this project
 - src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
+- src/modules/chat/infrastructure/queries/get-contact-contracts.query.ts ✅
+- src/modules/chat/infrastructure/queries/get-contact-tickets.query.ts ✅
+- src/modules/chat/infrastructure/repositories/http-chat.repository.ts ✅
+- src/modules/chat/infrastructure/services/get-contact-contracts.service.ts ✅
+- src/modules/chat/infrastructure/services/get-contact-tickets.service.ts ⚠️
+- src/modules/contract/domain/entities/contract.entity.ts ✅
+- src/modules/contract/domain/enums/contract-status-codes.enum.ts ✅
+- src/modules/contract/domain/enums/contract-status-names.enum.ts ✅
+- src/modules/contract/domain/interfaces/contract.interface.ts ✅
+- src/modules/contract/domain/interfaces/contract-balance.interface.ts ✅
+- src/modules/contract/domain/interfaces/contract-bank-associated-data.interface.ts ✅
+- src/modules/contract/domain/types/contract-status-code.type.ts ✅
+- src/modules/contract/domain/types/contract-status-name.type.ts ✅
 - src/modules/invoice/domain/entities/invoice.entity.ts ✅
 - src/modules/invoice/domain/enums/invoice-payment-methods.enum.ts ✅
 - src/modules/invoice/domain/enums/invoice-status-codes.enum.ts ✅
@@ -112,16 +141,21 @@ TODO: Doc all about this project
 - src/modules/invoice/domain/types/invoice-payment-method.type.ts ✅
 - src/modules/invoice/domain/types/invoice-status-code.type.ts ✅
 - src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
+- src/modules/ticket/domain/entities/ticket.entity.ts ✅
 - src/modules/ticket/domain/enum/ticket-status-codes.enum.ts ✅
 - src/modules/tickets/domain/enum/ticket-status-names.enum.ts ✅
+- src/modules/tickets/domain/interfaces/ticket.interface.ts ✅
 - src/modules/ticket/domain/types/ticket-status-code.type.ts ✅
 - src/modules/ticket/domain/types/ticket-status-name.type.ts ✅
 
 - src/packages/filer/utils/download-file-by-url.util.ts ✅
 - src/packages/filer/utils/remove-extension-from-filename.util.ts ✅
-- src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
+- src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button/~ ✅
+- src/packages/gnetwork-ui/components/molecules/modals/modal-card/~ ✅
+- src/packages/gnetwork-ui/components/organisms/lists/flatlist/~ ✅
 - src/packages/hooks/use-click-outside.hook.tsx ✅
 - src/packages/sounder/classes/sounder.class.ts ✅
+- src/packages/stringify/utils/capitalize-words.util.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
 - src/ui/core/enums/env-modes.enum.ts ✅
@@ -144,8 +178,8 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-connected.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
 - src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
-- src/ui/chat/hooks/on_conversation_assignment_updated.hook.tsx ⚠️
-- src/ui/chat/hooks/on_conversation_created.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-assignment-updated.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-created.hook.tsx ⚠️
 - src/ui/chat/hooks/on-conversation-finished.hook.tsx ⚠️
 - src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
 - src/ui/chat/hooks/on-media-status-changed.hook.tsx ⚠️
@@ -157,7 +191,24 @@ TODO: Doc all about this project
 - src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
 - src/ui/chat/interfaces/agent-status-selector-option.interface.ts ✅
 - src/ui/chat/iterators/agent-status-selector-options.iterator.tsx ✅
+- src/ui/chat/layouts/chat-details-tab-content-layout/~ ✅
+- src/ui/chat/queries/get-contact-information-query.hook.tsx ✅
+- src/ui/chat/queries/get-contact-contracts-query.hook.tsx ⚠️
 - src/ui/chat/types/chat-send-mode.type.ts ✅
+- src/ui/contract/components/client/cards/contract-card/~ ⚠️
+- src/ui/contract/components/server/lists/contract-card-list/~ ⚠️
+- src/ui/ticket/components/client/cards/ticket-card/~ ⚠️
+- src/ui/ticket/components/client/dropdowns/tickets-filter/~ ⚠️
+- src/ui/ticket/components/client/forms/create-ticket-form/~ ⚠️
+- src/ui/ticket/components/client/lists/ticket-card-list/~ ⚠️
+- src/ui/ticket/components/server/modals/create-ticket-modal/~ ⚠️
+- src/ui/ticket/constant/ticket-filter-options.constant.ts ✅
+- src/ui/ticket/dictionary/ticket-card-border-color.dictionary.ts ✅
+- src/ui/ticket/dictionary/ticket-status-color.dictionary.ts ✅
+- src/ui/ticket/enums/ticket-filter-option-values.enum.ts ✅
+- src/ui/ticket/interfaces/ticket-filter-option.interface.ts ✅
+- src/ui/ticket/schemas/create-ticket-form.schema.ts ✅
+- src/ui/ticket/types/ticket-filter-option-value.type.ts ✅
 
 - src/env.d.ts ✅
 
@@ -256,5 +307,8 @@ export async function loginAction(
     };
   }
 }
-
 ```
+
+## PENDINGS
+
+- Debo aplicar principio DRY en el chat-transfer-modal usando el modal-card

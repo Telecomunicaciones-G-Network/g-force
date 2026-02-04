@@ -1,0 +1,13 @@
+.base {
+  margin: auto;
+  width: 100%;
+}
+
+.base__container {
+  overflow: hidden;
+}
+
+.base__wrapper {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}

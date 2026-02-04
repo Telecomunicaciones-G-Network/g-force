@@ -19,6 +19,12 @@ export const Modal = ({
   onOpenChange,
   triggerComponent,
 }: Readonly<ModalProps>) => {
+  if (!children) {
+    console.warn(
+      'Prop children is missing on Modal component. This component can not be render appropiately.',
+    );
+  }
+
   if (!triggerComponent) {
     console.warn(
       'Prop triggerComponent is missing on Modal component. This component can not be render appropiately.',
@@ -31,7 +37,7 @@ export const Modal = ({
         <ModalContainer onOpenChange={onOpenChange} open={isOpen}>
           <ModalTrigger>{triggerComponent}</ModalTrigger>
           <ModalContent
-            className={cn('sm:max-w-[518px]', className)}
+            className={cn('sm:max-w-[400px]', className)}
             customModalCloseComponent={customModalCloseComponent}
             hideModalClose={hideModalClose}
             modalOverlayChildren={modalOverlayChildren}

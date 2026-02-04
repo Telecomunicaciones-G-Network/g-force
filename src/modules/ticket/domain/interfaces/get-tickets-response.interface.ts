@@ -1,4 +1,4 @@
-import type { TicketValues } from './ticket-values.interface';
+import type { Ticket } from './ticket.interface';
 
 export interface GetTicketsResponse {
   count?: number;
@@ -6,5 +6,5 @@ export interface GetTicketsResponse {
   previous: string | null;
   status: number;
   success: boolean;
-  tickets: TicketValues[];
+  tickets: Ticket[];
 }
