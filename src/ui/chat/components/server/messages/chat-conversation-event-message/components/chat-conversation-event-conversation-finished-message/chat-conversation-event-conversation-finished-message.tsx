@@ -5,10 +5,21 @@ import { isoToTime } from '@timer/utils/iso-to-time.util';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
+import { cn } from '@gnetwork-ui/utils/cn.util';
+
 import { teamTagColorDictionary } from '@ui-chat/dictionaries/team-tag-color.dictionary';
 
 import styles from '../../chat-conversation-event-message.module.css';
+import localStyles from './chat-conversation-event-conversation-finished-message.module.css';
 
+/**
+ * @name ChatConversationEventConversationFinishedMessage
+ *
+ * @description This component is used to render a chat conversation event conversation finished message.
+ *
+ * @param {string} createdAt - The creation date of the message.
+ * @param {MessageEventData | null} eventData - The event data of the message.
+ */
 export const ChatConversationEventConversationFinishedMessage = ({
   createdAt = '',
   eventData,
@@ -16,9 +27,7 @@ export const ChatConversationEventConversationFinishedMessage = ({
   const timeString = createdAt ? `(${isoToTime(createdAt)})` : '';
 
   return (
-    <div
-      className={`${styles.base} flex flex-col items-center justify-center w-full px-4 text-center`}
-    >
+    <div className={cn(styles.base, localStyles.base)}>
       <Text
         align="center"
         as="label"
@@ -27,13 +36,11 @@ export const ChatConversationEventConversationFinishedMessage = ({
         scheme="label"
       >
         Conversación finalizada por{' '}
-        {/* Caso 1: Finalizada por un Agente específico */}
         {eventData?.agent?.name && eventData?.agent?.name}
-        {/* Caso 2: Finalizada por un Equipo */}
         {eventData?.team?.id &&
           eventData?.team?.name &&
           !eventData?.agent?.name && (
-            <span className="inline-flex items-center gap-1 align-middle ml-1">
+            <span className="ml-1 inline-flex items-center gap-1 align-middle">
               <Tag
                 className="min-h-5 px-2 text-xs"
                 color={teamTagColorDictionary?.[eventData?.team?.id]}

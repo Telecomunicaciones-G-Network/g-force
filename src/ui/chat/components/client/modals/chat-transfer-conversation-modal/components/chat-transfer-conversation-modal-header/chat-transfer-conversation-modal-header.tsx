@@ -5,6 +5,11 @@ import { IconBadge } from '@gnetwork-ui/components/molecules/badges/icon-badge';
 
 import styles from './chat-transfer-conversation-modal-header.module.css';
 
+/**
+ * @name ChatTransferConversationModalHeader
+ *
+ * @description Chat transfer conversation modal header component
+ */
 export const ChatTransferConversationModalHeader = () => (
   <div className={styles.base}>
     <IconBadge
@@ -24,6 +29,5 @@ export const ChatTransferConversationModalHeader = () => (
         Puedes transferir el chat a un equipo o agente diferente.
       </Text>
     </div>
-    
   </div>
 );

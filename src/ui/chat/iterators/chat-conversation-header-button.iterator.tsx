@@ -5,6 +5,13 @@ import { MdCall, MdMailOutline, MdMoreVert } from 'react-icons/md';
 import { ChatCloseConversationModal } from '@ui-chat/components/client/modals/chat-close-conversation-modal';
 import { ChatTransferConversationModal } from '@ui-chat/components/client/modals/chat-transfer-conversation-modal';
 
+/**
+ * @name ChatConversationHeaderButtonIterator
+ *
+ * @description Chat conversation header button iterator
+ *
+ * @returns {ButtonGroupButton[]} The chat conversation header button iterator
+ */
 export const ChatConversationHeaderButtonIterator: ButtonGroupButton[] = [
   {
     id: 'call',
