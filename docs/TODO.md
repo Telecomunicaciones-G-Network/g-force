@@ -162,6 +162,7 @@
 
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/components/client/forms/internal-message-form~ ⚠️
+- src/ui/chat/components/client/modals/chat-close-conversation-modal/~ ⚠️
 - src/ui/chat/components/client/selects/agent-status-selector~ ⚠️
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
@@ -191,6 +192,7 @@
 - src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
 - src/ui/chat/interfaces/agent-status-selector-option.interface.ts ✅
 - src/ui/chat/iterators/agent-status-selector-options.iterator.tsx ✅
+- src/ui/chat/iterators/chat-conversation-header-button.iterator.tsx ✅
 - src/ui/chat/layouts/chat-details-tab-content-layout/~ ✅
 - src/ui/chat/queries/get-contact-information-query.hook.tsx ✅
 - src/ui/chat/queries/get-contact-contracts-query.hook.tsx ⚠️

@@ -1,0 +1,17 @@
+.base {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.base__header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.base__footer {
+  display: grid;
+  width: 100%;
+}

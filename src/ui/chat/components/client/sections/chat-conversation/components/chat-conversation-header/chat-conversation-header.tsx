@@ -10,7 +10,7 @@ import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
 import { useChatConversationHeader } from './chat-conversation-header.hook';
 
-import { ChatConversationHeaderButtonIterator } from './iterators/chat-conversation-header-button.iterator';
+import { ChatConversationHeaderButtonIterator } from '@ui-chat/iterators/chat-conversation-header-button.iterator';
 
 import styles from './chat-conversation-header.module.css';
 

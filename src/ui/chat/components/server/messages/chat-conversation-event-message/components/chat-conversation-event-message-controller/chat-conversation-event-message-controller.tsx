@@ -5,6 +5,15 @@ import { MessageEventTypes } from '@module-chat/domain/enums/message-event-types
 import { ChatConversationEventConversationAssignmentUpdatedMessage } from '../chat-conversation-event-conversation-assigment-updated-message';
 import { ChatConversationEventConversationFinishedMessage } from '../chat-conversation-event-conversation-finished-message';
 
+/**
+ * @name ChatConversationEventMessageController
+ *
+ * @description This component is used to render a chat conversation event message.
+ *
+ * @param {ChatConversationEventMessageProps} props - The props of the component.
+ *
+ * // TODO: Spreed all props over components to make cleaners
+ */
 export const ChatConversationEventMessageController = ({
   message,
 }: Readonly<ChatConversationEventMessageProps>) => {
