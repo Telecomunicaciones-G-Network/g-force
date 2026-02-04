@@ -1,7 +1,7 @@
-import { ContractValues } from '@module-contract/domain/interfaces';
+import { Contract } from '@module-contract/domain/interfaces';
 
-export interface ChatContractCardProps extends ContractValues {
-  expirationDate?: string;
+export interface ChatContractCardProps {
+  contract: Contract;
   open?: boolean;
   title?: string;
 }

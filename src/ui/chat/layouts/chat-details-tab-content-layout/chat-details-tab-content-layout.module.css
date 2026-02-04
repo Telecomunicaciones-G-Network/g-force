@@ -8,3 +8,9 @@
   padding: 24px 32px;
   width: 100%;
 }
+
+.base__container,
+.base__title {
+  align-items: center;
+  gap: 8px;
+}

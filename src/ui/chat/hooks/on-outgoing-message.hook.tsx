@@ -9,10 +9,10 @@ import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries
 
 import { OnOutgoingMessageMapper } from '@module-chat/infrastructure/mappers/on-outgoing-message.mapper';
 
-import { chatSoundDictionary } from '@ui/chat/dictionaries/chat-sounds.dictionary';
+import { chatSoundDictionary } from '@ui-chat/dictionaries/chat-sounds.dictionary';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
-import { useChatStore } from '@ui/chat/stores/chat-store/chat.store';
+import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
 /**
  * @name useOnOutgoingMessage

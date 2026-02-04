@@ -1,0 +1,14 @@
+.base {
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.base__caret {
+  transition: transform 0.2s ease;
+}

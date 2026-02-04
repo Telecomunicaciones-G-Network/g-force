@@ -43,6 +43,14 @@ import { requestFastDebitOTPService } from '../services/request-fast-debit-otp.s
 import { transferChatConversationService } from '../services/transfer-chat-conversation.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
+/**
+ * @name httpChatRepository
+ *
+ * @implements {ChatRepository}
+ *
+ * @description This repository provides HTTP-based implementations of the {@link ChatRepository} interface.
+ * Each method delegates to a corresponding service that handles the HTTP request and response logic.
+ */
 export const httpChatRepository: ChatRepository = {
   finishChatConversation: async (contactId: string): Promise<boolean> =>
     finishChatConversationService(contactId),

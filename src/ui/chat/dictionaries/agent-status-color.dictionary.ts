@@ -9,9 +9,9 @@ import { AgentStatus as AgentStatusValues } from '@module-chat/domain/enums/agen
  *
  * @returns {Record<AgentStatus, string>} The agent status color dictionary
  */
-export const AGENT_STATUS_COLOR_DICTIONARY: Record<AgentStatus, string> = {
+export const AGENT_STATUS_COLOR_DICTIONARY = {
   [AgentStatusValues.AWAY]: 'bg-warning-200',
   [AgentStatusValues.BUSY]: 'bg-alert-200',
   [AgentStatusValues.OFFLINE]: 'bg-neutral-300',
   [AgentStatusValues.ONLINE]: 'bg-success-300',
-} as const;
+} as const satisfies Record<AgentStatus, string>;

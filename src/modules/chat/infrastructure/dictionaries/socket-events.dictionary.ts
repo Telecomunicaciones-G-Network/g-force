@@ -5,7 +5,7 @@
  *
  * @returns {Record<string, string>} The socket events dictionary
  */
-export const socketEventsDictionary: Record<string, string> = {
+export const socketEventsDictionary = {
   AGENT_STATUS_CHANGED: 'agent_status_changed',
   CONNECTED: 'connected',
   CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',
@@ -22,4 +22,4 @@ export const socketEventsDictionary: Record<string, string> = {
   OUTGOING_MESSAGE: 'outgoing_message',
   REACTION_ADDED: 'reaction_added',
   REACTION_REMOVED: 'reaction_removed',
-} as const;
+} as const satisfies Record<string, string>;

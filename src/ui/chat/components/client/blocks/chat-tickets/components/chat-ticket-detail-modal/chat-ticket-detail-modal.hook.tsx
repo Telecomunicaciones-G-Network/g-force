@@ -4,17 +4,14 @@ import { GetTicketByIdQuery } from '@module-ticket/infrastructure/queries/get-ti
 
 interface UseChatTicketDetailModalProps {
   ticketId: number;
-  isOpen: boolean;
 }
 
 export const useChatTicketDetailModal = ({
   ticketId,
-  isOpen,
 }: UseChatTicketDetailModalProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ['ticket-detail', ticketId],
     queryFn: () => GetTicketByIdQuery({ ticketId: String(ticketId) }),
-    enabled: isOpen && !!ticketId,
   });
 
   return {

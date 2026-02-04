@@ -1,0 +1,26 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.base__client {
+  border-radius: 8px;
+  display: flex;
+  gap: 3px;
+  justify-content: space-between;
+  padding: 12px;
+  width: 100%;
+}
+
+.base__client_info {
+  flex: 1;
+}
+
+.base__contracts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}

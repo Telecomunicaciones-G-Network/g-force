@@ -1,6 +1,6 @@
 'use client';
 
-import type { ContractValues } from '@module-contract/domain/interfaces';
+import type { Contract } from '@module-contract/domain/interfaces';
 import type { ChatContractsProps } from './chat-contracts.props';
 
 import { MdMoodBad } from 'react-icons/md';
@@ -38,12 +38,12 @@ export const ChatContracts = ({ title = '' }: Readonly<ChatContractsProps>) => {
       )}
       {!isLoading && !isError && (
         <div className={styles.base}>
-          {contracts?.map((contract: ContractValues, index: number) => (
+          {contracts?.map((contract: Contract, index: number) => (
             <ChatContractCard
               key={contract?.number?.toString()}
+              contract={contract}
               open={true}
               title={`Contrato #${index + 1}`}
-              {...contract}
             />
           ))}
         </div>

@@ -1,26 +1,13 @@
 'use client';
 
-import type { GetContactInformationResponse } from '@module-chat/domain/interfaces';
-
-import { useQuery } from '@tanstack/react-query';
-
-import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
-
-import { GetContactInformationQuery } from '@module-chat/infrastructure/queries/get-contact-information.query';
+import { useGetContactInformationQuery } from '@ui-chat/queries/get-contact-information-query.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatContact = () => {
   const activeContact = useContactStore((state) => state.activeContact);
 
-  const { data, isError, isLoading } = useQuery<GetContactInformationResponse>({
-    queryKey: [CHAT_TAGS.GET_CHAT_CONTACT_INFORMATION, activeContact?.id],
-    queryFn: () => GetContactInformationQuery(activeContact?.id),
-    enabled: !!activeContact?.id,
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    refetchOnWindowFocus: false,
-  });
+  const { data, isError, isLoading } = useGetContactInformationQuery();
 
   return {
     contactInformation: data?.data,

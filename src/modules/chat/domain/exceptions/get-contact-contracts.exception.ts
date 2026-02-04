@@ -1,9 +1,21 @@
+/**
+ * @name GetContactContractsException
+ *
+ * @description This exception is thrown when an error occurs while getting contact contracts.
+ *
+ * @property {string} [contactId] - The contact ID
+ * @property {string} [message] - The error message
+ * @property {number} [status] - The HTTP status code
+ */
 export class GetContactContractsException extends Error {
   public code: string;
   public status: number = 500;
 
+  /**
+   * constructor
+   */
   constructor(config?: {
-    contactId: string;
+    contactId?: string;
     message?: string;
     status?: number;
   }) {

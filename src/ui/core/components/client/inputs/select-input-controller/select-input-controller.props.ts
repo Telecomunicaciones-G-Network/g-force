@@ -4,4 +4,6 @@ import type { InputControllerProps } from '@ui-core/props';
 
 export type SelectInputControllerProps<T extends FieldValues = FieldValues> =
   Omit<SelectInputProps, 'error' | 'message' | 'name' | 'onValueChange'> &
-    InputControllerProps<T>;
+    InputControllerProps<T> & {
+      isLoading?: boolean;
+    };
