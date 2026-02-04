@@ -1,5 +1,5 @@
 import type { Conversation } from './conversation.interface';
-import type { ContactLatestMessage } from '../types';
+import type { ContactPlatform, ContactLatestMessage } from '../types';
 
 /**
  * @name Contact
@@ -11,6 +11,7 @@ import type { ContactLatestMessage } from '../types';
  * @property {ContactLatestMessage} latestMessage - The latest message of the contact.
  * @property {string} name - The name of the contact.
  * @property {string} phoneNumber - The phone number of the contact.
+ * @property {ContactPlatform} platform - The platform of the contact.
  * @property {number} unreadCount - The unread count of the contact.
  */
 export interface Contact {
@@ -19,5 +20,6 @@ export interface Contact {
   latestMessage: ContactLatestMessage;
   name: string;
   phoneNumber: string;
+  platform: ContactPlatform;
   unreadCount: number;
 }

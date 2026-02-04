@@ -23,10 +23,32 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   contacts: [],
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) =>
     set({ activeAgent: agent }),
+  contactFilters: {
+    assignedTo: 'my_teams', // Default as per API specification
+    platform: null,
+    status: null,
+    teamCodename: null,
+  },
   setActiveContact: (contact: Contact | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
+  setContactFilters: (filters) =>
+    set((state) => ({
+      contactFilters: {
+        ...state.contactFilters,
+        ...filters,
+      },
+    })),
+  clearContactFilters: () =>
+    set({
+      contactFilters: {
+        assignedTo: 'my_teams',
+        platform: null,
+        status: null,
+        teamCodename: null,
+      },
+    }),
   addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 

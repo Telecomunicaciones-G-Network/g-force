@@ -1,5 +1,5 @@
 import type { Contact as ContactValues, Conversation } from '../interfaces';
-import type { ContactLatestMessage } from '../types';
+import type { ContactLatestMessage, ContactPlatform } from '../types';
 
 /**
  * @name Contact
@@ -23,6 +23,7 @@ export class Contact {
     public latestMessage: ContactLatestMessage,
     public name: string,
     public phoneNumber: string,
+    public platform: ContactPlatform,
     public unreadCount: number = 0,
   ) {}
 
@@ -40,6 +41,7 @@ export class Contact {
       latestMessage: this.latestMessage,
       name: this.name,
       phoneNumber: this.phoneNumber,
+      platform: this.platform,
       unreadCount: this.unreadCount,
     };
   }

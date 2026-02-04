@@ -7,7 +7,7 @@ import { DropdownContainer } from './components/dropdown-container';
 import { DropdownTrigger } from './components/dropdown-trigger';
 
 export const Dropdown = ({
-  align = 'start',
+  align = 'center',
   alignOffset = 0,
   children,
   className = '',

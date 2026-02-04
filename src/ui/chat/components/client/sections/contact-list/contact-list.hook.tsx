@@ -26,5 +26,6 @@ export const useContactList = (contactsResponse: Contact[]) => {
     setContacts(contactsResponse);
   }, [contactsResponse, setContacts]);
 
+  // Contacts are now pre-filtered from the server, no need for client-side filtering
   return { chatMode, contacts, isDesktop };
 };

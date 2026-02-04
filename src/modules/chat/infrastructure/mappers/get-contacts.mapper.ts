@@ -50,6 +50,7 @@ export class GetContactsMapper {
       },
       name: sanitizeString(input?.display_name?.trim()),
       phoneNumber: input?.phone_number,
+      platform: input?.platform,
       unreadCount: input?.unread_count,
     };
   }

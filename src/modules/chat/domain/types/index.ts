@@ -1,5 +1,6 @@
 export type { AgentStatus } from './agent-status.type';
 export type { Assignment } from './assignment.type';
+export type { AssignedToScope } from './assigned-to-scope.type';
 export type { ContactLatestMessage } from './contact-latest-message.type';
 export type { ContactPlatform } from './contact-platform.type';
 export type { ConversationStatus } from './conversation-status.type';

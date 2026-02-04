@@ -10,7 +10,7 @@ import { ChatEmpty } from '@ui-chat/components/client/blocks/chat-empty';
 import { ChatConversation } from '@ui-chat/components/client/sections/chat-conversation';
 import { ChatDetails } from '@ui-chat/components/client/sections/chat-details';
 import { ChatListSkeleton } from '@ui-chat/components/client/sections/contact-list/components/chat-list-skeleton';
-import { ContactList } from '@ui-chat/components/client/sections/contact-list';
+import { ContactListWrapper } from '@ui-chat/components/client/wrappers/contact-list-wrapper';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -25,8 +25,8 @@ export const ChatContainer = ({
     <>
       <ErrorBoundary>
         <Suspense fallback={<ChatListSkeleton />}>
-          <ContactList
-            chatContactsResponsePromise={chatContactsResponsePromise}
+          <ContactListWrapper
+            initialContactsPromise={chatContactsResponsePromise}
           />
         </Suspense>
       </ErrorBoundary>
