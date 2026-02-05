@@ -20,6 +20,7 @@ import styles from './chat-close-conversation-modal.module.css';
  *
  * TODO: Standarize the focus tailwind classes for DropdownItem to make as default on this one
  * TODO: Set as internar el preventDefault on onSelect of DropdownItem
+ * TODO: Create a new component call MessageModal and use here
  */
 export const ChatCloseConversationModal = () => {
   const {
@@ -56,14 +57,12 @@ export const ChatCloseConversationModal = () => {
       }
     >
       <div className={styles.base}>
-        <ChatCloseConversationModalHeader icon={<MdOutlineSpeakerNotesOff />} />
+        <ChatCloseConversationModalHeader />
         <ChatCloseConversationModalContent
-          description="Esta acción cerrará el ticket actual y archivará el historial. Esta acción no se puede deshacer."
-          disabledActions={disabledSocketActions}
+          disabled={disabledSocketActions}
           isLoading={isLoading}
           onCancel={closeModal}
           onConfirm={onCloseConversation}
-          title="¿Finalizar conversación?"
         />
       </div>
     </Modal>

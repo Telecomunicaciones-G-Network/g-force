@@ -26,6 +26,8 @@
     "button": "react-components",
     "buttons": "include",
     "chat-card": "react-components",
+    "chat-close-conversation-modal-content": "react-components",
+    "chat-close-conversation-modal-header": "react-components",
     "chat-close-conversation-modal": "react-components",
     "chat-contact-avatar": "react-components",
     "chat-container": "react-components",
