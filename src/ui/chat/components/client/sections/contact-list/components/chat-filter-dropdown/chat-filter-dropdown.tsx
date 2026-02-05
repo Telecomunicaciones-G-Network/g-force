@@ -18,6 +18,7 @@ import type {
 } from '@module-chat/domain/types';
 
 import styles from './chat-filter-dropdown.module.css';
+import { cn } from '@/src/packages/gnetwork-ui/utils/cn.util';
 
 type SelectValue = string;
 
@@ -26,38 +27,71 @@ export const ChatFilterDropdown = () => {
   const contactFilters = useContactStore((state) => state.contactFilters);
   const setContactFilters = useContactStore((state) => state.setContactFilters);
 
-  // Platform options from available contacts
+
+  // Platform options with Spanish labels
   const platformOptions: SelectItem[] = useMemo(() => {
+    const platformLabels: Record<string, string> = {
+      WHATSAPP: 'WhatsApp',
+    };
+
     const values = new Set<string>();
     (contacts ?? []).forEach((c) => {
       if (c?.platform) values.add(c.platform);
     });
-    const opts = Array.from(values).sort().map((v) => ({ label: v, value: v }));
+    const opts = Array.from(values)
+      .sort()
+      .map((v) => ({ label: platformLabels[v] || v, value: v }));
     return [{ label: 'Todas', value: 'ALL' }, ...opts];
   }, [contacts]);
 
-  // Status options from available contacts
+  // Status options with Spanish labels
   const statusOptions: SelectItem[] = useMemo(() => {
+    const statusLabels: Record<string, string> = {
+      ASSIGNED: 'Asignado',
+      FINISHED: 'Finalizado',
+      WAITING: 'En espera',
+    };
+
     const values = new Set<string>();
     (contacts ?? []).forEach((c) => {
       const status = c?.latestConversation?.status;
       if (status) values.add(status);
     });
-    const opts = Array.from(values).sort().map((v) => ({ label: v, value: v }));
+
+    const opts = Array.from(values)
+      .sort()
+      .map((v) => ({
+        label: statusLabels[v] || v,
+        value: v,
+      }));
+
     return [{ label: 'Todos', value: 'ALL' }, ...opts];
   }, [contacts]);
 
-  // Team options from available contacts
+  // Team options with Spanish labels
   const teamOptions: SelectItem[] = useMemo(() => {
+    const teamLabels: Record<string, string> = {
+      CUSTOMER: 'Atención al cliente',
+      FAULTS: 'Fallas y averías',
+      MANAGEMENT: 'Gestión',
+      SALES: 'Ventas',
+      SUPPORT: 'Soporte',
+    };
+
     const values = new Map<string, string>();
     (contacts ?? []).forEach((c) => {
       const team = c?.latestConversation?.team;
-      if (team?.id && team?.name) values.set(team.id, team.name);
+      if (team?.id && team?.name) {
+        // Use custom label if available, otherwise use team name
+        const label = teamLabels[team.id] || team.name;
+        values.set(team.id, label);
+      }
     });
+
     const opts = Array.from(values.entries())
       .sort((a, b) => a[1].localeCompare(b[1]))
       .map(([id, name]) => ({ label: name, value: id }));
-    
+
     return [{ label: 'Todos', value: 'ALL' }, ...opts];
   }, [contacts]);
 
@@ -107,17 +141,32 @@ export const ChatFilterDropdown = () => {
     }
   };
 
+  const isDefaultFilters =
+  contactFilters.platform === null &&
+  contactFilters.status === null &&
+  contactFilters.teamCodename === null &&
+  contactFilters.assignedTo === 'my_teams';
   const triggerButton = (
-    <Button className="p-2 relative" isStatic aria-label="Filtrar">
-      <MdFilterList />
-    </Button>
+  <Button 
+    className={cn(
+      "p-2 relative transition-colors",
+      !isDefaultFilters ? "bg-neutral-500 text-neutral-100 border-neutral-200" : "bg-white text-gray-600"
+    )} 
+    isStatic 
+    aria-label="Filtrar"
+  >
+    <MdFilterList />
+    {!isDefaultFilters && (
+      <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border border-white" />
+    )}
+  </Button>
   );
 
   return (
-    <Dropdown triggerComponent={triggerButton} align="center" sideOffset={8}>
+    <Dropdown
+      triggerComponent={triggerButton} side="bottom" align="center" sideOffset={8} alignOffset={-250}>
       <div className={styles.filtrarPorParent}>
         <div className={styles.filtrarPor}>Filtrar por</div>
-
         <div className={styles.plataformaParent}>
           <div className={styles.plataforma}>Plataforma</div>
           <div className={styles.selectWrapper}>

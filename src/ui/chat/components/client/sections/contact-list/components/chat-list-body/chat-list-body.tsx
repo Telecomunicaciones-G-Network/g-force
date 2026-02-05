@@ -36,14 +36,23 @@ export const ChatListBody = ({
       )}
     >
       {contacts?.length > 0 ? (
-        contacts.map((contact: Contact) => (
-          <Fragment key={contact?.id}>
-            {CHAT_CONTACT_CONVERSATION_VISIBLE.includes(
-              contact?.latestConversation?.status,
-            ) &&
-              activeAgent?.teams?.includes(
-                contact?.latestConversation?.team?.id as TeamCodename,
-              ) && (
+        contacts.map((contact: Contact) => {
+          // Check if conversation status is visible
+          const isStatusVisible = CHAT_CONTACT_CONVERSATION_VISIBLE.includes(
+            contact?.latestConversation?.status,
+          );
+
+          // Check if contact belongs to agent's teams OR has no team (bot conversations)
+          const teamId = contact?.latestConversation?.team?.id as TeamCodename;
+          const belongsToAgentTeams = teamId
+            ? activeAgent?.teams?.includes(teamId)
+            : true; // Allow contacts with no team (bot)
+
+          const shouldShowContact = isStatusVisible && belongsToAgentTeams;
+
+          return (
+            <Fragment key={contact?.id}>
+              {shouldShowContact && (
                 <ChatCard
                   contactId={contact?.id}
                   isActive={activeContact?.id === contact?.id}
@@ -58,8 +67,9 @@ export const ChatListBody = ({
                   username={contact?.name}
                 />
               )}
-          </Fragment>
-        ))
+            </Fragment>
+          );
+        })
       ) : (
         <ChatListEmpty />
       )}

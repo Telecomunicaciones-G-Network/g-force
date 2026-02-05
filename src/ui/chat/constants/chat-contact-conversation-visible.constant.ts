@@ -3,4 +3,5 @@ import { ConversationStatus } from '@module-chat/domain/enums/conversation-statu
 export const CHAT_CONTACT_CONVERSATION_VISIBLE: string[] = [
   ConversationStatus.WAITING,
   ConversationStatus.ASSIGNED,
+  ConversationStatus.FINISHED,
 ];
