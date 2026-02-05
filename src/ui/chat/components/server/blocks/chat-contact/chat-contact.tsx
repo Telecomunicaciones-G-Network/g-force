@@ -11,8 +11,6 @@ import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { capitalizeWords } from '@stringify/utils/capitalize-words.util';
 import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
-// import { ChatDetailsContactCloseConversationButton } from '@ui-chat/components/client/buttons/chat-details-contact-close-conversation-button';
-
 import { ChatDetailsTabContentLayout } from '@ui-chat/layouts/chat-details-tab-content-layout';
 
 import { ChatContactAvatar } from './components/chat-contact-avatar';
@@ -72,25 +70,6 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
                 <Separator />
               </>
             )}
-            {/* contactInformation?.clientType && (
-              <>
-                <div className={styles.base__info}>
-                  <Text as="span" level="small" scheme="label">
-                    Tipo de cliente:
-                  </Text>
-                  <Text
-                    as="span"
-                    align="end"
-                    className="text-neutral-500"
-                    level="small"
-                    scheme="label"
-                  >
-                    {contactInformation?.clientType}
-                  </Text>
-                </div>
-                <Separator />
-              </>
-            )} */}
             {isContactActive && (
               <>
                 <div className={styles.base__info}>
@@ -140,7 +119,6 @@ export const ChatContact = ({ title = '' }: Readonly<ChatContactProps>) => {
           </>
         )}
       </div>
-      {/* <ChatDetailsContactCloseConversationButton /> */}
     </ChatDetailsTabContentLayout>
   );
 };

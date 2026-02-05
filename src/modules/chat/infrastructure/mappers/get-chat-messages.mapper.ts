@@ -71,7 +71,12 @@ export class GetChatMessagesMapper {
           name: input?.event_data?.team?.name,
         },
         timestamp: input?.event_data?.timestamp,
-        finishedByAgent: null,
+        finishedByAgent: input?.event_data?.finished_by_agent
+          ? {
+              id: input?.event_data?.finished_by_agent?.id,
+              name: input?.event_data?.finished_by_agent?.full_name,
+            }
+          : null,
       },
       failedAt: input?.failed_at,
       forwarded: input?.forwarded,
