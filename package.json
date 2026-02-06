@@ -1,6 +1,6 @@
 {
   "name": "@gnetwork/gforce",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "private": true,
   "author": "Telecomunicaciones GNetwork @ <desarrollo@gnetworkve.com>",
   "bugs": {
@@ -92,9 +92,9 @@
     "@commitlint/types": "20.4.0",
     "@tailwindcss/postcss": "4.1.18",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "25.2.0",
+    "@types/node": "25.2.1",
     "@types/react-dom": "19.2.3",
-    "@types/react": "19.2.11",
+    "@types/react": "19.2.13",
     "babel-plugin-react-compiler": "1.0.0",
     "husky": "9.1.7",
     "npm-run-all2": "8.0.4",
