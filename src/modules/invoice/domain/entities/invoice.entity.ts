@@ -26,6 +26,7 @@ import { InvoiceStatusNames } from '../enums/invoice-status-names.enum';
  * @property {string} [cycle] - The cycle.
  * @property {string} dateEmission - The emission date.
  * @property {string | null} datePayment - The payment date.
+ * @property {string | null} datetime_payment - The payment datetime.
  * @property {string | null} documentNumber - The document number.
  * @property {InvoicePaymentMethod[] | null} paymentMethods - The payment methods.
  * @property {InvoiceStatusCode} statusCode - The status code.
