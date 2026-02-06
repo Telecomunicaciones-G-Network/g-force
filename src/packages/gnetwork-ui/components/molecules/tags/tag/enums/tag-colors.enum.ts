@@ -4,5 +4,6 @@ export enum TagColors {
   GREEN = 'green',
   PURPLE = 'purple',
   RED = 'red',
+  RED_700 = 'red-700',
   YELLOW = 'yellow',
 }

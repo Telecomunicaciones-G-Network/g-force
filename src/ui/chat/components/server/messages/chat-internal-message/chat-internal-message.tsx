@@ -21,8 +21,8 @@ export const ChatInternalMessage = ({
   message,
 }: Readonly<ChatInternalMessageProps>) => (
   <ChatMessage
-    bubbleClassName="bg-red-700 text-chromatic"
-    customIconClassName="fill-chromatic"
+    bubbleClassName="bg-white text-black shadow-sm border border-neutral-100"
+    customIconClassName="fill-neutral-600"
     // TODO: Direction props is weird. We need to check this props
     direction={
       message?.direction === MessageDirections.INCOMING
