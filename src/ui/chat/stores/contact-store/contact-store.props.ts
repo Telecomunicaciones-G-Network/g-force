@@ -8,12 +8,12 @@ import type { ChatMode } from '@ui-chat/types';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
 export interface ContactStoreState {
-  activeAgent: Agent | null;
+  activeAgent: Omit<Agent, 'email' | 'isBot'> | null;
   activeContact: Contact | null;
   chatMode: ChatMode;
   contacts: Contact[];
 
-  setActiveAgent: (agent: Agent | null) => void;
+  setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) => void;
   setActiveContact: (contact: Contact | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: Contact[]) => void;

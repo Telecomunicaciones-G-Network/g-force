@@ -86,6 +86,9 @@ export const useClientSearchDropdown = () => {
       return response;
     },
     enabled: debouncedSearch.length >= 2,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
   });
 
   // Map results from API response (search_client returns 'results' not 'contacts')

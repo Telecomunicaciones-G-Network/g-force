@@ -66,7 +66,6 @@ export const useChatTransferConversationModalBody = ({
   } = useQuery<GetChatTeamsResponse>({
     queryKey: [CHAT_TAGS.GET_CHAT_TEAMS],
     queryFn: () => GetChatTeamsQuery(),
-    enabled: true,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,

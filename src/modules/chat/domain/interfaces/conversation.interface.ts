@@ -8,13 +8,13 @@ import type { Team } from './team.interface';
  * @description This interface represents the values of a conversation.
  *
  * @property {string} id - The id of the conversation.
- * @property {Omit<Agent, 'status' | 'teams'> | null} agent - The agent of the conversation.
+ * @property {Pick<Agent, 'id' | 'name'> | null} agent - The agent of the conversation.
  * @property {ConversationStatus} status - The status of the conversation.
  * @property {Team | null} team - The team of the conversation.
  */
 export interface Conversation {
   id: string;
-  agent: Omit<Agent, 'status' | 'teams'> | null;
+  agent: Pick<Agent, 'id' | 'name'> | null;
   status: ConversationStatus;
   team: Team | null;
 }

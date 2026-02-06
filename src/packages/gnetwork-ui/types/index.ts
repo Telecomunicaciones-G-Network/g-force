@@ -6,3 +6,8 @@ export type { ReactDiv } from './react-div.type';
 export type { ReactHr } from './react-hr.type';
 export type { ReactInput } from './react-input.type';
 export type { ReactSVG } from './react-svg.type';
+export type { ReactTbody } from './react-tbody.type';
+export type { ReactTd } from './react-td.type';
+export type { ReactTh } from './react-th.type';
+export type { ReactThead } from './react-thead.type';
+export type { ReactTr } from './react-tr.type';

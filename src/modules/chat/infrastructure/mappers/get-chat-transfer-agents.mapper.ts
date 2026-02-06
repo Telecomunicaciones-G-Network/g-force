@@ -28,6 +28,8 @@ export class GetChatTransferAgentsMapper {
   static mapFromAgentArray(input: GetChatTransferAgentsResult): Agent {
     return {
       id: input?.id,
+      isBot: input?.is_bot,
+      email: input?.email,
       name: input?.full_name,
       status: input?.status,
       teams: input?.teams ?? [],

@@ -53,6 +53,8 @@
     "chat-internal-message": "react-components",
     "chat-list-body": "react-components",
     "chat-list-skeleton": "react-components",
+    "chat-management-agents-table": "react-components",
+    "chat-management-table-container": "react-components",
     "chat-message-skeleton": "react-components",
     "chat-message": "react-components",
     "chat-text-message-controller": "react-components",
@@ -85,6 +87,7 @@
     "dropdown-trigger": "react-components",
     "dropdown": "react-components",
     "dropdowns": "firestore",
+    "empty-list-message": "react-components",
     "entities": "svg",
     "factory": "mjml",
     "file-input": "react-components",
@@ -111,6 +114,12 @@
     "navbar": "react-components",
     "navbars": "serverless",
     "objecter": "json",
+    "pagination-basic-buttons": "react-components",
+    "pagination-buttons": "react-components",
+    "pagination-next-button": "react-components",
+    "pagination-previous-button": "react-components",
+    "pagination": "react-components",
+    "paginations": "dal",
     "payment": "database",
     "presenters": "delta",
     "react-query-devtools": "react-components",
@@ -132,6 +141,21 @@
     "skeleton": "react-components",
     "socketio": "wakatime",
     "sounder": "audio",
+    "table-body": "react-components",
+    "table-column": "react-components",
+    "table-head": "react-components",
+    "table-header-column": "react-components",
+    "table-header-row": "react-components",
+    "table-header": "react-components",
+    "table-manager-empty": "react-components",
+    "table-manager-error": "react-components",
+    "table-manager-skeleton": "react-components",
+    "table-manager": "react-components",
+    "table-pagination": "react-components",
+    "table-row": "react-components",
+    "table": "react-components",
+    "tabs-line": "react-components",
+    "tabs": "zeabur",
     "ticket-card-list-empty": "react-components",
     "ticket-card-list-error-boundary": "react-components",
     "ticket-card-list-skeleton": "react-components",
@@ -182,6 +206,12 @@
       "base": "connection",
       "color": "red-500",
       "folderNames": ["adapters"]
+    },
+    {
+      "name": "Agents",
+      "base": "robot",
+      "color": "light-blue-400",
+      "folderNames": ["agent"]
     },
     {
       "name": "Application",
@@ -280,6 +310,12 @@
       "folderNames": ["queries"]
     },
     {
+      "name": "React Builders",
+      "base": "react-components",
+      "color": "orange-400",
+      "folderNames": ["builders"]
+    },
+    {
       "name": "React Contexts",
       "base": "react-components",
       "color": "teal-500",
@@ -296,6 +332,12 @@
       "base": "react-components",
       "color": "indigo-500",
       "folderNames": ["iterators"]
+    },
+    {
+      "name": "React Pages",
+      "base": "react-components",
+      "color": "deep-orange-400",
+      "folderNames": ["management"]
     },
     {
       "name": "React Providers",
@@ -355,6 +397,12 @@
       "base": "font",
       "color": "amber-700",
       "folderNames": ["stringify"]
+    },
+    {
+      "name": "Tables",
+      "base": "app",
+      "color": "green-700",
+      "folderNames": ["tables"]
     },
     {
       "name": "Templates",
@@ -455,6 +503,12 @@
       "fileExtensions": ["query.ts"]
     },
     {
+      "name": "React Builders",
+      "base": "react",
+      "color": "orange-300",
+      "fileExtensions": ["builder.tsx"]
+    },
+    {
       "name": "React Contexts",
       "base": "react",
       "color": "teal-400",
@@ -487,7 +541,7 @@
     {
       "name": "React Pages",
       "base": "react",
-      "color": "orange-500",
+      "color": "deep-orange-400",
       "fileNames": ["page.tsx"]
     },
     {
@@ -531,6 +585,7 @@
       "base": "powershell",
       "color": "green-500",
       "fileNames": [
+        "get-agents.usecase.ts",
         "get-chat-media-by-id.usecase.ts",
         "get-chat-messages.usecase.ts",
         "get-chat-teams.usecase.ts",

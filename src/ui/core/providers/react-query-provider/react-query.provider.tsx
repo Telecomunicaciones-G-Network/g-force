@@ -13,9 +13,6 @@ import { ReactQueryDevtools } from '@ui-core/components/client/tools/react-query
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      refetchOnWindowFocus: false,
       retry: 1,
       staleTime: 5 * 60 * 1000,
       gcTime: 5 * 60 * 1000,

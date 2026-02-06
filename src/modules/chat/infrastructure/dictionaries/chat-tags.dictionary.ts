@@ -6,6 +6,7 @@
  * @returns {Record<string, string>} The chat tags dictionary
  */
 export const CHAT_TAGS = {
+  GET_AGENTS: 'get-agents',
   GET_AVAILABLE_REPORT_PAYMENT_METHODS: 'get-available-report-payment-methods',
   GET_CHAT_CONTACT_CONTRACTS: 'get-chat-contact-contracts',
   GET_CHAT_CONTACT_INFORMATION: 'get-chat-contact-information',

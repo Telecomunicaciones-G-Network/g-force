@@ -9,6 +9,12 @@ export type { EmitSendTextMessageResponseDTO } from './emit-send-text-message-re
 export type { EmitSetAgentStatusRequestDTO } from './emit-set-agent-status-request.dto';
 export type { EmitSetAgentStatusResponseDTO } from './emit-set-agent-status-response.dto';
 export type { FinishChatConversationResponseDTO } from './finish-chat-conversation-response.dto';
+export type { GetAgentsRequestDTO } from './get-agents-request.dto';
+export type {
+  GetAgentsResponseDTO,
+  GetAgentsResultDTO,
+  GetAgentsResultTeamsDTO,
+} from './get-agents-response.dto';
 export type {
   GetAvailableReportPaymentMethodsResponseDTO,
   GetAvailableReportPaymentMethodsResponseResultDTO,
