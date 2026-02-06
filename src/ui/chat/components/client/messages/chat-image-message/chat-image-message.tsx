@@ -31,6 +31,10 @@ export const ChatImageMessage = ({
   } = useQuery({
     queryKey: [queryKeysDictionary.GET_CHAT_MEDIA_BY_ID, mediaId],
     queryFn: () => getChatMediaByIdQuery(mediaId),
+    enabled: !!mediaId,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
   });
 
   if (isLoading) {

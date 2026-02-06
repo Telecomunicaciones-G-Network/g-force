@@ -3,7 +3,7 @@ import type { AgentStatusSelectorBodyProps } from './agent-status-selector-body.
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { AGENT_STATUS_COLOR_DICTIONARY } from '@ui-chat/dictionaries/agent-status-color.dictionary';
+import { agentStatusColorDictionary } from '@ui-chat/dictionaries/agent-status-color.dictionary';
 
 import { AgentStatusSelectorOptions } from '@ui-chat/iterators/agent-status-selector-options.iterator';
 
@@ -43,9 +43,7 @@ export const AgentStatusSelectorBody = ({
           <span
             className={cn(
               styles.base__option_dot,
-              AGENT_STATUS_COLOR_DICTIONARY?.[
-                agentStatusSelectorOption?.status
-              ],
+              agentStatusColorDictionary?.[agentStatusSelectorOption?.status],
             )}
           />
           <span className={styles.base__option_label}>

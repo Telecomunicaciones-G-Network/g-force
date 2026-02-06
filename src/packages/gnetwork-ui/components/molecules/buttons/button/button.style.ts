@@ -43,10 +43,22 @@ export const buttonVariants = cva(
           'bg-transparent border border-solid border-button-background text-button-text hover:bg-button-background hover:text-button-text hover:border hover:border-solid hover:border-button-border',
       },
       {
+        color: 'default',
+        scheme: 'ghost',
+        class:
+          'bg-transparent border border-solid border-transparent text-button-text',
+      },
+      {
         color: 'gray',
         scheme: 'outline',
         class:
           'bg-transparent border border-solid border-gray text-gray hover:bg-gray hover:text-white hover:border-none',
+      },
+      {
+        color: 'gray',
+        scheme: 'ghost',
+        class:
+          'bg-transparent border border-solid border-transparent text-gray',
       },
       {
         color: 'red',
@@ -63,6 +75,11 @@ export const buttonVariants = cva(
         scheme: 'outline',
         class:
           'bg-transparent text-red-700 border border-solid border-red-700 hover:border-none hover:bg-red-700 hover:text-white',
+      },
+      {
+        color: 'red',
+        scheme: 'ghost',
+        class: 'bg-transparent border border-solid border-transparent text-red',
       },
     ],
     defaultVariants: {

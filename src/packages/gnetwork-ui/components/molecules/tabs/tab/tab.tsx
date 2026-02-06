@@ -31,7 +31,7 @@ export const Tab = ({
     <TabsPrimitive.Trigger
       className={cn(
         styles.base,
-        'items-center justify-center whitespace-nowrap disabled:pointer-events-none',
+        'items-center justify-center whitespace-nowrap disabled:opacity-50 disabled:pointer-events-none',
         className,
       )}
       ref={ref}

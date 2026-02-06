@@ -1,4 +1,6 @@
 import type {
+  GetAgentsRequest,
+  GetAgentsResponse,
   GetAvailableReportPaymentMethodsResponse,
   GetChatMessagesRequest,
   GetChatMessagesResponse,
@@ -27,6 +29,7 @@ import type {
 import type { ChatRepository } from '../../domain/repositories';
 
 import { finishChatConversationService } from '../services/finish-chat-conversation.service';
+import { getAgentsService } from '../services/get-agents.service';
 import { getAvailableReportPaymentMethodsService } from '../services/get-available-report-payment-methods.service';
 import { getChatMediaByIdService } from '../services/get-chat-media-by-id.service';
 import { getChatMessagesService } from '../services/get-chat-messages.service';
@@ -54,6 +57,8 @@ import { uploadChatMediaService } from '../services/upload-chat-media.service';
 export const httpChatRepository: ChatRepository = {
   finishChatConversation: async (contactId: string): Promise<boolean> =>
     finishChatConversationService(contactId),
+  getAgents: async (request: GetAgentsRequest): Promise<GetAgentsResponse> =>
+    getAgentsService(request),
   getAvailableReportPaymentMethods:
     async (): Promise<GetAvailableReportPaymentMethodsResponse> =>
       getAvailableReportPaymentMethodsService(),

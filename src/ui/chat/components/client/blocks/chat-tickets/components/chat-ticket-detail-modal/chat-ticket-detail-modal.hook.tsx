@@ -12,6 +12,10 @@ export const useChatTicketDetailModal = ({
   const { data, isLoading } = useQuery({
     queryKey: ['ticket-detail', ticketId],
     queryFn: () => GetTicketByIdQuery({ ticketId: String(ticketId) }),
+    enabled: !!ticketId,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
   });
 
   return {

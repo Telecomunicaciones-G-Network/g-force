@@ -4,8 +4,8 @@ import type { AgentStatusSelectorTriggerProps } from './agent-status-selector-tr
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { AGENT_STATUS_COLOR_DICTIONARY } from '@ui-chat/dictionaries/agent-status-color.dictionary';
-import { AGENT_STATUS_LABEL_DICTIONARY } from '@ui-chat/dictionaries/agent-status-label.dictionary';
+import { agentStatusColorDictionary } from '@ui-chat/dictionaries/agent-status-color.dictionary';
+import { agentStatusLabelDictionary } from '@ui-chat/dictionaries/agent-status-label.dictionary';
 
 import { AgentStatusSelectorLoader } from '../agent-status-selector-loader';
 import { AgentStatusSelectorIcon } from '../agent-status-selector-icon';
@@ -45,12 +45,12 @@ export const AgentStatusSelectorTrigger = ({
       className={cn(
         styles.base__dot,
         agentStatus
-          ? AGENT_STATUS_COLOR_DICTIONARY?.[agentStatus]
+          ? agentStatusColorDictionary?.[agentStatus]
           : 'bg-neutral-300',
       )}
     />
     <span className={styles.base__label}>
-      {agentStatus ? AGENT_STATUS_LABEL_DICTIONARY?.[agentStatus] : ''}
+      {agentStatus ? agentStatusLabelDictionary?.[agentStatus] : ''}
     </span>
     {isLoading ? (
       <AgentStatusSelectorLoader />

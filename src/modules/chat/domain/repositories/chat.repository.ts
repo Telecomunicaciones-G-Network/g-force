@@ -1,4 +1,6 @@
 import type {
+  GetAgentsRequest,
+  GetAgentsResponse,
   GetAvailableReportPaymentMethodsResponse,
   GetChatMessagesRequest,
   GetChatMessagesResponse,
@@ -33,6 +35,7 @@ import type {
  * contract for how chat data should be retrieved, manipulated, or sent within the system.
  *
  * @property {(contactId: string) => Promise<boolean>} finishChatConversation - Ends the chat conversation for a contact.
+ * @property {(request: GetAgentsRequest) => Promise<GetAgentsResponse>} getAgents - Gets agents based on request criteria.
  * @property {() => Promise<GetAvailableReportPaymentMethodsResponse>} getAvailableReportPaymentMethods - Retrieves available payment methods for reports.
  * @property {(mediaId: string) => Promise<string>} getChatMediaById - Fetches media content by its ID.
  * @property {(request: GetChatMessagesRequest) => Promise<GetChatMessagesResponse>} getChatMessages - Retrieves chat messages based on request criteria.
@@ -51,6 +54,7 @@ import type {
  */
 export interface ChatRepository {
   finishChatConversation(contactId: string): Promise<boolean>;
+  getAgents(request: GetAgentsRequest): Promise<GetAgentsResponse>;
   getAvailableReportPaymentMethods(): Promise<GetAvailableReportPaymentMethodsResponse>;
   getChatMediaById(mediaId: string): Promise<string>;
   getChatMessages(

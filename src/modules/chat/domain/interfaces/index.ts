@@ -11,6 +11,12 @@ export type { EmitSendTextMessageRequest } from './emit-send-text-message-reques
 export type { EmitSendTextMessageResponse } from './emit-send-text-message-response.interface';
 export type { EmitSetAgentStatusRequest } from './emit-set-agent-status-request.interface';
 export type { EmitSetAgentStatusResponse } from './emit-set-agent-status-response.interface';
+export type { GetAgentsRequest } from './get-agents-request.interface';
+export type {
+  GetAgentsResponse,
+  GetAgentsResponseAgent,
+  GetAgentsResponseTeam,
+} from './get-agents-response.interface';
 export type { GetAvailableReportPaymentMethodsResponse } from './get-available-report-payment-methods-response.interface';
 export type { GetChatMessagesRequest } from './get-chat-messages-request.interface';
 export type { GetChatMessagesResponse } from './get-chat-messages-response.interface';
@@ -36,7 +42,10 @@ export type {
 export type { Media } from './media.interface';
 export type { Message } from './message.interface';
 export type { MessageContact } from './message-contact.interface';
-export type { MessageEventData } from './message-event-data.interface';
+export type {
+  MessageEventData,
+  MessageEventDataAgent,
+} from './message-event-data.interface';
 export type { MessageLocation } from './message-location.interface';
 export type { MessageReaction } from './message-reaction.interface';
 export type { MessageSender } from './message-sender.interface';

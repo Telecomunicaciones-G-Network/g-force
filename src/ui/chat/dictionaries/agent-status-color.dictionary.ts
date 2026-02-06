@@ -3,13 +3,13 @@ import { AgentStatus } from '@module-chat/domain/types';
 import { AgentStatus as AgentStatusValues } from '@module-chat/domain/enums/agent-status.enum';
 
 /**
- * @name AGENT_STATUS_COLOR_DICTIONARY
+ * @name agentStatusColorDictionary
  *
  * @description This dictionary returns the color for each agent status.
  *
  * @returns {Record<AgentStatus, string>} The agent status color dictionary
  */
-export const AGENT_STATUS_COLOR_DICTIONARY = {
+export const agentStatusColorDictionary = {
   [AgentStatusValues.AWAY]: 'bg-warning-200',
   [AgentStatusValues.BUSY]: 'bg-alert-200',
   [AgentStatusValues.OFFLINE]: 'bg-neutral-300',
