@@ -32,6 +32,7 @@ export const ChatInvoiceCard = ({
     cycle = '',
     dateEmission,
     datePayment,
+    datetime_payment,
     documentNumber,
     paymentMethods = [],
     statusName,
@@ -174,11 +175,11 @@ export const ChatInvoiceCard = ({
               <Text
                 as="span"
                 align="end"
-                className="text-neutral-400"
+                className="whitespace-nowrap text-neutral-400"
                 level="small"
                 scheme="label"
               >
-                {dayjs(datePayment).format('DD/MM/YYYY')}
+                {dayjs(datetime_payment).format('DD/MM/YYYY HH:mm a')}
               </Text>
             </div>
           </>

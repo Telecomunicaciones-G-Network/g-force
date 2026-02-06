@@ -37,6 +37,7 @@ export interface GetContactInvoicesResult {
   contract_id: number;
   date_emission: string;
   date_payment: string | null;
+  datetime_payment: string | null;
   document_number: string | null;
   invoices_items_gsoft: GetContactInvoicesResultInvoicesItemsGsoft[];
   payment_methods: InvoicePaymentMethod[] | null;

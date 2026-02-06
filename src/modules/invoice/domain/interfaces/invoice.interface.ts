@@ -35,6 +35,7 @@ export interface Invoice {
   cycle?: string;
   dateEmission: string;
   datePayment: string | null;
+  datetime_payment: string | null;
   documentNumber: string | null;
   paymentMethods: InvoicePaymentMethod[] | null;
   statusCode: InvoiceStatusCode;
