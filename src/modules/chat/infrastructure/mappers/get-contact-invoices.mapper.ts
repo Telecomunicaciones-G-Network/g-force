@@ -46,6 +46,7 @@ export class GetContactInvoicesMapper {
       paymentMethods: input?.payment_methods,
       statusCode: input?.status_code,
       statusName: input?.status_name,
+      datetime_payment: input?.datetime_payment,
     };
   }
 }

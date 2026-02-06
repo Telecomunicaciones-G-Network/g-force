@@ -49,6 +49,7 @@ export class Invoice {
     public paymentMethods: InvoicePaymentMethod[] | null = [],
     public statusCode: InvoiceStatusCode = InvoiceStatusCodes.UNPAID,
     public statusName: InvoiceStatusName = InvoiceStatusNames.UNPAID,
+    public datetime_payment: string | null = null,
   ) {}
 
   /**
@@ -72,6 +73,7 @@ export class Invoice {
       paymentMethods: this.paymentMethods,
       statusCode: this.statusCode,
       statusName: this.statusName,
+      datetime_payment: this.datetime_payment,
     };
   }
 }
