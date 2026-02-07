@@ -1,0 +1,50 @@
+.base {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  outline: none;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.base__container {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  outline: none;
+  width: 100%;
+}
+
+.base__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+  }
+}
+
+.base__wrapper :global(.select-value) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
+}

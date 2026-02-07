@@ -10,15 +10,46 @@ init:
 build:
 	bun run build
 
+# make buildDocker TAG=v0.0.9
+buildDocker:
+	docker build . -t gforce:${TAG} -f docker/Dockerfile
+
+# make buildDockerDevelopment TAG=dev-v0.0.9
+buildDockerDevelopment:
+	docker build . -t gforce:${TAG} -f docker/Dockerfile.development
+
+# make buildDockerProduction TAG=v0.0.9
+buildDockerProduction:
+	docker build . -t gforce:${TAG} -f docker/Dockerfile.production
+
+# make buildDockerStaging TAG=stg-v0.0.9
+buildDockerStaging:
+	docker build . -t gforce:${TAG} -f docker/Dockerfile.staging
+
+# make clean
+clean:
+	bun clean
+
 # make check
 check:
 	bun typecheck
 	bun lint
 	bun security:scan
 
+# make finishFeature COMMIT_TYPE="feature" COMMIT_MESSAGE="add new feature"
+finishFeature:
+	bun format
+	bun check
+	git add .
+	git commit -m "${COMMIT_TYPE}: ${COMMIT_MESSAGE}"
+	git pull origin develop --rebase
+
 # make format
 format:
 	bun format
+
+install:
+	bun install
 
 # make upgradePackages
 upgradePackages:

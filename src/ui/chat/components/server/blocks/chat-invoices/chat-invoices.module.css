@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 25px;
   padding: 0;
+  flex: 1;
 }
 
 .base__header {
@@ -25,6 +26,24 @@
   flex-direction: column;
   gap: 15px;
   padding: 0;
+}
+
+.base__invoices_empty {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  justify-content: center;
+}
+
+.base__invoices_error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  justify-content: center;
 }
 
 .base__payment {

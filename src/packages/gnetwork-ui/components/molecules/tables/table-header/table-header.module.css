@@ -1,0 +1,12 @@
+.base {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 56px;
+}
+
+.base__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}

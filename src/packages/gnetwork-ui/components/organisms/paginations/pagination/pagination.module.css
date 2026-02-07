@@ -1,0 +1,16 @@
+.base__button,
+.base__button_page,
+.base__ellipsis {
+  cursor: pointer;
+  display: inline-flex;
+  position: relative;
+}
+
+.base__button_page,
+.base__ellipsis {
+  align-items: center;
+}
+
+.base__pagination {
+  display: inline-flex;
+}

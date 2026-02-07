@@ -1,34 +1,80 @@
-import { useMediaQuery } from '@hookers/use-media-query.hook';
+'use client';
 
-import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
+import type { GetChatMessagesResponse } from '@module-chat/domain/interfaces';
 
-import { useChatStore } from '@ui-chat/stores/chat.store';
+import { useEffect } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
+
+import { useContactRoomStatus } from '@socketio/hooks/use-contact-room-status.hook';
+
+import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
+
+import { GetChatMessagesQuery } from '@module-chat/infrastructure/queries/get-chat-messages.query';
+
+import { CHAT_CONTACT_CONVERSATION_DISABLED } from '@ui-chat/constants/chat-contact-conversation-disabled.constant';
+
+import { queryKeysDictionary } from '@/src/ui/chat/dictionaries/query-keys.dictionary';
+
+import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversation = () => {
-  const activeChat = useChatStore((state) => state.activeChat);
-  const chatMode = useChatStore((state) => state.chatMode);
+  const activeAgent = useContactStore((state) => state.activeAgent);
+  const activeContact = useContactStore((state) => state.activeContact);
+  const sendMode = useChatStore((state) => state.sendMode);
 
-  const isDesktop = useMediaQuery('(width >= 1024px)', {
-    defaultValue: false,
-    initializeWithValue: false,
+  const setMessages = useChatStore((state) => state.setMessages);
+
+  const {
+    data: chatMessagesResponse,
+    isError,
+    isLoading,
+  } = useQuery<GetChatMessagesResponse>({
+    queryKey: [
+      queryKeysDictionary.GET_CHAT_MESSAGES,
+      activeContact?.id,
+      { limit: 100 },
+    ],
+    queryFn: () =>
+      GetChatMessagesQuery({
+        contactId: activeContact?.id ?? '',
+        limit: 100,
+      }),
+    enabled: !!activeContact?.id,
+    gcTime: 0,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: 0,
   });
 
-  const setActiveChat = useChatStore((state) => state.setActiveChat);
-  const setChatMode = useChatStore((state) => state.setChatMode);
+  const { isConnected, isInRoom } = useContactRoomStatus({
+    autoJoin: true,
+    contactId: activeContact?.id,
+    joinRoomEventName: socketEmissionsDictionary.JOIN_CONTACT_ROOM,
+    leaveRoomEventName: socketEmissionsDictionary.LEAVE_CONTACT_ROOM,
+  });
 
-  const goBackChatList = () => {
-    setChatMode(ChatModes.LIST);
-    setActiveChat(null);
-  };
+  useEffect(() => {
+    if (chatMessagesResponse?.messages) {
+      setMessages(chatMessagesResponse?.messages);
+    }
+  }, [chatMessagesResponse?.messages, setMessages]);
 
-  const goToChatDetails = () =>
-    useChatStore.setState({ chatMode: ChatModes.DETAILS });
-
+  // TODO: I must to get better the disabled chat logic
   return {
-    activeChat,
-    chatMode,
-    goBackChatList,
-    goToChatDetails,
-    isDesktop,
+    disabledChat:
+      !isConnected ||
+      isError ||
+      !isInRoom ||
+      isLoading ||
+      activeAgent?.id !== activeContact?.latestConversation?.agent?.id ||
+      !activeContact?.latestConversation?.status ||
+      CHAT_CONTACT_CONVERSATION_DISABLED.includes(
+        activeContact.latestConversation.status,
+      ),
+    isError,
+    isLoading,
+    sendMode,
   };
 };

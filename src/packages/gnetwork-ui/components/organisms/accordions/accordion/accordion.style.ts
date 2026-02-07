@@ -8,7 +8,7 @@ import { accordionFullWidth } from './variants/accordion-fullwidth.variant';
 
 import styles from './accordion.module.css';
 
-export const accordionVariants = cva([styles.base], {
+export const accordionVariants = cva([styles.base, 'border-none p-4'], {
   variants: {
     fullWidth: accordionFullWidth,
   },

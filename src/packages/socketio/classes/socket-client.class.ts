@@ -22,7 +22,7 @@ import { SocketStatus as SocketStatusValues } from '../enums/socket-status.enum'
 export class SocketClient {
   private config: SocketConfig;
   private eventListeners: Map<string, Set<SocketEventListener>> = new Map();
-  private maxReconnectAttempts = 5;
+  private maxReconnectAttempts: number | typeof Infinity = Infinity;
   private reconnectAttempts = 0;
   private socket: Socket | null = null;
   private status: SocketStatus = SocketStatusValues.DISCONNECTED;
@@ -33,7 +33,11 @@ export class SocketClient {
       ...config,
     };
 
-    this.maxReconnectAttempts = this.config.reconnectionAttempts || 5;
+    // Si no se pasa reconnectionAttempts, usar Infinity para intentos infinitos
+    this.maxReconnectAttempts =
+      this.config.reconnectionAttempts !== undefined
+        ? this.config.reconnectionAttempts
+        : Infinity;
 
     if (this.config.autoConnect) {
       this.connect();
@@ -74,8 +78,12 @@ export class SocketClient {
     this.socket.on('connect_error', (error) => {
       this.status = SocketStatusValues.ERROR;
       this.reconnectAttempts++;
+      const maxAttemptsText =
+        this.maxReconnectAttempts === Infinity
+          ? '∞'
+          : this.maxReconnectAttempts;
       this.log(
-        `Connection error (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts}): ${error.message}`,
+        `Connection error (attempt ${this.reconnectAttempts}/${maxAttemptsText}): ${error.message}`,
         SocketLogLevels.ERROR,
       );
     });
@@ -136,10 +144,17 @@ export class SocketClient {
 
     this.log(`Connecting to ${fullUrl} with path: ${path}...`);
 
-    this.socket = io(fullUrl, {
+    // Si no se especificó reconnectionAttempts, usar Infinity para intentos infinitos
+    const socketOptions = {
       ...options,
       path: path,
-    });
+      reconnectionAttempts:
+        this.config.reconnectionAttempts !== undefined
+          ? this.config.reconnectionAttempts
+          : Infinity,
+    };
+
+    this.socket = io(fullUrl, socketOptions);
 
     this.setupEventHandlers();
   }
@@ -204,6 +219,31 @@ export class SocketClient {
 
     this.socket.emit(event, data);
     this.log(`Emitted event: ${event}`, SocketLogLevels.INFO, data);
+  }
+
+  public emitWithAck<TData = unknown, TResponse = unknown>(
+    event: string,
+    data?: TData,
+  ): Promise<TResponse> {
+    return new Promise((resolve, reject) => {
+      if (!this.socket?.connected) {
+        const errorMessage = `Cannot emit "${event}": Socket not connected`;
+        this.log(errorMessage, SocketLogLevels.WARN);
+        reject(new Error(errorMessage));
+        return;
+      }
+
+      this.socket.emit(event, data, (response: TResponse) => {
+        this.log(
+          `Received ack for event: ${event}`,
+          SocketLogLevels.SUCCESS,
+          response,
+        );
+        resolve(response);
+      });
+
+      this.log(`Emitted event with ack: ${event}`, SocketLogLevels.INFO, data);
+    });
   }
 
   public getId(): string | undefined {

@@ -1,0 +1,10 @@
+.base {
+  flex: 1;
+  justify-content: between;
+}
+
+.base_button {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}

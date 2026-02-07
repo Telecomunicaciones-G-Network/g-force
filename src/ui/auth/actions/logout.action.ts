@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation';
 export async function logoutAction(): Promise<void> {
   const cookieStore = await cookies();
 
-  cookieStore.delete('access_token');
-  cookieStore.delete('refresh_token');
-  cookieStore.delete('user_data');
+  cookieStore.delete('token');
+  cookieStore.delete('refresh');
+  cookieStore.delete('user');
 
   redirect('/login');
 }

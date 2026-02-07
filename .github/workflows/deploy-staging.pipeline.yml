@@ -1,0 +1,69 @@
+name: Deploy GForce Pipeline Staging
+
+on:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.13.0
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@Telecomunicaciones-G-Network"
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          bun install
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create environment file
+        run: |
+          echo "Creating environment file..."
+          echo "${{ secrets.STG_ENV_VARS }}" > .env
+          echo "${{ secrets.STG_ENV_VARS }}" > .env.staging
+          echo "${{ secrets.STG_ENV_VARS }}" > .env.production
+
+      - name: Generate docker image tag
+        id: tag
+        run: |
+          REPO_LOWERCASE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          VERSION=$(jq -r '.version' package.json)
+          echo "tag=ghcr.io/${REPO_LOWERCASE}:stg-v${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Build and push staging Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./docker/Dockerfile.staging
+          push: true
+          tags: ${{ steps.tag.outputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,0 +1,157 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  padding-right: 48px;
+  border-bottom: 1px solid var(--neutral-100);
+  flex: 1;
+}
+
+/* El círculo rojo del icono principal */
+.base__icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 42px;
+  color: var(--red-700);
+  background-color: var(--red-100);
+  border-radius: 8px; /* O 50% para circular, Figma parece usar esquinas suaves */
+}
+
+.header__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  color: var(--neutral-500);
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__close:hover {
+  background-color: var(--neutral-100);
+}
+
+.content {
+  padding: 0 24px 24px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.field_box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  background-color: var(--white);
+  height: 40px;
+  /* IMPORTANTE PARA EL CORTE DE TEXTO */
+  min-width: 0;
+  overflow: hidden;
+}
+
+.field_icon {
+  color: var(--neutral-500);
+  flex-shrink: 0;
+}
+
+.field_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  /* IMPORTANTE PARA EL CORTE DE TEXTO */
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Esto aplica a cualquier Texto o span dentro de field_text */
+.field_text > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+}
+
+/* Sección de descripción específica */
+.description_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.description_box {
+  padding: 16px;
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  background-color: var(--white);
+  min-height: 150px;
+  color: var(--neutral-600);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Estados de carga/error */
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}

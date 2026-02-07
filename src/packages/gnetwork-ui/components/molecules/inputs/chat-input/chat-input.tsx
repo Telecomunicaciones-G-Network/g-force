@@ -1,13 +1,23 @@
-import type { InputProps } from '../input';
+import type { ChatInputProps } from './chat-input.props';
 
 import { MdAttachFile } from 'react-icons/md';
 
 import { Input } from '../input';
 
-export const ChatInput = (props: Readonly<Omit<InputProps, 'type'>>) => (
+export const ChatInput = ({
+  customLeftIcon,
+  hideLeftIcon = false,
+  ...rest
+}: Readonly<ChatInputProps>) => (
   <Input
-    leftIcon={<MdAttachFile className="text-neutral-500 size-6" />}
+    leftIcon={
+      hideLeftIcon ? undefined : customLeftIcon ? (
+        customLeftIcon
+      ) : (
+        <MdAttachFile className="text-neutral-500 size-6" />
+      )
+    }
     type="text"
-    {...props}
+    {...rest}
   />
 );

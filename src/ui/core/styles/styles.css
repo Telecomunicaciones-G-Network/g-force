@@ -3,6 +3,13 @@
   font-family: inherit;
 }
 
+.absolute-bottom-center {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
 .responsive-image-contain {
   aspect-ratio: 1 / 1;
   background-position: center;

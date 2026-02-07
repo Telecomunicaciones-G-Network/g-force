@@ -2,6 +2,15 @@
   width: 100%;
 }
 
+.base__avatar_container {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  min-height: 150px;
+  width: 100%;
+}
+
 .base__header {
   flex-direction: column;
   gap: 24px;

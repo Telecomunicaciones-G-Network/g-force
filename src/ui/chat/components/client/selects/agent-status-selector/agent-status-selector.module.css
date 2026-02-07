@@ -1,0 +1,8 @@
+.base {
+  bottom: 24px;
+  display: flex;
+  left: 16px;
+  position: absolute;
+  right: 16px;
+  z-index: 50;
+}

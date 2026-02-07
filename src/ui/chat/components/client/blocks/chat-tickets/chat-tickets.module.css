@@ -1,0 +1,19 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 24px;
+}
+
+.base__filter_skeleton,
+.base__label_skeleton {
+  width: 100%;
+}
+
+.base__label_skeleton {
+  height: 24px;
+}
+
+.base__filter_skeleton {
+  height: 40px;
+}

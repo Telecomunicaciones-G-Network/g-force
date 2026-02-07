@@ -1,4 +1,4 @@
-# 👨‍💻 GNetwork @ GForce
+# GNetwork @ GForce
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
@@ -141,3 +141,140 @@ g-force/
 ---
 
 **Built with ❤️ by the GNetwork Team**
+
+```typescript
+'use client';
+
+import type { Cell, Header, HeaderGroup, Row } from '@tanstack/react-table';
+import type { TableManagerProps } from './table-manager.props';
+
+import {
+  getCoreRowModel,
+  useReactTable,
+  flexRender,
+} from '@tanstack/react-table';
+
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
+import { TableBody } from '@gnetwork-ui/components/molecules/tables/table-body';
+import { TableColumn } from '@gnetwork-ui/components/molecules/tables/table-column';
+import { TableHead } from '@gnetwork-ui/components/molecules/tables/table-head';
+import { TableHeaderColumn } from '@gnetwork-ui/components/molecules/tables/table-header-column';
+import { TableHeaderRow } from '@gnetwork-ui/components/molecules/tables/table-header-row';
+import { TableRow } from '@gnetwork-ui/components/molecules/tables/table-row';
+import { Pagination } from '@gnetwork-ui/components/organisms/paginations/pagination';
+import { Table } from '@gnetwork-ui/components/organisms/tables/table';
+
+import { TABLE_RECORD_LIMIT_PER_PAGE } from '@ui-core/constants/table-record-limit-per-page.constant';
+
+export const TableManager = <T,>({
+  className = '',
+  builder,
+  data = [],
+  ref,
+  limit = TABLE_RECORD_LIMIT_PER_PAGE,
+  page = 1,
+  pageIndex = 0,
+  setPageIndex,
+  title = '',
+  totalRegisters = 0,
+  ...rest
+}: Readonly<TableManagerProps<T>>) => {
+  const totalPages = Math.max(1, Math.ceil((totalRegisters || 0) / limit));
+  const canPrevious = pageIndex > 0;
+  const canNext = pageIndex < totalPages - 1;
+
+  const table = useReactTable<T>({
+    columns: builder,
+    data: data ?? [],
+    getCoreRowModel: getCoreRowModel(),
+    state: {
+      pagination: {
+        pageIndex,
+        pageSize: limit,
+      },
+    },
+    manualPagination: true,
+    pageCount: -1,
+    onPaginationChange: (updater) => {
+      setPageIndex?.((prev) => {
+        const next =
+          typeof updater === 'function'
+            ? updater({
+                pageIndex: prev,
+                pageSize: limit,
+              })
+            : updater;
+        return next.pageIndex;
+      });
+    },
+  });
+
+  if (!builder)
+    console.warn(
+      'Prop builder is missing on TableManager component. This component can not be render appropiately.',
+    );
+
+  if (!data || !Array.isArray(data))
+    console.warn(
+      'Prop data is missing or is zero on TableManager component. This component can not be render appropiately.',
+    );
+
+  return (
+    <>
+      <Table ref={ref} className={className} title={title} {...rest}>
+        <TableHead>
+          {table?.getHeaderGroups()?.map((headerGroup: HeaderGroup<T>) => (
+            <TableHeaderRow key={headerGroup?.id}>
+              {headerGroup?.headers?.map((header: Header<T, unknown>) => (
+                <TableHeaderColumn key={header?.id}>
+                  {flexRender(
+                    header?.column?.columnDef?.header,
+                    header?.getContext(),
+                  )}
+                </TableHeaderColumn>
+              ))}
+            </TableHeaderRow>
+          ))}
+        </TableHead>
+        <TableBody>
+          {table?.getRowModel()?.rows?.map((row: Row<T>) => (
+            <TableRow key={row?.id}>
+              {row?.getVisibleCells()?.map((cell: Cell<T, unknown>) => (
+                <TableColumn key={cell?.id}>
+                  {flexRender(
+                    cell?.column?.columnDef?.cell,
+                    cell?.getContext(),
+                  )}
+                </TableColumn>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <div className="bg-chromatic rounded-b-lg border-x border-b border-solid border-b-neutral-200 py-2 pl-4 pr-2 border-x-neutral-200 flex gap-2 min-h-[56px] justify-between items-center">
+        <Text
+          as="label"
+          align="left"
+          className="text-neutral-500"
+          level="small"
+          scheme="paragraph"
+        >
+          {limit && page
+            ? `Mostrando ${(page - 1) * limit + 1} - ${Math.min(page * limit, totalRegisters || page * limit)}`
+            : ''}
+          {totalRegisters ? ` de ${totalRegisters} registros` : ''}
+        </Text>
+        <Pagination
+          canNext={canNext}
+          canPrevious={canPrevious}
+          onNext={() => setPageIndex?.(pageIndex + 1)}
+          onPageChange={(index) => setPageIndex?.(index)}
+          onPrevious={() => setPageIndex?.(pageIndex - 1)}
+          pageIndex={pageIndex}
+          totalPages={totalPages}
+        />
+      </div>
+    </>
+  );
+};
+```

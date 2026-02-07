@@ -1,5 +1,13 @@
+export type { AgentStatus } from './agent-status.type';
+export type { Assignment } from './assignment.type';
+export type { ContactLatestMessage } from './contact-latest-message.type';
 export type { ContactPlatform } from './contact-platform.type';
 export type { ConversationStatus } from './conversation-status.type';
+export type { MediaStorageStatus } from './media-storage-status.type';
+export type { MediaType } from './media-type.type';
 export type { MessageDirection } from './message-direction.type';
+export type { MessageEventType } from './message-event-type.type';
 export type { MessageStatus } from './message-status.type';
 export type { MessageType } from './message-type.type';
+export type { Platform } from './platform.type';
+export type { TeamCodename } from './team-codename.type';

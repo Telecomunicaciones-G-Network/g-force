@@ -1,211 +1,355 @@
 # TODO
 
-## Dones
+## Reviews
 
-PENDING: /src/app/(public)/auth/layout.tsx
-PENDING: /src/app/(public)/factory/~
-PENDING: /src/app/page.tsx
-PENDING: /src/modules/auth/infrastructure/repositories/http-auth.repository.ts
-PENDING: /src/packages/hookers/use-media-query.hook.tsx
-PENDING: /src/packages/http-client/classes/axios.class.ts
-PENDING: /src/packages/http-client/classes/http-client.class.ts
-PENDING: /src/ui/auth/actions/logout.action.ts
-PENDING: /src/ui/auth/components/client/forms/login-form/login-form.tsx
-PENDING: /src/ui/auth/components/client/forms/login-form/login-form.hook.tsx
-PENDING: /src/ui/core/components/server/inputs/email-input-controller/email-input-controller.props.ts
-PENDING: /src/ui/core/components/server/inputs/password-input-controller/password-input-controller.props.ts
-PENDING: /src/ui/core/components/server/inputs/text-input-controller/text-input-controller.props.ts
-PENDING: /src/ui/core/fetcher/gnetwork-api-client.fetcher.ts
-PENDING: /src/middleware.ts
+- .github/workflows/build-develop.pipeline.yml ✅
+- .github/workflows/build-production.pipeline.yml ✅
+- .github/workflows/build-staging.pipeline.yml ✅
+- .github/workflows/check.pipeline.yml ✅
+- .github/workflows/deploy-develop.pipeline.yml ✅
+- .github/workflows/deploy-production.pipeline.yml ✅
+- .github/workflows/deploy-staging.pipeline.yml ✅
+- docker/Dockerfile ✅
+- docker/Dockerfile.development ✅
+- docker/Dockerfile.production ✅
+- docker/Dockerfile.staging ✅
+- .dockerignore ✅
+- .env ✅
+- .env.development ✅
+- .env.example ✅
+- .env.production ✅
+- .env.staging ✅
+- CONTRIBUTING.md ✅
+- Makefile ⚠️ (Add new commands for books)
+- tsconfig.json ✅
 
-## Bugfix
+- src/app/(private)/chat/management/page~ ✅
 
-FIXME: Load Gnetwork brand from server but it has not to show on login page
-FIXME: Solve this middleware warning ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-FIXME: Check and fix every icon on web application
-FIXME: Chat send input always must be fixed on bottom for chat conversation
-FIXME: My chat details components overhead without reaching responsive mode
-FIXME: On login page for tablet and mobile alert is on left side but must be on center
+- src/modules/chat/domain/entities/agent.entity.ts ✅
+- src/modules/chat/domain/entities/contact.entity.ts ✅
+- src/modules/chat/domain/entities/conversation.entity.ts ✅
+- src/modules/chat/domain/entities/media.entity.ts ✅
+- src/modules/chat/domain/entities/message.entity.ts ✅
+- src/modules/chat/domain/entities/team.entity.ts ✅
 
-## Improves
+- src/modules/core/interfaces/api-gsoft-response.interface.ts ✅
+- src/modules/chat/domain/enums/agent-status.enum.ts ✅
+- src/modules/chat/domain/enums/conversation-status.enum.ts ✅
+- src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
+- src/modules/chat/domain/enums/media-types.enum.ts ✅
+- src/modules/chat/domain/enums/message-directions.enum.ts ✅
+- src/modules/chat/domain/enums/message-event-types.enum.ts ✅
+- src/modules/chat/domain/enums/message-status.enum.ts ✅
+- src/modules/chat/domain/enums/message-types.enum.ts ✅
+- src/modules/chat/domain/exceptions/get-agents.exception.ts ⚠️
+- src/modules/chat/domain/exceptions/get-contact-contracts.exception.ts ✅
+- src/modules/chat/domain/exceptions/get-contact-tickets.exception.ts ✅
+- src/modules/chat/domain/enums/team-codenames.enum.ts ✅
+- src/modules/chat/domain/interfaces/agent.interface.ts ✅
+- src/modules/chat/domain/interfaces/contact.interface.ts ✅
+- src/modules/chat/domain/interfaces/conversation.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-send-internal-message-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-send-internal-message-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-set-agent-status-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/emit-set-agent-status-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-agents-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-agents-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-contracts-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-tickets-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contact-tickets-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/media.interface.ts ✅
+- src/modules/chat/domain/interfaces/message.interface.ts ✅
+- src/modules/chat/domain/interfaces/message-contact.interface.ts ✅
+- src/modules/chat/domain/interfaces/message-event-data.interface.ts ✅
+- src/modules/chat/domain/interfaces/message-location.interface.ts ✅
+- src/modules/chat/domain/interfaces/message-reaction.interface.ts ✅
+- src/modules/chat/domain/interfaces/message-sender.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-connected-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-contact-finished-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-conversation-assignment-updated-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-conversation-finished-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-media-status-changed-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-message-status-changed-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-new-message-received-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/on-new-message-sent-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/team.interface.ts ✅
+- src/modules/chat/domain/repositories/chat.repository.ts ✅
+- src/modules/chat/domain/types/agent-status.type.ts ✅
+- src/modules/chat/domain/types/contact-latest-message.type.ts ✅
+- src/modules/chat/domain/types/conversation-status.type.ts ✅
+- src/modules/chat/domain/types/media-storage-status.type.ts ✅
+- src/modules/chat/domain/types/media-type.type.ts ✅
+- src/modules/chat/domain/types/message-direction.type.ts ✅
+- src/modules/chat/domain/types/message-event-type.type.ts ✅
+- src/modules/chat/domain/types/message-status.type.ts ✅
+- src/modules/chat/domain/types/message-type.type.ts ✅
+- src/modules/chat/domain/types/team-codename.type.ts ✅
+- src/modules/chat/application/usecases/get-agents.usecase.ts ⚠️
+- src/modules/chat/application/usecases/get-contact-contracts.usecase.ts ⚠️
+- src/modules/chat/application/usecases/get-contact-tickets.usecase.ts ✅
+= src/modules/chat/infrastructure/dictionaries/chat-resources.dictionary.ts ✅
+- src/modules/chat/infrastructure/dictionaries/chat-tags.dictionary.ts ✅
+- src/modules/chat/infrastructure/dictionaries/socket-emissions.dictionary.ts ✅
+- src/modules/chat/infrastructure/dictionaries/socket-events.dictionary.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-send-internal-message-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-send-internal-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-set-agent-status-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/emit-set-agent-status-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-agents-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-contracts-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-contracts-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-tickets-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contact-tickets-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-agent-status-change-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-contact-finished-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-conversation-finished-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-incomming-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-media-status-changed-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-message-status-changed-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-new-message-received-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-new-message-sent-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/on-outgoing-message-response.dto.ts ✅
+- src/modules/chat/infrastructure/interfaces/get-contact-contracts-result.interface.ts ✅
+- src/modules/chat/infrastructure/interfaces/get-contact-tickets-result.interface.ts ✅
+- src/modules/chat/infrastructure/mappers/emit-send-internal-message.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/emit-set-agent-status.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-agents.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-contact-contracts.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-contact-tickets.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-conversation-finished.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-incomming-message.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-media-status-changed.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-message-status-changed.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-new-message-received.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-new-message-sent.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/on-outgoing-message.mapper.ts ✅
+- src/modules/chat/infrastructure/queries/get-agents.query.ts ✅
+- src/modules/chat/infrastructure/queries/get-contact-contracts.query.ts ✅
+- src/modules/chat/infrastructure/queries/get-contact-tickets.query.ts ✅
+- src/modules/chat/infrastructure/repositories/http-chat.repository.ts ✅
+- src/modules/chat/infrastructure/services/get-agents.service.ts ⚠️
+- src/modules/chat/infrastructure/services/get-contact-contracts.service.ts ✅
+- src/modules/chat/infrastructure/services/get-contact-tickets.service.ts ⚠️
+- src/modules/contract/domain/entities/contract.entity.ts ✅
+- src/modules/contract/domain/enums/contract-status-codes.enum.ts ✅
+- src/modules/contract/domain/enums/contract-status-names.enum.ts ✅
+- src/modules/contract/domain/interfaces/contract.interface.ts ✅
+- src/modules/contract/domain/interfaces/contract-balance.interface.ts ✅
+- src/modules/contract/domain/interfaces/contract-bank-associated-data.interface.ts ✅
+- src/modules/contract/domain/types/contract-status-code.type.ts ✅
+- src/modules/contract/domain/types/contract-status-name.type.ts ✅
+- src/modules/invoice/domain/entities/invoice.entity.ts ✅
+- src/modules/invoice/domain/enums/invoice-payment-methods.enum.ts ✅
+- src/modules/invoice/domain/enums/invoice-status-codes.enum.ts ✅
+- src/modules/invoice/domain/enums/invoice-status-names.enum.ts ✅
+- src/modules/invoice/domain/interfaces/invoice.interface.ts ✅
+- src/modules/invoice/domain/interfaces/invoice-amount-to-pay.interface.ts ✅
+- src/modules/invoice/domain/interfaces/invoice-bank-associated-data.interface.ts ✅
+- src/modules/invoice/domain/types/invoice-payment-method.type.ts ✅
+- src/modules/invoice/domain/types/invoice-status-code.type.ts ✅
+- src/modules/invoice/domain/types/invoice-status-name.type.ts ✅
+- src/modules/ticket/domain/entities/ticket.entity.ts ✅
+- src/modules/ticket/domain/enum/ticket-status-codes.enum.ts ✅
+- src/modules/tickets/domain/enum/ticket-status-names.enum.ts ✅
+- src/modules/tickets/domain/interfaces/ticket.interface.ts ✅
+- src/modules/ticket/domain/types/ticket-status-code.type.ts ✅
+- src/modules/ticket/domain/types/ticket-status-name.type.ts ✅
 
-IMPROVE: Get better login mappers as get contacts chat mapper
-IMPROVE: Get better clean architecture application
-IMPROVE: We need to iterate information on chat status card
-IMPROVE: On chat contract card use iterator to map info
-IMPROVE: Iterate base infos on chat invoice card
-IMPROVE: Info list on chat contact component can be replace using a iterator and map this
-IMPROVE: Fragment my chat contact component on parts
-IMPROVE: Fragment my chat detail tabs component
-IMPROVE: On chat conversation make iterable a button group
-IMPROVE: Create button group component and replace buttons on chat conversation header
-IMPROVE: Create a class or utility to handler coookies on server and client using nextjs
-IMPROVE: Quit serverError from login form hook and improve this hook
-IMPROVE: Create a build pattern or dictionary to handler resources and actions or create a http strategy to build a path. Apply this on http-client.class.ts
-IMPROVE: Allow to close alert when this one is clicked on x icon on login page
-IMPROVE: Avatar on chat list on chat page should be use skeleton on loading
-IMPROVE: Apply validation schema on environment variables
-IMPROVE: Fragment the middleware.ts in short codes
-IMPROVE: I must to improve the private and public routes on middleware.ts
-IMPROVE: improve middleare.ts
-IMPROVE: Create chaining middlewares
-IMPROVE: Apply class validator and class transformer over dtos and view models
-IMPROVE: El use-media-query hook of hooker package has two deprecated methods
-IMPROVE: Improve error message on console on axios class using chalk or any other
-IMPROVE: Create a error dictionary and apply on axios class http client
-IMPROVE: On getwork-api-client.fetcher.ts transfer configuration into a constant config file
-IMPROVE: Props for input controller are the same DRY and unify
-IMPROVE: Fragment login form component on parts
-IMPROVE: Fragment chat conversation components on parts
-IMPROVE: Fragment chat card component on parts
-IMPROVE: Fragment chat invoices component
-IMPROVE: When I create a new gnetwork api client instance put on constantes headers
+- src/packages/filer/utils/download-file-by-url.util.ts ✅
+- src/packages/filer/utils/remove-extension-from-filename.util.ts ✅
+- src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button/~ ✅
+- src/packages/gnetwork-ui/components/molecules/modals/modal-card/~ ✅
+- src/packages/gnetwork-ui/components/organisms/lists/flatlist/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-body/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-column/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-head/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-header/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-header-column/~ ⚠️
+- src/packages/gnetwork-ui/components/molecules/tables/table-header-row/~ ✅
+- src/packages/gnetwork-ui/components/molecules/tables/table-row/! ✅
+- src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
+- src/packages/gnetwork-ui/components/organisms/paginations/pagination/~ ✅
+- src/packages/gnetwork-ui/components/organisms/tables/table/~ ✅
+- src/packages/gnetwork-ui/components/organisms/tables/table-pagination/~ ✅
+- src/packages/gnetwork-ui/components/organisms/tabs/tabs-line~ ✅
+- src/packages/gnetwork-ui/components/templates/blocks/empty-list-message/~ ✅
+- src/packages/gnetwork-ui/types/react-tbody.type.ts ✅
+- src/packages/gnetwork-ui/types/react-td.type.ts ⚠️
+- src/packages/gnetwork-ui/types/react-th.type.ts ⚠️
+- src/packages/gnetwork-ui/types/react-thead.type.ts ✅
+- src/packages/gnetwork-ui/types/react-tr.type.ts ✅
+- src/packages/hooks/use-click-outside.hook.tsx ✅
+- src/packages/sounder/classes/sounder.class.ts ✅
+- src/packages/stringify/utils/capitalize-words.util.ts ✅
+- src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
 
-## Todos
+- src/ui/core/enums/env-modes.enum.ts ✅
 
-TODO: Optimize clean architecture structure
-TODO: Connect chat list endpoint
-TODO: When socket connection fall down or internet connection failed we need to set a global state to block user socket interaction until connection being established again
-TODO: When user on historical chat view hide close conversation button on chat details for contact
-TODO: When user open chat conversation we need to automatically go scroll down for messages
-TODO: On chat conversation on mobile viewport put avatar and go back icon
-TODO: Add token to http client using axios request interceptor
-TODO: Create dashboard layout
-TODO: Handler permissions and roles for routing
-TODO: Handler permissions and roles for elements on views
-TODO: Create navbar
-TODO: Create sidebar
-TODO: Handler routes on sidebar
-TODO: Create user navbar menu
-TODO: Change light and dark mode from user navbar menu
-TODO: Check all code
-TODO: Create a carousel component
-TODO: Set carousel component on login page
-TODO: Hide automatically the alert when login page failed
-TODO: Create error page
-TODO: Create Page not found page
-TODO: Create loading page
-TODO: Check dark mode on login page
-TODO: Check dark mode on chat page
-TODO: Do chat search on chat list
-TODO: Do filters on chat list
-TODO: Create badge component
-TODO: Use badge component on chat card
-TODO: When new message arrive on general updatechat card time and message
-TODO: Short message on chatcard
-TODO: Sort chat list when new recent message arrived
-TODO: Update number badge notification when a new unread message arrived on chatcard
-TODO: Do call funcionality on chat conversation
-TODO: Do email functionality on chat conversation
-TODO: Create dropdown select
-TODO: Apply dropdown select on filters for chat conversation
-TODO: Set conversation from options on chat conversation
-TODO: Mark as unread a conversation on chat conversation
-TODO: Apply transfer chat functionality on chat conversation
-TODO: Muted notifications on chat conversation
-TODO: Apply icon depending on message status
-TODO: Update chat message status
-TODO: Create floating button to go down conversation
-TODO: Down automatically scroll when new message arrived on chat conversation
-TODO: Apply file upload on chat input
-TODO: Send a new message
-TODO: Connect a general web socket
-TODO: Apply tsdoc to all files
-TODO: Add README.md to all packages and components on packages
+- src/ui/core/constants/table-record-limit-per-page.constant.ts ✅
+- src/ui/core/components/client/tables/table-manager/~ ⚠️
+- src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
+- src/ui/chat/builders/agents-table.builder.tsx ⚠️
+- src/ui/chat/components/client/forms/internal-message-form~ ⚠️
+- src/ui/chat/components/client/modals/chat-close-conversation-modal/~ ⚠️
+- src/ui/chat/components/client/selects/agent-status-selector~ ⚠️
+- src/ui/chat/components/client/tables/chat-management-agents-table/~ ✅
+- src/ui/chat/components/server/containers/chat-management-table-container/~ ✅
+- src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
+- src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
+- src/ui/chat/constants/chat-management-tabs.constant.ts ✅
+- src/ui/chat/dictionaries/agent-status-color.dictionary.ts ✅
+- src/ui/chat/dictionaries/agent-status-label.dictionary.ts ✅
+- src/ui/chat/dictionaries/agent-status-tag-color.dictionary.ts ✅
+- src/ui/chat/dictionaries/chat-sounds.dictionary.ts ✅
+- src/ui/chat/enums/chat-send-mode.enum.ts ✅
+- src/ui/chat/hooks/agent-socket-events.hooks.tsx ✅
+- src/ui/chat/hooks/base-socket-events.hook.tsx ✅
+- src/ui/chat/hooks/contact-socket-events.hook.tsx ⚠️
+- src/ui/chat/hooks/emit-send-internal-message.hook.tsx ⚠️
+- src/ui/chat/hooks/emit-set-agent-status.hook.tsx ⚠️
+- src/ui/chat/hooks/on-agent-status-changed.hook.tsx ⚠️
+- src/ui/chat/hooks/on-connected.hook.tsx ⚠️
+- src/ui/chat/hooks/on-contact-assignment-updated.hook.tsx ⚠️
+- src/ui/chat/hooks/on-contact-finished.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-assignment-updated.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-created.hook.tsx ⚠️
+- src/ui/chat/hooks/on-conversation-finished.hook.tsx ⚠️
+- src/ui/chat/hooks/on-incomming-message.hook.tsx ⚠️
+- src/ui/chat/hooks/on-media-status-changed.hook.tsx ⚠️
+- src/ui/chat/hooks/on-message-status-changed.hook.tsx ⚠️
+- src/ui/chat/hooks/on-new-message-received.hook.tsx ⚠️
+- src/ui/chat/hooks/on-new-message-sent.hook.tsx ⚠️
+- src/ui/chat/hooks/on-outgoing-message.hook.tsx ⚠️
+- src/ui/chat/hooks/on-reaction-added.hook.tsx ⚠️
+- src/ui/chat/hooks/on-reaction-removed.hook.tsx ⚠️
+- src/ui/chat/interfaces/agent-status-selector-option.interface.ts ✅
+- src/ui/chat/iterators/agent-status-selector-options.iterator.tsx ✅
+- src/ui/chat/iterators/chat-conversation-header-button.iterator.tsx ✅
+- src/ui/chat/iterators/chat-management-tabs-content.iterator.ts ✅
+- src/ui/chat/layouts/chat-details-tab-content-layout/~ ✅
+- src/ui/chat/queries/get-agents-query.hook.tsx ✅
+- src/ui/chat/queries/get-contact-information-query.hook.tsx ✅
+- src/ui/chat/queries/get-contact-contracts-query.hook.tsx ⚠️
+- src/ui/chat/types/chat-send-mode.type.ts ✅
+- src/ui/contract/components/client/cards/contract-card/~ ⚠️
+- src/ui/contract/components/server/lists/contract-card-list/~ ⚠️
+- src/ui/ticket/components/client/cards/ticket-card/~ ⚠️
+- src/ui/ticket/components/client/dropdowns/tickets-filter/~ ⚠️
+- src/ui/ticket/components/client/forms/create-ticket-form/~ ⚠️
+- src/ui/ticket/components/client/lists/ticket-card-list/~ ⚠️
+- src/ui/ticket/components/server/modals/create-ticket-modal/~ ⚠️
+- src/ui/ticket/constant/ticket-filter-options.constant.ts ✅
+- src/ui/ticket/dictionary/ticket-card-border-color.dictionary.ts ✅
+- src/ui/ticket/dictionary/ticket-status-color.dictionary.ts ✅
+- src/ui/ticket/enums/ticket-filter-option-values.enum.ts ✅
+- src/ui/ticket/interfaces/ticket-filter-option.interface.ts ✅
+- src/ui/ticket/schemas/create-ticket-form.schema.ts ✅
+- src/ui/ticket/types/ticket-filter-option-value.type.ts ✅
 
+- src/env.d.ts ✅
 
-## Things done
-
-## Logout Button
+## Login action
 
 ```typescript
-"use client";
+'use server';
 
-import { logoutAction } from "@ui-auth/actions";
+import type { LoginActionState } from '@ui-auth/interfaces';
 
-interface LogoutButtonProps {
-  children?: React.ReactNode;
-  className?: string;
-}
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export function LogoutButton({ children, className }: LogoutButtonProps) {
-  const handleLogout = async () => {
-    try {
-      await logoutAction();
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
-  };
+import { ServerCrypto } from '@crypto/classes/server-crypto.class';
+import { daysToSeconds } from '@timer/utils/days-to-seconds.util';
+import { minutesToSeconds } from '@timer/utils/minutes-to-seconds.util';
 
-  return (
-    <button onClick={handleLogout} className={className} type="button">
-      {children || "Cerrar sesión"}
-    </button>
-  );
-}
-```
+import { LoginDTO } from '@module-auth/infrastructure/dtos/login.dto';
 
-## Obtener el usuario en componentes de servidor
+import { ENVS } from '@ui-core/envs/envs';
 
-```typescript
-import { getCurrentUser } from "@ui-auth/utils";
+import { authService } from '@ui-auth/services/auth.service';
 
-export default async function ChatPage() {
-  const user = await getCurrentUser();
-
-  return (
-    <div className={styles.base}>
-      {user && (
-        <div style={{ padding: "1rem", borderBottom: "1px solid #ccc" }}>
-          <p>
-            Bienvenido, <strong>{user.first_name} {user.last_name}</strong>
-          </p>
-          <p>Email: {user.email}</p>
-        </div>
-      )}
-      <ChatList />
-    </div>
-  );
-}
-```
-
-## Utilidades para obtener el usuario, token y refresh token del lado del servidor
-
-```typescript
-"use server";
-
-import { cookies } from "next/headers";
-import type { LoginResultUser } from "@module-auth/domain/interfaces/login-response.interface";
-
-/**
- * Obtiene el usuario actual desde las cookies
- * Esta función solo debe usarse en Server Components o Server Actions
- *
- * @returns El usuario actual o null si no está autenticado
- */
-export async function getCurrentUser(): Promise<LoginResultUser | null> {
+export async function loginAction(
+  _prevState: LoginActionState,
+  formData: FormData,
+): Promise<LoginActionState> {
   try {
-    const cookieStore = await cookies();
-    const userDataCookie = cookieStore.get("user_data");
+    const encryptedPayload = formData.get('payload') as string;
 
-    if (!userDataCookie?.value) {
-      return null;
+    if (!encryptedPayload) {
+      throw new Error('Payload can not be encrypted');
     }
 
-    return JSON.parse(userDataCookie.value) as LoginResultUser;
-  } catch (error) {
-    console.error("Error al obtener el usuario actual:", error);
-    return null;
+    const { email, password } = ServerCrypto.decryptObject<LoginDTO>(
+      encryptedPayload,
+      ENVS.CRYPTO_KEY,
+    );
+    const data = { email, password };
+
+    const response = await authService.login(data);
+
+    if (response?.error) {
+      throw new Error(response?.error);
+    }
+
+    if (
+      response?.results?.access &&
+      response?.results?.refresh &&
+      response?.results?.user
+    ) {
+      const cookieStore = await cookies();
+
+      cookieStore.set('access_token', response.results.access, {
+        httpOnly: true,
+        maxAge: minutesToSeconds(60),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+
+      cookieStore.set('refresh_token', response.results.refresh, {
+        httpOnly: true,
+        maxAge: daysToSeconds(1),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+
+      cookieStore.set('user_data', JSON.stringify(response.results.user), {
+        httpOnly: true,
+        maxAge: minutesToSeconds(60),
+        path: '/',
+        sameSite: 'lax',
+        secure: ENVS.NODE_ENV === 'production',
+      });
+    }
+
+    redirect('/chat');
+  } catch (err) {
+    const error = err as Error;
+
+    if (error.message === 'NEXT_REDIRECT') {
+      throw error;
+    }
+
+    return {
+      errors: {
+        form: [
+          error?.message ||
+            'Lo sentimos, ha ocurrido un error al iniciar sesión. Por favor intente nuevamente.',
+        ],
+      },
+      message: 'Login Failed',
+      success: false,
+    };
   }
 }
-
-/**
- * Verifica si el usuario está autenticado
- *
- * @returns true si el usuario está autenticado, false en caso contrario
- */
-export async function isAuthenticated(): Promise<boolean> {
-  const token = await getAccessToken();
-  return !!token;
-}
 ```
+
+## PENDINGS
+
+- Debo aplicar principio DRY en el chat-transfer-modal usando el modal-card

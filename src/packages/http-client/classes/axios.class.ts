@@ -10,9 +10,13 @@ import type {
   HttpClientConfiguration,
   HttpErrorResponse,
   HttpLoggerAdapter,
+  UploadFileBody,
 } from '../interfaces';
 
 import axios from 'axios';
+import Cookies from 'js-cookie';
+
+import { X_MEDIA_TYPE_HEADER_DICTIONARY } from '../dictionaries/x-media-type-header.dictionary';
 
 import { LogLevels } from '../enums/log-levels.enum';
 
@@ -21,9 +25,7 @@ export class Axios implements HttpAdapter {
   private readonly logger?: HttpLoggerAdapter;
 
   constructor(config?: AxiosRequestConfig, logger?: HttpLoggerAdapter) {
-    this.axiosInstance = axios.create({
-      ...config,
-    });
+    this.axiosInstance = axios.create(config);
     this.logger = logger;
     this.applyRequestInterceptor();
     this.applyResponseInterceptor();
@@ -31,7 +33,22 @@ export class Axios implements HttpAdapter {
 
   private applyRequestInterceptor() {
     this.axiosInstance.interceptors.request.use(
-      (config: InternalAxiosRequestConfig) => {
+      async (config: InternalAxiosRequestConfig) => {
+        let token: string | undefined;
+
+        try {
+          const { cookies } = await import('next/headers');
+          const cookieStore = await cookies();
+
+          token = cookieStore.get('token')?.value;
+        } catch {
+          token = Cookies.get('token');
+        }
+
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+
         return config;
       },
     );
@@ -48,40 +65,127 @@ export class Axios implements HttpAdapter {
     );
   }
 
-  private parseAxiosConfiguration(
-    configuration?: HttpClientConfiguration,
+  private parseParams(params?: string[]): string {
+    if (!params || !Array.isArray(params) || params?.length === 0) {
+      return '';
+    }
+
+    const parseParams = params.join('/');
+
+    return `/${parseParams}`;
+  }
+
+  private parseSearchParams(
+    searchParams?: Record<string, string | undefined>,
+  ): string {
+    if (!searchParams || typeof searchParams !== 'object') {
+      return '';
+    }
+
+    const filteredParams: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(searchParams)) {
+      if (value !== undefined) {
+        filteredParams[key] = value;
+      }
+    }
+
+    if (Object.keys(filteredParams).length === 0) {
+      return '';
+    }
+
+    const formattedSearchParams = new URLSearchParams(filteredParams);
+
+    return `?${formattedSearchParams}`;
+  }
+
+  private sanitizeConfiguration(
+    configurations: HttpClientConfiguration,
   ): AxiosRequestConfig {
-    return {
-      headers: configuration?.headers,
-    };
+    delete configurations.params;
+    delete configurations.parseResponseOnCamelCase;
+    delete configurations.searchParams;
+
+    return configurations;
   }
 
   public async get<T = unknown>(
     endpoint: string,
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
-    try {
-      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
+    let parsedParams = '';
+    let parsedSearchParams = '';
 
-      const response = await this.axiosInstance.get<T>(
-        endpoint,
-        axiosConfiguration,
-      );
-
-      if (!response?.data && response.statusText === 'OK') {
-        throw new Error('Axios data request has failed!');
-      }
-
-      return response?.data;
-    } catch (err) {
-      const error = err as AxiosError<HttpErrorResponse>;
-
-      return {
-        error: error?.response?.data?.error ?? error?.message,
-        status: error?.response?.data?.status ?? 500,
-        success: false,
-      } as T;
+    if (configuration?.params) {
+      parsedParams = this.parseParams(configuration?.params);
     }
+
+    if (configuration?.searchParams) {
+      parsedSearchParams = this.parseSearchParams(configuration?.searchParams);
+    }
+
+    const axiosConfig = this.sanitizeConfiguration(configuration || {});
+
+    return this.axiosInstance
+      .get<T>(endpoint + parsedParams + parsedSearchParams, axiosConfig)
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios get request has failed!');
+        }
+
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+
+        throw error;
+      });
+  }
+
+  public async getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return this.axiosInstance
+      .get<ArrayBuffer>(endpoint, {
+        ...configuration,
+        responseType: 'arraybuffer',
+        headers: {
+          ...configuration?.headers,
+          Accept: '*/*',
+        },
+      })
+      .then(async (response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios file get request has failed!');
+        }
+
+        const arrayBuffer = response.data;
+        const blob = new Blob([arrayBuffer]);
+
+        return new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onloadend = () => {
+            if (reader.result) {
+              resolve(reader.result as string);
+            } else {
+              reject(new Error('Failed to read image data'));
+            }
+          };
+
+          reader.onerror = () => {
+            reject(new Error('Failed to read image blob'));
+          };
+
+          reader.readAsDataURL(blob);
+        });
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+
+        throw error;
+      });
   }
 
   public async post<T = unknown, R = unknown>(
@@ -89,28 +193,54 @@ export class Axios implements HttpAdapter {
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
-    try {
-      const axiosConfiguration = this.parseAxiosConfiguration(configuration);
+    const axiosConfig = this.sanitizeConfiguration(configuration || {});
 
-      const response = await this.axiosInstance.post<R>(
-        endpoint,
-        body,
-        axiosConfiguration,
-      );
+    return this.axiosInstance
+      .post<R>(endpoint, body, axiosConfig)
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios post request has failed!');
+        }
 
-      if (!response?.data && response.statusText === 'OK') {
-        throw new Error('Axios data request has failed!');
-      }
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
 
-      return response?.data;
-    } catch (err) {
-      const error = err as AxiosError<HttpErrorResponse>;
+        throw error;
+      });
+  }
 
-      return {
-        error: error?.response?.data?.error ?? error?.message,
-        status: error?.response?.data?.status ?? 500,
-        success: false,
-      } as R;
-    }
+  public async uploadFile<T = unknown>(
+    endpoint: string,
+    body: UploadFileBody,
+    configuration?: HttpClientConfiguration,
+  ): Promise<T> {
+    const fileBuffer = await body?.file.arrayBuffer();
+
+    return this.axiosInstance
+      .post<T>(endpoint, fileBuffer, {
+        ...configuration,
+        headers: {
+          'Content-Type': body?.file?.type ?? 'application/octet-stream',
+          ...configuration?.headers,
+          'X-Filename': body?.filename,
+          'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
+        },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
+      })
+      .then((response) => {
+        if (!response?.data && response.statusText === 'OK') {
+          throw new Error('Axios file upload request has failed!');
+        }
+
+        return response?.data;
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+
+        throw error;
+      });
   }
 }

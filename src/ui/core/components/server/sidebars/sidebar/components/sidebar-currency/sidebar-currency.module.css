@@ -1,0 +1,24 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.base__currency {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.base__dollar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.base__rates {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

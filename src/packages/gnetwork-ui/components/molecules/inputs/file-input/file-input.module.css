@@ -1,0 +1,34 @@
+.base {
+  background: none;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  outline: none;
+  padding: 0;
+}
+
+.base[data-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.base__default_trigger {
+  align-items: center;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  justify-content: center;
+  padding: 4px;
+  transition: background-color 0.2s;
+}
+
+.base__input {
+  display: none;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+}

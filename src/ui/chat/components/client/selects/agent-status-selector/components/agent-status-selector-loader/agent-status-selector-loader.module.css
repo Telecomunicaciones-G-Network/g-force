@@ -1,0 +1,20 @@
+.base {
+  animation: spin 1s linear infinite;
+}
+
+.base__spinner_circle {
+  opacity: 0.25;
+}
+
+.base__spinner_path {
+  opacity: 0.75;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

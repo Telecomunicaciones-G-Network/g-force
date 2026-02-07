@@ -1,0 +1,25 @@
+/**
+ * @name SOCKET_EVENTS_DICTIONARY
+ *
+ * @description This dictionary contains the names of the socket events.
+ *
+ * @returns {Record<string, string>} The socket events dictionary
+ */
+export const socketEventsDictionary = {
+  AGENT_STATUS_CHANGED: 'agent_status_changed',
+  CONNECTED: 'connected',
+  CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',
+  CONTACT_FINISHED: 'contact_finished',
+  CONVERSATION_ASSIGNED: 'conversation_assigned',
+  CONVERSATION_ASSIGNMENT_UPDATED: 'conversation_assignment_updated',
+  CONVERSATION_CREATED: 'conversation_created',
+  CONVERSATION_FINISHED: 'conversation_finished',
+  INCOMING_MESSAGE: 'incoming_message',
+  MEDIA_STATUS_CHANGED: 'media_status_changed',
+  MESSAGE_STATUS_CHANGED: 'message_status_changed',
+  NEW_MESSAGE_RECEIVED: 'new_message_received',
+  NEW_MESSAGE_SENT: 'new_message_sent',
+  OUTGOING_MESSAGE: 'outgoing_message',
+  REACTION_ADDED: 'reaction_added',
+  REACTION_REMOVED: 'reaction_removed',
+} as const satisfies Record<string, string>;

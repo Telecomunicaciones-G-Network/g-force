@@ -1,0 +1,14 @@
+.base {
+  height: 138px;
+  min-height: 138px;
+  position: relative;
+  width: 100%;
+}
+
+.base__container {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

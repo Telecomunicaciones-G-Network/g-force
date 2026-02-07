@@ -2,6 +2,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   font-family: inherit;
   font-size: 14px;
   font-weight: 300;
@@ -9,8 +10,14 @@
   letter-spacing: 0;
   line-height: 120%;
   max-width: 313px;
+  min-width: min(70px, 100%);
   padding: 8px;
+  position: relative;
   text-align: left;
   white-space: pre-line;
-  width: fit-content;
+  word-break: break-word;
+}
+
+.base__icon {
+  margin-left: auto;
 }

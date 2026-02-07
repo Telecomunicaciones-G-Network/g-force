@@ -1,0 +1,26 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 24px 0 24px;
+  position: relative;
+  width: 100%;
+}
+
+.base__collapsible {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.base__container {
+  display: flex;
+  width: 100%;
+}
+
+.base__form {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+}

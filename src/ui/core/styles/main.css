@@ -3,3 +3,4 @@
 @import "./globals.css";
 @import "./styles.css";
 @import "tw-animate-css";
+@import "react-day-picker/style.css";

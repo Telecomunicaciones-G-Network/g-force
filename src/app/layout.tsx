@@ -1,6 +1,10 @@
 import type { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 
+import 'reflect-metadata';
+
+import { Toaster } from 'sonner';
+
 import { ReactScanScript } from '@ui-core/components/server/scripts/react-scan-script';
 
 import { inter } from '@ui-core/fonts/inter.font';
@@ -18,13 +22,15 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        <link rel="icon" type="image/x-icon" href="favicon.png" />
         <ReactScanScript />
       </head>
       <body
         className={`${inter.variable} antialiased bg-background text-foreground`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Toaster position="bottom-center" />
+        </Providers>
       </body>
     </html>
   );

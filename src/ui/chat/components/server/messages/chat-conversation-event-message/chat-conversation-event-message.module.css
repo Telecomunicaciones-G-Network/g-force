@@ -1,0 +1,6 @@
+.base {
+  align-items: center;
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+}
