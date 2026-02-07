@@ -29,16 +29,17 @@ export const ChatCloseConversationModalContent = ({
         level="small"
         scheme="heading"
       >
-        "¿Finalizar conversación?"
+        ¿Finalizar conversación?
       </Text>
       <Text
         as="p"
+        align="center"
         className="mb-6 mt-2 text-neutral-500"
         level="small"
         scheme="paragraph"
       >
-        Esta acción cerrará el ticket actual y archivará el historial. Esta
-        acción no se puede deshacer.
+        Esta acción cerrará el chat actual y archivará el mismo en el historial.
+        Esta acción no se puede deshacer.
       </Text>
       <div className="grid gap-3 grid-cols-2 w-full">
         <Button
