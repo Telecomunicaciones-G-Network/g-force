@@ -11,4 +11,9 @@ export const CHAT_MANAGEMENT_TABS: TabLine[] = [
     label: 'Agentes',
     value: 'agent',
   },
+  {
+    id: 2,
+    label: 'Equipos',
+    value: 'team',
+  },
 ] as const;
