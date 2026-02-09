@@ -118,7 +118,7 @@ export const FloatingModalPaymentReportFastDebit = ({
               />
             </div>
             <div className="flex gap-2">
-              <div className="w-[30%]">
+              <div className="w-[35%]">
                 <SelectInputController
                   control={control}
                   fullWidth
