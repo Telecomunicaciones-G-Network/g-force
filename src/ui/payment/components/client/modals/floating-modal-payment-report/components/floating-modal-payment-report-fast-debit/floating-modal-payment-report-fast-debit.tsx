@@ -73,6 +73,7 @@ export const FloatingModalPaymentReportFastDebit = ({
               <AmountInputController
                 className="bg-chromatic"
                 control={control}
+                label="Monto a pagar (Bs.)"
                 fullWidth
                 isStatic
                 leftIcon={

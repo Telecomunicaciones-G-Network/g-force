@@ -34,11 +34,10 @@ export const useFloatingModal = () => {
     if (elementRef.current && !isReady) {
       const rect = elementRef.current.getBoundingClientRect();
       const centerX = (window.innerWidth - rect.width) / 2;
-      const centerY = (window.innerHeight - rect.height) / 2;
-
+      const topMargin = 100;
       setPosition({
         x: Math.max(0, centerX),
-        y: Math.max(0, centerY),
+        y: topMargin,
       });
       setIsReady(true);
     }
