@@ -23,6 +23,7 @@
 - Makefile ⚠️ (Add new commands for books)
 - tsconfig.json ✅
 
+- src/app/(private)/chat/layout.tsx ✅
 - src/app/(private)/chat/management/page~ ✅
 
 - src/modules/chat/domain/entities/agent.entity.ts ✅
@@ -206,6 +207,7 @@
 - src/ui/chat/components/client/forms/internal-message-form~ ⚠️
 - src/ui/chat/components/client/modals/chat-close-conversation-modal/~ ⚠️
 - src/ui/chat/components/client/selects/agent-status-selector~ ⚠️
+- src/ui/chat/components/client/subscribers/chat-base-socket-events-subscriber/~ ✅
 - src/ui/chat/components/client/tables/chat-management-agents-table/~ ✅
 - src/ui/chat/components/server/containers/chat-management-table-container/~ ✅
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
