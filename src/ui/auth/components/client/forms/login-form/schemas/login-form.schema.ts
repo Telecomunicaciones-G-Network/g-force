@@ -9,6 +9,7 @@ import { EMAIL_REGEX } from '@regexs/email.regex';
  *
  * @property {zod.ZodString} email - The email.
  * @property {zod.ZodString} password - The password.
+ * @property {zod.ZodBoolean} rememberSession - Whether to remember the session.
  */
 export const loginFormSchema = zod.object({
   email: zod
@@ -19,4 +20,5 @@ export const loginFormSchema = zod.object({
     .string()
     .min(1, 'La contraseña es requerida')
     .min(6, 'La contraseña debe tener al menos 6 caracteres'),
+  // rememberSession: zod.boolean().optional().default(false),
 });

@@ -1,7 +1,12 @@
 'use client';
 
+// import { Controller } from 'react-hook-form';
+// import { Link } from '@gnetwork-ui/components/atoms/links/link';
+// import { Checkbox } from '@gnetwork-ui/components/molecules/inputs/checkbox';
+
+import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
+import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
-import { Text } from '@gnetwork-ui/components/atoms/texts/text'; // Importa Text si lo tienes
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { LoginErrorAlert } from '@ui-auth/components/client/alerts/login-error-alert/login-error-alert';
@@ -11,9 +16,13 @@ import { PasswordInputController } from '@ui-core/components/server/inputs/passw
 
 import { LoginBrand } from './components/login-brand/login-brand';
 import { useLoginForm } from './login-form.hook';
+import {
+  MdLockOutline,
+  MdPersonOutline,
+  MdAdd,
+} from 'react-icons/md';
 
 import styles from './login-form.module.css';
-import { MdLockOutline, MdPersonOutline } from 'react-icons/md';
 
 /**
  * @name LoginForm
@@ -38,15 +47,15 @@ export const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       {serverError && (
-        <LoginErrorAlert message={serverError} onClose={closeErrorAlert} />
+        <div className={styles.base__alert}>
+          <LoginErrorAlert message={serverError} onClose={closeErrorAlert} />
+        </div>
       )}
-
-      {/* 1. Logo y Subtítulo */}
       <LoginBrand />
       <Text as="p" className={styles.base__subtitle}>
-        Más que Internet
+        <MdAdd className="text-red-600" size={32} />
+        Que Internet
       </Text>
-
       <div className={styles.base__form}>
         <div className={styles.base__row}>
           <EmailInputController
@@ -54,10 +63,13 @@ export const LoginForm = () => {
             control={control}
             fullWidth
             id="login_email"
-            leftIcon={<MdPersonOutline className="text-neutral-400" size={20} />}
+            // label="Usuario"
+            leftIcon={
+              <MdPersonOutline className="text-neutral-400" size={24} />
+            }
             name="email"
             onClear={() => clearErrors()}
-            placeholder="Email"
+            placeholder="Usuario"
           />
         </div>
         <div className={styles.base__row}>
@@ -66,12 +78,29 @@ export const LoginForm = () => {
             control={control}
             fullWidth
             id="login_password"
-            leftIcon={<MdLockOutline className="text-neutral-400" size={20} />}
+            // label="Contraseña"
+            leftIcon={<MdLockOutline className="text-neutral-400" size={24} />}
             name="password"
             onClear={() => clearErrors()}
             placeholder="Contraseña"
           />
         </div>
+        {/* CHECKOUT DE RECUERDA MI SESION */}
+        {/* <div className={styles.base__row}>
+          <Controller
+            control={control}
+            name="rememberSession"
+            render={({ field: { value, onChange, ...field } }) => (
+              <Checkbox
+                {...field}
+                checked={!!value}
+                id="login_remember_session"
+                label="Recordar mi sesión"
+                onChange={onChange}
+              />
+            )}
+          />
+        </div> */}
       </div>
       <div className={styles.base__row}>
         <Button
@@ -81,8 +110,32 @@ export const LoginForm = () => {
           loading={isSubmitting}
           type="submit"
         >
-          Iniciar Sesión
+          Iniciar sesión
         </Button>
+      </div>
+
+      <div className={styles.base__footer}>
+        <div className="text-center w-full">
+          <Text
+            className="text-center text-neutral-500"
+            scheme="label"
+            size="xs"
+          >
+            ¿Perdiste la contraseña?
+          </Text>
+        </div>
+        <div className="w-full">
+          <Separator />
+        </div>
+        <div className="w-full">
+          <Text
+            className="text-neutral-500 text-center"
+            scheme="label"
+            size="xs"
+          >
+            G-NETWORK - J500564015
+          </Text>
+        </div>
       </div>
     </form>
   );
