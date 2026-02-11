@@ -13,10 +13,12 @@ import { useCallback } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
-import { ToastSchemes } from '@gnetwork-ui/components/organisms/toasts/toast/enums/toast-schemes.enum';
-import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { Sounder } from '@sounder/classes/sounder.class';
+
+import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
+
+import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
+import { useSocket } from '@socketio/hooks/use-socket.hook';
 
 import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 

@@ -2,6 +2,14 @@ import { z as zod } from 'zod';
 
 import { EMAIL_REGEX } from '@regexs/email.regex';
 
+/**
+ * @name loginFormSchema
+ *
+ * @description The schema for the login form.
+ *
+ * @property {zod.ZodString} email - The email.
+ * @property {zod.ZodString} password - The password.
+ */
 export const loginFormSchema = zod.object({
   email: zod
     .string()

@@ -16,7 +16,7 @@ import styles from './pagination-next-button.module.css';
  * @extends {PaginationNextButtonProps}
  *
  * @property {boolean} canNext - Whether the next page is available.
- * @property {() => void} onNext - The function to call when the next page is clicked.
+ * @property {VoidFunction} onNext - The function to call when the next page is clicked.
  */
 export const PaginationNextButton = ({
   canNext = true,

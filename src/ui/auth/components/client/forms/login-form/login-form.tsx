@@ -4,19 +4,26 @@ import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
+import { LoginErrorAlert } from '@ui-auth/components/client/alerts/login-error-alert/login-error-alert';
+
 import { EmailInputController } from '@ui-core/components/server/inputs/email-input-controller';
 import { PasswordInputController } from '@ui-core/components/server/inputs/password-input-controller';
 
 import { LoginBrand } from './components/login-brand/login-brand';
-import { LoginErrorAlert } from './components/login-error-alert';
 
 import { useLoginForm } from './login-form.hook';
 
 import styles from './login-form.module.css';
 
+/**
+ * @name LoginForm
+ *
+ * @description The component to display the login form.
+ */
 export const LoginForm = () => {
   const {
     clearErrors,
+    closeErrorAlert,
     control,
     errors,
     handleSubmit,
@@ -33,10 +40,12 @@ export const LoginForm = () => {
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      {serverError && <LoginErrorAlert message={serverError} />}
+      {serverError && (
+        <LoginErrorAlert message={serverError} onClose={closeErrorAlert} />
+      )}
       <LoginBrand />
       <div className={styles.base__form}>
-        <div className={styles.base__input}>
+        <div className={styles.base__row}>
           <EmailInputController
             control={control}
             fullWidth
@@ -48,7 +57,7 @@ export const LoginForm = () => {
             required
           />
         </div>
-        <div className={styles.base__input}>
+        <div className={styles.base__row}>
           <PasswordInputController
             control={control}
             fullWidth
@@ -61,7 +70,7 @@ export const LoginForm = () => {
           />
         </div>
       </div>
-      <div className={styles.base__button}>
+      <div className={styles.base__row}>
         <Button
           color="red"
           disabled={!!Object.keys(errors)?.length || isSubmitting}

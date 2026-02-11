@@ -17,7 +17,7 @@ import styles from './table.module.css';
  * @property {ReactChild} children - Children for the table.
  * @property {boolean} enableSearch - Whether to enable the search input.
  * @property {boolean} hideHeader - Whether to hide the table header.
- * @property {() => void} onSearch - The function to call when the search is changed.
+ * @property {VoidFunction} onSearch - The function to call when the search is changed.
  * @property {Ref<HTMLDivElement>} ref - Ref for the table.
  * @property {string} searchValue - The current search value.
  * @property {string} title - Title for the table.

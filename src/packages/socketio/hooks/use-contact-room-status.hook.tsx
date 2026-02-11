@@ -38,7 +38,7 @@ interface UseContactRoomStatusReturn {
   isInRoom: boolean;
   isConnected: boolean;
   joinRoom: () => Promise<void>;
-  leaveRoom: () => void;
+  leaveRoom: VoidFunction;
   error: string | null;
 }
 
@@ -57,7 +57,7 @@ export function useContactRoomStatus({
   const isJoiningRef = useRef<boolean>(false);
   const joinOperationIdRef = useRef<number>(0);
   const joinRoomRef = useRef<(() => Promise<void>) | null>(null);
-  const leaveRoomRef = useRef<(() => void) | null>(null);
+  const leaveRoomRef = useRef<VoidFunction | null>(null);
 
   const log = useCallback(
     <T = unknown>(

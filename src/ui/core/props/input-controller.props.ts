@@ -10,6 +10,6 @@ export interface InputControllerProps<T extends FieldValues = FieldValues> {
   control: Control<T>;
   defaultValue?: PathValue<T, FieldPath<T>>;
   name: FieldPath<T>;
-  onClear?: () => void;
+  onClear?: VoidFunction;
   rules?: RegisterOptions<T, FieldPath<T>>;
 }

@@ -22,8 +22,8 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 interface UseFloatingModalPaymentReportMobilePaymentManualProps {
   invoice: Invoice;
-  onClose?: () => void;
-  onSuccessPayment?: () => void;
+  onClose?: VoidFunction;
+  onSuccessPayment?: VoidFunction;
 }
 
 export const useFloatingModalPaymentReportMobilePaymentManual = ({

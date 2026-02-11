@@ -19,8 +19,8 @@ import styles from './table-pagination.module.css';
  * @property {boolean} canNext - Whether the next page is available.
  * @property {boolean} canPrevious - Whether the previous page is available.
  * @property {string} className - The class name for the TablePagination component.
- * @property {() => void} goToNextPage - The function to call when the next page is clicked.
- * @property {() => void} goToPreviousPage - The function to call when the previous page is clicked.
+ * @property {VoidFunction} goToNextPage - The function to call when the next page is clicked.
+ * @property {VoidFunction} goToPreviousPage - The function to call when the previous page is clicked.
  * @property {number} limit - The limit of the table.
  * @property {(page: number) => void} onPageChange - The function to call when the page is clicked.
  * @property {number} page - The current page.

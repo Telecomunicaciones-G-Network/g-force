@@ -7,7 +7,9 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
-  fallback?: ReactNode | ((error: Error, resetError: () => void) => ReactNode);
+  fallback?:
+    | ReactNode
+    | ((error: Error, resetError: VoidFunction) => ReactNode);
   onError?: (error: Error, errorInfo: { componentStack: string }) => void;
   className?: string;
 }

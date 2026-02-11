@@ -43,8 +43,8 @@ const totalPages = 10;
 | `totalPages`   | `number`                 | `0`     | Total number of pages.                                |
 | `canPrevious`  | `boolean`                | `true`  | Whether the previous button is enabled.               |
 | `canNext`      | `boolean`                | `true`  | Whether the next button is enabled.                   |
-| `onPrevious`   | `() => void`             | —       | Called when the previous button is clicked.           |
-| `onNext`       | `() => void`             | —       | Called when the next button is clicked.               |
+| `onPrevious`   | `VoidFunction`             | —       | Called when the previous button is clicked.           |
+| `onNext`       | `VoidFunction`             | —       | Called when the next button is clicked.               |
 | `onPageChange` | `(page: number) => void` | —       | Called when a page number is clicked (0-based index). |
 | `className`    | `string`                 | `''`    | Additional CSS class for the root container.          |
 | `ref`          | `React.Ref<HTMLDivElement>` | —     | Ref for the root `div`.                               |

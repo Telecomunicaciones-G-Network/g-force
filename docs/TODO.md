@@ -162,9 +162,9 @@
 
 - src/packages/filer/utils/download-file-by-url.util.ts ✅
 - src/packages/filer/utils/remove-extension-from-filename.util.ts ✅
+- src/packages/gnetwork-ui/components/molecules/alerts/alert/~ ✅
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button/~ ✅
 - src/packages/gnetwork-ui/components/molecules/modals/modal-card/~ ✅
-- src/packages/gnetwork-ui/components/organisms/lists/flatlist/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-body/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-column/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-head/~ ✅
@@ -173,10 +173,12 @@
 - src/packages/gnetwork-ui/components/molecules/tables/table-header-row/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-row/! ✅
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
+- src/packages/gnetwork-ui/components/organisms/lists/flatlist/~ ✅
 - src/packages/gnetwork-ui/components/organisms/paginations/pagination/~ ✅
 - src/packages/gnetwork-ui/components/organisms/tables/table/~ ✅
 - src/packages/gnetwork-ui/components/organisms/tables/table-pagination/~ ✅
 - src/packages/gnetwork-ui/components/organisms/tabs/tabs-line~ ✅
+- src/packages/gnetwork-ui/components/organisms/toasts/toast/~ ✅
 - src/packages/gnetwork-ui/components/templates/blocks/empty-list-message/~ ✅
 - src/packages/gnetwork-ui/types/react-tbody.type.ts ✅
 - src/packages/gnetwork-ui/types/react-td.type.ts ⚠️
@@ -184,14 +186,21 @@
 - src/packages/gnetwork-ui/types/react-thead.type.ts ✅
 - src/packages/gnetwork-ui/types/react-tr.type.ts ✅
 - src/packages/hooks/use-click-outside.hook.tsx ✅
+- src/packages/regexs/email.regex.ts ✅
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/stringify/utils/capitalize-words.util.ts ✅
+- src/packages/timer/utils/days-to-seconds.util.ts ✅
 - src/packages/timer/utils/iso-date-to-seconds.util.ts ✅
+- src/packages/timer/utils/minutes-to-seconds.util.ts ✅
 
 - src/ui/core/enums/env-modes.enum.ts ✅
 
+- src/ui/core/constants/reset-action-form-key.constant.ts ✅
 - src/ui/core/constants/table-record-limit-per-page.constant.ts ✅
 - src/ui/core/components/client/tables/table-manager/~ ⚠️
+- src/ui/auth/actions/login.action.ts ⚠️
+- src/ui/auth/components/client/alerts/login-error-alert/~ ✅
+- src/ui/auth/components/client/forms/login-form/~ ⚠️
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/builders/agents-table.builder.tsx ⚠️
 - src/ui/chat/components/client/forms/internal-message-form~ ⚠️

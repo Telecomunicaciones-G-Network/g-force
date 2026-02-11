@@ -179,7 +179,7 @@ Main hook for interacting with the socket.
   status: SocketStatus;
   isConnected: boolean;
   emit: (event: string, data?: unknown) => void;
-  on: <T>(event: string, listener: (data: T) => void) => () => void;
+  on: <T>(event: string, listener: (data: T) => void) => VoidFunction;
   off: <T>(event: string, listener?: (data: T) => void) => void;
   once: <T>(event: string, listener: (data: T) => void) => void;
 }
@@ -216,7 +216,7 @@ Hook to track the connection status to a specific contact room. This hook automa
   isInRoom: boolean; // true if successfully joined to the room
   isConnected: boolean; // true if socket is connected
   joinRoom: () => Promise<void>; // Manually join the room
-  leaveRoom: () => void; // Manually leave the room
+  leaveRoom: VoidFunction; // Manually leave the room
   error: string | null; // Error message if any
 }
 ```

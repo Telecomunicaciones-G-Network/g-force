@@ -27,7 +27,7 @@ import { CHAT_TRANSFER_CONVERSATION_FORM_DEFAULT_VALUES } from './constants/chat
 import { transferChatConversationFormSchema } from './schemas/chat-transfer-conversation-modal-form.schema';
 
 interface UseChatTransferConversationModalBodyProps {
-  onClose: () => void;
+  onClose: VoidFunction;
 }
 
 export const useChatTransferConversationModalBody = ({

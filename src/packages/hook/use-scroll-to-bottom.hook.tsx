@@ -10,7 +10,7 @@ export interface UseScrollToBottomProps {
 
 export interface UseScrollToBottomReturn<T extends HTMLElement> {
   ref: React.RefObject<T>;
-  scrollToBottom: () => void;
+  scrollToBottom: VoidFunction;
 }
 
 export const useScrollToBottom = <T extends HTMLElement = HTMLDivElement>(

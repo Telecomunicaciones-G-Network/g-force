@@ -14,5 +14,5 @@ export interface AgentStatusSelectorTriggerProps {
   disabled?: boolean;
   isLoading?: boolean;
   isOpen?: boolean;
-  onClick?: () => void;
+  onClick?: VoidFunction;
 }

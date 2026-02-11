@@ -1,6 +1,18 @@
-export const alertSchemeVariant = {
-  error: 'bg-warning-100 border-warning-200 text-black',
-  neutral: 'bg-gray-200 border-gray-300 text-black',
-  success: 'bg-success-100 border-success-200 text-black',
-  wait: 'bg-dark-blue-background border-dark-blue-foreground text-dark-blue-foreground',
+/**
+ * @name alertSchemes
+ *
+ * @description The variants for the alert component.
+ *
+ * @property {string} error - The error variant.
+ * @property {string} neutral - The neutral variant.
+ * @property {string} success - The success variant.
+ * @property {string} wait - The wait variant.
+ * @property {string} warning - The warning variant.
+ */
+export const alertSchemes = {
+  error: 'bg-red-600 text-red-100',
+  neutral: 'bg-chromatic-inverted text-chromatic',
+  success: 'bg-tag-green-background text-tag-green-foreground',
+  wait: 'bg-dark-blue-background text-dark-blue-foreground',
+  warning: 'bg-warning-100 text-warning-300',
 } as const;

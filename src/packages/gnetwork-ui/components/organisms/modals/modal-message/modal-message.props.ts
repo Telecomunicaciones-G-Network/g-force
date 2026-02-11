@@ -3,7 +3,7 @@ import type { ReactChild } from '../../../../types';
 
 export interface ModalMessageButton {
   label: string;
-  onClick: () => void;
+  onClick: VoidFunction;
   color?: 'default' | 'black' | 'gray' | 'red' | 'transparent';
   scheme?: 'default' | 'outline';
   disabled?: boolean;
