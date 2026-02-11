@@ -55,7 +55,7 @@ export const Input = ({
           className={cn(styles.base__label, 'text-chromatic-inverted')}
           htmlFor={id || name}
         >
-          {label} {required ? ' *' : ''}
+          {label}
         </label>
       )}
       <div className={cn(classes)}>
