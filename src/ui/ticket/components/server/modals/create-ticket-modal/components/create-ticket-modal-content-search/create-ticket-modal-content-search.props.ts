@@ -17,5 +17,5 @@ export interface CreateTicketModalContentSearchProps {
     clientName: string,
     contracts: ClientContract[],
   ) => void;
-  toggleSearchMode?: () => void;
+  toggleSearchMode?: VoidFunction;
 }

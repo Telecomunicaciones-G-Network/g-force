@@ -27,7 +27,7 @@ export interface ContactStoreState {
   deleteOneContactById: (contactId: string) => void;
   existContactOnStore: (contactId: string) => boolean;
   hasContactConversationAssigned: (contactId: string) => boolean;
-  sortContactsByLatestMessage: () => void;
+  sortContactsByLatestMessage: VoidFunction;
   updateContactLatestConversation: (
     contactId: string,
     conversation: Partial<Conversation>,

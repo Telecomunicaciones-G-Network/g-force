@@ -11,6 +11,6 @@
 export interface ChatCloseConversationModalContentProps {
   disabled?: boolean;
   isLoading?: boolean;
-  onCancel?: () => void;
-  onConfirm?: () => void;
+  onCancel?: VoidFunction;
+  onConfirm?: VoidFunction;
 }

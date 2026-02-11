@@ -12,6 +12,8 @@ import { useForm } from 'react-hook-form';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
+import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
+
 import { CreateTicketCommand } from '@module-ticket/infrastructure/commands/create-ticket.command';
 
 import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
@@ -138,7 +140,10 @@ export const useCreateTicketForm = ({
       queryClient.invalidateQueries({
         queryKey: [CHAT_TAGS.GET_CHAT_CONTACT_TICKETS],
       });
-      showToast('Ticket Creado Satisfactoriamente', { scheme: 'success' });
+      showToast('Ticket Creado Satisfactoriamente', {
+        id: 'create-ticket-success-toast',
+        scheme: ToastSchemes.SUCCESS,
+      });
 
       setTimeout(() => {
         onSuccess?.();
@@ -146,7 +151,8 @@ export const useCreateTicketForm = ({
     },
     onError: () => {
       showToast('No se pudo crear el ticket. Intente nuevamente.', {
-        scheme: 'error',
+        id: 'create-ticket-error-toast',
+        scheme: ToastSchemes.ERROR,
       });
     },
   });

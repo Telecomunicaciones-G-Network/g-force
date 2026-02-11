@@ -13,6 +13,6 @@ import type { Contract } from '@module-contract/domain/interfaces/contract.inter
 export interface CreateTicketFormProps {
   filterClientId?: string | null;
   isSearchMode?: boolean;
-  onSuccess?: () => void;
+  onSuccess?: VoidFunction;
   selectedContract?: Contract;
 }

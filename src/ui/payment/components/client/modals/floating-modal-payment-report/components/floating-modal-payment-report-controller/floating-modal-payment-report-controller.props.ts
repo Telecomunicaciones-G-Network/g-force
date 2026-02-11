@@ -3,7 +3,7 @@ import type { PaymentType } from '@module-payment/domain/types';
 
 export interface FloatingModalPaymentReportControllerProps {
   invoice: Invoice;
-  onClose?: () => void;
-  onSuccessPayment?: () => void;
+  onClose?: VoidFunction;
+  onSuccessPayment?: VoidFunction;
   paymentType?: PaymentType;
 }

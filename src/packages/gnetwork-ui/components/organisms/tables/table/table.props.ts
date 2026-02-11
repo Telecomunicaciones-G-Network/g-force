@@ -9,7 +9,7 @@ import type { ReactDiv } from '../../../../types';
  *
  * @property {boolean} enableSearch - Whether to enable the search input.
  * @property {boolean} hideHeader - Whether to hide the table header.
- * @property {() => void} onSearch - The function to call when the search is changed.
+ * @property {VoidFunction} onSearch - The function to call when the search is changed.
  * @property {string} searchValue - The current search value (for the search input).
  * @property {string} title - Title for the table.
  */

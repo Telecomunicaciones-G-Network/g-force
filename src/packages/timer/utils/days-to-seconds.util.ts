@@ -1,3 +1,12 @@
+/**
+ * @name daysToSeconds
+ *
+ * @description Converts days to seconds.
+ *
+ * @param {number} days - The number of days to convert to seconds.
+ *
+ * @returns {number} The number of seconds.
+ */
 export const daysToSeconds = (days: number): number => {
   if (
     typeof days !== 'number' ||

@@ -47,7 +47,7 @@ import { Icon } from '@nebula-ui/components/atoms/icons/icon';
 | `size`      | `number \| string`            | `24`             | Size of the icon in pixels                           |
 | `color`     | `string`                      | `'currentColor'` | Color of the icon (uses CSS currentColor by default) |
 | `className` | `string`                      | `''`             | Additional CSS classes to apply                      |
-| `onClick`   | `() => void`                  | `undefined`      | Click handler function (makes icon clickable)        |
+| `onClick`   | `VoidFunction`                  | `undefined`      | Click handler function (makes icon clickable)        |
 
 ## Examples
 
@@ -150,7 +150,7 @@ interface IconProps {
   className?: string;
   color?: string;
   name: keyof typeof iconDictionary;
-  onClick?: () => void;
+  onClick?: VoidFunction;
   size?: number | string;
 }
 

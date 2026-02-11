@@ -18,7 +18,7 @@ import { Sounder } from '@sounder/classes/sounder.class';
 import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
-import { ToastSchemes } from '@gnetwork-ui/components/organisms/toasts/toast/enums/toast-schemes.enum';
+import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
 
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';

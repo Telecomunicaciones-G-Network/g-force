@@ -19,7 +19,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
  * @property onSucess - The callback function to be called when the media status changes successfully
  */
 interface UseOnMediaStatusChangedProps {
-  onSucess?: () => void;
+  onSucess?: VoidFunction;
 }
 
 /**

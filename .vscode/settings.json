@@ -17,6 +17,7 @@
     "agent-status-selector-loader": "react-components",
     "agent-status-selector-trigger": "react-components",
     "agent-status-selector": "react-components",
+    "alert": "react-components",
     "back-button": "react-components",
     "blocks": "mjml",
     "brand": "react-components",
@@ -98,6 +99,9 @@
     "forms": "custom",
     "internal-message-form": "react-components",
     "lists": "toc",
+    "login-brand": "react-components",
+    "login-error-alert": "react-components",
+    "login-form": "react-components",
     "mappers": "mappings",
     "modal-card-content": "react-components",
     "modal-card-header": "react-components",
@@ -167,6 +171,7 @@
     "tickets-filter": "react-components",
     "timer": "update",
     "toast": "react-components",
+    "toasts": "moon",
     "tooltip-base": "react-components",
     "tooltip-content": "react-components",
     "tooltip-trigger": "react-components",
@@ -191,6 +196,7 @@
     "*.pipeline.yml": "github-actions-workflow",
     "*.presenter.ts": "sentry",
     "*.props.ts": "svgr",
+    "*.regex.ts": "scheme",
     "*.repository.ts": "wxt",
     "*.schema.ts": "scala",
     "*.tsx": "react",
@@ -212,6 +218,12 @@
       "base": "robot",
       "color": "light-blue-400",
       "folderNames": ["agent"]
+    },
+    {
+      "name": "Alerts",
+      "base": "job",
+      "color": "red-500",
+      "folderNames": ["alerts"]
     },
     {
       "name": "Application",
@@ -361,6 +373,12 @@
       "base": "react-components",
       "color": "light-green-500",
       "folderNames": ["variants"]
+    },
+    {
+      "name": "Regexs",
+      "base": "tasks",
+      "color": "red-500",
+      "folderNames": ["regexs"]
     },
     {
       "name": "Sections",
@@ -549,6 +567,12 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React States",
+      "base": "react",
+      "color": "green-400",
+      "fileExtensions": ["state.ts"]
     },
     {
       "name": "React Stores",

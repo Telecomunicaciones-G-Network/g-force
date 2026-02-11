@@ -1,1 +1,1 @@
-export type { ToastScheme } from './toast-scheme.type';
+export type { ToastConfig } from './toast-config.type';

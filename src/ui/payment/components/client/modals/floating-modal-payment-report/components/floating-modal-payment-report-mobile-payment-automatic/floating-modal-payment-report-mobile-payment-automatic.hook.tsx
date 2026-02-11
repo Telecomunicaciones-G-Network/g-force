@@ -17,7 +17,7 @@ import { IMAGE_MIMETYPES_ALLOWED } from '@module-core/constants/image-mimetypes-
 import { MAXIMUM_ALLOWED_FILE_SIZE } from '@module-core/constants/maximum-allowed-file-size.constant';
 import { isFileMimetypeValid } from '@filer/utils/is-file-mimetype-valid.util';
 
-import { AlertSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
+import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
@@ -27,8 +27,8 @@ import { validateMobilePaymentWithImageService } from '@module-chat/infrastructu
 
 interface UseFloatingModalPaymentReportMobilePaymentAutomaticProps {
   invoice: Invoice;
-  onClose?: () => void;
-  onSuccessPayment?: () => void;
+  onClose?: VoidFunction;
+  onSuccessPayment?: VoidFunction;
 }
 
 export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
@@ -69,7 +69,7 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
           duration: 3000,
           id: 'chat-conversation-file-attach-dropdown-toast',
           position: 'top-right',
-          scheme: AlertSchemes.ERROR,
+          scheme: ToastSchemes.ERROR,
         },
       );
 
@@ -82,7 +82,7 @@ export const useFloatingModalPaymentReportMobilePaymentAutomatic = ({
         duration: 3000,
         id: 'chat-conversation-file-attach-dropdown-toast',
         position: 'top-right',
-        scheme: AlertSchemes.ERROR,
+        scheme: ToastSchemes.ERROR,
       });
 
       return;
