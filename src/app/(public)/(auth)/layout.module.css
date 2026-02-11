@@ -10,8 +10,8 @@
 
 .base__carousel {
   width: 100%;
-  height: 40vh;
-  min-height: 280px;
+  height: 35vh;
+  min-height: 250px;
   flex-shrink: 0;
 }
 
@@ -27,8 +27,8 @@
 /* Tablet: Still vertical layout but taller carousel */
 @media (min-width: 768px) {
   .base__carousel {
-    height: 50vh;
-    min-height: 400px;
+    height: 40vh;
+    min-height: 350px;
   }
 }
 
