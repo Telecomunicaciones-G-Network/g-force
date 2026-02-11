@@ -7,8 +7,6 @@ import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { useFloatingModalAction } from '@gnetwork-ui/components/organisms/modals/floating-modal/floating-modal-action.hook';
-
 import { CHAT_TAGS } from '@module-chat/infrastructure/dictionaries/chat-tags.dictionary';
 
 import { GetContactInvoicesQuery } from '@module-chat/infrastructure/queries/get-contact-invoices.query';
@@ -38,17 +36,21 @@ export const useChatInvoices = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { closeFloatingModal, isFloatingModalOpen, openFloatingModal } =
-    useFloatingModalAction();
+  const isFloatingModalOpen = useContactStore(
+    (state) => state.isPaymentModalOpen,
+  );
+  const setIsPaymentModalOpen = useContactStore(
+    (state) => state.setIsPaymentModalOpen,
+  );
 
   const closePaymentFloatingModal = () => {
     setSelectedInvoice(null);
-    closeFloatingModal();
+    setIsPaymentModalOpen(false);
   };
 
   const openPaymentFloatingModal = (invoice: Invoice) => {
     setSelectedInvoice(invoice);
-    openFloatingModal();
+    setIsPaymentModalOpen(true);
   };
 
   return {

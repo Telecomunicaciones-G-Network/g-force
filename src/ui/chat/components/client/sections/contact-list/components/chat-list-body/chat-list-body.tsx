@@ -25,6 +25,9 @@ export const ChatListBody = ({
   contacts = [],
 }: Readonly<ChatListBodyProps>) => {
   const activeAgent = useContactStore((state) => state.activeAgent);
+  const isPaymentModalOpen = useContactStore(
+    (state) => state.isPaymentModalOpen,
+  );
 
   const { activeContact, changeActiveContact } = useChatListBody();
 
@@ -33,6 +36,7 @@ export const ChatListBody = ({
       className={cn(
         styles.base,
         'pb-4 px-4 tablet:pb-[27px] tablet:px-8 lg:p-0',
+        isPaymentModalOpen && styles['base--blocked'],
       )}
     >
       {contacts?.length > 0 ? (

@@ -21,12 +21,15 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   activeContact: null,
   chatMode: ChatModes.LIST,
   contacts: [],
+  isPaymentModalOpen: false,
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) =>
     set({ activeAgent: agent }),
   setActiveContact: (contact: Contact | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
+  setIsPaymentModalOpen: (isOpen: boolean) =>
+    set({ isPaymentModalOpen: isOpen }),
   addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 

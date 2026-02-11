@@ -12,11 +12,13 @@ export interface ContactStoreState {
   activeContact: Contact | null;
   chatMode: ChatMode;
   contacts: Contact[];
+  isPaymentModalOpen: boolean;
 
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) => void;
   setActiveContact: (contact: Contact | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContacts: (contacts: Contact[]) => void;
+  setIsPaymentModalOpen: (isOpen: boolean) => void;
   updateActiveAgentStatus: (status: AgentStatus) => void;
 
   addContacts: (contacts: Contact[]) => void;

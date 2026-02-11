@@ -8,6 +8,9 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatListBody = () => {
   const activeContact = useContactStore((state) => state.activeContact);
+  const isPaymentModalOpen = useContactStore(
+    (state) => state.isPaymentModalOpen,
+  );
 
   const setActiveContact = useContactStore((state) => state.setActiveContact);
   const setChatMode = useContactStore((state) => state.setChatMode);
@@ -17,6 +20,11 @@ export const useChatListBody = () => {
   );
 
   const changeActiveContact = (contact: Contact) => {
+    // Bloquear cambio de contacto si el modal de pago está abierto
+    if (isPaymentModalOpen) {
+      return;
+    }
+
     setActiveContact(contact);
     setChatMode(ChatModes.CHAT);
     clearUnreadMessagesFromOneContact(contact?.id);
