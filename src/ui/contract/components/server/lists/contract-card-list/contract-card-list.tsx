@@ -14,8 +14,13 @@ import { contractsToFlatlistItemsAdapter } from './adapters/contracts-to-flatlis
 export const ContractCardList = ({
   contracts,
   selectedContract,
+  onContractSelect,
 }: Readonly<ContractCardListProps>) => (
   <Flatlist
-    items={contractsToFlatlistItemsAdapter(contracts, selectedContract)}
+    items={contractsToFlatlistItemsAdapter(
+      contracts,
+      selectedContract,
+      onContractSelect,
+    )}
   />
 );

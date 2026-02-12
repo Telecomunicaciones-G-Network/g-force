@@ -1,6 +1,6 @@
 import type { ModalCardHeaderProps } from './modal-card-header.props';
 
-import { MdInfoOutline } from 'react-icons/md';
+import { MdAppRegistration } from 'react-icons/md';
 
 import { Text } from '../../../../../atoms/texts/text';
 import { IconBadge } from '../../../../../molecules/badges/icon-badge';
@@ -27,7 +27,7 @@ export const ModalCardHeader = ({
     <IconBadge
       icon={
         icon ?? (
-          <MdInfoOutline className="fill-red-600 min-h-6 min-w-6 rotate-y-180 size-6" />
+          <MdAppRegistration className="fill-red-600 min-h-6 min-w-6 size-6" />
         )
       }
     />

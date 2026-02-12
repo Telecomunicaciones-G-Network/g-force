@@ -40,6 +40,8 @@ export const CreateTicketModalContent = ({
     filterClientName,
     filterClientContracts,
     filterSelectedContract,
+    handleContractSelect,
+    handleFilterContractSelect,
     isLoadingContactInformation,
     isLoadingContracts,
     isSearchMode,
@@ -129,6 +131,7 @@ export const CreateTicketModalContent = ({
               <ContractCardList
                 contracts={contracts}
                 selectedContract={selectedContract}
+                onContractSelect={handleContractSelect}
               />
             </div>
           )}
@@ -154,6 +157,7 @@ export const CreateTicketModalContent = ({
             <ContractCardList
               contracts={filterClientContracts}
               selectedContract={filterSelectedContract}
+              onContractSelect={handleFilterContractSelect}
             />
           </div>
           {filterSelectedContract && (

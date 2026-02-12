@@ -18,10 +18,12 @@ import styles from './contract-card.module.css';
  *
  * @property {Contract} contract - The contract to display in the card.
  * @property {boolean} [isActive] - Whether the contract is active.
+ * @property {function} [onClick] - Function to call when the card is clicked.
  */
 export const ContractCard = ({
   contract,
   isActive = false,
+  onClick,
 }: Readonly<ContractCardProps>) => (
   <>
     {contract && (
@@ -32,6 +34,7 @@ export const ContractCard = ({
           isActive && 'border-red-600',
         )}
         type="button"
+        onClick={onClick}
       >
         <div className={cn(styles.base__icon, 'bg-red-100 text-red-600')}>
           <MdOutlineReceiptLong className="min-h-6 min-w-6 size-6" />

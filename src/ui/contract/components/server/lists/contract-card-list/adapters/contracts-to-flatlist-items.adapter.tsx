@@ -10,12 +10,14 @@ import { ContractCard } from '@ui-contract/components/client/cards/contract-card
  *
  * @param {Contract[]} contracts - The contracts to convert.
  * @param {Contract} [selectedContract] - The selected contract.
+ * @param {function} [onContractSelect] - Function to call when a contract is selected.
  *
  * @returns {FlatlistItem[]} The flatlist items.
  */
 export const contractsToFlatlistItemsAdapter = (
   contracts: Contract[],
   selectedContract?: Contract,
+  onContractSelect?: (contract: Contract) => void,
 ): FlatlistItem[] => {
   if (!contracts || !Array.isArray(contracts) || contracts?.length === 0)
     return [];
@@ -23,10 +25,13 @@ export const contractsToFlatlistItemsAdapter = (
   return contracts?.map((contract: Contract) => ({
     id: contract?.number,
     item: (
-      <ContractCard
-        contract={contract}
-        isActive={selectedContract?.number === contract?.number}
-      />
+      <div className="shrink-0 flex-1 min-w-[85%] pr-4 last:pr-0">
+        <ContractCard
+          contract={contract}
+          isActive={selectedContract?.number === contract?.number}
+          onClick={() => onContractSelect?.(contract)}
+        />
+      </div>
     ),
   }));
 };

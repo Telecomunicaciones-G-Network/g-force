@@ -12,7 +12,7 @@ export const ContractCardBody = ({
       </Text>
     )}
     {contract?.address && (
-      <Text as="p" className="font-medium" level="small" scheme="label">
+      <Text as="p" className="font-medium line-clamp-2" level="small" scheme="label">
         Dirección: {contract?.address}
       </Text>
     )}

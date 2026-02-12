@@ -92,6 +92,14 @@ export const useCreateTicketModalContent = () => {
     }
   }, [contactContractsData]);
 
+  const handleContractSelect = (contract: Contract) => {
+    setSelectedContract(contract);
+  };
+
+  const handleFilterContractSelect = (contract: Contract) => {
+    setFilterSelectedContract(contract);
+  };
+
   return {
     clientFullName: contactInformationData?.data?.fullName,
     contracts: contactContractsData?.contracts ?? [],
@@ -113,6 +121,8 @@ export const useCreateTicketModalContent = () => {
         };
       }) ?? [],
     filterSelectedContract,
+    handleContractSelect,
+    handleFilterContractSelect,
     isLoadingContactInformation,
     isLoadingContracts,
     isSearchMode,
