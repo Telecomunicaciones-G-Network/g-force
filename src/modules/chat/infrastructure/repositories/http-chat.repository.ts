@@ -84,12 +84,12 @@ export const httpChatRepository: ChatRepository = {
   getContactInvoices: async (
     request: GetContactInvoicesRequest,
   ): Promise<GetContactInvoicesResponse> => getContactInvoicesService(request),
-  getContactTickets: async (
-    request: GetContactTicketsRequest,
-  ): Promise<GetContactTicketsResponse> => getContactTicketsService(request),
   getContacts: async (
     request?: GetContactsRequest,
   ): Promise<GetContactsResponse> => getContactsService(request),
+  getContactTickets: async (
+    request: GetContactTicketsRequest,
+  ): Promise<GetContactTicketsResponse> => getContactTicketsService(request),
   getFastDebitBanks: async (): Promise<GetFastDebitBanksResponse> =>
     getFastDebitBanksService(),
   processFastDebitPayment: async (

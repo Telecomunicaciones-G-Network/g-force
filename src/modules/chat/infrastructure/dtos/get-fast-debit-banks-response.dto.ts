@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface GetFastDebitBanksResultBankDTO {
   code: string;
@@ -10,4 +10,4 @@ export interface GetFastDebitBanksResultDTO {
 }
 
 export type GetFastDebitBanksResponseDTO =
-  ApiResponse<GetFastDebitBanksResultDTO>;
+  ApiBaseResponse<GetFastDebitBanksResultDTO>;

@@ -6,8 +6,8 @@ export class GetChatTeamsMapper {
     return {
       cursor: input?.cursor,
       error: input?.error,
-      hasMore: input?.hasMore,
-      nextCursor: input?.nextCursor,
+      hasMore: input?.has_more ?? false,
+      nextCursor: input?.next_cursor ?? null,
       status: input?.status,
       success: input?.success,
       teams: input?.results?.map(GetChatTeamsMapper.mapFromTeamArray) ?? [],

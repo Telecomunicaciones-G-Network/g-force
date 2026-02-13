@@ -24,7 +24,8 @@
 - tsconfig.json ✅
 
 - src/app/(private)/chat/layout.tsx ✅
-- src/app/(private)/chat/management/page~ ✅
+- src/app/(private)/chat/conversations/page.tsx~ ✅
+- src/app/(private)/chat/management/page.tsx~ ✅
 
 - src/modules/chat/domain/entities/agent.entity.ts ✅
 - src/modules/chat/domain/entities/contact.entity.ts ✅
@@ -33,8 +34,12 @@
 - src/modules/chat/domain/entities/message.entity.ts ✅
 - src/modules/chat/domain/entities/team.entity.ts ✅
 
+- src/modules/core/interfaces/api-base-response.interface.ts ✅
 - src/modules/core/interfaces/api-gsoft-response.interface.ts ✅
+- src/modules/core/interfaces/api-response.interface.ts ✅
 - src/modules/chat/domain/enums/agent-status.enum.ts ✅
+- src/modules/chat/domain/enums/contact-assignments.enum.ts ✅
+- src/modules/chat/domain/enums/contact-platforms.enum.ts ✅
 - src/modules/chat/domain/enums/conversation-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-storage-status.enum.ts ✅
 - src/modules/chat/domain/enums/media-types.enum.ts ✅
@@ -45,6 +50,7 @@
 - src/modules/chat/domain/exceptions/get-agents.exception.ts ⚠️
 - src/modules/chat/domain/exceptions/get-contact-contracts.exception.ts ✅
 - src/modules/chat/domain/exceptions/get-contact-tickets.exception.ts ✅
+- src/modules/chat/domain/exceptions/get-contacts.exception.ts ✅
 - src/modules/chat/domain/enums/team-codenames.enum.ts ✅
 - src/modules/chat/domain/interfaces/agent.interface.ts ✅
 - src/modules/chat/domain/interfaces/contact.interface.ts ✅
@@ -58,6 +64,8 @@
 - src/modules/chat/domain/interfaces/get-contact-contracts-request.interface.ts ✅
 - src/modules/chat/domain/interfaces/get-contact-tickets-request.interface.ts ✅
 - src/modules/chat/domain/interfaces/get-contact-tickets-response.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contacts-request.interface.ts ✅
+- src/modules/chat/domain/interfaces/get-contacts-response.interface.ts ✅
 - src/modules/chat/domain/interfaces/media.interface.ts ✅
 - src/modules/chat/domain/interfaces/message.interface.ts ✅
 - src/modules/chat/domain/interfaces/message-contact.interface.ts ✅
@@ -76,7 +84,9 @@
 - src/modules/chat/domain/interfaces/team.interface.ts ✅
 - src/modules/chat/domain/repositories/chat.repository.ts ✅
 - src/modules/chat/domain/types/agent-status.type.ts ✅
+- src/modules/chat/domain/types/contact-assignment.type.ts ✅
 - src/modules/chat/domain/types/contact-latest-message.type.ts ✅
+- src/modules/chat/domain/types/contact-platform.type.ts ✅
 - src/modules/chat/domain/types/conversation-status.type.ts ✅
 - src/modules/chat/domain/types/media-storage-status.type.ts ✅
 - src/modules/chat/domain/types/media-type.type.ts ✅
@@ -88,6 +98,7 @@
 - src/modules/chat/application/usecases/get-agents.usecase.ts ⚠️
 - src/modules/chat/application/usecases/get-contact-contracts.usecase.ts ⚠️
 - src/modules/chat/application/usecases/get-contact-tickets.usecase.ts ✅
+- src/modules/chat/application/usecases/get-contacts.usecase.ts ⚠️
 = src/modules/chat/infrastructure/dictionaries/chat-resources.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/chat-tags.dictionary.ts ✅
 - src/modules/chat/infrastructure/dictionaries/socket-emissions.dictionary.ts ✅
@@ -101,6 +112,8 @@
 - src/modules/chat/infrastructure/dtos/get-contact-contracts-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/get-contact-tickets-request.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/get-contact-tickets-response.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contacts-request.dto.ts ✅
+- src/modules/chat/infrastructure/dtos/get-contacts-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-agent-status-change-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-connected-response.dto.ts ✅
 - src/modules/chat/infrastructure/dtos/on-contact-assignment-updated-response.dto.ts ✅
@@ -119,6 +132,7 @@
 - src/modules/chat/infrastructure/mappers/get-agents.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/get-contact-contracts.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/get-contact-tickets.mapper.ts ✅
+- src/modules/chat/infrastructure/mappers/get-contacts.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-connected.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-assignment-updated.mapper.ts ✅
 - src/modules/chat/infrastructure/mappers/on-contact-finished.mapper.ts ✅
@@ -132,10 +146,12 @@
 - src/modules/chat/infrastructure/queries/get-agents.query.ts ✅
 - src/modules/chat/infrastructure/queries/get-contact-contracts.query.ts ✅
 - src/modules/chat/infrastructure/queries/get-contact-tickets.query.ts ✅
+- src/modules/chat/infrastructure/queries/get-contacts.query.ts ✅
 - src/modules/chat/infrastructure/repositories/http-chat.repository.ts ✅
 - src/modules/chat/infrastructure/services/get-agents.service.ts ⚠️
 - src/modules/chat/infrastructure/services/get-contact-contracts.service.ts ✅
 - src/modules/chat/infrastructure/services/get-contact-tickets.service.ts ⚠️
+- src/modules/chat/infrastructure/services/get-contacts.service.ts ⚠️
 - src/modules/contract/domain/entities/contract.entity.ts ✅
 - src/modules/contract/domain/enums/contract-status-codes.enum.ts ✅
 - src/modules/contract/domain/enums/contract-status-names.enum.ts ✅
@@ -166,6 +182,7 @@
 - src/packages/gnetwork-ui/components/molecules/alerts/alert/~ ✅
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button/~ ✅
 - src/packages/gnetwork-ui/components/molecules/modals/modal-card/~ ✅
+- src/packages/gnetwork-ui/components/molecules/loaders/infinity-scroll-loader/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-body/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-column/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-head/~ ✅
@@ -174,6 +191,7 @@
 - src/packages/gnetwork-ui/components/molecules/tables/table-header-row/~ ✅
 - src/packages/gnetwork-ui/components/molecules/tables/table-row/! ✅
 - src/packages/gnetwork-ui/components/molecules/buttons/collapsible-button~ ✅
+- src/packages/gnetwork-ui/components/organisms/containers/infinity-scroll-container/~ ⚠️
 - src/packages/gnetwork-ui/components/organisms/lists/flatlist/~ ✅
 - src/packages/gnetwork-ui/components/organisms/paginations/pagination/~ ✅
 - src/packages/gnetwork-ui/components/organisms/tables/table/~ ✅
@@ -186,7 +204,12 @@
 - src/packages/gnetwork-ui/types/react-th.type.ts ⚠️
 - src/packages/gnetwork-ui/types/react-thead.type.ts ✅
 - src/packages/gnetwork-ui/types/react-tr.type.ts ✅
+- src/packages/http-client/exceptions/base.exception.ts ✅
 - src/packages/hooks/use-click-outside.hook.tsx ✅
+- src/packages/hook/use-infinity-scroll.hook.tsx ✅
+- src/packages/hook/use-interseption-observer.hook.tsx ✅
+- src/packages/next-ui/props/server-component.props.ts ✅
+- src/packages/next-tools/validators/validate-search-params.validator.ts ✅
 - src/packages/regexs/email.regex.ts ✅
 - src/packages/sounder/classes/sounder.class.ts ✅
 - src/packages/stringify/utils/capitalize-words.util.ts ✅
@@ -196,6 +219,8 @@
 
 - src/ui/core/enums/env-modes.enum.ts ✅
 
+- src/ui/chat/constants/contact-platforms.constant.ts ✅
+- src/ui/chat/constants/conversation-status.constant.ts ✅
 - src/ui/core/constants/reset-action-form-key.constant.ts ✅
 - src/ui/core/constants/table-record-limit-per-page.constant.ts ✅
 - src/ui/core/components/client/tables/table-manager/~ ⚠️
@@ -205,13 +230,18 @@
 - src/ui/chat/actions/revalidate-chat-contacts.action.ts ✅
 - src/ui/chat/builders/agents-table.builder.tsx ⚠️
 - src/ui/chat/components/client/forms/internal-message-form~ ⚠️
+- src/ui/chat/components/client/lists/contact-list/~ ⚠️
 - src/ui/chat/components/client/modals/chat-close-conversation-modal/~ ⚠️
+- src/ui/chat/components/client/sections/contacts-section/~ ⚠️
 - src/ui/chat/components/client/selects/agent-status-selector~ ⚠️
 - src/ui/chat/components/client/subscribers/chat-base-socket-events-subscriber/~ ✅
 - src/ui/chat/components/client/tables/chat-management-agents-table/~ ✅
+- src/ui/chat/components/client/templates/chat-container/~ ⚠️
 - src/ui/chat/components/server/containers/chat-management-table-container/~ ✅
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
+- src/ui/chat/constants/chat-contact-platforms-select-options.constant.ts ⚠️
+- src/ui/chat/constants/chat-conversation-status-select-options.constant.ts ⚠️
 - src/ui/chat/constants/chat-management-tabs.constant.ts ✅
 - src/ui/chat/dictionaries/agent-status-color.dictionary.ts ✅
 - src/ui/chat/dictionaries/agent-status-label.dictionary.ts ✅

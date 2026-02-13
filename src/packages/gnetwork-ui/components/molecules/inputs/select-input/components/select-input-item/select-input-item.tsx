@@ -19,7 +19,7 @@ export const SelectInputItem = ({
   <SelectPrimitive.Item
     className={cn(
       styles.base,
-      'py-2 px-2 pl-8 rounded-sm text-sm transition-colors hover:bg-neutral-600 hover:text-chromatic! data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
+      'py-2 px-2 rounded-sm text-sm transition-colors hover:bg-neutral-600 hover:text-chromatic! data-disabled:pointer-events-none data-disabled:opacity-50 data-disabled:cursor-not-allowed',
       className,
     )}
     ref={ref}

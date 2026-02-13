@@ -2,38 +2,46 @@
 
 import type { Contact } from '@module-chat/domain/interfaces';
 import type { TeamCodename } from '@module-chat/domain/types';
-import type { ChatListBodyProps } from './chat-list-body.props';
+import type { ContactListProps } from './contact-list.props';
 
 import { Fragment } from 'react';
 
-import { cn } from '@gnetwork-ui/utils/cn.util';
-import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
+import { InfinityScrollContainer } from '@gnetwork-ui/components/organisms/containers/infinity-scroll-container';
 
-import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
+import { formatPhoneNumber } from '@stringify/utils/format-phone-number.util';
 
 import { CHAT_CONTACT_CONVERSATION_VISIBLE } from '@ui-chat/constants/chat-contact-conversation-visible.constant';
 
-import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+import { ChatCard } from '@ui-chat/components/client/cards/chat-card';
+import { ChatListEmpty } from '@ui-chat/components/client/sections/contacts-section/components/chat-list-empty';
 
-import { ChatListEmpty } from '../chat-list-empty';
+import { useContactList } from './contact-list.hook';
 
-import { useChatListBody } from './chat-list-body.hook';
-
-import styles from './chat-list-body.module.css';
-
-export const ChatListBody = ({
-  contacts = [],
-}: Readonly<ChatListBodyProps>) => {
-  const activeAgent = useContactStore((state) => state.activeAgent);
-
-  const { activeContact, changeActiveContact } = useChatListBody();
+/**
+ * @name ContactList
+ *
+ * @description This component is used to render the contact list.
+ *
+ * @property {Contact[]} contacts - The contacts to render.
+ *
+ * TODO: Turn ChatCard component into ContactCard component
+ * TODO: Turn ChatListEmpty component into ContactListEmpty component and its scope it inside of this folder component
+ */
+export const ContactList = ({ contacts = [] }: Readonly<ContactListProps>) => {
+  const {
+    activeAgent,
+    activeContact,
+    changeActiveContact,
+    contactsNextPage,
+    fetchNextContacts,
+    isLoadingMore,
+  } = useContactList();
 
   return (
-    <div
-      className={cn(
-        styles.base,
-        'pb-4 px-4 tablet:pb-[27px] tablet:px-8 lg:p-0',
-      )}
+    <InfinityScrollContainer
+      isLoading={isLoadingMore}
+      nextPage={contactsNextPage}
+      onLoadMore={fetchNextContacts}
     >
       {contacts?.length > 0 ? (
         contacts.map((contact: Contact) => (
@@ -63,6 +71,6 @@ export const ChatListBody = ({
       ) : (
         <ChatListEmpty />
       )}
-    </div>
+    </InfinityScrollContainer>
   );
 };

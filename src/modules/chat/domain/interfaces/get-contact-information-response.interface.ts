@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface GetContactInformationResponseData {
   clientId: number;
@@ -9,6 +9,6 @@ export interface GetContactInformationResponseData {
 }
 
 export interface GetContactInformationResponse
-  extends Pick<ApiResponse, 'status' | 'success'> {
+  extends Pick<ApiBaseResponse, 'status' | 'success'> {
   data: GetContactInformationResponseData;
 }

@@ -2,7 +2,7 @@ import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { ContactCardSkeleton } from '@ui-chat/components/client/sections/contact-list/components/contact-card-skeleton';
+import { ContactCardSkeleton } from '@ui-chat/components/client/sections/contacts-section/components/contact-card-skeleton';
 
 import styles from './chat-list-skeleton.module.css';
 

@@ -1,7 +1,7 @@
 import type { TeamCodename } from '../types';
 
 /**
- * @name Team
+ * @interface Team
  *
  * @description This interface represents the values of a team.
  *

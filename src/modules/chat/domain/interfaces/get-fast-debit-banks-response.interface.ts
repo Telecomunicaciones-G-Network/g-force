@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface GetFastDebitBanksResponseBank {
   code: string;
@@ -6,6 +6,6 @@ export interface GetFastDebitBanksResponseBank {
 }
 
 export interface GetFastDebitBanksResponse
-  extends Pick<ApiResponse, 'error' | 'status' | 'success'> {
+  extends Pick<ApiBaseResponse, 'error' | 'status' | 'success'> {
   banks: GetFastDebitBanksResponseBank[];
 }

@@ -3,7 +3,7 @@ import type { Agent } from './agent.interface';
 import type { Team } from './team.interface';
 
 /**
- * @name Conversation
+ * @interface Conversation
  *
  * @description This interface represents the values of a conversation.
  *

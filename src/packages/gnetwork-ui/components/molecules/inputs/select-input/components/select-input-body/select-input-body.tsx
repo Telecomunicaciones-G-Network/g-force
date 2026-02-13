@@ -23,15 +23,15 @@ export const SelectInputBody = ({
     {options && Array.isArray(options) && options?.length > 0 && (
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
+          ref={ref}
           className={cn(
             styles.base,
-            'border border-solid border-neutral-200 bg-chromatic min-w-[8rem] max-h-[330px] overflow-y-auto rounded-md shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-select-content-transform-origin]',
+            'border border-solid border-neutral-200 bg-chromatic min-w-32 max-h-[330px] overflow-y-auto rounded-md shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-select-content-transform-origin]',
             position === 'popper' &&
               'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
             className,
           )}
           position={position}
-          ref={ref}
           sideOffset={sideOffset}
           {...rest}
         >
@@ -39,7 +39,7 @@ export const SelectInputBody = ({
             className={cn(
               'p-1.5',
               position === 'popper' &&
-                'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+                'h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)',
             )}
           >
             <SelectInputOptions indicator={indicator} options={options} />
