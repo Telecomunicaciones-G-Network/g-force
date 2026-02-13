@@ -12,6 +12,7 @@ export interface ChatMessageProps extends ReactDiv {
   direction: BubbleVariants['mode'];
   isBot?: boolean;
   status?: BubbleStatus;
+  tagClassName?: string;
   tagColor?: TagColor;
   tagLabel?: string;
   time?: string;
