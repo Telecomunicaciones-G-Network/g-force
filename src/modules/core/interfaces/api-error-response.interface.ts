@@ -1,6 +1,6 @@
-import type { ApiResponse } from './api-response.interface';
+import type { ApiBaseResponse } from './api-base-response.interface';
 
 export interface ApiErrorResponse
-  extends Pick<ApiResponse, 'status' | 'success'> {
+  extends Pick<ApiBaseResponse, 'status' | 'success'> {
   error: string;
 }

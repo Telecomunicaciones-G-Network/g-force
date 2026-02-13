@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface LoginResultUser {
   created_at: Date;
@@ -19,4 +19,4 @@ export interface LoginResult {
   user: LoginResultUser;
 }
 
-export type LoginResponse = ApiResponse<LoginResult>;
+export type LoginResponse = ApiBaseResponse<LoginResult>;

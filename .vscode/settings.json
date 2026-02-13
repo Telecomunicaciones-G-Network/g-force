@@ -70,6 +70,9 @@
     "components": "react-components",
     "contact-card-skeleton": "react-components",
     "contact-list": "react-components",
+    "contacts-filters-dropdown-trigger": "react-components",
+    "contacts-filters-dropdown": "react-components",
+    "contacts-section": "react-components",
     "contract-card-body": "react-components",
     "contract-card-header": "react-components",
     "contract-card-list": "react-components",
@@ -98,6 +101,8 @@
     "floating-modal-payment-report-controller": "react-components",
     "floating-modal-payment-report-mobile-payment": "react-components",
     "forms": "custom",
+    "infinity-scroll-container": "react-components",
+    "infinity-scroll-loader": "react-components",
     "internal-message-form": "react-components",
     "lists": "toc",
     "login-brand": "react-components",
@@ -118,6 +123,8 @@
     "navbar-actions": "react-components",
     "navbar": "react-components",
     "navbars": "serverless",
+    "next-tools": "next",
+    "next-ui": "next",
     "objecter": "json",
     "pagination-basic-buttons": "react-components",
     "pagination-buttons": "react-components",
@@ -203,6 +210,7 @@
     "*.schema.ts": "scala",
     "*.tsx": "react",
     "*.util.ts": "credits",
+    "*.validator.ts": "vim",
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
     "envs.ts": "ejs",
@@ -300,6 +308,12 @@
       "folderNames": ["layouts"]
     },
     {
+      "name": "Loaders",
+      "base": "ci",
+      "color": "purple-400",
+      "folderNames": ["loaders"]
+    },
+    {
       "name": "Modules",
       "base": "plugin",
       "color": "red-500",
@@ -316,6 +330,12 @@
       "base": "connection",
       "color": "pink-400",
       "folderNames": ["presenters"]
+    },
+    {
+      "name": "Props",
+      "base": "react-components",
+      "color": "yellow-800",
+      "folderNames": ["props"]
     },
     {
       "name": "Queries",
@@ -441,6 +461,12 @@
       "base": "admin",
       "color": "blue-600",
       "folderNames": ["user"]
+    },
+    {
+      "name": "Validators",
+      "base": "rules",
+      "color": "green-500",
+      "folderNames": ["validators"]
     }
   ],
   "material-icon-theme.files.customClones": [

@@ -12,6 +12,8 @@ export interface ContactStoreState {
   activeContact: Contact | null;
   chatMode: ChatMode;
   contacts: Contact[];
+  contactsHasMorePages: boolean;
+  contactsNextPage: string | null;
 
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) => void;
   setActiveContact: (contact: Contact | null) => void;
@@ -23,6 +25,10 @@ export interface ContactStoreState {
   addOneUnreadMessageToContact: (
     params: AddOneUnreadMessageToContactParams,
   ) => void;
+  changeContactsPagination: (params: {
+    hasMore: boolean;
+    nextCursor: string | null;
+  }) => void;
   clearUnreadMessagesFromOneContact: (contactId: string) => void;
   deleteOneContactById: (contactId: string) => void;
   existContactOnStore: (contactId: string) => boolean;

@@ -14,9 +14,9 @@ export class GetChatMessagesMapper {
     return {
       cursor: input?.cursor,
       error: input?.error,
-      hasMore: input?.hasMore,
+      hasMore: input?.has_more ?? false,
       messages: input?.results?.map(GetChatMessagesMapper.mapFromArray) ?? [],
-      nextCursor: input?.nextCursor,
+      nextCursor: input?.next_cursor ?? null,
       status: input?.status,
       success: input?.success,
     };

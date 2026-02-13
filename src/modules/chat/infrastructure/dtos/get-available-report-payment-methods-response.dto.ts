@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export type GetAvailableReportPaymentMethodsResponseResultDTO = Record<
   string,
@@ -6,4 +6,4 @@ export type GetAvailableReportPaymentMethodsResponseResultDTO = Record<
 >;
 
 export type GetAvailableReportPaymentMethodsResponseDTO =
-  ApiResponse<GetAvailableReportPaymentMethodsResponseResultDTO>;
+  ApiBaseResponse<GetAvailableReportPaymentMethodsResponseResultDTO>;

@@ -21,6 +21,8 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   activeContact: null,
   chatMode: ChatModes.LIST,
   contacts: [],
+  contactsHasMorePages: false,
+  contactsNextPage: null,
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) =>
     set({ activeAgent: agent }),
   setActiveContact: (contact: Contact | null) =>
@@ -64,6 +66,11 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
       ),
     });
   },
+  changeContactsPagination: ({ hasMore, nextCursor }) =>
+    set({
+      contactsHasMorePages: hasMore ?? false,
+      contactsNextPage: nextCursor ?? null,
+    }),
   clearUnreadMessagesFromOneContact: (contactId: string) => {
     const { contacts } = get();
 

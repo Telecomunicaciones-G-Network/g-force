@@ -1,8 +1,8 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface ProcessFastDebitPaymentResponseResultDTO {
   message: string;
 }
 
 export type ProcessFastDebitPaymentResponseDTO =
-  ApiResponse<ProcessFastDebitPaymentResponseResultDTO>;
+  ApiBaseResponse<ProcessFastDebitPaymentResponseResultDTO>;

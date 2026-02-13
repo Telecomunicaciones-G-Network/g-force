@@ -1,5 +1,5 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 import type { FinishChatConversationResult } from '../interfaces';
 
 export type FinishChatConversationResponseDTO =
-  ApiResponse<FinishChatConversationResult>;
+  ApiBaseResponse<FinishChatConversationResult>;

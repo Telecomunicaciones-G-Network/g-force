@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface TransferChatConversationResult {
   contact_id: string;
@@ -6,4 +6,4 @@ export interface TransferChatConversationResult {
 }
 
 export type TransferChatConversationResponseDTO =
-  ApiResponse<TransferChatConversationResult>;
+  ApiBaseResponse<TransferChatConversationResult>;

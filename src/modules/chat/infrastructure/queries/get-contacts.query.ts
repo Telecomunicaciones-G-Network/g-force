@@ -7,8 +7,16 @@ import { getContactsUsecase } from '../../application/usecases/get-contacts.usec
 
 import { httpChatRepository } from '../repositories/http-chat.repository';
 
+/**
+ * @name GetContactsQuery
+ *
+ * @description This query gets the contacts.
+ *
+ * @param {GetContactsRequest} query - The request object.
+ *
+ * @returns {Promise<GetContactsResponse>} The response object.
+ */
 export const GetContactsQuery = async (
   query?: GetContactsRequest,
-): Promise<GetContactsResponse> => {
-  return await getContactsUsecase(httpChatRepository, query);
-};
+): Promise<GetContactsResponse> =>
+  await getContactsUsecase(httpChatRepository, query);

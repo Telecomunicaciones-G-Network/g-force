@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 import type { AgentStatus, TeamCodename } from '../../domain/types';
 
 export interface GetChatTransferAgentsResult {
@@ -10,6 +10,6 @@ export interface GetChatTransferAgentsResult {
   teams: TeamCodename[];
 }
 
-export type GetChatTransferAgentsResponseDTO = ApiResponse<
+export type GetChatTransferAgentsResponseDTO = ApiBaseResponse<
   GetChatTransferAgentsResult[]
 >;

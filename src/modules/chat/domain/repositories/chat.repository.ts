@@ -41,10 +41,10 @@ import type {
  * @property {(request: GetChatMessagesRequest) => Promise<GetChatMessagesResponse>} getChatMessages - Retrieves chat messages based on request criteria.
  * @property {() => Promise<GetChatTeamsResponse>} getChatTeams - Gets chat teams information.
  * @property {(request?: GetChatTransferAgentsRequest) => Promise<GetChatTransferAgentsResponse>} getChatTransferAgents - Gets available transfer agents for chats, optionally filtered with a request.
- * @property {(request?: GetContactsRequest) => Promise<GetContactsResponse>} getContacts - Fetches contact list, optionally filtered with a request.
  * @property {(request: GetContactContractsRequest) => Promise<GetContactContractsResponse>} getContactContracts - Retrieves contracts associated with a contact.
  * @property {(contactId: string) => Promise<GetContactInformationResponse>} getContactInformation - Gets information details on a contact.
  * @property {(request: GetContactInvoicesRequest) => Promise<GetContactInvoicesResponse>} getContactInvoices - Gets invoices for a contact, based on request parameters.
+ * @property {(request?: GetContactsRequest) => Promise<GetContactsResponse>} getContacts - Fetches contact list, optionally filtered with a request.
  * @property {(request: GetContactTicketsRequest) => Promise<GetContactTicketsResponse>} getContactTickets - Retrieves tickets associated with a contact.
  * @property {() => Promise<GetFastDebitBanksResponse>} getFastDebitBanks - Lists available banks for fast debit operations.
  * @property {(request: ProcessFastDebitPaymentRequest) => Promise<ProcessFastDebitPaymentResponse>} processFastDebitPayment - Processes a payment via fast debit method.
@@ -64,7 +64,6 @@ export interface ChatRepository {
   getChatTransferAgents(
     request?: GetChatTransferAgentsRequest,
   ): Promise<GetChatTransferAgentsResponse>;
-  getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
   getContactContracts(
     request: GetContactContractsRequest,
   ): Promise<GetContactContractsResponse>;
@@ -74,6 +73,7 @@ export interface ChatRepository {
   getContactInvoices(
     request: GetContactInvoicesRequest,
   ): Promise<GetContactInvoicesResponse>;
+  getContacts(request?: GetContactsRequest): Promise<GetContactsResponse>;
   getContactTickets(
     request: GetContactTicketsRequest,
   ): Promise<GetContactTicketsResponse>;
