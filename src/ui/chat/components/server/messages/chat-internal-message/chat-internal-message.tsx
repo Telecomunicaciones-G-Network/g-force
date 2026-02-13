@@ -30,6 +30,7 @@ export const ChatInternalMessage = ({
         : BubbleModes.OUTGOING
     }
     status={BubbleStatus.READ}
+    tagClassName="bg-red-600 text-white"
     tagColor={TagColors.RED}
     tagLabel="Interno"
     time={isoToTime(message?.createdAt ?? '')}
