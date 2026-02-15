@@ -7,7 +7,7 @@ import type { PaginationItem } from '../../interfaces/pagination-item.interface'
  *
  * @property {PaginationItem[]} paginationPages - The pagination pages.
  * @property {number} pageIndex - The current page index.
- * @property {() => void} onPageChange - The function to call when the page is changed.
+ * @property {VoidFunction} onPageChange - The function to call when the page is changed.
  */
 export interface PaginationButtonsProps {
   paginationPages: PaginationItem[];

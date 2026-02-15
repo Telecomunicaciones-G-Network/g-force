@@ -273,7 +273,7 @@ export class SocketClient {
   public on<T = unknown>(
     event: string,
     listener: SocketEventListener<T>,
-  ): () => void {
+  ): VoidFunction {
     if (!this.eventListeners.has(event)) {
       this.eventListeners.set(event, new Set());
     }

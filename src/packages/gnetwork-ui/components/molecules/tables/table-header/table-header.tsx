@@ -15,7 +15,7 @@ import styles from './table-header.module.css';
  * @extends {ReactDiv}
  *
  * @property {boolean} enableSearch - Whether to enable the search input.
- * @property {() => void} onSearch - The function to call when the search is changed.
+ * @property {VoidFunction} onSearch - The function to call when the search is changed.
  * @property {string} searchValue - The current search value.
  * @property {string} title - Title for the table header.
  */

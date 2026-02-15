@@ -19,8 +19,8 @@ import styles from './pagination-basic-buttons.module.css';
  *
  * @property {boolean} canPrevious - Whether the previous button is enabled.
  * @property {boolean} canNext - Whether the next button is enabled.
- * @property {() => void} onPrevious - The function to call when the previous button is clicked.
- * @property {() => void} onNext - The function to call when the next button is clicked.
+ * @property {VoidFunction} onPrevious - The function to call when the previous button is clicked.
+ * @property {VoidFunction} onNext - The function to call when the next button is clicked.
  */
 export const PaginationBasicButtons = ({
   canPrevious = true,

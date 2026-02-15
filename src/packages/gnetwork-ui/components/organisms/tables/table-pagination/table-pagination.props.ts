@@ -9,8 +9,8 @@ import type { ReactDiv } from '../../../../types';
  *
  * @property {boolean} canNext - Whether the next page is available.
  * @property {boolean} canPrevious - Whether the previous page is available.
- * @property {() => void} goToNextPage - The function to call when the next page is clicked.
- * @property {() => void} goToPreviousPage - The function to call when the previous page is clicked.
+ * @property {VoidFunction} goToNextPage - The function to call when the next page is clicked.
+ * @property {VoidFunction} goToPreviousPage - The function to call when the previous page is clicked.
  * @property {number} limit - The limit of the table.
  * @property {(page: number) => void} onPageChange - The function to call when the page is clicked.
  * @property {number} page - The current page.
@@ -21,8 +21,8 @@ import type { ReactDiv } from '../../../../types';
 export interface TablePaginationProps extends ReactDiv {
   canNext?: boolean;
   canPrevious?: boolean;
-  goToNextPage?: () => void;
-  goToPreviousPage?: () => void;
+  goToNextPage?: VoidFunction;
+  goToPreviousPage?: VoidFunction;
   limit?: number;
   onPageChange?: (page: number) => void;
   page?: number;

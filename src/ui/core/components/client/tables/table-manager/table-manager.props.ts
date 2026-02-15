@@ -12,13 +12,13 @@ import type { TableProps } from '@gnetwork-ui/components/organisms/tables/table'
  * @property {ColumnDef<T>[]} builder - The builder for the table.
  * @property {T[]} data - The data for the table.
  * @property {boolean} enableSearch - Whether to enable the search input.
- * @property {() => void} goToNextPage - The function to call when the next page is clicked.
- * @property {() => void} goToPage - The function to call when the page is clicked.
- * @property {() => void} goToPreviousPage - The function to call when the previous page is clicked.
+ * @property {VoidFunction} goToNextPage - The function to call when the next page is clicked.
+ * @property {VoidFunction} goToPage - The function to call when the page is clicked.
+ * @property {VoidFunction} goToPreviousPage - The function to call when the previous page is clicked.
  * @property {boolean} isError - Whether the table has an error.
  * @property {boolean} isLoading - Whether the table is loading.
  * @property {number} limit - The limit of the table.
- * @property {() => void} onSearch - The function to call when the search is changed.
+ * @property {VoidFunction} onSearch - The function to call when the search is changed.
  * @property {number} page - The current page.
  * @property {number} pageIndex - The current page index.
  * @property {string} searchValue - The current search value.
@@ -29,9 +29,9 @@ export interface TableManagerProps<T> extends TableProps {
   builder: ColumnDef<T>[];
   data: T[];
   enableSearch?: boolean;
-  goToNextPage?: () => void;
+  goToNextPage?: VoidFunction;
   goToPage?: (page: number) => void;
-  goToPreviousPage?: () => void;
+  goToPreviousPage?: VoidFunction;
   isError?: boolean;
   isLoading?: boolean;
   limit?: number;

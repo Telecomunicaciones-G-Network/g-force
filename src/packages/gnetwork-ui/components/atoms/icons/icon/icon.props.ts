@@ -6,7 +6,7 @@ export interface IconProps {
   fillColor?: string;
   height?: number | string;
   name: keyof typeof iconDictionary;
-  onClick?: () => void;
+  onClick?: VoidFunction;
   rotate?: number;
   size?: number | string;
   width?: number | string;

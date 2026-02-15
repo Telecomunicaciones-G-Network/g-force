@@ -13,7 +13,7 @@ import { isFileSizeValid } from '@filer/utils/is-file-size-valid.util';
 import { IMAGE_MIMETYPES_ALLOWED } from '@module-core/constants/image-mimetypes-allowed.constant';
 import { MAXIMUM_ALLOWED_FILE_SIZE } from '@module-core/constants/maximum-allowed-file-size.constant';
 
-import { AlertSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
+import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
@@ -41,7 +41,7 @@ export const useChatConversationFileAttachDropdown = () => {
           duration: 3000,
           id: 'chat-conversation-file-attach-dropdown-toast',
           position: 'top-right',
-          scheme: AlertSchemes.ERROR,
+          scheme: ToastSchemes.ERROR,
         },
       );
 
@@ -54,7 +54,7 @@ export const useChatConversationFileAttachDropdown = () => {
         duration: 3000,
         id: 'chat-conversation-file-attach-dropdown-toast',
         position: 'top-right',
-        scheme: AlertSchemes.ERROR,
+        scheme: ToastSchemes.ERROR,
       });
 
       return;

@@ -1,3 +1,3 @@
 export interface ChatTransferConversationModalBodyProps {
-  onClose: () => void;
+  onClose: VoidFunction;
 }

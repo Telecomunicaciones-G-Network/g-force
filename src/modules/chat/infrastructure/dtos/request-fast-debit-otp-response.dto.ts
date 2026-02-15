@@ -1,8 +1,8 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface RequestFastDebitOTPResponseResultDTO {
   otp_expiration_timestamp: string;
 }
 
 export type RequestFastDebitOTPResponseDTO =
-  ApiResponse<RequestFastDebitOTPResponseResultDTO>;
+  ApiBaseResponse<RequestFastDebitOTPResponseResultDTO>;

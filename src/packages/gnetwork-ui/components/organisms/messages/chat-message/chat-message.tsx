@@ -15,8 +15,8 @@ import { cn } from '../../../../utils/cn.util';
 import styles from './chat-message.module.css';
 
 export const ChatMessage = ({
-  caption = null,
   bubbleClassName = '',
+  caption = null,
   children,
   className = '',
   customIconClassName = '',
@@ -24,6 +24,7 @@ export const ChatMessage = ({
   isBot = false,
   ref,
   status = BubbleStatus.NONE,
+  tagClassName = '',
   tagColor = TagColors.GRAY,
   tagLabel = '',
   time = '',
@@ -61,7 +62,10 @@ export const ChatMessage = ({
       <div className={styles.base__info}>
         {tagLabel && (
           <Tag
-            className="font-medium min-h-4 px-2 py-0.5 rounded-[3px] text-xs"
+            className={cn(
+              'font-medium min-h-4 px-2 py-0.5 rounded-[3px] text-xs',
+              tagClassName,
+            )}
             color={tagColor}
           >
             {tagLabel}

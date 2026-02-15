@@ -15,13 +15,39 @@ import { BaseError } from '@module-core/errors/base-error.error';
 
 import { ENVS } from '@ui-core/envs/envs';
 
+import { RESET_ACTION_FORM_KEY } from '@ui-core/constants/reset-action-form-key.constant';
+
+/**
+ * @name loginAction
+ *
+ * @description The action to login.
+ *
+ * @param {LoginActionState<LoginViewModel>} _prevState - The previous state.
+ * @param {FormData} formData - The form data.
+ *
+ * @returns {Promise<LoginActionState<LoginViewModel>>} The login action state.
+ *
+ * TODO: I should to create a new general action to handler forms as the same way and standarize the response
+ * TODO: I must to throw an exception if cookies store failed
+ * TODO: I must to crypt to request
+ * TODO: I must to store the token using httpOnly flag
+ * TODO: Use a dictionary to set redirect path
+ * TODO: NEXT_REDIRECT must be store in a dictionary
+ */
 export async function loginAction(
   _prevState: LoginActionState<LoginViewModel>,
   formData: FormData,
 ): Promise<LoginActionState<LoginViewModel>> {
-  try {
-    // TODO: Desencriptar la data
+  if (formData.get(RESET_ACTION_FORM_KEY) === 'true') {
+    return {
+      data: undefined,
+      errors: undefined,
+      message: undefined,
+      success: undefined,
+    };
+  }
 
+  try {
     const data = {
       email: formData.get('email') as string,
       password: formData.get('password') as string,
@@ -55,15 +81,11 @@ export async function loginAction(
         sameSite: 'lax',
         secure: ENVS.NODE_ENV === 'production',
       });
-
-      // TODO: Debo lanzar una excepcion si esto falla
     }
 
     redirect('/chat/conversations');
   } catch (err) {
     const error = err as BaseError;
-
-    // TODO: Debo manejar el mensaje si la redireccion de next falla
 
     if (error.message === 'NEXT_REDIRECT') {
       throw error;

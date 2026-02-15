@@ -29,6 +29,8 @@
       "@hook/*": ["./src/packages/hook/*"],
       "@http-client/*": ["./src/packages/http-client/*"],
       "@logger/*": ["./src/packages/logger/*"],
+      "@next-tools/*": ["./src/packages/next-tools/*"],
+      "@next-ui/*": ["./src/packages/next-ui/*"],
       "@objecter/*": ["./src/packages/objecter/*"],
       "@regexs/*": ["./src/packages/regexs/*"],
       "@socketio/*": ["./src/packages/socketio/*"],

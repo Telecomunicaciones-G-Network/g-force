@@ -4,8 +4,6 @@ import type {
 } from '../../domain/interfaces';
 import type { GetContactsResponseDTO } from '../dtos';
 
-import { DEFAULT_LIMIT_PARAM } from '@http-client/constants/default-limit-param.constant';
-
 import { HttpCaches } from '@http-client/enums/http-caches.enum';
 
 import { BaseException } from '@http-client/exceptions/base.exception';
@@ -17,9 +15,22 @@ import { CHAT_TAGS } from '../dictionaries/chat-tags.dictionary';
 
 import { GetContactsMapper } from '../mappers/get-contacts.mapper';
 
+/**
+ * @name getContactsService
+ *
+ * @description This service gets the contacts.
+ *
+ * @param {GetContactsRequest} request - The request object
+ *
+ * @returns {Promise<GetContactsResponse>} The response object
+ *
+ * TODO: Put gnetworkFetchApiClient to core module not ui
+ */
 export const getContactsService = async (
   request?: GetContactsRequest,
 ): Promise<GetContactsResponse> => {
+  const requestDto = GetContactsMapper.mapTo(request);
+
   const response = await gnetworkFetchApiClient.get<GetContactsResponseDTO>(
     CHAT_RESOURCES.GET_CONTACTS,
     {
@@ -29,8 +40,7 @@ export const getContactsService = async (
         revalidate: 0,
       },
       searchParams: {
-        ...request,
-        limit: request?.limit ?? DEFAULT_LIMIT_PARAM,
+        ...requestDto,
       },
     },
   );

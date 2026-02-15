@@ -1,8 +1,8 @@
 import type { Contact as ContactValues, Conversation } from '../interfaces';
-import type { ContactLatestMessage } from '../types';
+import type { ContactLatestMessage, ContactPlatform } from '../types';
 
 /**
- * @name Contact
+ * @class Contact
  *
  * @description This entity represents a contact in the chat system.
  *
@@ -11,6 +11,7 @@ import type { ContactLatestMessage } from '../types';
  * @property {ContactLatestMessage} latestMessage - The latest message of the contact.
  * @property {string} name - The name of the contact.
  * @property {string} phoneNumber - The phone number of the contact.
+ * @property {ContactPlatform} platform - The platform of the contact.
  * @property {number} unreadCount - The unread count of the contact.
  */
 export class Contact {
@@ -23,6 +24,7 @@ export class Contact {
     public latestMessage: ContactLatestMessage,
     public name: string,
     public phoneNumber: string,
+    public platform: ContactPlatform,
     public unreadCount: number = 0,
   ) {}
 
@@ -40,6 +42,7 @@ export class Contact {
       latestMessage: this.latestMessage,
       name: this.name,
       phoneNumber: this.phoneNumber,
+      platform: this.platform,
       unreadCount: this.unreadCount,
     };
   }

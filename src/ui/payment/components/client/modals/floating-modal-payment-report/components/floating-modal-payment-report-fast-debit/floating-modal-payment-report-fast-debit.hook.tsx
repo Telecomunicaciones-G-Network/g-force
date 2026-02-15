@@ -30,7 +30,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 interface UseFloatingModalPaymentReportFastDebitProps {
   invoice: Invoice;
-  onSuccessPayment?: () => void;
+  onSuccessPayment?: VoidFunction;
 }
 
 export const useFloatingModalPaymentReportFastDebit = ({

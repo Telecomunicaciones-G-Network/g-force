@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 import type { Ticket } from '@module-ticket/domain/interfaces/ticket.interface';
 
 /**
@@ -14,7 +14,7 @@ import type { Ticket } from '@module-ticket/domain/interfaces/ticket.interface';
  * @property {boolean} [success] - Indicates if the query was successful
  */
 export interface GetContactTicketsResponse
-  extends Pick<ApiResponse, 'status' | 'success'> {
+  extends Pick<ApiBaseResponse, 'status' | 'success'> {
   count?: number;
   next?: string | null;
   previous?: string | null;

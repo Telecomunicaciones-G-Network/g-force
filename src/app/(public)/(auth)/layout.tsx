@@ -1,35 +1,37 @@
 import type { PropsWithChildren } from 'react';
 
-import { cn } from '@gnetwork-ui/utils/cn.util';
+import { LoginCarousel } from '@ui-auth/components/client/login-carousel';
 
 import styles from './layout.module.css';
 
+// const slides = [
+//   {
+//     id: 1,
+//     title: 'Tu contribución marca la diferencia',
+//     description:
+//       'Cada idea, cada esfuerzo y cada logro son parte de lo que nos hace únicos. Gracias por ser parte de este equipo excepcional.',
+//   },
+//   {
+//     id: 2,
+//     title: 'Innovación que transforma',
+//     description:
+//       'Juntos creamos soluciones que mejoran la vida de nuestros clientes. Tu trabajo hace la diferencia.',
+//   },
+//   {
+//     id: 3,
+//     title: 'Excelencia en cada detalle',
+//     description:
+//       'La calidad de nuestro servicio refleja el compromiso de cada miembro del equipo. Gracias por tu dedicación.',
+//   },
+// ];
+
 export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <main
-      className={cn(
-        styles.base,
-        'flex-col items-start desktop:flex-row desktop:items-center',
-      )}
-    >
-      <section
-        className={cn(
-          styles.base__carousel,
-          'gap-0 items-center justify-between mb-auto tablet:flex-1 tablet:gap-2 tablet:items-start tablet:justify-start tablet:mb-0',
-        )}
-      >
-        <div className="h-[302px] p-4 tablet:h-[472px] desktop:h-full tablet:p-8 desktop:p-6 text-transparent">
-          carousel
-        </div>
+    <main className={styles.base}>
+      <section className={styles.base__carousel}>
+        <LoginCarousel slides={[]} />
       </section>
-      <main
-        className={cn(
-          styles.base__body,
-          'items-start tablet:items-center desktop:flex-1',
-        )}
-      >
-        {children}
-      </main>
+      <div className={styles.base__body}>{children}</div>
     </main>
   );
 }

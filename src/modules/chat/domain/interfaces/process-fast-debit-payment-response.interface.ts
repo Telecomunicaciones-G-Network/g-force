@@ -1,6 +1,6 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 export interface ProcessFastDebitPaymentResponse
-  extends Pick<ApiResponse, 'error' | 'status' | 'success'> {
+  extends Pick<ApiBaseResponse, 'error' | 'status' | 'success'> {
   message: string;
 }

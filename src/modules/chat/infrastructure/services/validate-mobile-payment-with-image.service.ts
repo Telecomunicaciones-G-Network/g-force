@@ -2,7 +2,7 @@ import { gnetworkAxiosApiClient } from '@ui-core/fetchers/gnetwork-axios-api-cli
 
 import { CHAT_RESOURCES } from '../dictionaries/chat-resources.dictionary';
 
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 import { BaseException } from '@http-client/exceptions/base.exception';
 
 interface ValidateMobilePaymentWithImageRequest {
@@ -13,7 +13,7 @@ interface ValidateMobilePaymentWithImageRequest {
 }
 
 interface ValidateMobilePaymentWithImageResponse
-  extends Omit<ApiResponse, 'results' | 'extra'> {
+  extends Omit<ApiBaseResponse, 'results' | 'extra'> {
   results: {
     message: string;
   };

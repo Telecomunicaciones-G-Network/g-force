@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 
 import { gnetworkAxiosApiClient } from '@ui-core/fetchers/gnetwork-axios-api-client.fetcher';
 
@@ -17,7 +17,7 @@ interface ValidateMobilePaymentRequest {
 }
 
 interface ValidateMobilePaymentResponse
-  extends Omit<ApiResponse, 'results' | 'extra'> {
+  extends Omit<ApiBaseResponse, 'results' | 'extra'> {
   results: {
     message: string;
   };

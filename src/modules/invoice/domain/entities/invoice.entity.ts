@@ -26,6 +26,7 @@ import { InvoiceStatusNames } from '../enums/invoice-status-names.enum';
  * @property {string} [cycle] - The cycle.
  * @property {string} dateEmission - The emission date.
  * @property {string | null} datePayment - The payment date.
+ * @property {string | null} datetime_payment - The payment datetime.
  * @property {string | null} documentNumber - The document number.
  * @property {InvoicePaymentMethod[] | null} paymentMethods - The payment methods.
  * @property {InvoiceStatusCode} statusCode - The status code.
@@ -49,6 +50,7 @@ export class Invoice {
     public paymentMethods: InvoicePaymentMethod[] | null = [],
     public statusCode: InvoiceStatusCode = InvoiceStatusCodes.UNPAID,
     public statusName: InvoiceStatusName = InvoiceStatusNames.UNPAID,
+    public datetime_payment: string | null = null,
   ) {}
 
   /**
@@ -72,6 +74,7 @@ export class Invoice {
       paymentMethods: this.paymentMethods,
       statusCode: this.statusCode,
       statusName: this.statusName,
+      datetime_payment: this.datetime_payment,
     };
   }
 }

@@ -32,8 +32,8 @@ import { TablePagination } from '@gnetwork-ui/organisms/tables/table-pagination'
 | `totalPages` | `number` | `0` | Total number of pages. |
 | `canNext` | `boolean` | `true` | Whether the next page is available. |
 | `canPrevious` | `boolean` | `true` | Whether the previous page is available. |
-| `goToNextPage` | `() => void` | — | Called when the user goes to the next page. |
-| `goToPreviousPage` | `() => void` | — | Called when the user goes to the previous page. |
+| `goToNextPage` | `VoidFunction` | — | Called when the user goes to the next page. |
+| `goToPreviousPage` | `VoidFunction` | — | Called when the user goes to the previous page. |
 | `onPageChange` | `(page: number) => void` | — | Called when the user selects a specific page. |
 | `className` | `string` | `''` | Additional CSS class for the root element. |
 | `ref` | `React.Ref<HTMLDivElement>` | — | Ref for the root `div`. |

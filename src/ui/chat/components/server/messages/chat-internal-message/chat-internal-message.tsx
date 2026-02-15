@@ -21,8 +21,8 @@ export const ChatInternalMessage = ({
   message,
 }: Readonly<ChatInternalMessageProps>) => (
   <ChatMessage
-    bubbleClassName="bg-red-700 text-chromatic"
-    customIconClassName="fill-chromatic"
+    bubbleClassName="bg-white text-black shadow-sm border border-neutral-100"
+    customIconClassName="fill-neutral-600"
     // TODO: Direction props is weird. We need to check this props
     direction={
       message?.direction === MessageDirections.INCOMING
@@ -30,6 +30,7 @@ export const ChatInternalMessage = ({
         : BubbleModes.OUTGOING
     }
     status={BubbleStatus.READ}
+    tagClassName="bg-red-600 text-white"
     tagColor={TagColors.RED}
     tagLabel="Interno"
     time={isoToTime(message?.createdAt ?? '')}

@@ -23,9 +23,9 @@ import styles from './pagination.module.css';
  * @property {boolean} canNext - Whether the next page is available.
  * @property {boolean} canPrevious - Whether the previous page is available.
  * @property {string} className - The class name for the Pagination component.
- * @property {() => void} onNext - The function to call when the next page is clicked.
+ * @property {VoidFunction} onNext - The function to call when the next page is clicked.
  * @property {(page: number) => void} onPageChange - The function to call when the page is clicked.
- * @property {() => void} onPrevious - The function to call when the previous page is clicked.
+ * @property {VoidFunction} onPrevious - The function to call when the previous page is clicked.
  * @property {number} pageIndex - The current page index.
  * @property {number} totalPages - The total number of pages.
  * @property {React.Ref<HTMLDivElement>} ref - The ref for the Pagination component.

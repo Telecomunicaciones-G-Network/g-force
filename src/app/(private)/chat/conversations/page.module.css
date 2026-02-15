@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 0;
-  overflow: hidden;
   height: calc(100dvh - 72px);
+  overflow: hidden;
   width: 100%;
 }

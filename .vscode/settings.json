@@ -7,6 +7,29 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  // Hightlight Extension
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "ALWAYS",
+      "color": "#ffffff",
+      "backgroundColor": "#06a77d",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "NEVER",
+      "color": "#ffffff",
+      "backgroundColor": "#e71d36",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "WARNING",
+      "color": "#ffffff",
+      "backgroundColor": "#fbac0e",
+      "overviewRulerColor": "grey"
+    }
+  ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
     "(private)": "secure",
@@ -17,6 +40,7 @@
     "agent-status-selector-loader": "react-components",
     "agent-status-selector-trigger": "react-components",
     "agent-status-selector": "react-components",
+    "alert": "react-components",
     "back-button": "react-components",
     "blocks": "mjml",
     "brand": "react-components",
@@ -25,6 +49,7 @@
     "button-group": "react-components",
     "button": "react-components",
     "buttons": "include",
+    "chat-base-socket-events-subscriber": "react-components",
     "chat-card": "react-components",
     "chat-close-conversation-modal-content": "react-components",
     "chat-close-conversation-modal-header": "react-components",
@@ -68,6 +93,9 @@
     "components": "react-components",
     "contact-card-skeleton": "react-components",
     "contact-list": "react-components",
+    "contacts-filters-dropdown-trigger": "react-components",
+    "contacts-filters-dropdown": "react-components",
+    "contacts-section": "react-components",
     "contract-card-body": "react-components",
     "contract-card-header": "react-components",
     "contract-card-list": "react-components",
@@ -96,8 +124,13 @@
     "floating-modal-payment-report-controller": "react-components",
     "floating-modal-payment-report-mobile-payment": "react-components",
     "forms": "custom",
+    "infinity-scroll-container": "react-components",
+    "infinity-scroll-loader": "react-components",
     "internal-message-form": "react-components",
     "lists": "toc",
+    "login-brand": "react-components",
+    "login-error-alert": "react-components",
+    "login-form": "react-components",
     "mappers": "mappings",
     "modal-card-content": "react-components",
     "modal-card-header": "react-components",
@@ -113,6 +146,8 @@
     "navbar-actions": "react-components",
     "navbar": "react-components",
     "navbars": "serverless",
+    "next-tools": "next",
+    "next-ui": "next",
     "objecter": "json",
     "pagination-basic-buttons": "react-components",
     "pagination-buttons": "react-components",
@@ -141,6 +176,7 @@
     "skeleton": "react-components",
     "socketio": "wakatime",
     "sounder": "audio",
+    "subscribers": "scons",
     "table-body": "react-components",
     "table-column": "react-components",
     "table-head": "react-components",
@@ -167,6 +203,7 @@
     "tickets-filter": "react-components",
     "timer": "update",
     "toast": "react-components",
+    "toasts": "moon",
     "tooltip-base": "react-components",
     "tooltip-content": "react-components",
     "tooltip-trigger": "react-components",
@@ -191,10 +228,12 @@
     "*.pipeline.yml": "github-actions-workflow",
     "*.presenter.ts": "sentry",
     "*.props.ts": "svgr",
+    "*.regex.ts": "scheme",
     "*.repository.ts": "wxt",
     "*.schema.ts": "scala",
     "*.tsx": "react",
     "*.util.ts": "credits",
+    "*.validator.ts": "vim",
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
     "envs.ts": "ejs",
@@ -212,6 +251,12 @@
       "base": "robot",
       "color": "light-blue-400",
       "folderNames": ["agent"]
+    },
+    {
+      "name": "Alerts",
+      "base": "job",
+      "color": "red-500",
+      "folderNames": ["alerts"]
     },
     {
       "name": "Application",
@@ -286,6 +331,12 @@
       "folderNames": ["layouts"]
     },
     {
+      "name": "Loaders",
+      "base": "ci",
+      "color": "purple-400",
+      "folderNames": ["loaders"]
+    },
+    {
       "name": "Modules",
       "base": "plugin",
       "color": "red-500",
@@ -302,6 +353,12 @@
       "base": "connection",
       "color": "pink-400",
       "folderNames": ["presenters"]
+    },
+    {
+      "name": "Props",
+      "base": "react-components",
+      "color": "yellow-800",
+      "folderNames": ["props"]
     },
     {
       "name": "Queries",
@@ -363,6 +420,12 @@
       "folderNames": ["variants"]
     },
     {
+      "name": "Regexs",
+      "base": "tasks",
+      "color": "red-500",
+      "folderNames": ["regexs"]
+    },
+    {
       "name": "Sections",
       "base": "mjml",
       "color": "green-500",
@@ -421,6 +484,12 @@
       "base": "admin",
       "color": "blue-600",
       "folderNames": ["user"]
+    },
+    {
+      "name": "Validators",
+      "base": "rules",
+      "color": "green-500",
+      "folderNames": ["validators"]
     }
   ],
   "material-icon-theme.files.customClones": [
@@ -549,6 +618,12 @@
       "base": "react",
       "color": "deep-orange-400",
       "fileExtensions": ["provider.tsx"]
+    },
+    {
+      "name": "React States",
+      "base": "react",
+      "color": "green-400",
+      "fileExtensions": ["state.ts"]
     },
     {
       "name": "React Stores",

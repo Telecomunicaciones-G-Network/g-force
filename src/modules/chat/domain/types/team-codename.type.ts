@@ -1,5 +1,5 @@
 /**
- * @name TeamCodename
+ * @type TeamCodename
  *
  * @description This type represents the codename of a team.
  *

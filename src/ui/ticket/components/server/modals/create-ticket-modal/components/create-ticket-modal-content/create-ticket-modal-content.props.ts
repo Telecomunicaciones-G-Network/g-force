@@ -6,5 +6,5 @@
  * @property {function} [onClose] - Function to close the create ticket modal.
  */
 export interface CreateTicketModalContentProps {
-  onClose?: () => void;
+  onClose?: VoidFunction;
 }

@@ -1,37 +1,30 @@
-import type { ToastProps } from './toast.props';
+import type { AlertProps } from '../../../molecules/alerts/alert/alert.props';
 
-import { MdCancel, MdCheckCircle, MdOutlineTimer } from 'react-icons/md';
+import { Alert } from '../../../molecules/alerts/alert';
 
-import { ToastSchemes } from './enums/toast-schemes.enum';
+import { AlertSchemes } from '../../../molecules/alerts/alert/enums/alert-scheme.enum';
 
-import { getToastClassNames } from './toast.style';
-
+/**
+ * @name Toast
+ *
+ * @description The toast component.
+ *
+ * @property {string} className - The class name for the alert component.
+ * @property {React.ReactNode} children - The children for the alert component.
+ * @property {string} id - The id for the alert component.
+ * @property {React.Ref<HTMLDivElement>} ref - The ref for the alert component.
+ * @property {AlertSchemeType} scheme - The scheme for the alert component.
+ * @property {React.HTMLAttributes<HTMLDivElement>} rest - The rest props for the alert component.
+ */
 export const Toast = ({
   className = '',
   children,
   id,
-  scheme = ToastSchemes.NEUTRAL,
-}: Readonly<ToastProps>) => {
-  const classes = getToastClassNames({ className, scheme });
-
-  return (
-    <div className={classes} id={id}>
-      {scheme === ToastSchemes.ERROR && (
-        <MdCancel className="min-h-6 min-w-6 text-red-100" size={24} />
-      )}
-      {scheme === ToastSchemes.NEUTRAL && (
-        <MdCancel className="min-h-6 min-w-6 text-chromatic" size={24} />
-      )}
-      {scheme === ToastSchemes.SUCCESS && (
-        <MdCheckCircle
-          className="min-h-6 min-w-6 text-tag-green-foreground"
-          size={24}
-        />
-      )}
-      {scheme === ToastSchemes.WAIT && (
-        <MdOutlineTimer className="min-h-6 min-w-6 text-wait-300" size={24} />
-      )}
-      {children}
-    </div>
-  );
-};
+  ref,
+  scheme = AlertSchemes.NEUTRAL,
+  ...rest
+}: Readonly<AlertProps>) => (
+  <Alert ref={ref} className={className} id={id} scheme={scheme} {...rest}>
+    {children}
+  </Alert>
+);

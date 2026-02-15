@@ -18,8 +18,8 @@ export class GetChatTransferAgentsMapper {
         input?.results?.map(GetChatTransferAgentsMapper.mapFromAgentArray) ??
         [],
       error: input?.error,
-      hasMore: input?.hasMore,
-      nextCursor: input?.nextCursor,
+      hasMore: input?.has_more ?? false,
+      nextCursor: input?.next_cursor ?? null,
       status: input?.status,
       success: input?.success,
     };

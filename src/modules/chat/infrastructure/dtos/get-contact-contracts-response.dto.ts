@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@module-core/interfaces';
+import type { ApiBaseResponse } from '@module-core/interfaces';
 import type { GetContactContractsResult } from '../interfaces';
 
 /**
@@ -15,7 +15,7 @@ import type { GetContactContractsResult } from '../interfaces';
  */
 export interface GetContactContractsResponseDTO
   extends Pick<
-    ApiResponse<GetContactContractsResult[]>,
+    ApiBaseResponse<GetContactContractsResult[]>,
     'results' | 'status' | 'success'
   > {
   count?: number;

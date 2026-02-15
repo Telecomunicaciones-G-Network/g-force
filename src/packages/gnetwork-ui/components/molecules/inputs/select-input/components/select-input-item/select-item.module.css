@@ -1,9 +1,7 @@
 .base {
   align-items: center;
-  box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  font-family: inherit;
   justify-content: space-between;
   outline: none;
   position: relative;

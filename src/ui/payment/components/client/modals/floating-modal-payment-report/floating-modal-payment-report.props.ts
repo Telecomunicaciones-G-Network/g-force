@@ -1,6 +1,6 @@
 import type { Invoice } from '@module-invoice/domain/interfaces';
 
 export interface FloatingModalPaymentReportProps {
-  onClose?: () => void;
+  onClose?: VoidFunction;
   invoice: Invoice;
 }

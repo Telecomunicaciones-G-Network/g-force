@@ -2,7 +2,7 @@
 
 ## Arguments
 
-ARG NODE_IMAGE_VERSION=24.13.0-alpine3.23
+ARG NODE_IMAGE_VERSION=24.13.1-alpine3.23
 
 # Base
 FROM node:${NODE_IMAGE_VERSION} AS base

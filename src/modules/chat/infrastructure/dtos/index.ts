@@ -34,6 +34,7 @@ export type { GetContactContractsRequestDTO } from './get-contact-contracts-requ
 export type { GetContactContractsResponseDTO } from './get-contact-contracts-response.dto';
 export type { GetContactInformationResponseDTO } from './get-contact-information-response.dto';
 export type { GetContactInvoicesResponseDTO } from './get-contact-invoices-response.dto';
+export type { GetContactsRequestDTO } from './get-contacts-request.dto';
 export type { GetContactsResponseDTO } from './get-contacts-response.dto';
 export type { GetContactTicketsRequestDTO } from './get-contact-tickets-request.dto';
 export type { GetContactTicketsResponseDTO } from './get-contact-tickets-response.dto';
