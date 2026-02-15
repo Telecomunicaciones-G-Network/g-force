@@ -26,23 +26,24 @@ buildDockerProduction:
 buildDockerStaging:
 	docker build . -t gforce:${TAG} -f docker/Dockerfile.staging
 
-# make clean
-clean:
-	bun clean
-
 # make check
 check:
 	bun typecheck
 	bun lint
 	bun security:scan
 
-# make finishFeature COMMIT_TYPE="feature" COMMIT_MESSAGE="add new feature"
+# make clean
+clean:
+	bun clean
+
+# make finishFeature COMMIT_TYPE="feature" COMMIT_MESSAGE="add new feature" BRANCH_NAME="feature/my-feature"
 finishFeature:
 	bun format
 	bun check
 	git add .
 	git commit -m "${COMMIT_TYPE}: ${COMMIT_MESSAGE}"
 	git pull origin develop --rebase
+	git push origin ${BRANCH_NAME}
 
 # make format
 format:

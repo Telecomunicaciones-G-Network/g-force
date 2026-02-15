@@ -16,11 +16,7 @@ import { PasswordInputController } from '@ui-core/components/server/inputs/passw
 
 import { LoginBrand } from './components/login-brand/login-brand';
 import { useLoginForm } from './login-form.hook';
-import {
-  MdLockOutline,
-  MdPersonOutline,
-  MdAdd,
-} from 'react-icons/md';
+import { MdLockOutline, MdPersonOutline, MdAdd } from 'react-icons/md';
 
 import styles from './login-form.module.css';
 

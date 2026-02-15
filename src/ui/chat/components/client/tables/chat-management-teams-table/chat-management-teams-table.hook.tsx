@@ -42,10 +42,10 @@ export const useChatManagementTeamsTableHook = () => {
 
   // Filter teams by search value if provided
   const filteredTeams = debouncedSearchValue?.trim()
-    ? data?.teams?.filter((team) =>
-        team.name.toLowerCase().includes(debouncedSearchValue.toLowerCase())
-      ) ?? []
-    : data?.teams ?? [];
+    ? (data?.teams?.filter((team) =>
+        team.name.toLowerCase().includes(debouncedSearchValue.toLowerCase()),
+      ) ?? [])
+    : (data?.teams ?? []);
 
   return {
     data: filteredTeams,

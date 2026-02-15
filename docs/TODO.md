@@ -390,7 +390,3 @@ export async function loginAction(
   }
 }
 ```
-
-## PENDINGS
-
-- Debo aplicar principio DRY en el chat-transfer-modal usando el modal-card

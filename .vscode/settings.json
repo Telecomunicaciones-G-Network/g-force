@@ -7,6 +7,29 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  // Hightlight Extension
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "ALWAYS",
+      "color": "#ffffff",
+      "backgroundColor": "#06a77d",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "NEVER",
+      "color": "#ffffff",
+      "backgroundColor": "#e71d36",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "WARNING",
+      "color": "#ffffff",
+      "backgroundColor": "#fbac0e",
+      "overviewRulerColor": "grey"
+    }
+  ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
     "(private)": "secure",

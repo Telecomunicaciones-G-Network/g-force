@@ -59,14 +59,14 @@ export const teamTableBuilder: ColumnDef<Team>[] = [
       </div>
     ),
   },
-//   {
-//     header: 'Fecha de Creación',
-//     accessorKey: 'createdAt',
-//   },
-//   {
-//     header: 'Modificado',
-//     maxSize: 150,
-//   },
+  //   {
+  //     header: 'Fecha de Creación',
+  //     accessorKey: 'createdAt',
+  //   },
+  //   {
+  //     header: 'Modificado',
+  //     maxSize: 150,
+  //   },
   {
     header: 'Acciones',
     cell: () => (

@@ -160,6 +160,7 @@ dist
 dist-ssr
 
 # Python
+__pycache__
 venv
 
 # Ruby

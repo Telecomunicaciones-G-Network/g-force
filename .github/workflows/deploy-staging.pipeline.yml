@@ -20,7 +20,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 24.13.0
+          node-version: 24.13.1
           registry-url: "https://npm.pkg.github.com/"
           scope: "@Telecomunicaciones-G-Network"
 
