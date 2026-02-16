@@ -10,6 +10,26 @@
   transform: translateX(-50%);
 }
 
+.flex-container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-full-container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  width: 100%;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
 .responsive-image-contain {
   aspect-ratio: 1 / 1;
   background-position: center;

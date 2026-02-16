@@ -1,0 +1,15 @@
+.base,
+.base__slogan {
+  align-items: center;
+  display: flex;
+}
+
+.base {
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.base__slogan {
+  gap: 0.5px;
+}

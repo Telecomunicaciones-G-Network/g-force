@@ -1,56 +1,29 @@
-.base {
+.base__container {
   display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  min-height: 100dvh;
-  width: 100%;
-  overflow: hidden;
-  background-color: var(--color-background);
-}
-
-.base__carousel {
-  width: 100%;
-  height: 35vh;
-  min-height: 250px;
-  flex-shrink: 0;
+  gap: 0;
+  height: 100%;
 }
 
 .base__body {
-  display: flex;
   flex: 1;
+}
+
+.base__image {
+  border-radius: 16px;
+  margin: auto;
+  object-fit: contain;
+  user-select: none;
+}
+
+.base__image_container {
+  border-radius: 16px;
+  display: flex;
+  position: relative;
+}
+
+.base__poster {
   align-items: center;
+  flex: 1;
   justify-content: center;
-  background-color: var(--color-background);
-  overflow-y: auto;
-}
-
-/* Tablet: Still vertical layout but taller carousel */
-@media (min-width: 768px) {
-  .base__carousel {
-    height: 40vh;
-    min-height: 350px;
-  }
-}
-
-/* Desktop: Side by side with rounded corners and padding */
-@media (min-width: 1024px) {
-  .base {
-    flex-direction: row;
-    padding: 24px;
-    gap: 24px;
-  }
-
-  .base__carousel {
-    width: 50%;
-    height: calc(100dvh - 48px);
-    min-height: unset;
-    border-radius: 24px;
-    overflow: hidden;
-  }
-
-  .base__body {
-    width: 50%;
-    height: calc(100dvh - 48px);
-    border-radius: 24px;
-  }
+  padding: 24px 12px 24px 24px;
 }

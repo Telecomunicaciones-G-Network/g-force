@@ -26,6 +26,8 @@
 - src/app/(private)/chat/layout.tsx ✅
 - src/app/(private)/chat/conversations/page.tsx~ ✅
 - src/app/(private)/chat/management/page.tsx~ ✅
+- src/app/(public)/(auth)/layout.tsx~ ✅
+- src/app/(public)/(auth)/login/~ ✅
 
 - src/modules/chat/domain/entities/agent.entity.ts ✅
 - src/modules/chat/domain/entities/contact.entity.ts ✅
@@ -219,11 +221,12 @@
 
 - src/ui/core/enums/env-modes.enum.ts ✅
 
-- src/ui/chat/constants/contact-platforms.constant.ts ✅
-- src/ui/chat/constants/conversation-status.constant.ts ✅
 - src/ui/core/constants/reset-action-form-key.constant.ts ✅
 - src/ui/core/constants/table-record-limit-per-page.constant.ts ✅
 - src/ui/core/components/client/tables/table-manager/~ ⚠️
+- src/ui/core/dictionaries/images.dictionary.ts ✅
+- src/ui/chat/constants/contact-platforms.constant.ts ✅
+- src/ui/chat/constants/conversation-status.constant.ts ✅
 - src/ui/auth/actions/login.action.ts ⚠️
 - src/ui/auth/components/client/alerts/login-error-alert/~ ✅
 - src/ui/auth/components/client/forms/login-form/~ ⚠️
