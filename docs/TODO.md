@@ -23,6 +23,8 @@
 - Makefile ⚠️ (Add new commands for books)
 - tsconfig.json ✅
 
+- src/proxy.ts ⚠️
+
 - src/app/(private)/chat/layout.tsx ✅
 - src/app/(private)/chat/conversations/page.tsx~ ✅
 - src/app/(private)/chat/management/page.tsx~ ✅

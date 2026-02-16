@@ -241,6 +241,7 @@
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
     "envs.ts": "ejs",
+    "proxy.ts": "packship",
     "settings.json": "vscode"
   },
   "material-icon-theme.folders.customClones": [

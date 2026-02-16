@@ -2,13 +2,10 @@ import type { NextRequest } from 'next/server';
 
 import { NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
   const token = request.cookies.get('token')?.value;
-
   const publicRoutes = ['/login', '/factory'];
-
   const isPublicRoute = publicRoutes.some((route) =>
     pathname.startsWith(route),
   );
