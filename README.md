@@ -1,58 +1,80 @@
-# 👨‍💻 GNetwork @ GForce
+# GNetwork · GForce
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Bun-1.3-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun">
-  <img src="https://img.shields.io/badge/License-YENDES-yellow?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/License-GNETWORK-yellow?style=for-the-badge" alt="License">
 </div>
 
-<br/>
+<br />
+
+## Table of contents
+
+- [Overview](#-overview)
+- [Introduction](#-introduction)
+- [Prerequisites](#-prerequisites)
+- [Initialization](#-initialization)
+- [Running the project](#-running-the-project)
+- [Building](#-building)
+- [Scripts](#-scripts)
+- [Docker](#-docker)
+- [Project structure](#-project-structure)
+- [Technologies](#-technologies)
 
 ## 📝 Overview
 
-- [Introduction](#introduction)
-- [Initialization](#initialization)
-- [Run project](#run-project)
-- [Building](#building)
-- [Project Structure](#project-structure)
-- [Technologies](#technologies)
+**GForce** is a Next.js application by **GNetwork (Telecomunicaciones GNetwork)**. It provides a modern, scalable web app with server-side rendering, static generation, and client-side navigation. The stack includes TypeScript, Tailwind CSS v4, React 19, Server Components, and a Bun-based dev environment with Biome for formatting and linting.
 
 ## 😃 Introduction
 
-This project is a **Next.js** application developed by **Yendes Softwares** that implements a modern, scalable, and
-performant web application. Built with the latest Next.js 16 features, this project follows best practices for
-server-side rendering, static site generation, and client-side navigation.
+This project is a **Next.js 16** application that implements a production-ready web application. It uses the App Router, TypeScript, and a modular architecture focused on maintainability and scalability. It includes:
 
-The project is configured with TypeScript and uses a modular architecture with a focus on maintainability and
-scalability. It includes custom theming support with Next.js Dark Mode, Tailwind CSS v4, React 19, server components,
-and a robust development environment powered by Bun and Biome.
+- **Custom theming** with Next.js and dark mode (next-themes)
+- **Tailwind CSS v4** for styling
+- **React 19** with Server Components
+- **React Compiler** for automatic optimizations
+- **Bun** as runtime and package manager
+- **Biome** for formatting and linting
+- **Husky** and **Commitlint** for Git hooks and conventional commits
+
+## 📋 Prerequisites
+
+- **Node.js** ≥ 24.13.0 (see [.nvmrc](.nvmrc))
+- **Bun** ≥ 1.3.0
 
 ## ⚙️ Initialization
 
-Execute init command using makefile:
+Using the Makefile (recommended):
 
 ```bash
 make init
 ```
 
-Or you can apply init manually:
+This runs:
+
+- `bun install`
+- `bun husky`
+- `bunx changeset init`
+
+Or run manually:
 
 ```bash
 bun install
 bun husky
+bunx changeset init
 ```
 
-## 🖥️ Run project
+## 🖥️ Running the project
 
-To run the project in development mode:
+**Development:**
 
 ```bash
 bun dev
 ```
 
-For production mode:
+**Production (after building):**
 
 ```bash
 bun start
@@ -60,83 +82,96 @@ bun start
 
 ## 🚀 Building
 
-To build the project for production:
+Production build:
 
 ```bash
-bun build
+bun run build
 ```
 
-## 🗂️ Project Structure
+Or via Makefile:
+
+```bash
+make build
+```
+
+## 📜 Scripts
+
+| Script | Description |
+|--------|-------------|
+| `bun dev` | Start development server |
+| `bun build` | Production build |
+| `bun start` | Start production server |
+| `bun lint` | Lint and fix with Biome |
+| `bun format` | Format code with Biome |
+| `bun check` | Run typecheck, lint, and security scan |
+| `bun typecheck` | TypeScript check only |
+| `bun husky` | Install Husky Git hooks |
+
+## 🐳 Docker
+
+Build images with the provided Dockerfiles:
+
+```bash
+# Default image
+make buildDocker TAG=v0.0.34
+
+# Development
+make buildDockerDevelopment TAG=dev-v0.0.34
+
+# Production
+make buildDockerProduction TAG=v0.0.34
+
+# Staging
+make buildDockerStaging TAG=stg-v0.0.34
+```
+
+Dockerfiles are in the `docker/` directory.
+
+## 🗂️ Project structure
 
 ```
-g-force/
-├── docs/                                  # Project documentation
-│   ├── COMMIT_CONVENTION.md              # Commit message guidelines
-│   ├── GIT_WORKFLOW.md                   # Git workflow documentation
-│   ├── IMPORT_ORDER.md                   # Import ordering rules
-│   ├── NAMING_POLICIES.md                # Naming conventions
-│   ├── PROJECT_RULES.md                  # Project-specific rules
-│   └── PROJECT_STRUCTURE.md              # Project structure guide
-├── public/                               # Static public files
-│   └── favicon.ico                       # Site favicon
-├── src/                                  # Main source code
-│   ├── app/                              # Next.js app directory
-│   │   ├── layout.tsx                    # Root layout component
-│   │   └── page.tsx                      # Home page component
-│   ├── ui/                               # UI components and assets
-│   │   └── core/                         # Core UI module
-│   │       ├── components/               # Shared components
-│   │       │   └── server/               # Server-side components
-│   │       │       └── scripts/          # Server-side scripts
-│   │       │           └── react-scan-script/  # React Scan integration
-│   │       ├── constants/                # UI constants
-│   │       │   └── theme.constant.ts     # Theme configuration constants
-│   │       ├── fonts/                    # Custom font configurations
-│   │       │   ├── geist.fonts.ts        # Geist font setup
-│   │       │   └── geistMono.fonts.ts    # Geist Mono font setup
-│   │       ├── providers/                # React context providers
-│   │       │   ├── providers/            # Global providers wrapper
-│   │       │   └── theme-provider/       # Theme provider
-│   │       ├── styles/                   # Global styles and themes
-│   │       │   ├── custom.theme.css      # Custom theme styles
-│   │       │   ├── dark.theme.css        # Dark mode theme
-│   │       │   ├── globals.css           # Global styles
-│   │       │   ├── light.theme.css       # Light mode theme
-│   │       │   ├── main.css              # Main stylesheet
-│   │       │   └── variables.css         # CSS variables
-│   │       └── themes/                   # Theme configurations
-│   │           └── theme.css             # Theme definitions
-│   ├── env.d.ts                          # Environment type definitions
-│   └── globals.d.ts                      # Global type definitions
-├── next.config.ts                        # Next.js configuration
-├── postcss.config.mjs                    # PostCSS configuration
-├── tsconfig.json                         # TypeScript configuration
-├── biome.json                            # Biome configuration
-├── package.json                          # Project dependencies and scripts
-├── Makefile                              # Automation commands
-├── README.md                             # Project documentation
-├── LICENSE                               # Project license
-├── CONTRIBUTING.md                       # Contribution guide
-├── commitlint.config.ts                  # Commitlint configuration
-└── CODE_OF_CONDUCT.md                    # Code of conduct
+gforce/
+├── .github/workflows/     # CI/CD pipelines (build, deploy, check)
+├── docker/                # Dockerfiles (default, development, production, staging)
+├── docs/                  # Project documentation
+├── public/                 # Static assets
+├── src/
+│   ├── app/               # Next.js App Router (layouts, pages, routes)
+│   ├── packages/          # Internal packages (e.g. gnetwork-ui)
+│   └── ui/                # UI modules
+│       ├── core/          # Shared UI: components, styles, themes, providers
+│       ├── contract/      # Contract-related UI
+│       ├── ticket/        # Ticket-related UI
+│       ├── payment/       # Payment-related UI
+│       ├── chat/          # Chat-related UI
+│       └── ...
+├── next.config.ts
+├── package.json
+├── Makefile
+├── biome.json
+├── tsconfig.json
+└── README.md
 ```
 
 ## 🧰 Technologies
 
-- **Next.js 16**: React framework for production-grade applications with App Router
-- **React 19**: Latest version of the JavaScript library for building user interfaces
-- **TypeScript 5.9**: JavaScript superset that adds static typing
-- **Bun 1.3**: Ultra-fast JavaScript runtime and package manager
-- **Biome 2.3**: Fast formatter and linter for JavaScript, TypeScript, and more
-- **Tailwind CSS 4**: Utility-first CSS framework for rapid UI development
-- **PostCSS 8.5**: Tool for transforming CSS with JavaScript
-- **Next Themes**: Perfect dark mode support with zero-flash theme switching
-- **Husky**: Git hooks to automate tasks and maintain code quality
-- **Commitlint**: Enforce conventional commit messages
-- **Server Components**: Next.js server-side rendering features
-- **React Compiler**: Automatic optimization of React components
-- **Geist Font**: Modern, optimized font family by Vercel for better readability
-- **Custom Theming**: Built-in theme support with light/dark modes using CSS variables
+- **Next.js 16** — React framework with App Router
+- **React 19** — UI library
+- **TypeScript 5.9** — Static typing
+- **Bun 1.3** — Runtime and package manager
+- **Biome 2.3** — Formatter and linter
+- **Tailwind CSS 4** — Utility-first CSS
+- **PostCSS** — CSS processing
+- **next-themes** — Dark/light theme support
+- **Husky** — Git hooks
+- **Commitlint** — Conventional commit enforcement
+- **Server Components** — Next.js server rendering
+- **React Compiler** — React optimizations
+- **Geist** — Font family
+- **Radix UI** — Accessible primitives
+- **TanStack Query & Table** — Data fetching and tables
+- **React Hook Form + Zod** — Forms and validation
+- **Zustand** — State management
 
 ---
 

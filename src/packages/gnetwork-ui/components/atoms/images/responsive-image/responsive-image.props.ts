@@ -1,3 +1,4 @@
+import type { RefObject, SyntheticEvent } from 'react';
 import type {
   CSSObjectFitValue,
   ReactChild,
@@ -9,7 +10,10 @@ export interface ResponsiveImageProps extends ReactDiv {
   cache?: boolean;
   className?: string;
   customImageComponent?: ReactChild;
+  imageClassName?: string;
+  imageRef?: RefObject<HTMLImageElement | null>;
   lazy?: boolean;
   objectFit?: CSSObjectFitValue;
+  onLoad?: (event: SyntheticEvent<HTMLImageElement, Event>) => void;
   src?: string;
 }

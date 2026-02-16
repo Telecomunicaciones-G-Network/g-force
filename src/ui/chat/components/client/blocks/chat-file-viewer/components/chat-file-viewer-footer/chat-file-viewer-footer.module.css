@@ -1,0 +1,25 @@
+.base {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  min-height: 40px;
+}
+
+.base__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.base__input {
+  display: flex;
+  gap: 8px;
+  min-height: 40px;
+  padding: 16px 24px;
+  position: relative;
+  width: 100%;
+}

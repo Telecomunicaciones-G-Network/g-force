@@ -9,6 +9,11 @@ import { useLoginBrand } from './login-brand.hook';
 
 import styles from './login-brand.module.css';
 
+/**
+ * @name LoginBrand
+ *
+ * @description The component to display the login brand.
+ */
 export const LoginBrand = () => {
   const { isMounted, theme } = useLoginBrand();
 

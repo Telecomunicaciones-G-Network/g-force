@@ -11,15 +11,18 @@ import { useChatDetails } from './chat-details.hook';
 import styles from './chat-details.module.css';
 
 export const ChatDetails = () => {
-  const { activeChat, chatMode, isDesktop } = useChatDetails();
+  const { activeContact, chatMode, isDesktop } = useChatDetails();
 
   return (
     <>
       {(chatMode === ChatModes.DETAILS || isDesktop) &&
-        activeChat !== null &&
-        activeChat !== undefined && (
+        activeContact !== null &&
+        activeContact !== undefined && (
           <section
             className={cn(styles.base, 'w-full lg:min-w-[327px] lg:w-[327px]')}
+            style={{
+              width: !isDesktop ? '100%' : undefined,
+            }}
           >
             <ChatDetailTabs />
           </section>

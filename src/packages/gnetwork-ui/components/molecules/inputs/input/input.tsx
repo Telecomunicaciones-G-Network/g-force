@@ -9,14 +9,18 @@ import styles from './input.module.css';
 export const Input = ({
   className = '',
   containerClassName = '',
+  disabled = false,
   error = false,
   fullWidth,
+  hideLeftIcon = false,
   id,
   isStatic = false,
   label = '',
   leftIcon,
   message = '',
   name,
+  noErrorHandler = false,
+  noMessageHandler = false,
   readOnly = false,
   ref,
   required = false,
@@ -26,7 +30,7 @@ export const Input = ({
 }: Readonly<InputProps>) => {
   const classes = getInputClassNames({
     className,
-    error,
+    error: noErrorHandler ? false : error,
     fullWidth,
     isStatic: !!(isStatic || readOnly),
   });
@@ -38,37 +42,45 @@ export const Input = ({
   }
 
   return (
-    <div className={cn(styles.base, fullWidth && 'w-full', containerClassName)}>
+    <div
+      className={cn(
+        styles.base,
+        fullWidth && 'w-full',
+        containerClassName,
+        disabled ? 'opacity-50 cursor-not-allowed' : '',
+      )}
+    >
       {label && (
         <label
           className={cn(styles.base__label, 'text-chromatic-inverted')}
           htmlFor={id || name}
         >
-          {label} {required ? ' *' : ''}
+          {label}
         </label>
       )}
       <div className={cn(classes)}>
-        {leftIcon && leftIcon}
+        {leftIcon && !hideLeftIcon && leftIcon}
         <input
           className={cn(
             styles.base__input,
             'font-medium text-base text-chromatic-inverted text-left placeholder:text-input-placeholder',
           )}
+          disabled={disabled}
           id={id}
           name={name}
-          readOnly={readOnly}
+          readOnly={readOnly || disabled}
           ref={ref}
           type={type}
           {...rest}
         />
         {rightIcon && rightIcon}
       </div>
-      {message && (
+      {message && !noMessageHandler && (
         <span
           className={cn(
             styles.base__message,
             'text-chromatic-inverted',
-            error && 'text-warning-200',
+            noErrorHandler ? false : error && 'text-warning-200',
           )}
         >
           {message}

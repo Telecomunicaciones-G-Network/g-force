@@ -1,0 +1,11 @@
+.base {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  padding: 16px 8px;
+}
+
+.base__content {
+  display: flex;
+  flex-direction: column;
+}

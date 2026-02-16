@@ -1,0 +1,21 @@
+.base {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.base__content {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+.base__indicator {
+  display: flex;
+}

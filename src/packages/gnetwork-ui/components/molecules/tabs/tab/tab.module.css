@@ -1,5 +1,3 @@
 .base {
-  box-sizing: border-box;
-  font-family: inherit;
-  display: inline-flex;
+  display: flex;
 }

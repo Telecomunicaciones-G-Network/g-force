@@ -54,7 +54,7 @@ export const Button = ({
         classes,
         disabled &&
           !loading &&
-          'disabled:bg-button-background-disabled disabled:text-button-text-disabled',
+          'disabled:opacity-50 disabled:cursor-not-allowed',
       )}
       disabled={disabled || loading}
       onClick={handleClick}

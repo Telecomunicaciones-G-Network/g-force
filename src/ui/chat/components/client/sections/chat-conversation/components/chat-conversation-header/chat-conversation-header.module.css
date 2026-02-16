@@ -1,0 +1,25 @@
+.base {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 24px 24px 24px;
+}
+
+.base__avatar {
+  max-width: 48px;
+  width: 100%;
+}
+
+.base__buttons {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.base__info {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}

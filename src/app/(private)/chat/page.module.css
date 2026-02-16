@@ -1,8 +1,0 @@
-.base {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0;
-  overflow: hidden;
-  height: calc(100dvh - 72px);
-  width: 100%;
-}

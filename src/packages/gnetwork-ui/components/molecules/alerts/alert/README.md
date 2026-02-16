@@ -4,11 +4,12 @@ A flexible and accessible alert component for displaying important messages to u
 
 ## Features
 
-- 🎨 **Multiple Schemes**: Error, Success, Wait, and Neutral variants
-- 🎯 **Icon Support**: Automatic icons based on alert scheme
+- 🎨 **Multiple Schemes**: Error, Success, Wait, Warning, and Neutral variants
+- 🎯 **Icon Support**: Automatic icons based on alert scheme (Material Design icons)
 - 📦 **Flexible Content**: Supports any React children
 - 🎭 **Customizable**: Extends standard div properties
 - ♿ **Accessible**: Built with semantic HTML
+- ⚠️ **Required `id`**: The component requires an `id` prop and logs a console warning when it is missing
 
 ## Installation
 
@@ -19,12 +20,13 @@ import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts
 
 ## Props
 
-| Prop        | Type                  | Default     | Description                       |
-| ----------- | --------------------- | ----------- | --------------------------------- |
-| `scheme`    | `AlertSchemeType`     | `"neutral"` | Visual style variant of the alert |
-| `children`  | `ReactNode`           | -           | Content to display in the alert   |
-| `className` | `string`              | -           | Additional CSS classes            |
-| `ref`       | `Ref<HTMLDivElement>` | -           | React ref object                  |
+| Prop        | Type                  | Default     | Description                                                                 |
+| ----------- | --------------------- | ----------- | --------------------------------------------------------------------------- |
+| `id`        | `string`              | -           | **Required.** Identifier for the alert. A console warning is shown if missing. |
+| `scheme`    | `AlertSchemeType`     | `"neutral"` | Visual style variant of the alert (`error`, `neutral`, `success`, `wait`, `warning`) |
+| `children`  | `ReactNode`           | -           | Content to display in the alert                                             |
+| `className` | `string`              | -           | Additional CSS classes                                                      |
+| `ref`       | `Ref<HTMLDivElement>` | -           | React ref object                                                            |
 
 All standard HTML div attributes are also supported.
 
@@ -32,35 +34,43 @@ All standard HTML div attributes are also supported.
 
 ### `error`
 
-Displays an error or danger message with a warning icon.
+Displays an error or danger message with a cancel icon.
 
-- **Icon**: Cancel/X icon
-- **Colors**: Warning background and border
+- **Icon**: Cancel/X icon (`MdCancel`)
+- **Colors**: Red background and text
 - **Use Case**: Errors, failures, destructive actions
 
 ### `success`
 
 Displays a success or confirmation message with a check icon.
 
-- **Icon**: Check circle icon
-- **Colors**: Success green background and border
+- **Icon**: Check circle icon (`MdCheckCircle`)
+- **Colors**: Tag green background and foreground
 - **Use Case**: Successful operations, confirmations
 
 ### `wait`
 
 Displays a pending or in-progress message with a timer icon.
 
-- **Icon**: Timer icon
-- **Colors**: Blue background and border
+- **Icon**: Timer icon (`MdOutlineTimer`)
+- **Colors**: Dark blue background and foreground
 - **Use Case**: Loading states, pending operations, waiting for action
 
 ### `neutral`
 
-Displays a general informational message without an icon.
+Displays a general informational message with an info icon.
 
-- **Icon**: None
-- **Colors**: Gray background and border
+- **Icon**: Info icon (`MdInfo`)
+- **Colors**: Chromatic (inverted) background and text
 - **Use Case**: General information, neutral notifications
+
+### `warning`
+
+Displays a warning or caution message with a warning icon.
+
+- **Icon**: Warning icon (`MdWarning`)
+- **Colors**: Warning background and border (100/300 shades)
+- **Use Case**: Warnings, cautions, non-critical issues
 
 ## Usage Examples
 
@@ -70,7 +80,11 @@ Displays a general informational message without an icon.
 import { Alert } from "@/packages/gnetwork-ui/components/molecules/alerts/alert";
 
 export default function Example() {
-  return <Alert scheme="neutral">This is a general information message.</Alert>;
+  return (
+    <Alert id="alert-info" scheme="neutral">
+      This is a general information message.
+    </Alert>
+  );
 }
 ```
 
@@ -82,7 +96,7 @@ import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts
 
 export default function ErrorExample() {
   return (
-    <Alert scheme={AlertSchemes.ERROR}>
+    <Alert id="alert-error" scheme={AlertSchemes.ERROR}>
       Something went wrong! Please try again.
     </Alert>
   );
@@ -97,7 +111,7 @@ import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts
 
 export default function SuccessExample() {
   return (
-    <Alert scheme={AlertSchemes.SUCCESS}>
+    <Alert id="alert-success" scheme={AlertSchemes.SUCCESS}>
       Your changes have been saved successfully!
     </Alert>
   );
@@ -112,8 +126,23 @@ import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts
 
 export default function WaitExample() {
   return (
-    <Alert scheme={AlertSchemes.WAIT}>
+    <Alert id="alert-wait" scheme={AlertSchemes.WAIT}>
       Processing your request. Please wait...
+    </Alert>
+  );
+}
+```
+
+### Warning Alert
+
+```tsx
+import { Alert } from "@/packages/gnetwork-ui/components/molecules/alerts/alert";
+import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum";
+
+export default function WarningExample() {
+  return (
+    <Alert id="alert-warning" scheme={AlertSchemes.WARNING}>
+      Please review your input before continuing.
     </Alert>
   );
 }
@@ -126,7 +155,7 @@ import { Alert } from "@/packages/gnetwork-ui/components/molecules/alerts/alert"
 
 export default function CustomExample() {
   return (
-    <Alert scheme="success" className="shadow-lg mb-4">
+    <Alert id="alert-custom" scheme="success" className="shadow-lg mb-4">
       Custom styled alert with additional classes.
     </Alert>
   );
@@ -141,7 +170,7 @@ import { AlertSchemes } from "@/packages/gnetwork-ui/components/molecules/alerts
 
 export default function ComplexExample() {
   return (
-    <Alert scheme={AlertSchemes.ERROR}>
+    <Alert id="alert-complex" scheme={AlertSchemes.ERROR}>
       <div>
         <strong>Error:</strong> Unable to process payment.
         <ul className="mt-2 ml-4 list-disc">
@@ -169,12 +198,13 @@ The Alert component uses CSS modules and class-variance-authority for styling:
 
 ### Color Schemes
 
-Each scheme applies specific background, border, and text colors:
+Each scheme applies specific background and text colors:
 
-- **Error**: Warning colors (100/200/300 shades)
-- **Success**: Success colors (100/200/300 shades)
-- **Wait**: Dark blue colors
-- **Neutral**: Gray colors (200/300 shades)
+- **Error**: Red (`bg-red-600`, `text-red-100`)
+- **Success**: Tag green background and foreground
+- **Wait**: Dark blue background and foreground
+- **Warning**: Warning colors (100/300 shades)
+- **Neutral**: Chromatic inverted background and chromatic text
 
 ### Customization
 
@@ -218,11 +248,12 @@ alert/
 
 ## Best Practices
 
-1. **Keep messages concise**: The component has a max-width of 352px
-2. **Use appropriate schemes**: Match the scheme to the message type
-3. **Add context**: Include actionable information when possible
-4. **Consider placement**: Position alerts where users expect feedback
-5. **Avoid overuse**: Too many alerts can overwhelm users
+1. **Always provide `id`**: The component requires an `id` for proper rendering; omit it only if you intentionally accept the console warning.
+2. **Keep messages concise**: The component has a max-width of 352px
+3. **Use appropriate schemes**: Match the scheme to the message type (error, success, wait, warning, neutral)
+4. **Add context**: Include actionable information when possible
+5. **Consider placement**: Position alerts where users expect feedback
+6. **Avoid overuse**: Too many alerts can overwhelm users
 
 ## License
 

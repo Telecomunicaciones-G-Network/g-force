@@ -1,0 +1,7 @@
+.base {
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  z-index: 999999;
+}

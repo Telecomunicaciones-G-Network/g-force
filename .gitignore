@@ -3,9 +3,9 @@
 # Android
 !debug.keystore
 .cxx
-.DS_Store
 .externalNativeBuild
 .gradle
+.kotlin/
 *.hprof
 *.iml
 *.keystore
@@ -51,8 +51,20 @@ bun.lock
 /build/
 /coverage/
 
+# Database
+data
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
 # Environment variables
 .*env
+.env
+.env.development
+.env.production
+.env.staging
 .env*.local
 
 # Expo
@@ -63,6 +75,8 @@ bun.lock
 *.orig.*
 *.p12
 *.p8
+dist/
+expo-env.d.ts
 web-build/
 
 # Fastlane
@@ -98,6 +112,10 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# MacOS
+.DS_Store
+*.pem
+
 # Metro
 .metro-health-check*
 
@@ -110,12 +128,17 @@ yarn-error.log*
 testem.log
 /typings
 
-# Node
-node_modules
+# Mobile
+/ios
+/android
 
 # Next
 .next
 .swc
+next-env.d.ts
+
+# Node
+node_modules
 
 # Node package managers
 package-lock.json
@@ -137,6 +160,7 @@ dist
 dist-ssr
 
 # Python
+__pycache__
 venv
 
 # Ruby

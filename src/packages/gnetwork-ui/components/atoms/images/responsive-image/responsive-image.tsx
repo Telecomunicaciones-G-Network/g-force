@@ -1,3 +1,5 @@
+'use client';
+
 import type { ResponsiveImageProps } from './responsive-image.props';
 
 import Img from 'react-cool-img';
@@ -11,36 +13,36 @@ export const ResponsiveImage = ({
   cache = false,
   className = '',
   customImageComponent,
+  imageClassName = '',
+  imageRef,
   lazy = false,
   objectFit,
+  onLoad,
   ref,
   src,
   ...rest
 }: Readonly<ResponsiveImageProps>) => {
-  if (!customImageComponent && !src) {
-    console.warn(
-      'customImageComponent or src prop is missing on ResponsiveImage component. This can not be render appropiately.',
-    );
-  }
-  if (customImageComponent && src) {
-    console.warn(
-      'customImageComponent and src props are been using at the same time. This can not be render appropiately.',
-    );
-
-    return null;
-  }
-
   return (
     <>
       {customImageComponent || src ? (
-        <div ref={ref} className={cn(styles.base, className)} {...rest}>
+        <div
+          ref={ref}
+          className={cn(styles.base, 'h-full w-full', className)}
+          {...rest}
+        >
           {customImageComponent ?? customImageComponent}
           {src ? (
             <Img
+              ref={imageRef}
               alt={alt}
               cache={cache}
-              className={styles.base__image}
+              className={cn(
+                styles.base__image,
+                'aspect-square h-full object-cover w-full',
+                imageClassName,
+              )}
               lazy={lazy}
+              onLoad={onLoad}
               src={src}
               style={{
                 objectFit,

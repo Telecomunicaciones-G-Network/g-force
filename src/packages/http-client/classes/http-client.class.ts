@@ -1,4 +1,8 @@
-import type { HttpAdapter, HttpClientConfiguration } from '../interfaces';
+import type {
+  HttpAdapter,
+  HttpClientConfiguration,
+  UploadFileBody,
+} from '../interfaces';
 
 export class HttpClient {
   constructor(
@@ -16,12 +20,34 @@ export class HttpClient {
     );
   }
 
+  public async getFile(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return await this.fetcher.getFile(
+      `${this.baseUrl}${endpoint}`,
+      configuration,
+    );
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
     return await this.fetcher.post<T, R>(
+      `${this.baseUrl}${endpoint}`,
+      body,
+      configuration,
+    );
+  }
+
+  public async uploadFile<T = unknown>(
+    endpoint: string,
+    body: UploadFileBody,
+    configuration?: HttpClientConfiguration,
+  ): Promise<T> {
+    return await this.fetcher.uploadFile<T>(
       `${this.baseUrl}${endpoint}`,
       body,
       configuration,

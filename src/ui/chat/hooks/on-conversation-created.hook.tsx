@@ -1,0 +1,32 @@
+'use client';
+
+import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
+
+import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
+
+/**
+ * @name useOnConversationCreated
+ *
+ * @description This hook listens to the on `conversation_created` socket event:
+ * - When a new conversation is started with the contact. For now, this event will never be received live because only
+ * chats with existing conversations appear, but in the future, there should be a "historical" view with all contacts
+ * who have ever written, and it will be possible to receive this event live.
+ * - No actions at the moment.
+ *
+ * [Contact event]
+ *
+ * @returns void
+ */
+export const useOnConversationCreated = () => {
+  // TODO: Type the event
+  onSocketEvent<unknown>(
+    socketEventsDictionary.CONVERSATION_CREATED,
+    // TODO: Type the data
+    (data: unknown) => {
+      const _parseResponse = JSON.parse(data as unknown as string);
+
+      // TODO: Implement the logic to update the conversation created
+      // TODO: If a new conversation is created add a new message event on chat conversation store
+    },
+  );
+};

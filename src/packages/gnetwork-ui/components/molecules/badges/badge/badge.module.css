@@ -1,0 +1,6 @@
+.base {
+  box-sizing: border-box;
+  display: flex;
+  font-family: inherit;
+  word-break: break-word;
+}

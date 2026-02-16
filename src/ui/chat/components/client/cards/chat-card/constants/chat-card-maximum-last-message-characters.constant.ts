@@ -1,0 +1,1 @@
+export const CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS = 32 as const;

@@ -1,0 +1,30 @@
+'use client';
+
+import { onSocketEvent } from '@socketio/hooks/use-socket-event.hook';
+
+import { socketEventsDictionary } from '@module-chat/infrastructure/dictionaries/socket-events.dictionary';
+
+/**
+ * @name useOnConversationAssignmentUpdated
+ *
+ * @description This hook listens to the on `conversation_assignment_updated` socket event:
+ * When the assigned team and/or agent for a contact changes. Contains the data of the newly assigned team and agent,
+ * the data of the unassigned team and agent, and the IDs of the contact and their current conversation.
+ *
+ * [Contact event]
+ *
+ * @returns void
+ */
+export const useOnConversationAssignmentUpdated = () => {
+  onSocketEvent<unknown>(
+    socketEventsDictionary.CONVERSATION_ASSIGNMENT_UPDATED,
+    (data: unknown) => {
+      const parseResponse = JSON.parse(data as unknown as string);
+
+      console.log(parseResponse);
+
+      // TODO: If a conversation assignment is updated add a new message event on chat conversation store
+      // TODO: Enable chat if assigned agent it is me
+    },
+  );
+};

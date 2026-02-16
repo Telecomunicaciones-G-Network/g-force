@@ -1,27 +1,26 @@
 import type { ChatContractCardProps } from './chat-contract-card.props';
 
+import dayjs from 'dayjs';
+
 import { Separator } from '@gnetwork-ui/components/atoms/separators/separator';
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 import { Accordion } from '@gnetwork-ui/components/organisms/accordions/accordion';
 
+import { TagColors } from '@gnetwork-ui/components/molecules/tags/tag/enums/tag-colors.enum';
+
+import { contractStatusTagColorDictionary } from '@ui-chat/dictionaries/contract-status-tag-color.dictionary';
+
 import styles from './chat-contract-card.module.css';
 
 export const ChatContractCard = ({
-  expirationDate = '',
-  name = '',
-  napbox = '',
-  location = '',
-  number = '',
+  contract,
   open = false,
-  speed = '',
-  startDate = '',
-  status = '',
   title = '',
 }: Readonly<ChatContractCardProps>) => (
   <Accordion fullWidth open={open} label={title}>
     <div className={styles.base}>
-      {number && (
+      {contract?.number && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -39,13 +38,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {number}
+              {contract?.number}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {status && (
+      {contract?.statusCode && contract?.statusName && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -56,12 +55,19 @@ export const ChatContractCard = ({
             >
               Estado:
             </Text>
-            <Tag color="green">{status}</Tag>
+            <Tag
+              color={
+                contractStatusTagColorDictionary?.[contract?.statusCode] ??
+                TagColors.GRAY
+              }
+            >
+              {contract?.statusName}
+            </Tag>
           </div>
           <Separator />
         </>
       )}
-      {startDate && (
+      {contract?.installationDate && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -79,37 +85,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {startDate}
+              {dayjs(contract?.installationDate).format('DD/MM/YYYY') ?? ''}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {expirationDate && (
-        <>
-          <div className={styles.base__info}>
-            <Text
-              as="label"
-              className="text-neutral-900"
-              level="small"
-              scheme="label"
-            >
-              Fecha de vencimiento:
-            </Text>
-            <Text
-              as="span"
-              align="end"
-              className="text-neutral-400"
-              level="small"
-              scheme="label"
-            >
-              {expirationDate}
-            </Text>
-          </div>
-          <Separator />
-        </>
-      )}
-      {name && (
+      {contract?.planName && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -127,13 +109,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {name}
+              {contract?.planName}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {speed && (
+      {contract?.speedPlan && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -151,13 +133,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {speed}
+              {contract?.speedPlan}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {napbox && (
+      {contract?.napBox && (
         <>
           <div className={styles.base__info}>
             <Text
@@ -175,13 +157,13 @@ export const ChatContractCard = ({
               level="small"
               scheme="label"
             >
-              {napbox}
+              {contract?.napBox}
             </Text>
           </div>
           <Separator />
         </>
       )}
-      {location && (
+      {contract?.address && (
         <div className={styles.base__info}>
           <Text
             as="label"
@@ -198,7 +180,7 @@ export const ChatContractCard = ({
             level="small"
             scheme="label"
           >
-            {location}
+            {contract?.address}
           </Text>
         </div>
       )}

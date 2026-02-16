@@ -4,3 +4,12 @@
   gap: 15px;
   padding: 0;
 }
+
+.base__contracts_error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  justify-content: center;
+}

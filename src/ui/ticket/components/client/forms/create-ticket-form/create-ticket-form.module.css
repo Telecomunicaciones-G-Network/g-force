@@ -1,0 +1,125 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.base__attach_button {
+  align-items: center;
+  background-color: transparent;
+  border-radius: 4px;
+  border: none;
+  bottom: 12px;
+  color: var(--neutral-400);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  position: absolute;
+  right: 12px;
+  transition: color 0.2s ease;
+}
+
+.base__button_container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 24px;
+  width: 100%;
+}
+
+.base__column {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.base__image_item {
+  align-items: center;
+  background-color: var(--neutral-50);
+  border-radius: 8px;
+  border: 1px solid var(--neutral-200);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  position: relative;
+  width: 100px;
+}
+
+.base__image_name {
+  font-size: 11px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  color: var(--neutral-600);
+}
+
+.base__images_preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.base__image_remove {
+  align-items: center;
+  background-color: var(--red-500);
+  border-radius: 50%;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: var(--red-600);
+  }
+}
+
+.base__image_thumbnail {
+  border-radius: 6px;
+  height: 80px;
+  object-fit: cover;
+  width: 80px;
+}
+
+.base__row {
+  display: flex;
+  gap: 16px;
+}
+
+.base__textarea {
+  background-color: transparent;
+  border-radius: 8px;
+  color: var(--chromatic-inverted);
+  font-size: 14px;
+  max-height: 320px;
+  min-height: 100px;
+  padding: 12px;
+  padding-right: 48px;
+  resize: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.base__textarea_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.base__textarea_wrapper {
+  position: relative;
+  width: 100%;
+}

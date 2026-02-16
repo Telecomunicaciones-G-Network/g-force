@@ -1,0 +1,43 @@
+.base {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  gap: 65px;
+  height: 100dvh;
+  padding-top: 80px;
+  width: 100%;
+}
+
+.base__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 551px;
+  width: 100%;
+}
+
+.base__image {
+  display: flex;
+  flex: 1;
+  position: relative;
+  width: min(559px, 100%);
+}
+
+.base__information {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.base__message {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}

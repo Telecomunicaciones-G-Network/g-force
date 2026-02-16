@@ -179,7 +179,7 @@ Main hook for interacting with the socket.
   status: SocketStatus;
   isConnected: boolean;
   emit: (event: string, data?: unknown) => void;
-  on: <T>(event: string, listener: (data: T) => void) => () => void;
+  on: <T>(event: string, listener: (data: T) => void) => VoidFunction;
   off: <T>(event: string, listener?: (data: T) => void) => void;
   once: <T>(event: string, listener: (data: T) => void) => void;
 }
@@ -200,6 +200,76 @@ useSocketEvent<Message>("new_message", (message) => {
   console.log("New message:", message);
 });
 ```
+
+### `useContactRoomStatus(options)`
+
+Hook to track the connection status to a specific contact room. This hook automatically manages joining and leaving rooms, and detects disconnections.
+
+**Params:**
+- `options.contactId: string | null | undefined` - The contact ID to track
+- `options.autoJoin?: boolean` - Whether to automatically join the room when contactId changes (default: `true`)
+
+**Returns:**
+```typescript
+{
+  roomStatus: ContactRoomStatus; // 'not_joined' | 'joining' | 'joined' | 'leaving' | 'disconnected' | 'error'
+  isInRoom: boolean; // true if successfully joined to the room
+  isConnected: boolean; // true if socket is connected
+  joinRoom: () => Promise<void>; // Manually join the room
+  leaveRoom: VoidFunction; // Manually leave the room
+  error: string | null; // Error message if any
+}
+```
+
+**Example:**
+```tsx
+import { useContactRoomStatus } from "@/packages/socketio";
+
+function ChatComponent() {
+  const activeContact = useContactStore((state) => state.activeContact);
+
+  const {
+    roomStatus,
+    isInRoom,
+    isSocketConnected,
+    error,
+  } = useContactRoomStatus({
+    contactId: activeContact?.id,
+    autoJoin: true,
+  });
+
+  // Check if user is connected to the room
+  if (roomStatus === 'joined') {
+    console.log('User is in the contact room');
+  }
+
+  // Check if user disconnected from the room
+  if (roomStatus === 'disconnected') {
+    console.log('User lost connection to the room');
+  }
+
+  // Check if there was an error
+  if (roomStatus === 'error') {
+    console.error('Error joining room:', error);
+  }
+
+  return (
+    <div>
+      {roomStatus === 'joined' && <div>Connected to room</div>}
+      {roomStatus === 'disconnected' && <div>Connection lost</div>}
+      {roomStatus === 'error' && <div>Error: {error}</div>}
+    </div>
+  );
+}
+```
+
+**Room Status Values:**
+- `'not_joined'` - Not joined to the room
+- `'joining'` - Attempting to join the room
+- `'joined'` - Successfully joined to the room
+- `'leaving'` - Leaving the room
+- `'disconnected'` - Lost connection to the room (socket disconnected)
+- `'error'` - Error occurred while joining the room
 
 ### `useSocketContext()`
 

@@ -1,0 +1,13 @@
+.base {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  outline: none;
+}
+
+.base__thumb {
+  display: block;
+  pointer-events: none;
+}

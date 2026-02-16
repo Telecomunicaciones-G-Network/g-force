@@ -1,0 +1,7 @@
+.base {
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+  position: fixed;
+  z-index: 9999;
+}

@@ -9,11 +9,15 @@ import { parseSVGServer } from './utils/parse-svg-server.util';
 import { processIconClassNames } from './utils/process-icon-classnames.util';
 
 export const Icon = ({
-  className = '',
+  className = 'size-6',
+  height,
   color = 'currentColor',
+  fillColor,
   name,
   onClick,
-  size = 24,
+  rotate,
+  size,
+  width,
 }: Readonly<IconProps>) => {
   const svgString = iconDictionary[name];
   const svgData = svgString ? parseSVGServer(svgString) : null;
@@ -36,7 +40,7 @@ export const Icon = ({
       strokeLinecap={svgData.strokeLinecap as 'round' | 'butt' | 'square'}
       strokeLinejoin={svgData.strokeLinejoin as 'round' | 'miter' | 'bevel'}
       strokeWidth={svgData.strokeWidth}
-      style={{ color }}
+      style={{ color, fill: fillColor }}
       viewBox={svgData.viewBox}
       width={size}
     >
@@ -53,7 +57,15 @@ export const Icon = ({
   }
 
   return (
-    <div className={classes} style={{ width: size, height: size, color }}>
+    <div
+      className={classes}
+      style={{
+        width: width || size,
+        height: height || size,
+        color,
+        transform: rotate ? `rotate(${rotate}deg)` : undefined,
+      }}
+    >
       {svgElement}
     </div>
   );

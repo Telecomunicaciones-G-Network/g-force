@@ -1,0 +1,63 @@
+.base {
+  margin: 0 auto;
+  position: relative;
+}
+
+.base div {
+  border-radius: 50%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.base div:nth-child(1) {
+  left: 8px;
+  animation: infinity-scroll-loader-1 0.6s infinite;
+}
+
+.base div:nth-child(2) {
+  left: 8px;
+  animation: infinity-scroll-loader-2 0.6s infinite;
+}
+
+.base div:nth-child(3) {
+  left: 32px;
+  animation: infinity-scroll-loader-2 0.6s infinite;
+}
+
+.base div:nth-child(4) {
+  left: 56px;
+  animation: infinity-scroll-loader-3 0.6s infinite;
+}
+
+@keyframes infinity-scroll-loader-1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes infinity-scroll-loader-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+@keyframes infinity-scroll-loader-3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}

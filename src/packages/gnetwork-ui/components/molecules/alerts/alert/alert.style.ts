@@ -4,23 +4,27 @@ import { cva } from 'class-variance-authority';
 
 import { cn } from '../../../../utils/cn.util';
 
-import { alertSchemeVariant } from './variants/alert-scheme.variant';
+import { AlertSchemes } from './enums/alert-scheme.enum';
+
+import { alertSchemes } from './variants/alert-scheme.variant';
 
 import styles from './alert.module.css';
 
-export const alertVariants = cva([styles.base, 'border border-solid'], {
-  variants: {
-    scheme: alertSchemeVariant,
+export const alertVariants = cva(
+  [styles.base, 'init-box', 'w-[min(352px,100%)] max-w-[352px]'],
+  {
+    variants: {
+      scheme: alertSchemes,
+    },
+    compoundVariants: [],
+    defaultVariants: {
+      scheme: AlertSchemes.NEUTRAL,
+    },
   },
-  compoundVariants: [],
-  defaultVariants: {
-    scheme: 'neutral',
-  },
-});
+);
 
-export const getAlertClassNames = ({
+export const getAlertClasses = ({
   className = '',
   ...configVariants
-}: AlertVariants): string => {
-  return cn(alertVariants({ className, ...configVariants }));
-};
+}: AlertVariants): string =>
+  cn(alertVariants({ className, ...configVariants }));
