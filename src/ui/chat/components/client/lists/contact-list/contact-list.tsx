@@ -1,7 +1,6 @@
 'use client';
 
 import type { Contact } from '@module-chat/domain/interfaces';
-import type { TeamCodename } from '@module-chat/domain/types';
 import type { ContactListProps } from './contact-list.props';
 
 import { Fragment } from 'react';
@@ -29,7 +28,6 @@ import { useContactList } from './contact-list.hook';
  */
 export const ContactList = ({ contacts = [] }: Readonly<ContactListProps>) => {
   const {
-    activeAgent,
     activeContact,
     changeActiveContact,
     contactsNextPage,
@@ -48,24 +46,21 @@ export const ContactList = ({ contacts = [] }: Readonly<ContactListProps>) => {
           <Fragment key={contact?.id}>
             {CHAT_CONTACT_CONVERSATION_VISIBLE.includes(
               contact?.latestConversation?.status,
-            ) &&
-              activeAgent?.teams?.includes(
-                contact?.latestConversation?.team?.id as TeamCodename,
-              ) && (
-                <ChatCard
-                  contactId={contact?.id}
-                  isActive={activeContact?.id === contact?.id}
-                  key={contact?.id}
-                  lastMessage={contact?.latestMessage?.text ?? ''}
-                  lastMessageTime={contact?.latestMessage?.createdAt}
-                  messageType={contact?.latestMessage?.type}
-                  onClick={() => changeActiveContact(contact)}
-                  phoneNumber={formatPhoneNumber(contact?.phoneNumber)}
-                  team={contact?.latestConversation?.team}
-                  unreadMessages={contact?.unreadCount}
-                  username={contact?.name}
-                />
-              )}
+            ) && (
+              <ChatCard
+                contactId={contact?.id}
+                isActive={activeContact?.id === contact?.id}
+                key={contact?.id}
+                lastMessage={contact?.latestMessage?.text ?? ''}
+                lastMessageTime={contact?.latestMessage?.createdAt}
+                messageType={contact?.latestMessage?.type}
+                onClick={() => changeActiveContact(contact)}
+                phoneNumber={formatPhoneNumber(contact?.phoneNumber)}
+                team={contact?.latestConversation?.team}
+                unreadMessages={contact?.unreadCount}
+                username={contact?.name}
+              />
+            )}
           </Fragment>
         ))
       ) : (

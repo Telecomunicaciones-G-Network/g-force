@@ -46,10 +46,10 @@ export type {
 export type { OnAgentStatusChangedResponseDTO } from './on-agent-status-change-response.dto';
 export type { OnConnectedResponseDTO } from './on-connected-response.dto';
 export type {
-  OnContactAssignmentUpdatedResponseDTO,
-  OnContactAssignmentUpdatedResponseAgentDTO,
-  OnContactAssignmentUpdatedResponseTeamDTO,
-} from './on-contact-assignment-updated-response.dto';
+  OnContactConversationAssignmentUpdatedResponseDTO,
+  OnContactConversationAssignmentUpdatedResponseAgentDTO,
+  OnContactConversationAssignmentUpdatedResponseTeamDTO,
+} from './on-contact-conversation-assignment-updated-response.dto';
 export type { OnContactFinishedResponseDTO } from './on-contact-finished-response.dto';
 export type {
   OnConversationFinishedResponseDTO,

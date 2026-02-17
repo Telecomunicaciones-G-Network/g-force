@@ -23,9 +23,13 @@
 - Makefile ⚠️ (Add new commands for books)
 - tsconfig.json ✅
 
+- src/proxy.ts ⚠️
+
 - src/app/(private)/chat/layout.tsx ✅
 - src/app/(private)/chat/conversations/page.tsx~ ✅
 - src/app/(private)/chat/management/page.tsx~ ✅
+- src/app/(public)/(auth)/layout.tsx~ ✅
+- src/app/(public)/(auth)/login/~ ✅
 
 - src/modules/chat/domain/entities/agent.entity.ts ✅
 - src/modules/chat/domain/entities/contact.entity.ts ✅
@@ -219,11 +223,12 @@
 
 - src/ui/core/enums/env-modes.enum.ts ✅
 
-- src/ui/chat/constants/contact-platforms.constant.ts ✅
-- src/ui/chat/constants/conversation-status.constant.ts ✅
 - src/ui/core/constants/reset-action-form-key.constant.ts ✅
 - src/ui/core/constants/table-record-limit-per-page.constant.ts ✅
 - src/ui/core/components/client/tables/table-manager/~ ⚠️
+- src/ui/core/dictionaries/images.dictionary.ts ✅
+- src/ui/chat/constants/contact-platforms.constant.ts ✅
+- src/ui/chat/constants/conversation-status.constant.ts ✅
 - src/ui/auth/actions/login.action.ts ⚠️
 - src/ui/auth/components/client/alerts/login-error-alert/~ ✅
 - src/ui/auth/components/client/forms/login-form/~ ⚠️
@@ -241,8 +246,12 @@
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/constants/chat-contact-platforms-select-options.constant.ts ⚠️
+- src/ui/chat/constants/chat-conversation-assigned-to-select-options.constant.ts ✅
 - src/ui/chat/constants/chat-conversation-status-select-options.constant.ts ⚠️
 - src/ui/chat/constants/chat-management-tabs.constant.ts ✅
+- src/ui/chat/constants/chat-teams-to-select-options.constant.ts ⚠️
+- src/ui/chat/constants/contact-assignments.constant.ts ✅
+- src/ui/chat/constants/team-codenames.constant.ts ✅
 - src/ui/chat/dictionaries/agent-status-color.dictionary.ts ✅
 - src/ui/chat/dictionaries/agent-status-label.dictionary.ts ✅
 - src/ui/chat/dictionaries/agent-status-tag-color.dictionary.ts ✅

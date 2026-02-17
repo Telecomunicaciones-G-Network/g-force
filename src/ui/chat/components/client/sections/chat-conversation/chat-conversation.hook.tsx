@@ -51,8 +51,8 @@ export const useChatConversation = () => {
   const { isConnected, isInRoom } = useContactRoomStatus({
     autoJoin: true,
     contactId: activeContact?.id,
-    joinRoomEventName: socketEmissionsDictionary.JOIN_CONTACT_ROOM,
-    leaveRoomEventName: socketEmissionsDictionary.LEAVE_CONTACT_ROOM,
+    joinRoomEventName: socketEmissionsDictionary.ENTER_CHAT_ROOM,
+    leaveRoomEventName: socketEmissionsDictionary.LEAVE_CHAT_ROOM,
   });
 
   useEffect(() => {

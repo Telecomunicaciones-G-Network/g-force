@@ -24,6 +24,7 @@ import { Badge } from '@gnetwork-ui/components/molecules/badges/badge';
 import { Tag } from '@gnetwork-ui/components/molecules/tags/tag';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
+import { capitalizeWords } from '@stringify/utils/capitalize-words.util';
 
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 
@@ -82,17 +83,16 @@ export const ChatCard = ({
       />
       <div className={styles.base__content}>
         <div className={styles.base__texts}>
-          {username ||
-            (phoneNumber && (
-              <Text
-                as="span"
-                className="text-chromatic-inverted"
-                level="small"
-                scheme="label"
-              >
-                {username || phoneNumber}
-              </Text>
-            ))}
+          {(username || phoneNumber) && (
+            <Text
+              as="span"
+              className="text-chromatic-inverted"
+              level="small"
+              scheme="label"
+            >
+              {capitalizeWords(username) || phoneNumber}
+            </Text>
+          )}
           {lastMessageTime && (
             <Text
               as="span"

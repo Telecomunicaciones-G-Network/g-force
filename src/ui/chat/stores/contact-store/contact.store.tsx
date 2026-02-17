@@ -5,14 +5,20 @@ import type {
   Contact,
   Conversation,
 } from '@module-chat/domain/interfaces';
-import type { AgentStatus } from '@module-chat/domain/types';
+import type {
+  AgentStatus,
+  ContactAssignment,
+  ConversationStatus,
+  TeamCodename,
+} from '@module-chat/domain/types';
 import type { ChatMode } from '@ui-chat/types';
 import type { ContactStoreState } from './contact-store.props';
 import type { AddOneUnreadMessageToContactParams } from '../../interfaces';
 
 import { create } from 'zustand';
 
-import { ConversationStatus } from '@module-chat/domain/enums/conversation-status.enum';
+import { ContactAssignments } from '@module-chat/domain/enums/contact-assignments.enum';
+import { ConversationStatus as ConversationStatusValues } from '@module-chat/domain/enums/conversation-status.enum';
 
 import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
@@ -20,15 +26,23 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   activeAgent: null,
   activeContact: null,
   chatMode: ChatModes.LIST,
+  contactAssignment: ContactAssignments.MY_TEAMS,
   contacts: [],
   contactsHasMorePages: false,
   contactsNextPage: null,
+  conversationStatus: ConversationStatusValues.ASSIGNED,
+  team: null,
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) =>
     set({ activeAgent: agent }),
   setActiveContact: (contact: Contact | null) =>
     set({ activeContact: contact }),
   setChatMode: (mode: ChatMode) => set({ chatMode: mode }),
+  setContactAssignment: (assignment: ContactAssignment) =>
+    set({ contactAssignment: assignment }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
+  setConversationStatus: (status: ConversationStatus | null) =>
+    set({ conversationStatus: status }),
+  setTeam: (team: TeamCodename | null) => set({ team: team }),
   addContacts: (contacts: Contact[]) => {
     const { contacts: currentContacts } = get();
 
@@ -98,7 +112,8 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
     return contacts?.some(
       (contact: Contact) =>
         contact?.id === contactId &&
-        contact?.latestConversation?.status === ConversationStatus.ASSIGNED,
+        contact?.latestConversation?.status ===
+          ConversationStatusValues.ASSIGNED,
     );
   },
   sortContactsByLatestMessage: () => {

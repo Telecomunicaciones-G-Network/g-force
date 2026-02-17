@@ -1,24 +1,24 @@
-import type { OnConversationAssignmentUpdatedResponse } from '../../domain/interfaces';
-import type { OnContactAssignmentUpdatedResponseDTO } from '../dtos';
+import type { OnContactConversationAssignmentUpdatedResponse } from '../../domain/interfaces';
+import type { OnContactConversationAssignmentUpdatedResponseDTO } from '../dtos';
 
 /**
- * @name OnContactAssignmentUpdatedMapper
+ * @name OnContactConversationAssignmentUpdatedMapper
  *
  * @description This mapper converts the on contact assignment updated response DTO to the on conversation assignment updated response domain.
  */
-export class OnContactAssignmentUpdatedMapper {
+export class OnContactConversationAssignmentUpdatedMapper {
   /**
    * @name mapFrom
    *
    * @description This method converts the on contact assignment updated response DTO to the on conversation assignment updated response domain.
    *
-   * @param {OnContactAssignmentUpdatedResponseDTO} input - The on contact assignment updated response DTO.
+   * @param {OnContactConversationAssignmentUpdatedResponseDTO} input - The on contact assignment updated response DTO.
    *
    * @returns {OnConversationAssignmentUpdatedResponse} The on conversation assignment updated response domain.
    */
   static mapFrom(
-    input: OnContactAssignmentUpdatedResponseDTO,
-  ): OnConversationAssignmentUpdatedResponse {
+    input: OnContactConversationAssignmentUpdatedResponseDTO,
+  ): OnContactConversationAssignmentUpdatedResponse {
     return {
       agent: {
         id: input?.agent?.id,

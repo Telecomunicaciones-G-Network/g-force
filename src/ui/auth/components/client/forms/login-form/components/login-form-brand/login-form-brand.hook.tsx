@@ -6,14 +6,14 @@ import { useIsComponentMounted } from '@hook/use-is-component-mounted.hook';
 import { useSystemTheme } from '@hook/use-system-theme.hook';
 
 /**
- * @name useLoginBrand
+ * @name useLoginFormBrand
  *
  * @description The hook to use the login brand.
  *
  * @returns isMounted - Whether the component is mounted.
  * @returns theme - The theme of the brand.
  */
-export const useLoginBrand = () => {
+export const useLoginFormBrand = () => {
   const { isMounted } = useIsComponentMounted();
   const { systemTheme } = useSystemTheme();
   const { theme } = useTheme();
