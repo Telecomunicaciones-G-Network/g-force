@@ -17,15 +17,15 @@ export const CHAT_CONVERSATION_STATUS_SELECT_OPTIONS: SelectItem[] = [
     value: 'ALL',
   },
   {
+    label: 'Pendiente',
+    value: ConversationStatus.WAITING,
+  },
+  {
     label: 'Asignada',
     value: ConversationStatus.ASSIGNED,
   },
   {
     label: 'Finalizada',
     value: ConversationStatus.FINISHED,
-  },
-  {
-    label: 'Pendiente',
-    value: ConversationStatus.WAITING,
   },
 ] as const;

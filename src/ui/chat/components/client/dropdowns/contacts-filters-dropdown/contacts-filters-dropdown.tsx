@@ -4,29 +4,34 @@ import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { SelectInput } from '@gnetwork-ui/components/molecules/inputs/select-input';
 import { Dropdown } from '@gnetwork-ui/components/organisms/dropdowns/dropdown';
 
-import { CHAT_CONTACT_PLATFORMS_SELECT_OPTIONS } from '@ui-chat/constants/chat-contact-platforms-select-options.constant';
+import { ContactAssignments } from '@module-chat/domain/enums/contact-assignments.enum';
+
+import { CHAT_CONVERSATION_ASSIGNED_TO_SELECT_OPTIONS } from '@ui-chat/constants/chat-conversation-assigned-to-select-options.constant';
 import { CHAT_CONVERSATION_STATUS_SELECT_OPTIONS } from '@ui-chat/constants/chat-conversation-status-select-options.constant';
+import { CHAT_TEAMS_TO_SELECT_OPTIONS } from '@ui-chat/constants/chat-teams-to-select-options.constant';
 
 import { ContactsFiltersDropdownTrigger } from './components/contacts-filters-dropdown-trigger';
 
-import { useContactsFiltersDropdownTrigger } from './components/contacts-filters-dropdown-trigger/contacts-filters-dropdown-trigger.hook';
+import { useContactsFiltersDropdown } from './contacts-filters-dropdown.hook';
 
 /**
  * @name ContactsFiltersDropdown
  *
  * @description This component is used to render the contacts filters dropdown.
  *
- * TODO: Put all value using a constant or enum
+ * TODO: Put all filters on iterators or filter file
  */
 export const ContactsFiltersDropdown = () => {
   const {
-    changePlatformFilter,
+    assignedToFilter,
+    changeAssignedToFilter,
     changeStatusFilter,
+    changeTeamsFilter,
     isContactsFiltersOpen,
-    platformFilter,
     setIsContactsFiltersOpen,
     statusFilter,
-  } = useContactsFiltersDropdownTrigger();
+    teamsFilter,
+  } = useContactsFiltersDropdown();
 
   return (
     <Dropdown
@@ -58,14 +63,14 @@ export const ContactsFiltersDropdown = () => {
           level="small"
           scheme="label"
         >
-          Plataforma
+          Status
         </Text>
         <SelectInput
-          onValueChange={changePlatformFilter}
-          options={CHAT_CONTACT_PLATFORMS_SELECT_OPTIONS}
-          triggerLabel="Plataforma"
+          onValueChange={changeStatusFilter}
+          options={CHAT_CONVERSATION_STATUS_SELECT_OPTIONS}
+          triggerLabel="Status"
           triggerWrapperClassName="min-h-8 min-w-[140px]"
-          value={platformFilter}
+          value={statusFilter}
         />
       </div>
       <div className="flex justify-between items-center w-full">
@@ -76,14 +81,33 @@ export const ContactsFiltersDropdown = () => {
           level="small"
           scheme="label"
         >
-          Status
+          Asignado a
         </Text>
         <SelectInput
-          onValueChange={changeStatusFilter}
-          options={CHAT_CONVERSATION_STATUS_SELECT_OPTIONS}
-          triggerLabel="Status"
+          defaultValue={ContactAssignments.MY_TEAMS}
+          onValueChange={changeAssignedToFilter}
+          options={CHAT_CONVERSATION_ASSIGNED_TO_SELECT_OPTIONS}
+          triggerLabel="Asignado a"
           triggerWrapperClassName="min-h-8 min-w-[140px]"
-          value={statusFilter}
+          value={assignedToFilter}
+        />
+      </div>
+      <div className="flex justify-between items-center w-full">
+        <Text
+          as="label"
+          align="left"
+          className="text-neutral-500"
+          level="small"
+          scheme="label"
+        >
+          Equipo
+        </Text>
+        <SelectInput
+          onValueChange={changeTeamsFilter}
+          options={CHAT_TEAMS_TO_SELECT_OPTIONS}
+          triggerLabel="Equipo"
+          triggerWrapperClassName="min-h-8 min-w-[140px]"
+          value={teamsFilter}
         />
       </div>
     </Dropdown>

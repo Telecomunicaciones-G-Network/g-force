@@ -30,7 +30,6 @@ export const useChatConversationContainer = () => {
   const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
 
   const lastMessage = useMemo(() => {
-    console.log('messages', messages);
     const incomingMessages = messages?.filter(
       (message) => message?.direction === MessageDirections.INCOMING,
     );

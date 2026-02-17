@@ -9,9 +9,11 @@ export const socketEventsDictionary = {
   AGENT_STATUS_CHANGED: 'agent_status_changed',
   CONNECTED: 'connected',
   CONTACT_ASSIGNMENT_UPDATED: 'contact_assignment_updated',
+  CONTACT_CONVERSATION_ASSIGNMENT_UPDATED:
+    'contact_conversation_assignment_updated',
   CONTACT_FINISHED: 'contact_finished',
   CONVERSATION_ASSIGNED: 'conversation_assigned',
-  CONVERSATION_ASSIGNMENT_UPDATED: 'conversation_assignment_updated',
+  CONVERSATION_ASSIGNMENT_UPDATED: 'conversation_assignment_updated', // TODO: Delete after create contact_conversation_assignment_updated
   CONVERSATION_CREATED: 'conversation_created',
   CONVERSATION_FINISHED: 'conversation_finished',
   INCOMING_MESSAGE: 'incoming_message',

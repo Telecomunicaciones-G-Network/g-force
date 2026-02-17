@@ -32,6 +32,7 @@
   ],
   // Material Icon theme
   "material-icon-theme.folders.associations": {
+    "(auth)": "fastlane",
     "(private)": "secure",
     "(public)": "public",
     "actions": "cue",
@@ -128,8 +129,11 @@
     "infinity-scroll-loader": "react-components",
     "internal-message-form": "react-components",
     "lists": "toc",
-    "login-brand": "react-components",
     "login-error-alert": "react-components",
+    "login-form-body": "react-components",
+    "login-form-brand": "react-components",
+    "login-form-footer": "react-components",
+    "login-form-header": "react-components",
     "login-form": "react-components",
     "mappers": "mappings",
     "modal-card-content": "react-components",
@@ -237,6 +241,7 @@
     "clean-architecture.md": "document",
     "css-data.json": "vscode",
     "envs.ts": "ejs",
+    "proxy.ts": "packship",
     "settings.json": "vscode"
   },
   "material-icon-theme.folders.customClones": [
@@ -394,7 +399,7 @@
       "name": "React Pages",
       "base": "react-components",
       "color": "deep-orange-400",
-      "folderNames": ["management"]
+      "folderNames": ["management", "login"]
     },
     {
       "name": "React Providers",

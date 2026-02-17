@@ -31,7 +31,6 @@ export const ChatInvoiceCard = ({
     amountToPayUsd,
     cycle = '',
     dateEmission,
-    datePayment,
     datetime_payment,
     documentNumber,
     paymentMethods = [],
@@ -113,7 +112,8 @@ export const ChatInvoiceCard = ({
             <Separator />
           </>
         )}
-        {(amountToPayBs?.amount || amountToPayUsd?.amount) && (
+        {(Number.isFinite(amountToPayBs?.amount) ||
+          Number.isFinite(amountToPayUsd?.amount)) && (
           <>
             <div className={styles.base__info}>
               <Text
@@ -131,11 +131,13 @@ export const ChatInvoiceCard = ({
                 level="small"
                 scheme="label"
               >
-                {amountToPayBs?.amount &&
-                  `${amountToPayBs?.amount.toFixed(2).replace('.', ',')} Bs`}{' '}
-                {(amountToPayBs?.amount || amountToPayUsd?.amount) && '≈ '}
-                {amountToPayUsd?.amount &&
-                  `${amountToPayUsd?.amount.toFixed(2).replace('.', ',')}$`}
+                {Number.isFinite(amountToPayBs?.amount) &&
+                  `${Number(amountToPayBs.amount).toFixed(2).replace('.', ',')} Bs`}{' '}
+                {Number.isFinite(amountToPayBs?.amount) &&
+                  Number.isFinite(amountToPayUsd?.amount) &&
+                  '≈ '}
+                {Number.isFinite(amountToPayUsd?.amount) &&
+                  `${Number(amountToPayUsd.amount).toFixed(2).replace('.', ',')}$`}
               </Text>
             </div>
             <Separator />
@@ -160,7 +162,7 @@ export const ChatInvoiceCard = ({
             </Tag>
           </div>
         )}
-        {datePayment && (
+        {datetime_payment && (
           <>
             <Separator />
             <div className={styles.base__info}>

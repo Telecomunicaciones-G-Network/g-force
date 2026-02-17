@@ -1,33 +1,33 @@
 import type { TeamCodename } from '../types';
 
 /**
- * @name OnConversationAssignmentUpdatedAgentResponse
+ * @name OnContactConversationAssignmentUpdatedAgentResponse
  *
  * @description This interface represents the values of an agent assigned/updated in a conversation.
  *
  * @property {string} id - The id of the agent.
  * @property {string} name - The name of the agent.
  */
-export interface OnConversationAssignmentUpdatedAgentResponse {
+export interface OnContactConversationAssignmentUpdatedAgentResponse {
   id: string;
   name: string;
 }
 
 /**
- * @name OnConversationAssignmentUpdatedTeamResponse
+ * @name OnContactConversationAssignmentUpdatedTeamResponse
  *
  * @description This interface represents the values of a team in the context of a conversation assignment update.
  *
  * @property {TeamCodename} id - The team ID.
  * @property {string} name - The team name.
  */
-export interface OnConversationAssignmentUpdatedTeamResponse {
+export interface OnContactConversationAssignmentUpdatedTeamResponse {
   id: TeamCodename;
   name: string;
 }
 
 /**
- * @name OnConversationAssignmentUpdatedResponse
+ * @name OnContactConversationAssignmentUpdatedResponse
  *
  * @description This interface represents the values of an on conversation assignment updated response.
  *
@@ -36,9 +36,9 @@ export interface OnConversationAssignmentUpdatedTeamResponse {
  * @property {string} conversationId - The conversation ID.
  * @property {OnConversationAssignmentUpdatedTeamResponse} team - The team information.
  */
-export interface OnConversationAssignmentUpdatedResponse {
-  agent: OnConversationAssignmentUpdatedAgentResponse;
+export interface OnContactConversationAssignmentUpdatedResponse {
+  agent: OnContactConversationAssignmentUpdatedAgentResponse;
   contactId: string;
   conversationId: string;
-  team: OnConversationAssignmentUpdatedTeamResponse;
+  team: OnContactConversationAssignmentUpdatedTeamResponse;
 }
