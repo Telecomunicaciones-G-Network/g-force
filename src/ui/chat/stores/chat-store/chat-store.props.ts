@@ -9,6 +9,7 @@ import type { ChatSendMode } from '../../types';
 export interface ChatStoreState {
   file: FileData | null;
   messages: Message[];
+  messagesNextPage: string | null;
   sendMode: ChatSendMode;
 
   setFile: (file: FileData | null) => void;
@@ -16,6 +17,11 @@ export interface ChatStoreState {
   setSendMode: (sendMode: ChatSendMode) => void;
 
   addMessage: (message: Message) => void;
+  addMessages: (messages: Message[]) => void;
+  changeMessagesPagination: (pagination: {
+    hasMore: boolean;
+    nextCursor: string | null;
+  }) => void;
   deleteOneMessageById: (messageId: string) => void;
   updateOneMessageId: (temporalMessageId: string, messageId: string) => void;
   updateOneMessageStatusById: (
