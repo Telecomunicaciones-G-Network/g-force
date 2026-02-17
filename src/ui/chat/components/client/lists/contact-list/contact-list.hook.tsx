@@ -36,7 +36,6 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 export const useContactList = () => {
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
 
-  const activeAgent = useContactStore((state) => state.activeAgent);
   const activeContact = useContactStore((state) => state.activeContact);
   const contactsNextPage = useContactStore((state) => state.contactsNextPage);
 
@@ -85,7 +84,6 @@ export const useContactList = () => {
   }, [addContacts, changeContactsPagination, contactsNextPage, searchParams]);
 
   return {
-    activeAgent,
     activeContact,
     changeActiveContact,
     contactsNextPage,

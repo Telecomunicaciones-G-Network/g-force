@@ -6,8 +6,8 @@
  * @returns {Record<string, string>} The socket emissions dictionary
  */
 export const socketEmissionsDictionary = {
-  JOIN_CONTACT_ROOM: 'join_contact_room',
-  LEAVE_CONTACT_ROOM: 'leave_contact_room',
+  ENTER_CHAT_ROOM: 'enter_chat_room',
+  LEAVE_CHAT_ROOM: 'leave_chat_room',
   MARK_MESSAGE_AS_READ: 'mark_message_as_read',
   SEND_IMAGE_MESSAGE: 'send_image_message',
   SEND_INTERNAL_MESSAGE: 'send_internal_message',

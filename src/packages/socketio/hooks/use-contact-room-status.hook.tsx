@@ -42,11 +42,13 @@ interface UseContactRoomStatusReturn {
   error: string | null;
 }
 
+// TODO: joinRoomEventName default value should be extracted from constant inside of this library
+// TODO: leaveRoomEventName default value should be extracted from constant inside of this library
 export function useContactRoomStatus({
   autoJoin = true,
   contactId,
-  joinRoomEventName = 'join_contact_room',
-  leaveRoomEventName = 'leave_contact_room',
+  joinRoomEventName = 'enter_chat_room',
+  leaveRoomEventName = 'leave_chat_room',
 }: UseContactRoomStatusOptions): UseContactRoomStatusReturn {
   const { emit, emitWithAck, isConnected, status } = useSocket();
 

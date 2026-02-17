@@ -23,6 +23,8 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  * [Base event]
  *
  * @returns void
+ *
+ * TODO: I must to receive the agent status to set on setActiveAgent event
  */
 export const useOnConnected = () => {
   const setActiveAgent = useContactStore((state) => state.setActiveAgent);

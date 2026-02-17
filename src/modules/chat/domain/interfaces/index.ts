@@ -52,10 +52,10 @@ export type { MessageSender } from './message-sender.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
 export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
 export type {
-  OnConversationAssignmentUpdatedResponse,
-  OnConversationAssignmentUpdatedAgentResponse,
-  OnConversationAssignmentUpdatedTeamResponse,
-} from './on-conversation-assignment-updated-response.interface';
+  OnContactConversationAssignmentUpdatedResponse,
+  OnContactConversationAssignmentUpdatedAgentResponse,
+  OnContactConversationAssignmentUpdatedTeamResponse,
+} from './on-contact-conversation-assignment-updated-response.interface';
 export type { OnConversationFinishedResponse } from './on-conversation-finished-response.interface';
 export type { OnMediaStatusChangedResponse } from './on-media-status-changed-response.interface';
 export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';

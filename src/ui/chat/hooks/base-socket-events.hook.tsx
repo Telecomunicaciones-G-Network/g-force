@@ -9,6 +9,8 @@ import { useOnConnected } from '@ui-chat/hooks/on-connected.hook';
  * @description This hook listens and groups the base socket events.
  *
  * @returns void
+ *
+ * TODO: Rename as socket agent events
  */
 export const useBaseSocketEvents = () => {
   useOnConnected();

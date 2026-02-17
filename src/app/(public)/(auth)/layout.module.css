@@ -12,13 +12,31 @@
   border-radius: 16px;
   margin: auto;
   object-fit: contain;
+  position: relative;
   user-select: none;
+  z-index: 1;
 }
 
 .base__image_container {
   border-radius: 16px;
   display: flex;
+  overflow: hidden;
   position: relative;
+}
+
+.base__image_container::before {
+  animation: panBackground 60s ease-in-out infinite;
+  background-image: url("/images/login-background.webp");
+  background-position: 0% center;
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
 }
 
 .base__poster {
@@ -26,4 +44,14 @@
   flex: 1;
   justify-content: center;
   padding: 24px 12px 24px 24px;
+}
+
+@keyframes panBackground {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
 }

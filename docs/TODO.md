@@ -246,8 +246,12 @@
 - src/ui/chat/components/server/messages/chat-internal-message~ ⚠️
 - src/ui/chat/constants/chat-contact-conversation-disabled.constant.ts ✅
 - src/ui/chat/constants/chat-contact-platforms-select-options.constant.ts ⚠️
+- src/ui/chat/constants/chat-conversation-assigned-to-select-options.constant.ts ✅
 - src/ui/chat/constants/chat-conversation-status-select-options.constant.ts ⚠️
 - src/ui/chat/constants/chat-management-tabs.constant.ts ✅
+- src/ui/chat/constants/chat-teams-to-select-options.constant.ts ⚠️
+- src/ui/chat/constants/contact-assignments.constant.ts ✅
+- src/ui/chat/constants/team-codenames.constant.ts ✅
 - src/ui/chat/dictionaries/agent-status-color.dictionary.ts ✅
 - src/ui/chat/dictionaries/agent-status-label.dictionary.ts ✅
 - src/ui/chat/dictionaries/agent-status-tag-color.dictionary.ts ✅
