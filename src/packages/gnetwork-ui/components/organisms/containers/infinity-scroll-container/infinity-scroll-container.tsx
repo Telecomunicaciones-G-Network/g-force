@@ -30,6 +30,7 @@ import styles from './infinity-scroll-container.module.css';
 export const InfinityScrollContainer = ({
   className = '',
   children,
+  direction = 'bottom',
   isLoading = false,
   nextPage = null,
   onLoadMore,
@@ -57,8 +58,20 @@ export const InfinityScrollContainer = ({
       }}
       {...rest}
     >
+      {/* Sentinel at the TOP for loading older messages (chat mode) */}
+      {direction === 'top' && nextPage && (
+        <div
+          ref={sentinelRef as Ref<HTMLDivElement>}
+          className="flex items-center justify-center py-2 text-xs text-neutral-500"
+        >
+          {hasUserScrolledRef?.current && isIntersecting && isLoading && (
+            <InfinityScrollLoader />
+          )}
+        </div>
+      )}
       {children}
-      {nextPage && (
+      {/* Sentinel at the BOTTOM for loading more items (default mode) */}
+      {direction === 'bottom' && nextPage && (
         <div
           ref={sentinelRef as Ref<HTMLDivElement>}
           className="flex items-center justify-center py-2 text-xs text-neutral-500"

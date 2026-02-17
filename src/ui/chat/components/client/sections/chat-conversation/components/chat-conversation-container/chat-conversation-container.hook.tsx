@@ -1,11 +1,8 @@
 'use client';
 
-// import { useEffect, useMemo, useRef } from 'react';
+import { useLayoutEffect, useMemo, useRef } from 'react';
 
 import { useScrollToBottom } from '@hook/use-scroll-to-bottom.hook';
-
-// import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
-// import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 
 import { useEmitMarkMessagesAsRead } from '@ui-chat/hooks/emit-mark-messages-as-read.hook';
 import { useOnChatMediaStatusChanged } from '@ui-chat/hooks/on-chat-media-status-changed.hook';
@@ -16,15 +13,31 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 export const useChatConversationContainer = () => {
   const activeContact = useContactStore((state) => state.activeContact);
-  // const lastProcessedMessageIdRef = useRef<string | null>(null);
+  const previousScrollHeightRef = useRef<number>(0);
+  const previousFirstMessageIdRef = useRef<string | null>(null);
 
   const messages = useChatStore((state) => state.messages);
 
+  const previousLastMessageIdRef = useRef<string | null>(null);
+
+  const shouldAutoScroll = useMemo(() => {
+    const currentLastMessageId = messages[messages.length - 1]?.id;
+    const previousLastMessageId = previousLastMessageIdRef.current;
+
+    previousLastMessageIdRef.current = currentLastMessageId;
+
+    if (!previousLastMessageId) return true;
+
+    if (currentLastMessageId !== previousLastMessageId) return true;
+
+    return false;
+  }, [messages]);
+
   const { ref: messagesContainerRef, scrollToBottom } =
     useScrollToBottom<HTMLDivElement>({
-      autoScroll: true,
-      dependencies: [messages],
+      autoScroll: shouldAutoScroll,
       behavior: 'smooth',
+      dependencies: [messages],
     });
   useOnChatMediaStatusChanged({
     onSucess: scrollToBottom,
@@ -32,29 +45,30 @@ export const useChatConversationContainer = () => {
 
   const { emitMarkMessagesAsRead } = useEmitMarkMessagesAsRead();
 
-  /* const lastMessage = useMemo(() => {
-    const incomingMessages = messages?.filter(
-      (message) => message?.direction === MessageDirections.INCOMING,
-    );
+  emitMarkMessagesAsRead(activeContact?.id);
 
-    return incomingMessages?.[incomingMessages.length - 1];
-  }, [messages]);
+  useLayoutEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container || !messages.length) return;
 
-  useEffect(() => {
+    const currentFirstMessageId = messages[0]?.id;
+    const currentScrollHeight = container.scrollHeight;
+
+    // detect if we loaded previous messages (old messages added at top)
     if (
-      !lastMessage ||
-      lastMessage.status === MessageStatus.READ ||
-      lastProcessedMessageIdRef.current === lastMessage?.id
+      previousFirstMessageIdRef.current &&
+      currentFirstMessageId !== previousFirstMessageIdRef.current &&
+      currentScrollHeight > previousScrollHeightRef.current
     ) {
-      // TODO: Register event
-      return;
+      const scrollDiff = currentScrollHeight - previousScrollHeightRef.current;
+
+      // Adjust scroll to maintain visual position
+      container.scrollTop += scrollDiff;
     }
 
-    lastProcessedMessageIdRef.current = lastMessage?.id;
-    // emitMarkMessagesAsRead(lastMessage?.id);
-  }, [lastMessage, emitMarkMessagesAsRead]); */
-
-  emitMarkMessagesAsRead(activeContact?.id);
+    previousScrollHeightRef.current = currentScrollHeight;
+    previousFirstMessageIdRef.current = currentFirstMessageId;
+  }, [messages, messagesContainerRef]);
 
   return {
     messages,

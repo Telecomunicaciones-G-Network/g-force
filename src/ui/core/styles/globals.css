@@ -84,7 +84,7 @@ p {
 
 @media (prefers-color-scheme: dark) {
   * {
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-color: rgba(194, 193, 193, 0.2) transparent;
   }
 }
 
