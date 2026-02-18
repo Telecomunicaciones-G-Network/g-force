@@ -20,6 +20,17 @@ import { X_MEDIA_TYPE_HEADER_DICTIONARY } from '../dictionaries/x-media-type-hea
 
 import { LogLevels } from '../enums/log-levels.enum';
 
+const getAuthRefreshEndpoint = () =>
+  `${process.env.NEXT_PUBLIC_GNETWORK_API_BASE_URL ?? ''}/user/auth/refresh/`;
+
+type RequestConfigWithRetry = InternalAxiosRequestConfig & { _retry?: boolean };
+
+interface RefreshResponse {
+  access?: string;
+  refresh?: string;
+  results?: { access?: string; refresh?: string };
+}
+
 export class Axios implements HttpAdapter {
   private axiosInstance: AxiosInstance;
   private readonly logger?: HttpLoggerAdapter;
@@ -31,19 +42,83 @@ export class Axios implements HttpAdapter {
     this.applyResponseInterceptor();
   }
 
+  private async getTokenFromCookies(): Promise<string | undefined> {
+    try {
+      const { cookies } = await import('next/headers');
+      const cookieStore = await cookies();
+
+      return cookieStore.get('token')?.value;
+    } catch {
+      return Cookies.get('token');
+    }
+  }
+
+  /**
+   * Reads the refresh token from cookies.
+   * For client-side 401 to trigger refresh, the refresh cookie must be readable by JS
+   * (e.g. httpOnly: false). If it is httpOnly, only server-side requests can refresh.
+   */
+  private async getRefreshTokenFromCookies(): Promise<string | undefined> {
+    try {
+      const { cookies } = await import('next/headers');
+      const cookieStore = await cookies();
+
+      return cookieStore.get('refresh')?.value;
+    } catch {
+      return Cookies.get('refresh');
+    }
+  }
+
+  private async refreshAccessToken(
+    refreshToken: string,
+  ): Promise<string | null> {
+    const { data } = await axios.post<RefreshResponse>(
+      getAuthRefreshEndpoint(),
+      { refresh: refreshToken },
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json; version=1.0.0',
+        },
+      },
+    );
+    const newToken =
+      data?.access ?? (data as RefreshResponse)?.results?.access ?? null;
+
+    if (newToken) {
+      try {
+        Cookies.set('token', newToken, { path: '/', sameSite: 'lax' });
+      } catch {
+        // Client-only; ignore if cookies not available
+      }
+      try {
+        const { cookies } = await import('next/headers');
+        const cookieStore = await cookies();
+
+        cookieStore.set('token', newToken, {
+          path: '/',
+          sameSite: 'lax',
+          maxAge: 60 * 60,
+        });
+      } catch {
+        // Server context may not allow setting cookies here
+      }
+    }
+
+    return newToken;
+  }
+
   private applyRequestInterceptor() {
     this.axiosInstance.interceptors.request.use(
       async (config: InternalAxiosRequestConfig) => {
-        let token: string | undefined;
+        const configWithRetry = config as RequestConfigWithRetry;
 
-        try {
-          const { cookies } = await import('next/headers');
-          const cookieStore = await cookies();
-
-          token = cookieStore.get('token')?.value;
-        } catch {
-          token = Cookies.get('token');
+        if (configWithRetry._retry) {
+          return config;
         }
+
+        const token = await this.getTokenFromCookies();
 
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
@@ -57,7 +132,34 @@ export class Axios implements HttpAdapter {
   private applyResponseInterceptor() {
     this.axiosInstance.interceptors.response.use(
       (response: AxiosResponse) => response,
-      (error: AxiosError<HttpErrorResponse>) => {
+      async (error: AxiosError<HttpErrorResponse>) => {
+        const config = error.config as RequestConfigWithRetry | undefined;
+
+        if (error.response?.status === 401 && config && !config._retry) {
+          config._retry = true;
+          const refreshToken = await this.getRefreshTokenFromCookies();
+
+          if (refreshToken) {
+            try {
+              const newToken = await this.refreshAccessToken(refreshToken);
+
+              if (newToken) {
+                if (!config.headers) {
+                  config.headers = {} as typeof config.headers;
+                }
+                config.headers.Authorization = `Bearer ${newToken}`;
+
+                return this.axiosInstance.request(config);
+              }
+            } catch (refreshError) {
+              this.logger?.log(
+                (refreshError as Error)?.message ?? 'Refresh token failed',
+                LogLevels.ERROR,
+              );
+            }
+          }
+        }
+
         this.logger?.log(error.message, LogLevels.ERROR);
 
         return Promise.reject(error);
