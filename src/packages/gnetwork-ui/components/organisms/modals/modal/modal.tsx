@@ -15,6 +15,7 @@ export const Modal = ({
   customModalCloseComponent,
   hideModalClose = false,
   isOpen = false,
+  modal = true,
   modalOverlayChildren,
   onOpenChange,
   triggerComponent,
@@ -34,12 +35,13 @@ export const Modal = ({
   return (
     <>
       {triggerComponent && (
-        <ModalContainer onOpenChange={onOpenChange} open={isOpen}>
+        <ModalContainer modal={modal} onOpenChange={onOpenChange} open={isOpen}>
           <ModalTrigger>{triggerComponent}</ModalTrigger>
           <ModalContent
             className={cn('sm:max-w-[400px]', className)}
             customModalCloseComponent={customModalCloseComponent}
             hideModalClose={hideModalClose}
+            modal={modal}
             modalOverlayChildren={modalOverlayChildren}
             preventCloseOnEscape
             preventCloseOnOutsideClick

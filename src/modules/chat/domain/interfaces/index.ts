@@ -1,8 +1,8 @@
 export type { Agent } from './agent.interface';
 export type { Contact } from './contact.interface';
 export type { Conversation } from './conversation.interface';
-export type { EmitMarkMessageAsReadRequestInterface } from './emit-mark-message-as-read-request.interface';
-export type { EmitMarkMessageAsReadResponseInterface } from './emit-mark-message-as-read-response.interface';
+export type { EmitMarkMessagesAsReadRequestInterface } from './emit-mark-messages-as-read-request.interface';
+export type { EmitMarkMessagesAsReadResponseInterface } from './emit-mark-messages-as-read-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
 export type { EmitSendImageMessageResponse } from './emit-send-image-message-response.interface';
 export type { EmitSendInternalMessageRequest } from './emit-send-internal-message-request.interface';
@@ -50,17 +50,17 @@ export type { MessageLocation } from './message-location.interface';
 export type { MessageReaction } from './message-reaction.interface';
 export type { MessageSender } from './message-sender.interface';
 export type { OnConnectedResponse } from './on-connected-response.interface';
-export type { OnContactFinishedResponse } from './on-contact-finished-response.interface';
+export type { OnContactConversationFinishedResponse } from './on-contact-conversation-finished-response.interface';
 export type {
   OnContactConversationAssignmentUpdatedResponse,
   OnContactConversationAssignmentUpdatedAgentResponse,
   OnContactConversationAssignmentUpdatedTeamResponse,
 } from './on-contact-conversation-assignment-updated-response.interface';
-export type { OnConversationFinishedResponse } from './on-conversation-finished-response.interface';
-export type { OnMediaStatusChangedResponse } from './on-media-status-changed-response.interface';
-export type { OnMessageStatusChangedResponse } from './on-message-status-changed-response.interface';
-export type { OnNewMessageReceivedResponse } from './on-new-message-received-response.interface';
-export type { OnNewMessageSentResponse } from './on-new-message-sent-response.interface';
+export type { OnChatConversationFinishedResponse } from './on-chat-conversation-finished-response.interface';
+export type { OnChatMediaStatusChangedResponse } from './on-chat-media-status-changed-response.interface';
+export type { OnChatMessageStatusChangedResponse } from './on-chat-message-status-changed-response.interface';
+export type { OnContactMessageReceivedResponse } from './on-contact-message-received-response.interface';
+export type { OnContactMessageSentResponse } from './on-contact-message-sent-response.interface';
 export type { ProcessFastDebitPaymentRequest } from './process-fast-debit-payment-request.interface';
 export type { ProcessFastDebitPaymentResponse } from './process-fast-debit-payment-response.interface';
 export type { RequestFastDebitOTPRequest } from './request-fast-debit-otp-request.interface';

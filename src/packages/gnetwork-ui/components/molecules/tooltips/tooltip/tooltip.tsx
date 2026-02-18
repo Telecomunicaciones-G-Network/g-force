@@ -10,6 +10,8 @@ export const Tooltip = ({
   disabled = false,
   ref,
   side,
+  align,
+  alignOffset,
   sideOffset = 4,
   triggerAsChild = false,
   triggerComponent,
@@ -27,8 +29,10 @@ export const Tooltip = ({
         {triggerComponent}
       </TooltipTrigger>
       <TooltipContent
-        className={className}
         ref={ref}
+        align={align}
+        alignOffset={alignOffset}
+        className={className}
         side={side}
         sideOffset={sideOffset}
         {...rest}

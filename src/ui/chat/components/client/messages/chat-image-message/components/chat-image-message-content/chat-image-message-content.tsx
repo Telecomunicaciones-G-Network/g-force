@@ -40,6 +40,7 @@ export const ChatImageMessageContent = (
         className={cn(styles.base, 'relative sm:max-w-none')}
         hideModalClose
         isOpen={isModalOpen}
+        modal={false}
         onOpenChange={onOpenChange}
         modalOverlayChildren={
           <>

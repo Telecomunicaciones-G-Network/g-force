@@ -67,7 +67,7 @@ export async function loginAction(
       });
 
       cookieStore.set('refresh', response.refresh, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: daysToSeconds(1),
         path: '/',
         sameSite: 'lax',

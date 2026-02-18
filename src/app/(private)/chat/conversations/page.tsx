@@ -13,11 +13,13 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { validateSearchParams } from '@next-tools/validators/validate-search-params.validator';
 
+import { ConversationStatus as ConversationStatusValues } from '@module-chat/domain/enums/conversation-status.enum';
+
 import { GetContactsQuery } from '@module-chat/infrastructure/queries/get-contacts.query';
 
 import { CONTACT_ASSIGNMENTS } from '@ui-chat/constants/contact-assignments.constant';
 import { CONTACT_PLATFORMS } from '@ui-chat/constants/contact-platforms.constant';
-import { CONVERSATION_STATUS } from '@ui-chat/constants/conversation-status.constant';
+import { CONVERSATION_STATUS_FILTERS } from '@ui-chat/constants/conversation-status-filters.constant';
 import { TEAM_CODENAMES } from '@ui-chat/constants/team-codenames.constant';
 
 import { ChatContainer } from '@ui-chat/components/client/templates/chat-container';
@@ -52,6 +54,11 @@ export default async function ChatConversationsPage({
     team_codename: teamCodenameSearchParam,
   } = (await searchParams) ?? {};
 
+  const statusFiltered = validateSearchParams<ConversationStatus | 'ALL'>(
+    statusSearchParam,
+    CONVERSATION_STATUS_FILTERS,
+  );
+
   const chatContactsResponsePromise = GetContactsQuery({
     assignedTo: validateSearchParams<ContactAssignment>(
       assignedToSearchParam,
@@ -63,10 +70,11 @@ export default async function ChatConversationsPage({
       CONTACT_PLATFORMS,
     ),
     search: searchSearchParam,
-    status: validateSearchParams<ConversationStatus>(
-      statusSearchParam,
-      CONVERSATION_STATUS,
-    ),
+    status: !statusFiltered
+      ? ConversationStatusValues.ASSIGNED
+      : statusFiltered === 'ALL'
+        ? undefined
+        : statusFiltered,
     teamCodename: validateSearchParams<TeamCodename>(
       teamCodenameSearchParam,
       TEAM_CODENAMES,

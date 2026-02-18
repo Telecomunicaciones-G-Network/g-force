@@ -2,7 +2,7 @@
 
 import type { GetChatMessagesResponse } from '@module-chat/domain/interfaces';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -23,8 +23,16 @@ export const useChatConversation = () => {
   const activeAgent = useContactStore((state) => state.activeAgent);
   const activeContact = useContactStore((state) => state.activeContact);
   const sendMode = useChatStore((state) => state.sendMode);
+  const messagesNextPage = useChatStore((state) => state.messagesNextPage);
 
+  const addMessages = useChatStore((state) => state.addMessages);
+  const changeMessagesPagination = useChatStore(
+    (state) => state.changeMessagesPagination,
+  );
   const setMessages = useChatStore((state) => state.setMessages);
+
+  const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
+  const isLoadingMoreRef = useRef<boolean>(false);
 
   const {
     data: chatMessagesResponse,
@@ -34,22 +42,18 @@ export const useChatConversation = () => {
     queryKey: [
       queryKeysDictionary.GET_CHAT_MESSAGES,
       activeContact?.id,
-      { limit: 100 },
+      { limit: 20 },
     ],
     queryFn: () =>
       GetChatMessagesQuery({
         contactId: activeContact?.id ?? '',
-        limit: 100,
+        limit: 20,
       }),
     enabled: !!activeContact?.id,
     gcTime: 0,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    staleTime: 0,
   });
 
   const { isConnected, isInRoom } = useContactRoomStatus({
-    autoJoin: true,
     contactId: activeContact?.id,
     joinRoomEventName: socketEmissionsDictionary.ENTER_CHAT_ROOM,
     leaveRoomEventName: socketEmissionsDictionary.LEAVE_CHAT_ROOM,
@@ -59,7 +63,52 @@ export const useChatConversation = () => {
     if (chatMessagesResponse?.messages) {
       setMessages(chatMessagesResponse?.messages);
     }
-  }, [chatMessagesResponse?.messages, setMessages]);
+
+    if (chatMessagesResponse) {
+      changeMessagesPagination({
+        hasMore: chatMessagesResponse.hasMore ?? false,
+        nextCursor: chatMessagesResponse.nextCursor ?? null,
+      });
+    }
+  }, [chatMessagesResponse, setMessages, changeMessagesPagination]);
+
+  const fetchNextMessages = useCallback(async () => {
+    if (
+      !activeContact?.id ||
+      !messagesNextPage ||
+      isLoadingMore ||
+      isLoadingMoreRef.current
+    ) {
+      return;
+    }
+
+    try {
+      isLoadingMoreRef.current = true;
+      setIsLoadingMore(true);
+
+      const response = await GetChatMessagesQuery({
+        contactId: activeContact.id,
+        cursor: messagesNextPage,
+        limit: 20,
+      });
+
+      addMessages(response.messages ?? []);
+
+      changeMessagesPagination({
+        hasMore: response.hasMore ?? false,
+        nextCursor: response.nextCursor ?? null,
+      });
+    } finally {
+      isLoadingMoreRef.current = false;
+      setIsLoadingMore(false);
+    }
+  }, [
+    activeContact?.id,
+    addMessages,
+    changeMessagesPagination,
+    isLoadingMore,
+    messagesNextPage,
+  ]);
 
   // TODO: I must to get better the disabled chat logic
   return {
@@ -71,10 +120,13 @@ export const useChatConversation = () => {
       activeAgent?.id !== activeContact?.latestConversation?.agent?.id ||
       !activeContact?.latestConversation?.status ||
       CHAT_CONTACT_CONVERSATION_DISABLED.includes(
-        activeContact.latestConversation.status,
+        activeContact?.latestConversation?.status,
       ),
+    fetchNextMessages,
     isError,
     isLoading,
+    isLoadingMore,
+    messagesNextPage,
     sendMode,
   };
 };

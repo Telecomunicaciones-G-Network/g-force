@@ -32,7 +32,7 @@ export interface MessageEventData {
   eventType: MessageEventType;
   finishedByAgent: MessageEventDataAgent | null;
   previousAgent: MessageEventDataAgent | null;
-  previousTeam: Team;
-  team: Team;
+  previousTeam: Team | null;
+  team: Team | null;
   timestamp: string;
 }
