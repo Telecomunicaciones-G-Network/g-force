@@ -97,7 +97,8 @@ export const useOnContactConversationAssignmentUpdated = () => {
 
       if (
         response?.agent?.id &&
-        conversationStatus !== ConversationStatus.ASSIGNED
+        conversationStatus !== ConversationStatus.ASSIGNED &&
+        conversationStatus !== null
       ) {
         console.log(
           'Eliminar del store este contacto la conversacion no esta asignada',
@@ -111,7 +112,7 @@ export const useOnContactConversationAssignmentUpdated = () => {
         conversationStatus === ConversationStatus.ASSIGNED
       ) {
         console.log(
-          'Eliminar del store este contacto la conversacion no esta asignada',
+          'Eliminar del store este contacto la conversacion no esta asignada sin agente',
         );
         deleteContactFromStore(response?.contactId);
         return;

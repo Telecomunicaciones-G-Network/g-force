@@ -1,13 +1,13 @@
 'use client';
 
-import { useOnConversationAssignmentUpdated } from '@ui-chat/hooks/on-conversation-assignment-updated.hook';
-import { useOnConversationCreated } from '@ui-chat/hooks/on-conversation-created.hook';
-import { useOnConversationFinished } from '@ui-chat/hooks/on-conversation-finished.hook';
-import { useOnIncommingMessage } from '@ui-chat/hooks/on-incomming-message.hook';
-import { useOnMessageStatusChanged } from '@ui-chat/hooks/on-message-status-changed.hook';
-import { useOnOutgoingMessage } from '@ui-chat/hooks/on-outgoing-message.hook';
-import { useOnReactionAdded } from '@ui-chat/hooks/on-reaction-added.hook';
-import { useOnReactionRemoved } from '@ui-chat/hooks/on-reaction-removed.hook';
+import { useOnChatConversationAssignmentUpdated } from '@ui-chat/hooks/on-chat-conversation-assignment-updated.hook';
+import { useOnChatConversationCreated } from '@ui-chat/hooks/on-chat-conversation-created.hook';
+import { useOnChatConversationFinished } from '@ui-chat/hooks/on-chat-conversation-finished.hook';
+import { useOnChatMessageReactionAdded } from '@ui-chat/hooks/on-chat-message-reaction-added.hook';
+import { useOnChatMessageReactionRemoved } from '@ui-chat/hooks/on-chat-message-reaction-removed.hook';
+import { useOnChatMessageReceived } from '@ui-chat/hooks/on-chat-message-received.hook';
+import { useOnChatMessageSent } from '@ui-chat/hooks/on-chat-message-sent.hook';
+import { useOnChatMessageStatusChanged } from '@ui-chat/hooks/on-chat-message-status-changed.hook';
 
 /**
  * @name UseContactSocketEventsProps
@@ -28,19 +28,18 @@ interface UseContactSocketEventsProps {
  * @param {boolean} [disabledChat] - If true, the chat will be disabled.
  *
  * @returns void
+ *
+ * TODO: Find out the way to handle disabled chat without passing by props
  */
 export const useContactSocketEvents = ({
   disabledChat = false,
 }: Readonly<UseContactSocketEventsProps>) => {
-  // TODO: Find out the way to handle disabled chat without passing by props
-  useOnConversationCreated();
-  useOnConversationAssignmentUpdated();
-  useOnConversationFinished();
-  useOnIncommingMessage({
-    disabledChat,
-  });
-  useOnMessageStatusChanged();
-  useOnOutgoingMessage();
-  useOnReactionAdded();
-  useOnReactionRemoved();
+  useOnChatConversationAssignmentUpdated();
+  useOnChatConversationCreated();
+  useOnChatConversationFinished();
+  useOnChatMessageReactionAdded();
+  useOnChatMessageReactionRemoved();
+  useOnChatMessageReceived({ disabledChat });
+  useOnChatMessageSent();
+  useOnChatMessageStatusChanged();
 };

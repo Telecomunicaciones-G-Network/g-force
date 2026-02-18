@@ -7,6 +7,7 @@ export interface ModalContentProps
       ModalProps,
       | 'customModalCloseComponent'
       | 'hideModalClose'
+      | 'modal'
       | 'modalOverlayChildren'
       | 'preventCloseOnEscape'
       | 'preventCloseOnOutsideClick'

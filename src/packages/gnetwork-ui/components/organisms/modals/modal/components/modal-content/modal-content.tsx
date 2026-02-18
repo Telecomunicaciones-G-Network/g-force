@@ -10,12 +10,14 @@ import { cn } from '../../../../../../utils/cn.util';
 const DialogPortal = DialogPrimitive.Portal;
 
 import styles from './modal-content.module.css';
+import stylesOverlay from '../modal-overlay/modal-overlay.module.css';
 
 export const ModalContent = ({
   className = '',
   children,
   customModalCloseComponent,
   hideModalClose = false,
+  modal = true,
   modalOverlayChildren,
   preventCloseOnEscape = false,
   preventCloseOnOutsideClick = false,
@@ -28,7 +30,19 @@ export const ModalContent = ({
 
   return (
     <DialogPortal>
-      <ModalOverlay>{modalOverlayChildren}</ModalOverlay>
+      {modal ? (
+        <ModalOverlay>{modalOverlayChildren}</ModalOverlay>
+      ) : (
+        <div
+          className={cn(
+            stylesOverlay.base,
+            'bg-black/50 inset-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+          )}
+          style={{ pointerEvents: 'none' }}
+        >
+          <div style={{ pointerEvents: 'auto' }}>{modalOverlayChildren}</div>
+        </div>
+      )}
       <DialogPrimitive.Content
         className={cn(
           styles.base,
@@ -41,7 +55,7 @@ export const ModalContent = ({
             e.preventDefault();
           }
         }}
-        onPointerDownOutside={(e) => {
+        onInteractOutside={(e) => {
           if (preventCloseOnOutsideClick) {
             e.preventDefault();
             return;

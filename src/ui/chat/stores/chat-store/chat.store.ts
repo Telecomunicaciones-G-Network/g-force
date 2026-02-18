@@ -18,6 +18,7 @@ import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 export const useChatStore = create<ChatStoreState>((set, get) => ({
   file: null,
   messages: [],
+  messagesNextPage: null,
   sendMode: ChatSendModes.TEXT,
   setFile: (file: FileData | null) => set({ file }),
   setMessages: (messages: Message[]) => {
@@ -41,6 +42,34 @@ export const useChatStore = create<ChatStoreState>((set, get) => ({
     if (!messageExists) {
       set({ messages: [...messages, message] });
     }
+  },
+  addMessages: (newMessages: Message[]) => {
+    if (!newMessages || newMessages.length === 0) {
+      return;
+    }
+
+    const { messages } = get();
+    const existingIds = new Set(messages.map((msg) => msg.id));
+    const uniqueNewMessages = newMessages.filter(
+      (msg) => !existingIds.has(msg.id),
+    );
+
+    if (uniqueNewMessages.length > 0) {
+      const combinedMessages = [...messages, ...uniqueNewMessages];
+      const sortedMessages = sortArrayByObjectProperty({
+        data: combinedMessages as (Message & Record<string, unknown>)[],
+        order: 'asc',
+        property: 'createdAt',
+      });
+
+      set({ messages: sortedMessages as Message[] });
+    }
+  },
+  changeMessagesPagination: (pagination: {
+    hasMore: boolean;
+    nextCursor: string | null;
+  }) => {
+    set({ messagesNextPage: pagination.nextCursor });
   },
   deleteOneMessageById: (messageId: string) => {
     const { messages } = get();

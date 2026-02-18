@@ -8,7 +8,7 @@ import { useMediaQuery } from '@hook/use-media-query.hook';
 
 import { CHAT_DESKTOP_VIEWPORT } from '@ui-chat/constants/chat-desktop-viewport.constant';
 
-import { useAgentSocketEvents } from '@ui-chat/hooks/agent-socket-events.hook';
+import { useCommonContactsSocketEvents } from '@ui-chat/hooks/common-contacts-socket-events.hook';
 
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
@@ -46,10 +46,13 @@ export const useContactsSection = ({
 }: Readonly<UseContactsListProps>) => {
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
+  const isPaymentModalOpen = useContactStore(
+    (state) => state.isPaymentModalOpen,
+  );
 
   const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
 
-  useAgentSocketEvents();
+  useCommonContactsSocketEvents();
 
   const setContacts = useContactStore((state) => state.setContacts);
   const changeContactsPagination = useContactStore(
@@ -71,5 +74,5 @@ export const useContactsSection = ({
     setContacts,
   ]);
 
-  return { chatMode, contacts, isDesktop };
+  return { chatMode, contacts, isDesktop, isPaymentModalOpen };
 };

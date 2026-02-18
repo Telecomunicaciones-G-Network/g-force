@@ -1,5 +1,5 @@
-export type { EmitMarkMessageAsReadRequestDTO } from './emit-mark-message-as-read-request.dto';
-export type { EmitMarkMessageAsReadResponseDTO } from './emit-mark-message-as-read-response.dto';
+export type { EmitMarkMessagesAsReadRequestDTO } from './emit-mark-messages-as-read-request.dto';
+export type { EmitMarkMessagesAsReadResponseDTO } from './emit-mark-messages-as-read-response.dto';
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';
 export type { EmitSendImageMessageResponseDTO } from './emit-send-image-message-response.dto';
 export type { EmitSendInternalMessageRequestDTO } from './emit-send-internal-message-request.dto';
@@ -50,26 +50,26 @@ export type {
   OnContactConversationAssignmentUpdatedResponseAgentDTO,
   OnContactConversationAssignmentUpdatedResponseTeamDTO,
 } from './on-contact-conversation-assignment-updated-response.dto';
-export type { OnContactFinishedResponseDTO } from './on-contact-finished-response.dto';
+export type { OnContactConversationFinishedResponseDTO } from './on-contact-conversation-finished-response.dto';
 export type {
-  OnConversationFinishedResponseDTO,
-  OnConversationFinishedResponseFinishedByAgentDTO,
-} from './on-conversation-finished-response.dto';
+  OnChatConversationFinishedResponseDTO,
+  OnChatConversationFinishedResponseFinishedByAgentDTO,
+} from './on-chat-conversation-finished-response.dto';
 export type {
-  OnIncommingMessageResponseDTO,
-  OnIncommingMessageResponseContact,
-  OnIncommingMessageResponseLocation,
-  OnIncommingMesssageResponseMedia,
-} from './on-incomming-message-response.dto';
-export type { OnMediaStatusChangedResponseDTO } from './on-media-status-changed-response.dto';
-export type { OnMessageStatusChangedResponseDTO } from './on-message-status-changed-response.dto';
-export type { OnNewMessageReceivedResponseDTO } from './on-new-message-received-response.dto';
-export type { OnNewMessageSentResponseDTO } from './on-new-message-sent-response.dto';
+  OnChatMessageReceivedResponseDTO,
+  OnChatMessageReceivedResponseContact,
+  OnChatMessageReceivedResponseLocation,
+  OnChatMessageReceivedResponseMedia,
+} from './on-chat-message-received-response.dto';
+export type { OnChatMediaStatusChangedResponseDTO } from './on-chat-media-status-changed-response.dto';
+export type { OnChatMessageStatusChangedResponseDTO } from './on-chat-message-status-changed-response.dto';
+export type { OnContactMessageReceivedResponseDTO } from './on-contact-message-received-response.dto';
+export type { OnContactMessageSentResponseDTO } from './on-contact-message-sent-response.dto';
 export type {
-  OnOutgoingMessageResponseDTO,
-  OnOutgoingMessageResponseMediaDTO,
-  OnOutgoingMessageResponseSenderDTO,
-} from './on-outgoing-message-response.dto';
+  OnChatMessageSentResponseDTO,
+  OnChatMessageSentResponseMediaDTO,
+  OnChatMessageSentResponseSenderDTO,
+} from './on-chat-message-sent-response.dto';
 export type { ProcessFastDebitPaymentRequestDTO } from './process-fast-debit-payment-request.dto';
 export type {
   ProcessFastDebitPaymentResponseDTO,

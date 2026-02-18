@@ -14,6 +14,16 @@ import { LogLevels } from '../enums/log-levels.enum';
 
 import { snakeToCamelCase } from '../utils/snake-to-camelcase.util';
 
+const GNETWORK_API_BASE_URL =
+  process.env.NEXT_PUBLIC_GNETWORK_API_BASE_URL ?? '';
+const AUTH_REFRESH_ENDPOINT = `${GNETWORK_API_BASE_URL}/user/auth/refresh/`;
+
+interface RefreshResponse {
+  access?: string;
+  refresh?: string;
+  results?: { access?: string; refresh?: string };
+}
+
 export class Fetch implements HttpAdapter {
   constructor(
     private configuration?: FetchConfig,
@@ -39,6 +49,107 @@ export class Fetch implements HttpAdapter {
     }
 
     return newHeaders;
+  }
+
+  private async getRefreshTokenFromCookies(): Promise<string | undefined> {
+    try {
+      const { cookies } = await import('next/headers');
+      const cookieStore = await cookies();
+
+      return cookieStore.get('refresh')?.value;
+    } catch {
+      return Cookies.get('refresh');
+    }
+  }
+
+  private async refreshAccessToken(
+    refreshToken: string,
+  ): Promise<string | null> {
+    const response = await fetch(AUTH_REFRESH_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json; version=1.0.0',
+      },
+      body: JSON.stringify({ refresh: refreshToken }),
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = (await response.json()) as RefreshResponse;
+    const newToken =
+      data?.access ?? (data as RefreshResponse)?.results?.access ?? null;
+
+    if (newToken) {
+      try {
+        Cookies.set('token', newToken, { path: '/', sameSite: 'lax' });
+      } catch {
+        // Client-only; ignore if cookies not available
+      }
+      try {
+        const { cookies } = await import('next/headers');
+        const cookieStore = await cookies();
+
+        cookieStore.set('token', newToken, {
+          path: '/',
+          sameSite: 'lax',
+          maxAge: 60 * 60,
+        });
+      } catch {
+        // Server context may not allow setting cookies here
+      }
+    }
+
+    return newToken;
+  }
+
+  private async executeFetch(
+    url: string,
+    init: RequestInit,
+    retry = true,
+  ): Promise<Response> {
+    const tokenHeaders = await this.injectToken();
+    const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
+    const mergedHeaders = {
+      ...this.configuration?.headers,
+      ...(init.headers as Record<string, string>),
+      ...tokenHeadersObject,
+    };
+
+    const response = await fetch(url, { ...init, headers: mergedHeaders });
+
+    if (response.status === 401 && retry) {
+      const refreshToken = await this.getRefreshTokenFromCookies();
+
+      if (refreshToken) {
+        try {
+          const newToken = await this.refreshAccessToken(refreshToken);
+
+          if (newToken) {
+            return this.executeFetch(
+              url,
+              {
+                ...init,
+                headers: {
+                  ...mergedHeaders,
+                  Authorization: `Bearer ${newToken}`,
+                },
+              },
+              false,
+            );
+          }
+        } catch (refreshError) {
+          this.logger?.log(
+            (refreshError as Error)?.message ?? 'Refresh token failed',
+            LogLevels.ERROR,
+          );
+        }
+      }
+    }
+
+    return response;
   }
 
   private parseParams(params?: string[]): string {
@@ -101,34 +212,33 @@ export class Fetch implements HttpAdapter {
     }
 
     const fetchConfig = this.sanitizeConfiguration(configuration || {});
-    const tokenHeaders = await this.injectToken();
-    const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
 
-    return fetch(endpoint + parsedParams + parsedSearchParams, {
-      method: 'GET',
-      ...fetchConfig,
-      headers: {
-        ...this.configuration?.headers,
-        ...fetchConfig.headers,
-        ...tokenHeadersObject,
+    const response = await this.executeFetch(
+      endpoint + parsedParams + parsedSearchParams,
+      {
+        method: 'GET',
+        ...fetchConfig,
+        headers: {
+          ...this.configuration?.headers,
+          ...fetchConfig.headers,
+        },
       },
-    })
-      .then(async (response) => {
-        const data = await response.json();
+    );
 
-        const parsedData = this.configuration?.parseResponseOnCamelCase
-          ? snakeToCamelCase<T>(data)
-          : data;
+    if (!response.ok) {
+      this.logger?.log(
+        `GET ${response.status} ${response.statusText}`,
+        LogLevels.ERROR,
+      );
+      throw new Error(response.statusText);
+    }
 
-        return parsedData;
-      })
-      .catch((err) => {
-        this.logger?.log(err.message, LogLevels.ERROR);
+    const data = await response.json();
+    const parsedData = this.configuration?.parseResponseOnCamelCase
+      ? snakeToCamelCase<T>(data)
+      : data;
 
-        const error = err as Error;
-
-        throw error;
-      });
+    return parsedData;
   }
 
   public async getFile(
@@ -150,10 +260,8 @@ export class Fetch implements HttpAdapter {
       }
 
       const fetchConfig = this.sanitizeConfiguration(configuration || {});
-      const tokenHeaders = await this.injectToken();
-      const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
 
-      const response = await fetch(
+      const response = await this.executeFetch(
         endpoint + parsedParams + parsedSearchParams,
         {
           method: 'GET',
@@ -161,7 +269,6 @@ export class Fetch implements HttpAdapter {
           headers: {
             ...this.configuration?.headers,
             ...fetchConfig.headers,
-            ...tokenHeadersObject,
             Accept: '*/*',
           },
           cache: 'no-cache',
@@ -213,35 +320,31 @@ export class Fetch implements HttpAdapter {
     configuration?: HttpClientConfiguration,
   ): Promise<R> {
     const fetchConfig = this.sanitizeConfiguration(configuration || {});
-    const tokenHeaders = await this.injectToken();
-    const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
 
-    return fetch(endpoint, {
+    const response = await this.executeFetch(endpoint, {
       method: 'POST',
       ...fetchConfig,
       headers: {
         ...this.configuration?.headers,
         ...fetchConfig.headers,
-        ...tokenHeadersObject,
       },
       body: JSON.stringify(body),
-    })
-      .then(async (response) => {
-        const data = await response.json();
+    });
 
-        const parsedData = this.configuration?.parseResponseOnCamelCase
-          ? snakeToCamelCase<R>(data)
-          : data;
+    if (!response.ok) {
+      this.logger?.log(
+        `POST ${response.status} ${response.statusText}`,
+        LogLevels.ERROR,
+      );
+      throw new Error(response.statusText);
+    }
 
-        return parsedData;
-      })
-      .catch((err) => {
-        this.logger?.log(err.message, LogLevels.ERROR);
+    const data = await response.json();
+    const parsedData = this.configuration?.parseResponseOnCamelCase
+      ? snakeToCamelCase<R>(data)
+      : data;
 
-        const error = err as Error;
-
-        throw error;
-      });
+    return parsedData;
   }
 
   public async uploadFile<T = unknown>(
@@ -250,37 +353,33 @@ export class Fetch implements HttpAdapter {
     configuration?: HttpClientConfiguration,
   ): Promise<T> {
     const fetchConfig = this.sanitizeConfiguration(configuration || {});
-    const tokenHeaders = await this.injectToken();
-    const tokenHeadersObject = Object.fromEntries(tokenHeaders.entries());
 
-    return fetch(endpoint, {
+    const response = await this.executeFetch(endpoint, {
       method: 'POST',
       ...fetchConfig,
       headers: {
         'Content-Type': 'application/octet-stream',
         ...this.configuration?.headers,
         ...fetchConfig.headers,
-        ...tokenHeadersObject,
         'X-Filename': body?.filename,
         'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
       },
       body: body?.file,
-    })
-      .then(async (response) => {
-        const data = await response.json();
+    });
 
-        const parsedData = this.configuration?.parseResponseOnCamelCase
-          ? snakeToCamelCase<T>(data)
-          : data;
+    if (!response.ok) {
+      this.logger?.log(
+        `POST upload ${response.status} ${response.statusText}`,
+        LogLevels.ERROR,
+      );
+      throw new Error(response.statusText);
+    }
 
-        return parsedData;
-      })
-      .catch((err) => {
-        this.logger?.log(err.message, LogLevels.ERROR);
+    const data = await response.json();
+    const parsedData = this.configuration?.parseResponseOnCamelCase
+      ? snakeToCamelCase<T>(data)
+      : data;
 
-        const error = err as Error;
-
-        throw error;
-      });
+    return parsedData;
   }
 }
