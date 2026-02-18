@@ -70,3 +70,8 @@ export type { TransferChatConversationRequest } from './transfer-chat-conversati
 export type { TransferChatConversationResponse } from './transfer-chat-conversation-response.interface';
 export type { UploadChatMediaRequest } from './upload-chat-media-request.interface';
 export type { UploadChatMediaResponse } from './upload-chat-media-response.interface';
+export type {
+  DollarRate,
+  DollarRateResults,
+  GetDollarRateResponse,
+} from './get-dollar-rate-response.interface';
