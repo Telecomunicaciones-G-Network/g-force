@@ -21,6 +21,7 @@ export class OnConnectedMapper {
       agent: {
         id: input?.agent_id,
         name: input?.agent_full_name,
+        status: input?.agent_status,
         teams: input?.agent_teams ?? [],
       },
       success: input?.success,

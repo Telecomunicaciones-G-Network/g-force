@@ -1,9 +1,6 @@
 'use client';
 
-import type {
-  ConversationStatus,
-  TeamCodename,
-} from '@module-chat/domain/types';
+import type { TeamCodename } from '@module-chat/domain/types';
 
 import { useEffect } from 'react';
 
@@ -53,12 +50,18 @@ export const useChatContainer = () => {
   useEffect(() => {
     if (!statusSearchParam) return;
 
-    if (
+    if (statusSearchParam === 'ALL') {
+      setConversationStatus(null);
+      return;
+    }
+
+    setConversationStatus(
       VALID_CONVERSATION_STATUS.includes(
         statusSearchParam as ConversationStatusValues,
       )
-    )
-      setConversationStatus(statusSearchParam as ConversationStatus);
+        ? (statusSearchParam as ConversationStatusValues)
+        : ConversationStatusValues.ASSIGNED,
+    );
   }, [statusSearchParam, setConversationStatus]);
 
   useEffect(() => {

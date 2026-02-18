@@ -29,7 +29,6 @@ export const ChatConversationEventConversationAssignmentUpdatedMessage = ({
         scheme="label"
       >
         {eventData?.assignedByAgent?.name} ha asignado la conversación a{' '}
-        {/* Caso 1: Asignado a un Agente Persona */}
         {eventData?.agent?.name && (
           <>
             <Tooltip
@@ -51,7 +50,6 @@ export const ChatConversationEventConversationAssignmentUpdatedMessage = ({
             </span>
           </>
         )}
-        {/* Caso 2: Asignado a un Equipo (Atención al Cliente) */}
         {eventData?.team?.id &&
           eventData?.team?.name &&
           !eventData?.agent?.name && (

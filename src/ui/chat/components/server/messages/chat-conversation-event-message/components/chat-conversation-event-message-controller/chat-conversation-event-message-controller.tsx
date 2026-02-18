@@ -4,6 +4,7 @@ import { MessageEventTypes } from '@module-chat/domain/enums/message-event-types
 
 import { ChatConversationEventConversationAssignmentUpdatedMessage } from '../chat-conversation-event-conversation-assigment-updated-message';
 import { ChatConversationEventConversationFinishedMessage } from '../chat-conversation-event-conversation-finished-message';
+import { ChatConversationEventConversationCreatedMessage } from '../chat-conversation-event-conversation-created-message';
 
 /**
  * @name ChatConversationEventMessageController
@@ -25,6 +26,13 @@ export const ChatConversationEventMessageController = ({
     case MessageEventTypes.CONVERSATION_ASSIGNMENT_UPDATED:
       return (
         <ChatConversationEventConversationAssignmentUpdatedMessage
+          createdAt={createdAt}
+          eventData={eventData}
+        />
+      );
+    case MessageEventTypes.CONVERSATION_CREATED:
+      return (
+        <ChatConversationEventConversationCreatedMessage
           createdAt={createdAt}
           eventData={eventData}
         />

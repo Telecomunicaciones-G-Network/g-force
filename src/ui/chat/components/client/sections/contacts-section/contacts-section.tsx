@@ -51,7 +51,7 @@ export const ContactsSection = ({
             'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:pb-[80px] lg:w-[385px]',
           )}
         >
-          {contacts?.length > 0 && <ChatListHeader />}
+          <ChatListHeader />
           <ContactList contacts={contacts} />
           <AgentStatusSelector />
         </section>

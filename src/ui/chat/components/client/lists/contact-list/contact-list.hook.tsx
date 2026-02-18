@@ -32,6 +32,7 @@ import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
  *
  * TODO: Do not use key not magic strings on const platform = searchParams.get('platform') as ContactPlatform | null;
  * TODO: Do not use key not magic strings on const status = searchParams.get('status') as ConversationStatus | null;
+ * TODO: Group the logic to get final params to send GetContactQuery
  */
 export const useContactList = () => {
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
@@ -60,7 +61,11 @@ export const useContactList = () => {
 
   const fetchNextContacts = useCallback(async () => {
     const platform = searchParams.get('platform') as ContactPlatform | null;
-    const status = searchParams.get('status') as ConversationStatus | null;
+    const statusParam = searchParams.get('status');
+    const status =
+      statusParam === 'ALL'
+        ? undefined
+        : ((statusParam as ConversationStatus | null) ?? undefined);
 
     try {
       setIsLoadingMore(true);
@@ -69,7 +74,7 @@ export const useContactList = () => {
         cursor: contactsNextPage ?? undefined,
         limit: DEFAULT_LIMIT_PARAM,
         platform: platform ?? undefined,
-        status: status ?? undefined,
+        status,
       });
 
       addContacts(response.contacts ?? []);

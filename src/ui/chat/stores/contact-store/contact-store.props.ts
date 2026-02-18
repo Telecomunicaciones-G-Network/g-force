@@ -46,6 +46,7 @@ export interface ContactStoreState {
   existContactOnStore: (contactId: string) => boolean;
   hasContactConversationAssigned: (contactId: string) => boolean;
   sortContactsByLatestMessage: VoidFunction;
+  isContactAssignedToMe: (contactId: string, activeAgentId?: string) => boolean;
   updateContactLatestConversation: (
     contactId: string,
     conversation: Partial<Conversation>,

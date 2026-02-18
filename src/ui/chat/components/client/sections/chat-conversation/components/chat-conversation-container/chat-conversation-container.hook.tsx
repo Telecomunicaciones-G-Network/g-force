@@ -1,19 +1,22 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+// import { useEffect, useMemo, useRef } from 'react';
 
 import { useScrollToBottom } from '@hook/use-scroll-to-bottom.hook';
 
-import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
-import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
+// import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
+// import { MessageStatus } from '@module-chat/domain/enums/message-status.enum';
 
-import { useEmitMarkMessageAsRead } from '@ui-chat/hooks/emit-mark-message-as-read.hook';
-import { useOnMediaStatusChanged } from '@ui-chat/hooks/on-media-status-changed.hook';
+import { useEmitMarkMessagesAsRead } from '@ui-chat/hooks/emit-mark-messages-as-read.hook';
+import { useOnChatMediaStatusChanged } from '@ui-chat/hooks/on-chat-media-status-changed.hook';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 
+import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
+
 export const useChatConversationContainer = () => {
-  const lastProcessedMessageIdRef = useRef<string | null>(null);
+  const activeContact = useContactStore((state) => state.activeContact);
+  // const lastProcessedMessageIdRef = useRef<string | null>(null);
 
   const messages = useChatStore((state) => state.messages);
 
@@ -23,13 +26,13 @@ export const useChatConversationContainer = () => {
       dependencies: [messages],
       behavior: 'smooth',
     });
-  useOnMediaStatusChanged({
+  useOnChatMediaStatusChanged({
     onSucess: scrollToBottom,
   });
 
-  const { emitMarkMessageAsRead } = useEmitMarkMessageAsRead();
+  const { emitMarkMessagesAsRead } = useEmitMarkMessagesAsRead();
 
-  const lastMessage = useMemo(() => {
+  /* const lastMessage = useMemo(() => {
     const incomingMessages = messages?.filter(
       (message) => message?.direction === MessageDirections.INCOMING,
     );
@@ -48,8 +51,10 @@ export const useChatConversationContainer = () => {
     }
 
     lastProcessedMessageIdRef.current = lastMessage?.id;
-    emitMarkMessageAsRead(lastMessage?.id);
-  }, [lastMessage, emitMarkMessageAsRead]);
+    // emitMarkMessagesAsRead(lastMessage?.id);
+  }, [lastMessage, emitMarkMessagesAsRead]); */
+
+  emitMarkMessagesAsRead(activeContact?.id);
 
   return {
     messages,
