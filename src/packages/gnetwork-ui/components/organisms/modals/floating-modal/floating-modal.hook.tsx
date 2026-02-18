@@ -22,6 +22,12 @@ export const useFloatingModal = () => {
   });
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+
+    if (['INPUT', 'TEXTAREA'].includes(target.tagName)) {
+      return;
+    }
+
     setIsDragging(true);
 
     dragRef.current = {
