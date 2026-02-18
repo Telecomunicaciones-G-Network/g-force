@@ -3,6 +3,8 @@ import type { ReactChild } from '../../../../types';
 import type { TooltipSide } from './types';
 
 export interface TooltipProps extends PropsWithChildren {
+  align?: 'start' | 'center' | 'end';
+  alignOffset?: number;
   className?: string;
   disabled?: boolean;
   ref?: Ref<HTMLDivElement> | undefined;
