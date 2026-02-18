@@ -14,7 +14,7 @@ import { useSidebarCurrency } from './sidebar-currency.hook';
 
 import styles from './sidebar-currency.module.css';
 
-export const SidebarCurrency = ({}: Readonly<SidebarCurrencyProps>) => {
+export const SidebarCurrency = (_prop: Readonly<SidebarCurrencyProps>) => {
   const { isSidebarCollapsed, currencyRates } = useSidebarCurrency();
 
   // Si no hay datos, podrías retornar null o un skeleton
