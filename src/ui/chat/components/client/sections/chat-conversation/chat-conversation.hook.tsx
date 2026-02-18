@@ -42,12 +42,12 @@ export const useChatConversation = () => {
     queryKey: [
       queryKeysDictionary.GET_CHAT_MESSAGES,
       activeContact?.id,
-      { limit: 100 },
+      { limit: 20 },
     ],
     queryFn: () =>
       GetChatMessagesQuery({
         contactId: activeContact?.id ?? '',
-        limit: 100,
+        limit: 20,
       }),
     enabled: !!activeContact?.id,
     gcTime: 0,
@@ -89,7 +89,7 @@ export const useChatConversation = () => {
       const response = await GetChatMessagesQuery({
         contactId: activeContact.id,
         cursor: messagesNextPage,
-        limit: 100,
+        limit: 20,
       });
 
       addMessages(response.messages ?? []);
