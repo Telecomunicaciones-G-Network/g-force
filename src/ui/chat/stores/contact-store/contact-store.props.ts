@@ -23,12 +23,14 @@ export interface ContactStoreState {
   contactsNextPage: string | null;
   conversationStatus: ConversationStatus | null;
   team: TeamCodename | null;
+  isPaymentModalOpen: boolean;
 
   setActiveAgent: (agent: Omit<Agent, 'email' | 'isBot'> | null) => void;
   setActiveContact: (contact: Contact | null) => void;
   setChatMode: (mode: ChatMode) => void;
   setContactAssignment: (assignment: ContactAssignment) => void;
   setContacts: (contacts: Contact[]) => void;
+  setIsPaymentModalOpen: (isOpen: boolean) => void;
   setConversationStatus: (status: ConversationStatus | null) => void;
   setTeam: (team: TeamCodename | null) => void;
   updateActiveAgentStatus: (status: AgentStatus) => void;
