@@ -46,6 +46,9 @@ export const useContactsSection = ({
 }: Readonly<UseContactsListProps>) => {
   const chatMode = useContactStore((state) => state.chatMode);
   const contacts = useContactStore((state) => state.contacts);
+  const isPaymentModalOpen = useContactStore(
+    (state) => state.isPaymentModalOpen,
+  );
 
   const isDesktop = useMediaQuery(CHAT_DESKTOP_VIEWPORT);
 
@@ -71,5 +74,5 @@ export const useContactsSection = ({
     setContacts,
   ]);
 
-  return { chatMode, contacts, isDesktop };
+  return { chatMode, contacts, isDesktop, isPaymentModalOpen };
 };

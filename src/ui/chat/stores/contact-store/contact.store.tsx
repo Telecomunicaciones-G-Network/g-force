@@ -28,6 +28,7 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   chatMode: ChatModes.LIST,
   contactAssignment: ContactAssignments.MY_TEAMS,
   contacts: [],
+  isPaymentModalOpen: false,
   contactsHasMorePages: false,
   contactsNextPage: null,
   conversationStatus: ConversationStatusValues.ASSIGNED,
@@ -40,6 +41,8 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
   setContactAssignment: (assignment: ContactAssignment) =>
     set({ contactAssignment: assignment }),
   setContacts: (contacts: Contact[]) => set({ contacts }),
+  setIsPaymentModalOpen: (isOpen: boolean) =>
+    set({ isPaymentModalOpen: isOpen }),
   setConversationStatus: (status: ConversationStatus | null) =>
     set({ conversationStatus: status }),
   setTeam: (team: TeamCodename | null) => set({ team: team }),
