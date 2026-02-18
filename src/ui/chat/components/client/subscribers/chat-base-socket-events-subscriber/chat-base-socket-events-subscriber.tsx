@@ -1,6 +1,6 @@
 'use client';
 
-import { useBaseSocketEvents } from '@ui-chat/hooks/base-socket-events.hook';
+import { useAgentSocketEvents } from '@ui-chat/hooks/agent-socket-events.hook';
 
 /**
  * @name ChatBaseSocketEventsSubscriber
@@ -8,7 +8,7 @@ import { useBaseSocketEvents } from '@ui-chat/hooks/base-socket-events.hook';
  * @description This component subscribes to the base socket events.
  */
 export const ChatBaseSocketEventsSubscriber = () => {
-  useBaseSocketEvents();
+  useAgentSocketEvents();
 
   return null;
 };

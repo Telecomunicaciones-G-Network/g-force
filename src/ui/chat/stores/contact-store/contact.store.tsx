@@ -116,6 +116,18 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
           ConversationStatusValues.ASSIGNED,
     );
   },
+  isContactAssignedToMe: (
+    contactId: string,
+    activeAgentId?: string,
+  ): boolean => {
+    const { contacts } = get();
+
+    return contacts?.some(
+      (contact: Contact) =>
+        contact?.latestConversation?.agent?.id === activeAgentId &&
+        contact?.id === contactId,
+    );
+  },
   sortContactsByLatestMessage: () => {
     const { contacts } = get();
 

@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { ConversationStatus as ConversationStatusValues } from '@module-chat/domain/enums/conversation-status.enum';
+
 import { ContactAssignments } from '@module-chat/domain/enums/contact-assignments.enum';
 
 import { useDropdown } from '@gnetwork-ui/components/organisms/dropdowns/dropdown/dropdown.hook';
@@ -57,7 +59,7 @@ export const useContactsFiltersDropdown = () => {
   const changeStatusFilter = (status: ConversationStatus | 'ALL') => {
     const next = new URLSearchParams(searchParams);
 
-    if (status === 'ALL') {
+    if (status === ConversationStatusValues.ASSIGNED) {
       next.delete(STATUS_QUERY_KEY);
     } else {
       next.set(STATUS_QUERY_KEY, status);
