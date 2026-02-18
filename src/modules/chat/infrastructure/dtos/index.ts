@@ -80,3 +80,8 @@ export type { RequestFastDebitOTPResponseDTO } from './request-fast-debit-otp-re
 export type { TransferChatConversationRequestDTO } from './transfer-chat-conversation-request.dto';
 export type { TransferChatConversationResponseDTO } from './transfer-chat-conversation-response.dto';
 export type { UploadChatMediaResponseDTO } from './upload-chat-media-response.dto';
+export type {
+  DollarRateDTO,
+  DollarRateResultsDTO,
+  GetDollarRateResponseDTO,
+} from './get-dollar-rate-response.dto';

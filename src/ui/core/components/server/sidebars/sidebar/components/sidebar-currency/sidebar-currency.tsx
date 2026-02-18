@@ -14,80 +14,68 @@ import { useSidebarCurrency } from './sidebar-currency.hook';
 
 import styles from './sidebar-currency.module.css';
 
-export const SidebarCurrency = ({
-  currencyRates = [],
-}: Readonly<SidebarCurrencyProps>) => {
-  const { isSidebarCollapsed } = useSidebarCurrency();
+export const SidebarCurrency = ({}: Readonly<SidebarCurrencyProps>) => {
+  const { isSidebarCollapsed, currencyRates } = useSidebarCurrency();
+
+  // Si no hay datos, podrías retornar null o un skeleton
+  if (currencyRates.length === 0) return null;
 
   return (
-    <div className={isSidebarCollapsed ? 'px-1 py-4' : 'px-0 py-4'}>
+    <div className={cn('py-4', isSidebarCollapsed ? 'px-1' : 'px-0')}>
       <Card
         bordered
-        className={cn('bg-neutral-100', isSidebarCollapsed ? 'p-2' : 'p-4')}
+        className={cn('bg-neutral-100 transition-all', isSidebarCollapsed ? 'p-2' : 'p-4')}
         fullWidth
       >
         <div className={styles.base}>
-          <div className={styles.base__currency}>
+          <div className={cn("flex items-center gap-3", isSidebarCollapsed ? "justify-center" : "mb-2")}>
             <Tooltip
-              disabled={!isSidebarCollapsed}
+              disabled={!isSidebarCollapsed} // Solo activo si está colapsado
               side="right"
               sideOffset={20}
               triggerComponent={
                 <div
                   className={cn(
-                    styles.base__dollar,
-                    'rounded-full bg-neutral-200 size-8 text-xl text-center text-chromatic-inverted',
+                    'flex items-center justify-center rounded-full bg-neutral-200 size-8 text-chromatic-inverted',
+                    styles.base__dollar
                   )}
                 >
                   <Icon className="h-[14.58px] w-[7.14px]" name="dollar" />
                 </div>
               }
             >
-              {currencyRates.map((currencyRate) => (
-                <div
-                  className="flex gap-2 justify-between items-center"
-                  key={currencyRate?.id}
-                >
-                  <Text as="span" className="font-base text-chromatic text-xs">
-                    {currencyRate?.date}
-                  </Text>
-                  <Text
-                    as="span"
-                    align="right"
-                    className="font-bold text-chromatic"
-                    level="medium"
-                    scheme="label"
-                  >
-                    {currencyRate?.rate}
-                  </Text>
-                </div>
-              ))}
+              {/* Contenido del Tooltip (se ve al pasar el mouse si está colapsado) */}
+              <div className="flex flex-col gap-2 p-1">
+                {currencyRates.map((rate) => (
+                  <div key={rate.id} className="flex flex-col border-b border-neutral-200 last:border-0 pb-1">
+                    <Text size="xs" className="text-gray-500">{rate.date}</Text>
+                    <Text weight="bold" size="sm">{rate.rate}</Text>
+                  </div>
+                ))}
+              </div>
             </Tooltip>
+
             {!isSidebarCollapsed && (
-              <Text
-                as="span"
-                className="font-bold text-sm"
-                size="sm"
-                weight="bold"
-              >
-                BS/USD
+              <Text as="span" size="sm" weight="bold">
+                BS / USD
               </Text>
             )}
           </div>
+
           {!isSidebarCollapsed && (
             <>
-              <Separator />
-              <div>
+              <Separator className="my-2" />
+              <div className="flex flex-col gap-2">
                 {currencyRates.map((currencyRate) => (
                   <div
                     className="flex gap-2 justify-between items-center"
-                    key={currencyRate?.id}
+                    key={currencyRate.id}
                   >
                     <Text
                       as="span"
-                      className="font-base text-chromatic-inverted text-xs"
+                      className="text-chromatic-inverted text-xs"
                     >
-                      {currencyRate?.date}
+                      {currencyRate.date}
                     </Text>
                     <Text
                       as="span"
@@ -96,7 +84,7 @@ export const SidebarCurrency = ({
                       level="medium"
                       scheme="label"
                     >
-                      {currencyRate?.rate}
+                      {currencyRate.rate}
                     </Text>
                   </div>
                 ))}
