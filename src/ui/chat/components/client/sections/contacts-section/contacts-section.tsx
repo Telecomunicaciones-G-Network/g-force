@@ -51,8 +51,7 @@ export const ContactsSection = ({
             styles.base,
             'pb-2 pt-4 px-0 tablet:pt-6 lg:pt-8 w-full lg:min-w-[385px] lg:pb-[80px] lg:w-[385px]',
             {
-              'opacity-50 pointer-events-none select-none grayscale':
-                isPaymentModalOpen,
+              'opacity-50 pointer-events-none select-none': isPaymentModalOpen,
             },
           )}
         >
