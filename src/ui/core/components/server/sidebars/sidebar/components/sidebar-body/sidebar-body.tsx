@@ -6,8 +6,6 @@ import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
 
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-import { sidebarCurrencyRates } from '@ui-core/iterators/sidebar-currency-rates.iterator';
-
 import { SidebarBranch } from '../sidebar-branch';
 import { SidebarCurrency } from '../sidebar-currency';
 import { SidebarMenu } from '../sidebar-menu';
@@ -23,7 +21,7 @@ export const SidebarBody = () => {
   return (
     <div className={cn(styles.base, 'divide-y divide-neutral-200')}>
       <SidebarBranch />
-      <SidebarCurrency currencyRates={sidebarCurrencyRates} />
+      <SidebarCurrency />
       <SidebarMenu />
 
       <div className="flex flex-col gap-4 items-center justify-center mt-auto p-4">
