@@ -17,18 +17,25 @@ import styles from './sidebar-currency.module.css';
 export const SidebarCurrency = (_prop: Readonly<SidebarCurrencyProps>) => {
   const { isSidebarCollapsed, currencyRates } = useSidebarCurrency();
 
-  // Si no hay datos, podrías retornar null o un skeleton
   if (currencyRates.length === 0) return null;
 
   return (
     <div className={cn('py-4', isSidebarCollapsed ? 'px-1' : 'px-0')}>
       <Card
         bordered
-        className={cn('bg-neutral-100 transition-all', isSidebarCollapsed ? 'p-2' : 'p-4')}
+        className={cn(
+          'bg-neutral-100 transition-all',
+          isSidebarCollapsed ? 'p-2' : 'p-4',
+        )}
         fullWidth
       >
         <div className={styles.base}>
-          <div className={cn("flex items-center gap-3", isSidebarCollapsed ? "justify-center" : "mb-2")}>
+          <div
+            className={cn(
+              'flex items-center gap-3',
+              isSidebarCollapsed ? 'justify-center' : 'mb-2',
+            )}
+          >
             <Tooltip
               disabled={!isSidebarCollapsed} // Solo activo si está colapsado
               side="right"
@@ -37,7 +44,7 @@ export const SidebarCurrency = (_prop: Readonly<SidebarCurrencyProps>) => {
                 <div
                   className={cn(
                     'flex items-center justify-center rounded-full bg-neutral-200 size-8 text-chromatic-inverted',
-                    styles.base__dollar
+                    styles.base__dollar,
                   )}
                 >
                   <Icon className="h-[14.58px] w-[7.14px]" name="dollar" />
@@ -47,9 +54,16 @@ export const SidebarCurrency = (_prop: Readonly<SidebarCurrencyProps>) => {
               {/* Contenido del Tooltip (se ve al pasar el mouse si está colapsado) */}
               <div className="flex flex-col gap-2 p-1">
                 {currencyRates.map((rate) => (
-                  <div key={rate.id} className="flex flex-col border-b border-neutral-200 last:border-0 pb-1">
-                    <Text size="xs" className="text-gray-500">{rate.date}</Text>
-                    <Text weight="bold" size="sm">{rate.rate}</Text>
+                  <div
+                    key={rate.id}
+                    className="flex flex-col border-b border-neutral-200 last:border-0 pb-1"
+                  >
+                    <Text size="xs" className="text-gray-500">
+                      {rate.date}
+                    </Text>
+                    <Text weight="bold" size="sm">
+                      {rate.rate}
+                    </Text>
                   </div>
                 ))}
               </div>
@@ -71,10 +85,7 @@ export const SidebarCurrency = (_prop: Readonly<SidebarCurrencyProps>) => {
                     className="flex gap-2 justify-between items-center"
                     key={currencyRate.id}
                   >
-                    <Text
-                      as="span"
-                      className="text-chromatic-inverted text-xs"
-                    >
+                    <Text as="span" className="text-chromatic-inverted text-xs">
                       {currencyRate.date}
                     </Text>
                     <Text
