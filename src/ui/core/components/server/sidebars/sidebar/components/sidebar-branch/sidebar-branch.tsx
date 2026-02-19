@@ -9,46 +9,64 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { useSidebarBranch } from './sidebar-branch.hook';
 
+import { Skeleton } from '@gnetwork-ui/components/atoms/skeletons/skeleton';
+
 import styles from './sidebar-branch.module.css';
 
 export const SidebarBranch = () => {
-  const { isSidebarCollapsed } = useSidebarBranch();
+  const { isSidebarCollapsed, headquarter, isLoading } = useSidebarBranch();
 
   return (
-    <div
-      className={cn(
-        styles.base,
-        isSidebarCollapsed ? 'justify-center' : 'justify-start',
-      )}
-    >
-      <Tooltip
-        disabled={!isSidebarCollapsed}
-        side="right"
-        sideOffset={20}
-        triggerComponent={<MdOutlineMap className="size-6" />}
-      >
-        Sede Montesano
-      </Tooltip>
-      {!isSidebarCollapsed && (
-        <div className={styles.base__content}>
-          <Text
-            as="h6"
-            className="text-chromatic-inverted"
-            level="small"
-            scheme="paragraph"
-          >
-            Sede
-          </Text>
-          <Text
-            as="span"
-            className="text-chromatic-inverted"
-            level="small"
-            scheme="label"
-          >
-            Montesano
-          </Text>
+    <>
+      {isLoading && (
+        <div
+          className={cn(
+            styles.base,
+            isSidebarCollapsed ? 'justify-center' : 'justify-start',
+          )}
+        >
+          <div className={styles.base__content}>
+            <Skeleton className="h-[43px] w-full" />
+          </div>
         </div>
       )}
-    </div>
+      {!isLoading && headquarter && (
+        <div
+          className={cn(
+            styles.base,
+            isSidebarCollapsed ? 'justify-center' : 'justify-start',
+          )}
+        >
+          <Tooltip
+            disabled={!isSidebarCollapsed}
+            side="right"
+            sideOffset={20}
+            triggerComponent={<MdOutlineMap className="size-6" />}
+          >
+            Sede Montesano
+          </Tooltip>
+          {!isSidebarCollapsed && (
+            <div className={styles.base__content}>
+              <Text
+                as="h6"
+                className="text-chromatic-inverted"
+                level="small"
+                scheme="paragraph"
+              >
+                Sede
+              </Text>
+              <Text
+                as="span"
+                className="text-chromatic-inverted"
+                level="small"
+                scheme="label"
+              >
+                Montesano
+              </Text>
+            </div>
+          )}
+        </div>
+      )}
+    </>
   );
 };

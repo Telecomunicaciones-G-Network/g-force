@@ -66,7 +66,7 @@ export default function Error({
           className="responsive-image-contain"
           fill
           priority
-          src="/images/error.png"
+          src="/images/error1.png"
           sizes="100%"
         />
       </div>

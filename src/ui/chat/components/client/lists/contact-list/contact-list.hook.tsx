@@ -2,8 +2,10 @@
 
 import type { Contact } from '@module-chat/domain/interfaces';
 import type {
+  ContactAssignment,
   ContactPlatform,
   ConversationStatus,
+  TeamCodename,
 } from '@module-chat/domain/types';
 
 import { useCallback, useState } from 'react';
@@ -61,6 +63,13 @@ export const useContactList = () => {
 
   const fetchNextContacts = useCallback(async () => {
     const platform = searchParams.get('platform') as ContactPlatform | null;
+    const assignedTo = searchParams.get(
+      'assigned_to',
+    ) as ContactAssignment | null;
+    const teamCodename = searchParams.get(
+      'team_codename',
+    ) as TeamCodename | null;
+
     const statusParam = searchParams.get('status');
     const status =
       statusParam === 'ALL'
@@ -71,10 +80,12 @@ export const useContactList = () => {
       setIsLoadingMore(true);
 
       const response = await GetContactsQuery({
+        assignedTo: assignedTo ?? undefined,
         cursor: contactsNextPage ?? undefined,
         limit: DEFAULT_LIMIT_PARAM,
         platform: platform ?? undefined,
         status,
+        teamCodename: teamCodename ?? undefined,
       });
 
       addContacts(response.contacts ?? []);
