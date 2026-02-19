@@ -65,6 +65,38 @@ export interface GetChatMessagesResultSender {
   name: string;
 }
 
+export interface GetChatMessagesResultFlowData {
+  button_text: string | null;
+  flow_action_type: string | null;
+  flow_codename: string | null;
+  flow_token: string | null;
+}
+
+export interface GetChatMessagesResultReplyButton {
+  id: string;
+  title: string;
+}
+
+export interface GetChatMessagesResultListRow {
+  description: string | null;
+  id: string;
+  title: string;
+}
+
+export interface GetChatMessagesResultListSection {
+  rows: GetChatMessagesResultListRow[];
+  title: string | null;
+}
+
+export interface GetChatMessagesResultInteractiveOptions {
+  button_text: string | null;
+  flow_data: GetChatMessagesResultFlowData | null;
+  interactive_type: string;
+  list_button_text: string | null;
+  list_sections: GetChatMessagesResultListSection[] | null;
+  reply_buttons: GetChatMessagesResultReplyButton[] | null;
+}
+
 export interface GetChatMessagesResult {
   id: string;
   contacts: GetChatMessagesResultContact[];
@@ -77,6 +109,7 @@ export interface GetChatMessagesResult {
   failed_at: string | null;
   forwarded_many_times: boolean;
   forwarded: boolean;
+  interactive_options: GetChatMessagesResultInteractiveOptions | null;
   location: GetChatMessagesResultLocation | null;
   media: GetChatMessagesResultMedia | null;
   platform_id: string;
