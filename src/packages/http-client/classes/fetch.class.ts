@@ -314,6 +314,58 @@ export class Fetch implements HttpAdapter {
     }
   }
 
+  public async getBlob(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    try {
+      let parsedParams = '';
+      let parsedSearchParams = '';
+
+      if (configuration?.params) {
+        parsedParams = this.parseParams(configuration?.params);
+      }
+
+      if (configuration?.searchParams) {
+        parsedSearchParams = this.parseSearchParams(
+          configuration?.searchParams,
+        );
+      }
+
+      const fetchConfig = this.sanitizeConfiguration(configuration || {});
+
+      const response = await this.executeFetch(
+        endpoint + parsedParams + parsedSearchParams,
+        {
+          method: 'GET',
+          ...fetchConfig,
+          headers: {
+            ...this.configuration?.headers,
+            ...fetchConfig.headers,
+            Accept: '*/*',
+          },
+          cache: 'no-cache',
+        },
+      );
+
+      if (!response.ok) {
+        const errorText = await response
+          .text()
+          .catch(() => response.statusText);
+
+        throw new Error(
+          `Failed to fetch blob: ${response.status} ${response.statusText} - ${errorText}`,
+        );
+      }
+
+      const blob = await response.blob();
+      return URL.createObjectURL(blob);
+    } catch (err) {
+      this.logger?.log((err as Error).message, LogLevels.ERROR);
+      throw err as Error;
+    }
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

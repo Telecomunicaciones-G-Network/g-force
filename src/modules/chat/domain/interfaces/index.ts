@@ -75,6 +75,7 @@ export type {
   DollarRateResults,
   GetDollarRateResponse,
 } from './get-dollar-rate-response.interface';
+export type {
   InteractiveOptions,
   FlowData,
 } from './interactive-options.interface';
