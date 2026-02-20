@@ -87,7 +87,9 @@ export const useOnContactMessageReceived = () => {
         return;
       }
 
-      await revalidateChatContactsAction();
+      if (!existContactOnStore(response?.contactId)) {
+        await revalidateChatContactsAction();
+      }
     },
   );
 };

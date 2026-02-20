@@ -59,18 +59,30 @@ export const useContactsSection = ({
     (state) => state.changeContactsPagination,
   );
 
-  useEffect(() => {
-    setContacts(contactsResponse);
+  const prependContact = useContactStore((state) => state.prependContact);
 
-    changeContactsPagination({
-      hasMore: hasMore ?? false,
-      nextCursor: nextCursor ?? null,
-    });
+  useEffect(() => {
+    const currentContacts = useContactStore.getState().contacts;
+
+    if (currentContacts.length === 0) {
+      setContacts(contactsResponse);
+      changeContactsPagination({
+        hasMore: hasMore ?? false,
+        nextCursor: nextCursor ?? null,
+      });
+      return;
+    }
+    const loadedIds = new Set(currentContacts.map((c) => c.id));
+    const trulyNew = contactsResponse.filter((c) => !loadedIds.has(c.id));
+    for (const contact of trulyNew) {
+      prependContact(contact);
+    }
   }, [
     changeContactsPagination,
     contactsResponse,
     hasMore,
     nextCursor,
+    prependContact,
     setContacts,
   ]);
 

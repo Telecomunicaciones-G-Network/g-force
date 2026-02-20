@@ -58,6 +58,12 @@ export const useContactStore = create<ContactStoreState>((set, get) => ({
 
     set({ contacts: [...currentContacts, ...newContacts] });
   },
+  prependContact: (contact: Contact) => {
+    const { contacts } = get();
+    const alreadyExists = contacts.some((c) => c.id === contact.id);
+    if (alreadyExists) return;
+    set({ contacts: [contact, ...contacts] });
+  },
   addOneUnreadMessageToContact: ({
     contactId,
     lastMessage,
