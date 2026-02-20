@@ -39,9 +39,9 @@ export const useOnContactMessageSent = () => {
   const isContactAssignedToMe = useContactStore(
     (state) => state.isContactAssignedToMe,
   );
-  const sortContactsByLatestMessage = useContactStore(
-    (state) => state.sortContactsByLatestMessage,
-  );
+  // const sortContactsByLatestMessage = useContactStore(
+  //   (state) => state.sortContactsByLatestMessage,
+  // );
 
   onSocketEvent<OnContactMessageSentResponseDTO>(
     socketEventsDictionary.CONTACT_MESSAGE_SENT,
@@ -75,7 +75,7 @@ export const useOnContactMessageSent = () => {
         lastMessage: response?.messageTextPreview,
         messageType: response?.messageType,
       });
-      sortContactsByLatestMessage();
+      // sortContactsByLatestMessage();
 
       if (
         response?.contactId !== activeContact?.id &&
