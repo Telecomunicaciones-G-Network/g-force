@@ -30,6 +30,16 @@ export class HttpClient {
     );
   }
 
+  public async getBlob(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return await this.fetcher.getBlob(
+      `${this.baseUrl}${endpoint}`,
+      configuration,
+    );
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,
