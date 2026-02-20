@@ -39,6 +39,7 @@ export interface ContactStoreState {
   addOneUnreadMessageToContact: (
     params: AddOneUnreadMessageToContactParams,
   ) => void;
+  prependContact: (contact: Contact) => void;
   changeContactsPagination: (params: {
     hasMore: boolean;
     nextCursor: string | null;
