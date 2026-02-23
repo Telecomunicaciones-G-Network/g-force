@@ -93,7 +93,15 @@ export const ChatAudioMessage = ({
           }
         }}
         onLoadedMetadata={() => setDuration(audioRef.current?.duration ?? 0)}
-        onPlay={() => setIsPlaying(true)}
+        onPlay={(e) => {
+          setIsPlaying(true);
+          const audios = document.querySelectorAll('audio');
+          audios.forEach((audio) => {
+            if (audio !== e.target) {
+              audio.pause();
+            }
+          });
+        }}
         onPause={() => setIsPlaying(false)}
         onEnded={() => {
           setIsPlaying(false);

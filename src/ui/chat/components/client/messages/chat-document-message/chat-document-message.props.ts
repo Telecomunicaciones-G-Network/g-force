@@ -1,0 +1,7 @@
+import type { ChatMessageProps } from '@gnetwork-ui/components/organisms/messages/chat-message';
+
+export interface ChatDocumentMessageProps extends ChatMessageProps {
+  filename?: string;
+  mediaId: string;
+  mimeType?: string;
+}
