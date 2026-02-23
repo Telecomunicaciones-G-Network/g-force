@@ -30,15 +30,17 @@ export const ChatConversationController = ({
     case MessageTypes.DOCUMENT:
       return <ChatDocumentMessageController message={message} />;
     case MessageTypes.FLOW_BUTTON:
-      return <ChatTextMessageController message={message} />;
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.IMAGE:
       return <ChatImageMessageController message={message} />;
     case MessageTypes.INTERNAL:
       return <ChatInternalMessage message={message} />;
+    case MessageTypes.INTERACTIVE_BUTTONS:
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_OPTIONS:
-      return <ChatTextMessageController message={message} />;
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_SELECTION:
-      return <ChatTextMessageController message={message} />;
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.LOCATION:
       return <ChatLocationMessageController message={message} />;
     case MessageTypes.STICKER:

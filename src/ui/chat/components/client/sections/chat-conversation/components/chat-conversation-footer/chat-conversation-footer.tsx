@@ -63,7 +63,7 @@ export const ChatConversationFooter = ({
             value={message}
           />
           <Button
-            className="px-2"
+            className="px-2 max-h-[42px] self-end"
             color="red"
             disabled={disabledChat || sendMode === ChatSendModes.INTERNAL}
             type="submit"
