@@ -41,11 +41,12 @@ export const ChatLocationMessage = ({
           <div
             className="absolute inset-0 opacity-10"
             style={{
-              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M 20 0 L 0 0 0 20\' fill=\'none\' stroke=\'%23000\' stroke-width=\'1\'/%3E%3C/svg%3E")',
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E\")",
               backgroundSize: '20px 20px',
             }}
           />
-          
+
           <div className="absolute left-[-10%] top-[40%] h-2 w-[120%] -rotate-6 bg-white/80" />
           <div className="absolute left-[60%] top-[-10%] h-[120%] w-[10px] rotate-12 bg-white/80" />
           <div className="absolute left-[60%] top-[30%] h-1.5 w-[120%] rotate-45 bg-[#f5f5f5]" />
@@ -53,7 +54,9 @@ export const ChatLocationMessage = ({
           <div className="relative z-10 flex -translate-y-[4px] flex-col items-center">
             <MdPlace className="size-9 text-red-500 drop-shadow-md" />
             <div className="mt-0.5 flex items-center justify-center rounded-full bg-black/50 px-2.5 py-0.5 backdrop-blur-md">
-              <span className="text-[9px] font-semibold tracking-wide text-white">Abrir mapa</span>
+              <span className="text-[9px] font-semibold tracking-wide text-white">
+                Abrir mapa
+              </span>
             </div>
           </div>
         </div>

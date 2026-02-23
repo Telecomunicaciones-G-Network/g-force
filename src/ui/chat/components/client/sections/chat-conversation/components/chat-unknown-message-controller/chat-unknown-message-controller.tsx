@@ -1,10 +1,20 @@
 import type { BubbleStatus } from '@gnetwork-ui/components/molecules/blocks/bubble';
 import type { ChatConversationControllerProps } from '../chat-conversation-controller';
 import type { Media } from '@module-chat/domain/interfaces/media.interface';
-import type { ReplyButton, ListSection, ListRow } from '@module-chat/domain/interfaces/interactive-options.interface';
+import type {
+  ReplyButton,
+  ListSection,
+  ListRow,
+} from '@module-chat/domain/interfaces/interactive-options.interface';
 
 import { useState } from 'react';
-import { MdList, MdOutlineQuestionMark, MdTouchApp, MdArrowDownward,MdArrowUpward } from 'react-icons/md';
+import {
+  MdList,
+  MdOutlineQuestionMark,
+  MdTouchApp,
+  MdArrowDownward,
+  MdArrowUpward,
+} from 'react-icons/md';
 
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
 import { Tooltip } from '@gnetwork-ui/components/molecules/tooltips/tooltip';
@@ -34,7 +44,6 @@ import { ChatImageMessageModalClose } from '@ui-chat/components/client/messages/
 import { ChatImageMessageModal } from '@ui-chat/components/client/messages/chat-image-message/components/chat-image-message-modal';
 import styles from '@ui-chat/components/client/messages/chat-image-message/components/chat-image-message-content/chat-image-message-content.module.css';
 
-
 const InteractiveImagePreview = ({ media }: { media: Media }) => {
   const { isModalOpen, onOpenChange } = useModal();
   const mediaId = media?.id;
@@ -50,7 +59,7 @@ const InteractiveImagePreview = ({ media }: { media: Media }) => {
       <div className="w-full h-40 bg-black/10 rounded-lg animate-pulse my-2" />
     );
   }
-  
+
   if (!imageUrl) return null;
 
   const filename = media?.filename || 'image';
@@ -147,21 +156,26 @@ const CollapsibleListSections = ({ sections }: { sections: ListSection[] }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   if (!sections || sections.length === 0) return null;
 
-  const totalRows = sections.reduce((acc, section) => acc + (section.rows?.length || 0), 0);
+  const totalRows = sections.reduce(
+    (acc, section) => acc + (section.rows?.length || 0),
+    0,
+  );
   const hasMore = totalRows > 2;
 
   let rowsCounted = 0;
-  
+
   return (
     <div className="mt-2 flex flex-col gap-2 w-full">
       {sections.map((section, index) => {
         if (!isExpanded && rowsCounted >= 2) return null;
 
-        const availableSlots = isExpanded ? (section.rows?.length || 0) : Math.max(0, 2 - rowsCounted);
+        const availableSlots = isExpanded
+          ? section.rows?.length || 0
+          : Math.max(0, 2 - rowsCounted);
         const visibleRows = (section.rows || []).slice(0, availableSlots);
-        
-        rowsCounted += (section.rows?.length || 0);
-        
+
+        rowsCounted += section.rows?.length || 0;
+
         if (visibleRows.length === 0) return null;
 
         return (
@@ -270,7 +284,9 @@ export const ChatUnknownMessageController = ({
 
           {message.interactiveOptions?.listSections &&
           message.interactiveOptions.listSections.length > 0 ? (
-            <CollapsibleListSections sections={message.interactiveOptions.listSections} />
+            <CollapsibleListSections
+              sections={message.interactiveOptions.listSections}
+            />
           ) : message.interactiveOptions?.listButtonText ? (
             <div className="mt-2 flex justify-center">
               <div className="w-full rounded-lg bg-gray-50 px-4 py-2 text-center text-sm font-medium text-gray-700 transition-colors">
@@ -281,7 +297,9 @@ export const ChatUnknownMessageController = ({
 
           {message.interactiveOptions?.replyButtons &&
           message.interactiveOptions.replyButtons.length > 0 ? (
-            <CollapsibleReplyButtons buttons={message.interactiveOptions.replyButtons} />
+            <CollapsibleReplyButtons
+              buttons={message.interactiveOptions.replyButtons}
+            />
           ) : null}
         </div>
       ) : (
