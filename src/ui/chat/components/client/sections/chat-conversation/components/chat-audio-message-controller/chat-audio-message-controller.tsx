@@ -24,7 +24,6 @@ export const ChatAudioMessageController = ({
 
   const time = isoToTime(message?.createdAt ?? '');
 
-  // Media pendiente: mostrar skeleton
   if (message?.media?.storageStatus === MediaStorageStatus.PENDING) {
     return (
       <ChatMessageSkeleton
@@ -35,7 +34,6 @@ export const ChatAudioMessageController = ({
     );
   }
 
-  // Media disponible: mostrar reproductor de audio
   if (
     message?.media?.id &&
     message?.media?.storageStatus === MediaStorageStatus.AVAILABLE
@@ -54,7 +52,6 @@ export const ChatAudioMessageController = ({
     );
   }
 
-  // Fallback: media no disponible o error
   return (
     <ChatTextMessage
       caption={null}

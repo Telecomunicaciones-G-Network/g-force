@@ -40,7 +40,7 @@ export const ChatConversationController = ({
     case MessageTypes.INTERACTIVE_LIST_OPTIONS:
       return <ChatUnknownMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_SELECTION:
-      return <ChatTextMessageController message={message} />;
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.LOCATION:
       return <ChatLocationMessageController message={message} />;
     case MessageTypes.STICKER:
