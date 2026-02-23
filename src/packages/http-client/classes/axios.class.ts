@@ -290,6 +290,29 @@ export class Axios implements HttpAdapter {
       });
   }
 
+  public async getBlob(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string> {
+    return this.axiosInstance
+      .get<ArrayBuffer>(endpoint, {
+        ...configuration,
+        responseType: 'arraybuffer',
+        headers: {
+          ...configuration?.headers,
+          Accept: '*/*',
+        },
+      })
+      .then((response) => {
+        const blob = new Blob([response.data]);
+        return URL.createObjectURL(blob);
+      })
+      .catch((err) => {
+        const error = err as AxiosError;
+        throw error;
+      });
+  }
+
   public async post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

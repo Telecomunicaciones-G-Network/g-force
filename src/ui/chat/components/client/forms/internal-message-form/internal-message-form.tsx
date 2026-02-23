@@ -34,7 +34,7 @@ export const InternalMessageForm = () => {
         value={internalMessage}
       />
       <Button
-        className="px-2"
+        className="px-2 max-h-[42px] self-end"
         color="black"
         // TODO: Apply loading state while form is submitting
         type="submit"

@@ -81,7 +81,39 @@ export class GetChatMessagesMapper {
       failedAt: input?.failed_at,
       forwarded: input?.forwarded,
       forwardedManyTimes: input?.forwarded_many_times,
-      interactiveOptions: null,
+      interactiveOptions: input?.interactive_options
+        ? {
+            buttonText: input.interactive_options.button_text,
+            flowData: input.interactive_options.flow_data
+              ? {
+                  buttonText: input.interactive_options.flow_data.button_text,
+                  flowActionType:
+                    input.interactive_options.flow_data.flow_action_type,
+                  flowCodename:
+                    input.interactive_options.flow_data.flow_codename,
+                  flowToken: input.interactive_options.flow_data.flow_token,
+                }
+              : null,
+            interactiveType: input.interactive_options.interactive_type,
+            listButtonText: input.interactive_options.list_button_text,
+            listSections: input.interactive_options.list_sections
+              ? input.interactive_options.list_sections.map((section) => ({
+                  rows: section.rows.map((row) => ({
+                    description: row.description,
+                    id: row.id,
+                    title: row.title,
+                  })),
+                  title: section.title,
+                }))
+              : null,
+            replyButtons: input.interactive_options.reply_buttons
+              ? input.interactive_options.reply_buttons.map((button) => ({
+                  id: button.id,
+                  title: button.title,
+                }))
+              : [],
+          }
+        : null,
       location: input?.location
         ? {
             address: input.location.address,

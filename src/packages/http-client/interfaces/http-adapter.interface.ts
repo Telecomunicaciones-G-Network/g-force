@@ -12,6 +12,11 @@ export interface HttpAdapter {
     configuration?: HttpClientConfiguration,
   ): Promise<string>;
 
+  getBlob(
+    endpoint: string,
+    configuration?: HttpClientConfiguration,
+  ): Promise<string>;
+
   post<T = unknown, R = unknown>(
     endpoint: string,
     body?: T,

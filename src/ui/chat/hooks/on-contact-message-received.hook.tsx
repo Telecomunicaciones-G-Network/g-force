@@ -41,9 +41,9 @@ export const useOnContactMessageReceived = () => {
   const isContactAssignedToMe = useContactStore(
     (state) => state.isContactAssignedToMe,
   );
-  const sortContactsByLatestMessage = useContactStore(
-    (state) => state.sortContactsByLatestMessage,
-  );
+  // const sortContactsByLatestMessage = useContactStore(
+  //   (state) => state.sortContactsByLatestMessage,
+  // );
 
   onSocketEvent<OnContactMessageReceivedResponseDTO>(
     socketEventsDictionary.CONTACT_MESSAGE_RECEIVED,
@@ -71,7 +71,7 @@ export const useOnContactMessageReceived = () => {
         lastMessage: response?.messageTextPreview,
         messageType: response?.messageType,
       });
-      sortContactsByLatestMessage();
+      // sortContactsByLatestMessage();
 
       if (response?.contactId === activeContact?.id) return;
 
@@ -87,7 +87,9 @@ export const useOnContactMessageReceived = () => {
         return;
       }
 
-      await revalidateChatContactsAction();
+      if (!existContactOnStore(response?.contactId)) {
+        await revalidateChatContactsAction();
+      }
     },
   );
 };

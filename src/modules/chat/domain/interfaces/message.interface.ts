@@ -1,4 +1,5 @@
 import type { MessageDirection, MessageStatus, MessageType } from '../types';
+import type { InteractiveOptions } from './interactive-options.interface';
 import type { Media } from './media.interface';
 import type { MessageContact } from './message-contact.interface';
 import type { MessageEventData } from './message-event-data.interface';
@@ -21,7 +22,7 @@ import type { MessageSender } from './message-sender.interface';
  * @property {string | null} failedAt - The failure date of the message.
  * @property {boolean} forwarded - Whether the message is forwarded.
  * @property {boolean} forwardedManyTimes - Whether the message is forwarded many times.
- * @property {null} interactiveOptions - The interactive options of the message.
+ * @property {InteractiveOptions | null} interactiveOptions - The interactive options of the message.
  * @property {MessageLocation | null} location - The location of the message.
  * @property {Media | null} media - The media of the message.
  * @property {MessageReaction[]} reactions - The reactions of the message.
@@ -45,7 +46,7 @@ export interface Message {
   failedAt: string | null;
   forwarded: boolean;
   forwardedManyTimes: boolean;
-  interactiveOptions: null;
+  interactiveOptions: InteractiveOptions | null;
   location: MessageLocation | null;
   media: Media | null;
   reactions: MessageReaction[];
