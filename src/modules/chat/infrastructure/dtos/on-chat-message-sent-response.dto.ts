@@ -4,6 +4,7 @@ import type {
   MessageStatus,
   MessageType,
 } from '../../domain/types';
+import type { GetChatMessagesResultInteractiveOptions } from '../interfaces/get-chat-messages-result.interface';
 
 /**
  * @name OnChatMessageSentResponseMediaDTO
@@ -77,11 +78,23 @@ export interface OnChatMessageSentResponseDTO {
   failed_at: string | null;
   forwarded_many_times: boolean;
   forwarded: boolean;
+  interactive_options?: GetChatMessagesResultInteractiveOptions | null;
   location: null;
   media: OnChatMessageSentResponseMediaDTO | null;
   platform_id: string | null;
   read_at: string | null;
-  reply_to_message_id: null;
+  reply_to_message: {
+    id: string;
+    sender: {
+      id: string;
+      name: string;
+      is_bot: boolean;
+    };
+    direction: string;
+    text_preview: string | null;
+    type: MessageType;
+    status: string;
+  } | null;
   sender: OnChatMessageSentResponseSenderDTO;
   sent_at: string | null;
   status: MessageStatus;

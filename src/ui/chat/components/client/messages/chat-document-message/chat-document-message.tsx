@@ -5,7 +5,7 @@ import type { ChatDocumentMessageProps } from './chat-document-message.props';
 
 import { useState } from 'react';
 
-import { MdDownload, MdInsertDriveFile } from 'react-icons/md';
+import { MdInsertDriveFile } from 'react-icons/md';
 import { useQuery } from '@tanstack/react-query';
 
 import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
@@ -14,6 +14,9 @@ import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons
 import { getChatAudioByIdQuery } from '@module-chat/infrastructure/queries/get-chat-audio-by-id.query';
 
 import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary';
+import { ChatReplyPreview } from '@ui-chat/components/client/messages/chat-reply-preview';
+
+import styles from './chat-document-message.module.css';
 
 /** Maps a MIME type to a human-friendly label shown in the document card. */
 const getMimeLabel = (mimeType = ''): string => {
@@ -32,6 +35,7 @@ export const ChatDocumentMessage = ({
   filename: _filename,
   mimeType: _mimeType,
   mediaId = '',
+  replyToMessage,
   time,
   username,
   ...rest
@@ -61,6 +65,8 @@ export const ChatDocumentMessage = ({
     setIsDownloading(false);
   };
 
+  const hasCaption = typeof rest.caption === 'string' && rest.caption.length > 0;
+
   if (isLoading) {
     return (
       <ChatMessageSkeleton
@@ -75,35 +81,53 @@ export const ChatDocumentMessage = ({
 
   return (
     <ChatMessage
-      bubbleClassName="!p-0 overflow-hidden"
+      bubbleClassName={styles.base__bubble}
       direction={direction}
       time={time}
       username={username}
       {...rest}
+      caption={null}
     >
-      <div className="flex items-center gap-3 p-3 min-w-[200px] max-w-[260px] hover:bg-black/5 transition-colors">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black/20">
-          <MdInsertDriveFile className="size-6 text-white/80" />
+      <div className={styles.base__content}>
+        <ChatReplyPreview replyToMessage={replyToMessage} />
+
+        <div className={styles.base__document_card}>
+          <div className={styles.base__icon_wrapper}>
+            <MdInsertDriveFile className={styles.base__icon} />
+          </div>
+
+          <div className={styles.base__info_container}>
+            <span className={styles.base__filename}>{filename}</span>
+            <span className={styles.base__mime_type}>
+              {getMimeLabel(mimeType)}
+            </span>
+          </div>
         </div>
 
-        <div className="flex min-w-0 flex-1 flex-col">
-          <span className="truncate text-[13px] font-medium leading-tight">
-            {filename}
-          </span>
-          <span className="mt-0.5 text-[11px] opacity-60">
-            {getMimeLabel(mimeType)}
-          </span>
-        </div>
+        {hasCaption && (
+          <span className={styles.base__caption}>{rest.caption}</span>
+        )}
 
-        <button
-          type="button"
-          onClick={handleDownload}
-          disabled={isDownloading}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black/20 transition-colors hover:bg-black/30 disabled:opacity-50"
-          aria-label="Descargar documento"
-        >
-          <MdDownload className="size-5" />
-        </button>
+        <div className={styles.base__divider} />
+
+        <div className={styles.base__actions_container}>
+          <a
+            href={blobUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.base__open_button}
+          >
+            Abrir
+          </a>
+          <button
+            type="button"
+            onClick={handleDownload}
+            disabled={isDownloading}
+            className={styles.base__download_button}
+          >
+            {isDownloading ? 'Descargando...' : 'Descargar'}
+          </button>
+        </div>
       </div>
     </ChatMessage>
   );

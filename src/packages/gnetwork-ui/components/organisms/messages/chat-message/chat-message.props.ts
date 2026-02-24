@@ -10,6 +10,8 @@ export interface ChatMessageProps extends ReactDiv {
   caption?: string | null;
   customIconClassName?: string;
   direction: BubbleVariants['mode'];
+  forwarded?: boolean;
+  forwardedManyTimes?: boolean;
   isBot?: boolean;
   status?: BubbleStatus;
   tagClassName?: string;
