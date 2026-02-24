@@ -37,6 +37,8 @@ export const ChatLocationMessageController = ({
         status={message?.status.toLowerCase() as BubbleStatus}
         time={time}
         username={message?.sender?.name ?? ''}
+        forwarded={message?.forwarded}
+        forwardedManyTimes={message?.forwardedManyTimes}
       />
     );
   }
@@ -50,6 +52,8 @@ export const ChatLocationMessageController = ({
       status={message?.status.toLowerCase() as BubbleStatus}
       time={time}
       username={message?.sender?.name ?? ''}
+      forwarded={message?.forwarded}
+      forwardedManyTimes={message?.forwardedManyTimes}
     >
       <div className="flex items-center gap-2">
         <MdOutlineMap className="min-h-6 min-w-6 size-6" />

@@ -2,6 +2,8 @@ import type { ChatMessageProps } from './chat-message.props';
 
 import { MdOutlineSmartToy } from 'react-icons/md';
 
+import { ChatForwardedIndicator } from './chat-forwarded-indicator';
+
 import { Text } from '../../../atoms/texts/text';
 import { Bubble } from '../../../molecules/blocks/bubble';
 import { Tag } from '../../../molecules/tags/tag';
@@ -21,6 +23,8 @@ export const ChatMessage = ({
   className = '',
   customIconClassName = '',
   direction = BubbleModes.UNKNOWN,
+  forwarded = false,
+  forwardedManyTimes = false,
   isBot = false,
   ref,
   status = BubbleStatus.NONE,
@@ -111,6 +115,7 @@ export const ChatMessage = ({
         mode={direction}
         status={direction === 'incoming' ? BubbleStatus.NONE : status}
       >
+        <ChatForwardedIndicator forwarded={forwarded} forwardedManyTimes={forwardedManyTimes} />
         {children}
         {caption && caption}
       </Bubble>

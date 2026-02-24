@@ -13,6 +13,7 @@ import { ChatLocationMessageController } from '../chat-location-message-controll
 import { ChatStickerMessageController } from '../chat-sticker-message-controller';
 import { ChatTextMessageController } from '../chat-text-message-controller';
 import { ChatUnknownMessageController } from '../chat-unknown-message-controller';
+import { ChatUrlMessageController } from '../chat-url-message-controller';
 import { ChatVideoMessageController } from '../chat-video-message-controller';
 
 export const ChatConversationController = ({
@@ -31,11 +32,15 @@ export const ChatConversationController = ({
       return <ChatDocumentMessageController message={message} />;
     case MessageTypes.FLOW_BUTTON:
       return <ChatUnknownMessageController message={message} />;
+    case MessageTypes.FLOW_COMPLETION:
+      return <ChatUnknownMessageController message={message} />;
     case MessageTypes.IMAGE:
       return <ChatImageMessageController message={message} />;
     case MessageTypes.INTERNAL:
       return <ChatInternalMessage message={message} />;
     case MessageTypes.INTERACTIVE_BUTTONS:
+      return <ChatUnknownMessageController message={message} />;
+    case MessageTypes.INTERACTIVE_BUTTON_REPLY:
       return <ChatUnknownMessageController message={message} />;
     case MessageTypes.INTERACTIVE_LIST_OPTIONS:
       return <ChatUnknownMessageController message={message} />;
@@ -49,6 +54,10 @@ export const ChatConversationController = ({
       return <ChatTextMessageController message={message} />;
     case MessageTypes.VIDEO:
       return <ChatVideoMessageController message={message} />;
+    case MessageTypes.INTERACTIVE_URL_BUTTON:
+      return <ChatUrlMessageController message={message} />;
+    case MessageTypes.TEMPLATE:
+      return <ChatUnknownMessageController message={message} />;
     default:
       return <ChatUnknownMessageController message={message} />;
   }

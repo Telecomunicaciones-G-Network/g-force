@@ -109,9 +109,23 @@ export class GetChatMessagesMapper {
             replyButtons: input.interactive_options.reply_buttons
               ? input.interactive_options.reply_buttons.map((button) => ({
                   id: button.id,
-                  title: button.title,
+                  title: button.title ?? button.text ?? '',
+                  type: button.type,
                 }))
               : [],
+            templateButtons: input.interactive_options.template_buttons
+              ? input.interactive_options.template_buttons.map((button) => ({
+                  id: button.id,
+                  title: button.title ?? button.text ?? '',
+                  type: button.type,
+                }))
+              : [],
+            urlButton: input.interactive_options.url_button
+              ? {
+                  title: input.interactive_options.url_button.title,
+                  url: input.interactive_options.url_button.url,
+                }
+              : null,
           }
         : null,
       location: input?.location
@@ -139,7 +153,18 @@ export class GetChatMessagesMapper {
           emoji: reaction.emoji,
         })) ?? [],
       readAt: input?.read_at,
-      replyToMessage: null,
+      replyToMessage: input?.reply_to_message
+        ? {
+            id: input.reply_to_message.id,
+            sender: {
+              id: input.reply_to_message.sender?.id ?? '',
+              isBot: input.reply_to_message.sender?.is_bot ?? false,
+              name: input.reply_to_message.sender?.name ?? 'Usuario',
+            },
+            textPreview: input.reply_to_message.text_preview,
+            type: input.reply_to_message.type,
+          }
+        : null,
       sender: {
         id: input?.sender?.id,
         isBot: input?.sender?.is_bot ?? false,
