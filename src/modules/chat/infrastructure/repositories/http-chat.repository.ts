@@ -43,6 +43,7 @@ import { getContactTicketsService } from '../services/get-contact-tickets.servic
 import { getFastDebitBanksService } from '../services/get-fast-debit-banks.service';
 import { processFastDebitPaymentService } from '../services/process-fast-debit-payment.service';
 import { requestFastDebitOTPService } from '../services/request-fast-debit-otp.service';
+import { selfAssignChatConversationService } from '../services/self-assign-chat-conversation.service';
 import { transferChatConversationService } from '../services/transfer-chat-conversation.service';
 import { uploadChatMediaService } from '../services/upload-chat-media.service';
 
@@ -100,6 +101,8 @@ export const httpChatRepository: ChatRepository = {
     request: RequestFastDebitOTPRequest,
   ): Promise<RequestFastDebitOTPResponse> =>
     requestFastDebitOTPService(request),
+  selfAssignChatConversation: async (contactId: string): Promise<boolean> =>
+    selfAssignChatConversationService(contactId),
   transferChatConversation: async (
     request: TransferChatConversationRequest,
   ): Promise<TransferChatConversationResponse> =>

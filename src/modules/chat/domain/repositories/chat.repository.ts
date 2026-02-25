@@ -84,6 +84,7 @@ export interface ChatRepository {
   requestFastDebitOTP(
     request: RequestFastDebitOTPRequest,
   ): Promise<RequestFastDebitOTPResponse>;
+  selfAssignChatConversation(contactId: string): Promise<boolean>;
   transferChatConversation(
     request: TransferChatConversationRequest,
   ): Promise<TransferChatConversationResponse>;

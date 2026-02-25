@@ -77,6 +77,10 @@ export type {
 } from './process-fast-debit-payment-response.dto';
 export type { RequestFastDebitOTPRequestDTO } from './request-fast-debit-otp-request.dto';
 export type { RequestFastDebitOTPResponseDTO } from './request-fast-debit-otp-response.dto';
+export type {
+  SelfAssignChatConversationResponseDTO,
+  SelfAssignChatConversationResult,
+} from './self-assign-chat-conversation-response.dto';
 export type { TransferChatConversationRequestDTO } from './transfer-chat-conversation-request.dto';
 export type { TransferChatConversationResponseDTO } from './transfer-chat-conversation-response.dto';
 export type { UploadChatMediaResponseDTO } from './upload-chat-media-response.dto';
