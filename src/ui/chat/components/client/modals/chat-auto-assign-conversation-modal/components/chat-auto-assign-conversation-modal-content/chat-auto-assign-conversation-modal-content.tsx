@@ -19,14 +19,6 @@ export const ChatAutoAssignConversationModalContent = ({
   return (
     <>
       <Text
-        as="h2"
-        className="text-neutral-900 font-semibold"
-        level="small"
-        scheme="heading"
-      >
-        ¿Asignarme la conversación?
-      </Text>
-      <Text
         as="p"
         align="center"
         className="mb-6 mt-2 text-neutral-500"
@@ -47,7 +39,7 @@ export const ChatAutoAssignConversationModalContent = ({
           Cancelar
         </Button>
         <Button
-          color="default"
+          color="red"
           disabled={isDisabled}
           fullWidth
           loading={isLoading}

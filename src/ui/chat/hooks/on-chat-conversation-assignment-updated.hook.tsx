@@ -45,7 +45,6 @@ export const useOnChatConversationAssignmentUpdated = () => {
 
       console.log('ActiveContact:', activeContact);
 
-      // Si el contacto activo no coincide con el del evento
       if (
         !response?.contactId ||
         !response?.conversationId || 
@@ -83,6 +82,7 @@ export const useOnChatConversationAssignmentUpdated = () => {
             ? ({
                 id: response.team.id,
                 name: response.team.name,
+              // biome-ignore lint/suspicious/noExplicitAny: false positive
               } as any)
             : null,
           timestamp: new Date().toISOString(),
