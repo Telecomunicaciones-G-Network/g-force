@@ -1,6 +1,6 @@
 'use client';
 
-import { MdAssignmentInd } from 'react-icons/md';
+import { MdOutlineAssignmentInd } from 'react-icons/md';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { DropdownItem } from '@gnetwork-ui/components/molecules/dropdowns/dropdown-item';
@@ -43,14 +43,14 @@ export const ChatAutoAssignConversationModal = () => {
             event.preventDefault();
           }}
         >
-          <MdAssignmentInd className="fill-neutral-800 min-h-6 min-w-6 size-6" />
+          <MdOutlineAssignmentInd className="fill-neutral-600 min-h-6 min-w-6 size-6" />
           <Text
             as="span"
             className="text-neutral-600"
             level="small"
             scheme="label"
           >
-            Auto-asignar Conversación
+            Asignarme la conversación
           </Text>
         </DropdownItem>
       }

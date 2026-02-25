@@ -7,7 +7,6 @@ import { useSocket } from '@socketio/hooks/use-socket.hook';
 
 import { selfAssignChatConversationAction } from '@ui-chat/actions/self-assign-chat-conversation.action';
 
-// import { ChatModes } from '@ui-chat/enums/chat-modes.enum';
 
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
 
