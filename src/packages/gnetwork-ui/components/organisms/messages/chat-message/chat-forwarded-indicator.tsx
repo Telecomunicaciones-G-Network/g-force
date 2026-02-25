@@ -14,9 +14,9 @@ export const ChatForwardedIndicator = ({
     return (
         <div className="flex w-full items-center text-white/40 italic px-1 leading-none">
             <div className="flex items-center">
-                <MdOutlineReplyAll className="size-[18px] scale-x-[-1]" />
+                <MdOutlineReplyAll className="size-[18px] scale-x-[-1] mr-1" />
                 {forwardedManyTimes && (
-                    <MdOutlineReplyAll className="size-[18px] -ml-3 scale-x-[-1]" />
+                    <MdOutlineReplyAll className="size-[18px] -ml-3 scale-x-[-1] mr-1" />
                 )}
             </div>
 

@@ -5,7 +5,7 @@ import type { ChatDocumentMessageProps } from './chat-document-message.props';
 
 import { useState } from 'react';
 
-import { MdInsertDriveFile } from 'react-icons/md';
+import { MdDownload, MdInsertDriveFile } from 'react-icons/md';
 import { useQuery } from '@tanstack/react-query';
 
 import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
@@ -18,7 +18,6 @@ import { ChatReplyPreview } from '@ui-chat/components/client/messages/chat-reply
 
 import styles from './chat-document-message.module.css';
 
-/** Maps a MIME type to a human-friendly label shown in the document card. */
 const getMimeLabel = (mimeType = ''): string => {
   if (mimeType.includes('pdf')) return 'PDF';
   if (mimeType.includes('word') || mimeType.includes('docx')) return 'Word';
@@ -102,32 +101,20 @@ export const ChatDocumentMessage = ({
               {getMimeLabel(mimeType)}
             </span>
           </div>
+
+          <button
+            type="button"
+            onClick={handleDownload}
+            disabled={isDownloading}
+            className={styles.base__download_circle}
+          >
+            <MdDownload className="size-5" />
+          </button>
         </div>
 
         {hasCaption && (
           <span className={styles.base__caption}>{rest.caption}</span>
         )}
-
-        <div className={styles.base__divider} />
-
-        <div className={styles.base__actions_container}>
-          <a
-            href={blobUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.base__open_button}
-          >
-            Abrir
-          </a>
-          <button
-            type="button"
-            onClick={handleDownload}
-            disabled={isDownloading}
-            className={styles.base__download_button}
-          >
-            {isDownloading ? 'Descargando...' : 'Descargar'}
-          </button>
-        </div>
       </div>
     </ChatMessage>
   );

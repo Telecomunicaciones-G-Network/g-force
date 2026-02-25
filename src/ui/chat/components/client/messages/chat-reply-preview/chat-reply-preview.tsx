@@ -12,7 +12,7 @@ export const ChatReplyPreview = ({ replyToMessage }: ChatReplyPreviewProps) => {
       <span className="font-semibold text-red-500 dark:text-red-400 truncate text-xs pb-1">
         {replyToMessage.sender?.name || 'Usuario'}
       </span>
-      <span className="truncate opacity-80 text-xs text-black/80 dark:text-white/80">
+      <span className="truncate opacity-80 text-xs ">
         {replyToMessage.textPreview || 'Mensaje adjunto'}
       </span>
     </div>
