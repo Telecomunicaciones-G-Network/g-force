@@ -54,8 +54,8 @@ export const ChatUrlMessageController = ({
               rel="noopener noreferrer"
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-gray-50 px-4 py-2 text-center text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 border border-gray-200 no-underline"
             >
+            <MdOpenInNew className="size-4 opacity-70 text-blue-500 " />
               <span>{urlButton.title}</span>
-              <MdOpenInNew className="size-4 opacity-70 text-blue-500" />
             </a>
           </div>
         ) : null}

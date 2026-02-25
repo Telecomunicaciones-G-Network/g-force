@@ -1,0 +1,21 @@
+.base__bubble {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  width: auto;
+}
+
+.base__sticker_container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base__sticker_image {
+  object-fit: contain;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
+}
