@@ -27,7 +27,7 @@ import type { MessageSender } from './message-sender.interface';
  * @property {Media | null} media - The media of the message.
  * @property {MessageReaction[]} reactions - The reactions of the message.
  * @property {string | null} readAt - The read date of the message.
- * @property {null} replyToMessage - The reply to message of the message.
+ * @property {MessageReplyToMessage | null} replyToMessage - The reply to message of the message.
  * @property {MessageSender} sender - The sender of the message.
  * @property {string | null} sentAt - The sent date of the message.
  * @property {MessageStatus} status - The status of the message.
@@ -35,6 +35,13 @@ import type { MessageSender } from './message-sender.interface';
  * @property {MessageType} type - The type of the message.
  * @property {string | null} updatedAt - The update date of the message.
  */
+export interface MessageReplyToMessage {
+  id: string;
+  sender?: MessageSender;
+  textPreview?: string | null;
+  type: MessageType;
+}
+
 export interface Message {
   id: string;
   contacts: MessageContact[];
@@ -51,7 +58,7 @@ export interface Message {
   media: Media | null;
   reactions: MessageReaction[];
   readAt: string | null;
-  replyToMessage: null;
+  replyToMessage: MessageReplyToMessage | null;
   sender: MessageSender;
   sentAt: string | null;
   status: MessageStatus;

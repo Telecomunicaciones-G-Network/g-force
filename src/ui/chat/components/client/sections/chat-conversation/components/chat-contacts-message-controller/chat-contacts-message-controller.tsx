@@ -25,6 +25,8 @@ export const ChatContactsMessageController = ({
     status={message?.status.toLowerCase() as BubbleStatus}
     time={isoToTime(message?.createdAt ?? '')}
     username={message?.sender?.name ?? ''}
+    forwarded={message?.forwarded}
+    forwardedManyTimes={message?.forwardedManyTimes}
   >
     <div className="flex items-center gap-2">
       <MdOutlinePerson className="min-h-6 min-w-6 size-6" />

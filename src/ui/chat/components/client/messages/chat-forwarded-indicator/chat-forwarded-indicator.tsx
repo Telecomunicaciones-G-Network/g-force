@@ -1,0 +1,1 @@
+export { ChatForwardedIndicator } from '@gnetwork-ui/components/organisms/messages/chat-message/chat-forwarded-indicator';

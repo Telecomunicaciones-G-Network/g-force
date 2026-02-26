@@ -40,11 +40,15 @@ export const ChatDocumentMessageController = ({
   ) {
     return (
       <ChatDocumentMessage
+        caption={message.text ?? null}
         direction={direction}
         filename={message.media.filename}
+        forwarded={message.forwarded}
+        forwardedManyTimes={message.forwardedManyTimes}
         isBot={message?.sender?.isBot}
         mediaId={message.media.id}
         mimeType={message.media.mimeType}
+        replyToMessage={message.replyToMessage}
         status={message?.status.toLowerCase() as BubbleStatus}
         time={time}
         username={message?.sender?.name ?? ''}
