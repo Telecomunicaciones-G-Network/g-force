@@ -74,7 +74,9 @@ export interface GetChatMessagesResultFlowData {
 
 export interface GetChatMessagesResultReplyButton {
   id: string;
-  title: string;
+  title?: string;
+  text?: string;
+  type: string;
 }
 
 export interface GetChatMessagesResultListRow {
@@ -88,6 +90,11 @@ export interface GetChatMessagesResultListSection {
   title: string | null;
 }
 
+export interface GetChatMessagesResultInteractiveUrlButton {
+  title: string;
+  url: string;
+}
+
 export interface GetChatMessagesResultInteractiveOptions {
   button_text: string | null;
   flow_data: GetChatMessagesResultFlowData | null;
@@ -95,6 +102,17 @@ export interface GetChatMessagesResultInteractiveOptions {
   list_button_text: string | null;
   list_sections: GetChatMessagesResultListSection[] | null;
   reply_buttons: GetChatMessagesResultReplyButton[] | null;
+  template_buttons: GetChatMessagesResultReplyButton[] | null;
+  url_button: GetChatMessagesResultInteractiveUrlButton | null;
+}
+
+export interface GetChatMessagesResultReplyToMessage {
+  id: string;
+  direction?: string;
+  sender?: GetChatMessagesResultSender;
+  status?: string;
+  text_preview: string | null;
+  type: MessageType;
 }
 
 export interface GetChatMessagesResult {
@@ -115,6 +133,7 @@ export interface GetChatMessagesResult {
   platform_id: string;
   reactions: GetChatMessagesResultReaction[];
   read_at: string | null;
+  reply_to_message?: GetChatMessagesResultReplyToMessage | null;
   sender: GetChatMessagesResultSender;
   sent_at: string | null;
   status: MessageStatus;

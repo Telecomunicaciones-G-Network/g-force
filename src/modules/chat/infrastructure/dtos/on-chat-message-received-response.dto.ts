@@ -3,6 +3,7 @@ import type {
   MediaType,
   MessageType,
 } from '../../domain/types';
+import type { GetChatMessagesResultInteractiveOptions } from '../interfaces/get-chat-messages-result.interface';
 
 /**
  * @name OnChatMessageReceivedResponseContact
@@ -85,10 +86,22 @@ export interface OnChatMessageReceivedResponseDTO {
   conversation_id: string;
   forwarded_many_times: boolean;
   forwarded: boolean;
+  interactive_options?: GetChatMessagesResultInteractiveOptions | null;
   location: OnChatMessageReceivedResponseLocation | null;
   media: OnChatMessageReceivedResponseMedia | null;
   message_id: string;
-  reply_to_message_id: string | null;
+  reply_to_message: {
+    id: string;
+    sender: {
+      id: string;
+      name: string;
+      is_bot: boolean;
+    };
+    direction: string;
+    text_preview: string | null;
+    type: MessageType;
+    status: string;
+  } | null;
   text: string | null;
   timestamp: string;
   type: MessageType;

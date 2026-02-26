@@ -8,6 +8,7 @@ export interface FlowData {
 export interface ReplyButton {
   id: string;
   title: string;
+  type: string;
 }
 
 export interface ListRow {
@@ -28,4 +29,11 @@ export interface InteractiveOptions {
   listButtonText: string | null;
   listSections: ListSection[] | null;
   replyButtons: ReplyButton[] | null;
+  templateButtons: ReplyButton[] | null;
+  urlButton: InteractiveUrlButton | null;
+}
+
+export interface InteractiveUrlButton {
+  url: string;
+  title: string;
 }

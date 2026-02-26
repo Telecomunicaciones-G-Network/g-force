@@ -29,6 +29,8 @@ export const CHAT_RESOURCES = {
   PROCESS_FAST_DEBIT_PAYMENT: '/chat/payment/fast-debit/process-payment',
   REQUEST_FAST_DEBIT_OTP: '/chat/payment/fast-debit/request-otp',
   SEARCH_CLIENT: '/chat/clients',
+  SELF_ASSIGN_CHAT_CONVERSATION: (contactId: string): string =>
+    `/chat/contacts/${contactId}/conversation/self-assign`,
   TRANSFER_CHAT_CONVERSATION: (contactId: string): string =>
     `/chat/contacts/${contactId}/conversation/transfer`,
   UPLOAD_CHAT_MEDIA: '/chat/media',

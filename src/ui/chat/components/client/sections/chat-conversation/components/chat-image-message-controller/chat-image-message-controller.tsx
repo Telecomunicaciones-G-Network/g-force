@@ -32,6 +32,8 @@ export const ChatImageMessageController = ({
           status={message?.status.toLowerCase() as BubbleStatus}
           time={isoToTime(message?.createdAt ?? '')}
           username={message?.sender?.name}
+          forwarded={message?.forwarded}
+          forwardedManyTimes={message?.forwardedManyTimes}
         />
       )}
     {message?.media?.id &&
