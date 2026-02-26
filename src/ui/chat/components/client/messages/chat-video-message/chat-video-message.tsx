@@ -1,11 +1,8 @@
-/** biome-ignore-all lint/a11y/useMediaCaption: no caption available for user-uploaded content */
 'use client';
 
 import type { ChatVideoMessageProps } from './chat-video-message.props';
-
 import { useQuery } from '@tanstack/react-query';
-
-import { MdDownload, MdPlayArrow } from 'react-icons/md';
+import { MdDownload, MdPlayArrow, MdVideocam, MdClose } from 'react-icons/md';
 
 import { Modal } from '@gnetwork-ui/components/organisms/modals/modal';
 import { useModal } from '@gnetwork-ui/components/organisms/modals/modal/modal.hook';
@@ -14,13 +11,10 @@ import { ChatMessageSkeleton } from '@gnetwork-ui/components/organisms/skeletons
 
 import { getChatAudioByIdQuery } from '@module-chat/infrastructure/queries/get-chat-audio-by-id.query';
 import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary';
-import { ChatImageMessageModalClose } from '../chat-image-message/components/chat-image-message-modal-close';
 import { cn } from '@gnetwork-ui/utils/cn.util';
-
 import { downloadFileByUrl } from '@filer/utils/download-file-by-url.util';
-import { extractExtensionFromMimeType } from '@filer/utils/extract-extension-from-mimetype.util';
 
-import styles from '../chat-image-message/components/chat-image-message-content/chat-image-message-content.module.css';
+import styles from './chat-video-message.module.css';
 
 export const ChatVideoMessage = ({
   direction,
@@ -46,6 +40,9 @@ export const ChatVideoMessage = ({
     enabled: !!mediaId,
   });
 
+  const hasCaption =
+    typeof rest.caption === 'string' && rest.caption.length > 0;
+
   if (isLoading) {
     return (
       <ChatMessageSkeleton
@@ -60,10 +57,12 @@ export const ChatVideoMessage = ({
 
   return (
     <ChatMessage
+      bubbleClassName={styles.base__bubble}
       direction={direction}
       time={time}
       username={username}
       {...rest}
+      caption={null}
     >
       <Modal
         className={cn(styles.base, 'relative sm:max-w-none')}
@@ -71,48 +70,56 @@ export const ChatVideoMessage = ({
         isOpen={isModalOpen}
         modal={false}
         onOpenChange={onOpenChange}
-        modalOverlayChildren={
-          <>
-            <ChatImageMessageModalClose />
-            <div data-prevent-close>
-              <button
-                className={cn(styles.base__download_button, 'bg-black')}
-                onClick={() =>
-                  downloadFileByUrl(
-                    blobUrl,
-                    filename,
-                    extractExtensionFromMimeType(mimeType),
-                  )
-                }
-                type="button"
-              >
-                <MdDownload className="fill-white h-6 w-6 size-6" />
-              </button>
-            </div>
-          </>
-        }
+        modalOverlayChildren={null}
         triggerComponent={
-          <button
-            className="relative flex h-48 w-64 items-center justify-center overflow-hidden rounded-xl bg-black/10 group p-0 border-none cursor-pointer"
-            type="button"
-          >
-            {/* eslint_disable-next-line jsx-a11y/media-has-caption */}
+          <button className={styles.base__trigger_button} type="button">
             <video
-              className="absolute inset-0 h-full w-full object-cover pointer-events-none opacity-90"
+              className={styles.base__preview_video}
               preload="metadata"
               src={blobUrl}
+              muted
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-            <div className="relative z-10 flex size-14 items-center justify-center rounded-full bg-black/50 backdrop-blur-md group-hover:bg-black/60 transition-colors shadow-lg">
-              <MdPlayArrow className="size-8 text-white ml-1" />
+            <div className={styles.base__preview_overlay} />
+            <div className={styles.base__play_icon_wrapper}>
+              <MdPlayArrow className={styles.base__play_icon} />
+            </div>
+            <div className={styles.base__duration_badge}>
+              <MdVideocam size={16} />
+              <span>0:38</span>
             </div>
           </button>
         }
       >
-        <div className="flex h-[80dvh] w-[80dvw] items-center justify-center">
-          {/* eslint_disable-next-line jsx-a11y/media-has-caption */}
+        <div className={styles.base__modal_content}>
+          <div className={styles.base__top_controls}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                downloadFileByUrl(blobUrl, filename);
+              }}
+              className={styles.base__control_icon}
+              title="Descargar"
+            >
+              <MdDownload size={24} />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenChange(false);
+              }}
+              className={styles.base__control_icon}
+              title="Cerrar"
+            >
+              <MdClose size={24} />
+            </button>
+          </div>
+
+          {/** biome-ignore lint/a11y/useMediaCaption: false positive */}
           <video
-            className="max-h-full max-w-full rounded-xl shadow-2xl bg-black"
+            className={styles.base__modal_video}
             controls
             autoPlay
             src={blobUrl}
@@ -121,6 +128,8 @@ export const ChatVideoMessage = ({
           </video>
         </div>
       </Modal>
+
+      {hasCaption && <div className={styles.base__caption}>{rest.caption}</div>}
     </ChatMessage>
   );
 };
