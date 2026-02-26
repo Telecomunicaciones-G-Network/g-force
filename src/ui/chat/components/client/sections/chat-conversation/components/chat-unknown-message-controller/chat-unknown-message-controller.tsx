@@ -18,12 +18,15 @@ import { MessageDirections } from '@module-chat/domain/enums/message-directions.
 import { MessageTypes } from '@module-chat/domain/enums/message-types.enum';
 import { MediaTypes } from '@module-chat/domain/enums/media-types.enum';
 
-import { ChatTextMessage } from '@ui-chat/components/server/messages/chat-text-message';
+import {
+  ChatTextMessage,
+  ChatTextWithLinks,
+} from '@ui-chat/components/server/messages/chat-text-message';
 import { ChatReplyPreview } from '@ui-chat/components/client/messages/chat-reply-preview';
 
 import { InteractiveImagePreview } from './components/interactive-image-preview';
 import { CollapsibleReplyButtons } from './components/collapsible-reply-buttons';
-import { CollapsibleListSections } from './components/collapsible-list-sections';
+import { InteractiveListOptions } from './components/collapsible-list-sections';
 
 export const ChatUnknownMessageController = ({
   message,
@@ -51,14 +54,15 @@ export const ChatUnknownMessageController = ({
 
   const { icon: Icon, label } = getInteractiveInfo();
 
+  const direction =
+    message?.direction === MessageDirections.INCOMING
+      ? BubbleModes.INCOMING
+      : BubbleModes.OUTGOING;
+
   return (
     <ChatTextMessage
       caption={null}
-      direction={
-        message?.direction === MessageDirections.INCOMING
-          ? BubbleModes.INCOMING
-          : BubbleModes.OUTGOING
-      }
+      direction={direction}
       isBot={message?.sender?.isBot}
       status={message?.status.toLowerCase() as BubbleStatus}
       time={isoToTime(message?.createdAt ?? '')}
@@ -80,10 +84,15 @@ export const ChatUnknownMessageController = ({
           )}
 
           <span className="whitespace-pre-wrap">
-            {message?.type === MessageTypes.FLOW_COMPLETION &&
-            message.text?.toLowerCase() === 'sent'
-              ? 'sent'
-              : message.text}
+            <ChatTextWithLinks
+              text={
+                message?.type === MessageTypes.FLOW_COMPLETION &&
+                message.text?.toLowerCase() === 'sent'
+                  ? 'sent'
+                  : (message.text ?? '')
+              }
+              direction={direction}
+            />
           </span>
 
           {message.interactiveOptions?.buttonText ||
@@ -106,8 +115,11 @@ export const ChatUnknownMessageController = ({
 
           {message.interactiveOptions?.listSections &&
           message.interactiveOptions.listSections.length > 0 ? (
-            <CollapsibleListSections
+            <InteractiveListOptions
               sections={message.interactiveOptions.listSections}
+              buttonText={
+                message.interactiveOptions.listButtonText || 'Opciones'
+              }
             />
           ) : message.interactiveOptions?.listButtonText ? (
             <div className="mt-2 flex justify-center">
