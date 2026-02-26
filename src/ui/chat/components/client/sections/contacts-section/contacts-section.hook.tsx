@@ -2,7 +2,9 @@
 
 import type { Contact } from '@module-chat/domain/interfaces';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+
+import { useSearchParams } from 'next/navigation';
 
 import { useMediaQuery } from '@hook/use-media-query.hook';
 
@@ -61,15 +63,21 @@ export const useContactsSection = ({
 
   const prependContact = useContactStore((state) => state.prependContact);
 
+  const searchParams = useSearchParams();
+  const prevSearchParams = useRef<string>(searchParams.toString());
+
   useEffect(() => {
     const currentContacts = useContactStore.getState().contacts;
+    const isFilterChanged =
+      prevSearchParams.current !== searchParams.toString();
 
-    if (currentContacts.length === 0) {
+    if (currentContacts.length === 0 || isFilterChanged) {
       setContacts(contactsResponse);
       changeContactsPagination({
         hasMore: hasMore ?? false,
         nextCursor: nextCursor ?? null,
       });
+      prevSearchParams.current = searchParams.toString();
       return;
     }
     const loadedIds = new Set(currentContacts.map((c) => c.id));
@@ -84,6 +92,7 @@ export const useContactsSection = ({
     nextCursor,
     prependContact,
     setContacts,
+    searchParams,
   ]);
 
   return { chatMode, contacts, isDesktop, isPaymentModalOpen };
