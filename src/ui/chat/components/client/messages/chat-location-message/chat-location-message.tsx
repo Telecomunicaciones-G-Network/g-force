@@ -21,7 +21,7 @@ export const ChatLocationMessage = ({
   locationName,
   time,
   username,
-  isForwarded = false, 
+  isForwarded = false,
   ...rest
 }: Readonly<ExtendedChatLocationMessageProps>) => {
   const mapsUrl = buildMapsDeepLink(latitude, longitude);
@@ -37,7 +37,7 @@ export const ChatLocationMessage = ({
       time={time}
       username={username}
       {...rest}
-      caption={null} 
+      caption={null}
     >
       {isForwarded && (
         <div className={styles.forwarded__header}>

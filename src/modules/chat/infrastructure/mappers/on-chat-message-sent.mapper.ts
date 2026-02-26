@@ -50,7 +50,7 @@ export class OnChatMessageSentMapper {
                   rows: section.rows.map((row) => ({
                     description: row.description,
                     id: row.id,
-                     title: row.title,
+                    title: row.title,
                   })),
                   title: section.title,
                 }))

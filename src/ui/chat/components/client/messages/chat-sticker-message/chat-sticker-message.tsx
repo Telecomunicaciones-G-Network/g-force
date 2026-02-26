@@ -69,7 +69,7 @@ export const ChatStickerMessage = ({
           fill
           sizes="160px"
           src={stickerUrl}
-          unoptimized 
+          unoptimized
         />
       </div>
     </ChatMessage>

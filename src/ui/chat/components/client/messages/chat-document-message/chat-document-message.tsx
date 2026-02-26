@@ -64,7 +64,8 @@ export const ChatDocumentMessage = ({
     setIsDownloading(false);
   };
 
-  const hasCaption = typeof rest.caption === 'string' && rest.caption.length > 0;
+  const hasCaption =
+    typeof rest.caption === 'string' && rest.caption.length > 0;
 
   if (isLoading) {
     return (

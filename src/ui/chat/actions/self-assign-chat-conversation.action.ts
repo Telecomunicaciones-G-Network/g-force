@@ -25,7 +25,8 @@ export async function selfAssignChatConversationAction(
 
     return {
       errors: [
-        error?.message || 'Ha ocurrido un error al auto-asignar la conversación.',
+        error?.message ||
+          'Ha ocurrido un error al auto-asignar la conversación.',
       ],
       message: 'Ha ocurrido un error al auto-asignar la conversación.',
       success: false,

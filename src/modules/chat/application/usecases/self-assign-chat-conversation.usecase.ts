@@ -17,9 +17,13 @@ export const SelfAssignChatConversationUsecase = async (
     .then((response) => response)
     .catch((err) => {
       // biome-ignore lint/suspicious/noExplicitAny: false positive
-      const error = err as any;      
-      const errorMessage = error?.response?.data?.detail || error?.response?.data?.message || error?.message || 'Error occurred';
-      
+      const error = err as any;
+      const errorMessage =
+        error?.response?.data?.detail ||
+        error?.response?.data?.message ||
+        error?.message ||
+        'Error occurred';
+
       console.error('SelfAssign error info:', errorMessage);
 
       throw new SelfAssignChatConversationException({

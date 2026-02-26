@@ -9,9 +9,10 @@ type Props = {
 export class SelfAssignChatConversationException extends BaseException {
   constructor(props: Props) {
     super({
-      message: props.message || `Ocurrió un error al intentar auto-asignar la conversación para el contacto.`,
+      message:
+        props.message ||
+        `Ocurrió un error al intentar auto-asignar la conversación para el contacto.`,
       status: props.status,
     });
   }
 }
-

@@ -13,10 +13,10 @@ export const ChatAutoAssignConversationModalHeader = () => (
   <div className={styles.base}>
     <IconBadge
       icon={
-        <MdOutlineAssignmentInd className="fill-red-600 min-h-6 min-w-6 rotate-y-180 size-6"/>
+        <MdOutlineAssignmentInd className="fill-red-600 min-h-6 min-w-6 rotate-y-180 size-6" />
       }
     />
-    
+
     <div className={styles.base__content}>
       <Text className="text-chromatic-inverted" level="xsmall" scheme="heading">
         ¿Asignarme la conversación?

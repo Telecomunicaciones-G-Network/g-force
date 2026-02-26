@@ -36,7 +36,10 @@ export const useOnChatConversationAssignmentUpdated = () => {
     (data: unknown) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      console.log('socket event chat_conversation_assignment_updated', parseResponse);
+      console.log(
+        'socket event chat_conversation_assignment_updated',
+        parseResponse,
+      );
 
       const response =
         OnContactConversationAssignmentUpdatedMapper.mapFrom(parseResponse);
@@ -47,10 +50,13 @@ export const useOnChatConversationAssignmentUpdated = () => {
 
       if (
         !response?.contactId ||
-        !response?.conversationId || 
+        !response?.conversationId ||
         response?.contactId !== activeContact?.id
       ) {
-        console.log('Blocking event rendering, mismatch or missing ids. ActiveContactId:', activeContact?.id);
+        console.log(
+          'Blocking event rendering, mismatch or missing ids. ActiveContactId:',
+          activeContact?.id,
+        );
         return;
       }
 
@@ -82,7 +88,7 @@ export const useOnChatConversationAssignmentUpdated = () => {
             ? ({
                 id: response.team.id,
                 name: response.team.name,
-              // biome-ignore lint/suspicious/noExplicitAny: false positive
+                // biome-ignore lint/suspicious/noExplicitAny: false positive
               } as any)
             : null,
           timestamp: new Date().toISOString(),

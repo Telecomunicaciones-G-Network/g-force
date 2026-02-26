@@ -115,7 +115,10 @@ export const ChatMessage = ({
         mode={direction}
         status={direction === 'incoming' ? BubbleStatus.NONE : status}
       >
-        <ChatForwardedIndicator forwarded={forwarded} forwardedManyTimes={forwardedManyTimes} />
+        <ChatForwardedIndicator
+          forwarded={forwarded}
+          forwardedManyTimes={forwardedManyTimes}
+        />
         {children}
         {caption && caption}
       </Bubble>

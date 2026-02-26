@@ -40,5 +40,5 @@ export enum MessageTypes {
   STICKER = 'STICKER',
   TEXT = 'TEXT',
   VIDEO = 'VIDEO',
-  TEMPLATE = "TEMPLATE",
+  TEMPLATE = 'TEMPLATE',
 }

@@ -41,4 +41,3 @@ export type MessageType =
   | 'TEXT'
   | 'TEMPLATE'
   | 'VIDEO';
-

@@ -25,7 +25,8 @@ export const ChatAutoAssignConversationModalContent = ({
         level="small"
         scheme="paragraph"
       >
-        Esta acción te asignará la conversación actual para que seas el agente responsable.
+        Esta acción te asignará la conversación actual para que seas el agente
+        responsable.
       </Text>
       <div className="grid gap-3 grid-cols-2 w-full">
         <Button
