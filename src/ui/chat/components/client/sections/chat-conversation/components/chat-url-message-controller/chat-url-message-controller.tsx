@@ -9,7 +9,10 @@ import { isoToTime } from '@timer/utils/iso-to-time.util';
 
 import { MessageDirections } from '@module-chat/domain/enums/message-directions.enum';
 
-import { ChatTextMessage } from '@ui-chat/components/server/messages/chat-text-message';
+import {
+  ChatTextMessage,
+  ChatTextWithLinks,
+} from '@ui-chat/components/server/messages/chat-text-message';
 import { ChatReplyPreview } from '@ui-chat/components/client/messages/chat-reply-preview';
 
 export const ChatUrlMessageController = ({
@@ -38,7 +41,9 @@ export const ChatUrlMessageController = ({
       <div className="flex flex-col gap-1 w-full max-w-full">
         <ChatReplyPreview replyToMessage={message?.replyToMessage} />
         {message?.text ? (
-          <span className="whitespace-pre-wrap">{message.text}</span>
+          <span className="whitespace-pre-wrap">
+            <ChatTextWithLinks text={message.text} direction={direction} />
+          </span>
         ) : (
           <div className="flex items-center gap-2">
             <MdOutlineLink className="min-h-6 min-w-6 size-6" />

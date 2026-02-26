@@ -5,7 +5,10 @@ import type { ChatDocumentMessageProps } from './chat-document-message.props';
 
 import { useState } from 'react';
 
-import { MdDownload, MdInsertDriveFile } from 'react-icons/md';
+import {
+  MdDownload,
+  MdInsertDriveFile,
+} from 'react-icons/md';
 import { useQuery } from '@tanstack/react-query';
 
 import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
@@ -63,6 +66,16 @@ export const ChatDocumentMessage = ({
     anchor.click();
     setIsDownloading(false);
   };
+  const handlePreview = () => {
+    if (!blobUrl) return;
+    setIsDownloading(true);
+    const anchor = document.createElement('a');
+    anchor.href = blobUrl;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.click();
+    setIsDownloading(false);
+  };
 
   const hasCaption =
     typeof rest.caption === 'string' && rest.caption.length > 0;
@@ -88,7 +101,11 @@ export const ChatDocumentMessage = ({
       {...rest}
       caption={null}
     >
-      <div className={styles.base__content}>
+      <div
+        onClick={handlePreview}
+        onKeyDown={handlePreview}
+        className={styles.base__content}
+      >
         <ChatReplyPreview replyToMessage={replyToMessage} />
 
         <div className={styles.base__document_card}>
@@ -102,6 +119,15 @@ export const ChatDocumentMessage = ({
               {getMimeLabel(mimeType)}
             </span>
           </div>
+
+          {/* <button
+            type="button"
+            onClick={handlePreview}
+            disabled={isDownloading}
+            className={styles.base__download_circle}
+          >
+            <MdOutlineVisibility className="size-5" />
+          </button> */}
 
           <button
             type="button"

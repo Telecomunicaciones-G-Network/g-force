@@ -1,1 +1,1 @@
-export { ChatTextMessage } from './chat-text-message';
+export { ChatTextMessage, ChatTextWithLinks } from './chat-text-message';
