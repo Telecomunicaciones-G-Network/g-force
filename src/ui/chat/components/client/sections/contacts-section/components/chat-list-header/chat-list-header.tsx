@@ -8,12 +8,15 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { ContactsFiltersDropdown } from '@ui-chat/components/client/dropdowns/contacts-filters-dropdown';
 
+import { ChatNewConversationModal } from '@ui-chat/components/client/modals/chat-new-conversation-modal';
+
 import { useChatListHeader } from './chat-list-header.hook';
 
 import styles from './chat-list-header.module.css';
 
 export const ChatListHeader = ({
   hideFilterButton = false,
+  hideAddButton = false,
 }: Readonly<ChatListHeaderProps>) => {
   const { contactSearchValue, onContactSearchChange } = useChatListHeader();
 
@@ -34,6 +37,7 @@ export const ChatListHeader = ({
         value={contactSearchValue}
       />
       {!hideFilterButton && <ContactsFiltersDropdown />}
+      {!hideAddButton && <ChatNewConversationModal />}
     </div>
   );
 };
