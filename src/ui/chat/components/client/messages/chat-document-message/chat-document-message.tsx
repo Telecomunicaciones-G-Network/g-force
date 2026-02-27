@@ -57,7 +57,8 @@ export const ChatDocumentMessage = ({
     enabled: !!mediaId,
   });
 
-  const handleDownload = () => {
+  const handleDownload = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (!blobUrl) return;
     setIsDownloading(true);
     const anchor = document.createElement('a');
@@ -66,6 +67,7 @@ export const ChatDocumentMessage = ({
     anchor.click();
     setIsDownloading(false);
   };
+
   const handlePreview = () => {
     if (!blobUrl) return;
     setIsDownloading(true);
@@ -119,15 +121,6 @@ export const ChatDocumentMessage = ({
               {getMimeLabel(mimeType)}
             </span>
           </div>
-
-          {/* <button
-            type="button"
-            onClick={handlePreview}
-            disabled={isDownloading}
-            className={styles.base__download_circle}
-          >
-            <MdOutlineVisibility className="size-5" />
-          </button> */}
 
           <button
             type="button"
