@@ -37,4 +37,6 @@ export const CHAT_RESOURCES = {
   VALIDATE_MOBILE_PAYMENT: '/chat/payment/validate-pago-movil',
   VALIDATE_MOBILE_PAYMENT_WITH_IMAGE:
     '/chat/payment/validate-pago-movil-with-image',
+  GET_WHATSAPP_TEMPLATES: '/whatsapp/templates',
+  SEND_WHATSAPP_TEMPLATE: '/whatsapp/templates/send',
 } as const satisfies Record<string, string | ((...args: string[]) => string)>;

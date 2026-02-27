@@ -96,7 +96,7 @@ export const ChatVideoMessage = ({
             className="relative flex h-48 w-64 items-center justify-center overflow-hidden rounded-xl bg-black/10 group p-0 border-none cursor-pointer"
             type="button"
           >
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+            {/* eslint_disable-next-line jsx-a11y/media-has-caption */}
             <video
               className="absolute inset-0 h-full w-full object-cover pointer-events-none opacity-90"
               preload="metadata"
@@ -110,7 +110,7 @@ export const ChatVideoMessage = ({
         }
       >
         <div className="flex h-[80dvh] w-[80dvw] items-center justify-center">
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          {/* eslint_disable-next-line jsx-a11y/media-has-caption */}
           <video
             className="max-h-full max-w-full rounded-xl shadow-2xl bg-black"
             controls

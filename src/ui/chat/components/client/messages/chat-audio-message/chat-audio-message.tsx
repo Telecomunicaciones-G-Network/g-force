@@ -22,9 +22,9 @@ const formatTime = (seconds: number): string => {
 
 export const ChatAudioMessage = ({
   direction,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint_disable-next-line @typescript-eslint/no-unused-vars
   filename: _filename,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint_disable-next-line @typescript-eslint/no-unused-vars
   mimeType: _mimeType,
   mediaId = '',
   time,

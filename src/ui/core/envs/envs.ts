@@ -16,4 +16,6 @@ export const ENVS = {
     process.env.NEXT_PUBLIC_REACT_QUERY_DEV_TOOLS_ON === 'true' ||
     process.env.NEXT_PUBLIC_REACT_QUERY_DEV_TOOLS_ON === '1',
   REACT_SCAN_ON: process.env.REACT_SCAN_ON ?? false,
+  WHATSAPP_TEMPLATE_NAMES:
+    process.env.NEXT_PUBLIC_WHATSAPP_TEMPLATE_NAMES ?? 'saludo_agente',
 };
