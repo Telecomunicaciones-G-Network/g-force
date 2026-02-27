@@ -79,3 +79,12 @@ export type {
   InteractiveOptions,
   FlowData,
 } from './interactive-options.interface';
+export type { GetWhatsappTemplatesRequest } from './get-whatsapp-templates-request.interface';
+export type {
+  GetWhatsappTemplatesResponse,
+  WhatsappTemplate,
+  WhatsappTemplateComponent,
+  TemplateStatus,
+  TemplateCategory,
+  TemplateParamFormat,
+} from './get-whatsapp-templates-response.interface';
