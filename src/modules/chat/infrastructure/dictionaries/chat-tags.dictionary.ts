@@ -16,4 +16,5 @@ export const CHAT_TAGS = {
   GET_CHAT_TEAMS: 'get-chat-teams',
   GET_CHAT_TRANSFER_AGENTS: 'get-chat-transfer-agents',
   GET_FAST_DEBIT_BANKS: 'get-fast-debit-banks',
+  GET_WHATSAPP_TEMPLATES: 'get-whatsapp-templates',
 } as const satisfies Record<string, string>;

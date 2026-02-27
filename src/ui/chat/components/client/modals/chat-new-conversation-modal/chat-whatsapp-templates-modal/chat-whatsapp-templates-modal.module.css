@@ -1,0 +1,53 @@
+.modal_root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Content row: left + right panels ──────────────── */
+.content_row {
+  display: flex;
+  min-height: 0;
+  /* The modal Dialog applies max-w transitions — we animate the inner layout */
+  transition: all 0.25s ease;
+}
+
+/* Left panel — narrow when preview is visible */
+.left_panel_narrow {
+  border-right: 1px solid var(--neutral-100);
+  flex-shrink: 0;
+  overflow-y: auto;
+  width: 400px;
+}
+
+/* Left panel — full width when no template selected */
+.left_panel_full {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Right panel: slides in from right */
+.right_panel {
+  animation: slideIn 0.22s ease-out both;
+  flex: 1;
+  min-width: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Full-width footer ───────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--neutral-100, #f3f4f6);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 12px 16px;
+}
