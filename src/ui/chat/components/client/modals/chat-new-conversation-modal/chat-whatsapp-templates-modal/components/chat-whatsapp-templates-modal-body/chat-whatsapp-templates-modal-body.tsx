@@ -21,6 +21,7 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './chat-whatsapp-templates-modal-body.module.css';
 
+
 interface ChatWhatsappTemplatesModalBodyProps {
   countrySearch: string;
   errors: {
@@ -95,7 +96,6 @@ export const ChatWhatsappTemplatesModalBody = ({
 }: Readonly<ChatWhatsappTemplatesModalBodyProps>) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -118,7 +118,6 @@ export const ChatWhatsappTemplatesModalBody = ({
 
   return (
     <div className={styles.body}>
-      {/* ─── 1. Phone number section ──────────────────────── */}
       <div className={styles.phone_section}>
         <Text className="text-neutral-700" level="small" scheme="label">
           Número de WhatsApp
@@ -131,7 +130,6 @@ export const ChatWhatsappTemplatesModalBody = ({
               errors.phoneNumber && styles['phone_input_row--error'],
             )}
           >
-            {/* Country code trigger */}
             <button
               className={styles.country_trigger}
               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
@@ -153,7 +151,6 @@ export const ChatWhatsappTemplatesModalBody = ({
               />
             </button>
 
-            {/* Phone number input */}
             <input
               className={styles.phone_number_input}
               id="whatsapp_phone_number"
@@ -169,7 +166,6 @@ export const ChatWhatsappTemplatesModalBody = ({
             <p className={styles.field_error}>{errors.phoneNumber.message}</p>
           )}
 
-          {/* Country dropdown */}
           {isCountryDropdownOpen && (
             <div
               className={styles.country_dropdown}
@@ -223,7 +219,6 @@ export const ChatWhatsappTemplatesModalBody = ({
         </div>
       </div>
 
-      {/* ─── 2. Templates section ─────────────────────────── */}
       <div className={styles.templates_section}>
         <Text
           className={cn(styles.templates_label, 'text-neutral-700')}

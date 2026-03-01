@@ -5,7 +5,6 @@
   gap: 0;
 }
 
-/* ─── Phone number section ───────────────────────────── */
 .phone_section {
   box-sizing: border-box;
   display: flex;
@@ -16,27 +15,27 @@
 
 .phone_input_row {
   align-items: stretch;
-  border: 1px solid var(--neutral-200, #e5e7eb);
+  border: 1px solid var(--neutral-200);
   border-radius: 8px;
   display: flex;
   overflow: hidden;
 }
 
 .phone_input_row:focus-within {
-  border-color: var(--red-400, #f87171);
+  border-color: var(--red-400);
   box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.15);
 }
 
 .phone_input_row--error {
-  border-color: var(--red-400, #f87171);
+  border-color: var(--red-400);
   box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.15);
 }
 
 .country_trigger {
   align-items: center;
-  background-color: var(--neutral-50, #f9fafb);
+  background-color: var(--neutral-50);
   border: none;
-  border-right: 1px solid var(--neutral-200, #e5e7eb);
+  border-right: 1px solid var(--neutral-200);
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
@@ -46,7 +45,7 @@
 }
 
 .country_trigger:hover {
-  background-color: var(--neutral-100, #f3f4f6);
+  background-color: var(--neutral-100);
 }
 
 .country_trigger__flag {
@@ -55,21 +54,21 @@
 }
 
 .country_trigger__code {
-  color: var(--neutral-700, #374151);
+  color: var(--neutral-700);
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .country_trigger__chevron {
-  color: var(--neutral-400, #9ca3af);
+  color: var(--neutral-400);
   flex-shrink: 0;
 }
 
 .phone_number_input {
   background-color: transparent;
   border: none;
-  color: var(--neutral-800, #1f2937);
+  color: var(--neutral-800);
   flex: 1;
   font-size: 14px;
   min-width: 0;
@@ -78,13 +77,12 @@
 }
 
 .phone_number_input::placeholder {
-  color: var(--neutral-400, #9ca3af);
+  color: var(--neutral-400);
 }
 
-/* ─── Country dropdown ───────────────────────────────── */
 .country_dropdown {
   background-color: #fff;
-  border: 1px solid var(--neutral-200, #e5e7eb);
+  border: 1px solid var(--neutral-200);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -96,16 +94,16 @@
 }
 
 .country_dropdown__search {
-  border-bottom: 1px solid var(--neutral-100, #f3f4f6);
+  border-bottom: 1px solid var(--neutral-100);
   display: flex;
   padding: 8px;
 }
 
 .country_dropdown__search input {
-  background: var(--neutral-50, #f9fafb);
-  border: 1px solid var(--neutral-200, #e5e7eb);
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
   border-radius: 6px;
-  color: var(--neutral-800, #1f2937);
+  color: var(--neutral-800);
   font-size: 13px;
   outline: none;
   padding: 6px 10px;
@@ -130,11 +128,11 @@
 }
 
 .country_item:hover {
-  background-color: var(--neutral-50, #f9fafb);
+  background-color: var(--neutral-50);
 }
 
 .country_item--active {
-  background-color: var(--red-50, #fef2f2);
+  background-color: var(--red-50);
 }
 
 .country_item__flag {
@@ -143,7 +141,7 @@
 }
 
 .country_item__name {
-  color: var(--neutral-700, #374151);
+  color: var(--neutral-700);
   flex: 1;
   font-size: 13px;
   overflow: hidden;
@@ -152,12 +150,11 @@
 }
 
 .country_item__dial {
-  color: var(--neutral-400, #9ca3af);
+  color: var(--neutral-400);
   flex-shrink: 0;
   font-size: 12px;
 }
 
-/* ─── Templates section ──────────────────────────────── */
 .templates_section {
   display: flex;
   flex-direction: column;
