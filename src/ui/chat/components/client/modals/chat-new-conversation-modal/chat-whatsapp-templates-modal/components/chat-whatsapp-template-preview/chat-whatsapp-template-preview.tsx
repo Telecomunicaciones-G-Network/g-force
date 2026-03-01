@@ -9,7 +9,7 @@ import { applyTemplateParams } from '../../chat-whatsapp-templates-modal.hook';
 import styles from './chat-whatsapp-template-preview.module.css';
 
 interface ChatWhatsappTemplatePreviewProps {
-  paramValues: Record<number, string>;
+  paramValues: Record<string, string>;
   selectedTemplate: WhatsappTemplate;
 }
 
