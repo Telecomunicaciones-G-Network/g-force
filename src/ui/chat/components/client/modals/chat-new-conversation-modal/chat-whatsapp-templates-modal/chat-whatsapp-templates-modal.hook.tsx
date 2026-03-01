@@ -206,7 +206,12 @@ export const useChatWhatsappNewChatModal = ({
   };
 
   const onParamChange = (index: number, value: string) => {
-    setValue(`params.${index}`, value, { shouldValidate: false });
+    const current = watch('params') ?? {};
+    setValue(
+      'params',
+      { ...current, [String(index)]: value },
+      { shouldValidate: false },
+    );
   };
 
   // ─── Template params ──────────────────────────────────────────────────────
@@ -234,7 +239,7 @@ export const useChatWhatsappNewChatModal = ({
     sendTemplate({
       phoneNumber: fullPhoneNumber,
       template: selectedTemplate,
-      paramValues: formData.params as Record<number, string>,
+      paramValues: formData.params,
     });
   });
 
@@ -257,7 +262,7 @@ export const useChatWhatsappNewChatModal = ({
     onSelectTemplate,
     onSend,
     onTemplateSearchChange,
-    paramValues: paramValues as Record<number, string>,
+    paramValues: paramValues as Record<string, string>,
     phoneNumber,
     register,
     selectedCountry,
