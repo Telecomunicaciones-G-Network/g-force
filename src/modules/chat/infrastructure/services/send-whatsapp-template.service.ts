@@ -11,7 +11,7 @@ export interface SendWhatsappTemplateRequest {
   phoneNumber: string;
   template: WhatsappTemplate;
   /** Map of {{N}} index → string value filled by the agent */
-  paramValues: Record<number, string>;
+  paramValues: Record<string, string>;
 }
 
 interface TextParameter {
@@ -52,7 +52,7 @@ interface SendTemplateApiResponse {
  */
 const buildTemplateComponents = (
   template: WhatsappTemplate,
-  paramValues: Record<number, string>,
+  paramValues: Record<string, string>,
 ): TemplateComponent[] | undefined => {
   const bodyComp = template.components.find((c) => c.type === 'BODY');
   if (!bodyComp?.text || typeof bodyComp.text !== 'string') return undefined;
@@ -66,7 +66,7 @@ const buildTemplateComponents = (
 
   const parameters: TextParameter[] = indices.map((idx) => ({
     type: 'text' as const,
-    value: paramValues[idx] ?? '',
+    value: paramValues[String(idx)] ?? '',
   }));
 
   return [{ type: 'BODY', parameters }];

@@ -37,7 +37,7 @@ interface ChatWhatsappTemplatesModalBodyProps {
   onPhoneNumberChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSelectTemplate: (template: WhatsappTemplate) => void;
   onTemplateSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  paramValues: Record<number, string>;
+  paramValues: Record<string, string>;
   phoneNumber: string;
   selectedCountry: CountryCode;
   selectedTemplate: WhatsappTemplate | null;
