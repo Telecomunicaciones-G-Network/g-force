@@ -36,10 +36,6 @@ interface UseChatWhatsappNewChatModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-/**
- * Extracts all {{N}} parameters from a template's BODY component text.
- * Returns a sorted array of unique parameter indices like [1, 2, 3].
- */
 const extractTemplateParams = (template: WhatsappTemplate): number[] => {
   const bodyComp = template.components.find((c) => c.type === 'BODY');
   if (!bodyComp?.text || typeof bodyComp.text !== 'string') return [];
@@ -49,9 +45,6 @@ const extractTemplateParams = (template: WhatsappTemplate): number[] => {
   return [...new Set(indices)].sort((a, b) => a - b);
 };
 
-/**
- * Replaces {{N}} placeholders in text with the corresponding param values.
- */
 export const applyTemplateParams = (
   text: string,
   params: Record<string, string>,
@@ -59,10 +52,6 @@ export const applyTemplateParams = (
   return text.replace(/\{\{(\d+)\}\}/g, (_, n) => params[n] || `{{${n}}}`);
 };
 
-/**
- * Parses the NEXT_PUBLIC_WHATSAPP_TEMPLATE_NAMES env var into an array of template names.
- * Returns an empty array if not set (meaning all templates are allowed).
- */
 const getAllowedTemplateNames = (): string[] => {
   const raw = ENVS.WHATSAPP_TEMPLATE_NAMES;
   if (!raw || typeof raw !== 'string') return [];
@@ -77,7 +66,7 @@ export const useChatWhatsappNewChatModal = ({
   onOpenChange,
 }: UseChatWhatsappNewChatModalProps) => {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>(
-    COUNTRY_CODES[0], // Venezuela by default
+    COUNTRY_CODES[0], 
   );
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState('');
@@ -87,7 +76,6 @@ export const useChatWhatsappNewChatModal = ({
 
   const { showToast } = useToast();
 
-  // ─── react-hook-form ──────────────────────────────────────────────────────
   const {
     formState: { errors },
     handleSubmit,
@@ -111,7 +99,6 @@ export const useChatWhatsappNewChatModal = ({
   const debouncedTemplateSearch = useDebounce(templateSearch, 350);
   const allowedNames = useMemo(() => getAllowedTemplateNames(), []);
 
-  // ─── Reset on close ───────────────────────────────────────────────────────
   const resetState = () => {
     reset({ phoneNumber: '', templateId: '', params: {} });
     setSelectedTemplate(null);
@@ -125,7 +112,6 @@ export const useChatWhatsappNewChatModal = ({
     setTimeout(resetState, 300);
   };
 
-  // ─── Templates query ──────────────────────────────────────────────────────
   const { data, isLoading, isError } = useQuery<GetWhatsappTemplatesResponse>({
     queryKey: [
       CHAT_TAGS.GET_WHATSAPP_TEMPLATES,
@@ -142,7 +128,6 @@ export const useChatWhatsappNewChatModal = ({
     refetchOnWindowFocus: false,
   });
 
-  // ─── Send mutation ────────────────────────────────────────────────────────
   const { mutate: sendTemplate, isPending: isSending } = useMutation({
     mutationFn: sendWhatsappTemplateService,
     onSuccess: () => {
@@ -165,7 +150,6 @@ export const useChatWhatsappNewChatModal = ({
     },
   });
 
-  // ─── Filtered templates ───────────────────────────────────────────────────
   const templates = useMemo(() => {
     const all = data?.results ?? [];
     return allowedNames.length > 0
@@ -179,7 +163,6 @@ export const useChatWhatsappNewChatModal = ({
       c.dialCode.includes(countrySearch),
   );
 
-  // ─── Handlers ─────────────────────────────────────────────────────────────
   const onPhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/\D/g, '');
     setValue('phoneNumber', value, { shouldValidate: false });
@@ -214,13 +197,11 @@ export const useChatWhatsappNewChatModal = ({
     );
   };
 
-  // ─── Template params ──────────────────────────────────────────────────────
   const templateParams = useMemo(
     () => (selectedTemplate ? extractTemplateParams(selectedTemplate) : []),
     [selectedTemplate],
   );
 
-  // Reset params in the form when the template changes
   useEffect(() => {
     if (!selectedTemplate) return;
     const empty: Record<string, string> = {};
@@ -230,7 +211,6 @@ export const useChatWhatsappNewChatModal = ({
     setValue('params', empty, { shouldValidate: false });
   }, [selectedTemplate, setValue]);
 
-  // ─── Submit ───────────────────────────────────────────────────────────────
   const onSend = handleSubmit((formData) => {
     if (!selectedTemplate) return;
 

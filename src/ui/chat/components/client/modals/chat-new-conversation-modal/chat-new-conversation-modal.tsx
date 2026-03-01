@@ -41,13 +41,11 @@ export const ChatNewConversationModal = () => {
 
   return (
     <>
-      {/* Step 2: WhatsApp new chat modal — controlled externally */}
       <ChatWhatsappNewChatModal
         isOpen={isWhatsappModalOpen}
         onOpenChange={onWhatsappModalOpenChange}
       />
 
-      {/* Step 1: Platform selector */}
       <Modal
         className="sm:max-w-[480px]"
         isOpen={isModalOpen}
