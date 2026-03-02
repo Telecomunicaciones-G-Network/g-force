@@ -19,6 +19,7 @@ export const ChatStickerMessageController = ({
       message?.media?.storageStatus === MediaStorageStatus.AVAILABLE && (
         <ChatStickerMessage
           caption={null}
+          createdAt={message?.createdAt ?? ''}
           direction={
             message?.direction === MessageDirections.INCOMING
               ? BubbleModes.INCOMING

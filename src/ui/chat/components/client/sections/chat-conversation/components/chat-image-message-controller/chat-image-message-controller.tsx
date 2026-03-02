@@ -19,6 +19,7 @@ export const ChatImageMessageController = ({
       message?.media?.storageStatus === MediaStorageStatus.AVAILABLE && (
         <ChatImageMessage
           caption={message?.text}
+          createdAt={message?.createdAt ?? ''}
           direction={
             message?.direction === MessageDirections.INCOMING
               ? BubbleModes.INCOMING

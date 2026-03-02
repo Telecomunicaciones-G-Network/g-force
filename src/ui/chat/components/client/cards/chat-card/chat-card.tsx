@@ -16,7 +16,10 @@ import {
 } from 'react-icons/md';
 
 import { shortString } from '@stringify/utils/short-string.util';
-import { isoToTime } from '@timer/utils/iso-to-time.util';
+import {
+  isoToFullDate,
+  isoToRelativeDate,
+} from '@timer/utils/iso-to-relative-date.util';
 
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { Avatar } from '@gnetwork-ui/components/molecules/avatars/avatar';
@@ -84,24 +87,39 @@ export const ChatCard = ({
       <div className={styles.base__content}>
         <div className={styles.base__texts}>
           {(username || phoneNumber) && (
-            <Text
-              as="span"
-              className="text-chromatic-inverted"
-              level="small"
-              scheme="label"
+            <div
+              className="flex-1 min-w-0 truncate"
+              title={capitalizeWords(username) || phoneNumber}
             >
-              {capitalizeWords(username) || phoneNumber}
-            </Text>
+              <Text
+                as="span"
+                className="text-chromatic-inverted block truncate"
+                level="small"
+                scheme="label"
+              >
+                {capitalizeWords(username) || phoneNumber}
+              </Text>
+            </div>
           )}
           {lastMessageTime && (
-            <Text
-              as="span"
-              className="text-neutral-500"
-              level="xsmall"
-              scheme="label"
-            >
-              {isoToTime(lastMessageTime)}
-            </Text>
+            <div className={styles.timestamp}>
+              <Text
+                as="span"
+                className={cn('text-neutral-500', styles.timestamp__relative)}
+                level="xsmall"
+                scheme="label"
+              >
+                {isoToRelativeDate(lastMessageTime)}
+              </Text>
+              <Text
+                as="span"
+                className={cn('text-neutral-500', styles.timestamp__full)}
+                level="xsmall"
+                scheme="label"
+              >
+                {isoToFullDate(lastMessageTime)}
+              </Text>
+            </div>
           )}
         </div>
         <div className={styles.base__icon}>
@@ -118,6 +136,28 @@ export const ChatCard = ({
               )}
             </Text>
           )}
+
+          {lastMessage &&
+            (messageType === MessageTypes.TEMPLATE ||
+              messageType === MessageTypes.FLOW_BUTTON ||
+              messageType === MessageTypes.FLOW_COMPLETION ||
+              messageType === MessageTypes.INTERACTIVE_BUTTONS ||
+              messageType === MessageTypes.INTERACTIVE_BUTTON_REPLY ||
+              messageType === MessageTypes.INTERACTIVE_LIST_OPTIONS ||
+              messageType === MessageTypes.INTERACTIVE_LIST_SELECTION ||
+              messageType === MessageTypes.INTERACTIVE_URL_BUTTON) && (
+                <Text
+                  as="p"
+                  className="text-neutral-500"
+                  level="xsmall"
+                  scheme="label"
+                >
+                  {shortString(
+                    lastMessage,
+                    CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                  )}
+                </Text>
+            )}
           {messageType === MessageTypes.AUDIO && (
             <>
               <MdMic className="fill-whatsapp-audio-color min-h-5 min-w-5 size-5" />
