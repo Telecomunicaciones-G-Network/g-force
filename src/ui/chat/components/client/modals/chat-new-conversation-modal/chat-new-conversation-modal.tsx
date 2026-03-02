@@ -10,7 +10,6 @@ import {
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
-
 import { Text } from '@gnetwork-ui/components/atoms/texts/text';
 import { IconBadge } from '@gnetwork-ui/components/molecules/badges/icon-badge';
 // import { SearchInput } from '@gnetwork-ui/components/molecules/inputs/search-input';
@@ -51,11 +50,7 @@ export const ChatNewConversationModal = () => {
         isOpen={isModalOpen}
         onOpenChange={onOpenChange}
         triggerComponent={
-          <Button
-            className="bg-chromatic-inverted"
-            isStatic
-            size="icon"
-          >
+          <Button className="bg-chromatic-inverted" isStatic size="icon">
             <MdAdd
               className={cn(
                 'min-h-6 min-w-6 size-6 text-white',

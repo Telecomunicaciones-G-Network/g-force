@@ -5,10 +5,7 @@ import type { ChatDocumentMessageProps } from './chat-document-message.props';
 
 import { useState } from 'react';
 
-import {
-  MdDownload,
-  MdInsertDriveFile,
-} from 'react-icons/md';
+import { MdDownload, MdInsertDriveFile } from 'react-icons/md';
 import { useQuery } from '@tanstack/react-query';
 
 import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
