@@ -66,7 +66,7 @@ export const useChatWhatsappNewChatModal = ({
   onOpenChange,
 }: UseChatWhatsappNewChatModalProps) => {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>(
-    COUNTRY_CODES[0], 
+    COUNTRY_CODES[0],
   );
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState('');

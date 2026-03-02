@@ -21,7 +21,6 @@ import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import styles from './chat-whatsapp-templates-modal-body.module.css';
 
-
 interface ChatWhatsappTemplatesModalBodyProps {
   countrySearch: string;
   errors: {
