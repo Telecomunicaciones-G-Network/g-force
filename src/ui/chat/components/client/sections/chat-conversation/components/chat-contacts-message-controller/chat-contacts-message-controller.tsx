@@ -21,6 +21,7 @@ export const ChatContactsMessageController = ({
         ? BubbleModes.INCOMING
         : BubbleModes.OUTGOING
     }
+    createdAt={message?.createdAt ?? ''}
     isBot={message?.sender?.isBot}
     status={message?.status.toLowerCase() as BubbleStatus}
     time={isoToTime(message?.createdAt ?? '')}

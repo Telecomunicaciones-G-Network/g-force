@@ -14,6 +14,8 @@ import { TagColors } from '../../../molecules/tags/tag/enums/tag-colors.enum';
 
 import { cn } from '../../../../utils/cn.util';
 
+import { isoToFullDate } from '@timer/utils/iso-to-relative-date.util';
+
 import styles from './chat-message.module.css';
 
 export const ChatMessage = ({
@@ -21,6 +23,7 @@ export const ChatMessage = ({
   caption = null,
   children,
   className = '',
+  createdAt = '',
   customIconClassName = '',
   direction = BubbleModes.UNKNOWN,
   forwarded = false,
@@ -99,14 +102,24 @@ export const ChatMessage = ({
           </Text>
         )}
         {time && (
-          <Text
-            as="span"
-            className="text-neutral-500"
-            level="small"
-            scheme="label"
-          >
-            {time}
-          </Text>
+          <div className={styles.timestamp}>
+            <Text
+              as="span"
+              className={cn('text-neutral-500', styles.timestamp__relative)}
+              level="small"
+              scheme="label"
+            >
+              {time}
+            </Text>
+            <Text
+              as="span"
+              className={cn('text-neutral-500', styles.timestamp__full)}
+              level="small"
+              scheme="label"
+            >
+              {isoToFullDate(createdAt)}
+            </Text>
+          </div>
         )}
       </div>
       <Bubble
