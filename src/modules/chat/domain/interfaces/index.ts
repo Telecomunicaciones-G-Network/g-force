@@ -88,3 +88,8 @@ export type {
   TemplateCategory,
   TemplateParamFormat,
 } from './get-whatsapp-templates-response.interface';
+export type { GetTeamSharedMediaRequest } from './get-team-shared-media-request.interface';
+export type {
+  GetTeamSharedMediaResponse,
+  SharedMediaItem,
+} from './get-team-shared-media-response.interface';
