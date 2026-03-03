@@ -414,7 +414,9 @@ export class Fetch implements HttpAdapter {
         ...this.configuration?.headers,
         ...fetchConfig.headers,
         'X-Filename': body?.filename,
-        'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
+        'X-Media-Type':
+          X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType] ?? 'DOCUMENT',
+        ...(body?.teamCodename ? { 'X-Team-Codename': body.teamCodename } : {}),
       },
       body: body?.file,
     });

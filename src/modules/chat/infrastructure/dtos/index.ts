@@ -89,3 +89,7 @@ export type {
   DollarRateResultsDTO,
   GetDollarRateResponseDTO,
 } from './get-dollar-rate-response.dto';
+export type {
+  GetTeamSharedMediaResponseDTO,
+  GetTeamSharedMediaResponseDTOItem,
+} from './get-team-shared-media-response.dto';
