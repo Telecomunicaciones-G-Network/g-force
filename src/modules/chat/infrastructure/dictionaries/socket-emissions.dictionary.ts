@@ -10,6 +10,7 @@ export const socketEmissionsDictionary = {
   LEAVE_CHAT_ROOM: 'leave_chat_room',
   MARK_MESSAGES_AS_READ: 'mark_messages_as_read',
   SEND_IMAGE_MESSAGE: 'send_image_message',
+  SEND_DOCUMENT_MESSAGE: 'send_document_message',
   SEND_INTERNAL_MESSAGE: 'send_internal_message',
   SEND_TEXT_MESSAGE: 'send_text_message',
   SET_AGENT_STATUS: 'set_agent_status',

@@ -10,6 +10,7 @@ import { useSocket } from '@socketio/hooks/use-socket.hook';
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
 import { useEmitSendImageMessage } from '@ui-chat/hooks/emit-send-image-message.hook';
+import { useEmitSendDocumentMessage } from '@ui-chat/hooks/emit-send-document-message.hook';
 
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
@@ -21,6 +22,9 @@ export const useChatFileViewerFooter = () => {
   const activeContact = useContactStore((state) => state.activeContact);
 
   const { emitSendImageMessage } = useEmitSendImageMessage();
+  const { emitSendDocumentMessage } = useEmitSendDocumentMessage();
+
+  const sendMode = useChatStore((state) => state.sendMode);
 
   const setFile = useChatStore((state) => state.setFile);
   const setSendMode = useChatStore((state) => state.setSendMode);
@@ -33,13 +37,19 @@ export const useChatFileViewerFooter = () => {
 
     if (!activeContact?.id) return;
 
-    emitSendImageMessage({
+    const payload = {
       message: message?.trim(),
       onSuccess: () => {
         setMessage('');
         removeFile();
       },
-    });
+    };
+
+    if (sendMode === ChatSendModes.DOCUMENT) {
+      emitSendDocumentMessage(payload);
+    } else {
+      emitSendImageMessage(payload);
+    }
   };
 
   const changeMessage = (event: ChangeEvent<HTMLInputElement>) =>

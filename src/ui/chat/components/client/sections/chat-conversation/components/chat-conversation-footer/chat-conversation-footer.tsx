@@ -59,7 +59,7 @@ export const ChatConversationFooter = ({
               <div className="flex items-center gap-1.5 pt-[2px]">
                 <ChatConversationFileAttachDropdown />
                 <button
-                  className="flex items-center justify-center size-6 rounded bg-transparent cursor-pointer hover:bg-neutral-100 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                  className="flex items-center justify-center size-6 rounded bg-neutral-100 cursor-pointer hover:bg-neutral-200 transition-colors shrink-0"
                   disabled={disabledChat || sendMode === ChatSendModes.INTERNAL}
                   onClick={() => setIsCloudModalOpen(true)}
                   title="Almacenamiento en la nube"

@@ -9,12 +9,12 @@ import type {
 
 export class EmitSendTextMessageMapper {
   static mapFrom(
-    input: EmitSendTextMessageResponseDTO,
+    input: EmitSendTextMessageResponseDTO & { id?: string },
   ): EmitSendTextMessageResponse {
     return {
       errorCode: input?.error_code,
-      messageId: input?.message_id,
-      success: input?.success,
+      messageId: input?.message_id || input?.id,
+      success: input?.success ?? true,
     };
   }
 

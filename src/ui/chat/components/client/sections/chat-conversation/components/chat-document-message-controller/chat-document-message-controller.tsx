@@ -57,7 +57,6 @@ export const ChatDocumentMessageController = ({
     );
   }
 
-  // Fallback: media no disponible o con error
   return (
     <ChatTextMessage
       caption={null}

@@ -8,6 +8,7 @@
  * @property text - The mode in which the chat is being sent as a text message
  */
 export enum ChatSendModes {
+  DOCUMENT = 'document',
   IMAGE = 'image',
   INTERNAL = 'internal',
   TEXT = 'text',
