@@ -29,7 +29,10 @@ export const useOnChatMessageStatusChanged = () => {
     (data) => {
       const parseResponse = JSON.parse(data as unknown as string);
 
-      if (!parseResponse?.message_id || !parseResponse?.status)
+      if (
+        (!parseResponse?.message_id && !parseResponse?.id) ||
+        !parseResponse?.status
+      )
         // TODO: Set alert for error
         // TODO: Register error
         return;

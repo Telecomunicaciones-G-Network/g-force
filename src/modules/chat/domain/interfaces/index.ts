@@ -3,6 +3,8 @@ export type { Contact } from './contact.interface';
 export type { Conversation } from './conversation.interface';
 export type { EmitMarkMessagesAsReadRequestInterface } from './emit-mark-messages-as-read-request.interface';
 export type { EmitMarkMessagesAsReadResponseInterface } from './emit-mark-messages-as-read-response.interface';
+export type { EmitSendDocumentMessageRequest } from './emit-send-document-message-request.interface';
+export type { EmitSendDocumentMessageResponse } from './emit-send-document-message-response.interface';
 export type { EmitSendImageMessageRequest } from './emit-send-image-message-request.interface';
 export type { EmitSendImageMessageResponse } from './emit-send-image-message-response.interface';
 export type { EmitSendInternalMessageRequest } from './emit-send-internal-message-request.interface';

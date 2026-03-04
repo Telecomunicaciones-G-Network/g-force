@@ -4,6 +4,8 @@ import type { SharedMediaItem } from '@module-chat/domain/interfaces';
 import type {
   EmitSendImageMessageRequestDTO,
   EmitSendImageMessageResponseDTO,
+  EmitSendDocumentMessageRequestDTO,
+  EmitSendDocumentMessageResponseDTO,
 } from '@module-chat/infrastructure/dtos';
 
 import { useCallback, useState } from 'react';
@@ -27,6 +29,7 @@ import { uploadChatMediaCommand } from '@module-chat/infrastructure/commands/upl
 import { socketEmissionsDictionary } from '@module-chat/infrastructure/dictionaries/socket-emissions.dictionary';
 
 import { EmitSendImageMessageMapper } from '@module-chat/infrastructure/mappers/emit-send-image-message.mapper';
+import { EmitSendDocumentMessageMapper } from '@module-chat/infrastructure/mappers/emit-send-document-message.mapper';
 
 import { AlertSchemes as ToastSchemes } from '@gnetwork-ui/components/molecules/alerts/alert/enums/alert-scheme.enum';
 import { useToast } from '@gnetwork-ui/components/organisms/toasts/toast/toast.hook';
@@ -37,6 +40,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
 import { removeExtensionFromFilename } from '@filer/utils/remove-extension-from-filename.util';
+import { useDebounce } from '@/src/packages/hook/use-debounce.hook';
 
 export type CloudStorageTab = 'pc' | 'shared';
 
@@ -73,6 +77,8 @@ export const useChatCloudStorageModal = ({
   >([]);
 
   const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 300);
+
   const [isUploading, setIsUploading] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
@@ -84,11 +90,15 @@ export const useChatCloudStorageModal = ({
     isError: isErrorSharedMedia,
     refetch: refetchSharedMedia,
   } = useQuery({
-    queryKey: [queryKeysDictionary.GET_TEAM_SHARED_MEDIA, teamCodename, search],
+    queryKey: [
+      queryKeysDictionary.GET_TEAM_SHARED_MEDIA,
+      teamCodename,
+      debouncedSearch,
+    ],
     queryFn: () =>
       GetTeamSharedMediaQuery({
         teamCodename,
-        search: search || undefined,
+        search: debouncedSearch || undefined,
         limit: 20,
       }),
     enabled: !!teamCodename && activeTab === 'shared',
@@ -233,26 +243,48 @@ export const useChatCloudStorageModal = ({
               updatedAt: null,
             };
 
-            const request = EmitSendImageMessageMapper.mapTo({
-              contactId: activeContact.id,
-              mediaId,
-              message: null,
-            });
+            let responseMessageId: string | undefined;
 
-            if (!request) continue;
+            if (messageType === MessageTypes.DOCUMENT) {
+              const request = EmitSendDocumentMessageMapper.mapTo({
+                contactId: activeContact.id,
+                mediaId,
+                message: null,
+              });
 
-            addMessage(optimisticMessage);
+              if (!request) continue;
+              addMessage(optimisticMessage);
 
-            const ack = await emitWithAck<
-              EmitSendImageMessageRequestDTO,
-              EmitSendImageMessageResponseDTO
-            >(socketEmissionsDictionary.SEND_IMAGE_MESSAGE, request);
+              const ack = await emitWithAck<
+                EmitSendDocumentMessageRequestDTO,
+                EmitSendDocumentMessageResponseDTO
+              >(socketEmissionsDictionary.SEND_DOCUMENT_MESSAGE, request);
 
-            const parseAck = JSON.parse(ack as unknown as string);
-            const response = EmitSendImageMessageMapper.mapFrom(parseAck);
+              const parseAck = JSON.parse(ack as unknown as string);
+              const response = EmitSendDocumentMessageMapper.mapFrom(parseAck);
+              responseMessageId = response?.messageId;
+            } else {
+              const request = EmitSendImageMessageMapper.mapTo({
+                contactId: activeContact.id,
+                mediaId,
+                message: null,
+              });
 
-            if (response?.messageId) {
-              updateOneMessageId(temporalMessageId, response.messageId);
+              if (!request) continue;
+              addMessage(optimisticMessage);
+
+              const ack = await emitWithAck<
+                EmitSendImageMessageRequestDTO,
+                EmitSendImageMessageResponseDTO
+              >(socketEmissionsDictionary.SEND_IMAGE_MESSAGE, request);
+
+              const parseAck = JSON.parse(ack as unknown as string);
+              const response = EmitSendImageMessageMapper.mapFrom(parseAck);
+              responseMessageId = response?.messageId;
+            }
+
+            if (responseMessageId) {
+              updateOneMessageId(temporalMessageId, responseMessageId);
 
               if (!playedSound) {
                 const sounder = new Sounder(
@@ -344,26 +376,48 @@ export const useChatCloudStorageModal = ({
             updatedAt: null,
           };
 
-          const request = EmitSendImageMessageMapper.mapTo({
-            contactId: activeContact.id,
-            mediaId,
-            message: null,
-          });
+          let responseMessageId: string | undefined;
 
-          if (!request) continue;
+          if (messageType === MessageTypes.DOCUMENT) {
+            const request = EmitSendDocumentMessageMapper.mapTo({
+              contactId: activeContact.id,
+              mediaId,
+              message: null,
+            });
 
-          addMessage(optimisticMessage);
+            if (!request) continue;
+            addMessage(optimisticMessage);
 
-          const ack = await emitWithAck<
-            EmitSendImageMessageRequestDTO,
-            EmitSendImageMessageResponseDTO
-          >(socketEmissionsDictionary.SEND_IMAGE_MESSAGE, request);
+            const ack = await emitWithAck<
+              EmitSendDocumentMessageRequestDTO,
+              EmitSendDocumentMessageResponseDTO
+            >(socketEmissionsDictionary.SEND_DOCUMENT_MESSAGE, request);
 
-          const parseAck = JSON.parse(ack as unknown as string);
-          const response = EmitSendImageMessageMapper.mapFrom(parseAck);
+            const parseAck = JSON.parse(ack as unknown as string);
+            const response = EmitSendDocumentMessageMapper.mapFrom(parseAck);
+            responseMessageId = response?.messageId;
+          } else {
+            const request = EmitSendImageMessageMapper.mapTo({
+              contactId: activeContact.id,
+              mediaId,
+              message: null,
+            });
 
-          if (response?.messageId) {
-            updateOneMessageId(temporalMessageId, response.messageId);
+            if (!request) continue;
+            addMessage(optimisticMessage);
+
+            const ack = await emitWithAck<
+              EmitSendImageMessageRequestDTO,
+              EmitSendImageMessageResponseDTO
+            >(socketEmissionsDictionary.SEND_IMAGE_MESSAGE, request);
+
+            const parseAck = JSON.parse(ack as unknown as string);
+            const response = EmitSendImageMessageMapper.mapFrom(parseAck);
+            responseMessageId = response?.messageId;
+          }
+
+          if (responseMessageId) {
+            updateOneMessageId(temporalMessageId, responseMessageId);
 
             if (!playedSound) {
               const sounder = new Sounder('/sounds/whatsapp-emit-message.mp3');

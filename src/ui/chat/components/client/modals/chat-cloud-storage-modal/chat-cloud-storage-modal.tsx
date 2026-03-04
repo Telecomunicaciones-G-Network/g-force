@@ -7,12 +7,8 @@ import { useRef } from 'react';
 import {
   MdCheck,
   MdCloudUpload,
-  MdOutlineDescription,
-  MdOutlineImage,
   MdOutlineInsertDriveFile,
   MdOutlineSearch,
-  MdOutlineVideoLibrary,
-  MdOutlineVolumeUp,
   MdClose,
 } from 'react-icons/md';
 
@@ -25,25 +21,17 @@ import { useChatCloudStorageModal } from './chat-cloud-storage-modal.hook';
 
 import styles from './chat-cloud-storage-modal.module.css';
 
-const MEDIA_TYPE_ICONS: Record<string, React.ReactNode> = {
-  IMAGE: <MdOutlineImage className={styles.grid_item__icon} />,
-  VIDEO: <MdOutlineVideoLibrary className={styles.grid_item__icon} />,
-  AUDIO: <MdOutlineVolumeUp className={styles.grid_item__icon} />,
-  DOCUMENT: <MdOutlineDescription className={styles.grid_item__icon} />,
-  STICKER: <MdOutlineImage className={styles.grid_item__icon} />,
-};
-
-interface ChatCloudStorageMediaGridItemProps {
+interface ChatCloudStorageMediaListItemProps {
   item: SharedMediaItem;
   isSelected: boolean;
   onSelect: (item: SharedMediaItem) => void;
 }
 
-const ChatCloudStorageMediaGridItem = ({
+const ChatCloudStorageMediaListItem = ({
   item,
   isSelected,
   onSelect,
-}: Readonly<ChatCloudStorageMediaGridItemProps>) => {
+}: Readonly<ChatCloudStorageMediaListItemProps>) => {
   const filename =
     item.storagePath?.split('/').pop() ??
     `${item.type.toLowerCase()}-${item.id.slice(0, 8)}`;
@@ -51,19 +39,16 @@ const ChatCloudStorageMediaGridItem = ({
   return (
     <button
       className={cn(
-        styles.grid_item,
-        isSelected && styles['grid_item--selected'],
+        styles.list_item,
+        isSelected && styles['list_item--selected'],
       )}
       onClick={() => onSelect(item)}
       title={filename}
       type="button"
     >
-      {MEDIA_TYPE_ICONS[item.type] ?? (
-        <MdOutlineInsertDriveFile className={styles.grid_item__icon} />
-      )}
-      <span className={styles.grid_item__label}>{filename}</span>
+      <span className={styles.list_item__label}>{filename}</span>
       {isSelected && (
-        <span className={styles.grid_item__check}>
+        <span className={styles.list_item__check}>
           <MdCheck />
         </span>
       )}
@@ -128,7 +113,6 @@ export const ChatCloudStorageModal = ({
       triggerComponent={triggerComponent}
     >
       <div className={styles.modal_root}>
-        {/* Header */}
         <div className={styles.header}>
           <div className={styles.header__icon}>
             <MdCloudUpload className="size-5 text-red-600 fill-red-600" />
@@ -142,8 +126,6 @@ export const ChatCloudStorageModal = ({
             )}
           </div>
         </div>
-
-        {/* Tabs */}
         <div className={styles.tabs}>
           <button
             className={cn(
@@ -171,7 +153,6 @@ export const ChatCloudStorageModal = ({
           </button>
         </div>
 
-        {/* Content */}
         {activeTab === 'pc' ? (
           <div className={styles.tab_content_wrapper}>
             <input
@@ -250,7 +231,6 @@ export const ChatCloudStorageModal = ({
           </div>
         ) : (
           <>
-            {/* Search + Upload button */}
             <div className={styles.toolbar}>
               <div className={styles.search}>
                 <MdOutlineSearch size={16} />
@@ -279,7 +259,6 @@ export const ChatCloudStorageModal = ({
               />
             </div>
 
-            {/* Grid */}
             {isLoadingSharedMedia ? (
               <div className={styles.empty}>
                 <span>Cargando archivos…</span>
@@ -294,9 +273,9 @@ export const ChatCloudStorageModal = ({
                 <span>No hay archivos en el almacenamiento compartido</span>
               </div>
             ) : (
-              <div className={styles.grid}>
+              <div className={styles.list}>
                 {sharedMediaItems.map((item) => (
-                  <ChatCloudStorageMediaGridItem
+                  <ChatCloudStorageMediaListItem
                     isSelected={selectedSharedMedia.some(
                       (media) => media.id === item.id,
                     )}
@@ -309,19 +288,7 @@ export const ChatCloudStorageModal = ({
             )}
           </>
         )}
-
-        {/* Footer */}
         <div className={styles.footer}>
-          <Button
-            disabled={isSending}
-            onClick={() => {
-              onReset();
-              onOpenChange(false);
-            }}
-            type="button"
-          >
-            Cancelar
-          </Button>
           <Button
             color="red"
             disabled={
@@ -332,6 +299,7 @@ export const ChatCloudStorageModal = ({
             }
             onClick={onSend}
             type="button"
+            fullWidth
           >
             {isUploading ? 'Subiendo...' : isSending ? 'Enviando…' : 'Enviar'}
           </Button>
