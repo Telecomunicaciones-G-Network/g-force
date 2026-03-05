@@ -32,9 +32,49 @@ const ChatCloudStorageMediaListItem = ({
   isSelected,
   onSelect,
 }: Readonly<ChatCloudStorageMediaListItemProps>) => {
-  const filename =
+  const getExtensionFromMimeType = (mimeType: string) => {
+    if (!mimeType) return '';
+    if (mimeType.includes('pdf')) return '.pdf';
+    if (mimeType.includes('word') || mimeType.includes('docx')) return '.docx';
+    if (
+      mimeType.includes('excel') ||
+      mimeType.includes('xlsx') ||
+      mimeType.includes('spreadsheet')
+    )
+      return '.xlsx';
+    if (
+      mimeType.includes('powerpoint') ||
+      mimeType.includes('pptx') ||
+      mimeType.includes('presentation')
+    )
+      return '.pptx';
+    if (mimeType.includes('png')) return '.png';
+    if (mimeType.includes('jpeg') || mimeType.includes('jpg')) return '.jpg';
+    if (mimeType.includes('webp')) return '.webp';
+    if (mimeType.includes('gif')) return '.gif';
+    if (mimeType.includes('svg')) return '.svg';
+    if (mimeType.includes('webm')) return '.webm';
+    if (mimeType.includes('mp4')) return '.mp4';
+    if (mimeType.includes('mpeg')) return '.mp3';
+    if (mimeType.includes('ogg')) return '.ogg';
+    if (mimeType.includes('wav')) return '.wav';
+    if (mimeType.includes('zip')) return '.zip';
+    if (mimeType.includes('rar')) return '.rar';
+    if (mimeType.includes('text/plain')) return '.txt';
+    if (mimeType.includes('csv')) return '.csv';
+    const split = mimeType.split('/');
+    if (split.length > 1 && split[1] && split[1].length <= 5)
+      return `.${split[1]}`;
+    return '';
+  };
+
+  let filename =
     item.storagePath?.split('/').pop() ??
     `${item.type.toLowerCase()}-${item.id.slice(0, 8)}`;
+
+  if (filename && !filename.includes('.') && item.mimeType) {
+    filename += getExtensionFromMimeType(item.mimeType);
+  }
 
   return (
     <button
@@ -88,7 +128,7 @@ export const ChatCloudStorageModal = ({
     selectedSharedMedia,
     selectedLocalFiles,
     sharedMediaItems,
-    teamCodename,
+    team,
   } = useChatCloudStorageModal({ onClose: handleClose });
 
   const handleOpenChange = (open: boolean) => {
@@ -121,8 +161,8 @@ export const ChatCloudStorageModal = ({
             <p className="text-sm font-semibold text-chromatic-inverted">
               Almacenamiento en la Nube
             </p>
-            {teamCodename && (
-              <p className="text-xs text-neutral-500">Equipo: {teamCodename}</p>
+            {team && (
+              <p className="text-xs text-neutral-500">Equipo: {team.name}</p>
             )}
           </div>
         </div>
@@ -240,7 +280,7 @@ export const ChatCloudStorageModal = ({
                   value={search}
                 />
               </div>
-              <Button
+              {/* <Button
                 className="px-3 shrink-0 text-xs text-chromatic hover:bgs-neutral-500"
                 color="gray"
                 disabled={!teamCodename || isUploading}
@@ -248,7 +288,7 @@ export const ChatCloudStorageModal = ({
                 type="button"
               >
                 {isUploading ? 'Subiendo…' : 'Subir Archivo'}
-              </Button>
+              </Button> */}
               <input
                 accept="*/*"
                 className="hidden"
@@ -289,20 +329,38 @@ export const ChatCloudStorageModal = ({
           </>
         )}
         <div className={styles.footer}>
-          <Button
-            color="red"
-            disabled={
-              (selectedSharedMedia.length === 0 &&
-                selectedLocalFiles.length === 0) ||
-              isSending ||
-              isUploading
-            }
-            onClick={onSend}
-            type="button"
-            fullWidth
-          >
-            {isUploading ? 'Subiendo...' : isSending ? 'Enviando…' : 'Enviar'}
-          </Button>
+          {activeTab === 'pc' && (
+            <Button
+              color="red"
+              disabled={
+                (selectedSharedMedia.length === 0 &&
+                  selectedLocalFiles.length === 0) ||
+                isSending ||
+                isUploading
+              }
+              onClick={onSend}
+              type="button"
+              fullWidth
+            >
+              {isUploading ? 'Subiendo...' : isSending ? 'Enviando…' : 'Subir'}
+            </Button>
+          )}
+          {activeTab === 'shared' && (
+            <Button
+              color="red"
+              disabled={
+                (selectedSharedMedia.length === 0 &&
+                  selectedLocalFiles.length === 0) ||
+                isSending ||
+                isUploading
+              }
+              onClick={onSend}
+              type="button"
+              fullWidth
+            >
+              {isUploading ? 'Subiendo...' : isSending ? 'Enviando…' : 'Enviar'}
+            </Button>
+          )}
         </div>
       </div>
     </Modal>
