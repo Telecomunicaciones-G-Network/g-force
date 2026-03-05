@@ -10,7 +10,7 @@ import type {
 
 import { useCallback, useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useSocket } from '@socketio/hooks/use-socket.hook';
@@ -39,7 +39,6 @@ import { queryKeysDictionary } from '@ui-chat/dictionaries/query-keys.dictionary
 import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
 import { useContactStore } from '@ui-chat/stores/contact-store/contact.store';
 
-import { removeExtensionFromFilename } from '@filer/utils/remove-extension-from-filename.util';
 import { useDebounce } from '@/src/packages/hook/use-debounce.hook';
 
 export type CloudStorageTab = 'pc' | 'shared';
@@ -56,6 +55,7 @@ export const useChatCloudStorageModal = ({
 }: {
   onClose: () => void;
 }) => {
+  const queryClient = useQueryClient();
   const { showToast } = useToast();
   const { emitWithAck, isConnectedAndStatusConnected } = useSocket();
 
@@ -88,7 +88,6 @@ export const useChatCloudStorageModal = ({
     data: sharedMediaData,
     isLoading: isLoadingSharedMedia,
     isError: isErrorSharedMedia,
-    refetch: refetchSharedMedia,
   } = useQuery({
     queryKey: [
       queryKeysDictionary.GET_TEAM_SHARED_MEDIA,
@@ -178,9 +177,7 @@ export const useChatCloudStorageModal = ({
         try {
           // Loop over all selected files
           for (const localFile of selectedLocalFiles) {
-            const parsedFilename =
-              removeExtensionFromFilename(localFile.file.name) ||
-              localFile.file.name;
+            const parsedFilename = localFile.file.name;
 
             const mediaResponse = await uploadChatMediaCommand({
               file: localFile.file,
@@ -190,112 +187,19 @@ export const useChatCloudStorageModal = ({
             });
 
             if (!mediaResponse?.mediaId) continue;
-
-            const mediaId = mediaResponse.mediaId;
-            const finalDownloadUrl = localFile.previewUrl;
-            const finalFilename = parsedFilename;
-            const finalMimeType = localFile.file.type;
-            const finalMediaType = localFile.parsedMediaType;
-
-            const messageType =
-              finalMediaType === MediaTypes.IMAGE
-                ? MessageTypes.IMAGE
-                : finalMediaType === MediaTypes.VIDEO
-                  ? MessageTypes.VIDEO
-                  : finalMediaType === MediaTypes.AUDIO
-                    ? MessageTypes.AUDIO
-                    : MessageTypes.DOCUMENT;
-
-            const temporalMessageId = uuidv4();
-            const optimisticMessage = {
-              id: temporalMessageId,
-              contacts: [],
-              conversationId: activeContact.latestConversation.id,
-              createdAt: new Date().toISOString().replace('Z', '000Z'),
-              deliveredAt: null,
-              direction: MessageDirections.OUTGOING,
-              eventData: null,
-              failedAt: null,
-              forwarded: false,
-              forwardedManyTimes: false,
-              interactiveOptions: null,
-              location: null,
-              media: {
-                id: mediaId,
-                downloadUrl: finalDownloadUrl,
-                filename: finalFilename,
-                mimeType: finalMimeType,
-                storageStatus: MediaStorageStatus.AVAILABLE,
-                type: finalMediaType,
-              },
-              reactions: [],
-              readAt: null,
-              replyToMessage: null,
-              sender: {
-                id: activeContact.latestConversation.agent.id,
-                isBot: false,
-                name: activeContact.latestConversation.agent.name,
-              },
-              sentAt: null,
-              status: MessageStatus.PENDING,
-              text: null,
-              type: messageType,
-              updatedAt: null,
-            };
-
-            let responseMessageId: string | undefined;
-
-            if (messageType === MessageTypes.DOCUMENT) {
-              const request = EmitSendDocumentMessageMapper.mapTo({
-                contactId: activeContact.id,
-                mediaId,
-                message: null,
-              });
-
-              if (!request) continue;
-              addMessage(optimisticMessage);
-
-              const ack = await emitWithAck<
-                EmitSendDocumentMessageRequestDTO,
-                EmitSendDocumentMessageResponseDTO
-              >(socketEmissionsDictionary.SEND_DOCUMENT_MESSAGE, request);
-
-              const parseAck = JSON.parse(ack as unknown as string);
-              const response = EmitSendDocumentMessageMapper.mapFrom(parseAck);
-              responseMessageId = response?.messageId;
-            } else {
-              const request = EmitSendImageMessageMapper.mapTo({
-                contactId: activeContact.id,
-                mediaId,
-                message: null,
-              });
-
-              if (!request) continue;
-              addMessage(optimisticMessage);
-
-              const ack = await emitWithAck<
-                EmitSendImageMessageRequestDTO,
-                EmitSendImageMessageResponseDTO
-              >(socketEmissionsDictionary.SEND_IMAGE_MESSAGE, request);
-
-              const parseAck = JSON.parse(ack as unknown as string);
-              const response = EmitSendImageMessageMapper.mapFrom(parseAck);
-              responseMessageId = response?.messageId;
-            }
-
-            if (responseMessageId) {
-              updateOneMessageId(temporalMessageId, responseMessageId);
-
-              if (!playedSound) {
-                const sounder = new Sounder(
-                  '/sounds/whatsapp-emit-message.mp3',
-                );
-                sounder.playAudio();
-                playedSound = true;
-              }
-            }
           }
-          refetchSharedMedia();
+          await queryClient.invalidateQueries({
+            queryKey: [queryKeysDictionary.GET_TEAM_SHARED_MEDIA, teamCodename],
+          });
+          setSelectedLocalFiles([]);
+          setActiveTab('shared');
+          showToast('Archivos subidos correctamente', {
+            duration: 3000,
+            id: 'cloud-storage-upload-success-toast',
+            position: 'top-right',
+            scheme: ToastSchemes.SUCCESS,
+          });
+          return;
         } catch {
           showToast('Error al procesar archivos locales', {
             duration: 3000,
@@ -453,7 +357,7 @@ export const useChatCloudStorageModal = ({
     onClose,
     showToast,
     teamCodename,
-    refetchSharedMedia,
+    queryClient,
   ]);
 
   const onReset = useCallback(() => {
