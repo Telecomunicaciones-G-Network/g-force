@@ -146,17 +146,17 @@ export const ChatCard = ({
               messageType === MessageTypes.INTERACTIVE_LIST_OPTIONS ||
               messageType === MessageTypes.INTERACTIVE_LIST_SELECTION ||
               messageType === MessageTypes.INTERACTIVE_URL_BUTTON) && (
-                <Text
-                  as="p"
-                  className="text-neutral-500"
-                  level="xsmall"
-                  scheme="label"
-                >
-                  {shortString(
-                    lastMessage,
-                    CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
-                  )}
-                </Text>
+              <Text
+                as="p"
+                className="text-neutral-500"
+                level="xsmall"
+                scheme="label"
+              >
+                {shortString(
+                  lastMessage,
+                  CHAT_CARD_MAXIMUM_LAST_MESSAGE_CHARACTERS,
+                )}
+              </Text>
             )}
           {messageType === MessageTypes.AUDIO && (
             <>
