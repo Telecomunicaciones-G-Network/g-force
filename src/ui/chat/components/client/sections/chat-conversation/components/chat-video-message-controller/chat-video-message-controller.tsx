@@ -40,6 +40,7 @@ export const ChatVideoMessageController = ({
   ) {
     return (
       <ChatVideoMessage
+        createdAt={message?.createdAt ?? ''}
         direction={direction}
         filename={message.media.filename}
         isBot={message?.sender?.isBot}
@@ -57,6 +58,7 @@ export const ChatVideoMessageController = ({
   return (
     <ChatTextMessage
       caption={null}
+      createdAt={message?.createdAt ?? ''}
       direction={direction}
       isBot={message?.sender?.isBot}
       status={message?.status.toLowerCase() as BubbleStatus}

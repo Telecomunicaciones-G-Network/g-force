@@ -23,6 +23,7 @@
   flex: 1;
   gap: 8px;
   padding: 0;
+  min-width: 0;
 }
 
 .base__icon {
@@ -36,4 +37,49 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.timestamp {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.timestamp__relative,
+.timestamp__full {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    max-width 0.25s ease,
+    opacity 0.2s ease,
+    transform 0.25s ease;
+}
+
+.timestamp__relative {
+  max-width: 150px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.timestamp__full {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(5px);
+}
+
+.base:hover .timestamp__relative {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-5px);
+}
+
+.base:hover .timestamp__full {
+  max-width: 300px;
+  opacity: 1;
+  transform: translateX(0);
 }

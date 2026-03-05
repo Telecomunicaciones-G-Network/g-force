@@ -38,5 +38,7 @@ export const CHAT_RESOURCES = {
   VALIDATE_MOBILE_PAYMENT_WITH_IMAGE:
     '/chat/payment/validate-pago-movil-with-image',
   GET_WHATSAPP_TEMPLATES: '/whatsapp/templates',
+  GET_TEAM_SHARED_MEDIA: (teamCodename: string): string =>
+    `/chat/media/teams/${teamCodename}`,
   SEND_WHATSAPP_TEMPLATE: '/whatsapp/templates/send',
 } as const satisfies Record<string, string | ((...args: string[]) => string)>;

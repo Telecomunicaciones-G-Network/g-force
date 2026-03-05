@@ -10,13 +10,43 @@ import { useChatFileViewerBody } from './chat-file-viewer-body.hook';
 
 import styles from './chat-file-viewer-body.module.css';
 
+import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
+import { MdOutlineInsertDriveFile } from 'react-icons/md';
+import { formatFileSize } from '@filer/utils/format-file-size.util';
+
 export const ChatFileViewerBody = () => {
-  const { handleImageLoad, imageOrientation, imageAlt, imageRef, imageSrc } =
-    useChatFileViewerBody();
+  const {
+    handleImageLoad,
+    imageOrientation,
+    imageAlt,
+    imageRef,
+    imageSrc,
+    sendMode,
+    fileName,
+    fileSize,
+  } = useChatFileViewerBody();
 
   return (
     <div className={styles.base}>
-      {imageSrc && (
+      {sendMode === ChatSendModes.DOCUMENT && (
+        <div className="flex flex-col items-center justify-center p-8 bg-neutral-100 rounded-xl space-y-4 shadow-sm border border-neutral-200">
+          <MdOutlineInsertDriveFile className="size-16 text-neutral-400" />
+          <div className="flex flex-col items-center">
+            <span
+              className="text-sm font-semibold text-chromatic-inverted text-center max-w-[250px] truncate"
+              title={fileName}
+            >
+              {fileName}
+            </span>
+            {fileSize && (
+              <span className="text-xs text-neutral-500">
+                {formatFileSize(fileSize)}
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+      {sendMode === ChatSendModes.IMAGE && imageSrc && (
         <div
           className={cn(
             styles.base__container,

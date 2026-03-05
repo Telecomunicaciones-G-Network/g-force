@@ -21,6 +21,7 @@ import { useChatStore } from '@ui-chat/stores/chat-store/chat.store';
  * When an agent sends a new message in a contact's chat. This includes both regular messages sent to the contact,
  * as well as internal messages and event messages. Contains all message data to be displayed in the open chat panel.
  * - Add the message if assigned agent is not equal than conversation agent
+ * - Update the message status and ID if the sender is the current agent (handles cases where ACK didn't update properly)
  * Emitted to the agent when a message is sent. Contains the message data.
  *
  *[Contact event]
@@ -38,7 +39,7 @@ export const useOnChatMessageSent = () => {
       const parseResponse = JSON.parse(data as unknown as string);
 
       if (
-        !parseResponse?.message_id ||
+        (!parseResponse?.message_id && !parseResponse?.id) ||
         !parseResponse?.contact_id ||
         !parseResponse?.conversation_id ||
         !parseResponse?.status ||
@@ -60,12 +61,17 @@ export const useOnChatMessageSent = () => {
         // TODO: Register error
         return;
 
-      if (response?.sender?.id !== activeAgent?.id) {
-        const sounder = new Sounder(chatSoundDictionary.whatsappOnMessage);
-
-        addMessage(response);
-        sounder.playAudio();
+      if (response?.sender?.id === activeAgent?.id) {
+        // Own message: the ACK from emitWithAck handles ID update.
+        // Status updates come from chat_message_status_changed event.
+        return;
       }
+
+      // Other agent's message: add to chat
+      const sounder = new Sounder(chatSoundDictionary.whatsappOnMessage);
+
+      addMessage(response);
+      sounder.playAudio();
     },
   );
 };

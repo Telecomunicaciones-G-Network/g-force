@@ -18,7 +18,11 @@ export class OnChatMessageSentMapper {
    *
    * @returns {Message} The message domain.
    */
-  static mapFrom(input: OnChatMessageSentResponseDTO): Message {
+  static mapFrom(
+    input: OnChatMessageSentResponseDTO & { id?: string } & {
+      media?: (OnChatMessageSentResponseDTO['media'] & { id?: string }) | null;
+    },
+  ): Message {
     return {
       id: input?.message_id,
       contacts: input?.contacts ?? [],

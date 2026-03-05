@@ -5,7 +5,6 @@ import { Fragment } from 'react';
 import { Link } from '@gnetwork-ui/components/atoms/links/link';
 import { BubbleModes } from '@gnetwork-ui/components/molecules/blocks/bubble/enums/bubble-modes.enum';
 import { ChatMessage } from '@gnetwork-ui/components/organisms/messages/chat-message';
-
 import { URL_REGEX } from '@regexs/url.regex';
 
 export const ChatTextWithLinks = ({

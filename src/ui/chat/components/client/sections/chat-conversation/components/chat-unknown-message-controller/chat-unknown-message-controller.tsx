@@ -62,6 +62,7 @@ export const ChatUnknownMessageController = ({
   return (
     <ChatTextMessage
       caption={null}
+      createdAt={message?.createdAt ?? ''}
       direction={direction}
       isBot={message?.sender?.isBot}
       status={message?.status.toLowerCase() as BubbleStatus}

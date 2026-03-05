@@ -2,7 +2,9 @@
 
 import type { ChatConversationFooterProps } from './chat-conversation-footer.props';
 
-import { MdSend } from 'react-icons/md';
+import { useState } from 'react';
+
+import { MdCloudQueue, MdSend } from 'react-icons/md';
 
 import { Button } from '@gnetwork-ui/components/molecules/buttons/button';
 import { CollapsibleButton } from '@gnetwork-ui/components/molecules/buttons/collapsible-button';
@@ -11,6 +13,7 @@ import { ChatInput } from '@gnetwork-ui/components/molecules/inputs/chat-input';
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { InternalMessageForm } from '@ui-chat/components/client/forms/internal-message-form';
+import { ChatCloudStorageModal } from '@ui-chat/components/client/modals/chat-cloud-storage-modal';
 
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
@@ -32,6 +35,8 @@ export const ChatConversationFooter = ({
     sendMode,
   } = useChatConversationFooter();
 
+  const [isCloudModalOpen, setIsCloudModalOpen] = useState(false);
+
   return (
     <div className={styles.base}>
       <div
@@ -50,7 +55,20 @@ export const ChatConversationFooter = ({
         >
           <ChatInput
             className="bg-chromatic"
-            customLeftIcon={<ChatConversationFileAttachDropdown />}
+            customLeftIcon={
+              <div className="flex items-center gap-1.5 pt-[2px]">
+                <ChatConversationFileAttachDropdown />
+                <button
+                  className="flex items-center justify-center size-6 rounded bg-neutral-100 cursor-pointer hover:bg-neutral-200 transition-colors shrink-0"
+                  disabled={disabledChat || sendMode === ChatSendModes.INTERNAL}
+                  onClick={() => setIsCloudModalOpen(true)}
+                  title="Almacenamiento en la nube"
+                  type="button"
+                >
+                  <MdCloudQueue className="min-h-4 min-w-4 size-4 fill-neutral-600" />
+                </button>
+              </div>
+            }
             disabled={disabledChat || sendMode === ChatSendModes.INTERNAL}
             fullWidth
             id="chat_message_sender"
@@ -84,6 +102,11 @@ export const ChatConversationFooter = ({
         />
       </div>
       {sendMode === ChatSendModes.INTERNAL && <InternalMessageForm />}
+      <ChatCloudStorageModal
+        isOpen={isCloudModalOpen}
+        onOpenChange={setIsCloudModalOpen}
+        triggerComponent={<span aria-hidden style={{ display: 'none' }} />}
+      />
     </div>
   );
 };
