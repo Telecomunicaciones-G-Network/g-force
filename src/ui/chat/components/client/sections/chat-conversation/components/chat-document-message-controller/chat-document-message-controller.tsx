@@ -41,6 +41,7 @@ export const ChatDocumentMessageController = ({
     return (
       <ChatDocumentMessage
         caption={message.text ?? null}
+        createdAt={message?.createdAt ?? ''}
         direction={direction}
         filename={message.media.filename}
         forwarded={message.forwarded}
@@ -56,10 +57,10 @@ export const ChatDocumentMessageController = ({
     );
   }
 
-  // Fallback: media no disponible o con error
   return (
     <ChatTextMessage
       caption={null}
+      createdAt={message?.createdAt ?? ''}
       direction={direction}
       isBot={message?.sender?.isBot}
       status={message?.status.toLowerCase() as BubbleStatus}

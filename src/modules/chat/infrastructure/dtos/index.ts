@@ -1,5 +1,7 @@
 export type { EmitMarkMessagesAsReadRequestDTO } from './emit-mark-messages-as-read-request.dto';
 export type { EmitMarkMessagesAsReadResponseDTO } from './emit-mark-messages-as-read-response.dto';
+export type { EmitSendDocumentMessageRequestDTO } from './emit-send-document-message-request.dto';
+export type { EmitSendDocumentMessageResponseDTO } from './emit-send-document-message-response.dto';
 export type { EmitSendImageMessageRequestDTO } from './emit-send-image-message-request.dto';
 export type { EmitSendImageMessageResponseDTO } from './emit-send-image-message-response.dto';
 export type { EmitSendInternalMessageRequestDTO } from './emit-send-internal-message-request.dto';
@@ -89,3 +91,7 @@ export type {
   DollarRateResultsDTO,
   GetDollarRateResponseDTO,
 } from './get-dollar-rate-response.dto';
+export type {
+  GetTeamSharedMediaResponseDTO,
+  GetTeamSharedMediaResponseDTOItem,
+} from './get-team-shared-media-response.dto';

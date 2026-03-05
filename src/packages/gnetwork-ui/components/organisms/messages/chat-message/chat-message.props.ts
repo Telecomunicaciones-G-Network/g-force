@@ -8,6 +8,7 @@ import type { TagColor } from '../../../molecules/tags/tag/types';
 export interface ChatMessageProps extends ReactDiv {
   bubbleClassName?: string;
   caption?: string | null;
+  createdAt?: string;
   customIconClassName?: string;
   direction: BubbleVariants['mode'];
   forwarded?: boolean;

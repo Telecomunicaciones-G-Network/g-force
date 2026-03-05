@@ -23,12 +23,12 @@ export class EmitSendInternalMessageMapper {
    * @returns {EmitSendInternalMessageResponse} The emit send internal message response domain.
    */
   static mapFrom(
-    input: EmitSendInternalMessageResponseDTO,
+    input: EmitSendInternalMessageResponseDTO & { id?: string },
   ): EmitSendInternalMessageResponse {
     return {
       errorCode: input?.error_code,
-      messageId: input?.message_id,
-      success: input?.success,
+      messageId: input?.message_id || input?.id,
+      success: input?.success ?? true,
     };
   }
 

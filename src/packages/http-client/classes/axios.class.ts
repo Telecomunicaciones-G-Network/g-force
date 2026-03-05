@@ -350,7 +350,11 @@ export class Axios implements HttpAdapter {
           'Content-Type': body?.file?.type ?? 'application/octet-stream',
           ...configuration?.headers,
           'X-Filename': body?.filename,
-          'X-Media-Type': X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType],
+          'X-Media-Type':
+            X_MEDIA_TYPE_HEADER_DICTIONARY?.[body?.mediaType] ?? 'DOCUMENT',
+          ...(body?.teamCodename
+            ? { 'X-Team-Codename': body.teamCodename }
+            : {}),
         },
         maxContentLength: Infinity,
         maxBodyLength: Infinity,

@@ -15,10 +15,19 @@ import { UploadChatMediaMapper } from '../mappers/upload-chat-media.mapper';
 export const uploadChatMediaService = async (
   request: UploadChatMediaRequest,
 ): Promise<UploadChatMediaResponse> => {
+  const extraHeaders: Record<string, string> = {};
+
+  if (request.teamCodename) {
+    extraHeaders['X-Team-Codename'] = request.teamCodename;
+  }
+
   const response =
     await gnetworkAxiosApiClient.uploadFile<UploadChatMediaResponseDTO>(
       CHAT_RESOURCES.UPLOAD_CHAT_MEDIA,
       request,
+      Object.keys(extraHeaders).length > 0
+        ? { headers: extraHeaders }
+        : undefined,
     );
 
   if (response?.error || !response?.results) {

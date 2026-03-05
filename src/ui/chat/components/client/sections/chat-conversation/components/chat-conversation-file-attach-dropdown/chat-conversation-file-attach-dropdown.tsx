@@ -14,6 +14,7 @@ import { parseMimetypesToFileInputAccept } from '@/src/packages/filer/utils/pars
 import { cn } from '@gnetwork-ui/utils/cn.util';
 
 import { IMAGE_MIMETYPES_ALLOWED } from '@module-core/constants/image-mimetypes-allowed.constant';
+import { DOCUMENT_MIMETYPES_ALLOWED } from '@module-core/constants/document-mimetypes-allowed.constant';
 
 import { ChatSendModes } from '@ui-chat/enums/chat-send-mode.enum';
 
@@ -23,6 +24,7 @@ import styles from './chat-conversation-file-attach-dropdown.module.css';
 
 export const ChatConversationFileAttachDropdown = () => {
   const {
+    attachDocumentFiles,
     attachImageFiles,
     isDropdownOpen,
     isSocketConnected,
@@ -66,8 +68,15 @@ export const ChatConversationFileAttachDropdown = () => {
         className="hover:[&_svg]:fill-chromatic! focus:[&_svg]:fill-chromatic! hover:**:text-chromatic! focus:**:text-chromatic!"
         onSelect={(e) => e.preventDefault()}
       >
-        <MdOutlineDescription className="fill-neutral-500 min-h-6 min-w-6 size-6" />
-        Documentos
+        <FileInput
+          accept={parseMimetypesToFileInputAccept(DOCUMENT_MIMETYPES_ALLOWED)}
+          disabled={!isSocketConnected}
+          fullWidth
+          onFileSelect={attachDocumentFiles}
+        >
+          <MdOutlineDescription className="fill-neutral-500 min-h-6 min-w-6 size-6" />
+          <span>Documentos</span>
+        </FileInput>
       </DropdownItem>
     </Dropdown>
   );

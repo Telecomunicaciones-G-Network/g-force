@@ -143,6 +143,6 @@
   padding-right: 0.25rem;
   font-size: 14px;
   line-height: 1.4;
-  color: var(--chromatic);
+  color: var(--chromatic-inverted);
   white-space: pre-wrap;
 }

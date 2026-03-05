@@ -29,6 +29,7 @@ export const ChatLocationMessageController = ({
     return (
       <ChatLocationMessage
         address={message.location.address}
+        createdAt={message?.createdAt ?? ''}
         direction={direction}
         isBot={message?.sender?.isBot}
         latitude={message.location.latitude}
@@ -47,6 +48,7 @@ export const ChatLocationMessageController = ({
   return (
     <ChatTextMessage
       caption={null}
+      createdAt={message?.createdAt ?? ''}
       direction={direction}
       isBot={message?.sender?.isBot}
       status={message?.status.toLowerCase() as BubbleStatus}
